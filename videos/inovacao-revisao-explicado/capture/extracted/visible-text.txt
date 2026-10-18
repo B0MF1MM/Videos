@@ -1,0 +1,42 @@
+Aulas 9 e 10 — Inovação na indústria (Engenharia do Futuro) e Revisão Geral
+
+Fonte: roteiro escrito a partir do conteúdo-padrão (o PDF não estava disponível nesta sessão).
+
+1. A fábrica que avisa: E se a própria máquina avisasse que vai falhar… e o planejamento se ajustasse sozinho à demanda? Essa fábrica já está chegando.
+   Ideia-chave: A indústria do futuro antecipa problemas com dados.
+
+2. Quatro revoluções: Na Aula 9, inovação na indústria. A primeira revolução trouxe o vapor; a segunda, a eletricidade e a produção em massa; a terceira, a automação com computadores. A quarta, a Indústria quatro ponto zero, conecta tudo.
+   Ideia-chave: 4.0 = a revolução da conexão.
+
+3. Pilares da 4.0: Ela une sistemas ciberfísicos, internet das coisas, computação em nuvem e big data. Máquinas, produtos e pessoas trocam dados em tempo real.
+   Ideia-chave: Tudo conectado, trocando dados em tempo real.
+
+4. Tecnologias na prática: Na prática, aparecem a inteligência artificial, a robótica colaborativa, a manufatura aditiva, ou impressão três D, e o gêmeo digital: uma cópia virtual do processo para testar mudanças antes de mexer na fábrica real.
+   Ideia-chave: IA, cobots, impressão 3D e gêmeo digital.
+
+5. Liga com o curso: E tudo conversa com o que vimos: sensores alimentam o OEE e o CEP em tempo real, a manutenção preditiva antecipa falhas como na FMEA, e a inteligência artificial melhora a previsão de demanda.
+   Ideia-chave: A 4.0 turbina OEE, CEP, FMEA e previsão.
+
+6. Sustentabilidade: A engenharia do futuro também é sustentável: economia circular, menos desperdício e uso eficiente de energia. É o mesmo espírito da produção enxuta, agora com o planeta na conta.
+   Ideia-chave: Economia circular = enxuto aplicado ao planeta.
+
+7. O engenheiro do futuro: E ela pede um novo profissional: alguém que entenda de dados, trabalhe em equipe multidisciplinar e continue aprendendo. A tecnologia muda; o método de pensar fica.
+   Ideia-chave: Dados, equipe e aprendizado contínuo.
+
+8. A pergunta do curso: Na Aula 10, a revisão geral. A disciplina inteira cabe numa pergunta: como produzir certo, na hora certa e com qualidade?
+   Ideia-chave: Certo, na hora certa, com qualidade.
+
+9. Na hora certa: Para produzir na hora certa: o PPCP planeja, programa e controla; o just in time e o kanban puxam a produção pela demanda; e a previsão estima quanto o cliente vai pedir, sempre com o seu erro.
+   Ideia-chave: PPCP, JIT/kanban e previsão garantem o tempo certo.
+
+10. Certo da primeira vez: Para produzir certo: a FMEA prioriza riscos com severidade, ocorrência e detecção, e a GQT envolve todos na qualidade, porque prevenir sai mais barato que corrigir.
+   Ideia-chave: FMEA e GQT: prevenir antes de corrigir.
+
+11. Com qualidade medida: E para garantir a qualidade: o OEE mede as perdas do equipamento, e o CEP separa a variação normal das causas especiais.
+   Ideia-chave: OEE mede perdas; CEP detecta causas especiais.
+
+12. O padrão: Repare no padrão: planejar, prevenir, medir e melhorar. É o PDCA aplicado à operação inteira, e a Indústria quatro ponto zero só acelera esse ciclo com dados.
+   Ideia-chave: Planejar, prevenir, medir, melhorar — o PDCA da operação.
+
+13. Encerramento: Resumindo o curso: operações bem geridas agem antes do problema e decidem com dados. Bons estudos, e boa prova!
+   Ideia-chave: Agir antes do problema e decidir com dados.

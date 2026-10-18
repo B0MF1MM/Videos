@@ -1,0 +1,62 @@
+{
+  "provider": "kokoro",
+  "speed": "1.0",
+  "lines": [
+    {
+      "id": "01",
+      "text": "E se a própria máquina avisasse que vai falhar… e o planejamento se ajustasse sozinho à demanda? Essa fábrica já está chegando."
+    },
+    {
+      "id": "02",
+      "text": "Na Aula 9, inovação na indústria. A primeira revolução trouxe o vapor; a segunda, a eletricidade e a produção em massa; a terceira, a automação com computadores. A quarta, a Indústria quatro ponto zero, conecta tudo."
+    },
+    {
+      "id": "03",
+      "text": "Ela une sistemas ciberfísicos, internet das coisas, computação em nuvem e big data. Máquinas, produtos e pessoas trocam dados em tempo real."
+    },
+    {
+      "id": "04",
+      "text": "Na prática, aparecem a inteligência artificial, a robótica colaborativa, a manufatura aditiva, ou impressão três D, e o gêmeo digital: uma cópia virtual do processo para testar mudanças antes de mexer na fábrica real."
+    },
+    {
+      "id": "05",
+      "text": "E tudo conversa com o que vimos: sensores alimentam o OEE e o CEP em tempo real, a manutenção preditiva antecipa falhas como na FMEA, e a inteligência artificial melhora a previsão de demanda."
+    },
+    {
+      "id": "06",
+      "text": "A engenharia do futuro também é sustentável: economia circular, menos desperdício e uso eficiente de energia. É o mesmo espírito da produção enxuta, agora com o planeta na conta."
+    },
+    {
+      "id": "07",
+      "text": "E ela pede um novo profissional: alguém que entenda de dados, trabalhe em equipe multidisciplinar e continue aprendendo. A tecnologia muda; o método de pensar fica."
+    },
+    {
+      "id": "08",
+      "text": "Na Aula 10, a revisão geral. A disciplina inteira cabe numa pergunta: como produzir certo, na hora certa e com qualidade?"
+    },
+    {
+      "id": "09",
+      "text": "Para produzir na hora certa: o PPCP planeja, programa e controla; o just in time e o kanban puxam a produção pela demanda; e a previsão estima quanto o cliente vai pedir, sempre com o seu erro."
+    },
+    {
+      "id": "10",
+      "text": "Para produzir certo: a FMEA prioriza riscos com severidade, ocorrência e detecção, e a GQT envolve todos na qualidade, porque prevenir sai mais barato que corrigir."
+    },
+    {
+      "id": "11",
+      "text": "E para garantir a qualidade: o OEE mede as perdas do equipamento, e o CEP separa a variação normal das causas especiais."
+    },
+    {
+      "id": "12",
+      "text": "Repare no padrão: planejar, prevenir, medir e melhorar. É o PDCA aplicado à operação inteira, e a Indústria quatro ponto zero só acelera esse ciclo com dados."
+    },
+    {
+      "id": "13",
+      "text": "Resumindo o curso: operações bem geridas agem antes do problema e decidem com dados. Bons estudos, e boa prova!"
+    }
+  ],
+  "bgm": {
+    "mode": "none"
+  },
+  "voice": "pf_dora"
+}
