@@ -1,0 +1,276 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+    }
+
+    .f03-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(to right, rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+    }
+
+    .f03-hairline {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 0;
+      border-top: 2.3px solid #1F2BE0;
+    }
+    #f03-hair-top { top: 82px; }
+    #f03-hair-bot { top: 884px; }
+
+    .f03-chrome {
+      position: absolute;
+      top: 46px;
+      font-family: "DM Mono", monospace;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      color: #1F2BE0;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    #f03-tag { left: 77px; }
+    #f03-num { right: 77px; }
+
+    #f03-title {
+      position: absolute;
+      left: 192px;
+      top: 128px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 88px;
+      line-height: 0.95;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+      transform-origin: 0% 100%;
+    }
+
+    #f03-stage {
+      position: absolute;
+      inset: 0;
+      transform-origin: 50% 52%;
+    }
+
+    .f03-slot {
+      position: absolute;
+      top: 318px;
+      width: 440px;
+      height: 320px;
+      border: 2px solid rgba(31,43,224,0.18);
+      box-sizing: border-box;
+      border-radius: 0;
+    }
+    #f03-slot-c { left: 192px; }
+    #f03-slot-m { left: 740px; }
+    #f03-slot-e { left: 1288px; }
+
+    .f03-block {
+      position: absolute;
+      inset: -2px;
+      box-sizing: border-box;
+      padding: 38px 36px;
+      display: flex;
+      flex-direction: column;
+      transform-origin: 50% 50%;
+      will-change: transform;
+      border-radius: 0;
+    }
+    .f03-block-fill { background: #1F2BE0; color: #F0EBDE; border: 3px solid #1F2BE0; }
+    .f03-block-line { background: #F0EBDE; color: #1F2BE0; border: 3px solid #1F2BE0; }
+
+    .f03-label {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .f03-rule {
+      margin: 26px 0 24px;
+      height: 0;
+      border-top: 2px solid currentColor;
+      width: 72px;
+    }
+    .f03-desc {
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.35;
+    }
+
+    .f03-ex {
+      position: absolute;
+      box-sizing: border-box;
+      padding: 12px 18px;
+      border: 2px solid #1F2BE0;
+      background: #F0EBDE;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      white-space: nowrap;
+      color: #1F2BE0;
+      transform-origin: 0% 50%;
+      border-radius: 0;
+    }
+    #f03-ex-m { left: 740px; top: 672px; }
+    #f03-ex-e { left: 1288px; top: 672px; }
+    #f03-ex-c1 { left: 192px; top: 672px; }
+    #f03-ex-c2 { left: 192px; top: 742px; }
+
+    .f03-tick {
+      position: absolute;
+      width: 0;
+      height: 34px;
+      border-left: 2px solid #1F2BE0;
+      top: 638px;
+      transform-origin: 50% 0%;
+    }
+    #f03-tick-m { left: 760px; }
+    #f03-tick-e { left: 1308px; }
+    #f03-tick-c { left: 212px; }
+
+    #f03-arrows {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    #f03-arrows path {
+      fill: none;
+      stroke: #1F2BE0;
+      stroke-width: 4;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-modo-efeito-causa" data-width="1920" data-height="1080">
+    <div class="f03-ground clip" data-start="0" data-duration="13.696" data-track-index="0"></div>
+
+    <div class="f03-hairline" id="f03-hair-top"></div>
+    <div class="f03-hairline" id="f03-hair-bot"></div>
+    <div class="f03-chrome" id="f03-tag">AULAS 4–5 · OPERAÇÕES</div>
+    <div class="f03-chrome" id="f03-num">03 / 13</div>
+
+    <div id="f03-title">Separe três coisas</div>
+
+    <div id="f03-stage">
+      <div class="f03-slot" id="f03-slot-c">
+        <div class="f03-block f03-block-line" id="f03-blk-c">
+          <div class="f03-label">CAUSA</div>
+          <div class="f03-rule"></div>
+          <div class="f03-desc">mecanismo que origina a falha</div>
+        </div>
+      </div>
+      <div class="f03-slot" id="f03-slot-m">
+        <div class="f03-block f03-block-fill" id="f03-blk-m">
+          <div class="f03-label">MODO DE FALHA</div>
+          <div class="f03-rule"></div>
+          <div class="f03-desc">o que pode dar errado numa etapa</div>
+        </div>
+      </div>
+      <div class="f03-slot" id="f03-slot-e">
+        <div class="f03-block f03-block-line" id="f03-blk-e">
+          <div class="f03-label">EFEITO</div>
+          <div class="f03-rule"></div>
+          <div class="f03-desc">consequência para o produto, o usuário ou a segurança</div>
+        </div>
+      </div>
+
+      <svg id="f03-arrows" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <path id="f03-arr-cm" d="M 648 478 L 718 478" />
+        <path id="f03-arr-cm-head" d="M 702 462 L 720 478 L 702 494" />
+        <path id="f03-arr-me" d="M 1196 478 L 1266 478" />
+        <path id="f03-arr-me-head" d="M 1250 462 L 1268 478 L 1250 494" />
+      </svg>
+
+      <div class="f03-tick" id="f03-tick-m"></div>
+      <div class="f03-tick" id="f03-tick-e"></div>
+      <div class="f03-tick" id="f03-tick-c"></div>
+
+      <div class="f03-ex" id="f03-ex-m">vedação mal montada</div>
+      <div class="f03-ex" id="f03-ex-e">vazamento</div>
+      <div class="f03-ex" id="f03-ex-c1">treinamento insuficiente</div>
+      <div class="f03-ex" id="f03-ex-c2">montagem incorreta</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var $ = function (id) { return document.getElementById(id); };
+
+      // SVG path draw setup: measured lengths
+      ["f03-arr-cm", "f03-arr-cm-head", "f03-arr-me", "f03-arr-me-head"].forEach(function (id) {
+        var p = $(id);
+        var len = p.getTotalLength() * 1.05;
+        p.style.strokeDasharray = len + "";
+        p.style.strokeDashoffset = len + "";
+      });
+
+      // Macro camera drift underneath (settles before the final hold)
+      tl.fromTo("#f03-stage", { scale: 0.985 }, { scale: 1.015, duration: 11.4, ease: "sine.inOut" }, 0);
+
+      // Scene 1 (0.0–1.4): chrome, title, faint empty triptych outlines
+      tl.fromTo(["#f03-hair-top", "#f03-hair-bot"], { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0);
+      tl.fromTo(["#f03-tag", "#f03-num"], { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 0.1);
+      tl.fromTo("#f03-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+      ["#f03-slot-c", "#f03-slot-m", "#f03-slot-e"].forEach(function (sel, i) {
+        tl.fromTo(sel, { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0.35 + i * 0.08);
+      });
+
+      // Block content starts collapsed (stated in fromTo below; set at t=0 for seek safety)
+      tl.set(["#f03-blk-c", "#f03-blk-m", "#f03-blk-e"], { scale: 0, opacity: 0 }, 0);
+      tl.set([".f03-tick"], { scaleY: 0 }, 0);
+
+      // Scene 2 (1.4–4.4): MODO DE FALHA fills cobalt at 1.6s
+      tl.fromTo("#f03-blk-m", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "power3.out" }, 1.6);
+      tl.fromTo("#f03-tick-m", { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, 2.6);
+      tl.fromTo("#f03-ex-m", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.8);
+
+      // Scene 3 (4.4–8.1): arrow M -> E draws at 4.6s, EFEITO lights
+      tl.to("#f03-arr-me", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 4.6);
+      tl.to("#f03-arr-me-head", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 4.93);
+      tl.fromTo("#f03-blk-e", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "power3.out" }, 5.0);
+      tl.fromTo("#f03-tick-e", { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, 6.2);
+      tl.fromTo("#f03-ex-e", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.4);
+
+      // Scene 4 (8.1–10.7): arrow C -> M draws at 8.4s, CAUSA lights
+      tl.to("#f03-arr-cm", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 8.4);
+      tl.to("#f03-arr-cm-head", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 8.73);
+      tl.fromTo("#f03-blk-c", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "power3.out" }, 8.6);
+
+      // Scene 5 (10.7–13.7): two mono cause tags stack under CAUSA, then hold
+      tl.fromTo("#f03-tick-c", { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, 10.8);
+      tl.fromTo("#f03-ex-c1", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 11.0);
+      tl.fromTo("#f03-ex-c2", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 12.6);
+
+      // Pad to full duration (hold)
+      tl.set({}, {}, 13.696);
+
+      window.__timelines["03-modo-efeito-causa"] = tl;
+    })();
+  </script>
+</template>

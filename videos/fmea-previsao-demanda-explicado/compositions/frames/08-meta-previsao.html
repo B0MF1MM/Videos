@@ -1,0 +1,217 @@
+<template>
+  <div id="root" data-composition-id="08-meta-previsao" data-width="1920" data-height="1080" data-start="0" data-duration="10.923">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      #root * { box-sizing: border-box; border-radius: 0; }
+
+      .m08-ground {
+        position: absolute;
+        inset: 0;
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+
+      .m08-stage {
+        position: absolute;
+        inset: 0;
+        container-type: size;
+        color: #1F2BE0;
+      }
+
+      /* furniture */
+      .m08-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: #1F2BE0; }
+      .m08-hair-top { top: 70px; }
+      .m08-hair-bot { top: 884px; }
+      .m08-chrome {
+        position: absolute; top: 36px;
+        font-family: "DM Mono", monospace; font-size: 16px; letter-spacing: 0.06em;
+        color: #1F2BE0; line-height: 1;
+      }
+      .m08-chrome-l { left: 80px; }
+      .m08-chrome-r { right: 80px; }
+
+      /* title block */
+      .m08-kicker {
+        position: absolute; top: 104px; left: 0; right: 0; text-align: center;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 22px;
+        letter-spacing: 0.18em; text-transform: uppercase; line-height: 1;
+      }
+      .m08-kicker span {
+        display: inline-block; padding: 8px 14px 7px 16px; border: 2px solid #1F2BE0;
+      }
+      .m08-title {
+        position: absolute; top: 150px; left: 0; right: 0;
+        display: flex; justify-content: center; align-items: center; gap: 26px;
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 92px;
+        line-height: 1; letter-spacing: -0.008em; white-space: nowrap;
+      }
+      .m08-title em { font-style: italic; }
+      .m08-neq-mini {
+        width: 84px; height: 84px; background: #1F2BE0; color: #F0EBDE;
+        display: flex; align-items: center; justify-content: center;
+        font-family: "Newsreader", serif; font-size: 72px; line-height: 1;
+      }
+
+      /* split-tilt cards */
+      .m08-persp {
+        position: absolute; left: 0; top: 290px; width: 1920px; height: 470px;
+        perspective: 1800px;
+      }
+      .m08-split {
+        position: absolute; inset: 0;
+        display: flex; justify-content: center; gap: 140px;
+        transform-style: preserve-3d;
+      }
+      .m08-card {
+        width: 740px; height: 470px;
+        transform-style: preserve-3d;
+        will-change: transform;
+        padding: 46px 56px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      .m08-card-left { background: #F0EBDE; border: 3px solid #1F2BE0; color: #1F2BE0; transform-origin: 100% 50%; }
+      .m08-card-right { background: #1F2BE0; border: 3px solid #1F2BE0; color: #F0EBDE; transform-origin: 0% 50%; }
+      .m08-card-tag {
+        font-family: "DM Mono", monospace; font-size: 20px; letter-spacing: 0.06em; line-height: 1;
+        display: flex; justify-content: space-between;
+      }
+      .m08-card-word {
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 116px;
+        line-height: 1; letter-spacing: -0.008em;
+      }
+      .m08-card-rule { height: 2px; background: currentColor; margin: 0 0 22px 0; }
+      .m08-card-lede {
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 400; font-size: 32px; line-height: 1.3;
+        max-width: 600px;
+      }
+
+      /* inner-edge badge (outside the tilted cards) */
+      .m08-badge {
+        position: absolute; left: 905px; top: 470px; width: 110px; height: 110px;
+        background: #F0EBDE; border: 3px solid #1F2BE0; color: #1F2BE0;
+        display: flex; align-items: center; justify-content: center;
+        font-family: "Newsreader", serif; font-size: 96px; line-height: 1;
+        transform-origin: 50% 50%; z-index: 5;
+      }
+
+      /* warning band */
+      .m08-band {
+        position: absolute; left: 140px; width: 1640px; top: 790px; height: 70px;
+        border: 2px solid #1F2BE0; background: #F0EBDE;
+        display: flex; align-items: center; justify-content: center; gap: 28px;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 26px;
+        letter-spacing: 0.18em; text-transform: uppercase; line-height: 1; color: #1F2BE0;
+        transform-origin: 0% 50%;
+      }
+      .m08-band-arrow { font-family: "DM Mono", monospace; letter-spacing: 0; font-size: 30px; }
+    </style>
+
+    <div id="m08-ground" class="m08-ground clip" data-start="0" data-duration="10.923" data-track-index="0"></div>
+
+    <div id="m08-stage" class="m08-stage clip" data-start="0" data-duration="10.923" data-track-index="1">
+      <div class="m08-hair m08-hair-top" id="m08-hair-top"></div>
+      <div class="m08-hair m08-hair-bot" id="m08-hair-bot"></div>
+      <div class="m08-chrome m08-chrome-l">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="m08-chrome m08-chrome-r">08 / 13</div>
+
+      <div class="m08-kicker" id="m08-kicker"><span>Cuidado</span></div>
+      <div class="m08-title" id="m08-title">
+        <span>Meta <em>não é</em> previsão</span>
+        <div class="m08-neq-mini" id="m08-neq-mini">≠</div>
+      </div>
+
+      <div class="m08-persp">
+        <div class="m08-split">
+          <div class="m08-card m08-card-left" id="m08-card-left">
+            <div class="m08-card-tag m08-copy-l"><span>A</span><span>DESEJO</span></div>
+            <div>
+              <div class="m08-card-word m08-copy-l">META</div>
+              <div class="m08-card-rule m08-copy-l"></div>
+              <div class="m08-card-lede m08-copy-l">o que a empresa deseja</div>
+            </div>
+          </div>
+          <div class="m08-card m08-card-right" id="m08-card-right">
+            <div class="m08-card-tag m08-copy-r"><span>B</span><span>EVIDÊNCIA</span></div>
+            <div>
+              <div class="m08-card-word m08-copy-r">PREVISÃO</div>
+              <div class="m08-card-rule m08-copy-r"></div>
+              <div class="m08-card-lede m08-copy-r">o que se espera que aconteça, com base em evidências</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m08-badge" id="m08-badge">≠</div>
+
+      <div class="m08-band" id="m08-band">
+        <span class="m08-band-txt">Confundir as duas</span>
+        <span class="m08-band-arrow m08-band-txt">→</span>
+        <span class="m08-band-txt">Decisões otimistas demais</span>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var TILT = 12, OVER = 8;
+
+        // Scene 1 (0.0–1.8): CUIDADO + title slide-down
+        tl.fromTo("#m08-hair-top", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0);
+        tl.fromTo("#m08-hair-bot", { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0);
+        tl.fromTo("#m08-kicker", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+        tl.fromTo("#m08-title", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.2);
+        tl.fromTo("#m08-neq-mini", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.75);
+
+        // Scene 2 (1.8): left card — split-tilt entry from left
+        tl.fromTo("#m08-card-left",
+          { x: -420, rotateY: TILT + OVER, scale: 0.85, opacity: 0 },
+          { x: 0, rotateY: TILT, scale: 1, opacity: 1, duration: 0.9, ease: "power3.out" }, 1.8);
+        tl.fromTo(".m08-copy-l", { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: "power2.out" }, 2.25);
+
+        // Scene 3 (4.2): right card — mirrored entry from right, inverted cobalt
+        tl.fromTo("#m08-card-right",
+          { x: 420, rotateY: -TILT - OVER, scale: 0.85, opacity: 0 },
+          { x: 0, rotateY: -TILT, scale: 1, opacity: 1, duration: 0.9, ease: "power3.out" }, 4.2);
+        tl.fromTo(".m08-copy-r", { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: "power2.out" }, 4.65);
+
+        // inner-edge square badge pops between the cards (the one overshoot)
+        tl.fromTo("#m08-badge", { scale: 0, opacity: 0, rotation: -8 },
+          { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, 5.3);
+
+        // counter-phase idle bob (explicit, no repeat/yoyo), settles back to 0 before Scene 4
+        tl.to("#m08-card-left", { y: -6, duration: 1.1, ease: "sine.inOut" }, 5.4);
+        tl.to("#m08-card-right", { y: 6, duration: 1.1, ease: "sine.inOut" }, 5.4);
+        tl.to("#m08-card-left", { y: 0, duration: 1.1, ease: "sine.inOut" }, 6.5);
+        tl.to("#m08-card-right", { y: 0, duration: 1.1, ease: "sine.inOut" }, 6.5);
+
+        // Scene 4 (7.8): warning band wipes in under the cards, then holds
+        tl.fromTo("#m08-band", { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 7.8);
+        tl.fromTo(".m08-band-txt", { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, duration: 0.45, stagger: 0.12, ease: "power2.out" }, 8.15);
+
+        // pad to full duration (hold)
+        tl.set({}, {}, 10.923);
+
+        window.__timelines["08-meta-previsao"] = tl;
+      })();
+    </script>
+  </div>
+</template>

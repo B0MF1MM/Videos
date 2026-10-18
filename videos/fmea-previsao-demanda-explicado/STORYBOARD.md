@@ -76,7 +76,7 @@ Scene 5 (7.4–10.37s): três linhas em lista na metade inferior útil (acima de
 - voiceover: "Separe três coisas. O modo de falha é o que pode dar errado numa etapa. O efeito é a consequência para o produto, o usuário ou a segurança. E a causa é o mecanismo que origina a falha, como treinamento insuficiente ou montagem incorreta."
 - duration: 13.696s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/03-modo-efeito-causa.html
 - type: feature_showcase
 - persuasion: Causal chain + rule of three
@@ -200,7 +200,7 @@ Scene 4 (7.7–11.88s): em "inércia decisória" (8.8s) uma seta reta se desenha
 - voiceover: "Cuidado: meta não é previsão. Meta é o resultado que a empresa deseja. Previsão é o que se espera que aconteça, com base em evidências. Confundir as duas leva a decisões otimistas demais."
 - duration: 10.923s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/08-meta-previsao.html
 - type: feature_showcase
 - persuasion: Common-belief vs reality + comparison of two options
@@ -320,7 +320,7 @@ Scene 4 (12.7–15.51s): em "Uma boa previsão" (12.7s) uma faixa no topo: "PREV
 - voiceover: "Resumindo: a FMEA prioriza riscos com severidade, ocorrência e detecção. A previsão estima a demanda e o seu erro. As duas fazem a mesma coisa: agir antes do problema."
 - duration: 9.984s
 - transition_in: blur-crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/13-sintese.html
 - type: branding
 - persuasion: Distillation + callback
