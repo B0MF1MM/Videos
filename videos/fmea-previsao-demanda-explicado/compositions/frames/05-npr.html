@@ -1,0 +1,423 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+    }
+
+    .f05-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(to right, rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+    }
+
+    .f05-hairline {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 0;
+      border-top: 2.3px solid #1F2BE0;
+    }
+    #f05-hair-top { top: 82px; }
+    #f05-hair-bot { top: 884px; }
+
+    .f05-chrome {
+      position: absolute;
+      top: 46px;
+      font-family: "DM Mono", monospace;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      color: #1F2BE0;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    #f05-tag { left: 77px; }
+    #f05-num { right: 77px; }
+
+    /* camera wrapper — origin aimed at the 336 block */
+    #f05-cam {
+      position: absolute;
+      inset: 0;
+      transform-origin: 1510px 615px;
+    }
+
+    /* ---------- formula row ---------- */
+    #f05-formula {
+      position: absolute;
+      left: 880px;
+      top: 170px;
+      width: 860px;
+      height: 150px;
+      display: flex;
+      align-items: flex-start;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 130px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .f05-term {
+      position: relative;
+      flex: 0 0 auto;
+      height: 150px;
+      text-align: center;
+      transform-origin: 50% 50%;
+    }
+    #f05-t-npr { width: 270px; text-align: left; }
+    .f05-eq { width: 90px; }
+    .f05-x { width: 70px; }
+    .f05-slot { width: 120px; }
+    .f05-slot .f05-letter,
+    .f05-slot .f05-digit {
+      position: absolute;
+      inset: 0;
+      text-align: center;
+      transform-origin: 50% 50%;
+    }
+    .f05-slot .f05-digit { z-index: 2; font-variant-numeric: lining-nums tabular-nums; }
+    .f05-slot .f05-letter { z-index: 1; }
+    .f05-slab {
+      position: absolute;
+      top: 168px;
+      left: 50%;
+      width: 240px;
+      margin-left: -120px;
+      text-align: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 19px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f05-slab-tick {
+      position: absolute;
+      top: 146px;
+      left: 50%;
+      width: 0;
+      height: 14px;
+      margin-left: -1px;
+      border-left: 2px solid #1F2BE0;
+      transform-origin: 50% 0%;
+    }
+
+    /* NPR spelled out, under NPR */
+    #f05-npr-rule {
+      position: absolute;
+      left: 880px;
+      top: 330px;
+      width: 230px;
+      height: 0;
+      border-top: 2.3px solid #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+    #f05-npr-cap {
+      position: absolute;
+      left: 880px;
+      top: 350px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 21px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    /* ---------- example card (left 40%) ---------- */
+    #f05-card {
+      position: absolute;
+      left: 115px;
+      top: 170px;
+      width: 650px;
+      height: 610px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      padding: 40px 44px;
+      border-radius: 0;
+    }
+    #f05-card-tag {
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+    #f05-card-rule {
+      margin: 22px 0 34px;
+      height: 0;
+      border-top: 2px solid #1F2BE0;
+      width: 100%;
+      transform-origin: 0% 50%;
+    }
+    .f05-card-line {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 1.08;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    #f05-card-effect {
+      margin-top: 40px;
+      display: flex;
+      align-items: baseline;
+      gap: 22px;
+      font-family: "Newsreader", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 68px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    #f05-arrow {
+      font-family: "DM Mono", monospace;
+      font-style: normal;
+      font-size: 54px;
+      display: inline-block;
+    }
+    #f05-leak { display: inline-block; }
+
+    /* pixel-stack accent inside card, bottom-right */
+    #f05-qr {
+      position: absolute;
+      right: 32px;
+      bottom: 32px;
+      width: 96px;
+      height: 96px;
+      display: grid;
+      grid-template-columns: repeat(8, 12px);
+      grid-template-rows: repeat(8, 12px);
+    }
+    #f05-qr i { display: block; background: rgba(31,43,224,0.10); }
+    #f05-qr i.on { background: #1F2BE0; }
+
+    /* ---------- result row ---------- */
+    #f05-eq2 {
+      position: absolute;
+      left: 1150px;
+      top: 540px;
+      width: 90px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-size: 130px;
+      line-height: 1;
+    }
+    #f05-block {
+      position: absolute;
+      left: 1262px;
+      top: 452px;
+      width: 500px;
+      height: 326px;
+      box-sizing: border-box;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      border-radius: 0;
+    }
+    #f05-block-tag {
+      position: absolute;
+      left: 26px;
+      top: 22px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+    #f05-count-wrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 64px;
+      height: 240px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #f05-count {
+      display: inline-block;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 240px;
+      line-height: 0.9;
+      letter-spacing: -0.015em;
+      font-variant-numeric: lining-nums tabular-nums;
+      transform-origin: 50% 60%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="05-npr" data-width="1920" data-height="1080">
+    <div class="f05-ground clip" data-start="0" data-duration="14.272" data-track-index="0"></div>
+
+    <div class="f05-hairline" id="f05-hair-top"></div>
+    <div class="f05-hairline" id="f05-hair-bot"></div>
+    <div class="f05-chrome" id="f05-tag">AULAS 4–5 · OPERAÇÕES</div>
+    <div class="f05-chrome" id="f05-num">05 / 13</div>
+
+    <div id="f05-cam">
+      <!-- example card -->
+      <div id="f05-card">
+        <div id="f05-card-tag">EXEMPLO</div>
+        <div id="f05-card-rule"></div>
+        <div class="f05-card-line" id="f05-cl1">Vedação mal montada</div>
+        <div class="f05-card-line" id="f05-cl2">numa bomba</div>
+        <div class="f05-card-line" id="f05-cl3">centrífuga</div>
+        <div id="f05-card-effect"><span id="f05-arrow">→</span><span id="f05-leak">vazamento</span></div>
+        <div id="f05-qr">
+          <i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i>
+          <i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i>
+          <i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
+          <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i>
+          <i></i><i class="on"></i><i></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i>
+          <i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i>
+          <i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i>
+          <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i>
+        </div>
+      </div>
+
+      <!-- formula -->
+      <div id="f05-formula">
+        <div class="f05-term" id="f05-t-npr">NPR</div>
+        <div class="f05-term f05-eq" id="f05-t-eq">=</div>
+        <div class="f05-term f05-slot" id="f05-s">
+          <div class="f05-letter" id="f05-s-l">S</div>
+          <div class="f05-digit" id="f05-s-n">8</div>
+          <div class="f05-slab-tick" id="f05-s-tick"></div>
+          <div class="f05-slab" id="f05-s-lab">Severidade</div>
+        </div>
+        <div class="f05-term f05-x" id="f05-x1">×</div>
+        <div class="f05-term f05-slot" id="f05-o">
+          <div class="f05-letter" id="f05-o-l">O</div>
+          <div class="f05-digit" id="f05-o-n">7</div>
+          <div class="f05-slab-tick" id="f05-o-tick"></div>
+          <div class="f05-slab" id="f05-o-lab">Ocorrência</div>
+        </div>
+        <div class="f05-term f05-x" id="f05-x2">×</div>
+        <div class="f05-term f05-slot" id="f05-d">
+          <div class="f05-letter" id="f05-d-l">D</div>
+          <div class="f05-digit" id="f05-d-n">6</div>
+          <div class="f05-slab-tick" id="f05-d-tick"></div>
+          <div class="f05-slab" id="f05-d-lab">Detecção</div>
+        </div>
+      </div>
+
+      <div id="f05-npr-rule"></div>
+      <div id="f05-npr-cap">Número de<br>Prioridade<br>de Risco</div>
+
+      <!-- result -->
+      <div id="f05-eq2">=</div>
+      <div id="f05-block">
+        <div id="f05-block-tag">NPR</div>
+        <div id="f05-count-wrap"><span id="f05-count">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // formula starts centered (x = -350 → true center), slides right at "Exemplo"
+      var FORMULA_SHIFT = -350;
+
+      // slow ambient camera drift underneath the whole shot
+      tl.fromTo("#f05-cam", { scale: 1 }, { scale: 1.012, duration: 12.3, ease: "none" }, 0);
+
+      // ---- Scene 1 (0.0–2.0): formula assembles term by term ----
+      // the three factors arrive first ("as três"), then the × signs, then "NPR =" lands on "NPR" (1.3s)
+      tl.set("#f05-formula", { x: FORMULA_SHIFT }, 0);
+      tl.fromTo(["#f05-s-l", "#f05-o-l", "#f05-d-l"],
+        { opacity: 0, y: 46 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.14 }, 0.25);
+      tl.fromTo(["#f05-x1", "#f05-x2"],
+        { opacity: 0, scale: 0.6 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)", stagger: 0.1 }, 0.8);
+      tl.fromTo("#f05-t-eq",
+        { opacity: 0, x: 30 },
+        { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.15);
+      tl.fromTo("#f05-t-npr",
+        { opacity: 0, x: -60 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.25);
+
+      // ---- Scene 2 (2.0–4.1): spelled-out caption under NPR ----
+      tl.fromTo("#f05-npr-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 2.15);
+      tl.fromTo("#f05-npr-cap",
+        { opacity: 0, y: 14, x: FORMULA_SHIFT },
+        { opacity: 1, y: 0, x: FORMULA_SHIFT, duration: 0.5, ease: "power2.out" }, 2.25);
+      tl.set("#f05-npr-rule", { x: FORMULA_SHIFT }, 0);
+
+      // ---- Scene 3 (4.1–8.5): example card enters left, formula slides right ----
+      var SLIDE_AT = 4.15;
+      tl.to(["#f05-formula", "#f05-npr-rule", "#f05-npr-cap"],
+        { x: 0, duration: 0.9, ease: "power3.inOut" }, SLIDE_AT);
+      tl.fromTo("#f05-card",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.8, ease: "power3.inOut" }, SLIDE_AT + 0.1);
+      tl.fromTo("#f05-card-tag", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 4.6);
+      tl.fromTo("#f05-card-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 4.7);
+      tl.fromTo(["#f05-cl1", "#f05-cl2", "#f05-cl3"],
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.35 }, 5.1);
+      tl.fromTo("#f05-qr", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 6.2);
+      // "vazamento" at 7.6s
+      tl.fromTo("#f05-arrow", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.45);
+      tl.fromTo("#f05-leak", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 7.6);
+
+      // ---- Scene 4 (8.5–11.8): letters swap to numbers in place (scale-swap) ----
+      var EXIT_DUR = 0.3, ENTER_DUR = 0.55, OVERLAP = 0.12, EXIT_SCALE = 0.7;
+      function swap(letter, digit, tick, label, cue) {
+        var trig = cue - EXIT_DUR + OVERLAP; // the digit starts arriving right on the spoken cue
+        tl.to(letter, { scale: EXIT_SCALE, opacity: 0, duration: EXIT_DUR, ease: "power2.in" }, trig);
+        tl.fromTo(digit,
+          { scale: EXIT_SCALE, opacity: 0 },
+          { scale: 1, opacity: 1, duration: ENTER_DUR, ease: "back.out(1.8)" }, trig + EXIT_DUR - OVERLAP);
+        tl.fromTo(tick, { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, cue + 0.25);
+        tl.fromTo(label, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, cue + 0.3);
+      }
+      swap("#f05-s-l", "#f05-s-n", "#f05-s-tick", "#f05-s-lab", 9.3);
+      swap("#f05-o-l", "#f05-o-n", "#f05-o-tick", "#f05-o-lab", 10.4);
+      swap("#f05-d-l", "#f05-d-n", "#f05-d-tick", "#f05-d-lab", 11.3);
+
+      // ---- Scene 5 (11.8–14.27): "igual a" → 336 counts up in inverted block, camera push ----
+      tl.fromTo("#f05-eq2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.95);
+      tl.fromTo("#f05-block",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.35, ease: "power3.out" }, 12.05);
+      tl.fromTo("#f05-block-tag", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 12.3);
+
+      var COUNT_AT = 12.1, COUNT_DUR = 0.8, COUNT_EASE = "power3.out";
+      var counter = document.getElementById("f05-count");
+      var state = { value: 0 };
+      tl.fromTo(state, { value: 0 }, {
+        value: 336, duration: COUNT_DUR, ease: COUNT_EASE,
+        onUpdate: function () { counter.textContent = String(Math.round(state.value)); }
+      }, COUNT_AT);
+      tl.fromTo("#f05-count", { scale: 0.55 }, { scale: 1, duration: COUNT_DUR, ease: COUNT_EASE }, COUNT_AT);
+
+      // camera pushes gently toward the right of the formula, then holds
+      tl.to("#f05-cam", { scale: 1.06, duration: 1.3, ease: "power2.inOut" }, 12.4);
+
+      // hold still to the end of the frame
+      tl.set({}, {}, 14.272);
+
+      window.__timelines["05-npr"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,238 @@
+<template>
+  <div id="root" data-composition-id="02-fmea" data-width="1920" data-height="1080" data-start="0" data-duration="10.368">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      #root * { box-sizing: border-box; border-radius: 0; }
+
+      .f02-ground {
+        position: absolute;
+        inset: 0;
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      .f02-stage {
+        position: absolute;
+        inset: 0;
+        container-type: size;
+        color: #1F2BE0;
+      }
+
+      /* furniture */
+      .f02-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: #1F2BE0; }
+      .f02-hair-top { top: 70px; }
+      .f02-hair-bot { top: 884px; }
+      .f02-chrome {
+        position: absolute; top: 36px;
+        font-family: "DM Mono", monospace; font-size: 16px; letter-spacing: 0.06em;
+        color: #1F2BE0; line-height: 1;
+      }
+      .f02-chrome-l { left: 80px; }
+      .f02-chrome-r { right: 80px; }
+
+      .f02-cam { position: absolute; inset: 0; transform-origin: 960px 450px; }
+
+      /* Scene 1 — label */
+      .f02-kicker {
+        position: absolute; top: 100px; left: 80px;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 22px;
+        letter-spacing: 0.18em; text-transform: uppercase; line-height: 1;
+      }
+      .f02-kicker span { display: inline-block; padding: 8px 14px 7px 16px; border: 2px solid #1F2BE0; }
+
+      /* Scene 2/3 — sigla group */
+      .f02-sigla {
+        position: absolute; top: 170px; left: 280px; width: 1360px;
+        transform-origin: 50% 0%;
+      }
+      .f02-letters { display: flex; width: 1360px; }
+      .f02-col { width: 340px; display: flex; flex-direction: column; align-items: center; }
+      .f02-letter {
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 240px;
+        line-height: 0.9; letter-spacing: -0.015em; height: 216px;
+      }
+      .f02-bar { width: 150px; height: 6px; background: #1F2BE0; margin-top: 10px; transform-origin: 0% 50%; }
+      .f02-word {
+        margin-top: 20px;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 34px;
+        letter-spacing: 0.16em; text-transform: uppercase; line-height: 1;
+        padding-left: 0.16em;
+      }
+
+      .f02-headline {
+        position: absolute; top: 520px; left: 0; right: 0; text-align: center;
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 76px;
+        line-height: 1; letter-spacing: -0.005em; white-space: nowrap;
+      }
+      .f02-headline .f02-soft { opacity: 0.55; }
+      .f02-headline .f02-chunk { display: inline-block; }
+
+      /* Scene 4 — lede */
+      .f02-lede {
+        position: absolute; top: 440px; left: 0; right: 0; text-align: center;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 400; font-size: 44px;
+        line-height: 1.2; white-space: nowrap;
+      }
+      .f02-lede .f02-lw { display: inline-block; margin: 0 0.12em; }
+      .f02-antes { position: relative; display: inline-block; margin-left: 0.3em; }
+      .f02-antes-bg {
+        position: absolute; left: -14px; right: -14px; top: -6px; bottom: -6px;
+        background: #1F2BE0; transform-origin: 0% 50%;
+      }
+      .f02-antes-tx {
+        position: relative; color: #F0EBDE;
+        font-weight: 600; letter-spacing: 0.16em; padding-left: 0.16em;
+      }
+
+      /* Scene 5 — list */
+      .f02-list { position: absolute; top: 560px; left: 560px; width: 800px; }
+      .f02-row {
+        position: relative; display: flex; align-items: center; height: 92px;
+        border-bottom: 1px solid rgba(31,43,224,0.18);
+      }
+      .f02-num {
+        width: 90px; font-family: "DM Mono", monospace; font-size: 24px;
+        letter-spacing: 0.06em; opacity: 0.6;
+      }
+      .f02-lab { position: relative; display: inline-block; }
+      .f02-lab-tx {
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 34px;
+        letter-spacing: 0.18em; text-transform: uppercase; line-height: 1;
+      }
+      .f02-strike {
+        position: absolute; left: -10px; right: -10px; top: 50%; height: 5px; margin-top: -3px;
+        background: #1F2BE0; transform-origin: 0% 50%;
+      }
+    </style>
+
+    <div id="f02-ground" class="f02-ground clip" data-start="0" data-duration="10.368" data-track-index="0"></div>
+
+    <div id="f02-stage" class="f02-stage clip" data-start="0" data-duration="10.368" data-track-index="1">
+      <div class="f02-hair f02-hair-top" id="f02-hair-top"></div>
+      <div class="f02-hair f02-hair-bot" id="f02-hair-bot"></div>
+      <div class="f02-chrome f02-chrome-l">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="f02-chrome f02-chrome-r">02 / 13</div>
+
+      <div class="f02-cam" id="f02-cam">
+        <div class="f02-kicker" id="f02-kicker"><span>AULA 4</span></div>
+
+        <div class="f02-sigla" id="f02-sigla">
+          <div class="f02-letters" id="f02-letters">
+            <div class="f02-col">
+              <div class="f02-letter">F</div>
+              <div class="f02-bar" id="f02-bar-f"></div>
+              <div class="f02-word" id="f02-word-f">Falha</div>
+            </div>
+            <div class="f02-col">
+              <div class="f02-letter">M</div>
+              <div class="f02-bar" id="f02-bar-m"></div>
+              <div class="f02-word" id="f02-word-m">Modos</div>
+            </div>
+            <div class="f02-col">
+              <div class="f02-letter">E</div>
+              <div class="f02-bar" id="f02-bar-e"></div>
+              <div class="f02-word" id="f02-word-e">Efeitos</div>
+            </div>
+            <div class="f02-col">
+              <div class="f02-letter">A</div>
+              <div class="f02-bar" id="f02-bar-a"></div>
+              <div class="f02-word" id="f02-word-a">Análise</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="f02-headline" id="f02-headline"><span class="f02-chunk" id="f02-h1">Análise</span> <span class="f02-chunk" id="f02-h2"><span class="f02-soft">dos</span> Modos</span> <span class="f02-chunk" id="f02-h3"><span class="f02-soft">de</span> Falha</span> <span class="f02-chunk" id="f02-h4"><span class="f02-soft">e seus</span> Efeitos</span></div>
+
+        <div class="f02-lede" id="f02-lede"><span class="f02-lw" id="f02-l1">identifica</span><span class="f02-lw" id="f02-l2">problemas</span><span class="f02-lw" id="f02-l3">potenciais</span><span class="f02-antes" id="f02-antes"><span class="f02-antes-bg" id="f02-antes-bg"></span><span class="f02-antes-tx" id="f02-antes-tx">ANTES</span></span></div>
+
+        <div class="f02-list" id="f02-list">
+          <div class="f02-row" id="f02-row-1">
+            <div class="f02-num">01</div>
+            <div class="f02-lab"><span class="f02-lab-tx" id="f02-lab-1">Dano ao cliente</span><span class="f02-strike" id="f02-strike-1"></span></div>
+          </div>
+          <div class="f02-row" id="f02-row-2">
+            <div class="f02-num">02</div>
+            <div class="f02-lab"><span class="f02-lab-tx" id="f02-lab-2">Parada de produção</span><span class="f02-strike" id="f02-strike-2"></span></div>
+          </div>
+          <div class="f02-row" id="f02-row-3">
+            <div class="f02-num">03</div>
+            <div class="f02-lab"><span class="f02-lab-tx" id="f02-lab-3">Retrabalho</span><span class="f02-strike" id="f02-strike-3"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var D = 10.368;
+
+        // hard cut on (discrete state swap — instant, no smear)
+        function cut(sel, t) {
+          tl.fromTo(sel, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.01, ease: "none" }, t);
+        }
+
+        // macro camera: slow push underneath the whole shot
+        tl.fromTo("#f02-cam", { scale: 1 }, { scale: 1.02, duration: D, ease: "none" }, 0);
+
+        // Scene 1 (0.0–0.8): furniture + AULA 4 label
+        tl.fromTo("#f02-hair-top", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0);
+        tl.fromTo("#f02-hair-bot", { scaleX: 0, transformOrigin: "100% 50%" }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0.05);
+        tl.fromTo("#f02-kicker", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+
+        // Scene 2 (0.8–1.6): FMEA lands huge — oversized, scales down into place
+        tl.fromTo("#f02-letters", { autoAlpha: 0, scale: 1.18 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 0.8);
+
+        // Scene 3 (1.6–4.2): each letter gains its word, in the order spoken; the line writes itself
+        var beats = [
+          { k: "a", h: "#f02-h1", t: 1.6 },
+          { k: "m", h: "#f02-h2", t: 2.2 },
+          { k: "f", h: "#f02-h3", t: 2.7 },
+          { k: "e", h: "#f02-h4", t: 3.4 }
+        ];
+        beats.forEach(function (b) {
+          tl.fromTo("#f02-bar-" + b.k, { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power2.out" }, b.t);
+          cut("#f02-word-" + b.k, b.t);
+          cut(b.h, b.t);
+        });
+
+        // sigla rises + reduces to display-chapter; line follows up
+        tl.fromTo("#f02-sigla", { scale: 1, y: 0 }, { scale: 0.55, y: -50, duration: 0.6, ease: "power3.inOut" }, 3.75);
+        tl.fromTo("#f02-headline", { y: 0 }, { y: -210, duration: 0.6, ease: "power3.inOut" }, 3.75);
+
+        // Scene 4 (4.2–7.4): lede word-by-word, ANTES inverted block at 6.5
+        tl.fromTo("#f02-l1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.6);
+        tl.fromTo("#f02-l2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.05);
+        tl.fromTo("#f02-l3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.6);
+        tl.fromTo("#f02-antes-bg", { scaleX: 0 }, { scaleX: 1, duration: 0.22, ease: "power3.out" }, 6.5);
+        cut("#f02-antes-tx", 6.58);
+
+        // Scene 5 (7.4–10.37): three avoided consequences — enter, then struck through
+        var rows = [7.4, 8.5, 9.7];
+        rows.forEach(function (t, i) {
+          var n = i + 1;
+          tl.fromTo("#f02-row-" + n, { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, t);
+          tl.fromTo("#f02-strike-" + n, { scaleX: 0 }, { scaleX: 1, duration: 0.24, ease: "power2.out" }, t + 0.4);
+          tl.fromTo("#f02-lab-" + n, { opacity: 1 }, { opacity: 0.55, duration: 0.24, ease: "none" }, t + 0.45);
+        });
+
+        window.__timelines["02-fmea"] = tl;
+      })();
+    </script>
+  </div>
+</template>
