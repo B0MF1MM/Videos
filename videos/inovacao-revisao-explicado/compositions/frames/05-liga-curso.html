@@ -1,0 +1,273 @@
+<template>
+  <div id="root" data-composition-id="05-liga-curso" data-width="1920" data-height="1080" data-start="0" data-duration="12.212">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        --paper: #F0EBDE;
+        --ink: #1F2BE0;
+        --grid: rgba(31, 43, 224, 0.10);
+      }
+      #f05-ground {
+        position: absolute; inset: 0;
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      #f05-chrome { position: absolute; inset: 0; }
+      .f05-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: var(--ink); }
+      #f05-hair-top { top: 86px; }
+      #f05-hair-bot { top: 880px; }
+      .f05-chrome-txt {
+        position: absolute; top: 40px;
+        font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em;
+        color: var(--ink); line-height: 1; white-space: nowrap;
+      }
+      #f05-tag { left: 80px; }
+      #f05-num { right: 80px; }
+
+      #f05-stage { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+      #f05-title {
+        position: absolute; left: 80px; top: 112px;
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 84px;
+        line-height: 1; letter-spacing: -0.008em; color: var(--ink); white-space: nowrap;
+      }
+
+      .f05-colhead {
+        position: absolute; top: 232px;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px;
+        letter-spacing: 0.18em; line-height: 1; text-transform: uppercase; color: var(--ink); white-space: nowrap;
+      }
+      #f05-col-l { left: 80px; }
+      #f05-col-r { left: 1280px; }
+
+      /* bridges */
+      #f05-net { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+      .f05-line { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: butt; }
+
+      /* blocks */
+      .f05-blk {
+        position: absolute; width: 560px; height: 150px; box-sizing: border-box;
+      }
+      .f05-tech { left: 80px; border: 3px solid var(--ink); background: var(--paper); color: var(--ink); }
+      .f05-course { left: 1280px; background: var(--ink); color: var(--paper); }
+      #f05-t1, #f05-c1 { top: 290px; }
+      #f05-t2, #f05-c2 { top: 480px; }
+      #f05-t3, #f05-c3 { top: 670px; }
+
+      .f05-label {
+        position: absolute; left: 32px; right: 110px; top: 50%;
+        margin-top: -0.5em;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 38px;
+        letter-spacing: 0.06em; line-height: 1.1;
+      }
+      .f05-label.f05-two { margin-top: -1.1em; }
+      .f05-course .f05-label { left: 44px; }
+      .f05-mask { display: block; overflow: hidden; padding-top: 0.12em; margin-top: -0.12em; }
+      .f05-ln { display: block; white-space: nowrap; }
+
+      .f05-idx {
+        position: absolute; right: 30px; top: 22px;
+        font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.06em; line-height: 1;
+      }
+
+      /* ports where the bridges land */
+      .f05-port { position: absolute; width: 16px; height: 16px; background: var(--ink); }
+      #f05-pl1 { left: 632px; top: 357px; }
+      #f05-pl2 { left: 632px; top: 547px; }
+      #f05-pl3 { left: 632px; top: 737px; }
+
+      /* data packets travelling the bridges */
+      .f05-pkt { position: absolute; left: 640px; width: 12px; height: 12px; margin-left: -6px; background: var(--ink); }
+      #f05-k1 { top: 359px; }
+      #f05-k2 { top: 549px; }
+      #f05-k3 { top: 739px; }
+
+      /* mono tags sitting on each bridge */
+      .f05-btag {
+        position: absolute; left: 960px; height: 56px; box-sizing: border-box;
+        border: 3px solid var(--ink); background: var(--paper); color: var(--ink);
+        display: flex; align-items: center; gap: 14px; padding: 0 20px;
+        font-family: "DM Mono", monospace; font-size: 29px; letter-spacing: 0.06em; line-height: 1; white-space: nowrap;
+      }
+      .f05-btag-sq { width: 12px; height: 12px; background: var(--ink); flex: none; }
+      #f05-g1 { top: 337px; width: 290px; margin-left: -145px; }
+      #f05-g2 { top: 527px; width: 384px; margin-left: -192px; }
+      #f05-g3 { top: 717px; width: 232px; margin-left: -116px; }
+    </style>
+
+    <div id="f05-ground" class="clip" data-start="0" data-duration="12.212" data-track-index="0"></div>
+
+    <div id="f05-chrome" class="clip" data-start="0" data-duration="12.212" data-track-index="1">
+      <div id="f05-hair-top" class="f05-hair"></div>
+      <div id="f05-hair-bot" class="f05-hair"></div>
+      <div id="f05-tag" class="f05-chrome-txt">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div id="f05-num" class="f05-chrome-txt">05 / 13</div>
+    </div>
+
+    <div id="f05-stage" class="clip" data-start="0" data-duration="12.212" data-track-index="2">
+      <div id="f05-title">Tudo conversa com o curso</div>
+      <div id="f05-col-l" class="f05-colhead">TECNOLOGIA</div>
+      <div id="f05-col-r" class="f05-colhead">O QUE VIMOS</div>
+
+      <svg id="f05-net" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <path id="f05-l1" class="f05-line" d="M648 365 H1280" />
+        <path id="f05-l2" class="f05-line" d="M648 555 H1280" />
+        <path id="f05-l3" class="f05-line" d="M648 745 H1280" />
+      </svg>
+
+      <div id="f05-k1" class="f05-pkt"></div>
+      <div id="f05-k2" class="f05-pkt"></div>
+      <div id="f05-k3" class="f05-pkt"></div>
+
+      <!-- TECNOLOGIA column -->
+      <div id="f05-t1" class="f05-blk f05-tech">
+        <div class="f05-label"><span class="f05-mask"><span id="f05-t1-a" class="f05-ln">SENSORES</span></span></div>
+        <div id="f05-t1-i" class="f05-idx">01</div>
+      </div>
+      <div id="f05-t2" class="f05-blk f05-tech">
+        <div class="f05-label f05-two">
+          <span class="f05-mask"><span id="f05-t2-a" class="f05-ln">MANUTENÇÃO</span></span>
+          <span class="f05-mask"><span id="f05-t2-b" class="f05-ln">PREDITIVA</span></span>
+        </div>
+        <div id="f05-t2-i" class="f05-idx">02</div>
+      </div>
+      <div id="f05-t3" class="f05-blk f05-tech">
+        <div class="f05-label"><span class="f05-mask"><span id="f05-t3-a" class="f05-ln">IA</span></span></div>
+        <div id="f05-t3-i" class="f05-idx">03</div>
+      </div>
+
+      <div id="f05-pl1" class="f05-port"></div>
+      <div id="f05-pl2" class="f05-port"></div>
+      <div id="f05-pl3" class="f05-port"></div>
+
+      <!-- O QUE VIMOS column (inverted cobalt) -->
+      <div id="f05-c1" class="f05-blk f05-course">
+        <div class="f05-label"><span class="f05-mask"><span id="f05-c1-a" class="f05-ln">OEE e CEP</span></span></div>
+        <div id="f05-c1-i" class="f05-idx">A</div>
+      </div>
+      <div id="f05-c2" class="f05-blk f05-course">
+        <div class="f05-label"><span class="f05-mask"><span id="f05-c2-a" class="f05-ln">FMEA</span></span></div>
+        <div id="f05-c2-i" class="f05-idx">B</div>
+      </div>
+      <div id="f05-c3" class="f05-blk f05-course">
+        <div class="f05-label f05-two">
+          <span class="f05-mask"><span id="f05-c3-a" class="f05-ln">PREVISÃO DE</span></span>
+          <span class="f05-mask"><span id="f05-c3-b" class="f05-ln">DEMANDA</span></span>
+        </div>
+        <div id="f05-c3-i" class="f05-idx">C</div>
+      </div>
+
+      <div id="f05-g1" class="f05-btag"><span id="f05-g1-sq" class="f05-btag-sq"></span><span id="f05-g1-t">TEMPO REAL</span></div>
+      <div id="f05-g2" class="f05-btag"><span id="f05-g2-sq" class="f05-btag-sq"></span><span id="f05-g2-t">ANTECIPA FALHAS</span></div>
+      <div id="f05-g3" class="f05-btag"><span id="f05-g3-sq" class="f05-btag-sq"></span><span id="f05-g3-t">MELHORA</span></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var q = function (id) { return document.getElementById(id); };
+        var DUR = 11.712;
+
+        // ---- dynamic-content-sequencing: one cue table, pre-computed once, locked to the voiceover ----
+        var PAIRS = [
+          { n: 1, tech: 2.0, course: 3.3, line: 3.75, tag: 4.6, techLines: ["a"], courseLines: ["a"] },
+          { n: 2, tech: 5.4, course: 7.9, line: 8.15, tag: 8.45, techLines: ["a", "b"], courseLines: ["a"] },
+          { n: 3, tech: 8.9, course: 10.7, line: 10.85, tag: 11.15, techLines: ["a"], courseLines: ["a", "b"] }
+        ];
+        var LINE_DUR = 0.5;
+
+        // ---- svg-path-draw setup: measured length per bridge ----
+        PAIRS.forEach(function (p) {
+          var path = q("f05-l" + p.n);
+          var len = path.getTotalLength ? path.getTotalLength() : 632;
+          if (!len || len < 1) len = 632;
+          len = len * 1.05;
+          path.style.strokeDasharray = len + " " + len;
+          tl.set(path, { strokeDashoffset: len }, 0);
+        });
+
+        // Initial hidden states (seek-safe)
+        PAIRS.forEach(function (p) {
+          tl.set(q("f05-t" + p.n), { opacity: 0 }, 0);
+          tl.set(q("f05-t" + p.n + "-i"), { opacity: 0 }, 0);
+          tl.set(q("f05-c" + p.n), { clipPath: "inset(0% 100% 0% 0%)" }, 0);
+          tl.set(q("f05-pl" + p.n), { scale: 0 }, 0);
+          tl.set(q("f05-g" + p.n), { clipPath: "inset(0% 50% 0% 50%)" }, 0);
+          tl.set(q("f05-k" + p.n), { opacity: 0, x: 0 }, 0);
+          p.techLines.forEach(function (l) { tl.set(q("f05-t" + p.n + "-" + l), { yPercent: 115 }, 0); });
+          p.courseLines.forEach(function (l) { tl.set(q("f05-c" + p.n + "-" + l), { yPercent: 115 }, 0); });
+        });
+
+        // Macro camera: slow push under the whole shot
+        tl.fromTo(q("f05-stage"), { scale: 1.0 }, { scale: 1.02, duration: DUR, ease: "none" }, 0);
+
+        // Chrome
+        tl.fromTo([q("f05-hair-top"), q("f05-hair-bot")], { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0);
+        tl.fromTo([q("f05-tag"), q("f05-num")], { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.05);
+
+        // Scene 1 (0.0–2.0): headline + column heads
+        tl.fromTo(q("f05-title"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.1);
+        tl.fromTo(q("f05-col-l"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 0.7);
+        tl.fromTo(q("f05-col-r"), { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 0.95);
+
+        // Scenes 2–4: each pair reveals on its spoken cue
+        PAIRS.forEach(function (p) {
+          var n = p.n;
+          // technology block (outline)
+          tl.fromTo(q("f05-t" + n), { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, p.tech);
+          p.techLines.forEach(function (l, i) {
+            tl.fromTo(q("f05-t" + n + "-" + l), { yPercent: 115 }, { yPercent: 0, duration: 0.42, ease: "power4.out" }, p.tech + 0.15 + i * 0.1);
+          });
+          tl.fromTo(q("f05-t" + n + "-i"), { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, p.tech + 0.25);
+          tl.fromTo(q("f05-pl" + n), { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, p.tech + 0.35);
+
+          // course block (inverted cobalt) — wipe, never dimmed
+          tl.fromTo(q("f05-c" + n), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.45, ease: "expo.out" }, p.course);
+          p.courseLines.forEach(function (l, i) {
+            tl.fromTo(q("f05-c" + n + "-" + l), { yPercent: 115 }, { yPercent: 0, duration: 0.42, ease: "power4.out" }, p.course + 0.12 + i * 0.1);
+          });
+
+          // straight bridge draws left → right
+          tl.to(q("f05-l" + n), { strokeDashoffset: 0, duration: LINE_DUR, ease: "power2.out" }, p.line);
+
+          // mono tag on the bridge
+          tl.fromTo(q("f05-g" + n), { clipPath: "inset(0% 50% 0% 50%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.35, ease: "power3.out" }, p.tag);
+          tl.fromTo(q("f05-g" + n + "-sq"), { scale: 0 }, { scale: 1, duration: 0.25, ease: "back.out(2.5)" }, p.tag + 0.12);
+        });
+
+        // Data packets travel each bridge once drawn (pre-computed passes, linear, deterministic)
+        var SPAN = 632;
+        var PASS = 1.1;
+        PAIRS.forEach(function (p) {
+          var k = q("f05-k" + p.n);
+          var t = p.line + LINE_DUR;
+          while (t + 0.2 < DUR) {
+            var d = Math.min(PASS, DUR - t);
+            tl.fromTo(k, { x: 0, opacity: 1 }, { x: SPAN * (d / PASS), duration: d, ease: "none", immediateRender: false }, t);
+            t += PASS + 0.25;
+          }
+          tl.set(k, { opacity: 1 }, p.line + LINE_DUR);
+        });
+
+        // Hold to end (no exit)
+        tl.to({}, { duration: 0.01 }, DUR - 0.01);
+
+        window.__timelines["05-liga-curso"] = tl;
+      })();
+    </script>
+  </div>
+</template>

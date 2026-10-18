@@ -1,0 +1,341 @@
+<template>
+  <div id="root" data-composition-id="09-hora-certa" data-width="1920" data-height="1080" data-start="0" data-duration="11.785">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        --paper: #F0EBDE;
+        --ink: #1F2BE0;
+        --grid: rgba(31, 43, 224, 0.10);
+        --faint: rgba(31, 43, 224, 0.18);
+      }
+      #f09-ground {
+        position: absolute; inset: 0;
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+
+      /* ---- chrome ---- */
+      #f09-chrome { position: absolute; inset: 0; }
+      .f09-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: var(--ink); }
+      #f09-hair-top { top: 86px; }
+      #f09-hair-bot { top: 880px; }
+      .f09-chrome-txt {
+        position: absolute; top: 40px;
+        font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em;
+        color: var(--ink); line-height: 1; white-space: nowrap;
+      }
+      #f09-tag { left: 80px; }
+      #f09-num { right: 80px; }
+
+      /* ---- section band (inverted, static above the camera world) ---- */
+      #f09-bandclip { position: absolute; inset: 0; }
+      #f09-band {
+        position: absolute; left: 80px; top: 106px; width: 1760px; height: 64px;
+        background: var(--ink);
+      }
+      .f09-mask { position: absolute; overflow: hidden; padding-top: 0.25em; margin-top: -0.15em; padding-bottom: 0.06em; }
+      .f09-ln { display: block; white-space: nowrap; }
+      #f09-band-m { left: 32px; top: 12px; }
+      #f09-band-t {
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 32px;
+        letter-spacing: 0.18em; line-height: 1; text-transform: uppercase; color: var(--paper);
+      }
+      #f09-band-src-m { right: 32px; top: 14px; }
+      #f09-band-src {
+        font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.06em;
+        line-height: 1; color: var(--paper);
+      }
+
+      /* ---- camera world ---- */
+      #f09-stage { position: absolute; inset: 0; overflow: hidden; }
+      #f09-world {
+        position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
+        transform-origin: 50% 50%; will-change: transform;
+      }
+      #f09-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+      #f09-svg path {
+        fill: none; stroke: var(--ink); stroke-width: 3;
+        stroke-linecap: square; stroke-linejoin: miter;
+      }
+
+      .f09-st { position: absolute; top: 260px; width: 500px; height: 560px; }
+      #f09-st1 { left: 80px; }
+      #f09-st2 { left: 690px; }
+      #f09-st3 { left: 1300px; }
+
+      .f09-idx {
+        position: absolute; left: 32px; top: 24px;
+        font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.06em;
+        line-height: 1; color: var(--ink);
+      }
+      .f09-title {
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 68px;
+        line-height: 1; letter-spacing: -0.005em; color: var(--ink);
+      }
+      .f09-rule {
+        position: absolute; left: 32px; width: 436px; height: 2px;
+        background: var(--ink); transform-origin: 0% 50%;
+      }
+
+      /* station 1 — PPCP */
+      #f09-s1-title-m { left: 32px; top: 64px; }
+      #f09-s1-rule { top: 160px; }
+      .f09-verb {
+        position: absolute; left: 32px; height: 40px;
+        display: flex; align-items: center; gap: 22px;
+      }
+      .f09-sq { width: 16px; height: 16px; background: var(--ink); flex: none; }
+      .f09-verb-t {
+        font-family: "DM Mono", monospace; font-size: 36px; letter-spacing: 0.06em;
+        line-height: 1; color: var(--ink); white-space: nowrap;
+      }
+      #f09-v1 { top: 214px; }
+      #f09-v2 { top: 314px; }
+      #f09-v3 { top: 414px; }
+
+      /* station 2 — JIT + KANBAN */
+      #f09-s2-a-m { left: 32px; top: 64px; }
+      #f09-s2-b-m { left: 32px; top: 136px; }
+      #f09-s2-rule { top: 226px; }
+      .f09-col {
+        position: absolute; top: 254px; width: 120px; height: 170px;
+        box-sizing: border-box; border: 2px solid var(--ink);
+      }
+      #f09-col1 { left: 32px; }
+      #f09-col2 { left: 190px; }
+      #f09-col3 { left: 348px; }
+      .f09-card {
+        position: absolute; width: 88px; height: 28px; background: var(--ink);
+      }
+      #f09-c1 { left: 48px; top: 272px; }
+      #f09-c2 { left: 48px; top: 314px; }
+      #f09-c3 { left: 206px; top: 272px; }
+      #f09-c4 { left: 364px; top: 272px; }
+      #f09-s2-tag-m { left: 32px; top: 466px; }
+      .f09-tag-t {
+        font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.05em;
+        line-height: 1; color: var(--ink);
+      }
+
+      /* station 3 — PREVISÃO */
+      #f09-s3-title-m { left: 32px; top: 64px; }
+      #f09-s3-rule { top: 160px; }
+      .f09-bar {
+        position: absolute; width: 24px; bottom: 120px;
+        display: flex; flex-direction: column-reverse; gap: 2px;
+      }
+      .f09-cell { width: 24px; height: 16px; background: var(--ink); flex: none; box-sizing: border-box; }
+      .f09-cell.f09-fc { background: transparent; border: 2px solid var(--ink); }
+      .f09-errcol {
+        position: absolute; width: 24px;
+        display: flex; flex-direction: column-reverse; gap: 2px;
+        transform-origin: 50% 100%;
+      }
+      .f09-errcol .f09-cell { background: var(--faint); }
+      #f09-s3-base { position: absolute; left: 32px; top: 442px; width: 248px; height: 2px; background: var(--ink); transform-origin: 0% 50%; }
+      #f09-s3-tag-m { left: 32px; top: 466px; }
+      #f09-err {
+        position: absolute; left: 300px; top: 300px; width: 168px; height: 60px;
+        background: var(--ink);
+      }
+      #f09-err-m { left: 0; top: 13px; width: 168px; text-align: center; }
+      #f09-err-t {
+        font-family: "DM Mono", monospace; font-size: 32px; letter-spacing: 0.05em;
+        line-height: 1; color: var(--paper);
+      }
+    </style>
+
+    <div id="f09-ground" class="clip" data-start="0" data-duration="11.785" data-track-index="0"></div>
+
+    <div id="f09-chrome" class="clip" data-start="0" data-duration="11.785" data-track-index="1">
+      <div id="f09-hair-top" class="f09-hair"></div>
+      <div id="f09-hair-bot" class="f09-hair"></div>
+      <div id="f09-tag" class="f09-chrome-txt">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div id="f09-num" class="f09-chrome-txt">09 / 13</div>
+    </div>
+
+    <div id="f09-stage" class="clip" data-start="0" data-duration="11.785" data-track-index="2">
+      <div id="f09-world">
+        <svg id="f09-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+          <path id="f09-frame1" d="M 80 260 L 580 260 L 580 820 L 80 820 Z" />
+          <path id="f09-frame2" d="M 690 260 L 1190 260 L 1190 820 L 690 820 Z" />
+          <path id="f09-frame3" d="M 1300 260 L 1800 260 L 1800 820 L 1300 820 Z" />
+          <path id="f09-arrow1" d="M 592 540 L 676 540 M 662 526 L 676 540 L 662 554" />
+          <path id="f09-arrow2" d="M 1202 540 L 1286 540 M 1272 526 L 1286 540 L 1272 554" />
+        </svg>
+
+        <!-- station 1 -->
+        <div id="f09-st1" class="f09-st">
+          <div id="f09-s1-idx" class="f09-idx">01</div>
+          <div id="f09-s1-title-m" class="f09-mask"><span id="f09-s1-title" class="f09-ln f09-title">PPCP</span></div>
+          <div id="f09-s1-rule" class="f09-rule"></div>
+          <div id="f09-v1" class="f09-verb"><div class="f09-sq"></div><div class="f09-verb-t">PLANEJA</div></div>
+          <div id="f09-v2" class="f09-verb"><div class="f09-sq"></div><div class="f09-verb-t">PROGRAMA</div></div>
+          <div id="f09-v3" class="f09-verb"><div class="f09-sq"></div><div class="f09-verb-t">CONTROLA</div></div>
+        </div>
+
+        <!-- station 2 -->
+        <div id="f09-st2" class="f09-st">
+          <div id="f09-s2-idx" class="f09-idx">02</div>
+          <div id="f09-s2-a-m" class="f09-mask"><span id="f09-s2-a" class="f09-ln f09-title">JIT +</span></div>
+          <div id="f09-s2-b-m" class="f09-mask"><span id="f09-s2-b" class="f09-ln f09-title">KANBAN</span></div>
+          <div id="f09-s2-rule" class="f09-rule"></div>
+          <div id="f09-board">
+            <div id="f09-col1" class="f09-col"></div>
+            <div id="f09-col2" class="f09-col"></div>
+            <div id="f09-col3" class="f09-col"></div>
+            <div id="f09-c1" class="f09-card"></div>
+            <div id="f09-c2" class="f09-card"></div>
+            <div id="f09-c3" class="f09-card"></div>
+            <div id="f09-c4" class="f09-card"></div>
+          </div>
+          <div id="f09-s2-tag-m" class="f09-mask"><span id="f09-s2-tag" class="f09-ln f09-tag-t">PUXA PELA DEMANDA</span></div>
+        </div>
+
+        <!-- station 3 -->
+        <div id="f09-st3" class="f09-st">
+          <div id="f09-s3-idx" class="f09-idx">03</div>
+          <div id="f09-s3-title-m" class="f09-mask"><span id="f09-s3-title" class="f09-ln f09-title">PREVISÃO</span></div>
+          <div id="f09-s3-rule" class="f09-rule"></div>
+          <div id="f09-bars"></div>
+          <div id="f09-errs"></div>
+          <div id="f09-s3-base"></div>
+          <div id="f09-s3-tag-m" class="f09-mask"><span id="f09-s3-tag" class="f09-ln f09-tag-t">QUANTO VÃO PEDIR</span></div>
+          <div id="f09-err"><div id="f09-err-m" class="f09-mask"><span id="f09-err-t" class="f09-ln">+ ERRO</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="f09-bandclip" class="clip" data-start="0" data-duration="11.785" data-track-index="3">
+      <div id="f09-band">
+        <div id="f09-band-m" class="f09-mask"><span id="f09-band-t" class="f09-ln">NA HORA CERTA</span></div>
+        <div id="f09-band-src-m" class="f09-mask"><span id="f09-band-src" class="f09-ln">VÍDEOS 1–2</span></div>
+      </div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var root = document.querySelector('[data-composition-id="09-hora-certa"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+
+        /* ---- build illustrative pixel-stack bars (no figures: shape only) ---- */
+        var heights = [5, 7, 6, 8, 9, 10, 11]; /* last three = forecast (outlined) */
+        var bars = q("#f09-bars"), errs = q("#f09-errs");
+        var CELL = 18, BASE_TOP = 442; /* baseline y inside station */
+        for (var i = 0; i < heights.length; i++) {
+          var b = document.createElement("div");
+          b.className = "f09-bar";
+          b.id = "f09-bar" + i;
+          b.style.left = (32 + i * 32) + "px";
+          b.style.top = (BASE_TOP - heights[i] * CELL) + "px";
+          b.style.bottom = "auto";
+          for (var c = 0; c < heights[i]; c++) {
+            var cell = document.createElement("div");
+            cell.className = "f09-cell" + (i >= 4 ? " f09-fc" : "");
+            b.appendChild(cell);
+          }
+          bars.appendChild(b);
+          if (i >= 4) {
+            var e = document.createElement("div");
+            e.className = "f09-errcol";
+            e.id = "f09-errcol" + i;
+            e.style.left = (32 + i * 32) + "px";
+            e.style.top = (BASE_TOP - (heights[i] + 2) * CELL) + "px";
+            for (var k = 0; k < 2; k++) {
+              var ec = document.createElement("div");
+              ec.className = "f09-cell";
+              e.appendChild(ec);
+            }
+            errs.appendChild(e);
+          }
+        }
+
+        /* ---- svg path draw setup (measured) ---- */
+        var paths = qa("#f09-svg path");
+        paths.forEach(function (p) {
+          var len = p.getTotalLength ? p.getTotalLength() : 2200;
+          if (!len || !isFinite(len)) len = 2200;
+          len = Math.ceil(len * 1.02);
+          p.style.strokeDasharray = len + "";
+          p.style.strokeDashoffset = len + "";
+          p.__len = len;
+        });
+
+        /* ---- camera (viewport-change, single wrapper, T = -offset × S) ---- */
+        var world = q("#f09-world");
+        var S = 1.2;
+        var pose = function (cx) { return { scale: S, x: -(cx - 960) * S, y: 0 }; };
+        var P1 = pose(330), P2 = pose(940), P3 = pose(1550);
+        var WIDE = { scale: 1, x: 20, y: 0 };
+        var cam = { scale: P1.scale, x: P1.x, y: P1.y };
+        function applyCamera() {
+          world.style.transform = "translate(" + cam.x + "px, " + cam.y + "px) scale(" + cam.scale + ")";
+        }
+        applyCamera();
+
+        var tl = gsap.timeline({ paused: true });
+
+        /* Scene 1 (0.0–1.4): inverted section band */
+        tl.fromTo("#f09-band", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.7, ease: "power3.out" }, 0.1);
+        tl.fromTo("#f09-band-t", { yPercent: 115 }, { yPercent: 0, duration: 0.5, ease: "power3.out" }, 0.75);
+        tl.fromTo("#f09-band-src", { yPercent: 115 }, { yPercent: 0, duration: 0.5, ease: "power3.out" }, 0.95);
+        tl.fromTo("#f09-frame1", { strokeDashoffset: q("#f09-frame1").__len }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.out" }, 0.2);
+        tl.fromTo("#f09-s1-idx", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power1.out" }, 0.6);
+
+        /* Scene 2 (1.4–4.0): station 1 — PPCP + three verbs */
+        tl.fromTo("#f09-s1-title", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 1.5);
+        tl.fromTo("#f09-s1-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.75);
+        ["#f09-v1", "#f09-v2", "#f09-v3"].forEach(function (id, n) {
+          tl.fromTo(id, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.2 + n * 0.6);
+        });
+
+        /* Scene 3 (4.0–7.3): pan to station 2, arrow links them */
+        tl.fromTo(cam, { scale: P1.scale, x: P1.x, y: P1.y }, { scale: P2.scale, x: P2.x, y: P2.y, duration: 1.1, ease: "power3.inOut", onUpdate: applyCamera }, 4.0);
+        tl.fromTo("#f09-arrow1", { strokeDashoffset: q("#f09-arrow1").__len }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 4.0);
+        tl.fromTo("#f09-frame2", { strokeDashoffset: q("#f09-frame2").__len }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 4.1);
+        tl.fromTo("#f09-s2-idx", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power1.out" }, 4.2);
+        tl.fromTo("#f09-s2-a", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 4.2);
+        tl.fromTo("#f09-s2-b", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 5.4);
+        tl.fromTo("#f09-s2-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 5.5);
+        tl.fromTo(["#f09-col1", "#f09-col2", "#f09-col3"], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 5.4);
+        tl.fromTo(["#f09-c1", "#f09-c2", "#f09-c3", "#f09-c4"], { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out", stagger: 0.06 }, 5.55);
+        tl.fromTo("#f09-s2-tag", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 5.8);
+        /* demand pulls a card downstream */
+        tl.fromTo("#f09-c2", { x: 0 }, { x: 158, duration: 0.6, ease: "power3.inOut", immediateRender: false }, 6.35);
+
+        /* Scene 4 (7.3–11.285): pan to station 3, then pull back to all three */
+        tl.fromTo(cam, { scale: P2.scale, x: P2.x, y: P2.y }, { scale: P3.scale, x: P3.x, y: P3.y, duration: 1.1, ease: "power3.inOut", onUpdate: applyCamera, immediateRender: false }, 7.2);
+        tl.fromTo("#f09-arrow2", { strokeDashoffset: q("#f09-arrow2").__len }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 7.3);
+        tl.fromTo("#f09-frame3", { strokeDashoffset: q("#f09-frame3").__len }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 7.4);
+        tl.fromTo("#f09-s3-idx", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power1.out" }, 7.6);
+        tl.fromTo("#f09-s3-title", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 7.6);
+        tl.fromTo("#f09-s3-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 7.85);
+        tl.fromTo("#f09-s3-base", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 7.95);
+        tl.fromTo(qa("#f09-bars .f09-bar"), { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.4, ease: "power2.out", stagger: 0.07 }, 8.05);
+        tl.fromTo("#f09-s3-tag", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 8.6);
+        tl.fromTo(cam, { scale: P3.scale, x: P3.x, y: P3.y }, { scale: WIDE.scale, x: WIDE.x, y: WIDE.y, duration: 1.2, ease: "power3.inOut", onUpdate: applyCamera, immediateRender: false }, 9.3);
+        /* "erro" (10.9): error cells + inverted tag (revealed by clip, never dimmed) */
+        tl.fromTo(qa("#f09-errs .f09-errcol"), { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out", stagger: 0.04 }, 10.85);
+        tl.fromTo("#f09-err", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.3, ease: "power3.out" }, 10.9);
+        tl.fromTo("#f09-err-t", { yPercent: 110 }, { yPercent: 0, duration: 0.3, ease: "power3.out" }, 10.95);
+
+        window.__timelines["09-hora-certa"] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,368 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .t12-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .t12-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* ---- furniture ---- */
+    .t12-hair {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .t12-hair-top { top: 70px; }
+    .t12-hair-bot { top: 892px; }
+    .t12-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .t12-chrome-tag { left: 77px; }
+    .t12-chrome-num { right: 77px; }
+
+    /* ---- headline ---- */
+    .t12-title {
+      position: absolute;
+      left: 116px;
+      top: 92px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 88px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+
+    /* ---- cycle ---- */
+    .t12-cycle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1240px;
+      height: 900px;
+      transform-origin: 620px 545px;
+    }
+    .t12-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1240px;
+      height: 900px;
+      overflow: visible;
+    }
+    .t12-svg path {
+      fill: none;
+      stroke: #1F2BE0;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+    .t12-svg .t12-thin { stroke-width: 4; }
+    .t12-svg .t12-thick { stroke-width: 11; }
+
+    .t12-blk {
+      position: absolute;
+      width: 300px;
+      height: 210px;
+    }
+    .t12-face {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+    }
+    .t12-unlit {
+      background: #F0EBDE;
+      border: 3px solid #1F2BE0;
+      color: #1F2BE0;
+    }
+    .t12-lit {
+      background: #1F2BE0;
+      color: #F0EBDE;
+    }
+    .t12-ord {
+      position: absolute;
+      left: 22px;
+      top: 18px;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+    }
+    .t12-unlit .t12-ord { left: 19px; top: 15px; }
+    .t12-lbl {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 116px;
+      text-align: center;
+      padding-left: 0.12em;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 37px;
+      line-height: 1;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+
+    /* ---- center label ---- */
+    .t12-center {
+      position: absolute;
+      left: 430px;
+      top: 455px;
+      width: 380px;
+      height: 190px;
+      box-sizing: border-box;
+      background: #F0EBDE;
+      border: 3px solid #1F2BE0;
+      text-align: center;
+    }
+    .t12-pdca {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 18px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 112px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .t12-op {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 136px;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    /* ---- right band ---- */
+    .t12-band {
+      position: absolute;
+      left: 1222px;
+      top: 372px;
+      width: 621px;
+      height: 360px;
+    }
+    .t12-band-rule {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 621px;
+      height: 3px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+    .t12-ind {
+      position: absolute;
+      left: 0;
+      top: 34px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 80px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .t12-tag {
+      position: absolute;
+      left: 0;
+      top: 160px;
+      height: 68px;
+      padding: 0 26px 0 calc(26px + 0.12em);
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 29px;
+      line-height: 68px;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="12-padrao" data-width="1920" data-height="1080" data-duration="10.029">
+    <div id="t12-ground" class="t12-ground clip" data-start="0" data-duration="10.029" data-track-index="0"></div>
+
+    <div id="t12-stage" class="t12-stage clip" data-start="0" data-duration="10.029" data-track-index="1">
+
+      <div class="t12-title" id="t12-title">O padrão</div>
+
+      <div class="t12-cycle" id="t12-cycle">
+        <svg class="t12-svg" id="t12-svg" viewBox="0 0 1240 900" xmlns="http://www.w3.org/2000/svg">
+          <!-- base arrows (thin) -->
+          <path class="t12-thin" id="t12-a1" d="M436 325 L800 325 M782 307 L800 325 L782 343" />
+          <path class="t12-thin" id="t12-a2" d="M970 446 L970 640 M952 622 L970 640 L988 622" />
+          <path class="t12-thin" id="t12-a3" d="M804 765 L440 765 M458 747 L440 765 L458 783" />
+          <path class="t12-thin" id="t12-a4" d="M270 644 L270 450 M252 468 L270 450 L288 468" />
+          <!-- pulse overlays (thick) -->
+          <path class="t12-thick" id="t12-p1" d="M436 325 L800 325 M782 307 L800 325 L782 343" />
+          <path class="t12-thick" id="t12-p2" d="M970 446 L970 640 M952 622 L970 640 L988 622" />
+          <path class="t12-thick" id="t12-p3" d="M804 765 L440 765 M458 747 L440 765 L458 783" />
+          <path class="t12-thick" id="t12-p4" d="M270 644 L270 450 M252 468 L270 450 L288 468" />
+        </svg>
+
+        <div class="t12-blk" id="t12-b1" style="left:120px; top:220px;">
+          <div class="t12-face t12-unlit" id="t12-u1"><div class="t12-ord">01</div></div>
+          <div class="t12-face t12-lit" id="t12-l1"><div class="t12-ord">01</div><div class="t12-lbl">PLANEJAR</div></div>
+        </div>
+        <div class="t12-blk" id="t12-b2" style="left:820px; top:220px;">
+          <div class="t12-face t12-unlit" id="t12-u2"><div class="t12-ord">02</div></div>
+          <div class="t12-face t12-lit" id="t12-l2"><div class="t12-ord">02</div><div class="t12-lbl">PREVENIR</div></div>
+        </div>
+        <div class="t12-blk" id="t12-b3" style="left:820px; top:660px;">
+          <div class="t12-face t12-unlit" id="t12-u3"><div class="t12-ord">03</div></div>
+          <div class="t12-face t12-lit" id="t12-l3"><div class="t12-ord">03</div><div class="t12-lbl">MEDIR</div></div>
+        </div>
+        <div class="t12-blk" id="t12-b4" style="left:120px; top:660px;">
+          <div class="t12-face t12-unlit" id="t12-u4"><div class="t12-ord">04</div></div>
+          <div class="t12-face t12-lit" id="t12-l4"><div class="t12-ord">04</div><div class="t12-lbl">MELHORAR</div></div>
+        </div>
+
+        <div class="t12-center" id="t12-center">
+          <div class="t12-pdca" id="t12-pdca">PDCA</div>
+          <div class="t12-op" id="t12-op">DA OPERAÇÃO</div>
+        </div>
+      </div>
+
+      <div class="t12-band" id="t12-band">
+        <div class="t12-band-rule" id="t12-band-rule"></div>
+        <div class="t12-ind" id="t12-ind">INDÚSTRIA 4.0</div>
+        <div class="t12-tag" id="t12-tag">= DADOS MAIS RÁPIDOS</div>
+      </div>
+
+      <div class="t12-hair t12-hair-top"></div>
+      <div class="t12-hair t12-hair-bot"></div>
+      <div class="t12-chrome t12-chrome-tag">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div class="t12-chrome t12-chrome-num">12 / 13</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // svg-path-draw setup: measured lengths (fallback overestimates)
+      ["t12-a1", "t12-a2", "t12-a3", "t12-a4", "t12-p1", "t12-p2", "t12-p3", "t12-p4"].forEach(function (id) {
+        var p = document.getElementById(id);
+        if (!p) return;
+        var len = 0;
+        try { len = p.getTotalLength(); } catch (e) { len = 0; }
+        len = (len || 800) * 1.05;
+        p.style.strokeDasharray = len + " " + len;
+        p.style.strokeDashoffset = len;
+        tl.set(p, { strokeDashoffset: len }, 0);
+      });
+
+      // macro camera: slow push on the cycle under everything
+      tl.fromTo("#t12-cycle", { scale: 0.975 }, { scale: 1.0, duration: 9.429, ease: "none" }, 0);
+
+      // ===== Scene 1 (0.0–3.5): unlit square frames visible early, then light up on VO
+      tl.fromTo(["#t12-u1", "#t12-u2", "#t12-u3", "#t12-u4"],
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.06 }, 0.05);
+      tl.set(["#t12-l1", "#t12-l2", "#t12-l3", "#t12-l4"], { clipPath: "inset(0% 100% 0% 0%)" }, 0);
+
+      tl.fromTo("#t12-title",
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+
+      // dynamic-content-sequencing: pre-computed cue table, lit in order
+      var STEPS = [
+        { blk: "#t12-b1", lit: "#t12-l1", un: "#t12-u1", at: 1.1, from: "inset(0% 100% 0% 0%)", arrow: null },
+        { blk: "#t12-b2", lit: "#t12-l2", un: "#t12-u2", at: 1.7, from: "inset(0% 100% 0% 0%)", arrow: "#t12-a1" },
+        { blk: "#t12-b3", lit: "#t12-l3", un: "#t12-u3", at: 2.2, from: "inset(0% 0% 100% 0%)", arrow: "#t12-a2" },
+        { blk: "#t12-b4", lit: "#t12-l4", un: "#t12-u4", at: 2.9, from: "inset(0% 0% 0% 100%)", arrow: "#t12-a3" }
+      ];
+      var LIT_DUR = 0.35, ARROW_DUR = 0.4;
+      STEPS.forEach(function (s) {
+        if (s.arrow) {
+          // arrow from previous block lands just as this block lights
+          tl.to(s.arrow, { strokeDashoffset: 0, duration: ARROW_DUR, ease: "power2.out" }, s.at - 0.32);
+        }
+        tl.fromTo(s.lit,
+          { clipPath: s.from },
+          { clipPath: "inset(-30% -4% -15% -4%)", duration: LIT_DUR, ease: "power3.out" }, s.at);
+        tl.fromTo(s.blk,
+          { scale: 0.95 },
+          { scale: 1, duration: 0.45, ease: "power3.out" }, s.at);
+        // lit copy fully covers the unlit frame -> hide the unlit copy
+        tl.set(s.un, { opacity: 0 }, s.at + LIT_DUR + 0.01);
+      });
+      // closing arrow MELHORAR -> PLANEJAR
+      tl.to("#t12-a4", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 3.15);
+
+      // ===== Scene 2 (3.5–5.9): center label PDCA, then DA OPERAÇÃO
+      tl.fromTo("#t12-center",
+        { opacity: 0, scale: 0.86 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 3.8);
+      tl.fromTo("#t12-pdca",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.9);
+      tl.fromTo("#t12-op",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.9);
+
+      // ===== Scene 3 (5.9–9.429): INDÚSTRIA 4.0 band, pulse around cycle, tag
+      tl.fromTo("#t12-band-rule",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.5, ease: "power2.out" }, 6.2);
+      tl.fromTo("#t12-ind",
+        { opacity: 0, x: 40 },
+        { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 6.3);
+
+      // "acelera": arrows thicken one by one — a single pulse round the cycle
+      [["#t12-p1", 7.7], ["#t12-p2", 7.95], ["#t12-p3", 8.2], ["#t12-p4", 8.45]].forEach(function (p) {
+        tl.to(p[0], { strokeDashoffset: 0, duration: 0.3, ease: "none" }, p[1]);
+      });
+
+      // "dados": inverted tag wipes in (clip only, never dimmed)
+      tl.fromTo("#t12-tag",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.4, ease: "power3.out" }, 8.9);
+
+      // hold — no exit (root transition owns it)
+      tl.set({}, {}, 9.429);
+
+      window.__timelines["12-padrao"] = tl;
+    })();
+  </script>
+</template>

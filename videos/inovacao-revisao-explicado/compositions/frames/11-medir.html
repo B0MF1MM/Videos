@@ -1,0 +1,267 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .t11-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .t11-stage { position: absolute; inset: 0; overflow: hidden; }
+    .t11-cam { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+    /* furniture */
+    .t11-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .t11-hair-top { top: 70px; }
+    .t11-hair-bot { top: 892px; }
+    .t11-chrome {
+      position: absolute; top: 34px;
+      font-family: "DM Mono", monospace; font-size: 20px; letter-spacing: 0.06em; line-height: 1; white-space: nowrap;
+    }
+    .t11-chrome-tag { left: 77px; }
+    .t11-chrome-num { right: 77px; }
+
+    /* Scene 1: inverted section band */
+    .t11-band { position: absolute; top: 106px; left: 0; width: 1920px; height: 76px; text-align: center; }
+    .t11-band-in {
+      display: inline-block; height: 76px;
+      padding: 0 36px 0 calc(36px + 0.18em);
+      background: #1F2BE0; color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 38px;
+      line-height: 76px; letter-spacing: 0.18em; white-space: nowrap;
+    }
+
+    /* shared display label */
+    .t11-big {
+      position: absolute; top: 226px;
+      font-family: "Newsreader", serif; font-weight: 400; font-size: 130px;
+      line-height: 1; letter-spacing: -0.005em; white-space: nowrap;
+    }
+    .t11-big-l { left: 160px; }
+    .t11-big-r { left: 980px; }
+    .t11-divider { position: absolute; left: 929px; top: 236px; width: 2px; height: 600px; background: rgba(31,43,224,0.18); transform-origin: 50% 0%; }
+
+    /* Scene 2: OEE pixel bar */
+    .t11-bar { position: absolute; left: 160px; top: 470px; width: 676px; height: 150px; }
+    .t11-cell { position: absolute; top: 0; width: 30px; height: 150px; }
+    .t11-cell-off { background: rgba(31,43,224,0.10); }
+    .t11-cell-on { background: #1F2BE0; transform-origin: 50% 100%; }
+    .t11-base { position: absolute; left: 160px; top: 626px; width: 676px; height: 3px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .t11-hatch {
+      position: absolute; left: 442px; top: 0; width: 234px; height: 150px;
+      box-sizing: border-box; border: 3px solid #1F2BE0;
+      background-image: repeating-linear-gradient(45deg, #1F2BE0 0 3px, transparent 3px 14px);
+    }
+    .t11-brk { position: absolute; left: 602px; top: 650px; width: 234px; height: 18px; box-sizing: border-box;
+      border-left: 3px solid #1F2BE0; border-right: 3px solid #1F2BE0; border-bottom: 3px solid #1F2BE0; transform-origin: 50% 0%; }
+    .t11-loss {
+      position: absolute; left: 602px; top: 684px; width: 234px; text-align: center;
+      font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 34px;
+      letter-spacing: 0.16em; line-height: 1; white-space: nowrap;
+      padding-left: 0.16em; box-sizing: border-box;
+    }
+    .t11-legend {
+      position: absolute; left: 160px; top: 774px;
+      font-family: "DM Mono", monospace; font-size: 48px; letter-spacing: 0.05em; line-height: 1; white-space: nowrap;
+    }
+
+    /* Scene 3: control chart */
+    .t11-chart { position: absolute; left: 980px; top: 380px; width: 780px; height: 480px; overflow: visible; }
+    .t11-chart line, .t11-chart polyline, .t11-chart .t11-frame { fill: none; stroke: #1F2BE0; }
+    .t11-axis { stroke-width: 3; }
+    .t11-lim { stroke-width: 3; }
+    .t11-mean { stroke-width: 2; }
+    .t11-trace { stroke-width: 2.5; stroke-linejoin: miter; }
+    .t11-pt { fill: #1F2BE0; }
+    .t11-frame { stroke-width: 3; }
+    .t11-lab {
+      position: absolute; left: 980px; width: 110px; height: 40px; margin-top: -20px;
+      font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.05em; line-height: 40px; white-space: nowrap;
+    }
+    .t11-special {
+      position: absolute; right: 252px; top: 416px; height: 48px;
+      padding: 0 18px 0 calc(18px + 0.16em);
+      background: #1F2BE0; color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px;
+      line-height: 48px; letter-spacing: 0.16em; white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="11-medir" data-width="1920" data-height="1080" data-duration="7.86">
+    <div id="t11-ground" class="t11-ground clip" data-start="0" data-duration="7.86" data-track-index="0"></div>
+
+    <div id="t11-stage" class="t11-stage clip" data-start="0" data-duration="7.86" data-track-index="1">
+      <div class="t11-cam" id="t11-cam">
+
+        <div class="t11-band" id="t11-band"><div class="t11-band-in" id="t11-band-in">COM QUALIDADE MEDIDA</div></div>
+
+        <!-- LEFT: OEE -->
+        <div class="t11-big t11-big-l" id="t11-oee">OEE</div>
+        <div class="t11-bar" id="t11-bar">
+          <div class="t11-cell t11-cell-off" style="left:0px"></div>
+          <div class="t11-cell t11-cell-off" style="left:34px"></div>
+          <div class="t11-cell t11-cell-off" style="left:68px"></div>
+          <div class="t11-cell t11-cell-off" style="left:102px"></div>
+          <div class="t11-cell t11-cell-off" style="left:136px"></div>
+          <div class="t11-cell t11-cell-off" style="left:170px"></div>
+          <div class="t11-cell t11-cell-off" style="left:204px"></div>
+          <div class="t11-cell t11-cell-off" style="left:238px"></div>
+          <div class="t11-cell t11-cell-off" style="left:272px"></div>
+          <div class="t11-cell t11-cell-off" style="left:306px"></div>
+          <div class="t11-cell t11-cell-off" style="left:340px"></div>
+          <div class="t11-cell t11-cell-off" style="left:374px"></div>
+          <div class="t11-cell t11-cell-off" style="left:408px"></div>
+          <div class="t11-cell t11-cell-off" style="left:442px"></div>
+          <div class="t11-cell t11-cell-off" style="left:476px"></div>
+          <div class="t11-cell t11-cell-off" style="left:510px"></div>
+          <div class="t11-cell t11-cell-off" style="left:544px"></div>
+          <div class="t11-cell t11-cell-off" style="left:578px"></div>
+          <div class="t11-cell t11-cell-off" style="left:612px"></div>
+          <div class="t11-cell t11-cell-off" style="left:646px"></div>
+
+          <div class="t11-cell t11-cell-on" style="left:0px"></div>
+          <div class="t11-cell t11-cell-on" style="left:34px"></div>
+          <div class="t11-cell t11-cell-on" style="left:68px"></div>
+          <div class="t11-cell t11-cell-on" style="left:102px"></div>
+          <div class="t11-cell t11-cell-on" style="left:136px"></div>
+          <div class="t11-cell t11-cell-on" style="left:170px"></div>
+          <div class="t11-cell t11-cell-on" style="left:204px"></div>
+          <div class="t11-cell t11-cell-on" style="left:238px"></div>
+          <div class="t11-cell t11-cell-on" style="left:272px"></div>
+          <div class="t11-cell t11-cell-on" style="left:306px"></div>
+          <div class="t11-cell t11-cell-on" style="left:340px"></div>
+          <div class="t11-cell t11-cell-on" style="left:374px"></div>
+          <div class="t11-cell t11-cell-on" style="left:408px"></div>
+
+          <div class="t11-hatch" id="t11-hatch"></div>
+        </div>
+        <div class="t11-base" id="t11-base"></div>
+        <div class="t11-brk" id="t11-brk"></div>
+        <div class="t11-loss" id="t11-loss">PERDAS</div>
+        <div class="t11-legend" id="t11-legend">D × P × Q</div>
+
+        <div class="t11-divider" id="t11-divider"></div>
+
+        <!-- RIGHT: CEP control chart -->
+        <div class="t11-big t11-big-r" id="t11-cep">CEP</div>
+        <svg class="t11-chart" id="t11-chart" viewBox="0 0 780 480" width="780" height="480">
+          <line class="t11-axis" id="t11-axis" x1="130" y1="30" x2="130" y2="450" />
+          <line class="t11-lim" id="t11-lsc" x1="130" y1="140" x2="770" y2="140" />
+          <line class="t11-mean" id="t11-lm" x1="130" y1="260" x2="770" y2="260" />
+          <line class="t11-lim" id="t11-lic" x1="130" y1="380" x2="770" y2="380" />
+          <polyline class="t11-trace" id="t11-trace" points="180,250 249,200 318,310 386,235 455,330 524,190 593,290 661,225" />
+          <line class="t11-trace" id="t11-jump" x1="661" y1="225" x2="730" y2="60" />
+          <rect class="t11-pt t11-pt-n" x="171" y="241" width="18" height="18" />
+          <rect class="t11-pt t11-pt-n" x="240" y="191" width="18" height="18" />
+          <rect class="t11-pt t11-pt-n" x="309" y="301" width="18" height="18" />
+          <rect class="t11-pt t11-pt-n" x="377" y="226" width="18" height="18" />
+          <rect class="t11-pt t11-pt-n" x="446" y="321" width="18" height="18" />
+          <rect class="t11-pt t11-pt-n" x="515" y="181" width="18" height="18" />
+          <rect class="t11-pt t11-pt-n" x="584" y="281" width="18" height="18" />
+          <rect class="t11-pt t11-pt-n" x="652" y="216" width="18" height="18" />
+          <rect class="t11-pt" id="t11-out" x="719" y="49" width="22" height="22" />
+          <rect class="t11-frame" id="t11-frame" x="702" y="32" width="56" height="56" />
+        </svg>
+        <div class="t11-lab" id="t11-lab-lsc" style="top:520px">LSC</div>
+        <div class="t11-lab" id="t11-lab-lm" style="top:640px">LM</div>
+        <div class="t11-lab" id="t11-lab-lic" style="top:760px">LIC</div>
+        <div class="t11-special" id="t11-special">CAUSA ESPECIAL</div>
+      </div>
+
+      <div class="t11-hair t11-hair-top"></div>
+      <div class="t11-hair t11-hair-bot"></div>
+      <div class="t11-chrome t11-chrome-tag">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div class="t11-chrome t11-chrome-num">11 / 13</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var scope = document.querySelector('[data-composition-id="11-medir"]') || document;
+      function q(s) { return scope.querySelector(s); }
+      function qa(s) { return Array.prototype.slice.call(scope.querySelectorAll(s)); }
+
+      // measured stroke-draw setup
+      function prep(el) {
+        var len = el.getTotalLength ? el.getTotalLength() : 0;
+        if (!len && el.tagName.toLowerCase() === "line") {
+          var dx = el.x2.baseVal.value - el.x1.baseVal.value, dy = el.y2.baseVal.value - el.y1.baseVal.value;
+          len = Math.sqrt(dx * dx + dy * dy);
+        }
+        if (!len && el.tagName.toLowerCase() === "rect") len = 4 * el.width.baseVal.value;
+        len = len * 1.02 + 2;
+        el.style.strokeDasharray = len + "";
+        el.style.strokeDashoffset = len + "";
+        return len;
+      }
+      ["#t11-axis", "#t11-lsc", "#t11-lm", "#t11-lic", "#t11-trace", "#t11-jump", "#t11-frame"].forEach(function (s) {
+        var el = q(s); var L = prep(el);
+        tl.set(el, { strokeDashoffset: L }, 0);
+      });
+
+      // slow camera drift underneath
+      tl.fromTo("#t11-cam", { scale: 1 }, { scale: 1.02, duration: 7.36, ease: "none" }, 0);
+
+      // ===== Scene 1 (0.0–1.6): inverted band wipes in (never dimmed)
+      tl.fromTo("#t11-band-in", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.55, ease: "power3.out" }, 0.25);
+      tl.fromTo("#t11-band", { y: -24 }, { y: 0, duration: 0.6, ease: "power3.out" }, 0.25);
+      tl.fromTo("#t11-divider", { scaleY: 0 }, { scaleY: 1, duration: 0.8, ease: "power2.out" }, 0.9);
+
+      // ===== Scene 2 (1.6–3.9): OEE bar
+      tl.fromTo("#t11-oee", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.7);
+      tl.fromTo(qa(".t11-cell-off"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out", stagger: 0.015 }, 1.8);
+      tl.fromTo("#t11-base", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 1.8);
+      tl.fromTo(qa(".t11-cell-on"), { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 2.0);
+      // perdas (2.9s): the empty part gets hatched + labelled
+      tl.fromTo("#t11-hatch", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "power2.out" }, 2.9);
+      tl.fromTo("#t11-brk", { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.3, ease: "power2.out" }, 3.15);
+      tl.fromTo("#t11-loss", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.25);
+      tl.fromTo("#t11-legend", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 3.5);
+
+      // ===== Scene 3 (3.9–7.36): CEP control chart
+      tl.fromTo("#t11-cep", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.1);
+      tl.to("#t11-axis", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 4.2);
+      tl.to("#t11-lm", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 4.3);
+      tl.to("#t11-lsc", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 4.45);
+      tl.to("#t11-lic", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 4.6);
+      tl.fromTo("#t11-lab-lm", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 4.45);
+      tl.fromTo("#t11-lab-lsc", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 4.6);
+      tl.fromTo("#t11-lab-lic", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 4.75);
+
+      // variação normal (5.2s): points oscillate inside the limits
+      tl.to("#t11-trace", { strokeDashoffset: 0, duration: 0.85, ease: "none" }, 5.2);
+      tl.fromTo(qa(".t11-pt-n"), { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, transformOrigin: "50% 50%", duration: 0.25, ease: "power3.out", stagger: 0.1 }, 5.2);
+
+      // causas especiais (6.2s): point breaks above LSC, gets framed + inverted label
+      tl.to("#t11-jump", { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, 6.15);
+      tl.fromTo("#t11-out", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, transformOrigin: "50% 50%", duration: 0.3, ease: "back.out(2)" }, 6.3);
+      tl.to("#t11-frame", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 6.45);
+      tl.fromTo("#t11-special", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.45, ease: "power3.out" }, 6.55);
+
+      // hold
+      tl.set({}, {}, 7.36);
+      window.__timelines["11-medir"] = tl;
+    })();
+  </script>
+</template>

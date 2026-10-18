@@ -1,0 +1,230 @@
+<template>
+  <div id="root" data-composition-id="01-fabrica-avisa" data-width="1920" data-height="1080" data-start="0" data-duration="7.583">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        --paper: #F0EBDE;
+        --ink: #1F2BE0;
+        --ink-soft: #5560E5;
+        --grid: rgba(31, 43, 224, 0.10);
+      }
+      #f01-ground {
+        position: absolute; inset: 0;
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      #f01-chrome { position: absolute; inset: 0; }
+      .f01-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: var(--ink); }
+      #f01-hair-top { top: 86px; }
+      #f01-hair-bot { top: 880px; }
+      .f01-chrome-txt {
+        position: absolute; top: 40px;
+        font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em;
+        color: var(--ink); line-height: 1;
+      }
+      #f01-tag { left: 80px; }
+      #f01-num { right: 80px; }
+
+      #f01-stage { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+      .f01-phrase {
+        position: absolute; top: 140px;
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 88px;
+        line-height: 1.04; letter-spacing: -0.008em; color: var(--ink);
+      }
+      #f01-p1 { left: 80px; width: 820px; transform-origin: 0 0; }
+      #f01-p2 { right: 80px; width: 820px; text-align: right; transform-origin: 100% 0; }
+      .f01-line { display: block; white-space: nowrap; }
+      .f01-w { display: inline-block; }
+
+      .f01-avisa-wrap { position: relative; display: inline-block; }
+      #f01-avisa-inv {
+        display: inline-block; background: var(--ink); color: var(--paper);
+        padding: 0 0.14em 0.06em; margin: 0 -0.02em;
+      }
+      #f01-avisa-plain {
+        position: absolute; left: 0; top: 0; right: 0;
+        padding: 0 0.14em 0.06em; margin: 0 -0.02em;
+        color: var(--ink); text-align: left;
+        border-bottom: 4px solid var(--ink); box-sizing: border-box;
+      }
+
+      .f01-slot { position: relative; display: block; height: 1.04em; }
+      .f01-slot .f01-w { position: absolute; right: 0; top: 0; white-space: nowrap; }
+
+      .f01-dem-wrap { position: relative; display: inline-block; }
+      #f01-dem-rule {
+        position: absolute; left: 0; right: 0; bottom: 4px; height: 4px;
+        background: var(--ink); transform-origin: 0 50%;
+      }
+
+      #f01-links { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+      #f01-links path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 440; }
+      .f01-node { position: absolute; width: 12px; height: 12px; background: var(--ink); }
+      #f01-node1 { left: 194px; top: 256px; }
+      #f01-node2 { left: 1714px; top: 256px; }
+
+      #f01-block-row {
+        position: absolute; left: 0; right: 0; top: 330px;
+        display: flex; justify-content: center;
+      }
+      #f01-block {
+        width: 1200px; height: 410px; box-sizing: border-box;
+        background: var(--ink); color: var(--paper);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 168px;
+        line-height: 0.96; letter-spacing: -0.005em; text-align: center;
+      }
+      .f01-bmask { display: block; overflow: hidden; padding: 0.22em 0 0.06em; margin-top: -0.22em; }
+      .f01-bline { display: block; white-space: nowrap; }
+
+      #f01-sub-row {
+        position: absolute; left: 0; right: 0; top: 772px;
+        display: flex; justify-content: center; align-items: center; gap: 22px;
+      }
+      #f01-sub-sq { width: 14px; height: 14px; background: var(--ink); }
+      #f01-sub {
+        font-family: "DM Mono", monospace; font-size: 38px; letter-spacing: 0.06em;
+        color: var(--ink); white-space: nowrap; line-height: 1;
+      }
+    </style>
+
+    <div id="f01-ground" class="clip" data-start="0" data-duration="7.583" data-track-index="0"></div>
+
+    <div id="f01-chrome" class="clip" data-start="0" data-duration="7.583" data-track-index="1">
+      <div id="f01-hair-top" class="f01-hair"></div>
+      <div id="f01-hair-bot" class="f01-hair"></div>
+      <div id="f01-tag" class="f01-chrome-txt">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div id="f01-num" class="f01-chrome-txt">01 / 13</div>
+    </div>
+
+    <div id="f01-stage" class="clip" data-start="0" data-duration="7.583" data-track-index="2">
+      <svg id="f01-links" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <path id="f01-link1" d="M200 262 V535 H360" />
+        <path id="f01-link2" d="M1720 262 V535 H1560" />
+      </svg>
+      <div id="f01-node1" class="f01-node"></div>
+      <div id="f01-node2" class="f01-node"></div>
+
+      <div id="f01-p1" class="f01-phrase">
+        <span class="f01-line">
+          <span id="f01-w-a" class="f01-w">a</span>
+          <span id="f01-w-maquina" class="f01-w">máquina</span>
+          <span class="f01-avisa-wrap"><span id="f01-avisa-inv">avisa</span><span id="f01-avisa-plain">avisa</span></span>
+        </span>
+        <span class="f01-line">
+          <span id="f01-w-antes" class="f01-w">antes</span>
+          <span id="f01-w-de" class="f01-w">de</span>
+          <span id="f01-w-falhar" class="f01-w">falhar</span>
+        </span>
+      </div>
+
+      <div id="f01-p2" class="f01-phrase">
+        <span class="f01-slot">
+          <span id="f01-w-planej" class="f01-w">planejamento</span>
+          <span id="f01-w-oplano" class="f01-w">o plano</span>
+        </span>
+        <span class="f01-line">
+          <span id="f01-w-se" class="f01-w">se</span>
+          <span id="f01-w-ajusta" class="f01-w">ajusta</span>
+          <span id="f01-w-a2" class="f01-w">à</span>
+          <span class="f01-dem-wrap"><span id="f01-w-demanda" class="f01-w">demanda</span><span id="f01-dem-rule"></span></span>
+        </span>
+      </div>
+
+      <div id="f01-block-row">
+        <div id="f01-block">
+          <span class="f01-bmask"><span id="f01-b1" class="f01-bline">FÁBRICA</span></span>
+          <span class="f01-bmask"><span id="f01-b2" class="f01-bline">DO FUTURO</span></span>
+        </div>
+      </div>
+
+      <div id="f01-sub-row">
+        <span id="f01-sub-sq"></span>
+        <span id="f01-sub">já está chegando</span>
+      </div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var q = function (id) { return document.getElementById(id); };
+
+        // Initial hidden states for late pieces (set at t=0, seek-safe)
+        tl.set(q("f01-avisa-plain"), { opacity: 0 }, 0);
+        tl.set(q("f01-w-oplano"), { opacity: 0 }, 0);
+        tl.set([q("f01-link1"), q("f01-link2")], { strokeDashoffset: 440 }, 0);
+        tl.set([q("f01-node1"), q("f01-node2")], { opacity: 0 }, 0);
+        tl.set(q("f01-block"), { clipPath: "inset(0% 50% 0% 50%)" }, 0);
+        tl.set([q("f01-b1"), q("f01-b2")], { yPercent: 110 }, 0);
+        tl.set([q("f01-sub"), q("f01-sub-sq")], { opacity: 0 }, 0);
+
+        // Macro camera: slow push under scenes 1-2, then hold
+        tl.fromTo(q("f01-stage"), { scale: 1.0 }, { scale: 1.025, duration: 5.4, ease: "none" }, 0);
+
+        // Chrome settles in
+        tl.fromTo([q("f01-hair-top"), q("f01-hair-bot")], { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0);
+        tl.fromTo([q("f01-tag"), q("f01-num")], { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.05);
+
+        function word(id, t, dur) {
+          tl.fromTo(q(id), { opacity: 0, yPercent: 45 }, { opacity: 1, yPercent: 0, duration: dur || 0.32, ease: "power3.out" }, t);
+        }
+
+        // Scene 1 (0.0-2.4): a máquina avisa antes de falhar
+        word("f01-w-a", 0.15);
+        word("f01-w-maquina", 0.4);
+        tl.fromTo(q("f01-avisa-inv"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.35, ease: "power3.out" }, 1.0);
+        tl.fromTo(q("f01-avisa-inv"), { scale: 1.12 }, { scale: 1, duration: 0.5, ease: "back.out(2.2)" }, 1.0);
+        word("f01-w-antes", 1.4);
+        word("f01-w-de", 1.68);
+        tl.fromTo(q("f01-w-falhar"), { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.08, ease: "none" }, 2.0);
+        tl.to(q("f01-w-falhar"), { keyframes: [{ x: 10, duration: 0.05 }, { x: -6, duration: 0.05 }, { x: 3, duration: 0.05 }, { x: 0, duration: 0.05 }], ease: "none" }, 2.08);
+
+        // Scene 2 (2.4-5.4): planejamento -> o plano se ajusta à demanda
+        word("f01-w-planej", 2.6, 0.3);
+        tl.set(q("f01-w-planej"), { opacity: 0 }, 3.2);
+        tl.set(q("f01-w-oplano"), { opacity: 1 }, 3.2);
+        tl.fromTo(q("f01-w-oplano"), { scale: 1.08, transformOrigin: "100% 60%" }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 3.2);
+        word("f01-w-se", 3.55);
+        word("f01-w-ajusta", 3.8);
+        word("f01-w-a2", 4.2);
+        word("f01-w-demanda", 4.6, 0.36);
+        tl.fromTo(q("f01-dem-rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 4.85);
+
+        // Scene 3 (5.4-7.083): recede, FÁBRICA DO FUTURO block, link lines, mono line
+        tl.set(q("f01-avisa-inv"), { opacity: 0 }, 5.7);
+        tl.set(q("f01-avisa-plain"), { opacity: 1 }, 5.7);
+        tl.to([q("f01-p1"), q("f01-p2")], { scale: 0.78, y: -24, opacity: 0.72, duration: 0.55, ease: "power3.inOut" }, 5.7);
+
+        tl.to(q("f01-block"), { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.45, ease: "expo.out" }, 5.85);
+        tl.to(q("f01-b1"), { yPercent: 0, duration: 0.45, ease: "power4.out" }, 5.95);
+        tl.to(q("f01-b2"), { yPercent: 0, duration: 0.45, ease: "power4.out" }, 6.05);
+
+        tl.to([q("f01-node1"), q("f01-node2")], { opacity: 1, duration: 0.15, ease: "none" }, 6.0);
+        tl.to([q("f01-link1"), q("f01-link2")], { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 6.05);
+
+        tl.to(q("f01-sub-sq"), { opacity: 1, duration: 0.1, ease: "none" }, 6.4);
+        tl.fromTo(q("f01-sub"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 6.4);
+
+        // Hold to end (no exit)
+        tl.to({}, { duration: 0.01 }, 7.07);
+
+        window.__timelines["01-fabrica-avisa"] = tl;
+      })();
+    </script>
+  </div>
+</template>

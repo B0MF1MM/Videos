@@ -27,7 +27,7 @@ music_brief: calm focused minimal study underscore, soft piano and light pulse (
 - voiceover: "E se a própria máquina avisasse que vai falhar… e o planejamento se ajustasse sozinho à demanda? Essa fábrica já está chegando."
 - duration: 7.083s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-fabrica-avisa.html
 - type: hook
 - persuasion: Imagine / scenario
@@ -50,7 +50,7 @@ Scene 3 (5.4–7.083s): em "Essa fábrica" (5.7s) as duas frases recuam para ink
 - voiceover: "Na Aula 9, inovação na indústria. A primeira revolução trouxe o vapor; a segunda, a eletricidade e a produção em massa; a terceira, a automação com computadores. A quarta, a Indústria quatro ponto zero, conecta tudo."
 - duration: 12.821s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-revolucoes.html
 - type: product_intro
 - persuasion: Timeline + escalation
@@ -73,7 +73,7 @@ Scene 3 (9.8–12.821s): em "Indústria 4.0" (10.6s) a quarta estação "4.0" en
 - voiceover: "Ela une sistemas ciberfísicos, internet das coisas, computação em nuvem e big data. Máquinas, produtos e pessoas trocam dados em tempo real."
 - duration: 8.683s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/03-pilares.html
 - type: feature_showcase
 - persuasion: Enumeration + network
@@ -95,7 +95,7 @@ Scene 2 (4.6–8.683s): na metade inferior, três blocos quadrados pequenos em c
 - voiceover: "Na prática, aparecem a inteligência artificial, a robótica colaborativa, a manufatura aditiva, ou impressão três D, e o gêmeo digital: uma cópia virtual do processo para testar mudanças antes de mexer na fábrica real."
 - duration: 13.333s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/04-tecnologias.html
 - type: feature_showcase
 - persuasion: Categorization + concrete definition
@@ -118,7 +118,7 @@ Scene 3 (7.3–13.333s): em "gêmeo digital" (7.5s) o quarto cartão vira cobalt
 - voiceover: "E tudo conversa com o que vimos: sensores alimentam o OEE e o CEP em tempo real, a manutenção preditiva antecipa falhas como na FMEA, e a inteligência artificial melhora a previsão de demanda."
 - duration: 11.712s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/05-liga-curso.html
 - type: benefit_highlight
 - persuasion: Bridge to prior knowledge
@@ -142,7 +142,7 @@ Scene 4 (8.6–11.712s): em "inteligência artificial" (8.9s) o bloco esquerdo 3
 - voiceover: "A engenharia do futuro também é sustentável: economia circular, menos desperdício e uso eficiente de energia. É o mesmo espírito da produção enxuta, agora com o planeta na conta."
 - duration: 10.923s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/06-sustentavel.html
 - type: feature_showcase
 - persuasion: Before/after (linear → circular)
@@ -166,7 +166,7 @@ Scene 4 (6.9–10.923s): em "produção enxuta" (8.1s) uma faixa abaixo: "ENXUTO
 - voiceover: "E ela pede um novo profissional: alguém que entenda de dados, trabalhe em equipe multidisciplinar e continue aprendendo. A tecnologia muda; o método de pensar fica."
 - duration: 10.048s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/07-engenheiro.html
 - type: benefit_highlight
 - persuasion: Rule of three + maxim
@@ -189,7 +189,7 @@ Scene 3 (7.0–10.048s): à direita (40%), a máxima em ed-callout itálico: "A 
 - voiceover: "Na Aula 10, a revisão geral. A disciplina inteira cabe numa pergunta: como produzir certo, na hora certa e com qualidade?"
 - duration: 7.211s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/08-pergunta.html
 - type: hook
 - persuasion: Distillation into a question
@@ -212,7 +212,7 @@ Scene 3 (4.3–7.211s): a pergunta monta em headline grande no centro: "Como pro
 - voiceover: "Para produzir na hora certa: o PPCP planeja, programa e controla; o just in time e o kanban puxam a produção pela demanda; e a previsão estima quanto o cliente vai pedir, sempre com o seu erro."
 - duration: 11.285s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/09-hora-certa.html
 - type: feature_showcase
 - persuasion: Recap enumeration
@@ -236,7 +236,7 @@ Scene 4 (7.3–11.285s): estação 3: "PREVISÃO" (7.6s) com tag "QUANTO VÃO PE
 - voiceover: "Para produzir certo: a FMEA prioriza riscos com severidade, ocorrência e detecção, e a GQT envolve todos na qualidade, porque prevenir sai mais barato que corrigir."
 - duration: 9.984s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/10-certo.html
 - type: feature_showcase
 - persuasion: Recap comparison
@@ -260,7 +260,7 @@ Scene 4 (7.5–9.984s): em "prevenir" (7.8s) uma faixa sob os cartões: "PREVENI
 - voiceover: "E para garantir a qualidade: o OEE mede as perdas do equipamento, e o CEP separa a variação normal das causas especiais."
 - duration: 7.36s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/11-medir.html
 - type: feature_showcase
 - persuasion: Recap demonstration
@@ -283,7 +283,7 @@ Scene 3 (3.9–7.36s): à direita, em "CEP" (4.2s), um mini gráfico: LM, LSC e 
 - voiceover: "Repare no padrão: planejar, prevenir, medir e melhorar. É o PDCA aplicado à operação inteira, e a Indústria quatro ponto zero só acelera esse ciclo com dados."
 - duration: 9.429s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/12-padrao.html
 - type: benefit_highlight
 - persuasion: Pattern reveal + callback (PDCA)
@@ -306,7 +306,7 @@ Scene 3 (5.9–9.429s): em "Indústria 4.0" (6.2s) uma faixa à direita do ciclo
 - voiceover: "Resumindo o curso: operações bem geridas agem antes do problema e decidem com dados. Bons estudos, e boa prova!"
 - duration: 7.019s
 - transition_in: blur-crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/13-encerramento.html
 - type: branding
 - persuasion: Distillation + callback to both earlier videos

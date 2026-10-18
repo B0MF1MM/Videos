@@ -1,0 +1,317 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .t04-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .t04-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* ---- fixed furniture ---- */
+    .t04-hair {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .t04-hair-top { top: 70px; }
+    .t04-hair-bot { top: 892px; }
+    .t04-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .t04-chrome-tag { left: 77px; }
+    .t04-chrome-num { right: 77px; }
+
+    .t04-title {
+      position: absolute;
+      left: 80px;
+      top: 94px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 88px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+
+    /* ---- camera world (grid) ---- */
+    .t04-world {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: 960px 542px;
+      will-change: transform;
+    }
+    .t04-slot,
+    .t04-card {
+      position: absolute;
+      width: 870px;
+      height: 317px;
+      box-sizing: border-box;
+    }
+    .t04-slot {
+      border: 2px solid rgba(31,43,224,0.18);
+    }
+    .t04-card {
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      transform-origin: 50% 50%;
+      overflow: hidden;
+    }
+    .t04-p1 { left: 80px;  top: 215px; }
+    .t04-p2 { left: 970px; top: 215px; }
+    .t04-p3 { left: 80px;  top: 553px; }
+    .t04-p4 { left: 970px; top: 553px; }
+
+    .t04-idx {
+      position: absolute;
+      left: 32px;
+      top: 26px;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .t04-lab {
+      position: absolute;
+      left: 32px;
+      bottom: 30px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 1.0;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .t04-tag {
+      position: absolute;
+      right: 32px;
+      top: 22px;
+      padding: 8px 14px;
+      border: 2px solid #1F2BE0;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    /* inverted hero card */
+    .t04-card4 {
+      position: absolute;
+      left: 970px;
+      top: 553px;
+      width: 870px;
+      height: 317px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      transform-origin: 50% 50%;
+      overflow: hidden;
+    }
+    .t04-card4 .t04-idx,
+    .t04-card4 .t04-lab { color: #F0EBDE; }
+
+    .t04-svg {
+      position: absolute;
+      overflow: visible;
+    }
+    .t04-svg path {
+      fill: none;
+      stroke: #F0EBDE;
+      stroke-width: 4;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+    .t04-fac-svg { left: 0; top: 0; width: 870px; height: 317px; }
+    .t04-copy-svg { left: 650px; top: 90px; width: 190px; height: 140px; }
+    .t04-copy-svg path { stroke-dasharray: 10 8; }
+    .t04-test {
+      position: absolute;
+      left: 495px;
+      top: 252px;
+      width: 240px;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      color: #F0EBDE;
+    }
+  </style>
+
+  <div id="root" data-composition-id="04-tecnologias" data-width="1920" data-height="1080" data-duration="13.833">
+    <div id="t04-ground" class="t04-ground clip" data-start="0" data-duration="13.833" data-track-index="0"></div>
+
+    <div id="t04-stage" class="t04-stage clip" data-start="0" data-duration="13.833" data-track-index="1">
+
+      <div class="t04-world" id="t04-world">
+        <!-- faint slots -->
+        <div class="t04-slot t04-p1" id="t04-slot1"></div>
+        <div class="t04-slot t04-p2" id="t04-slot2"></div>
+        <div class="t04-slot t04-p3" id="t04-slot3"></div>
+        <div class="t04-slot t04-p4" id="t04-slot4"></div>
+
+        <!-- cards -->
+        <div class="t04-card t04-p1" id="t04-card1">
+          <div class="t04-idx" id="t04-idx1">01</div>
+          <div class="t04-lab" id="t04-lab1">INTELIGÊNCIA<br>ARTIFICIAL</div>
+        </div>
+        <div class="t04-card t04-p2" id="t04-card2">
+          <div class="t04-idx" id="t04-idx2">02</div>
+          <div class="t04-lab" id="t04-lab2">ROBÓTICA<br>COLABORATIVA</div>
+        </div>
+        <div class="t04-card t04-p3" id="t04-card3">
+          <div class="t04-idx" id="t04-idx3">03</div>
+          <div class="t04-tag" id="t04-tag3">IMPRESSÃO 3D</div>
+          <div class="t04-lab" id="t04-lab3">MANUFATURA<br>ADITIVA</div>
+        </div>
+
+        <!-- hero: inverted cobalt card -->
+        <div class="t04-card4" id="t04-card4">
+          <div class="t04-idx" id="t04-idx4">04</div>
+          <div class="t04-lab" id="t04-lab4">GÊMEO<br>DIGITAL</div>
+
+          <svg class="t04-svg t04-fac-svg" viewBox="0 0 870 317" aria-hidden="true">
+            <!-- real factory: sawtooth roof + body -->
+            <path id="t04-fac" d="M 400 220 L 400 140 L 400 100 L 457 140 L 457 100 L 514 140 L 514 100 L 570 140 L 570 220 Z" />
+            <path id="t04-door" d="M 470 220 L 470 185 L 500 185 L 500 220" />
+            <!-- arrow: copy → factory -->
+            <path id="t04-shaft" d="M 652 170 L 584 170" />
+            <path id="t04-head" d="M 598 158 L 584 170 L 598 182" />
+          </svg>
+
+          <!-- virtual copy: same silhouette, dashed outline -->
+          <svg class="t04-svg t04-copy-svg" id="t04-copy" viewBox="650 90 190 140" aria-hidden="true">
+            <path d="M 660 220 L 660 140 L 660 100 L 717 140 L 717 100 L 774 140 L 774 100 L 830 140 L 830 220 Z" />
+            <path d="M 730 220 L 730 185 L 760 185 L 760 220" />
+          </svg>
+
+          <div class="t04-test" id="t04-test">TESTAR ANTES</div>
+        </div>
+      </div>
+
+      <div class="t04-hair t04-hair-top"></div>
+      <div class="t04-hair t04-hair-bot"></div>
+      <div class="t04-chrome t04-chrome-tag">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div class="t04-chrome t04-chrome-num">04 / 13</div>
+
+      <div class="t04-title" id="t04-title">Tecnologias</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // ---- dash setup (measured)
+      function prep(id) {
+        var el = document.getElementById(id);
+        var len = el.getTotalLength() * 1.02;
+        el.style.strokeDasharray = len + " " + len;
+        el.style.strokeDashoffset = len;
+      }
+      ["t04-fac", "t04-door", "t04-shaft", "t04-head"].forEach(prep);
+
+      // ===== Scene 1 (0.0–1.4): headline + four faint slots
+      tl.fromTo("#t04-title",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+      ["#t04-slot1", "#t04-slot2", "#t04-slot3", "#t04-slot4"].forEach(function (s, i) {
+        tl.fromTo(s,
+          { opacity: 0, scale: 0.96 },
+          { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0.35 + i * 0.06);
+      });
+
+      // slow camera push-in under the whole shot
+      tl.fromTo("#t04-world", { scale: 1 }, { scale: 1.015, duration: 11.9, ease: "none" }, 1.4);
+
+      // ===== Scene 2 (1.4–7.3): cards fill on their words (spring-pop, no overshoot)
+      function popCard(n, t) {
+        tl.fromTo("#t04-card" + n,
+          { scale: 0, opacity: 0, y: 24 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t);
+        tl.fromTo("#t04-idx" + n,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power1.out" }, t + 0.25);
+        tl.fromTo("#t04-lab" + n,
+          { clipPath: "inset(0% 100% 0% 0%)" },
+          { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.55, ease: "power2.out" }, t + 0.3);
+      }
+      popCard(1, 1.4);   // inteligência artificial
+      popCard(2, 3.0);   // robótica colaborativa
+      popCard(3, 4.6);   // manufatura aditiva
+
+      // "impressão três D" (6.2)
+      tl.fromTo("#t04-tag3",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 6.2);
+
+      // ===== Scene 3 (7.3–13.333): fourth card turns inverted cobalt
+      tl.fromTo("#t04-card4",
+        { clipPath: "inset(100% 0% 0% 0%)", scale: 0.96 },
+        { clipPath: "inset(-30% -4% -15% -4%)", scale: 1, duration: 0.55, ease: "power3.out" }, 7.5);
+      tl.fromTo("#t04-idx4",
+        { y: 16 },
+        { y: 0, duration: 0.45, ease: "power3.out" }, 7.6);
+      tl.fromTo("#t04-lab4",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.55, ease: "power2.out" }, 7.75);
+
+      // "cópia virtual" (9.0): factory draws, then the dashed copy wipes in beside it
+      tl.to("#t04-fac", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 9.0);
+      tl.to("#t04-door", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 9.6);
+      tl.fromTo("#t04-copy",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.7, ease: "power2.out" }, 9.7);
+
+      // "testar mudanças" (10.6): straight arrow copy → factory + label
+      tl.to("#t04-shaft", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 10.6);
+      tl.to("#t04-head", { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, 10.9);
+      tl.fromTo("#t04-test",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "power2.out" }, 11.0);
+
+      // hold — no exit (root transition owns it)
+      tl.set({}, {}, 13.333);
+
+      window.__timelines["04-tecnologias"] = tl;
+    })();
+  </script>
+</template>

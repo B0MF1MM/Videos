@@ -1,0 +1,289 @@
+<template>
+  <div id="root" data-composition-id="03-pilares" data-width="1920" data-height="1080" data-start="0" data-duration="9.183">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        --paper: #F0EBDE;
+        --ink: #1F2BE0;
+        --grid: rgba(31, 43, 224, 0.10);
+      }
+      #f03-ground {
+        position: absolute; inset: 0;
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      #f03-chrome { position: absolute; inset: 0; }
+      .f03-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: var(--ink); }
+      #f03-hair-top { top: 86px; }
+      #f03-hair-bot { top: 880px; }
+      .f03-chrome-txt {
+        position: absolute; top: 40px;
+        font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em;
+        color: var(--ink); line-height: 1; white-space: nowrap;
+      }
+      #f03-tag { left: 80px; }
+      #f03-num { right: 80px; }
+
+      #f03-stage { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+      #f03-title {
+        position: absolute; left: 80px; top: 112px;
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 84px;
+        line-height: 1; letter-spacing: -0.008em; color: var(--ink); white-space: nowrap;
+      }
+
+      /* data lines */
+      #f03-net { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+      .f03-line { fill: none; stroke: var(--ink); stroke-width: 3; stroke-dasharray: 12 9; stroke-linecap: butt; }
+      .f03-mpath { fill: none; stroke: #fff; stroke-width: 12; stroke-linecap: butt; }
+
+      /* pillars */
+      .f03-pillar {
+        position: absolute; top: 236px; width: 422px; height: 210px; box-sizing: border-box;
+        border: 3px solid var(--ink); background: var(--paper); color: var(--ink);
+      }
+      #f03-p1 { left: 80px; }
+      #f03-p2 { left: 526px; }
+      #f03-p3 { left: 972px; }
+      #f03-p4 { left: 1418px; }
+      .f03-pnum {
+        position: absolute; left: 24px; top: 20px;
+        font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.06em; line-height: 1;
+      }
+      .f03-pnum-sq { position: absolute; right: 24px; top: 26px; width: 14px; height: 14px; background: var(--ink); }
+      .f03-plabel {
+        position: absolute; left: 24px; right: 20px; bottom: 22px;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 36px;
+        letter-spacing: 0.06em; line-height: 1.12; text-transform: uppercase;
+      }
+      .f03-pmask { display: block; overflow: hidden; padding-top: 0.14em; margin-top: -0.14em; }
+      .f03-pl { display: block; white-space: nowrap; }
+
+      /* junction squares on the pillar row */
+      .f03-jn { position: absolute; width: 12px; height: 12px; background: var(--ink); top: 440px; }
+      #f03-j1 { left: 285px; }
+      #f03-j2 { left: 731px; }
+      #f03-j3 { left: 1177px; }
+      #f03-j4 { left: 1623px; }
+
+      /* nodes: inverted cobalt squares */
+      .f03-node {
+        position: absolute; top: 650px; width: 200px; height: 200px; box-sizing: border-box;
+        background: var(--ink); color: var(--paper);
+        display: flex; align-items: center; justify-content: center;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px;
+        letter-spacing: 0.08em; line-height: 1; white-space: nowrap;
+      }
+      #f03-n1 { left: 380px; }
+      #f03-n2 { left: 860px; }
+      #f03-n3 { left: 1340px; }
+
+      /* TEMPO REAL label at the network hub */
+      #f03-rt {
+        position: absolute; left: 960px; top: 548px; margin-left: -132px; width: 264px; height: 56px;
+        box-sizing: border-box; border: 3px solid var(--ink); background: var(--paper); color: var(--ink);
+        display: flex; align-items: center; justify-content: center; gap: 14px;
+        font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.06em; line-height: 1; white-space: nowrap;
+      }
+      #f03-rt-sq { width: 12px; height: 12px; background: var(--ink); flex: none; }
+    </style>
+
+    <div id="f03-ground" class="clip" data-start="0" data-duration="9.183" data-track-index="0"></div>
+
+    <div id="f03-chrome" class="clip" data-start="0" data-duration="9.183" data-track-index="1">
+      <div id="f03-hair-top" class="f03-hair"></div>
+      <div id="f03-hair-bot" class="f03-hair"></div>
+      <div id="f03-tag" class="f03-chrome-txt">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div id="f03-num" class="f03-chrome-txt">03 / 13</div>
+    </div>
+
+    <div id="f03-stage" class="clip" data-start="0" data-duration="9.183" data-track-index="2">
+      <svg id="f03-net" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <mask id="f03-m1" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp1" class="f03-mpath" d="M580 750 H860" /></mask>
+          <mask id="f03-m2" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp2" class="f03-mpath" d="M1060 750 H1340" /></mask>
+          <mask id="f03-m3" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp3" class="f03-mpath" d="M480 650 V500" /></mask>
+          <mask id="f03-m4" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp4" class="f03-mpath" d="M960 650 V500" /></mask>
+          <mask id="f03-m5" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp5" class="f03-mpath" d="M1440 650 V500" /></mask>
+          <mask id="f03-m6" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp6" class="f03-mpath" d="M960 500 H291" /></mask>
+          <mask id="f03-m7" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp7" class="f03-mpath" d="M960 500 H1629" /></mask>
+          <mask id="f03-m8" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp8" class="f03-mpath" d="M291 500 V446" /></mask>
+          <mask id="f03-m9" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp9" class="f03-mpath" d="M737 500 V446" /></mask>
+          <mask id="f03-m10" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp10" class="f03-mpath" d="M1183 500 V446" /></mask>
+          <mask id="f03-m11" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="f03-mp11" class="f03-mpath" d="M1629 500 V446" /></mask>
+        </defs>
+        <path id="f03-l1" class="f03-line" mask="url(#f03-m1)" d="M580 750 H860" />
+        <path id="f03-l2" class="f03-line" mask="url(#f03-m2)" d="M1060 750 H1340" />
+        <path id="f03-l3" class="f03-line" mask="url(#f03-m3)" d="M480 650 V500" />
+        <path id="f03-l4" class="f03-line" mask="url(#f03-m4)" d="M960 650 V500" />
+        <path id="f03-l5" class="f03-line" mask="url(#f03-m5)" d="M1440 650 V500" />
+        <path id="f03-l6" class="f03-line" mask="url(#f03-m6)" d="M960 500 H291" />
+        <path id="f03-l7" class="f03-line" mask="url(#f03-m7)" d="M960 500 H1629" />
+        <path id="f03-l8" class="f03-line" mask="url(#f03-m8)" d="M291 500 V446" />
+        <path id="f03-l9" class="f03-line" mask="url(#f03-m9)" d="M737 500 V446" />
+        <path id="f03-l10" class="f03-line" mask="url(#f03-m10)" d="M1183 500 V446" />
+        <path id="f03-l11" class="f03-line" mask="url(#f03-m11)" d="M1629 500 V446" />
+      </svg>
+
+      <div id="f03-title">Pilares da 4.0</div>
+
+      <div id="f03-p1" class="f03-pillar">
+        <div id="f03-p1-num" class="f03-pnum">01</div>
+        <div id="f03-p1-sq" class="f03-pnum-sq"></div>
+        <div class="f03-plabel">
+          <span class="f03-pmask"><span id="f03-p1-a" class="f03-pl">SISTEMAS</span></span>
+          <span class="f03-pmask"><span id="f03-p1-b" class="f03-pl">CIBERFÍSICOS</span></span>
+        </div>
+      </div>
+      <div id="f03-p2" class="f03-pillar">
+        <div id="f03-p2-num" class="f03-pnum">02</div>
+        <div id="f03-p2-sq" class="f03-pnum-sq"></div>
+        <div class="f03-plabel">
+          <span class="f03-pmask"><span id="f03-p2-a" class="f03-pl">INTERNET</span></span>
+          <span class="f03-pmask"><span id="f03-p2-b" class="f03-pl">DAS COISAS</span></span>
+        </div>
+      </div>
+      <div id="f03-p3" class="f03-pillar">
+        <div id="f03-p3-num" class="f03-pnum">03</div>
+        <div id="f03-p3-sq" class="f03-pnum-sq"></div>
+        <div class="f03-plabel">
+          <span class="f03-pmask"><span id="f03-p3-a" class="f03-pl">NUVEM</span></span>
+        </div>
+      </div>
+      <div id="f03-p4" class="f03-pillar">
+        <div id="f03-p4-num" class="f03-pnum">04</div>
+        <div id="f03-p4-sq" class="f03-pnum-sq"></div>
+        <div class="f03-plabel">
+          <span class="f03-pmask"><span id="f03-p4-a" class="f03-pl">BIG DATA</span></span>
+        </div>
+      </div>
+
+      <div id="f03-j1" class="f03-jn"></div>
+      <div id="f03-j2" class="f03-jn"></div>
+      <div id="f03-j3" class="f03-jn"></div>
+      <div id="f03-j4" class="f03-jn"></div>
+
+      <div id="f03-n1" class="f03-node">MÁQUINA</div>
+      <div id="f03-n2" class="f03-node">PRODUTO</div>
+      <div id="f03-n3" class="f03-node">PESSOA</div>
+
+      <div id="f03-rt"><span id="f03-rt-sq"></span><span id="f03-rt-txt">TEMPO REAL</span></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var q = function (id) { return document.getElementById(id); };
+        var DUR = 8.683;
+
+        // ---- dynamic-content-sequencing: cue table pre-computed once (starts locked to the voiceover) ----
+        var PILLARS = [
+          { key: "f03-p1", lines: ["f03-p1-a", "f03-p1-b"], start: 0.6 },
+          { key: "f03-p2", lines: ["f03-p2-a", "f03-p2-b"], start: 1.8 },
+          { key: "f03-p3", lines: ["f03-p3-a"], start: 3.8 },
+          { key: "f03-p4", lines: ["f03-p4-a"], start: 4.4 }
+        ];
+        var NODES = [
+          { key: "f03-n1", start: 5.4 },
+          { key: "f03-n2", start: 6.0 },
+          { key: "f03-n3", start: 6.6 }
+        ];
+
+        // ---- svg-path-draw setup: measured lengths on the mask strokes ----
+        var DRAW = [
+          { m: "f03-mp1", t: 7.0, d: 0.4 },
+          { m: "f03-mp2", t: 7.0, d: 0.4 },
+          { m: "f03-mp3", t: 7.28, d: 0.3 },
+          { m: "f03-mp4", t: 7.28, d: 0.3 },
+          { m: "f03-mp5", t: 7.28, d: 0.3 },
+          { m: "f03-mp6", t: 7.5, d: 0.4 },
+          { m: "f03-mp7", t: 7.5, d: 0.4 },
+          { m: "f03-mp8", t: 7.78, d: 0.18 },
+          { m: "f03-mp9", t: 7.78, d: 0.18 },
+          { m: "f03-mp10", t: 7.78, d: 0.18 },
+          { m: "f03-mp11", t: 7.78, d: 0.18 }
+        ];
+        DRAW.forEach(function (s) {
+          var p = q(s.m);
+          var len = p.getTotalLength ? p.getTotalLength() : 700;
+          if (!len || len < 1) len = 700;
+          len = len * 1.05;
+          p.style.strokeDasharray = len + " " + len;
+          tl.set(p, { strokeDashoffset: len }, 0);
+          s.len = len;
+        });
+
+        // Initial hidden states (seek-safe)
+        PILLARS.forEach(function (p) {
+          tl.set(q(p.key), { opacity: 0 }, 0);
+          tl.set(q(p.key + "-num"), { opacity: 0 }, 0);
+          tl.set(q(p.key + "-sq"), { scale: 0 }, 0);
+          p.lines.forEach(function (l) { tl.set(q(l), { yPercent: 110 }, 0); });
+        });
+        NODES.forEach(function (n) { tl.set(q(n.key), { clipPath: "inset(50% 50% 50% 50%)" }, 0); });
+        tl.set([q("f03-j1"), q("f03-j2"), q("f03-j3"), q("f03-j4")], { scale: 0 }, 0);
+        tl.set(q("f03-rt"), { clipPath: "inset(0% 100% 0% 0%)" }, 0);
+
+        // Macro camera: slow steady push across the whole shot
+        tl.fromTo(q("f03-stage"), { scale: 1.0 }, { scale: 1.022, duration: DUR, ease: "none" }, 0);
+
+        // Chrome
+        tl.fromTo([q("f03-hair-top"), q("f03-hair-bot")], { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0);
+        tl.fromTo([q("f03-tag"), q("f03-num")], { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.05);
+
+        // Scene 1 (0.0–4.6): headline + four outline pillars, each on its spoken cue
+        tl.fromTo(q("f03-title"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+
+        PILLARS.forEach(function (p) {
+          var t = p.start;
+          tl.fromTo(q(p.key), { opacity: 0, y: 36, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, t);
+          tl.fromTo(q(p.key + "-num"), { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, t + 0.12);
+          tl.fromTo(q(p.key + "-sq"), { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.4)" }, t + 0.16);
+          p.lines.forEach(function (l, i) {
+            tl.fromTo(q(l), { yPercent: 110 }, { yPercent: 0, duration: 0.4, ease: "power4.out" }, t + 0.18 + i * 0.1);
+          });
+        });
+
+        // Scene 2 (4.6–8.683): network of inverted squares, data lines, TEMPO REAL
+        NODES.forEach(function (n) {
+          tl.fromTo(q(n.key), { clipPath: "inset(50% 50% 50% 50%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.35, ease: "expo.out" }, n.start);
+          tl.fromTo(q(n.key), { scale: 0.82 }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, n.start);
+        });
+
+        // "trocam dados" (7.0): dashed straight lines draw (mask stroke dashoffset → 0)
+        DRAW.forEach(function (s) {
+          tl.to(q(s.m), { strokeDashoffset: 0, duration: s.d, ease: "power2.out" }, s.t);
+        });
+        tl.fromTo([q("f03-j1"), q("f03-j2"), q("f03-j3"), q("f03-j4")], { scale: 0 }, { scale: 1, duration: 0.2, ease: "back.out(2.5)" }, 7.9);
+
+        // Data flowing along the dashes (single linear march, deterministic)
+        var lines = [];
+        for (var i = 1; i <= 11; i++) lines.push(q("f03-l" + i));
+        tl.fromTo(lines, { strokeDashoffset: 0 }, { strokeDashoffset: -105, duration: DUR - 7.0, ease: "none" }, 7.0);
+
+        // "tempo real" (8.0): mono label wipes in at the network hub
+        tl.to(q("f03-rt"), { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.35, ease: "power3.out" }, 8.0);
+        tl.fromTo(q("f03-rt-sq"), { scale: 0 }, { scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 8.12);
+
+        // Hold to end (no exit)
+        tl.to({}, { duration: 0.01 }, DUR - 0.01);
+
+        window.__timelines["03-pilares"] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,185 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .t13-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .t13-stage { position: absolute; inset: 0; overflow: hidden; }
+
+    /* furniture */
+    .t13-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .t13-hair-top { top: 70px; }
+    .t13-hair-bot { top: 892px; }
+    .t13-chrome {
+      position: absolute; top: 34px;
+      font-family: "DM Mono", monospace; font-size: 20px; letter-spacing: 0.06em; line-height: 1; white-space: nowrap;
+    }
+    .t13-chrome-tag { left: 77px; }
+    .t13-chrome-num { right: 77px; }
+
+    /* Scene 1: faint keyword lines */
+    .t13-kw-row { position: absolute; left: 77px; width: 1766px; height: 60px; }
+    .t13-kw-row-1 { top: 112px; }
+    .t13-kw-row-2 { top: 196px; }
+    .t13-kw-rule { position: absolute; left: 0; bottom: 0; width: 1766px; height: 2px; background: rgba(31,43,224,0.18); transform-origin: 0% 50%; }
+    .t13-kw {
+      position: absolute; top: 8px; width: 353px; text-align: center;
+      font-family: "DM Mono", monospace; font-size: 32px; letter-spacing: 0.05em; line-height: 40px;
+      color: #5560E5; white-space: nowrap;
+    }
+    .t13-tick { position: absolute; bottom: 0; width: 2px; height: 14px; background: rgba(31,43,224,0.18); }
+
+    /* Scene 2: hero blocks */
+    .t13-hero {
+      position: absolute; left: 0; top: 330px; width: 1920px; height: 220px;
+      display: flex; justify-content: center; align-items: center; gap: 56px;
+    }
+    .t13-block {
+      height: 220px; padding: 0 56px;
+      background: #1F2BE0; color: #F0EBDE;
+      font-family: "Newsreader", serif; font-weight: 400; font-size: 160px;
+      line-height: 220px; letter-spacing: -0.005em; white-space: nowrap;
+    }
+    .t13-plus {
+      font-family: "Newsreader", serif; font-weight: 400; font-size: 150px;
+      line-height: 220px; white-space: nowrap; color: #1F2BE0;
+    }
+
+    /* Scene 3: send-off */
+    .t13-callout {
+      position: absolute; left: 0; top: 618px; width: 1920px; text-align: center;
+      font-family: "Newsreader", serif; font-style: italic; font-weight: 400; font-size: 52px;
+      line-height: 1.1; color: #5560E5; white-space: nowrap;
+    }
+    .t13-final {
+      position: absolute; left: 0; top: 694px; width: 1920px; text-align: center;
+      font-family: "Newsreader", serif; font-weight: 400; font-size: 120px;
+      line-height: 1; letter-spacing: -0.005em; color: #1F2BE0; white-space: nowrap;
+    }
+    .t13-qr { position: absolute; right: 77px; top: 760px; width: 96px; height: 96px; background: #F0EBDE; box-shadow: 0 0 0 2px #F0EBDE; }
+    .t13-qr span { position: absolute; width: 12px; height: 12px; background: #1F2BE0; }
+  </style>
+
+  <div id="root" data-composition-id="13-encerramento" data-width="1920" data-height="1080" data-duration="7.019">
+    <div id="t13-ground" class="t13-ground clip" data-start="0" data-duration="7.019" data-track-index="0"></div>
+
+    <div id="t13-stage" class="t13-stage clip" data-start="0" data-duration="7.019" data-track-index="1">
+
+      <!-- Scene 1: course keywords on faint rules -->
+      <div class="t13-kw-wrap" id="t13-kw-wrap">
+        <div class="t13-kw-row t13-kw-row-1" id="t13-kw-row-1">
+          <div class="t13-kw-rule" id="t13-kw-rule-1"></div>
+          <div class="t13-kw" id="t13-kw-01" style="left:0px">PPCP</div>
+          <div class="t13-kw" id="t13-kw-02" style="left:353px">JIT</div>
+          <div class="t13-kw" id="t13-kw-03" style="left:706px">KANBAN</div>
+          <div class="t13-kw" id="t13-kw-04" style="left:1059px">FMEA</div>
+          <div class="t13-kw" id="t13-kw-05" style="left:1412px">PREVISÃO</div>
+          <div class="t13-tick" style="left:352px"></div>
+          <div class="t13-tick" style="left:705px"></div>
+          <div class="t13-tick" style="left:1058px"></div>
+          <div class="t13-tick" style="left:1411px"></div>
+        </div>
+        <div class="t13-kw-row t13-kw-row-2" id="t13-kw-row-2">
+          <div class="t13-kw-rule" id="t13-kw-rule-2"></div>
+          <div class="t13-kw" id="t13-kw-06" style="left:0px">GQT</div>
+          <div class="t13-kw" id="t13-kw-07" style="left:353px">CUSTOS</div>
+          <div class="t13-kw" id="t13-kw-08" style="left:706px">OEE</div>
+          <div class="t13-kw" id="t13-kw-09" style="left:1059px">CEP</div>
+          <div class="t13-kw" id="t13-kw-10" style="left:1412px">4.0</div>
+          <div class="t13-tick" style="left:352px"></div>
+          <div class="t13-tick" style="left:705px"></div>
+          <div class="t13-tick" style="left:1058px"></div>
+          <div class="t13-tick" style="left:1411px"></div>
+        </div>
+      </div>
+
+      <!-- Scene 2 + 3: hero pair + send-off rise together (one move) -->
+      <div class="t13-lift" id="t13-lift" style="position:absolute; inset:0;">
+        <div class="t13-hero" id="t13-hero">
+          <div class="t13-block" id="t13-antes">ANTES</div>
+          <div class="t13-plus" id="t13-plus">+</div>
+          <div class="t13-block" id="t13-dados">DADOS</div>
+        </div>
+        <div class="t13-callout" id="t13-callout">Bons estudos,</div>
+        <div class="t13-final" id="t13-final">Boa prova!</div>
+      </div>
+
+      <div class="t13-qr" id="t13-qr">
+        <span style="left:0;top:0"></span><span style="left:12px;top:0"></span><span style="left:24px;top:0"></span>
+        <span style="left:60px;top:0"></span><span style="left:84px;top:0"></span>
+        <span style="left:0;top:12px"></span><span style="left:24px;top:12px"></span><span style="left:48px;top:12px"></span><span style="left:72px;top:12px"></span>
+        <span style="left:0;top:24px"></span><span style="left:12px;top:24px"></span><span style="left:24px;top:24px"></span><span style="left:60px;top:24px"></span>
+        <span style="left:36px;top:36px"></span><span style="left:72px;top:36px"></span><span style="left:84px;top:36px"></span>
+        <span style="left:12px;top:48px"></span><span style="left:48px;top:48px"></span><span style="left:60px;top:48px"></span>
+        <span style="left:0;top:60px"></span><span style="left:24px;top:60px"></span><span style="left:84px;top:60px"></span>
+        <span style="left:0;top:72px"></span><span style="left:36px;top:72px"></span><span style="left:60px;top:72px"></span><span style="left:72px;top:72px"></span>
+        <span style="left:12px;top:84px"></span><span style="left:48px;top:84px"></span><span style="left:84px;top:84px"></span>
+      </div>
+
+      <div class="t13-hair t13-hair-top"></div>
+      <div class="t13-hair t13-hair-bot"></div>
+      <div class="t13-chrome t13-chrome-tag">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div class="t13-chrome t13-chrome-num">13 / 13</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var scope = document.querySelector('[data-composition-id="13-encerramento"]') || document;
+      function qa(s) { return Array.prototype.slice.call(scope.querySelectorAll(s)); }
+
+      // ===== Scene 1 (0.0–2.8): keywords cascade onto faint rules (pre-computed sequence)
+      tl.fromTo("#t13-kw-rule-1", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power2.out" }, 0.05);
+      tl.fromTo("#t13-kw-rule-2", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power2.out" }, 0.2);
+      var KW = qa(".t13-kw");
+      var BASE = 0.25, STEP = 0.2, cumulative = BASE;
+      KW.forEach(function (el, i) {
+        var len = (el.textContent || "").length;
+        tl.fromTo(el, { opacity: 0, y: -22 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, cumulative);
+        cumulative += STEP + len * 0.006;
+      });
+
+      // ===== Scene 2 (2.8–4.6): ANTES block at "antes do problema", DADOS at "dados"
+      tl.fromTo("#t13-antes", { clipPath: "inset(0% 100% 0% 0%)", y: 30 }, { clipPath: "inset(-30% -4% -15% -4%)", y: 0, duration: 0.6, ease: "power3.out" }, 2.8);
+      tl.fromTo("#t13-plus", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 4.35);
+      tl.fromTo("#t13-dados", { clipPath: "inset(0% 100% 0% 0%)", y: 30 }, { clipPath: "inset(-30% -4% -15% -4%)", y: 0, duration: 0.6, ease: "power3.out" }, 4.6);
+
+      // ===== Scene 3 (4.6–7.019): keywords recede, one rise, send-off, then full stop
+      tl.to(KW, { opacity: 0, duration: 0.45, ease: "power2.in", stagger: 0.02 }, 5.3);
+      tl.to(["#t13-kw-rule-1", "#t13-kw-rule-2"], { opacity: 0, duration: 0.45, ease: "power2.in" }, 5.3);
+      tl.to(qa(".t13-tick"), { opacity: 0, duration: 0.45, ease: "power2.in" }, 5.3);
+      tl.fromTo("#t13-lift", { y: 0 }, { y: -90, duration: 0.9, ease: "power3.inOut" }, 5.3);
+      tl.fromTo("#t13-callout", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.4);
+      tl.fromTo("#t13-final", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 6.2);
+      tl.fromTo("#t13-qr", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.4, ease: "power2.out" }, 6.3);
+
+      // hold to end
+      tl.set({}, {}, 7.019);
+      window.__timelines["13-encerramento"] = tl;
+    })();
+  </script>
+</template>

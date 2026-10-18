@@ -1,0 +1,372 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .t06-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .t06-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* ---- fixed furniture ---- */
+    .t06-hair {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .t06-hair-top { top: 70px; }
+    .t06-hair-bot { top: 892px; }
+    .t06-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .t06-chrome-tag { left: 77px; }
+    .t06-chrome-num { right: 77px; }
+
+    .t06-title {
+      position: absolute;
+      left: 80px;
+      top: 94px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 88px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+
+    /* ---- camera world ---- */
+    .t06-world {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: 760px 520px;
+    }
+
+    /* process blocks */
+    .t06-blk {
+      position: absolute;
+      width: 400px;
+      height: 110px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      white-space: nowrap;
+      transform-origin: 50% 50%;
+    }
+    /* linear row (Scene 1) */
+    .t06-l1 { left: 200px;  top: 420px; }
+    .t06-l2 { left: 760px;  top: 420px; }
+    .t06-l3 { left: 1320px; top: 420px; }
+    /* cycle square (Scene 2) */
+    .t06-c2 { left: 880px; top: 230px; }
+    .t06-c3 { left: 880px; top: 590px; }
+    .t06-c4 { left: 80px;  top: 590px; }
+
+    .t06-strike {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      top: 52px;
+      height: 5px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+
+    .t06-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .t06-svg path {
+      fill: none;
+      stroke: #1F2BE0;
+      stroke-width: 4;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+
+    /* inverted centre label */
+    .t06-center {
+      position: absolute;
+      left: 420px;
+      top: 425px;
+      width: 520px;
+      height: 80px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* benefit tags (right column) */
+    .t06-tags {
+      position: absolute;
+      left: 1400px;
+      top: 300px;
+      width: 440px;
+    }
+    .t06-tag {
+      position: absolute;
+      left: 0;
+      height: 66px;
+      box-sizing: border-box;
+      border: 2px solid #1F2BE0;
+      background: #F0EBDE;
+      padding: 0 22px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .t06-tag-sq {
+      width: 14px;
+      height: 14px;
+      background: #1F2BE0;
+      flex: 0 0 14px;
+    }
+    .t06-tag1 { top: 0; }
+    .t06-tag2 { top: 92px; }
+
+    /* closing band */
+    .t06-band {
+      position: absolute;
+      left: 80px;
+      top: 760px;
+      height: 100px;
+      display: flex;
+      align-items: stretch;
+    }
+    .t06-band-a,
+    .t06-band-b {
+      box-sizing: border-box;
+      height: 100px;
+      padding: 0 36px;
+      display: flex;
+      align-items: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .t06-band-a {
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+    }
+    .t06-band-b {
+      background: #1F2BE0;
+      color: #F0EBDE;
+    }
+  </style>
+
+  <div id="root" data-composition-id="06-sustentavel" data-width="1920" data-height="1080" data-duration="11.423">
+    <div id="t06-ground" class="t06-ground clip" data-start="0" data-duration="11.423" data-track-index="0"></div>
+
+    <div id="t06-stage" class="t06-stage clip" data-start="0" data-duration="11.423" data-track-index="1">
+
+      <div class="t06-world" id="t06-world">
+        <!-- connectors -->
+        <svg class="t06-svg" viewBox="0 0 1920 1080" aria-hidden="true">
+          <!-- linear arrows -->
+          <g id="t06-larrows">
+            <path id="t06-la1" d="M 614 475 L 746 475" />
+            <path id="t06-la1h" d="M 732 463 L 746 475 L 732 487" />
+            <path id="t06-la2" d="M 1174 475 L 1306 475" />
+            <path id="t06-la2h" d="M 1292 463 L 1306 475 L 1292 487" />
+          </g>
+          <!-- cycle arrows (clockwise) -->
+          <path id="t06-ca1" d="M 494 285 L 864 285" />
+          <path id="t06-ca1h" d="M 850 273 L 864 285 L 850 297" />
+          <path id="t06-ca2" d="M 1080 354 L 1080 576" />
+          <path id="t06-ca2h" d="M 1068 562 L 1080 576 L 1092 562" />
+          <path id="t06-ca3" d="M 866 645 L 494 645" />
+          <path id="t06-ca3h" d="M 508 633 L 494 645 L 508 657" />
+          <path id="t06-ca4" d="M 280 576 L 280 354" />
+          <path id="t06-ca4h" d="M 268 368 L 280 354 L 292 368" />
+        </svg>
+
+        <!-- linear economy -->
+        <div class="t06-blk t06-l1" id="t06-extrair">EXTRAIR</div>
+        <div class="t06-blk t06-l3" id="t06-descartar">DESCARTAR<div class="t06-strike" id="t06-strike"></div></div>
+
+        <!-- cycle blocks -->
+        <div class="t06-blk t06-c2" id="t06-usar">USAR</div>
+        <div class="t06-blk t06-c3" id="t06-recuperar">RECUPERAR</div>
+        <div class="t06-blk t06-c4" id="t06-reaprov">REAPROVEITAR</div>
+
+        <!-- shared block: travels from the line into the cycle -->
+        <div class="t06-blk t06-l2" id="t06-produzir">PRODUZIR</div>
+
+        <div class="t06-center" id="t06-center">ECONOMIA CIRCULAR</div>
+
+        <!-- benefits -->
+        <div class="t06-tags">
+          <div class="t06-tag t06-tag1" id="t06-tag1"><span class="t06-tag-sq"></span><span>MENOS DESPERDÍCIO</span></div>
+          <div class="t06-tag t06-tag2" id="t06-tag2"><span class="t06-tag-sq"></span><span>ENERGIA EFICIENTE</span></div>
+        </div>
+
+        <!-- closing band -->
+        <div class="t06-band">
+          <div class="t06-band-a" id="t06-enxuto">ENXUTO</div>
+          <div class="t06-band-b" id="t06-planeta">+ PLANETA</div>
+        </div>
+      </div>
+
+      <div class="t06-hair t06-hair-top"></div>
+      <div class="t06-hair t06-hair-bot"></div>
+      <div class="t06-chrome t06-chrome-tag">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div class="t06-chrome t06-chrome-num">06 / 13</div>
+
+      <div class="t06-title" id="t06-title">Engenharia sustentável</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // ---- svg-path-draw setup (measured lengths)
+      var paths = ["t06-la1", "t06-la1h", "t06-la2", "t06-la2h",
+                   "t06-ca1", "t06-ca1h", "t06-ca2", "t06-ca2h",
+                   "t06-ca3", "t06-ca3h", "t06-ca4", "t06-ca4h"];
+      paths.forEach(function (id) {
+        var el = document.getElementById(id);
+        var len = el.getTotalLength() * 1.05;
+        el.style.strokeDasharray = len + " " + len;
+        el.style.strokeDashoffset = len;
+      });
+      function draw(id, t, d) {
+        tl.to("#" + id, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+      }
+      function pop(sel, t) {
+        tl.fromTo(sel,
+          { opacity: 0, scale: 0.92, y: 16 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "power3.out" }, t);
+      }
+
+      // slow camera push under the whole shot
+      tl.fromTo("#t06-world", { scale: 1 }, { scale: 1.02, duration: 10.7, ease: "none" }, 0.2);
+
+      // ===== Scene 1 (0.0–2.7): the straight line EXTRAIR → PRODUZIR → DESCARTAR
+      pop("#t06-extrair", 0.15);
+      draw("t06-la1", 0.55, 0.35);
+      draw("t06-la1h", 0.82, 0.18);
+      pop("#t06-produzir", 0.85);
+      draw("t06-la2", 1.25, 0.35);
+      draw("t06-la2h", 1.52, 0.18);
+      pop("#t06-descartar", 1.55);
+      tl.fromTo("#t06-title",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.5);
+
+      // ===== Scene 2 (2.7–4.0): "economia circular" — line folds into a square cycle
+      tl.fromTo("#t06-strike",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.3, ease: "power2.out" }, 2.7);
+      tl.to("#t06-descartar", { opacity: 0, y: 30, duration: 0.3, ease: "power2.in" }, 3.0);
+      tl.to("#t06-extrair", { opacity: 0, y: 30, duration: 0.3, ease: "power2.in" }, 2.95);
+      tl.to("#t06-larrows", { opacity: 0, duration: 0.25, ease: "power1.out" }, 2.95);
+      // PRODUZIR travels from the line to the cycle's top-left corner
+      tl.to("#t06-produzir", { x: -680, y: -190, duration: 0.6, ease: "power3.inOut" }, 3.0);
+      // cycle arrows draw clockwise, each landing on the next block
+      pop("#t06-usar", 3.25);
+      draw("t06-ca1", 3.3, 0.3);
+      draw("t06-ca1h", 3.52, 0.15);
+      pop("#t06-recuperar", 3.42);
+      draw("t06-ca2", 3.48, 0.28);
+      draw("t06-ca2h", 3.68, 0.15);
+      pop("#t06-reaprov", 3.58);
+      draw("t06-ca3", 3.64, 0.3);
+      draw("t06-ca3h", 3.86, 0.15);
+      draw("t06-ca4", 3.8, 0.28);
+      draw("t06-ca4h", 4.0, 0.15);
+      // inverted centre label — clip wipe, never dimmed
+      tl.fromTo("#t06-center",
+        { clipPath: "inset(0% 50% 0% 50%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.45, ease: "power3.out" }, 3.85);
+
+      // ===== Scene 3 (4.0–6.9): benefit tags stack on the right
+      // dynamic-content-sequencing: entries pre-computed once into a flat timeline
+      var TAGS = [
+        { sel: "#t06-tag1", start: 4.3 },   // "menos desperdício"
+        { sel: "#t06-tag2", start: 5.4 }    // "uso eficiente de energia"
+      ];
+      TAGS.forEach(function (e) {
+        tl.fromTo(e.sel,
+          { clipPath: "inset(0% 100% 0% 0%)", x: -24 },
+          { clipPath: "inset(-30% -4% -15% -4%)", x: 0, duration: 0.5, ease: "power2.out" }, e.start);
+      });
+
+      // ===== Scene 4 (6.9–10.923): band below — ENXUTO + PLANETA
+      tl.fromTo("#t06-enxuto",
+        { clipPath: "inset(0% 100% 0% 0%)", y: 14 },
+        { clipPath: "inset(-30% -4% -15% -4%)", y: 0, duration: 0.55, ease: "power2.out" }, 8.1);
+      tl.fromTo("#t06-planeta",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "power3.out" }, 9.9);
+
+      // hold — no exit (root transition owns it)
+      tl.set({}, {}, 10.923);
+
+      window.__timelines["06-sustentavel"] = tl;
+    })();
+  </script>
+</template>

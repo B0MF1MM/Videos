@@ -1,0 +1,323 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .t10-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .t10-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      perspective: 2000px;
+    }
+
+    /* ---- fixed furniture ---- */
+    .t10-hair {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .t10-hair-top { top: 70px; }
+    .t10-hair-bot { top: 892px; }
+    .t10-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .t10-chrome-tag { left: 77px; }
+    .t10-chrome-num { right: 77px; }
+
+    /* ---- Scene 1: section band (inverted) ---- */
+    .t10-band {
+      position: absolute;
+      top: 106px;
+      left: 0;
+      width: 1920px;
+      height: 76px;
+      text-align: center;
+    }
+    .t10-band-in {
+      display: inline-block;
+      height: 76px;
+      padding: 0 36px 0 calc(36px + 0.18em);
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 76px;
+      letter-spacing: 0.18em;
+      white-space: nowrap;
+    }
+
+    /* ---- Scenes 2–3: split-tilt cards ---- */
+    .t10-split {
+      position: absolute;
+      left: 160px;
+      top: 222px;
+      width: 1600px;
+      height: 410px;
+      display: flex;
+      gap: 80px;
+      transform-style: preserve-3d;
+    }
+    .t10-card {
+      position: relative;
+      width: 760px;
+      height: 410px;
+      box-sizing: border-box;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .t10-card-l { transform-origin: 100% 50%; }
+    .t10-card-r { transform-origin: 0% 50%; }
+    .t10-face {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      padding: 52px 60px;
+    }
+    .t10-face-l {
+      background: #F0EBDE;
+      border: 3px solid #1F2BE0;
+      color: #1F2BE0;
+    }
+    .t10-face-r {
+      background: #1F2BE0;
+      color: #F0EBDE;
+    }
+    .t10-name {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 140px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .t10-rule {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 232px;
+      height: 2px;
+      transform-origin: 0% 50%;
+    }
+    .t10-face-l .t10-rule { background: #1F2BE0; }
+    .t10-face-r .t10-rule { background: #F0EBDE; }
+
+    .t10-formula {
+      position: absolute;
+      left: 60px;
+      top: 272px;
+      font-family: "DM Mono", monospace;
+      font-size: 62px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .t10-term {
+      display: inline-block;
+    }
+    .t10-sp { display: inline-block; width: 0.42em; }
+
+    .t10-sub {
+      position: absolute;
+      left: 60px;
+      top: 266px;
+      font-family: "Newsreader", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 68px;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+
+    /* ---- Scene 4: PREVENIR < CORRIGIR strip ---- */
+    .t10-strip {
+      position: absolute;
+      left: 0;
+      top: 688px;
+      width: 1920px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+    }
+    .t10-blk {
+      height: 104px;
+      box-sizing: border-box;
+      padding: 0 44px 0 calc(44px + 0.16em);
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 50px;
+      line-height: 104px;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+      transform-origin: 50% 50%;
+    }
+    .t10-blk-inv {
+      background: #1F2BE0;
+      color: #F0EBDE;
+    }
+    .t10-blk-out {
+      background: #F0EBDE;
+      border: 3px solid #1F2BE0;
+      line-height: 98px;
+      color: #1F2BE0;
+    }
+    .t10-lt {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 190px;
+      line-height: 150px;
+      height: 150px;
+      transform-origin: 50% 55%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="10-certo" data-width="1920" data-height="1080" data-duration="10.484">
+    <div id="t10-ground" class="t10-ground clip" data-start="0" data-duration="10.484" data-track-index="0"></div>
+
+    <div id="t10-stage" class="t10-stage clip" data-start="0" data-duration="10.484" data-track-index="1">
+
+      <div class="t10-band" id="t10-band">
+        <div class="t10-band-in" id="t10-band-in">CERTO DA PRIMEIRA VEZ</div>
+      </div>
+
+      <div class="t10-split" id="t10-split">
+        <!-- left: FMEA (outline) — outer = entry, inner = idle -->
+        <div class="t10-card t10-card-l" id="t10-card-l">
+          <div class="t10-face t10-face-l" id="t10-face-l">
+            <div class="t10-name" id="t10-name-l">FMEA</div>
+            <div class="t10-rule" id="t10-rule-l"></div>
+            <div class="t10-formula" id="t10-formula">
+              <span class="t10-term" id="t10-f0">NPR =</span><span class="t10-sp"></span><span class="t10-term" id="t10-f1">S</span><span class="t10-sp"></span><span class="t10-term" id="t10-f2">× O</span><span class="t10-sp"></span><span class="t10-term" id="t10-f3">× D</span>
+            </div>
+          </div>
+        </div>
+        <!-- right: GQT (inverted cobalt) -->
+        <div class="t10-card t10-card-r" id="t10-card-r">
+          <div class="t10-face t10-face-r" id="t10-face-r">
+            <div class="t10-name" id="t10-name-r">GQT</div>
+            <div class="t10-rule" id="t10-rule-r"></div>
+            <div class="t10-sub" id="t10-sub">todos na qualidade</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t10-strip" id="t10-strip">
+        <div class="t10-blk t10-blk-inv" id="t10-prev">PREVENIR</div>
+        <div class="t10-lt" id="t10-lt">&lt;</div>
+        <div class="t10-blk t10-blk-out" id="t10-corr">CORRIGIR</div>
+      </div>
+
+      <div class="t10-hair t10-hair-top"></div>
+      <div class="t10-hair t10-hair-bot"></div>
+      <div class="t10-chrome t10-chrome-tag">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div class="t10-chrome t10-chrome-num">10 / 13</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      var TILT = 12, OVER = 8;
+
+      // ===== Scene 1 (0.0–1.3): inverted section band wipes in (never dimmed)
+      tl.fromTo("#t10-band-in",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "power3.out" }, 0.15);
+      tl.fromTo("#t10-band",
+        { y: -24 },
+        { y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+
+      // ===== Scene 2 (1.3–5.0): FMEA card enters from the left (split-tilt)
+      tl.fromTo("#t10-card-l",
+        { x: -420, rotateY: TILT + OVER, opacity: 0 },
+        { x: 0, rotateY: TILT, opacity: 1, duration: 0.9, ease: "power3.out" }, 1.3);
+      tl.fromTo("#t10-name-l",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.6);
+      tl.fromTo("#t10-rule-l",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.8);
+      tl.fromTo("#t10-f0",
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.0);
+      // formula assembles term by term on the VO cues
+      [["#t10-f1", 2.8], ["#t10-f2", 3.5], ["#t10-f3", 4.3]].forEach(function (b) {
+        tl.fromTo(b[0],
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, b[1]);
+      });
+
+      // ===== Scene 3 (5.0–7.5): GQT card enters from the right (mirrored tilt)
+      // inverted cobalt block: slide + clip only, never opacity-dimmed
+      tl.fromTo("#t10-card-r",
+        { x: 1000, rotateY: -TILT - OVER },
+        { x: 0, rotateY: -TILT, duration: 0.9, ease: "power3.out" }, 5.3);
+      tl.fromTo("#t10-name-r",
+        { clipPath: "inset(0% 0% 100% 0%)", y: 24 },
+        { clipPath: "inset(-30% -4% -15% -4%)", y: 0, duration: 0.5, ease: "power2.out" }, 5.6);
+      tl.fromTo("#t10-rule-r",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.5, ease: "power2.out" }, 5.8);
+      tl.fromTo("#t10-sub",
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.6, ease: "power2.out" }, 6.4);
+
+      // counter-phase idle (inner faces, so entry and idle never share an element)
+      tl.fromTo("#t10-face-l", { y: 0 }, { y: -5, duration: 1.6, ease: "sine.inOut" }, 6.3);
+      tl.to("#t10-face-l", { y: 0, duration: 1.6, ease: "sine.inOut" }, 7.9);
+      tl.fromTo("#t10-face-r", { y: 0 }, { y: 5, duration: 1.6, ease: "sine.inOut" }, 6.3);
+      tl.to("#t10-face-r", { y: 0, duration: 1.6, ease: "sine.inOut" }, 7.9);
+
+      // ===== Scene 4 (7.5–9.984): PREVENIR < CORRIGIR strip — smooth spring-pop, no overshoot
+      tl.fromTo("#t10-prev",
+        { scale: 0 },
+        { scale: 1, duration: 0.55, ease: "power3.out" }, 7.8);
+      tl.fromTo("#t10-lt",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 8.05);
+      tl.fromTo("#t10-corr",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 8.3);
+
+      // hold — no exit (root transition owns it)
+      tl.set({}, {}, 9.984);
+
+      window.__timelines["10-certo"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,247 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .t08-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .t08-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* ---- fixed furniture ---- */
+    .t08-hair {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .t08-hair-top { top: 70px; }
+    .t08-hair-bot { top: 892px; }
+    .t08-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .t08-chrome-tag { left: 77px; }
+    .t08-chrome-num { right: 77px; }
+
+    /* ---- camera world ---- */
+    .t08-world {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: 960px 520px;
+    }
+
+    /* ---- Scene 1/2: chapter label + title (centered) ---- */
+    .t08-head {
+      position: absolute;
+      left: 0;
+      width: 1920px;
+      top: 360px;
+      text-align: center;
+      transform-origin: 50% 0%;
+    }
+    .t08-label {
+      display: inline-block;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-left: 0.18em; /* balance trailing tracking */
+    }
+    .t08-title {
+      margin-top: 26px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 132px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+
+    .t08-tag {
+      position: absolute;
+      left: 0;
+      width: 1920px;
+      top: 290px;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      font-size: 32px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .t08-tag-rule {
+      position: absolute;
+      left: 900px;
+      width: 120px;
+      top: 346px;
+      height: 2px;
+      background: #1F2BE0;
+      transform-origin: 50% 50%;
+    }
+
+    /* ---- Scene 3: the question ---- */
+    .t08-q {
+      position: absolute;
+      left: 80px;
+      width: 1760px;
+      top: 430px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 104px;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+    }
+    .t08-line {
+      white-space: nowrap;
+    }
+    .t08-seg {
+      display: inline-block;
+    }
+    .t08-kw {
+      position: relative;
+      display: inline-block;
+    }
+    .t08-kw-l {
+      position: absolute;
+      left: -0.14em;
+      top: -0.02em;
+      padding: 0.02em 0.14em 0.04em 0.14em;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      white-space: nowrap;
+    }
+    .t08-punct {
+      display: inline-block;
+      margin-left: 0.17em;
+    }
+  </style>
+
+  <div id="root" data-composition-id="08-pergunta" data-width="1920" data-height="1080" data-duration="7.711">
+    <div id="t08-ground" class="t08-ground clip" data-start="0" data-duration="7.711" data-track-index="0"></div>
+
+    <div id="t08-stage" class="t08-stage clip" data-start="0" data-duration="7.711" data-track-index="1">
+      <div class="t08-world" id="t08-world">
+
+        <div class="t08-head" id="t08-head">
+          <div class="t08-label" id="t08-label">AULA 10</div>
+          <div class="t08-title" id="t08-title">Revisão geral</div>
+        </div>
+
+        <div class="t08-tag" id="t08-tag">A DISCIPLINA EM UMA PERGUNTA</div>
+        <div class="t08-tag-rule" id="t08-tag-rule"></div>
+
+        <div class="t08-q" id="t08-q">
+          <div class="t08-line">
+            <span class="t08-seg" id="t08-s1">Como produzir</span>
+            <span class="t08-seg" id="t08-s2"><span class="t08-kw"><span class="t08-kw-u" id="t08-k1u">certo</span><span class="t08-kw-l" id="t08-k1l">certo</span></span><span class="t08-punct">,</span></span>
+          </div>
+          <div class="t08-line">
+            <span class="t08-seg" id="t08-s3">na <span class="t08-kw"><span class="t08-kw-u" id="t08-k2u">hora certa</span><span class="t08-kw-l" id="t08-k2l">hora certa</span></span></span>
+            <span class="t08-seg" id="t08-s4">e com <span class="t08-kw"><span class="t08-kw-u" id="t08-k3u">qualidade</span><span class="t08-kw-l" id="t08-k3l">qualidade</span></span><span class="t08-punct">?</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t08-hair t08-hair-top"></div>
+      <div class="t08-hair t08-hair-bot"></div>
+      <div class="t08-chrome t08-chrome-tag">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div class="t08-chrome t08-chrome-num">08 / 13</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // slow camera push underneath the whole shot
+      tl.fromTo("#t08-world", { scale: 1 }, { scale: 1.02, duration: 7.0, ease: "none" }, 0.2);
+
+      // ===== Scene 1 (0.0–2.0): AULA 10 + "Revisão geral" centered high
+      tl.fromTo("#t08-label",
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.2);
+      tl.fromTo("#t08-title",
+        { opacity: 0, y: 36, scale: 1.06 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" }, 1.0);
+
+      // ===== Scene 2 (2.0–4.3): title rises and shrinks; mono tag on "numa pergunta"
+      tl.to("#t08-head", { y: -250, scale: 0.7, duration: 0.8, ease: "power3.inOut" }, 2.0);
+      tl.fromTo("#t08-tag",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 3.4);
+      tl.fromTo("#t08-tag-rule",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.4, ease: "power2.out" }, 3.55);
+
+      // ===== Scene 3 (4.3–7.211): the question assembles word-group by word-group
+      // dynamic-content-sequencing: flat, pre-computed beat table (VO cues)
+      var BEATS = [
+        { seg: "#t08-s1", start: 4.3 },                                   // "Como produzir"
+        { seg: "#t08-s2", start: 5.1, u: "#t08-k1u", l: "#t08-k1l" },     // "certo,"
+        { seg: "#t08-s3", start: 5.6, u: "#t08-k2u", l: "#t08-k2l" },     // "na hora certa"
+        { seg: "#t08-s4", start: 6.3, u: "#t08-k3u", l: "#t08-k3l" }      // "e com qualidade?"
+      ];
+      // lit copies hidden until their wipe begins
+      BEATS.forEach(function (b) { if (b.l) tl.set(b.l, { opacity: 0 }, 0); });
+
+      BEATS.forEach(function (b) {
+        tl.fromTo(b.seg,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, b.start);
+        if (b.l) {
+          var w = b.start + 0.22;
+          // key term flips to an inverted cobalt block (clip wipe, never dimmed)
+          tl.set(b.l, { opacity: 1 }, w);
+          tl.fromTo(b.l,
+            { clipPath: "inset(0% 100% 0% 0%)" },
+            { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.32, ease: "power2.out" }, w);
+          tl.set(b.u, { opacity: 0 }, w + 0.32);
+        }
+      });
+
+      // hold — no exit (root transition owns it)
+      tl.set({}, {}, 7.211);
+
+      window.__timelines["08-pergunta"] = tl;
+    })();
+  </script>
+</template>

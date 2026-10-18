@@ -1,0 +1,256 @@
+<template>
+  <div id="root" data-composition-id="07-engenheiro" data-width="1920" data-height="1080" data-start="0" data-duration="10.448">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        --paper: #F0EBDE;
+        --ink: #1F2BE0;
+        --grid: rgba(31, 43, 224, 0.10);
+        --faint: rgba(31, 43, 224, 0.18);
+      }
+      #f07-ground {
+        position: absolute; inset: 0;
+        background-color: var(--paper);
+        background-image:
+          linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      #f07-chrome { position: absolute; inset: 0; }
+      .f07-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: var(--ink); }
+      #f07-hair-top { top: 86px; }
+      #f07-hair-bot { top: 880px; }
+      .f07-chrome-txt {
+        position: absolute; top: 40px;
+        font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em;
+        color: var(--ink); line-height: 1; white-space: nowrap;
+      }
+      #f07-tag { left: 80px; }
+      #f07-num { right: 80px; }
+
+      #f07-stage { position: absolute; inset: 0; transform-origin: 30% 50%; }
+
+      #f07-title {
+        position: absolute; left: 80px; top: 112px;
+        font-family: "Newsreader", serif; font-weight: 400; font-size: 84px;
+        line-height: 1; letter-spacing: -0.008em; color: var(--ink); white-space: nowrap;
+      }
+
+      /* ---- the profile card (ficha) — left 60% ---- */
+      #f07-card {
+        position: absolute; left: 80px; top: 236px; width: 1020px; height: 620px;
+        box-sizing: border-box; border: 3px solid var(--ink); background: var(--paper);
+      }
+      #f07-head {
+        position: absolute; left: 0; top: 0; right: 0; height: 76px;
+        background: var(--ink); color: var(--paper);
+      }
+      .f07-mask { position: absolute; overflow: hidden; padding-top: 0.12em; }
+      .f07-ln { display: block; white-space: nowrap; }
+      #f07-head-m { left: 36px; top: 20px; }
+      #f07-head-t {
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px;
+        letter-spacing: 0.18em; line-height: 1; text-transform: uppercase;
+      }
+      .f07-sq { position: absolute; width: 16px; height: 16px; background: var(--paper); }
+      #f07-head-sq1 { right: 36px; top: 30px; }
+      #f07-head-sq2 { right: 62px; top: 30px; }
+      #f07-head-sq3 { right: 88px; top: 30px; }
+
+      .f07-row { position: absolute; left: 0; right: 0; height: 180px; }
+      #f07-r1 { top: 76px; }
+      #f07-r2 { top: 256px; }
+      #f07-r3 { top: 436px; }
+      .f07-div { position: absolute; left: 36px; right: 36px; top: 0; height: 2px; background: var(--faint); transform-origin: 0% 50%; }
+      .f07-idx {
+        position: absolute; left: 36px; top: 34px;
+        font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.06em; line-height: 1; color: var(--ink);
+      }
+      .f07-lab-m { left: 110px; top: 30px; }
+      .f07-lab {
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px;
+        letter-spacing: 0.18em; line-height: 1; text-transform: uppercase; color: var(--ink);
+      }
+      .f07-bar { position: absolute; left: 110px; top: 92px; width: 832px; height: 52px; }
+      .f07-cell {
+        position: absolute; top: 0; width: 76px; height: 52px;
+        background: var(--grid); overflow: hidden;
+      }
+      .f07-on {
+        position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+        background: var(--ink); transform-origin: 50% 100%;
+      }
+
+      /* ---- the maxim — right 40% ---- */
+      #f07-rule { position: absolute; left: 1180px; top: 412px; width: 140px; height: 3px; background: var(--ink); transform-origin: 0% 50%; }
+      #f07-m1 { left: 1180px; top: 440px; }
+      #f07-m1-t {
+        font-family: "Newsreader", serif; font-style: italic; font-weight: 400; font-size: 68px;
+        line-height: 1.1; letter-spacing: -0.005em; color: var(--ink);
+      }
+      #f07-block {
+        position: absolute; left: 1166px; top: 540px; height: 104px; width: 500px;
+        background: var(--ink);
+      }
+      #f07-m2 { left: 14px; top: 8px; }
+      #f07-m2-t {
+        font-family: "Newsreader", serif; font-style: italic; font-weight: 400; font-size: 68px;
+        line-height: 1.1; letter-spacing: -0.005em; color: var(--paper);
+      }
+      #f07-mark { position: absolute; left: 1180px; top: 676px; width: 16px; height: 16px; background: var(--ink); }
+    </style>
+
+    <div id="f07-ground" class="clip" data-start="0" data-duration="10.448" data-track-index="0"></div>
+
+    <div id="f07-chrome" class="clip" data-start="0" data-duration="10.448" data-track-index="1">
+      <div id="f07-hair-top" class="f07-hair"></div>
+      <div id="f07-hair-bot" class="f07-hair"></div>
+      <div id="f07-tag" class="f07-chrome-txt">AULAS 9–10 · INOVAÇÃO E REVISÃO</div>
+      <div id="f07-num" class="f07-chrome-txt">07 / 13</div>
+    </div>
+
+    <div id="f07-stage" class="clip" data-start="0" data-duration="10.448" data-track-index="2">
+      <div id="f07-title">O engenheiro do futuro</div>
+
+      <div id="f07-card">
+        <div id="f07-head">
+          <span id="f07-head-m" class="f07-mask"><span id="f07-head-t" class="f07-ln">PERFIL</span></span>
+          <div id="f07-head-sq1" class="f07-sq"></div>
+          <div id="f07-head-sq2" class="f07-sq"></div>
+          <div id="f07-head-sq3" class="f07-sq"></div>
+        </div>
+
+        <div id="f07-r1" class="f07-row">
+          <div id="f07-r1-div" class="f07-div"></div>
+          <div id="f07-r1-i" class="f07-idx">01</div>
+          <span id="f07-r1-m" class="f07-mask f07-lab-m"><span id="f07-r1-l" class="f07-ln f07-lab">DADOS</span></span>
+          <div id="f07-r1-bar" class="f07-bar"></div>
+        </div>
+        <div id="f07-r2" class="f07-row">
+          <div id="f07-r2-div" class="f07-div"></div>
+          <div id="f07-r2-i" class="f07-idx">02</div>
+          <span id="f07-r2-m" class="f07-mask f07-lab-m"><span id="f07-r2-l" class="f07-ln f07-lab">EQUIPE MULTIDISCIPLINAR</span></span>
+          <div id="f07-r2-bar" class="f07-bar"></div>
+        </div>
+        <div id="f07-r3" class="f07-row">
+          <div id="f07-r3-div" class="f07-div"></div>
+          <div id="f07-r3-i" class="f07-idx">03</div>
+          <span id="f07-r3-m" class="f07-mask f07-lab-m"><span id="f07-r3-l" class="f07-ln f07-lab">APRENDIZADO CONTÍNUO</span></span>
+          <div id="f07-r3-bar" class="f07-bar"></div>
+        </div>
+      </div>
+
+      <div id="f07-rule"></div>
+      <span id="f07-m1" class="f07-mask"><span id="f07-m1-t" class="f07-ln">A tecnologia muda;</span></span>
+      <div id="f07-block">
+        <span id="f07-m2" class="f07-mask"><span id="f07-m2-t" class="f07-ln">o método fica.</span></span>
+      </div>
+      <div id="f07-mark"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var q = function (id) { return document.getElementById(id); };
+        var DUR = 10.048;
+        var CELLS = 10, CW = 76, GAP = 8;
+
+        // Build the 10-cell bars once (deterministic DOM, before the timeline)
+        [1, 2, 3].forEach(function (n) {
+          var bar = q("f07-r" + n + "-bar");
+          for (var i = 0; i < CELLS; i++) {
+            var c = document.createElement("div");
+            c.className = "f07-cell";
+            c.id = "f07-r" + n + "-c" + i;
+            c.style.left = (i * (CW + GAP)) + "px";
+            var on = document.createElement("div");
+            on.className = "f07-on";
+            on.id = "f07-r" + n + "-o" + i;
+            c.appendChild(on);
+            bar.appendChild(c);
+          }
+        });
+
+        // dynamic-content-sequencing: one cue table, pre-computed once, locked to the voiceover
+        var ROWS = [
+          { n: 1, cue: 3.1 },
+          { n: 2, cue: 4.2 },
+          { n: 3, cue: 5.7 }
+        ];
+        var SKELETON = 1.9; // Scene 2 opens: empty rows assemble into the card
+
+        function cells(n) { var a = []; for (var i = 0; i < CELLS; i++) a.push(q("f07-r" + n + "-c" + i)); return a; }
+        function fills(n) { var a = []; for (var i = 0; i < CELLS; i++) a.push(q("f07-r" + n + "-o" + i)); return a; }
+
+        // Seek-safe initial states
+        ROWS.forEach(function (r) {
+          tl.set(fills(r.n), { scaleY: 0 }, 0);
+          tl.set(cells(r.n), { opacity: 0 }, 0);
+          tl.set(q("f07-r" + r.n + "-l"), { yPercent: 115 }, 0);
+          tl.set(q("f07-r" + r.n + "-i"), { opacity: 0 }, 0);
+          tl.set(q("f07-r" + r.n + "-div"), { scaleX: 0 }, 0);
+        });
+        tl.set(q("f07-head"), { clipPath: "inset(0% 100% 0% 0%)" }, 0);
+        tl.set(q("f07-head-t"), { yPercent: 115 }, 0);
+        tl.set([q("f07-head-sq1"), q("f07-head-sq2"), q("f07-head-sq3")], { scale: 0 }, 0);
+        tl.set(q("f07-m1-t"), { yPercent: 115 }, 0);
+        tl.set(q("f07-m2-t"), { yPercent: 115 }, 0);
+        tl.set(q("f07-block"), { clipPath: "inset(0% 100% 0% 0%)" }, 0);
+        tl.set(q("f07-rule"), { scaleX: 0 }, 0);
+        tl.set(q("f07-mark"), { scale: 0 }, 0);
+
+        // Macro camera: slow push under the whole shot
+        tl.fromTo(q("f07-stage"), { scale: 1.0 }, { scale: 1.02, duration: DUR, ease: "none" }, 0);
+
+        // Chrome
+        tl.fromTo([q("f07-hair-top"), q("f07-hair-bot")], { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0);
+        tl.fromTo([q("f07-tag"), q("f07-num")], { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.05);
+
+        // Scene 1 (0.0–1.9): card outline wipes down, inverted PERFIL strip, headline at 1.1
+        tl.fromTo(q("f07-card"), { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.7, ease: "power3.inOut" }, 0.15);
+        tl.fromTo(q("f07-head"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "expo.out" }, 0.6);
+        tl.fromTo(q("f07-head-t"), { yPercent: 115 }, { yPercent: 0, duration: 0.42, ease: "power4.out" }, 0.8);
+        tl.fromTo([q("f07-head-sq3"), q("f07-head-sq2"), q("f07-head-sq1")], { scale: 0 }, { scale: 1, duration: 0.25, ease: "back.out(2.5)", stagger: 0.08 }, 0.95);
+        tl.fromTo(q("f07-title"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 1.1);
+
+        // Scene 2a (1.9): the empty rows assemble — dividers draw, skeleton cells cascade into slot
+        ROWS.forEach(function (r, k) {
+          var t0 = SKELETON + k * 0.18;
+          tl.fromTo(q("f07-r" + r.n + "-div"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, t0);
+          tl.fromTo(cells(r.n), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.035 }, t0 + 0.05);
+        });
+
+        // Scene 2b: each competence lands on its spoken cue; its 10-cell bar fills (stat-bars-and-fills, scaleY cells)
+        ROWS.forEach(function (r) {
+          var n = r.n, t = r.cue;
+          tl.fromTo(q("f07-r" + n + "-i"), { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, t);
+          tl.fromTo(q("f07-r" + n + "-l"), { yPercent: 115 }, { yPercent: 0, duration: 0.45, ease: "power4.out" }, t + 0.05);
+          tl.fromTo(fills(n), { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out", stagger: 0.07 }, t + 0.2);
+        });
+
+        // Scene 3 (7.0–10.048): the maxim on the right
+        tl.fromTo(q("f07-rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 7.0);
+        tl.fromTo(q("f07-m1-t"), { yPercent: 115 }, { yPercent: 0, duration: 0.55, ease: "power4.out" }, 7.2);
+        tl.fromTo(q("f07-block"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "expo.out" }, 8.6);
+        tl.fromTo(q("f07-m2-t"), { yPercent: 115 }, { yPercent: 0, duration: 0.5, ease: "power4.out" }, 8.75);
+        tl.fromTo(q("f07-mark"), { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, 9.2);
+
+        // Hold to end (no exit)
+        tl.to({}, { duration: 0.01 }, DUR - 0.01);
+
+        window.__timelines["07-engenheiro"] = tl;
+      })();
+    </script>
+  </div>
+</template>
