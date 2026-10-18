@@ -815,5 +815,18 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "98cdac96-35a2-4453-a621-c8fc538c6c5c",
+      "completedAt": 1792347202092,
+      "output": "/home/user/Videos/videos/inovacao-revisao-explicado/renders/video.mp4",
+      "status": "completed",
+      "revision": "db8d4dfb-da50-4bb0-898e-2a2da9beb0ab"
+    },
+    "retainedRevisions": [
+      "db8d4dfb-da50-4bb0-898e-2a2da9beb0ab"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
