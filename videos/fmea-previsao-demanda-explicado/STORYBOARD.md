@@ -151,7 +151,7 @@ Scene 5 (11.8–14.27s): em "igual a" (12.4s) a câmera empurra levemente para a
 - voiceover: "Com o risco priorizado, vêm as ações: instrução visual e uma verificação específica reduzem a ocorrência e melhoram a detecção. A severidade continua igual, se a consequência ainda for grave. Então a equipe recalcula o NPR."
 - duration: 13.589s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/06-reavaliar.html
 - type: benefit_highlight
 - persuasion: Before/after + demonstration
@@ -271,7 +271,7 @@ Scene 3 (5.6–7.06s): "VARIAÇÃO ALEATÓRIA" ruído em degraus (6.2s). As quat
 - voiceover: "A média móvel simples tira a média dos períodos recentes. Vendas de novecentos, mil e mil e cem: somando e dividindo por três, a previsão do próximo mês é mil unidades. Na média ponderada, os meses mais recentes ganham peso maior."
 - duration: 13.76s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/11-media-movel.html
 - type: social_proof
 - persuasion: Worked example with real numbers + build-up

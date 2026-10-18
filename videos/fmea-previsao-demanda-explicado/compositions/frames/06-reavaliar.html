@@ -1,0 +1,274 @@
+<template id="06-reavaliar-template">
+  <div id="root" data-composition-id="06-reavaliar" data-width="1920" data-height="1080" data-start="0" data-duration="13.589">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        color: #1F2BE0;
+        font-family: "Hanken Grotesk", sans-serif;
+      }
+      #root * { box-sizing: border-box; border-radius: 0; }
+
+      .r06-ground {
+        position: absolute; inset: 0;
+        container-type: size;
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 2cqw 2cqw;
+      }
+      .r06-stage { position: absolute; inset: 0; }
+
+      /* chrome */
+      .r06-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; transform-origin: left center; }
+      .r06-hair-top { top: 62px; }
+      .r06-hair-bot { top: 888px; }
+      .r06-chrome { position: absolute; top: 26px; font-family: "DM Mono", monospace; font-size: 20px; letter-spacing: 0.06em; color: #1F2BE0; }
+      .r06-chrome-l { left: 77px; }
+      .r06-chrome-r { right: 77px; }
+
+      /* action tags */
+      .r06-tag {
+        position: absolute; top: 196px; height: 54px;
+        padding: 0 22px;
+        display: flex; align-items: center;
+        border: 2px solid #1F2BE0;
+        font-family: "DM Mono", monospace; font-size: 24px; letter-spacing: 0.05em;
+        background: #F0EBDE;
+        white-space: nowrap;
+      }
+      #r06-tag1 { left: 290px; }
+      #r06-tag2 { left: 690px; }
+
+      /* rows */
+      .r06-row { position: absolute; left: 80px; height: 84px; width: 1060px; }
+      #r06-row-s { top: 320px; }
+      #r06-row-o { top: 470px; }
+      #r06-row-d { top: 620px; }
+      .r06-letter {
+        position: absolute; left: 0; top: -4px;
+        font-family: "Newsreader", serif; font-size: 96px; line-height: 0.9; letter-spacing: -0.015em;
+      }
+      .r06-word {
+        position: absolute; left: 2px; top: 92px;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.16em; text-transform: uppercase;
+      }
+      .r06-cells { position: absolute; left: 210px; top: 0; display: flex; gap: 6px; }
+      .r06-cell { position: relative; width: 64px; height: 84px; background: rgba(31,43,224,0.10); }
+      .r06-on { position: absolute; inset: 0; width: 100%; height: 100%; background: #1F2BE0; transform-origin: left center; }
+      .r06-num {
+        position: absolute; left: 936px; top: -6px; width: 100px;
+        font-family: "Newsreader", serif; font-size: 96px; line-height: 1; letter-spacing: -0.015em;
+        font-variant-numeric: tabular-nums; text-align: center;
+        transform-origin: center center;
+      }
+
+      /* S lock mark */
+      .r06-lock {
+        position: absolute; left: 196px; top: -12px; width: 860px; height: 108px;
+        border: 2px solid #1F2BE0;
+      }
+      .r06-mark {
+        position: absolute; left: 210px; top: 96px;
+        font-family: "DM Mono", monospace; font-size: 24px; letter-spacing: 0.05em; white-space: nowrap;
+        background: #F0EBDE; padding: 2px 8px 2px 0;
+      }
+      .r06-mark-b { display: inline-block; }
+
+      /* NPR column */
+      .r06-npr { position: absolute; left: 1250px; top: 214px; width: 600px; height: 560px; }
+      .r06-npr-label {
+        position: absolute; left: 4px; top: 0;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; letter-spacing: 0.18em;
+      }
+      .r06-npr-wrap { position: absolute; left: 0; top: 44px; width: 440px; height: 230px; }
+      .r06-npr-val {
+        display: inline-block;
+        font-family: "Newsreader", serif; font-size: 240px; line-height: 0.9; letter-spacing: -0.015em;
+        font-variant-numeric: tabular-nums;
+        transform-origin: left bottom;
+      }
+      .r06-strike {
+        position: absolute; left: -16px; top: 112px; width: 430px; height: 10px;
+        background: #1F2BE0; transform-origin: left center;
+      }
+      .r06-arrow-shaft {
+        position: absolute; left: 60px; top: 292px; width: 4px; height: 108px;
+        background: #1F2BE0; transform-origin: center top;
+      }
+      .r06-arrow-head { position: absolute; left: 38px; top: 370px; width: 48px; height: 40px; overflow: visible; }
+      .r06-block {
+        position: absolute; left: 0; top: 424px;
+        padding: 20px 28px;
+        background: #1F2BE0; color: #F0EBDE;
+        font-family: "DM Mono", monospace; font-size: 36px; letter-spacing: 0.04em; white-space: nowrap;
+      }
+
+      /* team labels */
+      .r06-team {
+        position: absolute;
+        display: flex; align-items: center; gap: 12px;
+        font-family: "DM Mono", monospace; font-size: 22px; letter-spacing: 0.08em;
+      }
+      .r06-sq { width: 12px; height: 12px; background: #1F2BE0; }
+      #r06-team-1 { left: 80px; top: 92px; }
+      #r06-team-2 { right: 80px; top: 92px; }
+      #r06-team-3 { left: 80px; top: 838px; }
+      #r06-team-4 { right: 80px; top: 838px; }
+    </style>
+
+    <div class="r06-ground clip" data-start="0" data-duration="13.589" data-track-index="0"></div>
+
+    <div class="r06-stage clip" data-start="0" data-duration="13.589" data-track-index="1">
+      <div class="r06-hair r06-hair-top" id="r06-hair-top"></div>
+      <div class="r06-hair r06-hair-bot" id="r06-hair-bot"></div>
+      <div class="r06-chrome r06-chrome-l" id="r06-chrome-l">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="r06-chrome r06-chrome-r" id="r06-chrome-r">06 / 13</div>
+
+      <div class="r06-tag" id="r06-tag1">AÇÃO: INSTRUÇÃO VISUAL</div>
+      <div class="r06-tag" id="r06-tag2">AÇÃO: VERIFICAÇÃO ESPECÍFICA</div>
+
+      <div class="r06-row" id="r06-row-s">
+        <div class="r06-lock" id="r06-lock"></div>
+        <div class="r06-letter">S</div>
+        <div class="r06-word">Severidade</div>
+        <div class="r06-cells" id="r06-cells-s"></div>
+        <div class="r06-num" id="r06-num-s">0</div>
+        <div class="r06-mark" id="r06-mark"><span class="r06-mark-a" id="r06-mark-a">= 8</span> <span class="r06-mark-b" id="r06-mark-b">(CONSEQUÊNCIA AINDA GRAVE)</span></div>
+      </div>
+      <div class="r06-row" id="r06-row-o">
+        <div class="r06-letter">O</div>
+        <div class="r06-word">Ocorrência</div>
+        <div class="r06-cells" id="r06-cells-o"></div>
+        <div class="r06-num" id="r06-num-o">0</div>
+      </div>
+      <div class="r06-row" id="r06-row-d">
+        <div class="r06-letter">D</div>
+        <div class="r06-word">Detecção</div>
+        <div class="r06-cells" id="r06-cells-d"></div>
+        <div class="r06-num" id="r06-num-d">0</div>
+      </div>
+
+      <div class="r06-npr" id="r06-npr">
+        <div class="r06-npr-label" id="r06-npr-label">NPR</div>
+        <div class="r06-npr-wrap">
+          <span class="r06-npr-val" id="r06-npr-val">336</span>
+          <div class="r06-strike" id="r06-strike"></div>
+        </div>
+        <div class="r06-arrow-shaft" id="r06-arrow-shaft"></div>
+        <svg class="r06-arrow-head" id="r06-arrow-head" viewBox="0 0 48 40">
+          <polyline points="4,6 24,36 44,6" fill="none" stroke="#1F2BE0" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"></polyline>
+        </svg>
+        <div class="r06-block" id="r06-block">NOVO NPR = 8 × O↓ × D↓</div>
+      </div>
+
+      <div class="r06-team" id="r06-team-1"><span class="r06-sq"></span>PROJETO</div>
+      <div class="r06-team" id="r06-team-2"><span class="r06-sq"></span>PRODUÇÃO</div>
+      <div class="r06-team" id="r06-team-3"><span class="r06-sq"></span>QUALIDADE</div>
+      <div class="r06-team" id="r06-team-4"><span class="r06-sq"></span>MANUTENÇÃO</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var root = document.querySelector('[data-composition-id="06-reavaliar"]');
+        var q = function (sel) { return root.querySelector(sel); };
+        var qa = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
+
+        // Build 10 cells per row
+        var VALUES = { s: 8, o: 7, d: 6 };
+        ["s", "o", "d"].forEach(function (k) {
+          var host = q("#r06-cells-" + k);
+          for (var i = 0; i < 10; i++) {
+            var c = document.createElement("div");
+            c.className = "r06-cell";
+            if (i < VALUES[k]) {
+              var on = document.createElement("div");
+              on.className = "r06-on r06-on-" + k;
+              on.setAttribute("data-i", String(i));
+              c.appendChild(on);
+            }
+            host.appendChild(c);
+          }
+        });
+
+        var tl = gsap.timeline({ paused: true });
+
+        // ---- Scene 1 (0.0–2.4): chrome, bars fill, numbers + NPR count up ----
+        tl.fromTo(["#r06-hair-top", "#r06-hair-bot"].map(q), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0);
+        tl.fromTo([q("#r06-chrome-l"), q("#r06-chrome-r")], { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.05);
+        tl.fromTo(qa(".r06-letter, .r06-word"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.1);
+
+        var COUNT_AT = 0.2, COUNT_DUR = 1.4, COUNT_EASE = "power3.out";
+        var nums = {};
+        ["s", "o", "d"].forEach(function (k, r) {
+          var el = q("#r06-num-" + k);
+          var st = { v: 0 };
+          nums[k] = { el: el, st: st };
+          tl.fromTo(qa(".r06-on-" + k), { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power2.out", stagger: (COUNT_DUR - 0.35) / VALUES[k] }, COUNT_AT + r * 0.08);
+          tl.fromTo(st, { v: 0 }, {
+            v: VALUES[k], duration: COUNT_DUR, ease: COUNT_EASE,
+            onUpdate: function () { el.textContent = String(Math.round(st.v)); }
+          }, COUNT_AT + r * 0.08);
+          tl.fromTo(el, { scale: 0.55 }, { scale: 1, duration: COUNT_DUR, ease: COUNT_EASE }, COUNT_AT + r * 0.08);
+        });
+
+        var nprEl = q("#r06-npr-val");
+        var npr = { v: 0 };
+        tl.fromTo(q("#r06-npr-label"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+        tl.fromTo(npr, { v: 0 }, {
+          v: 336, duration: 1.8, ease: COUNT_EASE,
+          onUpdate: function () { nprEl.textContent = String(Math.round(npr.v)); }
+        }, 0.3);
+        tl.fromTo(nprEl, { scale: 0.5 }, { scale: 1, duration: 1.8, ease: COUNT_EASE }, 0.3);
+
+        // ---- Scene 2 (2.4–5.0): action tags ----
+        [["#r06-tag1", 2.4], ["#r06-tag2", 3.8]].forEach(function (p) {
+          tl.fromTo(q(p[0]), { clipPath: "inset(0 100% 0 0)", y: -14 }, { clipPath: "inset(0 0% 0 0)", y: 0, duration: 0.55, ease: "power3.out" }, p[1]);
+        });
+
+        // ---- Scene 3 (5.0–7.6): O 7→3, D 6→2 ----
+        function recede(k, from, to, at) {
+          var dropping = qa(".r06-on-" + k).filter(function (n) { return Number(n.getAttribute("data-i")) >= to; }).reverse();
+          var D = 1.0;
+          tl.fromTo(dropping, { scaleX: 1 }, { scaleX: 0, duration: 0.3, ease: "power2.in", stagger: (D - 0.3) / Math.max(1, dropping.length - 1), immediateRender: false }, at);
+          var n = nums[k];
+          tl.fromTo(n.st, { v: from }, {
+            v: to, duration: D, ease: "power2.inOut", immediateRender: false,
+            onUpdate: function () { n.el.textContent = String(Math.round(n.st.v)); }
+          }, at);
+          tl.fromTo(n.el, { scale: 1.25 }, { scale: 1, duration: D, ease: "power2.out", immediateRender: false }, at);
+        }
+        recede("o", 7, 3, 5.6);
+        recede("d", 6, 2, 6.8);
+
+        // ---- Scene 4 (7.6–11.4): S holds, gets locked mark ----
+        tl.fromTo(q("#r06-mark-a"), { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 7.8);
+        tl.fromTo(q("#r06-lock"), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "power2.inOut" }, 8.1);
+        tl.fromTo(q("#r06-mark-b"), { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 9.6);
+
+        // ---- Scene 5 (11.4–13.59): team labels, NPR recalculated ----
+        tl.fromTo(qa(".r06-team"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }, 11.9);
+        tl.fromTo(q("#r06-strike"), { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, 12.2);
+        tl.fromTo(nprEl, { opacity: 1 }, { opacity: 0.45, duration: 0.35, ease: "power2.out", immediateRender: false }, 12.25);
+        tl.fromTo(q("#r06-arrow-shaft"), { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, 12.4);
+        tl.fromTo(q("#r06-arrow-head"), { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 12.6);
+        tl.fromTo(q("#r06-block"), { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power3.out" }, 12.7);
+
+        // hold to the end
+        tl.set({}, {}, 13.589);
+
+        window.__timelines["06-reavaliar"] = tl;
+      })();
+    </script>
+  </div>
+</template>

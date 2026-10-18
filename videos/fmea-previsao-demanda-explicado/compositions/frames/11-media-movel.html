@@ -1,0 +1,248 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+
+    /* full-bleed ground: paper + permanent graph grid */
+    .m11-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+    }
+
+    .m11-layer { position: absolute; inset: 0; }
+
+    /* chrome + hairlines */
+    .m11-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: #1F2BE0; transform-origin: left center; }
+    .m11-hair-top { top: 70px; }
+    .m11-hair-bot { top: 892px; }
+    .m11-chrome {
+      position: absolute; top: 34px;
+      font-family: "DM Mono", monospace; font-size: 18px; letter-spacing: 0.06em; color: #1F2BE0;
+    }
+    .m11-chrome-l { left: 80px; }
+    .m11-chrome-r { right: 80px; }
+
+    /* camera wrapper (slow drift) */
+    .m11-cam { position: absolute; inset: 0; transform-origin: 970px 560px; }
+
+    .m11-headline {
+      position: absolute; left: 80px; top: 104px;
+      font-family: "Newsreader", serif; font-weight: 400; font-size: 96px; line-height: 0.95;
+      letter-spacing: -0.008em; white-space: nowrap;
+    }
+    .m11-headline .m11-w { display: inline-block; margin-right: 0.22em; }
+
+    /* formula */
+    .m11-formula {
+      position: absolute; left: 110px; top: 262px;
+      font-family: "DM Mono", monospace; font-size: 46px; letter-spacing: 0.04em; white-space: nowrap;
+      display: flex; align-items: center;
+    }
+    .m11-term { display: inline-block; white-space: pre; }
+    .m11-div {
+      display: inline-block; white-space: pre; margin-left: 18px; padding: 4px 14px;
+      background-color: rgba(31,43,224,0); color: #1F2BE0;
+    }
+
+    /* chart */
+    .m11-baseline { position: absolute; left: 100px; top: 820px; width: 960px; height: 3px; background: #1F2BE0; transform-origin: left center; }
+    .m11-col { position: absolute; width: 160px; bottom: 260px; } /* bottom edge at y=820 */
+    .m11-c1 { left: 110px; } .m11-c2 { left: 370px; } .m11-c3 { left: 630px; } .m11-c4 { left: 890px; }
+    .m11-track, .m11-fill { position: absolute; left: 0; bottom: 0; width: 100%; }
+    .m11-track { height: 374px; background: repeating-linear-gradient(0deg, rgba(31,43,224,0.10) 0 32px, transparent 32px 34px); }
+    .m11-fill { background: repeating-linear-gradient(0deg, #1F2BE0 0 32px, transparent 32px 34px); }
+    .m11-h9 { height: 306px; } .m11-h10 { height: 340px; } .m11-h11 { height: 374px; }
+    .m11-solid { height: 340px; background: #1F2BE0; }
+    .m11-val {
+      position: absolute; left: 0; width: 100%; text-align: center;
+      font-family: "Newsreader", serif; font-size: 54px; line-height: 1; letter-spacing: -0.01em;
+      font-variant-numeric: tabular-nums;
+    }
+    .m11-v1 { bottom: 324px; } .m11-v2 { bottom: 358px; } .m11-v3 { bottom: 392px; }
+    .m11-hero-wrap {
+      position: absolute; left: -60px; width: 280px; bottom: 356px;
+      display: flex; justify-content: center;
+    }
+    .m11-hero {
+      display: inline-block; font-family: "Newsreader", serif; font-size: 112px; line-height: 0.9;
+      letter-spacing: -0.015em; font-variant-numeric: tabular-nums; transform-origin: center bottom;
+    }
+    .m11-lab {
+      position: absolute; top: 838px; width: 260px; margin-left: -50px; text-align: center;
+      font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.05em; white-space: nowrap;
+    }
+    .m11-l1 { left: 110px; } .m11-l2 { left: 370px; } .m11-l3 { left: 630px; } .m11-l4 { left: 890px; }
+
+    /* weighted panel (30%) */
+    .m11-panel {
+      position: absolute; left: 1330px; top: 250px; width: 510px; height: 610px;
+      border: 2px solid #1F2BE0; background: #F0EBDE;
+    }
+    .m11-ptitle {
+      position: absolute; left: 36px; top: 32px;
+      font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.18em;
+    }
+    .m11-prule { position: absolute; left: 36px; right: 36px; top: 88px; height: 2px; background: #1F2BE0; transform-origin: left center; }
+    .m11-pbase { position: absolute; left: 36px; right: 36px; top: 450px; height: 2px; background: #1F2BE0; transform-origin: left center; }
+    .m11-pcol { position: absolute; width: 96px; bottom: 158px; }
+    .m11-p1 { left: 58px; } .m11-p2 { left: 207px; } .m11-p3 { left: 356px; }
+    .m11-pfill { position: absolute; left: 0; bottom: 0; width: 100%; background: repeating-linear-gradient(0deg, #1F2BE0 0 30px, transparent 30px 34px); transform-origin: bottom center; }
+    .m11-ph2 { height: 98px; } .m11-ph3 { height: 132px; } .m11-ph5 { height: 200px; }
+    .m11-plab {
+      position: absolute; top: 470px; width: 140px; margin-left: -22px; text-align: center;
+      font-family: "DM Mono", monospace; font-size: 26px; letter-spacing: 0.05em;
+    }
+    .m11-pw {
+      position: absolute; top: 518px; width: 140px; margin-left: -22px; text-align: center;
+      font-family: "DM Mono", monospace; font-size: 40px; letter-spacing: 0.04em; line-height: 1;
+    }
+    .m11-pw span { display: inline-block; padding: 6px 12px; background-color: rgba(31,43,224,0); color: #1F2BE0; }
+    .m11-pl1, .m11-pw1 { left: 58px; } .m11-pl2, .m11-pw2 { left: 207px; } .m11-pl3, .m11-pw3 { left: 356px; }
+  </style>
+
+  <div id="root" data-composition-id="11-media-movel" data-width="1920" data-height="1080">
+    <div class="m11-ground clip" id="m11-ground" data-start="0" data-duration="13.76" data-track-index="0"></div>
+
+    <div class="m11-layer clip" id="m11-content" data-start="0" data-duration="13.76" data-track-index="1">
+      <div class="m11-chrome m11-chrome-l" id="m11-tag">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="m11-chrome m11-chrome-r" id="m11-num">11 / 13</div>
+      <div class="m11-hair m11-hair-top" id="m11-hair-top"></div>
+      <div class="m11-hair m11-hair-bot" id="m11-hair-bot"></div>
+
+      <div class="m11-cam" id="m11-cam">
+        <div class="m11-headline" id="m11-headline"><span class="m11-w">Média</span><span class="m11-w">móvel</span><span class="m11-w">simples</span></div>
+
+        <div class="m11-formula" id="m11-formula">
+          <span class="m11-term" id="m11-t1">(900</span>
+          <span class="m11-term" id="m11-t2"> + 1.000</span>
+          <span class="m11-term" id="m11-t3"> + 1.100)</span>
+          <span class="m11-div" id="m11-div">÷ 3</span>
+        </div>
+
+        <div class="m11-col m11-c1">
+          <div class="m11-track" id="m11-tr1"></div>
+          <div class="m11-fill m11-h9" id="m11-f1"></div>
+          <div class="m11-val m11-v1" id="m11-v1">900</div>
+        </div>
+        <div class="m11-col m11-c2">
+          <div class="m11-track" id="m11-tr2"></div>
+          <div class="m11-fill m11-h10" id="m11-f2"></div>
+          <div class="m11-val m11-v2" id="m11-v2">1.000</div>
+        </div>
+        <div class="m11-col m11-c3">
+          <div class="m11-track" id="m11-tr3"></div>
+          <div class="m11-fill m11-h11" id="m11-f3"></div>
+          <div class="m11-val m11-v3" id="m11-v3">1.100</div>
+        </div>
+        <div class="m11-col m11-c4">
+          <div class="m11-track" id="m11-tr4"></div>
+          <div class="m11-fill m11-solid" id="m11-f4"></div>
+          <div class="m11-hero-wrap"><span class="m11-hero" id="m11-hero">0</span></div>
+        </div>
+
+        <div class="m11-baseline" id="m11-baseline"></div>
+        <div class="m11-lab m11-l1" id="m11-l1">M1</div>
+        <div class="m11-lab m11-l2" id="m11-l2">M2</div>
+        <div class="m11-lab m11-l3" id="m11-l3">M3</div>
+        <div class="m11-lab m11-l4" id="m11-l4">M4 (previsto)</div>
+      </div>
+
+      <div class="m11-panel" id="m11-panel">
+        <div class="m11-ptitle" id="m11-ptitle">PONDERADA</div>
+        <div class="m11-prule" id="m11-prule"></div>
+        <div class="m11-pcol m11-p1"><div class="m11-pfill m11-ph2" id="m11-pf1"></div></div>
+        <div class="m11-pcol m11-p2"><div class="m11-pfill m11-ph3" id="m11-pf2"></div></div>
+        <div class="m11-pcol m11-p3"><div class="m11-pfill m11-ph5" id="m11-pf3"></div></div>
+        <div class="m11-pbase" id="m11-pbase"></div>
+        <div class="m11-plab m11-pl1" id="m11-pl1">M1</div>
+        <div class="m11-plab m11-pl2" id="m11-pl2">M2</div>
+        <div class="m11-plab m11-pl3" id="m11-pl3">M3</div>
+        <div class="m11-pw m11-pw1" id="m11-pw1"><span>0,2</span></div>
+        <div class="m11-pw m11-pw2" id="m11-pw2"><span>0,3</span></div>
+        <div class="m11-pw m11-pw3" id="m11-pw3"><span id="m11-pw3s">0,5</span></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        const $ = (id) => document.getElementById(id);
+        const tl = gsap.timeline({ paused: true });
+        const INK = "#1F2BE0", PAPER = "#F0EBDE";
+        const CLIP_HIDDEN = "inset(100% 0% 0% 0%)", CLIP_SHOWN = "inset(0% 0% 0% 0%)";
+
+        // ── camera: slow continuous push toward the forecast column (full duration)
+        tl.fromTo($("m11-cam"), { scale: 1 }, { scale: 1.03, duration: 13.76, ease: "none" }, 0);
+
+        // ── Scene 1 (0.0–3.4): chrome, headline, axis + labels
+        tl.fromTo([$("m11-hair-top"), $("m11-hair-bot")], { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0);
+        tl.fromTo([$("m11-tag"), $("m11-num")], { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.05);
+        tl.fromTo("#m11-headline .m11-w", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.12 }, 0.1);
+        tl.fromTo($("m11-baseline"), { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.inOut" }, 0.7);
+        tl.fromTo([$("m11-tr1"), $("m11-tr2"), $("m11-tr3"), $("m11-tr4")], { clipPath: CLIP_HIDDEN }, { clipPath: CLIP_SHOWN, duration: 0.8, ease: "power2.out", stagger: 0.12 }, 1.2);
+        tl.fromTo([$("m11-l1"), $("m11-l2"), $("m11-l3")], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.18 }, 1.5);
+        tl.fromTo($("m11-l4"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.3);
+
+        // ── Scene 2 (3.4–5.9): bars grow on each value cue
+        const bars = [["m11-f1", "m11-v1", 4.1], ["m11-f2", "m11-v2", 4.7], ["m11-f3", "m11-v3", 5.1]];
+        bars.forEach(([f, v, at]) => {
+          tl.fromTo($(f), { clipPath: CLIP_HIDDEN }, { clipPath: CLIP_SHOWN, duration: 0.6, ease: "power3.out" }, at - 0.4);
+          tl.fromTo($(v), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, at - 0.05);
+        });
+
+        // ── Scene 3 (5.9–8.8): formula writes term by term, "÷ 3" highlights
+        const terms = [["m11-t1", 5.9], ["m11-t2", 6.2], ["m11-t3", 6.5], ["m11-div", 6.8]];
+        terms.forEach(([id, at]) => {
+          tl.fromTo($(id), { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, at);
+        });
+        tl.fromTo($("m11-div"), { backgroundColor: "rgba(31,43,224,0)", color: INK }, { backgroundColor: INK, color: PAPER, duration: 0.25, ease: "power2.out" }, 7.0);
+        tl.fromTo($("m11-div"), { scale: 1 }, { scale: 1.08, duration: 0.25, ease: "power2.out" }, 7.0);
+        tl.to($("m11-div"), { scale: 1, duration: 0.4, ease: "power2.inOut" }, 7.25);
+
+        // ── Scene 4 (8.8–10.0): forecast bar grows solid, number counts to 1.000
+        const COUNT_AT = 8.8, COUNT_DUR = 1.2, COUNT_EASE = "power3.out";
+        tl.fromTo($("m11-f4"), { clipPath: CLIP_HIDDEN }, { clipPath: CLIP_SHOWN, duration: COUNT_DUR, ease: COUNT_EASE }, COUNT_AT);
+        const hero = $("m11-hero");
+        const state = { v: 0 };
+        const fmt = (n) => { const r = Math.round(n); return r >= 1000 ? Math.floor(r / 1000) + "." + String(r % 1000).padStart(3, "0") : String(r); };
+        tl.fromTo(state, { v: 0 }, { v: 1000, duration: COUNT_DUR, ease: COUNT_EASE, onUpdate: () => { hero.textContent = fmt(state.v); } }, COUNT_AT);
+        tl.fromTo(hero, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: COUNT_DUR, ease: COUNT_EASE }, COUNT_AT);
+
+        // ── Scene 5 (10.0–13.76): weighted panel (30%), weights, 0,5 inverts — hold
+        tl.fromTo($("m11-panel"), { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power3.out" }, 10.6);
+        tl.fromTo($("m11-ptitle"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.8);
+        tl.fromTo([$("m11-prule"), $("m11-pbase")], { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 10.85);
+        tl.fromTo([$("m11-pf1"), $("m11-pf2"), $("m11-pf3")], { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out", stagger: 0.15 }, 11.0);
+        tl.fromTo([$("m11-pl1"), $("m11-pl2"), $("m11-pl3")], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.15 }, 11.05);
+        tl.fromTo([$("m11-pw1"), $("m11-pw2"), $("m11-pw3")], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.15 }, 11.2);
+        tl.fromTo($("m11-pw3s"), { backgroundColor: "rgba(31,43,224,0)", color: INK }, { backgroundColor: INK, color: PAPER, duration: 0.25, ease: "power2.out" }, 12.1);
+        tl.fromTo($("m11-pw3s"), { scale: 1 }, { scale: 1.12, duration: 0.25, ease: "power2.out" }, 12.1);
+        tl.to($("m11-pw3s"), { scale: 1, duration: 0.45, ease: "power2.inOut" }, 12.35);
+
+        // pad to full duration (hold)
+        tl.set({}, {}, 13.76);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["11-media-movel"] = tl;
+      })();
+    </script>
+  </div>
+</template>
