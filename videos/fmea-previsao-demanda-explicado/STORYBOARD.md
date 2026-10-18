@@ -51,7 +51,7 @@ Scene 4 (5.2–6.42s): em "antes de ele pedir?" (5.3s) as duas perguntas desliza
 - voiceover: "Na Aula 4, a FMEA: Análise dos Modos de Falha e seus Efeitos. Ela identifica problemas potenciais antes que causem dano ao cliente, parada de produção ou retrabalho."
 - duration: 10.368s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-fmea.html
 - type: product_intro
 - persuasion: Concept announcement + progressive disclosure
