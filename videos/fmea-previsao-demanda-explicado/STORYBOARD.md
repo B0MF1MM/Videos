@@ -126,7 +126,7 @@ Scene 5 (10.3–12.82s): em "Atenção" (10.3s) a coluna D destaca: sua escala e
 - voiceover: "As três se multiplicam no NPR, o Número de Prioridade de Risco. Exemplo: uma vedação mal montada numa bomba centrífuga causa vazamento. Severidade oito, ocorrência sete, detecção seis: NPR igual a trezentos e trinta e seis."
 - duration: 14.272s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/05-npr.html
 - type: social_proof
 - persuasion: Worked example with real numbers
