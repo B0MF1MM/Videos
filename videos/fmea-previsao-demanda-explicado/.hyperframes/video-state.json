@@ -846,5 +846,18 @@
       ]
     },
     "unversioned": []
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "d0a7d212-a179-49ba-b0ef-1cf51f409e89",
+      "completedAt": 1792340603952,
+      "output": "/home/user/Videos/videos/fmea-previsao-demanda-explicado/renders/video.mp4",
+      "status": "completed",
+      "revision": "a3151ffa-a174-4d20-8af8-c3c3cfc40eb1"
+    },
+    "retainedRevisions": [
+      "a3151ffa-a174-4d20-8af8-c3c3cfc40eb1"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
