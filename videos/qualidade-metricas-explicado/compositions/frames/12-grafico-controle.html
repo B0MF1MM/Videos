@@ -1,0 +1,255 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .gc12-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .gc12-stage { position: absolute; inset: 0; }
+    .gc12-cam { position: absolute; inset: 0; }
+    .gc12-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .gc12-hair-top { top: 70px; }
+    .gc12-hair-bot { top: 892px; }
+    .gc12-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .gc12-chrome-tag { left: 77px; }
+    .gc12-chrome-num { right: 77px; }
+
+    .gc12-title {
+      position: absolute;
+      left: 80px;
+      top: 102px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 92px;
+      line-height: 1;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    .gc12-word { display: inline-block; margin-right: 0.22em; }
+    .gc12-word:last-child { margin-right: 0; }
+
+    .gc12-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .gc12-axis { fill: none; stroke: #1F2BE0; stroke-width: 2; }
+    .gc12-lm { fill: none; stroke: #1F2BE0; stroke-width: 4; }
+    .gc12-lim { fill: none; stroke: #1F2BE0; stroke-width: 3; stroke-dasharray: 18 12; }
+    .gc12-brace { fill: none; stroke: #1F2BE0; stroke-width: 3; stroke-linejoin: miter; stroke-linecap: square; }
+    .gc12-seg { fill: none; stroke: rgba(31,43,224,0.45); stroke-width: 2; }
+    .gc12-pt { fill: #1F2BE0; }
+    .gc12-outframe { fill: none; stroke: #1F2BE0; stroke-width: 3; }
+
+    .gc12-mono {
+      position: absolute;
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.05em;
+      line-height: 30px;
+      height: 30px;
+      white-space: nowrap;
+    }
+    .gc12-linelab { left: 1624px; }
+    .gc12-sig { width: 120px; text-align: right; left: 66px; }
+
+    .gc12-inv {
+      position: absolute;
+      box-sizing: border-box;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+    }
+    .gc12-fora { left: 1100px; top: 318px; height: 46px; padding: 0 16px; font-size: 27px; letter-spacing: 0.14em; }
+    .gc12-band { left: 240px; top: 230px; height: 64px; padding: 0 26px; font-size: 34px; letter-spacing: 0.16em; }
+
+    .gc12-seqbox {
+      position: absolute;
+      left: 1076px;
+      top: 440px;
+      width: 432px;
+      height: 166px;
+      box-sizing: border-box;
+      border: 3px dashed #1F2BE0;
+    }
+    .gc12-seqlab {
+      position: absolute;
+      left: 1076px;
+      top: 620px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="12-grafico-controle" data-width="1920" data-height="1080" data-duration="13.912">
+    <div id="gc12-ground" class="gc12-ground clip" data-start="0" data-duration="13.912" data-track-index="0"></div>
+
+    <div id="gc12-stage" class="gc12-stage clip" data-start="0" data-duration="13.912" data-track-index="1">
+      <div class="gc12-hair gc12-hair-top"></div>
+      <div class="gc12-hair gc12-hair-bot"></div>
+      <div class="gc12-chrome gc12-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="gc12-chrome gc12-chrome-num">12 / 13</div>
+
+      <div id="gc12-cam" class="gc12-cam">
+        <div class="gc12-title">
+          <span id="gc12-w1" class="gc12-word">Gráfico</span><span id="gc12-w2" class="gc12-word">de</span><span id="gc12-w3" class="gc12-word">controle</span>
+        </div>
+
+        <svg id="gc12-svg" class="gc12-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+          <path id="gc12-yaxis" class="gc12-axis" d="M 240 860 L 240 330" />
+          <path id="gc12-xaxis" class="gc12-axis" d="M 240 860 L 1600 860" />
+          <path id="gc12-lsc" class="gc12-lim" d="M 240 400 L 1600 400" />
+          <path id="gc12-lm" class="gc12-lm" d="M 240 580 L 1600 580" />
+          <path id="gc12-lic" class="gc12-lim" d="M 240 760 L 1600 760" />
+          <path id="gc12-br-up" class="gc12-brace" d="M 222 578 L 204 578 L 204 402 L 222 402" />
+          <path id="gc12-br-dn" class="gc12-brace" d="M 222 582 L 204 582 L 204 758 L 222 758" />
+          <g id="gc12-segs"></g>
+          <rect id="gc12-outframe" class="gc12-outframe" x="1006" y="302" width="76" height="76" />
+          <g id="gc12-pts"></g>
+        </svg>
+
+        <div id="gc12-lab-lsc" class="gc12-mono gc12-linelab" style="top: 385px;">LSC</div>
+        <div id="gc12-lab-lm" class="gc12-mono gc12-linelab" style="top: 565px;">LM</div>
+        <div id="gc12-lab-lic" class="gc12-mono gc12-linelab" style="top: 745px;">LIC</div>
+        <div id="gc12-sig-up" class="gc12-mono gc12-sig" style="top: 475px;">+3σ</div>
+        <div id="gc12-sig-dn" class="gc12-mono gc12-sig" style="top: 655px;">−3σ</div>
+
+        <div id="gc12-fora" class="gc12-inv gc12-fora">FORA DO LIMITE</div>
+        <div id="gc12-seqbox" class="gc12-seqbox"></div>
+        <div id="gc12-seqlab" class="gc12-seqlab">SEQUÊNCIA</div>
+        <div id="gc12-band" class="gc12-inv gc12-band">SINAL DE CAUSA ESPECIAL</div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 13.312;
+      const NS = "http://www.w3.org/2000/svg";
+
+      // ---- Series (deterministic) — offsets from LM (y=580); limits at ±180 ----
+      const OFFS = [-40, 60, -90, 30, 110, -20, 80, -120, 10, 70, -60, 40, // in control
+                    -240,                                              // out above LSC
+                    -50, -90, -30, -110, -70, -40, -80];               // run of 7 above LM
+      const LM = 580, X0 = 300, DX = 62, SQ = 14;
+      const pts = OFFS.map((o, i) => ({ x: X0 + DX * i, y: LM + o }));
+      const OUT = 12;
+
+      // point onset times: Scene 3 (in-control), Scene 4 (out), Scene 5 (run)
+      const times = pts.map((p, i) => {
+        if (i < OUT) return 6.3 + i * 0.165;
+        if (i === OUT) return 8.6;
+        return 10.3 + (i - OUT - 1) * 0.14;
+      });
+
+      const segG = document.getElementById("gc12-segs");
+      const ptG = document.getElementById("gc12-pts");
+      const segs = [];
+      for (let i = 1; i < pts.length; i++) {
+        const s = document.createElementNS(NS, "path");
+        s.setAttribute("class", "gc12-seg");
+        s.setAttribute("d", `M ${pts[i - 1].x} ${pts[i - 1].y} L ${pts[i].x} ${pts[i].y}`);
+        segG.appendChild(s);
+        segs.push(s);
+      }
+      const rects = pts.map((p) => {
+        const r = document.createElementNS(NS, "rect");
+        r.setAttribute("class", "gc12-pt");
+        r.setAttribute("x", p.x - SQ / 2);
+        r.setAttribute("y", p.y - SQ / 2);
+        r.setAttribute("width", SQ);
+        r.setAttribute("height", SQ);
+        ptG.appendChild(r);
+        return r;
+      });
+
+      // svg-path-draw setup — measured lengths
+      function prep(el) {
+        const len = el.getTotalLength();
+        el.style.strokeDasharray = `${len}`;
+        el.style.strokeDashoffset = `${len}`;
+        return el;
+      }
+      ["gc12-yaxis", "gc12-xaxis", "gc12-lm", "gc12-br-up", "gc12-br-dn", "gc12-outframe"].forEach((id) => prep(document.getElementById(id)));
+      segs.forEach(prep);
+
+      // ---- Camera: quiet push under the whole shot ----
+      tl.fromTo("#gc12-cam", { scale: 1 }, { scale: 1.02, duration: D, ease: "none", transformOrigin: "50% 50%" }, 0);
+
+      // ---- Scene 1 (0.0–2.2s): title + axes ----
+      [0.2, 0.42, 0.64].forEach((t, i) => {
+        tl.fromTo(`#gc12-w${i + 1}`, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t);
+      });
+      tl.to("#gc12-yaxis", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 1.1);
+      tl.to("#gc12-xaxis", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 1.55);
+
+      // ---- Scene 2 (2.2–5.7s): LM, LSC, LIC ----
+      tl.to("#gc12-lm", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 2.4);
+      tl.fromTo("#gc12-lab-lm", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.95);
+      tl.fromTo("#gc12-lsc", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out", svgOrigin: "240 400" }, 3.8);
+      tl.fromTo("#gc12-lab-lsc", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.25);
+      tl.fromTo("#gc12-lic", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out", svgOrigin: "240 760" }, 4.5);
+      tl.fromTo("#gc12-lab-lic", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.95);
+
+      // ---- Scene 3 (5.7–8.4s): ±3σ braces + in-control series ----
+      tl.to("#gc12-br-up", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 6.3);
+      tl.to("#gc12-br-dn", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 6.38);
+      tl.fromTo("#gc12-sig-up", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.6);
+      tl.fromTo("#gc12-sig-dn", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.68);
+
+      rects.forEach((r, i) => {
+        const t = times[i];
+        if (i > 0) tl.to(segs[i - 1], { strokeDashoffset: 0, duration: 0.14, ease: "none" }, t - 0.14);
+        tl.fromTo(r, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.16, ease: "power2.out", transformOrigin: "50% 50%" }, t);
+      });
+
+      // ---- Scene 4 (8.4–10.3s): point out above LSC, highlighted ----
+      tl.to(rects[OUT], { scale: 2, duration: 0.35, ease: "power3.out", transformOrigin: "50% 50%" }, 8.9);
+      tl.to("#gc12-outframe", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 9.05);
+      tl.fromTo("#gc12-fora", { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "power2.out" }, 9.35);
+
+      // ---- Scene 5 (10.3–13.31s): run of 7 above LM, then the signal band ----
+      tl.fromTo("#gc12-seqbox", { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "power2.out" }, 11.3);
+      tl.fromTo("#gc12-seqlab", { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.65);
+      tl.fromTo("#gc12-band", { opacity: 0, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "power2.out" }, 12.4);
+
+      window.__timelines["12-grafico-controle"] = tl;
+    </script>
+  </div>
+</template>

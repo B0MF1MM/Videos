@@ -1,0 +1,233 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .oe07-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .oe07-stage { position: absolute; inset: 0; }
+    .oe07-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .oe07-hair-top { top: 70px; }
+    .oe07-hair-bot { top: 892px; }
+    .oe07-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .oe07-chrome-tag { left: 77px; }
+    .oe07-chrome-num { right: 77px; }
+
+    /* Scene 1 — mono kicker + vbig numeral */
+    .oe07-kicker {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 108px;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .oe07-sigla {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 150px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 300px;
+      line-height: 0.9;
+      letter-spacing: -0.015em;
+      white-space: nowrap;
+      transform-origin: 50% 0%;
+    }
+
+    /* Scene 2 — the expanded name, word by word */
+    .oe07-name {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 336px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 88px;
+      line-height: 1;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    .oe07-w { display: inline-block; }
+
+    .oe07-rule {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      top: 508px;
+      height: 2px;
+      background: rgba(31,43,224,0.18);
+      transform-origin: 0% 50%;
+    }
+
+    /* Scene 3 — the formula row */
+    .oe07-formula {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      top: 586px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+    }
+    .oe07-lhs {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      margin-right: 10px;
+    }
+    .oe07-times {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 80px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .oe07-term {
+      position: relative;
+      height: 150px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      padding: 0 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+    .oe07-term-key {
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .oe07-term-label {
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .oe07-term-fill {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 10px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="07-oee" data-width="1920" data-height="1080" data-duration="9.161">
+    <div id="oe07-ground" class="oe07-ground clip" data-start="0" data-duration="9.161" data-track-index="0"></div>
+
+    <div id="oe07-stage" class="oe07-stage clip" data-start="0" data-duration="9.161" data-track-index="1">
+      <div class="oe07-hair oe07-hair-top"></div>
+      <div class="oe07-hair oe07-hair-bot"></div>
+      <div class="oe07-chrome oe07-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="oe07-chrome oe07-chrome-num">07 / 13</div>
+
+      <div id="oe07-kicker" class="oe07-kicker">O INDICADOR MAIS COBRADO</div>
+      <div id="oe07-sigla" class="oe07-sigla">OEE</div>
+
+      <div id="oe07-name" class="oe07-name"><span id="oe07-w1" class="oe07-w">Eficiência</span> <span id="oe07-w2" class="oe07-w">Global</span> <span id="oe07-w3" class="oe07-w">do Equipamento</span></div>
+
+      <div id="oe07-rule" class="oe07-rule"></div>
+
+      <div class="oe07-formula">
+        <span id="oe07-lhs" class="oe07-lhs">OEE =</span>
+        <div id="oe07-t1" class="oe07-term"><span class="oe07-term-key">D</span><span class="oe07-term-label">DISPONIBILIDADE</span><span id="oe07-f1" class="oe07-term-fill"></span></div>
+        <span id="oe07-x1" class="oe07-times">×</span>
+        <div id="oe07-t2" class="oe07-term"><span class="oe07-term-key">P</span><span class="oe07-term-label">DESEMPENHO</span><span id="oe07-f2" class="oe07-term-fill"></span></div>
+        <span id="oe07-x2" class="oe07-times">×</span>
+        <div id="oe07-t3" class="oe07-term"><span class="oe07-term-key">Q</span><span class="oe07-term-label">QUALIDADE</span><span id="oe07-f3" class="oe07-term-fill"></span></div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 8.661;
+
+      // Quiet camera push under the whole shot
+      tl.fromTo("#oe07-stage", { scale: 1 }, { scale: 1.02, duration: D, ease: "none", transformOrigin: "50% 45%" }, 0);
+
+      // Scene 1 — the numeral is present early (hero visible <= 0.5s), slams to full size on "OEE" (1.6s)
+      tl.fromTo("#oe07-sigla", { opacity: 0, y: 150, scale: 0.86 }, { opacity: 0.16, y: 150, scale: 0.9, duration: 0.5, ease: "power2.out" }, 0.0);
+      tl.fromTo("#oe07-kicker", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.6);
+      tl.fromTo("#oe07-sigla", { opacity: 0.16, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)", immediateRender: false }, 1.6);
+
+      // Scene 2 — the sigla rises and reduces; the name writes itself beneath, word by word
+      tl.fromTo("#oe07-sigla", { y: 150, scale: 1 }, { y: 0, scale: 0.6, duration: 0.6, ease: "power3.inOut", immediateRender: false }, 2.1);
+      const WORDS = [
+        { el: "#oe07-w1", at: 2.3 },
+        { el: "#oe07-w2", at: 2.8 },
+        { el: "#oe07-w3", at: 3.4 },
+      ];
+      WORDS.forEach(({ el, at }) => {
+        tl.fromTo(el, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, at);
+      });
+
+      // Scene 3 — divider draws, then the formula assembles on its spoken cues
+      tl.fromTo("#oe07-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 4.2);
+      tl.fromTo("#oe07-lhs", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.6);
+
+      const TERMS = [
+        { box: "#oe07-t1", fill: "#oe07-f1", times: null, at: 6.2 },
+        { box: "#oe07-t2", fill: "#oe07-f2", times: "#oe07-x1", at: 7.3 },
+        { box: "#oe07-t3", fill: "#oe07-f3", times: "#oe07-x2", at: 8.0 },
+      ];
+      TERMS.forEach(({ box, fill, times, at }) => {
+        if (times) tl.fromTo(times, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, at - 0.1);
+        tl.fromTo(box, { opacity: 0, y: 24, clipPath: "inset(0% 100% 0% 0%)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "power3.out" }, at);
+        tl.fromTo(fill, { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, at + 0.15);
+      });
+
+      window.__timelines["07-oee"] = tl;
+    </script>
+  </div>
+</template>

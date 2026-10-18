@@ -1,0 +1,255 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .fa08-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .fa08-stage { position: absolute; inset: 0; }
+    .fa08-cam { position: absolute; inset: 0; }
+    .fa08-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .fa08-hair-top { top: 70px; }
+    .fa08-hair-bot { top: 892px; }
+    .fa08-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .fa08-chrome-tag { left: 77px; }
+    .fa08-chrome-num { right: 77px; }
+
+    /* triptych columns */
+    .fa08-col {
+      position: absolute;
+      top: 116px;
+      width: 560px;
+      height: 664px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+    }
+    .fa08-col-1 { left: 80px; }
+    .fa08-col-2 { left: 680px; }
+    .fa08-col-3 { left: 1280px; }
+
+    .fa08-head {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 150px;
+      border-bottom: 2px solid rgba(31,43,224,0.18);
+    }
+    .fa08-idx {
+      position: absolute;
+      left: 36px;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .fa08-name {
+      position: absolute;
+      left: 36px;
+      top: 74px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .fa08-sq {
+      position: absolute;
+      right: 36px;
+      top: 32px;
+      width: 22px;
+      height: 22px;
+      background: #1F2BE0;
+    }
+
+    /* fraction: numerator above the bar, denominator below */
+    .fa08-num, .fa08-den {
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 1.05;
+      letter-spacing: -0.008em;
+    }
+    .fa08-num { bottom: 290px; }
+    .fa08-den { top: 408px; }
+    .fa08-bar {
+      position: absolute;
+      left: 50px;
+      top: 372px;
+      width: 454px;
+      height: 16px;
+      overflow: visible;
+    }
+    .fa08-bar path {
+      fill: none;
+      stroke: #1F2BE0;
+      stroke-width: 5;
+      stroke-linecap: butt;
+    }
+
+    /* mono strip under the triptych */
+    .fa08-strip {
+      position: absolute;
+      left: 80px;
+      top: 808px;
+      width: 1760px;
+      height: 64px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fa08-strip-rule {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 31px;
+      height: 2px;
+      background: #1F2BE0;
+      transform-origin: 50% 50%;
+    }
+    .fa08-strip-tag {
+      position: relative;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "DM Mono", monospace;
+      font-size: 36px;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      padding: 14px 34px;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="08-fatores" data-width="1920" data-height="1080" data-duration="12.937">
+    <div id="fa08-ground" class="fa08-ground clip" data-start="0" data-duration="12.937" data-track-index="0"></div>
+
+    <div id="fa08-stage" class="fa08-stage clip" data-start="0" data-duration="12.937" data-track-index="1">
+      <div class="fa08-hair fa08-hair-top"></div>
+      <div class="fa08-hair fa08-hair-bot"></div>
+      <div class="fa08-chrome fa08-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="fa08-chrome fa08-chrome-num">08 / 13</div>
+
+      <div id="fa08-cam" class="fa08-cam">
+        <!-- Column 1 -->
+        <div id="fa08-col1" class="fa08-col fa08-col-1">
+          <div class="fa08-head">
+            <span class="fa08-idx">01</span>
+            <span id="fa08-sq1" class="fa08-sq"></span>
+            <span id="fa08-name1" class="fa08-name">DISPONIBILIDADE</span>
+          </div>
+          <div id="fa08-num1" class="fa08-num">tempo operando</div>
+          <svg class="fa08-bar" viewBox="0 0 454 16" xmlns="http://www.w3.org/2000/svg"><path id="fa08-bar1" d="M 0 8 L 454 8" /></svg>
+          <div id="fa08-den1" class="fa08-den">tempo planejado</div>
+        </div>
+
+        <!-- Column 2 -->
+        <div id="fa08-col2" class="fa08-col fa08-col-2">
+          <div class="fa08-head">
+            <span class="fa08-idx">02</span>
+            <span id="fa08-sq2" class="fa08-sq"></span>
+            <span id="fa08-name2" class="fa08-name">DESEMPENHO</span>
+          </div>
+          <div id="fa08-num2" class="fa08-num">produção real</div>
+          <svg class="fa08-bar" viewBox="0 0 454 16" xmlns="http://www.w3.org/2000/svg"><path id="fa08-bar2" d="M 0 8 L 454 8" /></svg>
+          <div id="fa08-den2" class="fa08-den">produção na<br>velocidade ideal</div>
+        </div>
+
+        <!-- Column 3 -->
+        <div id="fa08-col3" class="fa08-col fa08-col-3">
+          <div class="fa08-head">
+            <span class="fa08-idx">03</span>
+            <span id="fa08-sq3" class="fa08-sq"></span>
+            <span id="fa08-name3" class="fa08-name">QUALIDADE</span>
+          </div>
+          <div id="fa08-num3" class="fa08-num">peças boas</div>
+          <svg class="fa08-bar" viewBox="0 0 454 16" xmlns="http://www.w3.org/2000/svg"><path id="fa08-bar3" d="M 0 8 L 454 8" /></svg>
+          <div id="fa08-den3" class="fa08-den">total produzido</div>
+        </div>
+
+        <!-- Mono strip -->
+        <div class="fa08-strip">
+          <div id="fa08-strip-rule" class="fa08-strip-rule"></div>
+          <div id="fa08-strip-tag" class="fa08-strip-tag">REAL ÷ IDEAL</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 12.437;
+
+      // Measure each fraction bar for the pen-draw (svg-path-draw)
+      ["#fa08-bar1", "#fa08-bar2", "#fa08-bar3"].forEach((sel) => {
+        const p = document.querySelector(sel);
+        const len = p.getTotalLength();
+        p.style.strokeDasharray = `${len}`;
+        p.style.strokeDashoffset = `${len}`;
+      });
+
+      // Quiet camera push underneath the whole shot
+      tl.fromTo("#fa08-cam", { scale: 1 }, { scale: 1.02, duration: D, ease: "none", transformOrigin: "50% 45%" }, 0);
+
+      // Content-driven sequence: each column assembles on its factor's voiceover cues
+      const COLS = [
+        { n: 1, title: 0.0, num: 1.3, bar: 3.3, den: 3.6 },
+        { n: 2, title: 4.9, num: 6.2, bar: 6.6, den: 7.5 },
+        { n: 3, title: 9.4, num: 10.3, bar: 11.1, den: 11.4 },
+      ];
+      COLS.forEach(({ n, title, num, bar, den }) => {
+        // column card slides a short distance into its slot (grid-card-assemble)
+        tl.fromTo(`#fa08-col${n}`, { opacity: 0, y: 36, clipPath: "inset(0% 0% 100% 0%)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power3.out" }, title);
+        tl.fromTo(`#fa08-name${n}`, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, title + 0.15);
+        tl.fromTo(`#fa08-sq${n}`, { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, title + 0.3);
+        // fraction builds top to bottom: numerator → bar draws on "sobre" → denominator
+        tl.fromTo(`#fa08-num${n}`, { opacity: 0, y: -22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, num);
+        tl.to(`#fa08-bar${n}`, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, bar);
+        tl.fromTo(`#fa08-den${n}`, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, den);
+      });
+
+      // Closing strip: REAL ÷ IDEAL lands, then hold
+      tl.fromTo("#fa08-strip-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 11.8);
+      tl.fromTo("#fa08-strip-tag", { opacity: 0, clipPath: "inset(0% 50% 0% 50%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "power2.out" }, 11.85);
+
+      window.__timelines["08-fatores"] = tl;
+    </script>
+  </div>
+</template>

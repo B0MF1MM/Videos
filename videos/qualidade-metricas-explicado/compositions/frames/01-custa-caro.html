@@ -1,0 +1,251 @@
+<template id="01-custa-caro-template">
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Newsreader", serif;
+    }
+    #f01-custa-caro-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+    }
+    #f01-custa-caro-chrome {
+      position: absolute;
+      inset: 0;
+    }
+    .f01-custa-caro-hair {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    #f01-custa-caro-hair-top { top: 58px; }
+    #f01-custa-caro-hair-bot { top: 892px; }
+    .f01-custa-caro-meta {
+      position: absolute;
+      top: 22px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      color: #1F2BE0;
+    }
+    #f01-custa-caro-tag { left: 80px; }
+    #f01-custa-caro-num { right: 80px; }
+
+    #f01-custa-caro-stage {
+      position: absolute;
+      inset: 0;
+      transform-origin: 960px 460px;
+    }
+    .f01-custa-caro-q {
+      position: absolute;
+      top: 112px;
+      font-size: 64px;
+      line-height: 0.95;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    #f01-custa-caro-q1 { left: 80px; transform-origin: 0% 0%; }
+    #f01-custa-caro-q2 { right: 80px; text-align: right; transform-origin: 100% 0%; }
+    .f01-custa-caro-w { display: inline-block; }
+
+    .f01-custa-caro-falta { position: relative; padding: 0 0.12em; }
+    .f01-custa-caro-falta-base { position: relative; }
+    .f01-custa-caro-falta-block {
+      position: absolute;
+      inset: -0.04em 0 -0.1em 0;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+    .f01-custa-caro-falta-inv {
+      position: absolute;
+      inset: 0;
+      padding: 0 0.12em;
+      color: #F0EBDE;
+    }
+
+    .f01-custa-caro-line {
+      position: absolute;
+      font-size: 52px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      text-align: center;
+      white-space: nowrap;
+    }
+    #f01-custa-caro-l3 { left: 690px; width: 540px; top: 300px; }
+    #f01-custa-caro-l4 { left: 560px; width: 800px; top: 390px; }
+
+    #f01-custa-caro-wires {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    #f01-custa-caro-wires path {
+      fill: none;
+      stroke: #1F2BE0;
+      stroke-width: 2;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    .f01-custa-caro-node {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #1F2BE0;
+    }
+
+    #f01-custa-caro-dados {
+      position: absolute;
+      left: 550px;
+      top: 540px;
+      width: 820px;
+      height: 250px;
+      background: #1F2BE0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #f01-custa-caro-dados-word {
+      font-size: 200px;
+      line-height: 0.9;
+      letter-spacing: -0.008em;
+      color: #F0EBDE;
+      padding-bottom: 14px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-custa-caro" data-width="1920" data-height="1080" data-duration="8.713">
+    <div id="f01-custa-caro-bg" class="clip" data-start="0" data-duration="8.713" data-track-index="0"></div>
+
+    <div id="f01-custa-caro-stage" class="clip" data-start="0" data-duration="8.713" data-track-index="1">
+      <!-- Scene 1: pergunta 1 -->
+      <div id="f01-custa-caro-q1" class="f01-custa-caro-q">
+        <span class="f01-custa-caro-w f01-custa-caro-q1w">qualidade</span>
+        <span class="f01-custa-caro-w f01-custa-caro-q1w">custa</span>
+        <span class="f01-custa-caro-w f01-custa-caro-q1w">caro?</span>
+      </div>
+
+      <!-- Scene 2: pergunta 2 com "falta" invertida -->
+      <div id="f01-custa-caro-q2" class="f01-custa-caro-q">
+        <span class="f01-custa-caro-w f01-custa-caro-q2w">ou</span>
+        <span class="f01-custa-caro-w f01-custa-caro-q2w">a</span>
+        <span class="f01-custa-caro-w f01-custa-caro-q2w f01-custa-caro-falta"><span id="f01-custa-caro-falta-block" class="f01-custa-caro-falta-block"></span><span id="f01-custa-caro-falta-base" class="f01-custa-caro-falta-base">falta</span><span id="f01-custa-caro-falta-inv" class="f01-custa-caro-falta-inv">falta</span></span>
+        <span class="f01-custa-caro-w f01-custa-caro-q2w">dela?</span>
+      </div>
+
+      <!-- Scene 3: duas linhas centrais menores -->
+      <div id="f01-custa-caro-l3" class="f01-custa-caro-line">
+        <span class="f01-custa-caro-w f01-custa-caro-l3w">a</span>
+        <span class="f01-custa-caro-w f01-custa-caro-l3w">máquina</span>
+        <span class="f01-custa-caro-w f01-custa-caro-l3w">rende?</span>
+      </div>
+      <div id="f01-custa-caro-l4" class="f01-custa-caro-line">
+        <span class="f01-custa-caro-w f01-custa-caro-l4w">o</span>
+        <span class="f01-custa-caro-w f01-custa-caro-l4w">processo</span>
+        <span class="f01-custa-caro-w f01-custa-caro-l4w">saiu</span>
+        <span class="f01-custa-caro-w f01-custa-caro-l4w">do</span>
+        <span class="f01-custa-caro-w f01-custa-caro-l4w">controle?</span>
+      </div>
+
+      <!-- Scene 4: filetes retos ligando as perguntas ao bloco -->
+      <svg id="f01-custa-caro-wires" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <path id="f01-custa-caro-w1" d="M360 192 V700 H550" />
+        <path id="f01-custa-caro-w2" d="M1600 192 V700 H1370" />
+        <path id="f01-custa-caro-w3" d="M680 330 H470 V610 H550" />
+        <path id="f01-custa-caro-w4" d="M1375 420 H1490 V610 H1370" />
+      </svg>
+      <div id="f01-custa-caro-n1" class="f01-custa-caro-node" style="left:354px; top:186px;"></div>
+      <div id="f01-custa-caro-n2" class="f01-custa-caro-node" style="left:1594px; top:186px;"></div>
+      <div id="f01-custa-caro-n3" class="f01-custa-caro-node" style="left:674px; top:324px;"></div>
+      <div id="f01-custa-caro-n4" class="f01-custa-caro-node" style="left:1369px; top:414px;"></div>
+
+      <div id="f01-custa-caro-dados">
+        <div id="f01-custa-caro-dados-word">DADOS</div>
+      </div>
+    </div>
+
+    <div id="f01-custa-caro-chrome" class="clip" data-start="0" data-duration="8.713" data-track-index="2">
+      <div id="f01-custa-caro-hair-top" class="f01-custa-caro-hair"></div>
+      <div id="f01-custa-caro-hair-bot" class="f01-custa-caro-hair"></div>
+      <div id="f01-custa-caro-tag" class="f01-custa-caro-meta">AULAS 6–8 · QUALIDADE</div>
+      <div id="f01-custa-caro-num" class="f01-custa-caro-meta">01 / 13</div>
+    </div>
+  </div>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var DUR = 8.213;
+      var tl = gsap.timeline({ paused: true });
+      var $ = function (s) { return document.querySelectorAll(s); };
+      var one = function (s) { return document.querySelector(s); };
+
+      // Beat array (dynamic-content-sequencing): each word lands on its VO cue.
+      var BEATS = [
+        { sel: ".f01-custa-caro-q1w", times: [0.15, 0.55, 0.95] },
+        { sel: ".f01-custa-caro-q2w", times: [1.8, 1.98, 2.18, 2.48] },
+        { sel: ".f01-custa-caro-l3w", times: [4.7, 4.82, 5.02] },
+        { sel: ".f01-custa-caro-l4w", times: [6.8, 6.9, 7.08, 7.2, 7.32] }
+      ];
+      BEATS.forEach(function (b) {
+        var words = $(b.sel);
+        for (var i = 0; i < words.length; i++) {
+          tl.fromTo(words[i],
+            { opacity: 0, y: 34, scale: 0.96 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "power3.out" },
+            b.times[i]);
+        }
+      });
+
+      // Slow push underneath the whole shot
+      tl.fromTo("#f01-custa-caro-stage", { scale: 1 }, { scale: 1.02, duration: DUR, ease: "none" }, 0);
+
+      // Scene 1-2 layout: questions start large in the upper thirds
+      tl.fromTo("#f01-custa-caro-q1", { y: 60, scale: 1.4 }, { y: 0, scale: 1, duration: 0.7, ease: "power3.inOut" }, 3.6);
+      tl.fromTo("#f01-custa-caro-q2", { y: 190, scale: 1.4 }, { y: 0, scale: 1, duration: 0.7, ease: "power3.inOut" }, 3.62);
+
+      // Scene 2: "falta" flips to inverted cobalt block at 3.0s
+      tl.fromTo("#f01-custa-caro-falta-block", { scaleX: 0 }, { scaleX: 1, duration: 0.28, ease: "power2.out" }, 3.0);
+      tl.fromTo("#f01-custa-caro-falta-inv", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.28, ease: "power2.out" }, 3.0);
+      tl.set("#f01-custa-caro-falta-base", { opacity: 0 }, 3.3);
+
+      // Scene 4: questions recede to ink-soft, DADOS lands, wires converge
+      tl.fromTo(["#f01-custa-caro-q1", "#f01-custa-caro-q2", "#f01-custa-caro-l3", "#f01-custa-caro-l4"],
+        { opacity: 1 }, { opacity: 0.55, duration: 0.25, ease: "power1.out" }, 7.7);
+      tl.fromTo("#f01-custa-caro-dados",
+        { opacity: 0, scale: 0.86, clipPath: "inset(50% 0% 50% 0%)" },
+        { opacity: 1, scale: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 0.3, ease: "back.out(1.6)" }, 7.7);
+      tl.fromTo("#f01-custa-caro-dados-word", { scale: 1.12, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power3.out" }, 7.74);
+      tl.fromTo(["#f01-custa-caro-n1", "#f01-custa-caro-n2", "#f01-custa-caro-n3", "#f01-custa-caro-n4"],
+        { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.15, ease: "power2.out", stagger: 0.03 }, 7.72);
+      tl.fromTo(["#f01-custa-caro-w1", "#f01-custa-caro-w2", "#f01-custa-caro-w3", "#f01-custa-caro-w4"],
+        { strokeDashoffset: 1000 }, { strokeDashoffset: 0, duration: 0.38, ease: "power2.inOut", stagger: 0.02 }, 7.76);
+
+      // Hold to the end
+      tl.set({}, {}, DUR);
+
+      window.__timelines["01-custa-caro"] = tl;
+    })();
+  </script>
+</template>

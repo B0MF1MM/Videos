@@ -1,0 +1,280 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .cep10-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .cep10-stage { position: absolute; inset: 0; }
+    .cep10-cam { position: absolute; inset: 0; }
+    .cep10-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .cep10-hair-top { top: 70px; }
+    .cep10-hair-bot { top: 892px; }
+    .cep10-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .cep10-chrome-tag { left: 77px; }
+    .cep10-chrome-num { right: 77px; }
+
+    /* Scene 1 — kicker + acronym + name */
+    .cep10-kicker {
+      position: absolute;
+      left: 80px;
+      top: 112px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .cep10-acro-wrap {
+      position: absolute;
+      left: 76px;
+      top: 160px;
+      width: 300px;
+      height: 140px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .cep10-acro {
+      display: inline-block;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 136px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+      min-width: 280px;
+    }
+    .cep10-acro-rule {
+      position: absolute;
+      left: 362px;
+      top: 178px;
+      width: 2px;
+      height: 112px;
+      background: #1F2BE0;
+      transform-origin: 50% 0%;
+    }
+    .cep10-name {
+      position: absolute;
+      left: 400px;
+      top: 194px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 84px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .cep10-word { display: inline-block; margin-right: 0.24em; }
+    .cep10-word:last-child { margin-right: 0; }
+
+    /* Scene 3 — question row */
+    .cep10-q {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 352px;
+      height: 84px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+    }
+    .cep10-tag {
+      box-sizing: border-box;
+      height: 76px;
+      padding: 0 34px;
+      display: flex;
+      align-items: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .cep10-tag-normal { border: 3px solid #1F2BE0; background: #F0EBDE; color: #1F2BE0; }
+    .cep10-tag-prob { background: #1F2BE0; color: #F0EBDE; border: 3px solid #1F2BE0; }
+    .cep10-ou {
+      font-family: "Newsreader", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 52px;
+      line-height: 1;
+      color: #5560E5;
+    }
+
+    /* Scene 2 — the series */
+    .cep10-label {
+      position: absolute;
+      left: 80px;
+      top: 636px;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .cep10-chart {
+      position: absolute;
+      left: 280px;
+      top: 470px;
+      width: 1540px;
+      height: 360px;
+      overflow: visible;
+    }
+    .cep10-mean { fill: none; stroke: #1F2BE0; stroke-width: 3; }
+    .cep10-series { fill: none; stroke: #1F2BE0; stroke-width: 2; stroke-linejoin: miter; }
+    .cep10-pt { fill: #1F2BE0; }
+  </style>
+
+  <div id="root" data-composition-id="10-cep" data-width="1920" data-height="1080" data-duration="8.415">
+    <div id="cep10-ground" class="cep10-ground clip" data-start="0" data-duration="8.415" data-track-index="0"></div>
+
+    <div id="cep10-stage" class="cep10-stage clip" data-start="0" data-duration="8.415" data-track-index="1">
+      <div class="cep10-hair cep10-hair-top"></div>
+      <div class="cep10-hair cep10-hair-bot"></div>
+      <div class="cep10-chrome cep10-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="cep10-chrome cep10-chrome-num">10 / 13</div>
+
+      <div id="cep10-cam" class="cep10-cam">
+        <div id="cep10-kicker" class="cep10-kicker">AULA 8</div>
+
+        <div class="cep10-acro-wrap"><span id="cep10-acro" class="cep10-acro"></span></div>
+        <div id="cep10-acro-rule" class="cep10-acro-rule"></div>
+
+        <div class="cep10-name">
+          <span id="cep10-w1" class="cep10-word">Controle</span><span id="cep10-w2" class="cep10-word">Estatístico</span><span id="cep10-w3" class="cep10-word">de</span><span id="cep10-w4" class="cep10-word">Processo</span>
+        </div>
+
+        <div class="cep10-q">
+          <div id="cep10-normal" class="cep10-tag cep10-tag-normal">NORMAL?</div>
+          <div id="cep10-ou" class="cep10-ou">ou</div>
+          <div id="cep10-prob" class="cep10-tag cep10-tag-prob">PROBLEMA?</div>
+        </div>
+
+        <div id="cep10-label" class="cep10-label">MEDIÇÕES</div>
+        <svg id="cep10-chart" class="cep10-chart" viewBox="0 0 1540 360" xmlns="http://www.w3.org/2000/svg">
+          <path id="cep10-mean" class="cep10-mean" d="M 0 180 L 1540 180" />
+          <path id="cep10-series" class="cep10-series" d="M 0 0" />
+          <g id="cep10-pts"></g>
+        </svg>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 7.915;
+      const NS = "http://www.w3.org/2000/svg";
+
+      // ---- Series geometry (deterministic) ----
+      const OFFS = [-46, 34, -78, 58, -18, 92, -62, 12, -100, 48, -30, 74, -8, -86, 40, -56, 96, -24, 64, -44, 18, -70];
+      const N = OFFS.length;
+      const X0 = 30, X1 = 1510, MEAN = 180, SQ = 16;
+      const pts = OFFS.map((o, i) => ({ x: X0 + ((X1 - X0) * i) / (N - 1), y: MEAN + o }));
+      const series = document.getElementById("cep10-series");
+      series.setAttribute("d", pts.map((p, i) => (i ? "L " : "M ") + p.x.toFixed(1) + " " + p.y).join(" "));
+      const g = document.getElementById("cep10-pts");
+      const rects = pts.map((p) => {
+        const r = document.createElementNS(NS, "rect");
+        r.setAttribute("class", "cep10-pt");
+        r.setAttribute("x", (p.x - SQ / 2).toFixed(1));
+        r.setAttribute("y", p.y - SQ / 2);
+        r.setAttribute("width", SQ);
+        r.setAttribute("height", SQ);
+        g.appendChild(r);
+        return r;
+      });
+
+      // svg-path-draw setup — measured lengths
+      const mean = document.getElementById("cep10-mean");
+      const meanLen = mean.getTotalLength();
+      mean.style.strokeDasharray = `${meanLen}`;
+      mean.style.strokeDashoffset = `${meanLen}`;
+      const sLen = series.getTotalLength();
+      series.style.strokeDasharray = `${sLen}`;
+      series.style.strokeDashoffset = `${sLen}`;
+      // cumulative length to each vertex, so each square lands as the pen reaches it
+      const cum = [0];
+      for (let i = 1; i < N; i++) {
+        const dx = pts[i].x - pts[i - 1].x, dy = pts[i].y - pts[i - 1].y;
+        cum.push(cum[i - 1] + Math.hypot(dx, dy));
+      }
+      const geomLen = cum[N - 1];
+
+      // ---- Camera: quiet push under the whole shot ----
+      tl.fromTo("#cep10-cam", { scale: 1 }, { scale: 1.025, duration: D, ease: "none", transformOrigin: "50% 45%" }, 0);
+
+      // ---- Scene 1 (0.0–3.4s) ----
+      tl.fromTo("#cep10-kicker", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.2);
+      [1.0, 1.4, 1.8, 2.2].forEach((t, i) => {
+        tl.fromTo(`#cep10-w${i + 1}`, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t);
+      });
+
+      // Acronym lands in place via discrete-text-sequence (instant state swaps)
+      const SEQ = [
+        { t: 0, text: "" },
+        { t: 2.8, text: "C" },
+        { t: 2.92, text: "CE" },
+        { t: 3.04, text: "CEP" },
+      ];
+      function textAt(time) {
+        for (let i = SEQ.length - 1; i >= 0; i--) if (time >= SEQ[i].t) return SEQ[i].text;
+        return "";
+      }
+      const acroEl = document.getElementById("cep10-acro");
+      const driver = { t: 0 };
+      tl.to(driver, { t: D, duration: D, ease: "none", onUpdate: () => { acroEl.textContent = textAt(driver.t); } }, 0);
+      tl.fromTo("#cep10-acro-rule", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.out" }, 2.8);
+
+      // ---- Scene 2 (3.4–4.7s): mean line, then series drawn point by point ----
+      tl.to("#cep10-mean", { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, 3.4);
+      tl.fromTo("#cep10-label", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.45);
+      const S0 = 3.6, SD = 1.1;
+      tl.to(series, { strokeDashoffset: 0, duration: SD, ease: "none" }, S0);
+      rects.forEach((r, i) => {
+        const t = S0 + SD * (cum[i] / geomLen);
+        tl.fromTo(r, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "power2.out", transformOrigin: "50% 50%" }, t);
+      });
+
+      // ---- Scene 3 (4.7–7.915s): the question ----
+      tl.fromTo("#cep10-normal", { opacity: 0, y: 24, clipPath: "inset(0% 0% 100% 0%)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.out" }, 5.5);
+      tl.fromTo("#cep10-ou", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.6);
+      tl.fromTo("#cep10-prob", { opacity: 0, clipPath: "inset(0% 50% 0% 50%)" }, { opacity: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 0.4, ease: "power2.out" }, 7.2);
+
+      window.__timelines["10-cep"] = tl;
+    </script>
+  </div>
+</template>

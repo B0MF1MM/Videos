@@ -1,0 +1,238 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .qc04-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .qc04-stage { position: absolute; inset: 0; }
+    .qc04-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .qc04-hair-top { top: 70px; }
+    .qc04-hair-bot { top: 892px; }
+    .qc04-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .qc04-chrome-tag { left: 77px; }
+    .qc04-chrome-num { right: 77px; }
+
+    .qc04-title {
+      position: absolute;
+      left: 80px;
+      top: 98px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 84px;
+      line-height: 1;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+
+    .qc04-group {
+      position: absolute;
+      left: 80px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .qc04-group-top { top: 214px; }
+    .qc04-group-bot { top: 548px; }
+    .qc04-group-rule {
+      display: block;
+      width: 1240px;
+      height: 2px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+
+    .qc04-slot {
+      position: absolute;
+      width: 860px;
+      height: 262px;
+      box-sizing: border-box;
+    }
+    .qc04-s-tl { left: 80px;  top: 256px; }
+    .qc04-s-tr { left: 980px; top: 256px; }
+    .qc04-s-bl { left: 80px;  top: 590px; }
+    .qc04-s-br { left: 980px; top: 590px; }
+
+    .qc04-outline {
+      position: absolute;
+      inset: 0;
+      border: 3px solid rgba(31,43,224,0.18);
+    }
+    .qc04-card {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform-origin: 50% 50%;
+    }
+    .qc04-card-inv { background: #1F2BE0; color: #F0EBDE; }
+    .qc04-num {
+      position: absolute;
+      top: 40px;
+      right: 48px;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .qc04-name {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 66px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .qc04-ex {
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .qc04-when { display: block; }
+    .qc04-mark-wrap { position: relative; display: inline-block; }
+    .qc04-mark-text { position: relative; z-index: 1; }
+    .qc04-mark-svg {
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 100%;
+      height: 16px;
+      overflow: visible;
+      z-index: 0;
+    }
+  </style>
+
+  <div id="root" data-composition-id="04-quatro-custos" data-width="1920" data-height="1080" data-duration="17.567">
+    <div id="qc04-ground" class="qc04-ground clip" data-start="0" data-duration="17.567" data-track-index="0"></div>
+
+    <div id="qc04-stage" class="qc04-stage clip" data-start="0" data-duration="17.567" data-track-index="1">
+      <div class="qc04-hair qc04-hair-top"></div>
+      <div class="qc04-hair qc04-hair-bot"></div>
+      <div class="qc04-chrome qc04-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="qc04-chrome qc04-chrome-num">04 / 13</div>
+
+      <div id="qc04-title" class="qc04-title">Custos da qualidade</div>
+
+      <div id="qc04-g1" class="qc04-group qc04-group-top">
+        <span>Custos de controle</span><span id="qc04-g1-rule" class="qc04-group-rule"></span>
+      </div>
+      <div id="qc04-g2" class="qc04-group qc04-group-bot">
+        <span>Custos das falhas</span><span id="qc04-g2-rule" class="qc04-group-rule"></span>
+      </div>
+
+      <div class="qc04-slot qc04-s-tl">
+        <div id="qc04-o1" class="qc04-outline"></div>
+        <div id="qc04-c1" class="qc04-card">
+          <span class="qc04-num">01</span>
+          <div class="qc04-name">PREVENÇÃO</div>
+          <div class="qc04-ex">treinamento · planejamento</div>
+        </div>
+      </div>
+      <div class="qc04-slot qc04-s-tr">
+        <div id="qc04-o2" class="qc04-outline"></div>
+        <div id="qc04-c2" class="qc04-card">
+          <span class="qc04-num">02</span>
+          <div class="qc04-name">AVALIAÇÃO</div>
+          <div class="qc04-ex">inspeções · testes</div>
+        </div>
+      </div>
+      <div class="qc04-slot qc04-s-bl">
+        <div id="qc04-o3" class="qc04-outline"></div>
+        <div id="qc04-c3" class="qc04-card qc04-card-inv">
+          <span class="qc04-num">03</span>
+          <div class="qc04-name">FALHAS INTERNAS</div>
+          <div class="qc04-ex">refugo · retrabalho<span class="qc04-when">— antes da entrega</span></div>
+        </div>
+      </div>
+      <div class="qc04-slot qc04-s-br">
+        <div id="qc04-o4" class="qc04-outline"></div>
+        <div id="qc04-c4" class="qc04-card qc04-card-inv">
+          <span class="qc04-num">04</span>
+          <div class="qc04-name">FALHAS EXTERNAS</div>
+          <div class="qc04-ex">garantia · devoluções · reclamações<span class="qc04-when">— <span class="qc04-mark-wrap"><span class="qc04-mark-text">depois da entrega</span><svg class="qc04-mark-svg" viewBox="0 0 500 24" preserveAspectRatio="none"><path id="qc04-mark" pathLength="1" d="M0,12 Q31,2 62,12 Q93,22 125,12 Q156,2 187,12 Q218,22 250,12 Q281,2 312,12 Q343,22 375,12 Q406,2 437,12 Q468,22 500,12" fill="none" stroke="#F0EBDE" stroke-width="5" stroke-linecap="square" stroke-dasharray="1 1" /></svg></span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 17.067;
+
+      // Quiet camera push under the whole shot
+      tl.fromTo("#qc04-stage", { scale: 1 }, { scale: 1.02, duration: D, ease: "none", transformOrigin: "50% 48%" }, 0);
+
+      // Scene 1 — headline, then four faint empty outlines on "quatro grupos"
+      tl.fromTo("#qc04-title", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.25);
+      ["#qc04-o1", "#qc04-o2", "#qc04-o3", "#qc04-o4"].forEach((sel, i) => {
+        tl.fromTo(sel, { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 2.6 + i * 0.06);
+      });
+
+      // Group labels hidden until their cue
+      tl.fromTo(["#qc04-g1", "#qc04-g2"], { opacity: 0, x: -16 }, { opacity: 0, x: -16, duration: 0.01 }, 0);
+      tl.fromTo(["#qc04-g1-rule", "#qc04-g2-rule"], { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, 0);
+
+      // Cards each pop into their slot on their word (spring-pop, power3, no overshoot)
+      const cards = [["#qc04-c1", 3.8], ["#qc04-c2", 7.1], ["#qc04-c3", 9.2], ["#qc04-c4", 12.7]];
+      cards.forEach(([sel, t]) => {
+        tl.fromTo(sel, { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t);
+      });
+
+      // Scene 3 — CUSTOS DE CONTROLE above the top row
+      tl.fromTo("#qc04-g1", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, 8.5);
+      tl.fromTo("#qc04-g1-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out", immediateRender: false }, 8.65);
+
+      // Scene 5 — CUSTOS DAS FALHAS above the bottom row
+      tl.fromTo("#qc04-g2", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, 14.6);
+      tl.fromTo("#qc04-g2-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out", immediateRender: false }, 14.75);
+
+      // "depois da entrega" underline draws (scribble marker), then hold
+      tl.fromTo("#qc04-mark", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power1.inOut" }, 16.1);
+
+      window.__timelines["04-quatro-custos"] = tl;
+    </script>
+  </div>
+</template>

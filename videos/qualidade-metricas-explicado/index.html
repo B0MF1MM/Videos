@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="assets/vendor/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
     <style>
       * {
         margin: 0;
@@ -12,25 +12,23 @@
       }
       html,
       body {
-        margin: 0;
         width: 1920px;
         height: 1080px;
         overflow: hidden;
-        background: #0a0a0a;
+        background: #000;
       }
       #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #F0EBDE;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      }
-      #title {
-        color: #f4f4f5;
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
       }
     </style>
   </head>
@@ -39,17 +37,310 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="10"
+      data-duration="146.836"
       data-width="1920"
       data-height="1080"
     >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+      <div
+        id="el-01-custa-caro"
+        class="scene"
+        data-composition-id="01-custa-caro"
+        data-composition-src="compositions/frames/01-custa-caro.html"
+        data-start="0"
+        data-duration="8.713"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-01-custa-caro-voice"
+        src="assets/voice/01.wav"
+        data-start="0"
+        data-duration="8.213"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-02-gqt"
+        class="scene"
+        data-composition-id="02-gqt"
+        data-composition-src="compositions/frames/02-gqt.html"
+        data-start="8.213"
+        data-duration="12.809"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-02-gqt-voice"
+        src="assets/voice/02.wav"
+        data-start="8.213"
+        data-duration="12.309"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-03-pdca"
+        class="scene"
+        data-composition-id="03-pdca"
+        data-composition-src="compositions/frames/03-pdca.html"
+        data-start="20.522"
+        data-duration="9.993"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-03-pdca-voice"
+        src="assets/voice/03.wav"
+        data-start="20.522"
+        data-duration="9.493"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-04-quatro-custos"
+        class="scene"
+        data-composition-id="04-quatro-custos"
+        data-composition-src="compositions/frames/04-quatro-custos.html"
+        data-start="30.015"
+        data-duration="17.567"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-04-quatro-custos-voice"
+        src="assets/voice/04.wav"
+        data-start="30.015"
+        data-duration="17.067"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-05-prevenir"
+        class="scene"
+        data-composition-id="05-prevenir"
+        data-composition-src="compositions/frames/05-prevenir.html"
+        data-start="47.082"
+        data-duration="9.509"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-05-prevenir-voice"
+        src="assets/voice/05.wav"
+        data-start="47.082"
+        data-duration="9.109"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-06-indicadores"
+        class="scene"
+        data-composition-id="06-indicadores"
+        data-composition-src="compositions/frames/06-indicadores.html"
+        data-start="56.191"
+        data-duration="10.335"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-06-indicadores-voice"
+        src="assets/voice/06.wav"
+        data-start="56.191"
+        data-duration="9.835"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-07-oee"
+        class="scene"
+        data-composition-id="07-oee"
+        data-composition-src="compositions/frames/07-oee.html"
+        data-start="66.02600000000001"
+        data-duration="9.161"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-07-oee-voice"
+        src="assets/voice/07.wav"
+        data-start="66.02600000000001"
+        data-duration="8.661"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-08-fatores"
+        class="scene"
+        data-composition-id="08-fatores"
+        data-composition-src="compositions/frames/08-fatores.html"
+        data-start="74.68700000000001"
+        data-duration="12.937"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-08-fatores-voice"
+        src="assets/voice/08.wav"
+        data-start="74.68700000000001"
+        data-duration="12.437"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-09-oee-exemplo"
+        class="scene"
+        data-composition-id="09-oee-exemplo"
+        data-composition-src="compositions/frames/09-oee-exemplo.html"
+        data-start="87.12400000000001"
+        data-duration="13.669"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-09-oee-exemplo-voice"
+        src="assets/voice/09.wav"
+        data-start="87.12400000000001"
+        data-duration="13.269"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-10-cep"
+        class="scene"
+        data-composition-id="10-cep"
+        data-composition-src="compositions/frames/10-cep.html"
+        data-start="100.39300000000001"
+        data-duration="8.415"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-10-cep-voice"
+        src="assets/voice/10.wav"
+        data-start="100.39300000000001"
+        data-duration="7.915"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-11-causas"
+        class="scene"
+        data-composition-id="11-causas"
+        data-composition-src="compositions/frames/11-causas.html"
+        data-start="108.30800000000002"
+        data-duration="12.959"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-11-causas-voice"
+        src="assets/voice/11.wav"
+        data-start="108.30800000000002"
+        data-duration="12.459"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-12-grafico-controle"
+        class="scene"
+        data-composition-id="12-grafico-controle"
+        data-composition-src="compositions/frames/12-grafico-controle.html"
+        data-start="120.76700000000002"
+        data-duration="13.912"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-12-grafico-controle-voice"
+        src="assets/voice/12.wav"
+        data-start="120.76700000000002"
+        data-duration="13.312"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-13-sintese"
+        class="scene"
+        data-composition-id="13-sintese"
+        data-composition-src="compositions/frames/13-sintese.html"
+        data-start="134.07900000000004"
+        data-duration="12.757"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-13-sintese-voice"
+        src="assets/voice/13.wav"
+        data-start="134.07900000000004"
+        data-duration="12.757"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <!-- BGM -->
+      <audio
+        id="el-bgm"
+        src="assets/music/underscore.mp3"
+        data-start="0"
+        data-duration="146.836"
+        data-track-index="11"
+        data-volume="0.12"
+      ></audio>
+
+      <!-- captions -->
+      <div
+        id="el-captions"
+        class="scene"
+        data-composition-id="captions"
+        data-composition-src="compositions/captions.html"
+        data-start="0"
+        data-duration="146.836"
+        data-track-index="2"
+      ></div>
+
     </div>
+
     <script>
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
-      window.__timelines["main"] = tl;
-      tl.seek(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-custa-caro", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 8.213);
+        tl.fromTo("#el-02-gqt", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 8.213);
+        tl.addLabel("hf:transition:01-custa-caro:02-gqt:crossfade", 8.213);
+        tl.to("#el-02-gqt", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 20.522);
+        tl.fromTo("#el-03-pdca", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 20.522);
+        tl.addLabel("hf:transition:02-gqt:03-pdca:push-slide", 20.522);
+        tl.to("#el-03-pdca", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 30.015);
+        tl.fromTo("#el-04-quatro-custos", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 30.015);
+        tl.addLabel("hf:transition:03-pdca:04-quatro-custos:crossfade", 30.015);
+        tl.to("#el-04-quatro-custos", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 47.082);
+        tl.fromTo("#el-05-prevenir", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 47.082);
+        tl.addLabel("hf:transition:04-quatro-custos:05-prevenir:push-slide", 47.082);
+        tl.to("#el-05-prevenir", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 56.191);
+        tl.fromTo("#el-06-indicadores", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 56.191);
+        tl.addLabel("hf:transition:05-prevenir:06-indicadores:zoom-through", 56.191);
+        tl.to("#el-06-indicadores", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 66.026);
+        tl.fromTo("#el-07-oee", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 66.026);
+        tl.addLabel("hf:transition:06-indicadores:07-oee:crossfade", 66.026);
+        tl.to("#el-07-oee", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 74.687);
+        tl.fromTo("#el-08-fatores", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 74.687);
+        tl.addLabel("hf:transition:07-oee:08-fatores:push-slide", 74.687);
+        tl.to("#el-08-fatores", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 87.124);
+        tl.fromTo("#el-09-oee-exemplo", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 87.124);
+        tl.addLabel("hf:transition:08-fatores:09-oee-exemplo:push-slide", 87.124);
+        tl.to("#el-09-oee-exemplo", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 100.393);
+        tl.fromTo("#el-10-cep", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 100.393);
+        tl.addLabel("hf:transition:09-oee-exemplo:10-cep:zoom-through", 100.393);
+        tl.to("#el-10-cep", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 108.308);
+        tl.fromTo("#el-11-causas", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 108.308);
+        tl.addLabel("hf:transition:10-cep:11-causas:crossfade", 108.308);
+        tl.to("#el-11-causas", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 120.767);
+        tl.fromTo("#el-12-grafico-controle", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 120.767);
+        tl.addLabel("hf:transition:11-causas:12-grafico-controle:push-slide", 120.767);
+        tl.to("#el-12-grafico-controle", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.6, ease: "power2.inOut" }, 134.079);
+        tl.fromTo("#el-13-sintese", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, 134.079);
+        tl.addLabel("hf:transition:12-grafico-controle:13-sintese:blur-crossfade", 134.079);
+        tl.to({}, { duration: 146.836 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
     </script>
   </body>
 </html>

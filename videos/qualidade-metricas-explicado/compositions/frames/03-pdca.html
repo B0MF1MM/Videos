@@ -1,0 +1,257 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .p03-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .p03-stage { position: absolute; inset: 0; }
+    .p03-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .p03-hair-top { top: 70px; }
+    .p03-hair-bot { top: 892px; }
+    .p03-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .p03-chrome-tag { left: 77px; }
+    .p03-chrome-num { right: 77px; }
+
+    .p03-title {
+      position: absolute;
+      left: 80px;
+      top: 116px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 0.95;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+
+    /* Left column — three principles */
+    .p03-row {
+      position: absolute;
+      left: 80px;
+      width: 680px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      box-sizing: border-box;
+      padding: 0 24px;
+      border-bottom: 2px solid rgba(31,43,224,0.18);
+      white-space: nowrap;
+    }
+    .p03-row-1 { top: 300px; }
+    .p03-row-2 { top: 420px; }
+    .p03-row-3 {
+      top: 560px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      border-bottom: 2px solid #1F2BE0;
+    }
+    .p03-num {
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .p03-name {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 54px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+    }
+
+    /* PDCA square cycle */
+    .p03-block {
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+    }
+    .p03-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .p03-lit {
+      background: #1F2BE0;
+      color: #F0EBDE;
+    }
+    .p03-letter {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 130px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+    }
+    .p03-verb {
+      margin-top: 14px;
+      padding-left: 0.16em;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .p03-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .p03-svg path {
+      fill: none;
+      stroke: #1F2BE0;
+      stroke-width: 4;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-pdca" data-width="1920" data-height="1080" data-duration="9.993">
+    <div id="p03-ground" class="p03-ground clip" data-start="0" data-duration="9.993" data-track-index="0"></div>
+
+    <div id="p03-stage" class="p03-stage clip" data-start="0" data-duration="9.993" data-track-index="1">
+      <div class="p03-hair p03-hair-top"></div>
+      <div class="p03-hair p03-hair-bot"></div>
+      <div class="p03-chrome p03-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="p03-chrome p03-chrome-num">03 / 13</div>
+
+      <div id="p03-title" class="p03-title">Três ideias</div>
+
+      <div id="p03-row1" class="p03-row p03-row-1"><span class="p03-num">01</span><span class="p03-name">Foco no cliente</span></div>
+      <div id="p03-row2" class="p03-row p03-row-2"><span class="p03-num">02</span><span class="p03-name">Envolvimento de todos</span></div>
+      <div id="p03-row3" class="p03-row p03-row-3"><span class="p03-num">03</span><span class="p03-name">Melhoria contínua</span></div>
+
+      <svg class="p03-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <!-- connector: Melhoria contínua → cycle (lands on block A's left edge) -->
+        <path id="p03-link" d="M 762 610 L 1148 610" />
+        <!-- cycle arrows P→D→C→A→P -->
+        <path id="p03-a1" d="M 1434 305 L 1506 305 M 1494 293 L 1506 305 L 1494 317" />
+        <path id="p03-a2" d="M 1655 454 L 1655 526 M 1643 514 L 1655 526 L 1667 514" />
+        <path id="p03-a3" d="M 1506 675 L 1434 675 M 1446 663 L 1434 675 L 1446 687" />
+        <path id="p03-a4" d="M 1285 526 L 1285 454 M 1273 466 L 1285 454 L 1297 466" />
+      </svg>
+
+      <div id="p03-bP" class="p03-block" style="left:1150px; top:170px">
+        <div id="p03-uP" class="p03-face"><span class="p03-letter">P</span></div>
+        <div id="p03-lP" class="p03-face p03-lit"><span class="p03-letter">P</span><span class="p03-verb">Planejar</span></div>
+      </div>
+      <div id="p03-bD" class="p03-block" style="left:1520px; top:170px">
+        <div id="p03-uD" class="p03-face"><span class="p03-letter">D</span></div>
+        <div id="p03-lD" class="p03-face p03-lit"><span class="p03-letter">D</span><span class="p03-verb">Executar</span></div>
+      </div>
+      <div id="p03-bC" class="p03-block" style="left:1520px; top:540px">
+        <div id="p03-uC" class="p03-face"><span class="p03-letter">C</span></div>
+        <div id="p03-lC" class="p03-face p03-lit"><span class="p03-letter">C</span><span class="p03-verb">Verificar</span></div>
+      </div>
+      <div id="p03-bA" class="p03-block" style="left:1150px; top:540px">
+        <div id="p03-uA" class="p03-face"><span class="p03-letter">A</span></div>
+        <div id="p03-lA" class="p03-face p03-lit"><span class="p03-letter">A</span><span class="p03-verb">Agir</span></div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 9.493;
+
+      // Macro: slow push under the whole shot
+      tl.fromTo("#p03-stage", { scale: 1 }, { scale: 1.025, duration: D, ease: "none", transformOrigin: "55% 45%" }, 0);
+
+      // Scene 1 — headline lands by 0.9s
+      tl.fromTo("#p03-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.35);
+
+      // Scene 2 — principles sequenced to the voice (content-driven cue table)
+      const ROWS = [
+        { sel: "#p03-row1", start: 1.8 },
+        { sel: "#p03-row2", start: 2.9 },
+        { sel: "#p03-row3", start: 4.6 },
+      ];
+      ROWS.forEach((r, i) => {
+        if (i < 2) {
+          tl.fromTo(r.sel, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, r.start);
+        } else {
+          tl.fromTo(r.sel,
+            { clipPath: "inset(0% 100% 0% 0%)" },
+            { clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "power3.out" }, r.start);
+        }
+      });
+
+      // SVG draw setup — measured lengths
+      const paths = ["#p03-link", "#p03-a1", "#p03-a2", "#p03-a3", "#p03-a4"];
+      const lens = {};
+      paths.forEach((sel) => {
+        const p = document.querySelector(sel);
+        const len = Math.ceil(p.getTotalLength() * 1.05);
+        lens[sel] = len;
+        p.style.strokeDasharray = len + " " + len;
+        p.style.strokeDashoffset = String(len);
+      });
+      const draw = (sel, t, dur) =>
+        tl.fromTo(sel, { strokeDashoffset: lens[sel] }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, t);
+
+      // Scene 3 — connector draws on "ciclo PDCA", four outline blocks form the square
+      draw("#p03-link", 5.95, 0.45);
+      ["#p03-bP", "#p03-bD", "#p03-bC", "#p03-bA"].forEach((sel, i) => {
+        tl.fromTo(sel, { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 6.2 + i * 0.1);
+      });
+
+      // Scene 4 — each block lights on its verb; arrow from previous block draws in step
+      const STEPS = [
+        { lit: "#p03-lP", t: 7.1 },
+        { lit: "#p03-lD", t: 7.8, arrow: "#p03-a1" },
+        { lit: "#p03-lC", t: 8.4, arrow: "#p03-a2" },
+        { lit: "#p03-lA", t: 9.0, arrow: "#p03-a3" },
+      ];
+      STEPS.forEach((s) => {
+        if (s.arrow) draw(s.arrow, s.t - 0.15, 0.3);
+        tl.fromTo(s.lit, { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none" }, s.t);
+        tl.set(s.lit.replace("-l", "-u"), { opacity: 0 }, s.t + 0.15);
+        tl.fromTo(s.lit + " .p03-verb", { y: 14 }, { y: 0, duration: 0.3, ease: "power3.out" }, s.t);
+      });
+      // closing arrow A → P closes the loop, then hold
+      draw("#p03-a4", 9.12, 0.28);
+
+      window.__timelines["03-pdca"] = tl;
+    </script>
+  </div>
+</template>

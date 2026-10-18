@@ -1,0 +1,312 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .g02-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .g02-stage { position: absolute; inset: 0; }
+    .g02-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .g02-hair-top { top: 70px; }
+    .g02-hair-bot { top: 892px; }
+    .g02-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .g02-chrome-tag { left: 77px; }
+    .g02-chrome-num { right: 77px; }
+
+    .g02-aula {
+      position: absolute;
+      left: 80px;
+      top: 104px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1;
+      padding-bottom: 10px;
+    }
+    .g02-aula-rule {
+      position: absolute;
+      left: 0; right: 0.18em; bottom: 0;
+      height: 2px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+
+    /* GQT acronym over the full name */
+    .g02-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 34px;
+    }
+    .g02-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .g02-letter {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 150px;
+      line-height: 0.9;
+      letter-spacing: -0.005em;
+      height: 135px;
+    }
+    .g02-link {
+      width: 2px;
+      height: 44px;
+      margin: 10px 0 12px;
+      background: #1F2BE0;
+      transform-origin: 50% 0%;
+    }
+    .g02-word {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 92px;
+      line-height: 1;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+
+    /* INSPEÇÃO block → four sectors */
+    .g02-row {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    .g02-block {
+      position: absolute;
+      top: 588px;
+      left: 960px;
+      height: 112px;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+    }
+    .g02-insp { width: 460px; font-size: 40px; }
+    .g02-strike {
+      position: absolute;
+      left: -24px;
+      right: -24px;
+      top: 50%;
+      height: 5px;
+      margin-top: -2px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+    .g02-sector { width: 360px; font-size: 32px; }
+    .g02-fill {
+      position: absolute;
+      inset: 0;
+      background: #1F2BE0;
+    }
+    .g02-sector-label { position: relative; padding-left: 0.16em; }
+    .g02-sector-label-inv {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 0.16em;
+      color: #F0EBDE;
+    }
+
+    .g02-drop {
+      position: absolute;
+      top: 646px;
+      width: 3px;
+      height: 82px;
+      margin-left: -1px;
+      background: #1F2BE0;
+      transform-origin: 50% 0%;
+    }
+    .g02-band {
+      position: absolute;
+      left: 180px;
+      top: 728px;
+      width: 1560px;
+      height: 104px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 44px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="02-gqt" data-width="1920" data-height="1080" data-duration="12.809">
+    <div id="g02-ground" class="g02-ground clip" data-start="0" data-duration="12.809" data-track-index="0"></div>
+
+    <div id="g02-stage" class="g02-stage clip" data-start="0" data-duration="12.809" data-track-index="1">
+      <div class="g02-hair g02-hair-top"></div>
+      <div class="g02-hair g02-hair-bot"></div>
+      <div class="g02-chrome g02-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="g02-chrome g02-chrome-num">02 / 13</div>
+
+      <div id="g02-aula" class="g02-aula">AULA 6<span id="g02-aula-rule" class="g02-aula-rule"></span></div>
+
+      <div id="g02-title" class="g02-title">
+        <div class="g02-col">
+          <div id="g02-l1" class="g02-letter">G</div>
+          <div id="g02-k1" class="g02-link"></div>
+          <div id="g02-w1" class="g02-word">Gestão</div>
+        </div>
+        <div class="g02-col">
+          <div id="g02-w2" class="g02-word">da</div>
+        </div>
+        <div class="g02-col">
+          <div id="g02-l2" class="g02-letter">Q</div>
+          <div id="g02-k2" class="g02-link"></div>
+          <div id="g02-w3" class="g02-word">Qualidade</div>
+        </div>
+        <div class="g02-col">
+          <div id="g02-l3" class="g02-letter">T</div>
+          <div id="g02-k3" class="g02-link"></div>
+          <div id="g02-w4" class="g02-word">Total</div>
+        </div>
+      </div>
+
+      <div class="g02-row">
+        <div id="g02-drop1" class="g02-drop" style="left:360px"></div>
+        <div id="g02-drop2" class="g02-drop" style="left:760px"></div>
+        <div id="g02-drop3" class="g02-drop" style="left:1160px"></div>
+        <div id="g02-drop4" class="g02-drop" style="left:1560px"></div>
+
+        <div id="g02-s1" class="g02-block g02-sector" data-target-x="-600">
+          <div id="g02-f1" class="g02-fill"></div>
+          <span id="g02-b1" class="g02-sector-label">Projeto</span>
+          <span id="g02-i1" class="g02-sector-label-inv">Projeto</span>
+        </div>
+        <div id="g02-s2" class="g02-block g02-sector" data-target-x="-200">
+          <span class="g02-sector-label">Compras</span>
+        </div>
+        <div id="g02-s3" class="g02-block g02-sector" data-target-x="200">
+          <span class="g02-sector-label">Produção</span>
+        </div>
+        <div id="g02-s4" class="g02-block g02-sector" data-target-x="600">
+          <div id="g02-f4" class="g02-fill"></div>
+          <span id="g02-b4" class="g02-sector-label">Atendimento</span>
+          <span id="g02-i4" class="g02-sector-label-inv">Atendimento</span>
+        </div>
+
+        <div id="g02-insp" class="g02-block g02-insp">
+          <span class="g02-sector-label">Inspeção</span>
+          <span id="g02-strike" class="g02-strike"></span>
+        </div>
+
+        <div id="g02-band" class="g02-band">Foco no cliente</div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 12.309;
+
+      // Slow, quiet push under the whole shot
+      tl.fromTo("#g02-stage", { scale: 1 }, { scale: 1.025, duration: D, ease: "none", transformOrigin: "50% 45%" }, 0);
+
+      // Scene 1 — AULA 6 label
+      tl.fromTo("#g02-aula", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+      tl.fromTo("#g02-aula-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.35);
+
+      // Scene 2 — full name writes word by word
+      const words = [["#g02-w1", 1.0], ["#g02-w2", 1.2], ["#g02-w3", 1.4], ["#g02-w4", 1.9]];
+      words.forEach(([sel, t]) => {
+        tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t);
+      });
+      // Hidden acronym parts at t=0 (seek-safe sets)
+      tl.set(["#g02-l1", "#g02-l2", "#g02-l3"], { opacity: 0 }, 0);
+      tl.set(["#g02-k1", "#g02-k2", "#g02-k3"], { scaleY: 0 }, 0);
+      // GQT lands by discrete hard-cut, letter by letter, each linked to its word
+      [["#g02-l1", "#g02-k1"], ["#g02-l2", "#g02-k2"], ["#g02-l3", "#g02-k3"]].forEach(([l, k], i) => {
+        const t = 2.6 + i * 0.14;
+        tl.set(l, { opacity: 1 }, t);
+        tl.fromTo(l, { scale: 1.12 }, { scale: 1, duration: 0.3, ease: "power3.out" }, t);
+        tl.fromTo(k, { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, t + 0.08);
+      });
+
+      // Scene 3 — single INSPEÇÃO block, then struck through
+      tl.fromTo("#g02-insp", { xPercent: -50, opacity: 0, y: 24 }, { xPercent: -50, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.7);
+      tl.fromTo("#g02-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.inOut" }, 6.9);
+
+      // Scene 4 — block opens centre-outward into four sectors
+      tl.to("#g02-insp", { opacity: 0, scale: 0.92, duration: 0.35, ease: "power2.out" }, 7.5);
+      document.querySelectorAll("#g02-s1, #g02-s2, #g02-s3, #g02-s4").forEach((el, i) => {
+        const order = [1, 0, 0, 1][i];
+        tl.fromTo(
+          el,
+          { xPercent: -50, x: 0, scale: 0.7, opacity: 0 },
+          { xPercent: -50, x: Number(el.dataset.targetX), scale: 1, opacity: 1, duration: 1.2, ease: "power3.out" },
+          7.5 + order * 0.06
+        );
+      });
+      // ends light up (invert to cobalt)
+      tl.set(["#g02-f1", "#g02-i1", "#g02-f4", "#g02-i4"], { opacity: 0 }, 0);
+      tl.fromTo(["#g02-f1", "#g02-i1"], { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none", immediateRender: false }, 9.1);
+      tl.fromTo(["#g02-f4", "#g02-i4"], { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none", immediateRender: false }, 9.8);
+      tl.set("#g02-b1", { opacity: 0 }, 9.3);
+      tl.set("#g02-b4", { opacity: 0 }, 10.0);
+
+      // Scene 5 — FOCO NO CLIENTE band tied below the row
+      ["#g02-drop1", "#g02-drop2", "#g02-drop3", "#g02-drop4"].forEach((sel, i) => {
+        tl.fromTo(sel, { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power2.out" }, 11.2 + i * 0.05);
+      });
+      tl.fromTo("#g02-band",
+        { clipPath: "inset(0% 50% 0% 50%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.out" }, 11.4);
+
+      window.__timelines["02-gqt"] = tl;
+    </script>
+  </div>
+</template>

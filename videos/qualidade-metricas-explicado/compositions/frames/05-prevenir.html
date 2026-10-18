@@ -1,0 +1,335 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .p05-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .p05-stage { position: absolute; inset: 0; }
+    .p05-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .p05-hair-top { top: 70px; }
+    .p05-hair-bot { top: 892px; }
+    .p05-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .p05-chrome-tag { left: 77px; }
+    .p05-chrome-num { right: 77px; }
+
+    .p05-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .p05-svg path {
+      fill: none;
+      stroke: #1F2BE0;
+      stroke-width: 4;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+    .p05-svg path.p05-thin { stroke-width: 3; }
+
+    /* Scene 1 — escalation timeline */
+    .p05-tl { position: absolute; inset: 0; }
+    .p05-mark {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #1F2BE0;
+    }
+    .p05-stage-lbl {
+      position: absolute;
+      top: 668px;
+      width: 440px;
+      text-align: center;
+      padding-left: 0.16em;
+      box-sizing: border-box;
+      font-weight: 600;
+      font-size: 44px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .p05-col { position: absolute; width: 94px; }
+    .p05-cell {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      background: #1F2BE0;
+    }
+    .p05-cost-lbl {
+      position: absolute;
+      right: 480px;
+      top: 232px;
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* Scene 2 — stacked pixel bars */
+    .p05-bar { position: absolute; width: 188px; }
+    .p05-layer { position: absolute; left: 0; width: 188px; }
+    .p05-bcell { position: absolute; width: 28px; height: 28px; background: #1F2BE0; }
+    .p05-prev .p05-bcell, .p05-sw-prev { opacity: 0.25; }
+    .p05-aval .p05-bcell, .p05-sw-aval { opacity: 0.55; }
+    .p05-bar-lbl {
+      position: absolute;
+      top: 854px;
+      width: 188px;
+      text-align: center;
+      padding-left: 0.16em;
+      box-sizing: border-box;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 0.16em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .p05-total {
+      position: absolute;
+      left: 834px;
+      top: 538px;
+      width: 320px;
+      height: 58px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-weight: 600;
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .p05-total svg { width: 22px; height: 30px; overflow: visible; }
+    .p05-total svg path { fill: none; stroke: #F0EBDE; stroke-width: 4; stroke-linecap: square; stroke-linejoin: miter; }
+
+    .p05-leg {
+      position: absolute;
+      left: 1300px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 600;
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .p05-sw { position: relative; width: 44px; height: 44px; }
+    .p05-sw i { position: absolute; inset: 0; background: #1F2BE0; }
+  </style>
+
+  <div id="root" data-composition-id="05-prevenir" data-width="1920" data-height="1080" data-duration="9.509">
+    <div id="p05-ground" class="p05-ground clip" data-start="0" data-duration="9.509" data-track-index="0"></div>
+
+    <div id="p05-stage" class="p05-stage clip" data-start="0" data-duration="9.509" data-track-index="1">
+      <div class="p05-hair p05-hair-top"></div>
+      <div class="p05-hair p05-hair-bot"></div>
+      <div class="p05-chrome p05-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="p05-chrome p05-chrome-num">05 / 13</div>
+
+      <!-- Scene 1: timeline PROJETO → PRODUÇÃO → CLIENTE with escalating cost columns -->
+      <div id="p05-tl" class="p05-tl">
+        <svg class="p05-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+          <path id="p05-axis" d="M 200 640 L 1720 640" />
+          <path id="p05-axis-head" d="M 1700 624 L 1720 640 L 1700 656" />
+          <path id="p05-stair" class="p05-thin" d="M 353 572 L 913 572 L 913 472 L 1473 472 L 1473 222 L 1567 222" />
+        </svg>
+        <div id="p05-m1" class="p05-mark" style="left:391px; top:631px"></div>
+        <div id="p05-m2" class="p05-mark" style="left:951px; top:631px"></div>
+        <div id="p05-m3" class="p05-mark" style="left:1511px; top:631px"></div>
+        <div id="p05-l1" class="p05-stage-lbl" style="left:180px">PROJETO</div>
+        <div id="p05-l2" class="p05-stage-lbl" style="left:740px">PRODUÇÃO</div>
+        <div id="p05-l3" class="p05-stage-lbl" style="left:1300px">CLIENTE</div>
+        <div id="p05-c1" class="p05-col" style="left:353px; top:0"></div>
+        <div id="p05-c2" class="p05-col" style="left:913px; top:0"></div>
+        <div id="p05-c3" class="p05-col" style="left:1473px; top:0"></div>
+        <div id="p05-cost" class="p05-cost-lbl">CUSTO DE CORRIGIR</div>
+      </div>
+
+      <!-- Scene 2/3: stacked pixel bars ANTES × DEPOIS -->
+      <svg class="p05-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <path id="p05-base" d="M 520 840 L 1130 840" />
+        <path id="p05-top-a" class="p05-thin" d="M 520 517 L 1130 517" />
+        <path id="p05-top-d" class="p05-thin" d="M 860 613 L 1130 613" />
+      </svg>
+      <div id="p05-bar-a" class="p05-bar" style="left:560px; top:0"></div>
+      <div id="p05-bar-d" class="p05-bar" style="left:900px; top:0"></div>
+      <div id="p05-lbl-a" class="p05-bar-lbl" style="left:560px">ANTES</div>
+      <div id="p05-lbl-d" class="p05-bar-lbl" style="left:900px">DEPOIS</div>
+
+      <div id="p05-total" class="p05-total">
+        <span>CUSTO TOTAL</span>
+        <svg viewBox="0 0 22 30" xmlns="http://www.w3.org/2000/svg"><path d="M 11 2 L 11 27 M 2 18 L 11 27 L 20 18" /></svg>
+      </div>
+
+      <div id="p05-leg1" class="p05-leg" style="top:556px"><span class="p05-sw"><i class="p05-sw-prev"></i></span>PREVENÇÃO</div>
+      <div id="p05-leg2" class="p05-leg" style="top:636px"><span class="p05-sw"><i class="p05-sw-aval"></i></span>AVALIAÇÃO</div>
+      <div id="p05-leg3" class="p05-leg" style="top:716px"><span class="p05-sw"><i></i></span>FALHAS</div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 9.109;
+
+      // ---- Build cells (synchronous, deterministic) ----
+      // Timeline columns: 2 cells wide, 44px cells, 50px step, bottom row sits on y=586
+      const colCells = {};
+      [["#p05-c1", 1], ["#p05-c2", 3], ["#p05-c3", 8]].forEach(([sel, rows]) => {
+        const col = document.querySelector(sel);
+        const rowEls = [];
+        for (let r = 0; r < rows; r++) {
+          const row = document.createElement("div");
+          row.style.position = "absolute";
+          row.style.left = "0px";
+          row.style.top = (586 - r * 50) + "px";
+          row.style.width = "94px";
+          row.style.height = "44px";
+          for (let c = 0; c < 2; c++) {
+            const cell = document.createElement("div");
+            cell.className = "p05-cell";
+            cell.style.left = (c * 50) + "px";
+            cell.style.top = "0px";
+            row.appendChild(cell);
+          }
+          col.appendChild(row);
+          rowEls.push(row);
+        }
+        colCells[sel] = rowEls;
+      });
+
+      // Stacked bars: 6 cells wide, 28px cells, 32px step, baseline y=840
+      // ANTES: prevenção 1 · avaliação 1 · falhas 8   |   DEPOIS: prevenção 3 · avaliação 2 · falhas 2
+      function buildBar(sel, layers) {
+        const bar = document.querySelector(sel);
+        let rowIdx = 0;
+        const out = [];
+        layers.forEach(([cls, rows]) => {
+          const layer = document.createElement("div");
+          layer.className = "p05-layer " + cls;
+          const bottom = 840 - rowIdx * 32;            // y of the layer's bottom edge (+4 gap)
+          const h = rows * 32 - 4;
+          layer.style.top = (bottom - rows * 32) + "px";
+          layer.style.height = h + "px";
+          for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < 6; c++) {
+              const cell = document.createElement("div");
+              cell.className = "p05-bcell";
+              cell.style.left = (c * 32) + "px";
+              cell.style.top = (h - 28 - r * 32) + "px";
+              layer.appendChild(cell);
+            }
+          }
+          bar.appendChild(layer);
+          out.push(layer);
+          rowIdx += rows;
+        });
+        return out;
+      }
+      const [aPrev, aAval, aFal] = buildBar("#p05-bar-a", [["p05-prev", 1], ["p05-aval", 1], ["p05-fal", 8]]);
+      const [dPrev, dAval, dFal] = buildBar("#p05-bar-d", [["p05-prev", 3], ["p05-aval", 2], ["p05-fal", 2]]);
+
+      // ---- SVG draw setup (measured) ----
+      const lens = {};
+      ["#p05-axis", "#p05-axis-head", "#p05-stair", "#p05-base", "#p05-top-a", "#p05-top-d"].forEach((sel) => {
+        const p = document.querySelector(sel);
+        const len = Math.ceil(p.getTotalLength() * 1.05);
+        lens[sel] = len;
+        p.style.strokeDasharray = len + " " + len;
+        p.style.strokeDashoffset = String(len);
+      });
+      const draw = (sel, t, dur, ease) =>
+        tl.fromTo(sel, { strokeDashoffset: lens[sel] }, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.out" }, t);
+
+      // Macro: slow push under the whole shot
+      tl.fromTo("#p05-stage", { scale: 1 }, { scale: 1.02, duration: D, ease: "none", transformOrigin: "50% 45%" }, 0);
+
+      // ---- Scene 1 (0.0–3.5s): timeline draws, columns climb 1 → 3 → 8 ----
+      draw("#p05-axis", 0.1, 0.7, "power2.inOut");
+      draw("#p05-axis-head", 0.72, 0.2);
+      [["#p05-m1", "#p05-l1", 0.2], ["#p05-m2", "#p05-l2", 0.38], ["#p05-m3", "#p05-l3", 0.56]].forEach(([m, l, t]) => {
+        tl.fromTo(m, { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, t);
+        tl.fromTo(l, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t + 0.05);
+      });
+      // "mais tarde" (0.6s): columns grow, each later stage taller
+      const growCol = (rows, t0, stagger) => {
+        rows.forEach((row, i) => {
+          tl.fromTo(row, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, t0 + i * stagger);
+        });
+      };
+      growCol(colCells["#p05-c1"], 0.7, 0);
+      growCol(colCells["#p05-c2"], 1.15, 0.1);
+      growCol(colCells["#p05-c3"], 1.65, 0.085);
+      // "mais caro" (2.4s): stair line traces the climb, label rises with it
+      draw("#p05-stair", 2.35, 0.8, "power2.inOut");
+      tl.fromTo("#p05-cost", { opacity: 0, y: 110 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 2.4);
+
+      // ---- Scene 2 (3.5–7.1s): timeline rises + shrinks; ANTES then DEPOIS assemble ----
+      tl.fromTo("#p05-tl", { scale: 1, y: 0 }, { scale: 0.62, y: 0, duration: 0.65, ease: "power3.inOut", transformOrigin: "960px 90px" }, 3.45);
+      draw("#p05-base", 3.65, 0.55);
+      const growLayer = (el, t, dur) =>
+        tl.fromTo(el, { scaleY: 0 }, { scaleY: 1, duration: dur, ease: "power3.out", transformOrigin: "50% 100%" }, t);
+      tl.fromTo("#p05-lbl-a", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 3.75);
+      growLayer(aPrev, 3.8, 0.3);
+      growLayer(aAval, 3.98, 0.3);
+      growLayer(aFal, 4.16, 0.7);
+      // "prevenção e avaliação" (4.8s)
+      tl.fromTo("#p05-lbl-d", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.7);
+      growLayer(dPrev, 4.8, 0.5);
+      growLayer(dAval, 5.15, 0.45);
+      // "reduz as falhas" (6.0s)
+      growLayer(dFal, 6.0, 0.4);
+
+      // ---- Scene 3 (7.1–9.11s): totals marked, legend, CUSTO TOTAL ↓ ----
+      draw("#p05-top-a", 7.4, 0.5);
+      draw("#p05-top-d", 7.62, 0.4);
+      [["#p05-leg1", 7.55], ["#p05-leg2", 7.7], ["#p05-leg3", 7.85]].forEach(([sel, t]) => {
+        tl.fromTo(sel, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t);
+      });
+      // "cai" (8.6s)
+      tl.fromTo("#p05-total", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.35, ease: "power3.out" }, 8.55);
+      tl.fromTo("#p05-total svg", { y: -10 }, { y: 0, duration: 0.3, ease: "power2.out" }, 8.75);
+
+      window.__timelines["05-prevenir"] = tl;
+    </script>
+  </div>
+</template>

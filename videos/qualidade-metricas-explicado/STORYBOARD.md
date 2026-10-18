@@ -27,7 +27,7 @@ music_brief: calm focused minimal study underscore, soft piano and light pulse (
 - voiceover: "Qualidade custa caro… ou é a falta dela que sai mais cara? E como saber se uma máquina rende de verdade, ou se um processo saiu do controle?"
 - duration: 8.213s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-custa-caro.html
 - type: hook
 - persuasion: Rhetorical question + reversal
@@ -51,7 +51,7 @@ Scene 4 (7.7–8.21s): em "controle?" (7.7s) as quatro perguntas recuam para ink
 - voiceover: "Na Aula 6, a Gestão da Qualidade Total, a GQT. A qualidade deixa de ser tarefa de um setor de inspeção e passa a ser responsabilidade de todos, do projeto ao atendimento, sempre com foco no cliente."
 - duration: 12.309s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-gqt.html
 - type: product_intro
 - persuasion: Concept announcement + before/after
@@ -76,7 +76,7 @@ Scene 5 (9.8–12.31s): em "foco no cliente" (11.2s) uma faixa cobalto invertida
 - voiceover: "Ela se apoia em três ideias: foco no cliente, envolvimento de todas as pessoas e melhoria contínua, que gira o ciclo PDCA: planejar, executar, verificar e agir."
 - duration: 9.493s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/03-pdca.html
 - type: feature_showcase
 - persuasion: Rule of three + cycle diagram
@@ -100,7 +100,7 @@ Scene 4 (7.1–9.49s): cada bloco acende (cobalto invertido) e ganha o verbo emb
 - voiceover: "Na Aula 6 também vêm os custos da qualidade, em quatro grupos. Prevenção: treinamento e planejamento para evitar defeitos. Avaliação: inspeções e testes. Falhas internas: refugo e retrabalho antes da entrega. E falhas externas: garantia, devoluções e reclamações depois da entrega."
 - duration: 17.067s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/04-quatro-custos.html
 - type: feature_showcase
 - persuasion: Categorization + concrete examples
@@ -125,7 +125,7 @@ Scene 5 (12.6–17.07s): em "falhas externas" (12.7s) o cartão inferior direito
 - voiceover: "Quanto mais tarde o defeito é descoberto, mais caro ele fica. Por isso, investir em prevenção e avaliação reduz as falhas, e o custo total da qualidade cai."
 - duration: 9.109s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/05-prevenir.html
 - type: benefit_highlight
 - persuasion: Escalation + before/after
@@ -148,7 +148,7 @@ Scene 3 (7.1–9.11s): em "custo total" (7.4s) uma linha reta horizontal marca o
 - voiceover: "Na Aula 7, os indicadores de desempenho. O que não se mede não se gerencia. Um bom indicador tem fórmula clara, meta, frequência de medição e um responsável."
 - duration: 9.835s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/06-indicadores.html
 - type: feature_showcase
 - persuasion: Maxim + checklist
@@ -172,7 +172,7 @@ Scene 4 (6.1–9.84s): as linhas da ficha (ledger-row: rótulo micro-strong à e
 - voiceover: "O indicador mais cobrado é o OEE, a Eficiência Global do Equipamento. Ele multiplica três fatores: disponibilidade, desempenho e qualidade."
 - duration: 8.661s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/07-oee.html
 - type: product_intro
 - persuasion: Concept announcement + formula
@@ -195,7 +195,7 @@ Scene 3 (4.2–8.66s): em "multiplica" (4.6s) aparece "OEE =" à esquerda da fó
 - voiceover: "Disponibilidade: o tempo que a máquina realmente operou sobre o tempo planejado. Desempenho: o que ela produziu sobre o que poderia produzir na velocidade ideal. Qualidade: as peças boas sobre o total produzido."
 - duration: 12.437s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/08-fatores.html
 - type: feature_showcase
 - persuasion: Rule of three + definitions as fractions
@@ -218,7 +218,7 @@ Scene 3 (9.4–12.44s): coluna 3 — "QUALIDADE" (9.4s); numerador "peças boas"
 - voiceover: "Exemplo: disponibilidade de noventa por cento, desempenho de oitenta e qualidade de noventa e cinco. Multiplicando, o OEE é de sessenta e oito vírgula quatro por cento. Cada fator parecia bom, mas juntos revelam as perdas."
 - duration: 13.269s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/09-oee-exemplo.html
 - type: social_proof
 - persuasion: Worked example with real numbers + surprise
@@ -242,7 +242,7 @@ Scene 4 (9.9–13.27s): em "juntos revelam as perdas" (11.8s) a parte vazia da b
 - voiceover: "Na Aula 8, o Controle Estatístico de Processo, o CEP. Todo processo varia. A pergunta é: essa variação é normal, ou tem algo errado?"
 - duration: 7.915s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/10-cep.html
 - type: pain_point
 - persuasion: Concept announcement + question
@@ -265,7 +265,7 @@ Scene 3 (4.7–7.915s): em "essa variação é normal" (5.5s) um rótulo "NORMAL
 - voiceover: "Causas comuns são pequenas variações naturais, sempre presentes. Causas especiais são eventos pontuais, como uma ferramenta gasta ou um lote ruim de matéria-prima. Essas precisam ser investigadas e eliminadas."
 - duration: 12.459s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/11-causas.html
 - type: feature_showcase
 - persuasion: Comparison of two options
@@ -288,7 +288,7 @@ Scene 3 (9.8–12.46s): em "investigadas" (10.9s) um selo retangular "INVESTIGAR
 - voiceover: "O gráfico de controle mostra isso: uma linha média e os limites superior e inferior de controle, em geral a três desvios-padrão da média. Um ponto fora dos limites, ou uma sequência estranha de pontos, sinaliza causa especial."
 - duration: 13.312s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/12-grafico-controle.html
 - type: benefit_highlight
 - persuasion: Demonstration + signal detection
@@ -313,7 +313,7 @@ Scene 5 (10.3–13.31s): em "sequência estranha" (10.3s) os pontos seguintes fo
 - voiceover: "Resumindo: a GQT envolve todos na qualidade, os custos mostram que prevenir sai mais barato, o OEE mede as perdas da máquina, e o CEP separa a variação normal do problema. Qualidade se gerencia com dados."
 - duration: 12.757s
 - transition_in: blur-crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/13-sintese.html
 - type: branding
 - persuasion: Distillation + callback

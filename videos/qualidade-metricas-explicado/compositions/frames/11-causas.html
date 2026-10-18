@@ -1,0 +1,317 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .c11-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .c11-stage { position: absolute; inset: 0; }
+    .c11-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .c11-hair-top { top: 70px; }
+    .c11-hair-bot { top: 892px; }
+    .c11-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .c11-chrome-tag { left: 77px; }
+    .c11-chrome-num { right: 77px; }
+
+    /* 3D split stage — perspective REQUIRED for the book-open tilt */
+    .c11-split {
+      position: absolute;
+      inset: 0;
+      perspective: 1800px;
+      perspective-origin: 960px 480px;
+      transform-style: preserve-3d;
+    }
+    .c11-slot {
+      position: absolute;
+      top: 130px;
+      width: 780px;
+      height: 700px;
+      transform-style: preserve-3d;
+    }
+    .c11-slot-l { left: 140px; }
+    .c11-slot-r { left: 1000px; }
+    .c11-card {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      transform-style: preserve-3d;
+      transform-origin: 50% 50%;
+      will-change: transform;
+    }
+    .c11-card-l { background: #F0EBDE; border: 3px solid #1F2BE0; color: #1F2BE0; }
+    .c11-card-r { background: #1F2BE0; border: 3px solid #1F2BE0; color: #F0EBDE; }
+
+    .c11-title {
+      position: absolute;
+      left: 48px;
+      top: 50px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 104px;
+      line-height: 0.98;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .c11-line { display: block; }
+    .c11-lede {
+      position: absolute;
+      left: 48px;
+      top: 288px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .c11-ex {
+      position: absolute;
+      left: 48px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .c11-ex-1 { top: 366px; }
+    .c11-ex-2 { top: 416px; }
+    .c11-bullet { display: block; width: 12px; height: 12px; background: #F0EBDE; }
+
+    .c11-chart {
+      position: absolute;
+      left: 48px;
+      top: 480px;
+      width: 684px;
+      height: 150px;
+      overflow: visible;
+    }
+    .c11-band-l { fill: rgba(31,43,224,0.10); }
+    .c11-edge-l { fill: none; stroke: #1F2BE0; stroke-width: 2; stroke-dasharray: 8 8; }
+    .c11-series-l { fill: none; stroke: #1F2BE0; stroke-width: 2; stroke-linejoin: miter; }
+    .c11-pt-l { fill: #1F2BE0; }
+    .c11-band-r { fill: rgba(240,235,222,0.14); }
+    .c11-edge-r { fill: none; stroke: #F0EBDE; stroke-width: 2; stroke-dasharray: 8 8; }
+    .c11-series-r { fill: none; stroke: #F0EBDE; stroke-width: 2; stroke-linejoin: miter; }
+    .c11-pt-r { fill: #F0EBDE; }
+    .c11-mark { fill: none; stroke: #F0EBDE; stroke-width: 3; }
+
+    /* Badge lives on the parent (never inside a tilted card) at the right card's inner edge */
+    .c11-seal {
+      position: absolute;
+      left: 944px;
+      top: 742px;
+      box-sizing: border-box;
+      height: 72px;
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      background: #F0EBDE;
+      border: 3px solid #1F2BE0;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+      transform-origin: 0% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="11-causas" data-width="1920" data-height="1080" data-duration="12.959">
+    <div id="c11-ground" class="c11-ground clip" data-start="0" data-duration="12.959" data-track-index="0"></div>
+
+    <div id="c11-stage" class="c11-stage clip" data-start="0" data-duration="12.959" data-track-index="1">
+      <div class="c11-hair c11-hair-top"></div>
+      <div class="c11-hair c11-hair-bot"></div>
+      <div class="c11-chrome c11-chrome-tag">AULAS 6–8 · QUALIDADE</div>
+      <div class="c11-chrome c11-chrome-num">11 / 13</div>
+
+      <div class="c11-split">
+        <!-- LEFT: CAUSAS COMUNS (outline) -->
+        <div id="c11-slot-l" class="c11-slot c11-slot-l">
+          <div id="c11-card-l" class="c11-card c11-card-l">
+            <div id="c11-title-l" class="c11-title"><span class="c11-line">CAUSAS</span><span class="c11-line">COMUNS</span></div>
+            <div id="c11-lede-l" class="c11-lede">variação natural, sempre presente</div>
+            <svg id="c11-chart-l" class="c11-chart" viewBox="0 0 684 150" xmlns="http://www.w3.org/2000/svg">
+              <rect id="c11-band-l" class="c11-band-l" x="0" y="50" width="684" height="50" />
+              <path id="c11-edge-l1" class="c11-edge-l" d="M 0 50 L 684 50" />
+              <path id="c11-edge-l2" class="c11-edge-l" d="M 0 100 L 684 100" />
+              <path id="c11-series-l" class="c11-series-l" d="M 0 0" />
+              <g id="c11-pts-l"></g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- RIGHT: CAUSAS ESPECIAIS (inverted cobalt) -->
+        <div id="c11-slot-r" class="c11-slot c11-slot-r">
+          <div id="c11-card-r" class="c11-card c11-card-r">
+            <div id="c11-title-r" class="c11-title"><span class="c11-line">CAUSAS</span><span class="c11-line">ESPECIAIS</span></div>
+            <div id="c11-lede-r" class="c11-lede">eventos pontuais</div>
+            <div id="c11-ex-1" class="c11-ex c11-ex-1"><span class="c11-bullet"></span>ferramenta gasta</div>
+            <div id="c11-ex-2" class="c11-ex c11-ex-2"><span class="c11-bullet"></span>lote ruim de matéria-prima</div>
+            <svg id="c11-chart-r" class="c11-chart" viewBox="0 0 684 150" xmlns="http://www.w3.org/2000/svg">
+              <rect id="c11-band-r" class="c11-band-r" x="0" y="50" width="684" height="50" />
+              <path id="c11-edge-r1" class="c11-edge-r" d="M 0 50 L 684 50" />
+              <path id="c11-edge-r2" class="c11-edge-r" d="M 0 100 L 684 100" />
+              <path id="c11-series-r" class="c11-series-r" d="M 0 0" />
+              <g id="c11-pts-r"></g>
+              <rect id="c11-mark" class="c11-mark" x="0" y="0" width="38" height="38" />
+            </svg>
+          </div>
+        </div>
+
+        <div id="c11-seal" class="c11-seal">INVESTIGAR E ELIMINAR</div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 12.459;
+      const NS = "http://www.w3.org/2000/svg";
+      const MID = 75, SQ = 14, X0 = 20, X1 = 664;
+      const TILT = 12, OVER = 8;
+
+      function buildSeries(offs, seriesId, groupId, cls) {
+        const n = offs.length;
+        const pts = offs.map((o, i) => ({ x: X0 + ((X1 - X0) * i) / (n - 1), y: MID + o }));
+        const path = document.getElementById(seriesId);
+        const g = document.getElementById(groupId);
+        const rects = pts.map((p) => {
+          const r = document.createElementNS(NS, "rect");
+          r.setAttribute("class", cls);
+          r.setAttribute("x", (p.x - SQ / 2).toFixed(1));
+          r.setAttribute("y", (p.y - SQ / 2).toFixed(1));
+          r.setAttribute("width", SQ);
+          r.setAttribute("height", SQ);
+          g.appendChild(r);
+          return r;
+        });
+        const cum = [0];
+        for (let i = 1; i < n; i++) cum.push(cum[i - 1] + Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y));
+        return { pts, path, rects, cum };
+      }
+      const dOf = (pts) => pts.map((p, i) => (i ? "L " : "M ") + p.x.toFixed(1) + " " + p.y.toFixed(1)).join(" ");
+
+      // ---- Left series: tight oscillation inside the band ----
+      const L = buildSeries([-14, 10, -6, 18, -12, 4, -18, 12, -4, 16, -10, 6, -16, 8], "c11-series-l", "c11-pts-l", "c11-pt-l");
+      L.path.setAttribute("d", dOf(L.pts));
+      const lLen = L.path.getTotalLength();
+      L.path.style.strokeDasharray = `${lLen}`;
+      L.path.style.strokeDashoffset = `${lLen}`;
+
+      // ---- Right series: same rhythm, one point (idx 9) later jumps out of the band ----
+      const OUT = 9, OUT_Y = 14;
+      const R = buildSeries([8, -12, 14, -6, 10, -16, 4, 12, -8, -2, -14, 6, -10, 12], "c11-series-r", "c11-pts-r", "c11-pt-r");
+      const inY = R.pts[OUT].y;
+      R.path.setAttribute("d", dOf(R.pts));
+      const rLen = R.path.getTotalLength();
+      const A = rLen + 260; // dash longer than the path so the later outlier jump never clips the line
+      R.path.style.strokeDasharray = `${A} ${A}`;
+      R.path.style.strokeDashoffset = `${A}`;
+      const mark = document.getElementById("c11-mark");
+      mark.setAttribute("x", (R.pts[OUT].x - 19).toFixed(1));
+      mark.setAttribute("y", (OUT_Y - 19).toFixed(1));
+
+      ["c11-edge-l1", "c11-edge-l2", "c11-edge-r1", "c11-edge-r2"].forEach((id) => {
+        document.getElementById(id).style.clipPath = "inset(0 100% 0 0)";
+      });
+
+      // ================= Scene 1 (0.0–3.8s): CAUSAS COMUNS =================
+      tl.fromTo("#c11-card-l",
+        { x: -420, rotateY: TILT + OVER, opacity: 0 },
+        { x: 0, rotateY: TILT, opacity: 1, duration: 0.9, ease: "power3.out" }, 0.0);
+      tl.fromTo("#c11-title-l", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 0.3);
+      tl.fromTo("#c11-lede-l", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.4);
+      tl.fromTo("#c11-band-l", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 1.9);
+      tl.to(["#c11-edge-l1", "#c11-edge-l2"], { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power2.out" }, 1.9);
+      const LS0 = 2.2, LSD = 1.2;
+      tl.to(L.path, { strokeDashoffset: 0, duration: LSD, ease: "none" }, LS0);
+      L.rects.forEach((r, i) => {
+        tl.fromTo(r, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "power2.out", transformOrigin: "50% 50%" },
+          LS0 + LSD * (L.cum[i] / lLen));
+      });
+
+      // ================= Scene 2 (3.8–9.8s): CAUSAS ESPECIAIS =================
+      tl.fromTo("#c11-card-r",
+        { x: 420, rotateY: -TILT - OVER, opacity: 0 },
+        { x: 0, rotateY: -TILT, opacity: 1, duration: 0.9, ease: "power3.out" }, 3.8);
+      tl.fromTo("#c11-title-r", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, 4.1);
+      tl.fromTo("#c11-lede-r", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 5.1);
+      tl.fromTo("#c11-band-r", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 5.3);
+      tl.to(["#c11-edge-r1", "#c11-edge-r2"], { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power2.out" }, 5.3);
+      const RS0 = 5.5, RSD = 1.0;
+      tl.fromTo(R.path, { strokeDashoffset: A }, { strokeDashoffset: A - rLen, duration: RSD, ease: "none" }, RS0);
+      R.rects.forEach((r, i) => {
+        tl.fromTo(r, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "power2.out", transformOrigin: "50% 50%" },
+          RS0 + RSD * (R.cum[i] / rLen));
+      });
+      tl.fromTo("#c11-ex-1", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 6.6);
+      tl.fromTo("#c11-ex-2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 7.8);
+
+      // The outlier leaps out of the band (on "ferramenta gasta" / "lote ruim") — path vertex + square move together
+      const jump = { y: inY };
+      const outRect = R.rects[OUT];
+      function applyJump() {
+        R.pts[OUT].y = jump.y;
+        R.path.setAttribute("d", dOf(R.pts));
+        outRect.setAttribute("y", (jump.y - SQ / 2).toFixed(1));
+      }
+      tl.fromTo(jump, { y: inY }, { y: OUT_Y, duration: 0.55, ease: "power3.out", onUpdate: applyJump }, 8.3);
+
+      // Counter-phase idle (low amplitude), enveloped so the spread settles still before Scene 3
+      const IDLE0 = 4.8, IDLE1 = 10.6, AMP = 4;
+      const idle = { t: 0 };
+      const slotL = document.getElementById("c11-slot-l");
+      const slotR = document.getElementById("c11-slot-r");
+      tl.fromTo(idle, { t: 0 }, {
+        t: 1, duration: IDLE1 - IDLE0, ease: "none",
+        onUpdate: () => {
+          const env = Math.sin(Math.PI * idle.t);
+          const w = Math.sin(2 * Math.PI * idle.t * 2.4);
+          gsap.set(slotL, { y: -AMP * env * w });
+          gsap.set(slotR, { y: AMP * env * w });
+        }
+      }, IDLE0);
+
+      // ================= Scene 3 (9.8–12.459s): INVESTIGAR E ELIMINAR =================
+      tl.fromTo("#c11-seal", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" }, 10.9);
+      tl.fromTo("#c11-mark", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out", transformOrigin: "50% 50%" }, 11.05);
+
+      window.__timelines["11-causas"] = tl;
+    </script>
+  </div>
+</template>
