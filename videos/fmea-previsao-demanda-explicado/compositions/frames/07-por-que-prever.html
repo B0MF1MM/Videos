@@ -1,5 +1,5 @@
 <template>
-  <div id="root" data-composition-id="07-por-que-prever" data-width="1920" data-height="1080" data-start="0" data-duration="11.883">
+  <div id="root" data-composition-id="07-por-que-prever" data-width="1920" data-height="1080" data-start="0" data-duration="12.383">
     <style>
       @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
       @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
@@ -77,20 +77,20 @@
         font-family: "DM Mono", monospace; font-size: 15px; letter-spacing: 0.06em;
       }
       .p07-kicker {
-        position: absolute; white-space: nowrap;
+        position: absolute; left: 0; top: 0; white-space: nowrap;
         font-family: "Hanken Grotesk", sans-serif; font-weight: 600;
         font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase;
       }
       .p07-title {
-        position: absolute; white-space: nowrap;
+        position: absolute; left: 0; top: 0; white-space: nowrap;
         font-family: "Newsreader", serif; font-weight: 400;
         font-size: 130px; line-height: 1.0; letter-spacing: -0.005em;
       }
     </style>
 
-    <div class="clip p07-ground" data-start="0" data-duration="11.883" data-track-index="0"></div>
+    <div class="clip p07-ground" data-start="0" data-duration="12.383" data-track-index="0"></div>
 
-    <div class="clip p07-scene" data-start="0" data-duration="11.883" data-track-index="1">
+    <div class="clip p07-scene" data-start="0" data-duration="12.383" data-track-index="1">
       <div class="p07-world" id="p07-world">
         <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
           <path id="p07-line" class="p07-stroke" stroke-width="3" d="M 110 560 L 1830 560" />
@@ -124,7 +124,7 @@
       </div>
     </div>
 
-    <div class="clip p07-scene" data-start="0" data-duration="11.883" data-track-index="2">
+    <div class="clip p07-scene" data-start="0" data-duration="12.383" data-track-index="2">
       <div class="p07-hair" style="top: 58px;"></div>
       <div class="p07-hair" style="top: 896px;"></div>
       <div class="p07-chrome" style="left: 76.8px;">AULAS 4–5 · OPERAÇÕES</div>
@@ -133,7 +133,7 @@
       <div class="p07-title" id="p07-title">Previsão de demanda</div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="assets/vendor/gsap.min.js"></script>
     <script>
       (function () {
         const ID = "07-por-que-prever";
@@ -172,13 +172,13 @@
 
         // ---- Scene 1 (0.0–2.6): AULA 5 + title centered, then title lifts to top-left ----
         tl.fromTo("#p07-kicker",
-          { left: 960, top: 392, xPercent: -50, opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+          { x: 960, xPercent: -50, opacity: 0, y: 406 },
+          { opacity: 1, y: 392, duration: 0.5, ease: "power3.out" }, 0.1);
         tl.fromTo("#p07-title",
-          { left: 960, top: 424, xPercent: -50, scale: 1, transformOrigin: "0% 0%", opacity: 0, y: 26 },
-          { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.25);
-        tl.to("#p07-kicker", { left: 76.8, top: 92, xPercent: 0, duration: 0.8, ease: "power3.inOut" }, 1.9);
-        tl.to("#p07-title", { left: 76.8, top: 118, xPercent: 0, scale: 0.45, duration: 0.8, ease: "power3.inOut" }, 1.9);
+          { x: 960, xPercent: -50, scale: 1, transformOrigin: "0% 0%", opacity: 0, y: 450 },
+          { opacity: 1, y: 424, duration: 0.7, ease: "power3.out" }, 0.25);
+        tl.to("#p07-kicker", { x: 76.8, y: 92, xPercent: 0, duration: 0.8, ease: "power3.inOut" }, 1.9);
+        tl.to("#p07-title", { x: 76.8, y: 118, xPercent: 0, scale: 0.45, duration: 0.8, ease: "power3.inOut" }, 1.9);
 
         // timeline line draws from the left, pen tip leading the camera
         tl.to("#p07-line", { strokeDashoffset: 0, duration: 3.7, ease: "none" }, 1.9);
