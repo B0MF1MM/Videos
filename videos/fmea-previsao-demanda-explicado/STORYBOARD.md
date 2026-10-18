@@ -296,7 +296,7 @@ Scene 5 (10.0–13.76s): em "média ponderada" (10.6s) um painel menor à direit
 - voiceover: "Mas a demanda real foi de mil e oitenta. Erro: real menos previsto, mais oitenta. O erro médio absoluto mostra o tamanho dos desvios, o erro quadrático pesa mais os grandes, e o sinal de rastreamento revela viés. Uma boa previsão vem sempre com seu erro esperado."
 - duration: 15.509s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/12-erro.html
 - type: benefit_highlight
 - persuasion: Worked example + enumeration
