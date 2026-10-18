@@ -176,7 +176,7 @@ Scene 5 (11.4–13.59s): em "equipe" (11.9s) quatro rótulos mono aparecem nas b
 - voiceover: "Agora, a Aula 5: previsão de demanda. Comprar materiais, contratar pessoas, expandir a fábrica: nada disso acontece na hora. Essa demora se chama inércia decisória — e é por isso que precisamos prever."
 - duration: 11.883s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/07-por-que-prever.html
 - type: pain_point
 - persuasion: Causal chain + stakes

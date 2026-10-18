@@ -1,0 +1,217 @@
+<template>
+  <div id="root" data-composition-id="07-por-que-prever" data-width="1920" data-height="1080" data-start="0" data-duration="11.883">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        color: #1F2BE0;
+      }
+      #root * { box-sizing: border-box; border-radius: 0; }
+
+      .p07-ground {
+        position: absolute; inset: 0;
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      .p07-scene { position: absolute; inset: 0; overflow: hidden; }
+
+      /* virtual camera */
+      .p07-world {
+        position: absolute; left: 0; top: 0;
+        width: 1920px; height: 1080px;
+        transform-origin: 50% 50%;
+        will-change: transform;
+      }
+      .p07-world svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+      .p07-stroke { fill: none; stroke: #1F2BE0; stroke-linecap: square; stroke-linejoin: miter; }
+
+      .p07-station {
+        position: absolute;
+        width: 380px; height: 170px; top: 390px;
+        border: 3px solid #1F2BE0;
+        background: #F0EBDE;
+        padding: 22px 26px;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      .p07-num { font-family: "DM Mono", monospace; font-size: 18px; letter-spacing: 0.06em; }
+      .p07-label {
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600;
+        font-size: 28px; line-height: 1.15; letter-spacing: 0.14em; text-transform: uppercase;
+      }
+      .p07-tag {
+        position: absolute; top: 588px; width: 380px; text-align: center;
+        font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.05em;
+      }
+      .p07-hoje {
+        position: absolute; left: 110px; top: 478px; width: 120px; text-align: center;
+        font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.06em;
+      }
+      .p07-callout {
+        position: absolute; left: 575px; top: 222px; width: 600px; text-align: center;
+        font-family: "Newsreader", serif; font-style: italic; font-weight: 400;
+        font-size: 50px; line-height: 1.1;
+      }
+      .p07-prever {
+        position: absolute; left: 110px; top: 612px;
+        background: #1F2BE0; color: #F0EBDE;
+        padding: 16px 24px;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600;
+        font-size: 28px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;
+      }
+
+      /* static overlay (outside the camera) */
+      .p07-hair { position: absolute; left: 76.8px; right: 76.8px; height: 2px; background: #1F2BE0; }
+      .p07-chrome {
+        position: absolute; top: 24px;
+        font-family: "DM Mono", monospace; font-size: 15px; letter-spacing: 0.06em;
+      }
+      .p07-kicker {
+        position: absolute; white-space: nowrap;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600;
+        font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase;
+      }
+      .p07-title {
+        position: absolute; white-space: nowrap;
+        font-family: "Newsreader", serif; font-weight: 400;
+        font-size: 130px; line-height: 1.0; letter-spacing: -0.005em;
+      }
+    </style>
+
+    <div class="clip p07-ground" data-start="0" data-duration="11.883" data-track-index="0"></div>
+
+    <div class="clip p07-scene" data-start="0" data-duration="11.883" data-track-index="1">
+      <div class="p07-world" id="p07-world">
+        <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+          <path id="p07-line" class="p07-stroke" stroke-width="3" d="M 110 560 L 1830 560" />
+          <path id="p07-hoje-tick" class="p07-stroke" stroke-width="3" d="M 170 520 L 170 604" />
+          <path id="p07-arrow" class="p07-stroke" stroke-width="3" d="M 1580 390 L 1580 300 L 170 300 L 170 468" />
+          <path id="p07-arrowhead" class="p07-stroke" stroke-width="3" d="M 148 446 L 170 468 L 192 446" />
+        </svg>
+
+        <div class="p07-hoje" id="p07-hoje">HOJE</div>
+
+        <div class="p07-station" id="p07-st1" style="left: 430px;">
+          <div class="p07-num">01</div>
+          <div class="p07-label">Comprar<br />materiais</div>
+        </div>
+        <div class="p07-tag" id="p07-tag1" style="left: 430px;">semanas</div>
+
+        <div class="p07-station" id="p07-st2" style="left: 910px;">
+          <div class="p07-num">02</div>
+          <div class="p07-label">Contratar<br />pessoas</div>
+        </div>
+        <div class="p07-tag" id="p07-tag2" style="left: 910px;">meses</div>
+
+        <div class="p07-station" id="p07-st3" style="left: 1390px;">
+          <div class="p07-num">03</div>
+          <div class="p07-label">Expandir<br />a fábrica</div>
+        </div>
+        <div class="p07-tag" id="p07-tag3" style="left: 1390px;">anos</div>
+
+        <div class="p07-callout" id="p07-callout">inércia decisória</div>
+        <div class="p07-prever" id="p07-prever">Por isso, prever</div>
+      </div>
+    </div>
+
+    <div class="clip p07-scene" data-start="0" data-duration="11.883" data-track-index="2">
+      <div class="p07-hair" style="top: 58px;"></div>
+      <div class="p07-hair" style="top: 896px;"></div>
+      <div class="p07-chrome" style="left: 76.8px;">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="p07-chrome" style="right: 76.8px;">07 / 13</div>
+      <div class="p07-kicker" id="p07-kicker">Aula 5</div>
+      <div class="p07-title" id="p07-title">Previsão de demanda</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        const ID = "07-por-que-prever";
+        const tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+
+        const scope = document.querySelector('[data-composition-id="' + ID + '"]') || document;
+        const $ = (sel) => scope.querySelector(sel);
+
+        // ---- virtual camera (viewport-change, single wrapper: T = X - c - S*(p - c)) ----
+        const world = $("#p07-world");
+        const CX = 960, CY = 540;
+        const cam = { scale: 1, x: 0, y: 0 };
+        function applyCamera() {
+          world.style.transform = "translate(" + cam.x + "px, " + cam.y + "px) scale(" + cam.scale + ")";
+        }
+        function aim(S, px, py, sx, sy) {
+          return { scale: S, x: sx - CX - S * (px - CX), y: sy - CY - S * (py - CY) };
+        }
+        const ZS = 1.7;
+        const stop0 = aim(ZS, 330, 520, 960, 560);
+        const stop1 = aim(ZS, 620, 520, 960, 560);
+        const stop2 = aim(ZS, 1100, 520, 960, 560);
+        const stop3 = aim(ZS, 1580, 520, 960, 560);
+        const wide = { scale: 1, x: 0, y: 0 };
+        Object.assign(cam, stop0);
+        applyCamera();
+
+        // ---- svg-path-draw setup ----
+        ["#p07-line", "#p07-hoje-tick", "#p07-arrow", "#p07-arrowhead"].forEach(function (s) {
+          const p = $(s);
+          const len = p.getTotalLength() * 1.02;
+          p.style.strokeDasharray = len + "";
+          p.style.strokeDashoffset = len + "";
+        });
+
+        // ---- Scene 1 (0.0–2.6): AULA 5 + title centered, then title lifts to top-left ----
+        tl.fromTo("#p07-kicker",
+          { left: 960, top: 392, xPercent: -50, opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+        tl.fromTo("#p07-title",
+          { left: 960, top: 424, xPercent: -50, scale: 1, transformOrigin: "0% 0%", opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.25);
+        tl.to("#p07-kicker", { left: 76.8, top: 92, xPercent: 0, duration: 0.8, ease: "power3.inOut" }, 1.9);
+        tl.to("#p07-title", { left: 76.8, top: 118, xPercent: 0, scale: 0.45, duration: 0.8, ease: "power3.inOut" }, 1.9);
+
+        // timeline line draws from the left, pen tip leading the camera
+        tl.to("#p07-line", { strokeDashoffset: 0, duration: 3.7, ease: "none" }, 1.9);
+
+        // ---- Scene 2 (2.6–5.8): pan station to station ----
+        tl.to(cam, Object.assign({ duration: 0.65, ease: "power2.inOut", onUpdate: applyCamera }, stop1), 2.4);
+        tl.to(cam, Object.assign({ duration: 0.65, ease: "power2.inOut", onUpdate: applyCamera }, stop2), 3.55);
+        tl.to(cam, Object.assign({ duration: 0.65, ease: "power2.inOut", onUpdate: applyCamera }, stop3), 4.65);
+
+        const reveal = function (st, tag, t) {
+          tl.fromTo(st, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t);
+          tl.fromTo(tag, { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, t + 0.2);
+        };
+        reveal("#p07-st1", "#p07-tag1", 3.0);
+        reveal("#p07-st2", "#p07-tag2", 4.2);
+        reveal("#p07-st3", "#p07-tag3", 5.3);
+
+        // ---- Scene 3 (5.8–7.7): camera pulls back, HOJE marker at the start of the line ----
+        tl.to(cam, Object.assign({ duration: 1.3, ease: "power3.inOut", onUpdate: applyCamera }, wide), 5.8);
+        tl.to("#p07-hoje-tick", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 6.7);
+        tl.fromTo("#p07-hoje", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.85);
+
+        // ---- Scene 4 (7.7–11.88): arrow back in time + "inércia decisória", then POR ISSO, PREVER ----
+        tl.to("#p07-arrow", { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, 8.8);
+        tl.to("#p07-arrowhead", { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, 9.85);
+        tl.fromTo("#p07-callout", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 9.1);
+        tl.fromTo("#p07-prever",
+          { opacity: 0, scaleX: 0, transformOrigin: "0% 50%" },
+          { opacity: 1, scaleX: 1, duration: 0.35, ease: "power3.out" }, 11.3);
+
+        tl.set({}, {}, 11.883);
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </div>
+</template>
