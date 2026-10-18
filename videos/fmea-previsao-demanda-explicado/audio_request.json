@@ -1,0 +1,62 @@
+{
+  "provider": "kokoro",
+  "speed": "1.0",
+  "lines": [
+    {
+      "id": "01",
+      "text": "E se desse para descobrir uma falha antes de ela acontecer… e saber quanto o cliente vai pedir antes de ele pedir?"
+    },
+    {
+      "id": "02",
+      "text": "Na Aula 4, a FMEA: Análise dos Modos de Falha e seus Efeitos. Ela identifica problemas potenciais antes que causem dano ao cliente, parada de produção ou retrabalho."
+    },
+    {
+      "id": "03",
+      "text": "Separe três coisas. O modo de falha é o que pode dar errado numa etapa. O efeito é a consequência para o produto, o usuário ou a segurança. E a causa é o mecanismo que origina a falha, como treinamento insuficiente ou montagem incorreta."
+    },
+    {
+      "id": "04",
+      "text": "Depois, três notas. Severidade: quão grave é o efeito. Ocorrência: com que frequência a causa acontece. Detecção: quão difícil é perceber a falha antes de ela chegar ao cliente. Atenção: quanto maior o D, pior a detecção."
+    },
+    {
+      "id": "05",
+      "text": "As três se multiplicam no NPR, o Número de Prioridade de Risco. Exemplo: uma vedação mal montada numa bomba centrífuga causa vazamento. Severidade oito, ocorrência sete, detecção seis: NPR igual a trezentos e trinta e seis."
+    },
+    {
+      "id": "06",
+      "text": "Com o risco priorizado, vêm as ações: instrução visual e uma verificação específica reduzem a ocorrência e melhoram a detecção. A severidade continua igual, se a consequência ainda for grave. Então a equipe recalcula o NPR."
+    },
+    {
+      "id": "07",
+      "text": "Agora, a Aula 5: previsão de demanda. Comprar materiais, contratar pessoas, expandir a fábrica: nada disso acontece na hora. Essa demora se chama inércia decisória — e é por isso que precisamos prever."
+    },
+    {
+      "id": "08",
+      "text": "Cuidado: meta não é previsão. Meta é o resultado que a empresa deseja. Previsão é o que se espera que aconteça, com base em evidências. Confundir as duas leva a decisões otimistas demais."
+    },
+    {
+      "id": "09",
+      "text": "A previsão pode ser de curto, médio ou longo prazo, conforme a decisão: operacional, tática ou estratégica. Sem dados suficientes, usam-se métodos qualitativos: o método Delphi com especialistas, a pesquisa de mercado e a força de vendas."
+    },
+    {
+      "id": "10",
+      "text": "Com dados, entram as séries temporais. Uma série pode ter nível, tendência, sazonalidade e variações aleatórias."
+    },
+    {
+      "id": "11",
+      "text": "A média móvel simples tira a média dos períodos recentes. Vendas de novecentos, mil e mil e cem: somando e dividindo por três, a previsão do próximo mês é mil unidades. Na média ponderada, os meses mais recentes ganham peso maior."
+    },
+    {
+      "id": "12",
+      "text": "Mas a demanda real foi de mil e oitenta. Erro: real menos previsto, mais oitenta. O erro médio absoluto mostra o tamanho dos desvios, o erro quadrático pesa mais os grandes, e o sinal de rastreamento revela viés. Uma boa previsão vem sempre com seu erro esperado."
+    },
+    {
+      "id": "13",
+      "text": "Resumindo: a FMEA prioriza riscos com severidade, ocorrência e detecção. A previsão estima a demanda e o seu erro. As duas fazem a mesma coisa: agir antes do problema."
+    }
+  ],
+  "bgm": {
+    "mode": "none"
+  },
+  "voice": "pf_dora"
+}
