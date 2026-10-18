@@ -1,0 +1,305 @@
+<template>
+  <div
+    id="root"
+    data-composition-id="12-erro"
+    data-start="0"
+    data-duration="15.509"
+    data-width="1920"
+    data-height="1080"
+  >
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Hanken Grotesk", sans-serif;
+        color: #1F2BE0;
+      }
+      #root * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0; }
+
+      .e12-ground {
+        position: absolute;
+        inset: 0;
+        container-type: size;
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 2cqw 2cqw;
+      }
+      .e12-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: #1F2BE0; }
+      .e12-hair-top { top: 58px; }
+      .e12-hair-bot { top: 884px; }
+      .e12-chrome {
+        position: absolute;
+        top: 26px;
+        font-family: "DM Mono", monospace;
+        font-size: 16px;
+        letter-spacing: 0.06em;
+        color: #1F2BE0;
+        white-space: nowrap;
+      }
+      .e12-tag { left: 80px; }
+      .e12-num { right: 80px; }
+
+      #e12-cam { position: absolute; inset: 0; transform-origin: 960px 480px; }
+
+      /* ---- chart group (bars) ---- */
+      #e12-chart { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0px 840px; }
+      .e12-bar { position: absolute; width: 200px; transform-origin: 50% 100%; }
+      #e12-bar-prev {
+        left: 260px; top: 321px; height: 519px;
+        border: 4px solid #1F2BE0;
+        border-bottom: none;
+        background: #F0EBDE;
+      }
+      #e12-bar-real { left: 520px; top: 280px; height: 560px; background: #1F2BE0; }
+      #e12-base { position: absolute; left: 220px; top: 838px; width: 540px; height: 3px; background: #1F2BE0; transform-origin: 0 50%; }
+      .e12-axis-lab {
+        position: absolute;
+        top: 852px;
+        width: 200px;
+        text-align: center;
+        font-family: "DM Mono", monospace;
+        font-size: 18px;
+        letter-spacing: 0.08em;
+        color: #1F2BE0;
+      }
+      .e12-val {
+        position: absolute;
+        width: 200px;
+        text-align: center;
+        font-family: "Newsreader", serif;
+        font-size: 64px;
+        line-height: 1;
+        letter-spacing: -0.015em;
+        white-space: nowrap;
+      }
+      #e12-val-prev { left: 260px; top: 346px; color: #1F2BE0; }
+      #e12-val-real { left: 520px; top: 305px; color: #F0EBDE; }
+
+      /* gap marker: hatched band between the two tops + inverted +80 box */
+      #e12-gap {
+        position: absolute;
+        left: 260px; top: 280px; width: 200px; height: 41px;
+        background: repeating-linear-gradient(90deg, #1F2BE0 0 2px, transparent 2px 8px);
+        transform-origin: 50% 100%;
+      }
+      #e12-gap-line {
+        position: absolute;
+        left: 240px; top: 279px; width: 480px; height: 2px;
+        background: repeating-linear-gradient(90deg, #1F2BE0 0 10px, transparent 10px 18px);
+        transform-origin: 100% 50%;
+      }
+      #e12-tick { position: absolute; left: 720px; top: 299px; width: 52px; height: 3px; background: #1F2BE0; transform-origin: 0 50%; }
+      #e12-delta {
+        position: absolute;
+        left: 772px; top: 226px; width: 262px; height: 150px;
+        background: #1F2BE0;
+        color: #F0EBDE;
+        display: flex; align-items: center; justify-content: center;
+        font-family: "Newsreader", serif;
+        font-size: 130px;
+        line-height: 1;
+        letter-spacing: -0.005em;
+        transform-origin: 0% 50%;
+      }
+
+      /* formula (mono) */
+      #e12-formula {
+        position: absolute;
+        left: 960px; top: 104px;
+        font-family: "DM Mono", monospace;
+        font-size: 40px;
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+        color: #1F2BE0;
+        transform-origin: 0% 0%;
+      }
+
+      /* indicators ledger */
+      #e12-rule { position: absolute; left: 960px; top: 280px; width: 880px; height: 3px; background: #1F2BE0; transform-origin: 0 50%; }
+      .e12-row { position: absolute; left: 960px; width: 880px; height: 176px; }
+      .e12-row-div { position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: rgba(31,43,224,0.18); transform-origin: 0 50%; }
+      .e12-row-num {
+        position: absolute; left: 0; top: 34px;
+        font-family: "DM Mono", monospace;
+        font-size: 28px;
+        letter-spacing: 0.06em;
+      }
+      .e12-row-name {
+        position: absolute; left: 96px; top: 34px;
+        font-family: "Hanken Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 34px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .e12-row-desc {
+        position: absolute; left: 96px; top: 88px;
+        font-family: "Newsreader", serif;
+        font-style: italic;
+        font-size: 48px;
+        line-height: 1.1;
+        white-space: nowrap;
+      }
+
+      /* closing banner */
+      #e12-banner {
+        position: absolute;
+        left: 80px; top: 86px; width: 1760px; height: 110px;
+        background: #1F2BE0;
+        color: #F0EBDE;
+        display: flex; align-items: center; justify-content: center;
+        font-family: "DM Mono", monospace;
+        font-size: 46px;
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+        transform-origin: 50% 50%;
+      }
+      .e12-em { position: relative; display: inline-block; }
+      #e12-underline {
+        position: absolute; left: 0; bottom: -10px; width: 100%; height: 5px;
+        background: #F0EBDE;
+        transform-origin: 0 50%;
+      }
+    </style>
+
+    <!-- full-bleed ground -->
+    <div id="e12-ground" class="clip e12-ground" data-start="0" data-duration="15.509" data-track-index="0"></div>
+
+    <div class="clip" id="e12-stage" data-start="0" data-duration="15.509" data-track-index="1"
+         style="position:absolute; inset:0;">
+      <!-- furniture -->
+      <div class="e12-hair e12-hair-top"></div>
+      <div class="e12-hair e12-hair-bot"></div>
+      <div class="e12-chrome e12-tag">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="e12-chrome e12-num">12 / 13</div>
+
+      <div id="e12-cam">
+        <!-- bars: previsto vs real -->
+        <div id="e12-chart">
+          <div class="e12-bar" id="e12-bar-prev"></div>
+          <div id="e12-gap"></div>
+          <div class="e12-bar" id="e12-bar-real"></div>
+          <div id="e12-gap-line"></div>
+          <div id="e12-base"></div>
+          <div class="e12-val" id="e12-val-prev">1.000</div>
+          <div class="e12-val" id="e12-val-real">0</div>
+          <div class="e12-axis-lab" style="left:260px;">PREVISTO</div>
+          <div class="e12-axis-lab" style="left:520px;" id="e12-lab-real">REAL</div>
+          <div id="e12-tick"></div>
+          <div id="e12-delta">+80</div>
+        </div>
+
+        <!-- formula -->
+        <div id="e12-formula">ERRO = REAL − PREVISTO</div>
+
+        <!-- indicators -->
+        <div id="e12-rule"></div>
+        <div class="e12-row" id="e12-row-0" style="top:284px;">
+          <div class="e12-row-num">01</div>
+          <div class="e12-row-name">Erro médio absoluto</div>
+          <div class="e12-row-desc">tamanho dos desvios</div>
+          <div class="e12-row-div"></div>
+        </div>
+        <div class="e12-row" id="e12-row-1" style="top:460px;">
+          <div class="e12-row-num">02</div>
+          <div class="e12-row-name">Erro quadrático médio</div>
+          <div class="e12-row-desc">pesa mais os grandes</div>
+          <div class="e12-row-div"></div>
+        </div>
+        <div class="e12-row" id="e12-row-2" style="top:636px;">
+          <div class="e12-row-num">03</div>
+          <div class="e12-row-name">Sinal de rastreamento</div>
+          <div class="e12-row-desc">revela viés</div>
+          <div class="e12-row-div"></div>
+        </div>
+
+        <!-- closing banner -->
+        <div id="e12-banner">PREVISÃO BOA = VALOR +&nbsp;<span class="e12-em">ERRO ESPERADO<span id="e12-underline"></span></span></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var FID = "12-erro";
+        var scope = document.querySelector('[data-composition-id="' + FID + '"]') || document;
+        function $(id) { return scope.querySelector("#" + id); }
+        var tl = gsap.timeline({ paused: true });
+
+        function fmt(v) {
+          var n = Math.round(v);
+          if (n < 1000) return String(n);
+          var r = n % 1000;
+          return Math.floor(n / 1000) + "." + (r < 10 ? "00" : r < 100 ? "0" : "") + r;
+        }
+
+        // slow camera drift underneath the whole shot
+        tl.fromTo($("e12-cam"), { scale: 1 }, { scale: 1.02, duration: 15.509, ease: "none" }, 0);
+
+        // ---- Scene 1 (0.0–2.3): PREVISTO 1.000 outline bar present; REAL grows at "1.080" (1.1s)
+        // chart starts slightly centered (pushed right), recedes left in Scene 3
+        tl.fromTo($("e12-chart"), { x: 120, scale: 1 }, { x: 120, scale: 1, duration: 0.01 }, 0);
+        tl.fromTo($("e12-base"), { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 0);
+        tl.fromTo($("e12-bar-prev"), { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0.05);
+        tl.fromTo($("e12-val-prev"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.3);
+
+        // REAL bar + count-up land as one beat (same start, ease, duration)
+        var count = { v: 0 };
+        tl.fromTo($("e12-bar-real"), { scaleY: 0 }, { scaleY: 1, duration: 1.0, ease: "power2.out" }, 1.1);
+        tl.fromTo($("e12-val-real"), { y: 520, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0, ease: "power2.out" }, 1.1);
+        tl.fromTo(count, { v: 0 }, {
+          v: 1080, duration: 1.0, ease: "power2.out",
+          onUpdate: function () { $("e12-val-real").textContent = fmt(count.v); }
+        }, 1.1);
+        tl.fromTo($("e12-val-real"), { scale: 0.85 }, { scale: 1, duration: 1.0, ease: "power2.out" }, 1.1);
+
+        // ---- Scene 2 (2.3–5.0): formula at "Erro" (2.3s); gap marked +80 at 4.3s
+        // formula starts large, mid-right next to the bars; travels to top-right in Scene 3
+        tl.fromTo($("e12-formula"), { opacity: 0, x: 260, y: 330, scale: 1.1 },
+          { opacity: 1, x: 220, y: 300, scale: 1.1, duration: 0.5, ease: "power3.out" }, 2.3);
+        tl.fromTo($("e12-gap-line"), { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power2.out" }, 4.05);
+        tl.fromTo($("e12-gap"), { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power3.out" }, 4.25);
+        tl.fromTo($("e12-tick"), { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power2.out" }, 4.3);
+        tl.fromTo($("e12-delta"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.8)" }, 4.35);
+
+        // ---- Scene 3 (5.0–12.7): bars recede left (40/60), indicators enter on the right
+        tl.to($("e12-chart"), { x: -140, scale: 0.88, duration: 0.9, ease: "power3.inOut" }, 5.0);
+        tl.to($("e12-formula"), { x: 0, y: 0, scale: 1, duration: 0.9, ease: "power3.inOut" }, 5.0);
+        tl.fromTo($("e12-rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 5.1);
+
+        var rowCues = [5.2, 8.0, 10.4];
+        rowCues.forEach(function (t, k) {
+          var row = $("e12-row-" + k);
+          tl.fromTo(row.querySelector(".e12-row-num"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, t);
+          tl.fromTo(row.querySelector(".e12-row-name"), { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, t + 0.05);
+          tl.fromTo(row.querySelector(".e12-row-desc"), { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, t + 0.35);
+          tl.fromTo(row.querySelector(".e12-row-div"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, t + 0.2);
+        });
+
+        // ---- Scene 4 (12.7–15.51): zoom-through swap formula -> top banner; underline at 14.6s
+        tl.to($("e12-formula"), { scale: 1.2, filter: "blur(10px)", duration: 0.2, ease: "power3.in" }, 12.7);
+        tl.to($("e12-formula"), { opacity: 0.15, duration: 0.2, ease: "none" }, 12.7);
+        tl.set($("e12-formula"), { opacity: 0 }, 12.9);
+        tl.fromTo($("e12-banner"), { opacity: 0, scale: 0.75, filter: "blur(10px)" },
+          { opacity: 0, scale: 0.75, filter: "blur(10px)", duration: 0.01 }, 0);
+        tl.set($("e12-banner"), { opacity: 0.15 }, 12.9);
+        tl.to($("e12-banner"), { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 12.9);
+        tl.fromTo($("e12-underline"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 14.6);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[FID] = tl;
+      })();
+    </script>
+  </div>
+</template>
