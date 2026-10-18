@@ -27,7 +27,7 @@ music_brief: calm focused minimal study underscore, soft piano and light pulse (
 - voiceover: "E se desse para descobrir uma falha antes de ela acontecer… e saber quanto o cliente vai pedir antes de ele pedir?"
 - duration: 6.421s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-agir-antes.html
 - type: hook
 - persuasion: Rhetorical question + imagine / scenario
@@ -101,7 +101,7 @@ Scene 5 (10.7–13.7s): em "treinamento insuficiente" (11.0s) e "montagem incorr
 - voiceover: "Depois, três notas. Severidade: quão grave é o efeito. Ocorrência: com que frequência a causa acontece. Detecção: quão difícil é perceber a falha antes de ela chegar ao cliente. Atenção: quanto maior o D, pior a detecção."
 - duration: 12.821s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/04-sod.html
 - type: feature_showcase
 - persuasion: Rule of three + counterexample (D maior = pior)
@@ -224,7 +224,7 @@ Scene 4 (7.8–10.92s): em "Confundir" (7.8s) um bloco faixa abaixo dos cartões
 - voiceover: "A previsão pode ser de curto, médio ou longo prazo, conforme a decisão: operacional, tática ou estratégica. Sem dados suficientes, usam-se métodos qualitativos: o método Delphi com especialistas, a pesquisa de mercado e a força de vendas."
 - duration: 14.699s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/09-horizontes.html
 - type: feature_showcase
 - persuasion: Frame-then-fill + numbered enumeration

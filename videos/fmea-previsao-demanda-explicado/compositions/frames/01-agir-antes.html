@@ -1,0 +1,239 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .a01-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .a01-stage {
+      position: absolute;
+      inset: 0;
+    }
+    .a01-hair {
+      position: absolute;
+      left: 77px;
+      right: 77px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .a01-hair-top { top: 70px; }
+    .a01-hair-bot { top: 892px; }
+    .a01-chrome {
+      position: absolute;
+      top: 34px;
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      color: #1F2BE0;
+      white-space: nowrap;
+    }
+    .a01-chrome-tag { left: 77px; }
+    .a01-chrome-num { right: 77px; }
+
+    .a01-q {
+      position: absolute;
+      top: 236px;
+      width: 840px;
+      text-align: center;
+      transform-origin: 50% 0%;
+    }
+    .a01-q1 { left: 80px; }
+    .a01-q2 { left: 1000px; }
+    .a01-qline {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 0.95;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    .a01-w {
+      display: inline-block;
+      margin: 0 0.12em;
+    }
+    .a01-label {
+      margin-top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .a01-label-inner {
+      display: inline-block;
+      padding-top: 14px;
+      border-top: 2px solid #1F2BE0;
+    }
+
+    .a01-block {
+      position: absolute;
+      left: 432px;
+      top: 404px;
+      width: 1056px;
+      height: 300px;
+      background: #1F2BE0;
+      overflow: hidden;
+    }
+    .a01-hero {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 236px;
+      line-height: 0.9;
+      letter-spacing: -0.008em;
+      color: #F0EBDE;
+      white-space: nowrap;
+    }
+    .a01-links {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .a01-links line {
+      stroke: #1F2BE0;
+      stroke-width: 2;
+      stroke-linecap: square;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-agir-antes" data-width="1920" data-height="1080">
+    <div class="a01-ground clip" data-start="0" data-duration="6.421" data-track-index="0"></div>
+
+    <div class="a01-stage clip" data-start="0" data-duration="6.421" data-track-index="1">
+      <div class="a01-hair a01-hair-top"></div>
+      <div class="a01-hair a01-hair-bot"></div>
+      <div class="a01-chrome a01-chrome-tag">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="a01-chrome a01-chrome-num">01 / 13</div>
+
+      <svg class="a01-links" viewBox="0 0 1920 1080" aria-hidden="true">
+        <line id="a01-link1" x1="640" y1="270" x2="800" y2="404" />
+        <line id="a01-link2" x1="1280" y1="234" x2="1120" y2="404" />
+      </svg>
+
+      <div class="a01-block" id="a01-block">
+        <div class="a01-hero" id="a01-hero">ANTES</div>
+      </div>
+
+      <div class="a01-q a01-q1" id="a01-q1">
+        <div class="a01-qline">
+          <span class="a01-w" id="a01-w1">e</span><span class="a01-w" id="a01-w2">se</span><span class="a01-w" id="a01-w3">falhar?</span>
+        </div>
+        <div class="a01-label"><span class="a01-label-inner" id="a01-label">ANTES DE ACONTECER</span></div>
+      </div>
+
+      <div class="a01-q a01-q2" id="a01-q2">
+        <div class="a01-qline">
+          <span class="a01-w" id="a01-w4">quanto</span><span class="a01-w" id="a01-w5">vão</span><span class="a01-w" id="a01-w6">pedir?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var q = function (id) { return document.getElementById(id); };
+
+      // Word-by-word build — cue times pre-computed once from the voiceover (dynamic-content-sequencing).
+      var WORDS = [
+        { id: "a01-w1", start: 0.15, land: false },
+        { id: "a01-w2", start: 0.55, land: false },
+        { id: "a01-w3", start: 1.40, land: true },   // "falha"
+        { id: "a01-w4", start: 3.30, land: false },
+        { id: "a01-w5", start: 3.95, land: false },
+        { id: "a01-w6", start: 4.90, land: true }    // "pedir"
+      ];
+      WORDS.forEach(function (w) {
+        var el = q(w.id);
+        if (w.land) {
+          // the closing word of each question lands harder: scale-down slam
+          tl.fromTo(el,
+            { opacity: 0, scale: 1.35, y: 0, filter: "blur(10px)" },
+            { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.32, ease: "power3.out" },
+            w.start);
+        } else {
+          tl.fromTo(el,
+            { opacity: 0, y: 34, filter: "blur(8px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "power3.out" },
+            w.start);
+        }
+      });
+
+      // Scene 2 — mono label under question 1, then the question settles.
+      tl.fromTo("#a01-label",
+        { opacity: 0, y: 16, clipPath: "inset(0% 100% 0% 0%)" },
+        { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power2.out" },
+        1.8);
+      tl.fromTo("#a01-q1",
+        { x: 0, y: 0, scale: 1 },
+        { x: 0, y: -14, scale: 0.97, duration: 1.2, ease: "sine.inOut" },
+        2.0);
+
+      // Scene 4 — both questions slide toward center and shrink upward.
+      tl.to("#a01-q1", { x: 140, y: -90, scale: 0.62, duration: 0.6, ease: "power3.inOut" }, 5.2);
+      tl.fromTo("#a01-q2",
+        { x: 0, y: 0, scale: 1 },
+        { x: -140, y: -90, scale: 0.62, duration: 0.6, ease: "power3.inOut" },
+        5.2);
+
+      // ANTES block: inverted cobalt slab opens from center, word rises in cream.
+      tl.fromTo("#a01-block",
+        { clipPath: "inset(50% 0% 50% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "power4.out" },
+        5.3);
+      tl.fromTo("#a01-hero",
+        { opacity: 0, scale: 1.25, filter: "blur(10px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "power3.out" },
+        5.42);
+
+      // Two thin straight links draw from each question to the block.
+      ["#a01-link1", "#a01-link2"].forEach(function (sel, i) {
+        var el = document.querySelector(sel);
+        var len = Math.hypot(el.x2.baseVal.value - el.x1.baseVal.value, el.y2.baseVal.value - el.y1.baseVal.value);
+        el.setAttribute("stroke-dasharray", len.toFixed(1));
+        tl.fromTo(el,
+          { attr: { "stroke-dashoffset": len } },
+          { attr: { "stroke-dashoffset": 0 }, duration: 0.35, ease: "power2.out" },
+          5.72 + i * 0.06);
+      });
+
+      // Hold still to the end (no exit — the root transition owns it).
+      tl.set({}, {}, 6.421);
+
+      window.__timelines["01-agir-antes"] = tl;
+    })();
+  </script>
+</template>

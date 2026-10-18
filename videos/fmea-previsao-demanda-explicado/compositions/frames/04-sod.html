@@ -1,0 +1,202 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    #root {
+      position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden;
+      color: #1F2BE0; font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f04sod-bg {
+      position: absolute; inset: 0; background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px; container-type: size;
+    }
+    .f04sod-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f04sod-hair-top { top: 58px; }
+    .f04sod-hair-bot { top: 880px; }
+    .f04sod-chrome {
+      position: absolute; top: 24px; font-family: "DM Mono", monospace; font-size: 15px;
+      letter-spacing: 0.06em; color: #1F2BE0; line-height: 1;
+    }
+    .f04sod-chrome-l { left: 77px; }
+    .f04sod-chrome-r { right: 77px; }
+    .f04sod-cam { position: absolute; inset: 0; transform-origin: 50% 42%; }
+    .f04sod-title {
+      position: absolute; left: 77px; top: 92px; font-family: "Newsreader", serif; font-weight: 400;
+      font-size: 88px; line-height: 0.95; letter-spacing: -0.008em; white-space: nowrap;
+    }
+    .f04sod-tag {
+      position: absolute; right: 77px; top: 140px; font-family: "DM Mono", monospace; font-size: 20px;
+      letter-spacing: 0.06em; padding: 6px 10px; border: 2px solid #1F2BE0; line-height: 1;
+    }
+    .f04sod-col { position: absolute; top: 250px; width: 440px; height: 620px; }
+    .f04sod-dimmable { position: absolute; inset: 0; }
+    .f04sod-letter {
+      position: absolute; left: 0; top: 150px; width: 200px; font-family: "Newsreader", serif;
+      font-weight: 400; font-size: 260px; line-height: 0.9; letter-spacing: -0.015em;
+    }
+    .f04sod-scale {
+      position: absolute; left: 230px; top: 10px; width: 120px; height: 385px;
+      display: flex; flex-direction: column-reverse; gap: 5px;
+    }
+    .f04sod-cell {
+      position: relative; width: 120px; height: 34px; border: 2px solid #1F2BE0;
+      background: rgba(31,43,224,0.10); overflow: hidden;
+    }
+    .f04sod-cellfill { position: absolute; inset: 0; width: 100%; height: 100%; background: #1F2BE0; transform-origin: bottom center; }
+    .f04sod-tick { position: absolute; left: 366px; font-family: "DM Mono", monospace; font-size: 20px; letter-spacing: 0.05em; line-height: 1; }
+    .f04sod-tick-top { top: 18px; }
+    .f04sod-tick-bot { top: 372px; }
+    .f04sod-base { position: absolute; left: 0; top: 404px; width: 440px; height: 2px; background: #1F2BE0; transform-origin: left center; }
+    .f04sod-label {
+      position: absolute; left: 0; top: 424px; font-weight: 600; font-size: 22px; letter-spacing: 0.18em;
+      text-transform: uppercase; line-height: 1;
+    }
+    .f04sod-q { position: absolute; left: 0; top: 462px; width: 440px; font-size: 28px; line-height: 1.3; font-weight: 400; }
+    .f04sod-alert {
+      position: absolute; left: 0; top: 570px; width: 440px; height: 54px; background: #1F2BE0; color: #F0EBDE;
+      display: flex; align-items: center; padding: 0 18px;
+    }
+    .f04sod-alert-text { font-weight: 600; font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+    .f04sod-pior { position: relative; display: inline-block; }
+    .f04sod-ul { position: absolute; left: -2px; bottom: -12px; width: calc(100% - 0.1em); height: 10px; overflow: visible; }
+  </style>
+
+  <div id="root" data-composition-id="04-sod" data-width="1920" data-height="1080">
+    <div class="f04sod-bg clip" id="f04sod-bg" data-start="0" data-duration="12.821" data-track-index="0"></div>
+    <div class="clip" id="f04sod-stage" data-start="0" data-duration="12.821" data-track-index="1" style="position:absolute;inset:0;">
+      <div class="f04sod-hair f04sod-hair-top"></div>
+      <div class="f04sod-hair f04sod-hair-bot"></div>
+      <div class="f04sod-chrome f04sod-chrome-l">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="f04sod-chrome f04sod-chrome-r">04 / 13</div>
+      <div class="f04sod-cam" id="f04sod-cam">
+        <div class="f04sod-title" id="f04sod-title">Três notas</div>
+        <div class="f04sod-tag" id="f04sod-tag">ESCALA 1–10</div>
+        <div class="f04sod-col" id="f04sod-col-s" style="left:240px">
+          <div class="f04sod-dimmable">
+            <div class="f04sod-letter">S</div>
+            <div class="f04sod-scale">
+            <div class="f04sod-cell" data-n="1"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="2"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="3"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="4"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="5"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="6"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="7"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="8"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="9"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="10"><div class="f04sod-cellfill"></div></div>
+            </div>
+            <div class="f04sod-tick f04sod-tick-top">10</div>
+            <div class="f04sod-tick f04sod-tick-bot">1</div>
+            <div class="f04sod-base"></div>
+            <div class="f04sod-label">SEVERIDADE</div>
+            <div class="f04sod-q">Quão grave é o efeito?</div>
+          </div>
+        </div>
+        <div class="f04sod-col" id="f04sod-col-o" style="left:740px">
+          <div class="f04sod-dimmable">
+            <div class="f04sod-letter">O</div>
+            <div class="f04sod-scale">
+            <div class="f04sod-cell" data-n="1"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="2"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="3"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="4"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="5"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="6"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="7"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="8"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="9"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="10"><div class="f04sod-cellfill"></div></div>
+            </div>
+            <div class="f04sod-tick f04sod-tick-top">10</div>
+            <div class="f04sod-tick f04sod-tick-bot">1</div>
+            <div class="f04sod-base"></div>
+            <div class="f04sod-label">OCORRÊNCIA</div>
+            <div class="f04sod-q">Com que frequência a causa acontece?</div>
+          </div>
+        </div>
+        <div class="f04sod-col" id="f04sod-col-d" style="left:1240px">
+          <div class="f04sod-dimmable">
+            <div class="f04sod-letter">D</div>
+            <div class="f04sod-scale">
+            <div class="f04sod-cell" data-n="1"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="2"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="3"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="4"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="5"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="6"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="7"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="8"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="9"><div class="f04sod-cellfill"></div></div>
+            <div class="f04sod-cell" data-n="10"><div class="f04sod-cellfill"></div></div>
+            </div>
+            <div class="f04sod-tick f04sod-tick-top">10</div>
+            <div class="f04sod-tick f04sod-tick-bot">1</div>
+            <div class="f04sod-base"></div>
+            <div class="f04sod-label">DETECÇÃO</div>
+            <div class="f04sod-q">Quão difícil é perceber a falha antes do cliente?</div>
+          </div>
+          <div class="f04sod-alert" id="f04sod-alert">
+            <span class="f04sod-alert-text">D ALTO = DETECÇÃO <span class="f04sod-pior">PIOR<svg class="f04sod-ul" viewBox="0 0 100 12" preserveAspectRatio="none"><path id="f04sod-ulpath" d="M1,7 Q25,3 50,6 Q75,9 99,4" fill="none" stroke="#F0EBDE" stroke-width="3" stroke-linecap="square"/></svg></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.querySelector('[data-composition-id="04-sod"]');
+      const $ = (s) => root.querySelector(s);
+      const $$ = (s) => Array.from(root.querySelectorAll(s));
+      const tl = gsap.timeline({ paused: true });
+      const D = 12.821;
+
+      // Macro camera: slow steady push-in under the whole shot
+      tl.fromTo("#f04sod-cam", { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
+
+      // Scene 1 — title + scale tag
+      tl.fromTo("#f04sod-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+      tl.fromTo("#f04sod-tag", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+
+      // Columns assemble one per spoken word (grid-card-assemble, adapted)
+      function assemble(k, t0, fillAt) {
+        const col = "#f04sod-col-" + k;
+        const cells = $$(col + " .f04sod-cell");
+        const fills = $$(col + " .f04sod-cellfill");
+        tl.fromTo(col + " .f04sod-letter", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, t0);
+        tl.fromTo(col + " .f04sod-base", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, t0 + 0.05);
+        tl.fromTo(cells, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.035 }, t0 + 0.1);
+        tl.fromTo(col + " .f04sod-tick", { opacity: 0 }, { opacity: 1, duration: 0.3 }, t0 + 0.35);
+        tl.fromTo(col + " .f04sod-label", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t0 + 0.2);
+        tl.fromTo(col + " .f04sod-q", { opacity: 0, y: 14, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)", duration: 0.6, ease: "power2.out" }, t0 + 0.35);
+        // fill 1 -> 10 bottom-up, then back to outline only
+        tl.fromTo(fills, { scaleY: 0 }, { scaleY: 1, duration: 0.18, ease: "power2.out", stagger: 0.07 }, fillAt);
+        tl.to(fills, { scaleY: 0, duration: 0.18, ease: "power2.in", stagger: { each: 0.025, from: "end" } }, fillAt + 0.95);
+      }
+      assemble("s", 1.4, 1.95);
+      assemble("o", 3.4, 4.05);
+      assemble("d", 6.2, 6.9);
+
+      // Scene 5 — D highlighted, S and O recede to ink-soft
+      tl.to(["#f04sod-col-s .f04sod-dimmable", "#f04sod-col-o .f04sod-dimmable"], { opacity: 0.5, color: "#5560E5", duration: 0.5, ease: "power2.out" }, 10.3);
+      tl.to(["#f04sod-col-s .f04sod-cell", "#f04sod-col-o .f04sod-cell"], { borderColor: "#5560E5", backgroundColor: "rgba(85,96,229,0.10)", duration: 0.5 }, 10.3);
+      tl.fromTo($$("#f04sod-col-d .f04sod-cellfill"), { scaleY: 0 }, { scaleY: 1, duration: 0.16, ease: "power2.out", stagger: 0.06, immediateRender: false }, 10.35);
+      tl.fromTo("#f04sod-alert", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.45, ease: "power3.inOut" }, 11.0);
+      tl.fromTo("#f04sod-alert .f04sod-alert-text", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 11.25);
+
+      const path = $("#f04sod-ulpath");
+      const len = (path.getTotalLength && path.getTotalLength()) || 100;
+      tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" }, 11.9);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["04-sod"] = tl;
+    })();
+  </script>
+</template>
