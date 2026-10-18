@@ -1,0 +1,2471 @@
+{
+  "bgm": {
+    "path": "assets/music/underscore.mp3",
+    "source": "host"
+  },
+  "bgm_pending": false,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 8.213,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Qualidade",
+          "start": 0.08,
+          "end": 0.64
+        },
+        {
+          "id": "w1",
+          "text": "custa",
+          "start": 0.64,
+          "end": 0.96
+        },
+        {
+          "id": "w2",
+          "text": "caro",
+          "start": 0.96,
+          "end": 1.2
+        },
+        {
+          "id": "w3",
+          "text": "ou",
+          "start": 1.28,
+          "end": 1.52
+        },
+        {
+          "id": "w4",
+          "text": "é",
+          "start": 1.52,
+          "end": 1.68
+        },
+        {
+          "id": "w5",
+          "text": "a",
+          "start": 1.68,
+          "end": 1.76
+        },
+        {
+          "id": "w6",
+          "text": "falta",
+          "start": 1.76,
+          "end": 2
+        },
+        {
+          "id": "w7",
+          "text": "dela",
+          "start": 2,
+          "end": 2.32
+        },
+        {
+          "id": "w8",
+          "text": "que",
+          "start": 2.32,
+          "end": 2.48
+        },
+        {
+          "id": "w9",
+          "text": "sai",
+          "start": 2.48,
+          "end": 2.8
+        },
+        {
+          "id": "w10",
+          "text": "mais",
+          "start": 2.8,
+          "end": 3.04
+        },
+        {
+          "id": "w11",
+          "text": "cara?",
+          "start": 3.04,
+          "end": 3.6
+        },
+        {
+          "id": "w12",
+          "text": "E",
+          "start": 3.6,
+          "end": 3.76
+        },
+        {
+          "id": "w13",
+          "text": "como",
+          "start": 3.76,
+          "end": 4.08
+        },
+        {
+          "id": "w14",
+          "text": "saber",
+          "start": 4.08,
+          "end": 4.4
+        },
+        {
+          "id": "w15",
+          "text": "se",
+          "start": 4.4,
+          "end": 4.56
+        },
+        {
+          "id": "w16",
+          "text": "uma",
+          "start": 4.56,
+          "end": 4.72
+        },
+        {
+          "id": "w17",
+          "text": "máquina",
+          "start": 4.72,
+          "end": 5.04
+        },
+        {
+          "id": "w18",
+          "text": "rende",
+          "start": 5.04,
+          "end": 5.52
+        },
+        {
+          "id": "w19",
+          "text": "de",
+          "start": 5.52,
+          "end": 5.68
+        },
+        {
+          "id": "w20",
+          "text": "verdade,",
+          "start": 5.68,
+          "end": 6.24
+        },
+        {
+          "id": "w21",
+          "text": "ou",
+          "start": 6.24,
+          "end": 6.4
+        },
+        {
+          "id": "w22",
+          "text": "se",
+          "start": 6.4,
+          "end": 6.64
+        },
+        {
+          "id": "w23",
+          "text": "um",
+          "start": 6.64,
+          "end": 6.8
+        },
+        {
+          "id": "w24",
+          "text": "processo",
+          "start": 6.8,
+          "end": 7.12
+        },
+        {
+          "id": "w25",
+          "text": "saiu",
+          "start": 7.12,
+          "end": 7.52
+        },
+        {
+          "id": "w26",
+          "text": "do",
+          "start": 7.52,
+          "end": 7.68
+        },
+        {
+          "id": "w27",
+          "text": "controle?",
+          "start": 7.68,
+          "end": 8.16
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "path": "assets/voice/02.wav",
+      "duration_s": 12.309,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Na",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "Aula",
+          "start": 0.16,
+          "end": 0.48
+        },
+        {
+          "id": "w2",
+          "text": "6,",
+          "start": 0.48,
+          "end": 0.88
+        },
+        {
+          "id": "w3",
+          "text": "a",
+          "start": 0.88,
+          "end": 0.96
+        },
+        {
+          "id": "w4",
+          "text": "Gestão",
+          "start": 0.96,
+          "end": 1.28
+        },
+        {
+          "id": "w5",
+          "text": "da",
+          "start": 1.28,
+          "end": 1.44
+        },
+        {
+          "id": "w6",
+          "text": "Qualidade",
+          "start": 1.44,
+          "end": 1.76
+        },
+        {
+          "id": "w7",
+          "text": "Total,",
+          "start": 1.92,
+          "end": 2.4
+        },
+        {
+          "id": "w8",
+          "text": "a",
+          "start": 2.4,
+          "end": 2.56
+        },
+        {
+          "id": "w9",
+          "text": "GQT.",
+          "start": 2.56,
+          "end": 3.44
+        },
+        {
+          "id": "w10",
+          "text": "A",
+          "start": 3.44,
+          "end": 3.68
+        },
+        {
+          "id": "w11",
+          "text": "qualidade",
+          "start": 3.68,
+          "end": 4.24
+        },
+        {
+          "id": "w12",
+          "text": "deixa",
+          "start": 4.24,
+          "end": 4.64
+        },
+        {
+          "id": "w13",
+          "text": "de",
+          "start": 4.64,
+          "end": 4.72
+        },
+        {
+          "id": "w14",
+          "text": "ser",
+          "start": 4.72,
+          "end": 4.96
+        },
+        {
+          "id": "w15",
+          "text": "tarefa",
+          "start": 4.96,
+          "end": 5.44
+        },
+        {
+          "id": "w16",
+          "text": "de",
+          "start": 5.44,
+          "end": 5.6
+        },
+        {
+          "id": "w17",
+          "text": "um",
+          "start": 5.6,
+          "end": 5.68
+        },
+        {
+          "id": "w18",
+          "text": "setor",
+          "start": 5.68,
+          "end": 6
+        },
+        {
+          "id": "w19",
+          "text": "de",
+          "start": 6,
+          "end": 6.16
+        },
+        {
+          "id": "w20",
+          "text": "inspeção",
+          "start": 6.16,
+          "end": 6.64
+        },
+        {
+          "id": "w21",
+          "text": "e",
+          "start": 6.64,
+          "end": 6.88
+        },
+        {
+          "id": "w22",
+          "text": "passa",
+          "start": 6.88,
+          "end": 7.2
+        },
+        {
+          "id": "w23",
+          "text": "a",
+          "start": 7.2,
+          "end": 7.28
+        },
+        {
+          "id": "w24",
+          "text": "ser",
+          "start": 7.28,
+          "end": 7.52
+        },
+        {
+          "id": "w25",
+          "text": "responsabilidade",
+          "start": 7.52,
+          "end": 8.32
+        },
+        {
+          "id": "w26",
+          "text": "de",
+          "start": 8.32,
+          "end": 8.48
+        },
+        {
+          "id": "w27",
+          "text": "todos,",
+          "start": 8.48,
+          "end": 8.96
+        },
+        {
+          "id": "w28",
+          "text": "do",
+          "start": 8.96,
+          "end": 9.12
+        },
+        {
+          "id": "w29",
+          "text": "projeto",
+          "start": 9.12,
+          "end": 9.52
+        },
+        {
+          "id": "w30",
+          "text": "ao",
+          "start": 9.52,
+          "end": 9.76
+        },
+        {
+          "id": "w31",
+          "text": "atendimento,",
+          "start": 9.76,
+          "end": 10.64
+        },
+        {
+          "id": "w32",
+          "text": "sempre",
+          "start": 10.64,
+          "end": 10.96
+        },
+        {
+          "id": "w33",
+          "text": "com",
+          "start": 10.96,
+          "end": 11.12
+        },
+        {
+          "id": "w34",
+          "text": "foco",
+          "start": 11.2,
+          "end": 11.6
+        },
+        {
+          "id": "w35",
+          "text": "no",
+          "start": 11.6,
+          "end": 11.76
+        },
+        {
+          "id": "w36",
+          "text": "cliente.",
+          "start": 11.76,
+          "end": 12.24
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "path": "assets/voice/03.wav",
+      "duration_s": 9.493,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Ela",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "se",
+          "start": 0.24,
+          "end": 0.32
+        },
+        {
+          "id": "w2",
+          "text": "apoia",
+          "start": 0.32,
+          "end": 0.72
+        },
+        {
+          "id": "w3",
+          "text": "em",
+          "start": 0.72,
+          "end": 0.88
+        },
+        {
+          "id": "w4",
+          "text": "três",
+          "start": 0.88,
+          "end": 1.12
+        },
+        {
+          "id": "w5",
+          "text": "ideias:",
+          "start": 1.12,
+          "end": 1.76
+        },
+        {
+          "id": "w6",
+          "text": "foco",
+          "start": 1.76,
+          "end": 2.16
+        },
+        {
+          "id": "w7",
+          "text": "no",
+          "start": 2.16,
+          "end": 2.32
+        },
+        {
+          "id": "w8",
+          "text": "cliente,",
+          "start": 2.32,
+          "end": 2.8
+        },
+        {
+          "id": "w9",
+          "text": "envolvimento",
+          "start": 2.88,
+          "end": 3.52
+        },
+        {
+          "id": "w10",
+          "text": "de",
+          "start": 3.52,
+          "end": 3.6
+        },
+        {
+          "id": "w11",
+          "text": "todas",
+          "start": 3.6,
+          "end": 3.84
+        },
+        {
+          "id": "w12",
+          "text": "as",
+          "start": 3.84,
+          "end": 4
+        },
+        {
+          "id": "w13",
+          "text": "pessoas",
+          "start": 4,
+          "end": 4.24
+        },
+        {
+          "id": "w14",
+          "text": "e",
+          "start": 4.4,
+          "end": 4.56
+        },
+        {
+          "id": "w15",
+          "text": "melhoria",
+          "start": 4.56,
+          "end": 5.04
+        },
+        {
+          "id": "w16",
+          "text": "contínua,",
+          "start": 5.04,
+          "end": 5.52
+        },
+        {
+          "id": "w17",
+          "text": "que",
+          "start": 5.52,
+          "end": 5.68
+        },
+        {
+          "id": "w18",
+          "text": "gira",
+          "start": 5.68,
+          "end": 6.08
+        },
+        {
+          "id": "w19",
+          "text": "o",
+          "start": 6.08,
+          "end": 6.16
+        },
+        {
+          "id": "w20",
+          "text": "ciclo",
+          "start": 6.16,
+          "end": 6.48
+        },
+        {
+          "text": "PDCA:",
+          "start": 6.48,
+          "end": 7.12,
+          "id": "w21"
+        },
+        {
+          "id": "w22",
+          "text": "planejar,",
+          "start": 7.12,
+          "end": 7.76
+        },
+        {
+          "id": "w23",
+          "text": "executar,",
+          "start": 7.76,
+          "end": 8.4
+        },
+        {
+          "id": "w24",
+          "text": "verificar",
+          "start": 8.4,
+          "end": 8.88
+        },
+        {
+          "id": "w25",
+          "text": "e",
+          "start": 8.88,
+          "end": 9.04
+        },
+        {
+          "id": "w26",
+          "text": "agir.",
+          "start": 9.04,
+          "end": 9.44
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "path": "assets/voice/04.wav",
+      "duration_s": 17.067,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Na",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "Aula",
+          "start": 0.16,
+          "end": 0.48
+        },
+        {
+          "id": "w2",
+          "text": "6",
+          "start": 0.48,
+          "end": 0.8
+        },
+        {
+          "id": "w3",
+          "text": "também",
+          "start": 0.8,
+          "end": 1.04
+        },
+        {
+          "id": "w4",
+          "text": "vêm",
+          "start": 1.04,
+          "end": 1.2
+        },
+        {
+          "id": "w5",
+          "text": "os",
+          "start": 1.36,
+          "end": 1.44
+        },
+        {
+          "id": "w6",
+          "text": "custos",
+          "start": 1.44,
+          "end": 1.76
+        },
+        {
+          "id": "w7",
+          "text": "da",
+          "start": 1.76,
+          "end": 1.92
+        },
+        {
+          "id": "w8",
+          "text": "qualidade,",
+          "start": 1.92,
+          "end": 2.48
+        },
+        {
+          "id": "w9",
+          "text": "em",
+          "start": 2.48,
+          "end": 2.64
+        },
+        {
+          "id": "w10",
+          "text": "quatro",
+          "start": 2.64,
+          "end": 2.96
+        },
+        {
+          "id": "w11",
+          "text": "grupos.",
+          "start": 2.96,
+          "end": 3.76
+        },
+        {
+          "id": "w12",
+          "text": "Prevenção:",
+          "start": 3.76,
+          "end": 4.48
+        },
+        {
+          "id": "w13",
+          "text": "treinamento",
+          "start": 4.48,
+          "end": 4.96
+        },
+        {
+          "id": "w14",
+          "text": "e",
+          "start": 4.96,
+          "end": 5.12
+        },
+        {
+          "id": "w15",
+          "text": "planejamento",
+          "start": 5.12,
+          "end": 5.76
+        },
+        {
+          "id": "w16",
+          "text": "para",
+          "start": 5.76,
+          "end": 6
+        },
+        {
+          "id": "w17",
+          "text": "evitar",
+          "start": 6,
+          "end": 6.32
+        },
+        {
+          "id": "w18",
+          "text": "defeitos.",
+          "start": 6.32,
+          "end": 7.12
+        },
+        {
+          "id": "w19",
+          "text": "Avaliação:",
+          "start": 7.12,
+          "end": 7.84
+        },
+        {
+          "id": "w20",
+          "text": "inspeções",
+          "start": 7.84,
+          "end": 8.4
+        },
+        {
+          "id": "w21",
+          "text": "e",
+          "start": 8.4,
+          "end": 8.48
+        },
+        {
+          "id": "w22",
+          "text": "testes.",
+          "start": 8.48,
+          "end": 9.2
+        },
+        {
+          "id": "w23",
+          "text": "Falhas",
+          "start": 9.2,
+          "end": 9.68
+        },
+        {
+          "id": "w24",
+          "text": "internas:",
+          "start": 9.68,
+          "end": 10.24
+        },
+        {
+          "text": "refugo",
+          "start": 10.24,
+          "end": 10.72,
+          "id": "w25"
+        },
+        {
+          "id": "w26",
+          "text": "e",
+          "start": 10.8,
+          "end": 10.88
+        },
+        {
+          "id": "w27",
+          "text": "retrabalho",
+          "start": 10.88,
+          "end": 11.52
+        },
+        {
+          "id": "w28",
+          "text": "antes",
+          "start": 11.52,
+          "end": 11.76
+        },
+        {
+          "id": "w29",
+          "text": "da",
+          "start": 11.76,
+          "end": 11.92
+        },
+        {
+          "id": "w30",
+          "text": "entrega.",
+          "start": 11.92,
+          "end": 12.56
+        },
+        {
+          "id": "w31",
+          "text": "E",
+          "start": 12.56,
+          "end": 12.72
+        },
+        {
+          "id": "w32",
+          "text": "falhas",
+          "start": 12.72,
+          "end": 13.2
+        },
+        {
+          "id": "w33",
+          "text": "externas:",
+          "start": 13.2,
+          "end": 13.92
+        },
+        {
+          "id": "w34",
+          "text": "garantia,",
+          "start": 13.92,
+          "end": 14.56
+        },
+        {
+          "id": "w35",
+          "text": "devoluções",
+          "start": 14.56,
+          "end": 15.2
+        },
+        {
+          "id": "w36",
+          "text": "e",
+          "start": 15.2,
+          "end": 15.36
+        },
+        {
+          "id": "w37",
+          "text": "reclamações",
+          "start": 15.36,
+          "end": 16.08
+        },
+        {
+          "id": "w38",
+          "text": "depois",
+          "start": 16.08,
+          "end": 16.4
+        },
+        {
+          "id": "w39",
+          "text": "da",
+          "start": 16.4,
+          "end": 16.56
+        },
+        {
+          "id": "w40",
+          "text": "entrega.",
+          "start": 16.56,
+          "end": 17.04
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "path": "assets/voice/05.wav",
+      "duration_s": 9.109,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Quanto",
+          "start": 0,
+          "end": 0.4
+        },
+        {
+          "id": "w1",
+          "text": "mais",
+          "start": 0.4,
+          "end": 0.56
+        },
+        {
+          "id": "w2",
+          "text": "tarde",
+          "start": 0.56,
+          "end": 0.88
+        },
+        {
+          "id": "w3",
+          "text": "o",
+          "start": 0.88,
+          "end": 0.96
+        },
+        {
+          "id": "w4",
+          "text": "defeito",
+          "start": 0.96,
+          "end": 1.36
+        },
+        {
+          "id": "w5",
+          "text": "é",
+          "start": 1.36,
+          "end": 1.52
+        },
+        {
+          "id": "w6",
+          "text": "descoberto,",
+          "start": 1.52,
+          "end": 2.16
+        },
+        {
+          "id": "w7",
+          "text": "mais",
+          "start": 2.16,
+          "end": 2.4
+        },
+        {
+          "id": "w8",
+          "text": "caro",
+          "start": 2.4,
+          "end": 2.72
+        },
+        {
+          "id": "w9",
+          "text": "ele",
+          "start": 2.72,
+          "end": 2.88
+        },
+        {
+          "id": "w10",
+          "text": "fica.",
+          "start": 2.88,
+          "end": 3.52
+        },
+        {
+          "id": "w11",
+          "text": "Por",
+          "start": 3.52,
+          "end": 3.76
+        },
+        {
+          "id": "w12",
+          "text": "isso,",
+          "start": 3.76,
+          "end": 4.08
+        },
+        {
+          "id": "w13",
+          "text": "investir",
+          "start": 4.08,
+          "end": 4.64
+        },
+        {
+          "id": "w14",
+          "text": "em",
+          "start": 4.64,
+          "end": 4.8
+        },
+        {
+          "id": "w15",
+          "text": "prevenção",
+          "start": 4.8,
+          "end": 5.28
+        },
+        {
+          "id": "w16",
+          "text": "e",
+          "start": 5.28,
+          "end": 5.44
+        },
+        {
+          "id": "w17",
+          "text": "avaliação",
+          "start": 5.44,
+          "end": 6
+        },
+        {
+          "id": "w18",
+          "text": "reduz",
+          "start": 6,
+          "end": 6.4
+        },
+        {
+          "id": "w19",
+          "text": "as",
+          "start": 6.4,
+          "end": 6.48
+        },
+        {
+          "id": "w20",
+          "text": "falhas,",
+          "start": 6.56,
+          "end": 6.96
+        },
+        {
+          "id": "w21",
+          "text": "e",
+          "start": 7.12,
+          "end": 7.28
+        },
+        {
+          "id": "w22",
+          "text": "o",
+          "start": 7.28,
+          "end": 7.44
+        },
+        {
+          "id": "w23",
+          "text": "custo",
+          "start": 7.44,
+          "end": 7.76
+        },
+        {
+          "id": "w24",
+          "text": "total",
+          "start": 7.76,
+          "end": 8
+        },
+        {
+          "id": "w25",
+          "text": "da",
+          "start": 8,
+          "end": 8.16
+        },
+        {
+          "id": "w26",
+          "text": "qualidade",
+          "start": 8.16,
+          "end": 8.64
+        },
+        {
+          "id": "w27",
+          "text": "cai.",
+          "start": 8.64,
+          "end": 9.04
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "path": "assets/voice/06.wav",
+      "duration_s": 9.835,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Na",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "Aula",
+          "start": 0.16,
+          "end": 0.48
+        },
+        {
+          "id": "w2",
+          "text": "7,",
+          "start": 0.48,
+          "end": 0.8
+        },
+        {
+          "id": "w3",
+          "text": "os",
+          "start": 0.88,
+          "end": 1.12
+        },
+        {
+          "id": "w4",
+          "text": "indicadores",
+          "start": 1.12,
+          "end": 1.68
+        },
+        {
+          "id": "w5",
+          "text": "de",
+          "start": 1.68,
+          "end": 1.84
+        },
+        {
+          "id": "w6",
+          "text": "desempenho.",
+          "start": 1.84,
+          "end": 2.64
+        },
+        {
+          "id": "w7",
+          "text": "O",
+          "start": 2.64,
+          "end": 2.8
+        },
+        {
+          "id": "w8",
+          "text": "que",
+          "start": 2.8,
+          "end": 2.96
+        },
+        {
+          "id": "w9",
+          "text": "não",
+          "start": 2.96,
+          "end": 3.04
+        },
+        {
+          "id": "w10",
+          "text": "se",
+          "start": 3.04,
+          "end": 3.2
+        },
+        {
+          "id": "w11",
+          "text": "mede",
+          "start": 3.2,
+          "end": 3.6
+        },
+        {
+          "id": "w12",
+          "text": "não",
+          "start": 3.68,
+          "end": 3.84
+        },
+        {
+          "id": "w13",
+          "text": "se",
+          "start": 3.84,
+          "end": 4
+        },
+        {
+          "id": "w14",
+          "text": "gerencia.",
+          "start": 4,
+          "end": 4.72
+        },
+        {
+          "id": "w15",
+          "text": "Um",
+          "start": 4.88,
+          "end": 5.04
+        },
+        {
+          "id": "w16",
+          "text": "bom",
+          "start": 5.04,
+          "end": 5.28
+        },
+        {
+          "id": "w17",
+          "text": "indicador",
+          "start": 5.28,
+          "end": 5.76
+        },
+        {
+          "id": "w18",
+          "text": "tem",
+          "start": 5.76,
+          "end": 6.08
+        },
+        {
+          "id": "w19",
+          "text": "fórmula",
+          "start": 6.08,
+          "end": 6.56
+        },
+        {
+          "id": "w20",
+          "text": "clara,",
+          "start": 6.56,
+          "end": 6.96
+        },
+        {
+          "id": "w21",
+          "text": "meta,",
+          "start": 6.96,
+          "end": 7.52
+        },
+        {
+          "id": "w22",
+          "text": "frequência",
+          "start": 7.52,
+          "end": 8.08
+        },
+        {
+          "id": "w23",
+          "text": "de",
+          "start": 8.08,
+          "end": 8.16
+        },
+        {
+          "id": "w24",
+          "text": "medição",
+          "start": 8.16,
+          "end": 8.72
+        },
+        {
+          "id": "w25",
+          "text": "e",
+          "start": 8.72,
+          "end": 8.88
+        },
+        {
+          "id": "w26",
+          "text": "um",
+          "start": 8.88,
+          "end": 9.04
+        },
+        {
+          "id": "w27",
+          "text": "responsável.",
+          "start": 9.04,
+          "end": 9.76
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "path": "assets/voice/07.wav",
+      "duration_s": 8.661,
+      "words": [
+        {
+          "id": "w0",
+          "text": "O",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "indicador",
+          "start": 0.16,
+          "end": 0.64
+        },
+        {
+          "id": "w2",
+          "text": "mais",
+          "start": 0.64,
+          "end": 0.88
+        },
+        {
+          "id": "w3",
+          "text": "cobrado",
+          "start": 0.88,
+          "end": 1.36
+        },
+        {
+          "id": "w4",
+          "text": "é",
+          "start": 1.36,
+          "end": 1.44
+        },
+        {
+          "id": "w5",
+          "text": "o",
+          "start": 1.44,
+          "end": 1.6
+        },
+        {
+          "text": "OEE,",
+          "start": 1.6,
+          "end": 2.08,
+          "id": "w6"
+        },
+        {
+          "id": "w7",
+          "text": "a",
+          "start": 2.16,
+          "end": 2.32
+        },
+        {
+          "id": "w8",
+          "text": "Eficiência",
+          "start": 2.32,
+          "end": 2.8
+        },
+        {
+          "id": "w9",
+          "text": "Global",
+          "start": 2.8,
+          "end": 3.04
+        },
+        {
+          "id": "w10",
+          "text": "do",
+          "start": 3.2,
+          "end": 3.36
+        },
+        {
+          "id": "w11",
+          "text": "Equipamento.",
+          "start": 3.36,
+          "end": 4.24
+        },
+        {
+          "id": "w12",
+          "text": "Ele",
+          "start": 4.24,
+          "end": 4.56
+        },
+        {
+          "id": "w13",
+          "text": "multiplica",
+          "start": 4.56,
+          "end": 5.2
+        },
+        {
+          "id": "w14",
+          "text": "três",
+          "start": 5.2,
+          "end": 5.44
+        },
+        {
+          "id": "w15",
+          "text": "fatores:",
+          "start": 5.44,
+          "end": 6
+        },
+        {
+          "id": "w16",
+          "text": "disponibilidade,",
+          "start": 6.24,
+          "end": 7.12
+        },
+        {
+          "id": "w17",
+          "text": "desempenho",
+          "start": 7.28,
+          "end": 7.84
+        },
+        {
+          "id": "w18",
+          "text": "e",
+          "start": 7.84,
+          "end": 8
+        },
+        {
+          "id": "w19",
+          "text": "qualidade.",
+          "start": 8,
+          "end": 8.56
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "path": "assets/voice/08.wav",
+      "duration_s": 12.437,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Disponibilidade:",
+          "start": 0,
+          "end": 0.88
+        },
+        {
+          "id": "w1",
+          "text": "o",
+          "start": 1.12,
+          "end": 1.28
+        },
+        {
+          "id": "w2",
+          "text": "tempo",
+          "start": 1.28,
+          "end": 1.6
+        },
+        {
+          "id": "w3",
+          "text": "que",
+          "start": 1.6,
+          "end": 1.76
+        },
+        {
+          "id": "w4",
+          "text": "a",
+          "start": 1.76,
+          "end": 1.84
+        },
+        {
+          "id": "w5",
+          "text": "máquina",
+          "start": 1.84,
+          "end": 2.32
+        },
+        {
+          "id": "w6",
+          "text": "realmente",
+          "start": 2.32,
+          "end": 2.64
+        },
+        {
+          "id": "w7",
+          "text": "operou",
+          "start": 2.8,
+          "end": 3.28
+        },
+        {
+          "id": "w8",
+          "text": "sobre",
+          "start": 3.28,
+          "end": 3.52
+        },
+        {
+          "id": "w9",
+          "text": "o",
+          "start": 3.52,
+          "end": 3.6
+        },
+        {
+          "id": "w10",
+          "text": "tempo",
+          "start": 3.6,
+          "end": 3.92
+        },
+        {
+          "id": "w11",
+          "text": "planejado.",
+          "start": 3.92,
+          "end": 4.88
+        },
+        {
+          "id": "w12",
+          "text": "Desempenho:",
+          "start": 4.88,
+          "end": 5.68
+        },
+        {
+          "id": "w13",
+          "text": "o",
+          "start": 5.68,
+          "end": 5.84
+        },
+        {
+          "id": "w14",
+          "text": "que",
+          "start": 5.84,
+          "end": 6
+        },
+        {
+          "id": "w15",
+          "text": "ela",
+          "start": 6,
+          "end": 6.16
+        },
+        {
+          "id": "w16",
+          "text": "produziu",
+          "start": 6.16,
+          "end": 6.64
+        },
+        {
+          "id": "w17",
+          "text": "sobre",
+          "start": 6.64,
+          "end": 6.88
+        },
+        {
+          "id": "w18",
+          "text": "o",
+          "start": 6.88,
+          "end": 6.96
+        },
+        {
+          "id": "w19",
+          "text": "que",
+          "start": 6.96,
+          "end": 7.12
+        },
+        {
+          "id": "w20",
+          "text": "poderia",
+          "start": 7.12,
+          "end": 7.52
+        },
+        {
+          "id": "w21",
+          "text": "produzir",
+          "start": 7.52,
+          "end": 7.92
+        },
+        {
+          "id": "w22",
+          "text": "na",
+          "start": 7.92,
+          "end": 8.08
+        },
+        {
+          "id": "w23",
+          "text": "velocidade",
+          "start": 8.08,
+          "end": 8.64
+        },
+        {
+          "id": "w24",
+          "text": "ideal.",
+          "start": 8.64,
+          "end": 9.36
+        },
+        {
+          "id": "w25",
+          "text": "Qualidade:",
+          "start": 9.36,
+          "end": 10
+        },
+        {
+          "id": "w26",
+          "text": "as",
+          "start": 10.16,
+          "end": 10.32
+        },
+        {
+          "id": "w27",
+          "text": "peças",
+          "start": 10.32,
+          "end": 10.8
+        },
+        {
+          "id": "w28",
+          "text": "boas",
+          "start": 10.8,
+          "end": 11.12
+        },
+        {
+          "id": "w29",
+          "text": "sobre",
+          "start": 11.12,
+          "end": 11.36
+        },
+        {
+          "id": "w30",
+          "text": "o",
+          "start": 11.36,
+          "end": 11.44
+        },
+        {
+          "id": "w31",
+          "text": "total",
+          "start": 11.44,
+          "end": 11.84
+        },
+        {
+          "id": "w32",
+          "text": "produzido.",
+          "start": 11.84,
+          "end": 12.4
+        }
+      ]
+    },
+    {
+      "frame": 9,
+      "path": "assets/voice/09.wav",
+      "duration_s": 13.269,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Exemplo:",
+          "start": 0,
+          "end": 0.48
+        },
+        {
+          "id": "w1",
+          "text": "disponibilidade",
+          "start": 0.64,
+          "end": 1.52
+        },
+        {
+          "id": "w2",
+          "text": "de",
+          "start": 1.52,
+          "end": 1.68
+        },
+        {
+          "text": "90%,",
+          "start": 1.68,
+          "end": 2.64,
+          "id": "w3"
+        },
+        {
+          "id": "w4",
+          "text": "desempenho",
+          "start": 2.64,
+          "end": 3.2
+        },
+        {
+          "id": "w5",
+          "text": "de",
+          "start": 3.2,
+          "end": 3.36
+        },
+        {
+          "id": "w6",
+          "text": "80%",
+          "start": 3.36,
+          "end": 3.76
+        },
+        {
+          "id": "w7",
+          "text": "e",
+          "start": 3.84,
+          "end": 4
+        },
+        {
+          "id": "w8",
+          "text": "qualidade",
+          "start": 4,
+          "end": 4.48
+        },
+        {
+          "id": "w9",
+          "text": "de",
+          "start": 4.48,
+          "end": 4.64
+        },
+        {
+          "id": "w10",
+          "text": "95%.",
+          "start": 4.64,
+          "end": 5.76
+        },
+        {
+          "id": "w11",
+          "text": "Multiplicando,",
+          "start": 5.76,
+          "end": 6.48
+        },
+        {
+          "id": "w12",
+          "text": "o",
+          "start": 6.48,
+          "end": 6.64
+        },
+        {
+          "text": "OEE",
+          "start": 6.64,
+          "end": 7.84,
+          "id": "w13"
+        },
+        {
+          "id": "w14",
+          "text": "é",
+          "start": 7.84,
+          "end": 8
+        },
+        {
+          "text": "de",
+          "start": 8,
+          "end": 8.48,
+          "id": "w15"
+        },
+        {
+          "text": "68,4%.",
+          "start": 8.48,
+          "end": 9.92,
+          "id": "w16"
+        },
+        {
+          "id": "w17",
+          "text": "Cada",
+          "start": 9.92,
+          "end": 10.24
+        },
+        {
+          "id": "w18",
+          "text": "fator",
+          "start": 10.24,
+          "end": 10.64
+        },
+        {
+          "id": "w19",
+          "text": "parecia",
+          "start": 10.64,
+          "end": 11.2
+        },
+        {
+          "id": "w20",
+          "text": "bom,",
+          "start": 11.2,
+          "end": 11.52
+        },
+        {
+          "id": "w21",
+          "text": "mas",
+          "start": 11.52,
+          "end": 11.76
+        },
+        {
+          "id": "w22",
+          "text": "juntos",
+          "start": 11.76,
+          "end": 12.08
+        },
+        {
+          "id": "w23",
+          "text": "revelam",
+          "start": 12.08,
+          "end": 12.64
+        },
+        {
+          "id": "w24",
+          "text": "as",
+          "start": 12.64,
+          "end": 12.72
+        },
+        {
+          "id": "w25",
+          "text": "perdas.",
+          "start": 12.72,
+          "end": 13.2
+        }
+      ]
+    },
+    {
+      "frame": 10,
+      "path": "assets/voice/10.wav",
+      "duration_s": 7.915,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Na",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "Aula",
+          "start": 0.16,
+          "end": 0.48
+        },
+        {
+          "id": "w2",
+          "text": "8,",
+          "start": 0.48,
+          "end": 0.8
+        },
+        {
+          "id": "w3",
+          "text": "o",
+          "start": 0.8,
+          "end": 0.96
+        },
+        {
+          "id": "w4",
+          "text": "Controle",
+          "start": 0.96,
+          "end": 1.36
+        },
+        {
+          "id": "w5",
+          "text": "Estatístico",
+          "start": 1.36,
+          "end": 2
+        },
+        {
+          "id": "w6",
+          "text": "de",
+          "start": 2,
+          "end": 2.16
+        },
+        {
+          "id": "w7",
+          "text": "Processo,",
+          "start": 2.16,
+          "end": 2.56
+        },
+        {
+          "id": "w8",
+          "text": "o",
+          "start": 2.64,
+          "end": 2.8
+        },
+        {
+          "id": "w9",
+          "text": "CEP.",
+          "start": 2.8,
+          "end": 3.44
+        },
+        {
+          "id": "w10",
+          "text": "Todo",
+          "start": 3.44,
+          "end": 3.52
+        },
+        {
+          "id": "w11",
+          "text": "processo",
+          "start": 3.68,
+          "end": 4.08
+        },
+        {
+          "id": "w12",
+          "text": "varia.",
+          "start": 4.08,
+          "end": 4.72
+        },
+        {
+          "id": "w13",
+          "text": "A",
+          "start": 4.72,
+          "end": 4.88
+        },
+        {
+          "id": "w14",
+          "text": "pergunta",
+          "start": 4.88,
+          "end": 5.2
+        },
+        {
+          "id": "w15",
+          "text": "é:",
+          "start": 5.2,
+          "end": 5.44
+        },
+        {
+          "id": "w16",
+          "text": "essa",
+          "start": 5.52,
+          "end": 5.68
+        },
+        {
+          "id": "w17",
+          "text": "variação",
+          "start": 5.76,
+          "end": 6.24
+        },
+        {
+          "id": "w18",
+          "text": "é",
+          "start": 6.24,
+          "end": 6.32
+        },
+        {
+          "id": "w19",
+          "text": "normal,",
+          "start": 6.32,
+          "end": 6.64
+        },
+        {
+          "id": "w20",
+          "text": "ou",
+          "start": 6.72,
+          "end": 6.96
+        },
+        {
+          "id": "w21",
+          "text": "tem",
+          "start": 6.96,
+          "end": 7.2
+        },
+        {
+          "id": "w22",
+          "text": "algo",
+          "start": 7.2,
+          "end": 7.44
+        },
+        {
+          "id": "w23",
+          "text": "errado?",
+          "start": 7.44,
+          "end": 7.76
+        }
+      ]
+    },
+    {
+      "frame": 11,
+      "path": "assets/voice/11.wav",
+      "duration_s": 12.459,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Causas",
+          "start": 0,
+          "end": 0.48
+        },
+        {
+          "id": "w1",
+          "text": "comuns",
+          "start": 0.48,
+          "end": 0.8
+        },
+        {
+          "id": "w2",
+          "text": "são",
+          "start": 0.8,
+          "end": 1.04
+        },
+        {
+          "id": "w3",
+          "text": "pequenas",
+          "start": 1.04,
+          "end": 1.36
+        },
+        {
+          "id": "w4",
+          "text": "variações",
+          "start": 1.44,
+          "end": 2
+        },
+        {
+          "id": "w5",
+          "text": "naturais,",
+          "start": 2,
+          "end": 2.56
+        },
+        {
+          "id": "w6",
+          "text": "sempre",
+          "start": 2.56,
+          "end": 2.88
+        },
+        {
+          "id": "w7",
+          "text": "presentes.",
+          "start": 2.96,
+          "end": 3.84
+        },
+        {
+          "id": "w8",
+          "text": "Causas",
+          "start": 3.84,
+          "end": 4.4
+        },
+        {
+          "id": "w9",
+          "text": "especiais",
+          "start": 4.4,
+          "end": 4.96
+        },
+        {
+          "id": "w10",
+          "text": "são",
+          "start": 4.96,
+          "end": 5.12
+        },
+        {
+          "id": "w11",
+          "text": "eventos",
+          "start": 5.12,
+          "end": 5.52
+        },
+        {
+          "id": "w12",
+          "text": "pontuais,",
+          "start": 5.52,
+          "end": 6.16
+        },
+        {
+          "id": "w13",
+          "text": "como",
+          "start": 6.16,
+          "end": 6.4
+        },
+        {
+          "id": "w14",
+          "text": "uma",
+          "start": 6.4,
+          "end": 6.56
+        },
+        {
+          "id": "w15",
+          "text": "ferramenta",
+          "start": 6.56,
+          "end": 7.04
+        },
+        {
+          "id": "w16",
+          "text": "gasta",
+          "start": 7.04,
+          "end": 7.52
+        },
+        {
+          "id": "w17",
+          "text": "ou",
+          "start": 7.52,
+          "end": 7.76
+        },
+        {
+          "id": "w18",
+          "text": "um",
+          "start": 7.76,
+          "end": 7.84
+        },
+        {
+          "id": "w19",
+          "text": "lote",
+          "start": 7.84,
+          "end": 8.24
+        },
+        {
+          "id": "w20",
+          "text": "ruim",
+          "start": 8.24,
+          "end": 8.56
+        },
+        {
+          "id": "w21",
+          "text": "de",
+          "start": 8.56,
+          "end": 8.64
+        },
+        {
+          "text": "matéria-prima.",
+          "start": 8.64,
+          "end": 9.76,
+          "id": "w22"
+        },
+        {
+          "id": "w23",
+          "text": "Essas",
+          "start": 9.76,
+          "end": 10.16
+        },
+        {
+          "id": "w24",
+          "text": "precisam",
+          "start": 10.16,
+          "end": 10.64
+        },
+        {
+          "id": "w25",
+          "text": "ser",
+          "start": 10.64,
+          "end": 10.88
+        },
+        {
+          "id": "w26",
+          "text": "investigadas",
+          "start": 10.88,
+          "end": 11.52
+        },
+        {
+          "id": "w27",
+          "text": "e",
+          "start": 11.52,
+          "end": 11.68
+        },
+        {
+          "id": "w28",
+          "text": "eliminadas.",
+          "start": 11.68,
+          "end": 12.4
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "path": "assets/voice/12.wav",
+      "duration_s": 13.312,
+      "words": [
+        {
+          "id": "w0",
+          "text": "O",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "gráfico",
+          "start": 0.16,
+          "end": 0.64
+        },
+        {
+          "id": "w2",
+          "text": "de",
+          "start": 0.64,
+          "end": 0.72
+        },
+        {
+          "id": "w3",
+          "text": "controle",
+          "start": 0.72,
+          "end": 1.2
+        },
+        {
+          "id": "w4",
+          "text": "mostra",
+          "start": 1.2,
+          "end": 1.68
+        },
+        {
+          "id": "w5",
+          "text": "isso:",
+          "start": 1.68,
+          "end": 2.16
+        },
+        {
+          "id": "w6",
+          "text": "uma",
+          "start": 2.16,
+          "end": 2.4
+        },
+        {
+          "id": "w7",
+          "text": "linha",
+          "start": 2.4,
+          "end": 2.72
+        },
+        {
+          "id": "w8",
+          "text": "média",
+          "start": 2.72,
+          "end": 3.12
+        },
+        {
+          "id": "w9",
+          "text": "e",
+          "start": 3.12,
+          "end": 3.28
+        },
+        {
+          "id": "w10",
+          "text": "os",
+          "start": 3.28,
+          "end": 3.44
+        },
+        {
+          "id": "w11",
+          "text": "limites",
+          "start": 3.44,
+          "end": 3.84
+        },
+        {
+          "id": "w12",
+          "text": "superior",
+          "start": 3.84,
+          "end": 4.32
+        },
+        {
+          "id": "w13",
+          "text": "e",
+          "start": 4.32,
+          "end": 4.48
+        },
+        {
+          "id": "w14",
+          "text": "inferior",
+          "start": 4.48,
+          "end": 4.96
+        },
+        {
+          "id": "w15",
+          "text": "de",
+          "start": 4.96,
+          "end": 5.12
+        },
+        {
+          "id": "w16",
+          "text": "controle,",
+          "start": 5.12,
+          "end": 5.68
+        },
+        {
+          "id": "w17",
+          "text": "em",
+          "start": 5.68,
+          "end": 5.84
+        },
+        {
+          "id": "w18",
+          "text": "geral",
+          "start": 5.84,
+          "end": 6.16
+        },
+        {
+          "text": "a",
+          "start": 6.16,
+          "end": 6.32,
+          "id": "w19"
+        },
+        {
+          "id": "w20",
+          "text": "três",
+          "start": 6.32,
+          "end": 6.56
+        },
+        {
+          "text": "desvios-padrão",
+          "start": 6.56,
+          "end": 7.44,
+          "id": "w21"
+        },
+        {
+          "id": "w22",
+          "text": "da",
+          "start": 7.44,
+          "end": 7.6
+        },
+        {
+          "id": "w23",
+          "text": "média.",
+          "start": 7.6,
+          "end": 8.4
+        },
+        {
+          "id": "w24",
+          "text": "Um",
+          "start": 8.4,
+          "end": 8.56
+        },
+        {
+          "id": "w25",
+          "text": "ponto",
+          "start": 8.56,
+          "end": 8.96
+        },
+        {
+          "id": "w26",
+          "text": "fora",
+          "start": 8.96,
+          "end": 9.2
+        },
+        {
+          "id": "w27",
+          "text": "dos",
+          "start": 9.2,
+          "end": 9.36
+        },
+        {
+          "id": "w28",
+          "text": "limites,",
+          "start": 9.36,
+          "end": 10
+        },
+        {
+          "id": "w29",
+          "text": "ou",
+          "start": 10,
+          "end": 10.16
+        },
+        {
+          "id": "w30",
+          "text": "uma",
+          "start": 10.16,
+          "end": 10.32
+        },
+        {
+          "id": "w31",
+          "text": "sequência",
+          "start": 10.32,
+          "end": 10.8
+        },
+        {
+          "id": "w32",
+          "text": "estranha",
+          "start": 10.8,
+          "end": 11.2
+        },
+        {
+          "id": "w33",
+          "text": "de",
+          "start": 11.2,
+          "end": 11.36
+        },
+        {
+          "id": "w34",
+          "text": "pontos,",
+          "start": 11.36,
+          "end": 11.68
+        },
+        {
+          "id": "w35",
+          "text": "sinaliza",
+          "start": 11.76,
+          "end": 12.08
+        },
+        {
+          "id": "w36",
+          "text": "causa",
+          "start": 12.4,
+          "end": 12.8
+        },
+        {
+          "id": "w37",
+          "text": "especial.",
+          "start": 12.8,
+          "end": 13.28
+        }
+      ]
+    },
+    {
+      "frame": 13,
+      "path": "assets/voice/13.wav",
+      "duration_s": 12.757,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Resumindo:",
+          "start": 0,
+          "end": 0.56
+        },
+        {
+          "id": "w1",
+          "text": "a",
+          "start": 0.56,
+          "end": 0.64
+        },
+        {
+          "id": "w2",
+          "text": "GQT",
+          "start": 0.64,
+          "end": 1.28
+        },
+        {
+          "id": "w3",
+          "text": "envolve",
+          "start": 1.28,
+          "end": 1.68
+        },
+        {
+          "id": "w4",
+          "text": "todos",
+          "start": 1.68,
+          "end": 1.92
+        },
+        {
+          "id": "w5",
+          "text": "na",
+          "start": 1.92,
+          "end": 2.08
+        },
+        {
+          "id": "w6",
+          "text": "qualidade,",
+          "start": 2.08,
+          "end": 2.64
+        },
+        {
+          "id": "w7",
+          "text": "os",
+          "start": 2.8,
+          "end": 2.96
+        },
+        {
+          "id": "w8",
+          "text": "custos",
+          "start": 2.96,
+          "end": 3.36
+        },
+        {
+          "id": "w9",
+          "text": "mostram",
+          "start": 3.36,
+          "end": 3.76
+        },
+        {
+          "id": "w10",
+          "text": "que",
+          "start": 3.76,
+          "end": 3.92
+        },
+        {
+          "id": "w11",
+          "text": "prevenir",
+          "start": 3.92,
+          "end": 4.48
+        },
+        {
+          "id": "w12",
+          "text": "sai",
+          "start": 4.48,
+          "end": 4.64
+        },
+        {
+          "id": "w13",
+          "text": "mais",
+          "start": 4.8,
+          "end": 4.96
+        },
+        {
+          "id": "w14",
+          "text": "barato,",
+          "start": 4.96,
+          "end": 5.36
+        },
+        {
+          "id": "w15",
+          "text": "o",
+          "start": 5.44,
+          "end": 5.6
+        },
+        {
+          "text": "OEE",
+          "start": 5.6,
+          "end": 6.0,
+          "id": "w16"
+        },
+        {
+          "id": "w17",
+          "text": "mede",
+          "start": 6.16,
+          "end": 6.48
+        },
+        {
+          "id": "w18",
+          "text": "as",
+          "start": 6.48,
+          "end": 6.56
+        },
+        {
+          "id": "w19",
+          "text": "perdas",
+          "start": 6.64,
+          "end": 6.96
+        },
+        {
+          "id": "w20",
+          "text": "da",
+          "start": 6.96,
+          "end": 7.12
+        },
+        {
+          "id": "w21",
+          "text": "máquina,",
+          "start": 7.12,
+          "end": 7.68
+        },
+        {
+          "id": "w22",
+          "text": "e",
+          "start": 7.68,
+          "end": 7.84
+        },
+        {
+          "id": "w23",
+          "text": "o",
+          "start": 7.84,
+          "end": 7.92
+        },
+        {
+          "text": "CEP",
+          "start": 7.92,
+          "end": 8.32,
+          "id": "w24"
+        },
+        {
+          "id": "w25",
+          "text": "separa",
+          "start": 8.32,
+          "end": 8.8
+        },
+        {
+          "id": "w26",
+          "text": "a",
+          "start": 8.8,
+          "end": 8.88
+        },
+        {
+          "id": "w27",
+          "text": "variação",
+          "start": 8.88,
+          "end": 9.36
+        },
+        {
+          "id": "w28",
+          "text": "normal",
+          "start": 9.36,
+          "end": 9.68
+        },
+        {
+          "id": "w29",
+          "text": "do",
+          "start": 9.68,
+          "end": 9.84
+        },
+        {
+          "id": "w30",
+          "text": "problema.",
+          "start": 9.84,
+          "end": 10.56
+        },
+        {
+          "id": "w31",
+          "text": "Qualidade",
+          "start": 10.56,
+          "end": 11.2
+        },
+        {
+          "id": "w32",
+          "text": "se",
+          "start": 11.2,
+          "end": 11.36
+        },
+        {
+          "id": "w33",
+          "text": "gerencia",
+          "start": 11.36,
+          "end": 12.08
+        },
+        {
+          "id": "w34",
+          "text": "com",
+          "start": 12.08,
+          "end": 12.24
+        },
+        {
+          "id": "w35",
+          "text": "dados.",
+          "start": 12.24,
+          "end": 12.72
+        }
+      ]
+    }
+  ],
+  "sfx": []
+}

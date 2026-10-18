@@ -1,0 +1,16 @@
+# .media · 13 assets
+
+id         type   dur    dims   path                 description
+voice_001  voice  8.2s   —      assets/voice/01.wav  Qualidade custa caro… ou é a falta dela que sai mais cara? E como saber se uma máquina rende de verdade, ou se um processo saiu do controle?
+voice_002  voice  12.3s  —      assets/voice/02.wav  Na Aula 6, a Gestão da Qualidade Total, a GQT. A qualidade deixa de ser tarefa de um setor de inspeção e passa a ser responsabilidade de todos, do projeto ao atendimento, sempre com foco no cliente.
+voice_003  voice  9.5s   —      assets/voice/03.wav  Ela se apoia em três ideias: foco no cliente, envolvimento de todas as pessoas e melhoria contínua, que gira o ciclo PDCA: planejar, executar, verificar e agir.
+voice_004  voice  17.1s  —      assets/voice/04.wav  Na Aula 6 também vêm os custos da qualidade, em quatro grupos. Prevenção: treinamento e planejamento para evitar defeitos. Avaliação: inspeções e testes. Falhas internas: refugo e retrabalho antes da entrega. E falhas externas: garantia, devoluções e reclamações depois da entrega.
+voice_005  voice  9.1s   —      assets/voice/05.wav  Quanto mais tarde o defeito é descoberto, mais caro ele fica. Por isso, investir em prevenção e avaliação reduz as falhas, e o custo total da qualidade cai.
+voice_006  voice  9.8s   —      assets/voice/06.wav  Na Aula 7, os indicadores de desempenho. O que não se mede não se gerencia. Um bom indicador tem fórmula clara, meta, frequência de medição e um responsável.
+voice_007  voice  8.7s   —      assets/voice/07.wav  O indicador mais cobrado é o OEE, a Eficiência Global do Equipamento. Ele multiplica três fatores: disponibilidade, desempenho e qualidade.
+voice_008  voice  12.4s  —      assets/voice/08.wav  Disponibilidade: o tempo que a máquina realmente operou sobre o tempo planejado. Desempenho: o que ela produziu sobre o que poderia produzir na velocidade ideal. Qualidade: as peças boas sobre o total produzido.
+voice_009  voice  13.3s  —      assets/voice/09.wav  Exemplo: disponibilidade de noventa por cento, desempenho de oitenta e qualidade de noventa e cinco. Multiplicando, o OEE é de sessenta e oito vírgula quatro por cento. Cada fator parecia bom, mas juntos revelam as perdas.
+voice_010  voice  7.9s   —      assets/voice/10.wav  Na Aula 8, o Controle Estatístico de Processo, o CEP. Todo processo varia. A pergunta é: essa variação é normal, ou tem algo errado?
+voice_011  voice  12.5s  —      assets/voice/11.wav  Causas comuns são pequenas variações naturais, sempre presentes. Causas especiais são eventos pontuais, como uma ferramenta gasta ou um lote ruim de matéria-prima. Essas precisam ser investigadas e eliminadas.
+voice_012  voice  13.3s  —      assets/voice/12.wav  O gráfico de controle mostra isso: uma linha média e os limites superior e inferior de controle, em geral a três desvios-padrão da média. Um ponto fora dos limites, ou uma sequência estranha de pontos, sinaliza causa especial.
+voice_013  voice  12.8s  —      assets/voice/13.wav  Resumindo: a GQT envolve todos na qualidade, os custos mostram que prevenir sai mais barato, o OEE mede as perdas da máquina, e o CEP separa a variação normal do problema. Qualidade se gerencia com dados.
