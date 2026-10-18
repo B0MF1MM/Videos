@@ -248,7 +248,7 @@ Scene 4 (10.2–14.7s): três cartões retangulares em tríptico na metade infer
 - voiceover: "Com dados, entram as séries temporais. Uma série pode ter nível, tendência, sazonalidade e variações aleatórias."
 - duration: 7.061s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/10-series.html
 - type: feature_showcase
 - persuasion: Progressive disclosure + demonstration

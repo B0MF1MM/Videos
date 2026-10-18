@@ -1,0 +1,279 @@
+<template>
+  <div
+    id="root"
+    data-composition-id="10-series"
+    data-start="0"
+    data-duration="7.061"
+    data-width="1920"
+    data-height="1080"
+  >
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Hanken Grotesk", sans-serif;
+        color: #1F2BE0;
+      }
+      #root * { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0; }
+
+      .s10-ground {
+        position: absolute;
+        inset: 0;
+        container-type: size;
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 2cqw 2cqw;
+      }
+      .s10-hair { position: absolute; left: 80px; right: 80px; height: 2px; background: #1F2BE0; }
+      .s10-hair-top { top: 58px; }
+      .s10-hair-bot { top: 884px; }
+      .s10-chrome {
+        position: absolute;
+        top: 26px;
+        font-family: "DM Mono", monospace;
+        font-size: 16px;
+        letter-spacing: 0.06em;
+        color: #1F2BE0;
+        white-space: nowrap;
+      }
+      .s10-tag { left: 80px; }
+      .s10-num { right: 80px; }
+
+      .s10-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+      .s10-svg path, .s10-svg line { fill: none; stroke-linecap: square; stroke-linejoin: miter; }
+      .s10-axis { stroke: #1F2BE0; stroke-width: 2; }
+      .s10-series { stroke: #1F2BE0; stroke-width: 5; }
+      .s10-comp { stroke: #1F2BE0; stroke-width: 4; }
+      .s10-base { stroke: rgba(31,43,224,0.18); stroke-width: 1.5; }
+      .s10-spine { stroke: #1F2BE0; stroke-width: 2; }
+
+      .s10-mono {
+        position: absolute;
+        font-family: "DM Mono", monospace;
+        font-size: 20px;
+        letter-spacing: 0.06em;
+        color: #1F2BE0;
+        white-space: nowrap;
+      }
+      .s10-chart-label { left: 120px; top: 108px; font-size: 22px; }
+      .s10-axis-x { left: 1120px; top: 452px; font-size: 16px; }
+
+      .s10-band-label {
+        position: absolute;
+        left: 80px;
+        width: 290px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        font-family: "Hanken Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #1F2BE0;
+        line-height: 1.15;
+      }
+      .s10-ord {
+        position: absolute;
+        left: 1262px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        font-family: "DM Mono", monospace;
+        font-size: 18px;
+        letter-spacing: 0.06em;
+        color: #1F2BE0;
+      }
+
+      .s10-glitch {
+        position: absolute;
+        right: 80px;
+        width: 30px;
+        background: repeating-linear-gradient(90deg, #1F2BE0 0 2px, transparent 2px 8px);
+        transform-origin: 50% 0%;
+      }
+    </style>
+
+    <!-- full-bleed ground -->
+    <div class="clip s10-ground" data-start="0" data-duration="7.061" data-track-index="0"></div>
+
+    <div class="clip" id="s10-stage" data-start="0" data-duration="7.061" data-track-index="1"
+         style="position:absolute; inset:0;">
+      <!-- furniture -->
+      <div class="s10-hair s10-hair-top"></div>
+      <div class="s10-hair s10-hair-bot"></div>
+      <div class="s10-chrome s10-tag">AULAS 4–5 · OPERAÇÕES</div>
+      <div class="s10-chrome s10-num">10 / 13</div>
+
+      <!-- stair-stepped glitch column (right, quiet) -->
+      <div id="s10-glitch-wrap">
+        <div class="s10-glitch" style="top:150px; height:130px; right:80px; width:210px; opacity:0.85;"></div>
+        <div class="s10-glitch" style="top:280px; height:150px; right:80px; width:150px; opacity:0.85;"></div>
+        <div class="s10-glitch" style="top:430px; height:170px; right:80px; width:250px; opacity:0.85;"></div>
+        <div class="s10-glitch" style="top:600px; height:140px; right:80px; width:110px; opacity:0.85;"></div>
+        <div class="s10-glitch" style="top:740px; height:120px; right:80px; width:180px; opacity:0.85;"></div>
+      </div>
+
+      <!-- chart labels -->
+      <div class="s10-mono s10-chart-label" id="s10-chart-label">DEMANDA × TEMPO</div>
+      <div class="s10-mono s10-axis-x" id="s10-axis-x">TEMPO →</div>
+
+      <svg class="s10-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <!-- main chart axes -->
+        <path id="s10-axis-y" class="s10-axis" d="M 120 150 L 120 440" />
+        <path id="s10-axis-xl" class="s10-axis" d="M 120 440 L 1232 440" />
+        <!-- main series -->
+        <path id="s10-series" class="s10-series" d="" />
+
+        <!-- decomposition spine: from chart baseline down through the bands -->
+        <path id="s10-spine" class="s10-spine" d="M 380 440 L 380 860" />
+
+        <!-- band baselines -->
+        <path id="s10-base-0" class="s10-base" d="M 380 560 L 1232 560" />
+        <path id="s10-base-1" class="s10-base" d="M 380 660 L 1232 660" />
+        <path id="s10-base-2" class="s10-base" d="M 380 760 L 1232 760" />
+        <path id="s10-base-3" class="s10-base" d="M 380 860 L 1232 860" />
+
+        <!-- components -->
+        <path id="s10-comp-0" class="s10-comp" d="" />
+        <path id="s10-comp-1" class="s10-comp" d="" />
+        <path id="s10-comp-2" class="s10-comp" d="" />
+        <path id="s10-comp-3" class="s10-comp" d="" />
+      </svg>
+
+      <!-- band labels -->
+      <div class="s10-band-label" id="s10-lab-0" style="top:480px;">NÍVEL</div>
+      <div class="s10-band-label" id="s10-lab-1" style="top:580px;">TENDÊNCIA</div>
+      <div class="s10-band-label" id="s10-lab-2" style="top:680px;">SAZONALIDADE</div>
+      <div class="s10-band-label" id="s10-lab-3" style="top:780px;">VARIAÇÃO<br />ALEATÓRIA</div>
+
+      <div class="s10-ord" id="s10-ord-0" style="top:480px;">01</div>
+      <div class="s10-ord" id="s10-ord-1" style="top:580px;">02</div>
+      <div class="s10-ord" id="s10-ord-2" style="top:680px;">03</div>
+      <div class="s10-ord" id="s10-ord-3" style="top:780px;">04</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var FID = "10-series";
+        var scope = document.querySelector('[data-composition-id="' + FID + '"]') || document;
+        function $(id) { return scope.querySelector("#" + id); }
+
+        // ---- deterministic data: series = level + trend + seasonal (stepped) + noise (stepped)
+        var N = 24;
+        var level = [], trend = [], season = [], noise = [], series = [];
+        var NOISE = [0.04, -0.05, 0.02, 0.06, -0.03, 0.01, -0.06, 0.03, 0.05, -0.02, -0.05, 0.04,
+                     0.00, 0.06, -0.04, 0.02, -0.06, 0.05, 0.01, -0.03, 0.04, -0.05, 0.03, -0.01];
+        for (var i = 0; i < N; i++) {
+          level.push(0.35);
+          trend.push(0.28 * i / (N - 1));
+          season.push((i % 8) < 4 ? 0.13 : -0.13);
+          noise.push(NOISE[i]);
+          series.push(level[i] + trend[i] + season[i] + noise[i]);
+        }
+
+        function range(arr) {
+          var mn = Infinity, mx = -Infinity;
+          arr.forEach(function (v) { if (v < mn) mn = v; if (v > mx) mx = v; });
+          return [mn, mx];
+        }
+
+        // main chart: x 140..1212, y 170..420
+        (function () {
+          var r = range(series), x0 = 140, x1 = 1212, yTop = 170, yBot = 420;
+          var dx = (x1 - x0) / (N - 1);
+          var d = "";
+          series.forEach(function (v, k) {
+            var y = yBot - (v - r[0]) / (r[1] - r[0]) * (yBot - yTop);
+            d += (k === 0 ? "M " : " L ") + (x0 + k * dx).toFixed(1) + " " + y.toFixed(1);
+          });
+          $("s10-series").setAttribute("d", d);
+        })();
+
+        // band paths: plot area x 400..1212, band k spans top (480+100k+12) .. (480+100k+68)
+        var BX0 = 400, BX1 = 1212, BDX = (BX1 - BX0) / (N - 1);
+        function bandY(k, t) { var top = 480 + 100 * k + 14, bot = 480 + 100 * k + 66; return bot - t * (bot - top); }
+
+        // 0 level: straight horizontal
+        $("s10-comp-0").setAttribute("d", "M " + BX0 + " " + bandY(0, 0.5) + " L " + BX1 + " " + bandY(0, 0.5));
+        // 1 trend: inclined line
+        $("s10-comp-1").setAttribute("d", "M " + BX0 + " " + bandY(1, 0.05) + " L " + BX1 + " " + bandY(1, 0.95));
+        // stepped builder (square steps, straight segments only)
+        function stepped(k, arr) {
+          var r = range(arr), d = "";
+          var norm = function (v) { return (v - r[0]) / (r[1] - r[0]); };
+          d = "M " + BX0 + " " + bandY(k, norm(arr[0])).toFixed(1);
+          for (var j = 1; j < arr.length; j++) {
+            var x = BX0 + j * BDX;
+            d += " H " + x.toFixed(1) + " V " + bandY(k, norm(arr[j])).toFixed(1);
+          }
+          d += " H " + (BX1 + BDX * 0).toFixed(1);
+          return d;
+        }
+        $("s10-comp-2").setAttribute("d", stepped(2, season));
+        $("s10-comp-3").setAttribute("d", stepped(3, noise));
+
+        // ---- dash setup (measured, svg-path-draw)
+        var drawIds = ["s10-axis-y", "s10-axis-xl", "s10-series", "s10-spine",
+                       "s10-base-0", "s10-base-1", "s10-base-2", "s10-base-3",
+                       "s10-comp-0", "s10-comp-1", "s10-comp-2", "s10-comp-3"];
+        var LEN = {};
+        drawIds.forEach(function (id) {
+          var p = $(id);
+          var len = Math.ceil(p.getTotalLength() * 1.02) + 2;
+          LEN[id] = len;
+          p.style.strokeDasharray = len + " " + len;
+          p.style.strokeDashoffset = len;
+        });
+        function draw(tl, id, dur, at, ease) {
+          tl.fromTo($(id), { strokeDashoffset: LEN[id] },
+            { strokeDashoffset: 0, duration: dur, ease: ease || "power2.out" }, at);
+        }
+
+        var tl = gsap.timeline({ paused: true });
+
+        // ---- Scene 1 (0.0–2.4): axes + label, series draws on "séries temporais" (1.2s)
+        draw(tl, "s10-axis-y", 0.45, 0.1);
+        draw(tl, "s10-axis-xl", 0.6, 0.25);
+        tl.fromTo($("s10-chart-label"), { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 0.2);
+        tl.fromTo($("s10-axis-x"), { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 0.6);
+        tl.fromTo($("s10-glitch-wrap").children, { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power2.out", stagger: 0.07 }, 0.3);
+        tl.fromTo($("s10-glitch-wrap"), { opacity: 0 }, { opacity: 0.55, duration: 0.3, ease: "power1.out" }, 0.3);
+        draw(tl, "s10-series", 1.2, 1.0, "none");
+
+        // ---- Scene 2 (2.4–5.6): the series splits into stacked layers below
+        draw(tl, "s10-spine", 0.6, 2.4, "power2.inOut");
+        draw(tl, "s10-base-0", 0.5, 2.6);
+        draw(tl, "s10-base-1", 0.5, 2.72);
+        draw(tl, "s10-base-2", 0.5, 2.84);
+        draw(tl, "s10-base-3", 0.5, 2.96);
+
+        var cues = [3.4, 4.0, 4.7, 6.2];
+        var durs = [0.45, 0.5, 0.7, 0.6];
+        cues.forEach(function (t, k) {
+          tl.fromTo($("s10-lab-" + k), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t - 0.1);
+          draw(tl, "s10-comp-" + k, durs[k], t, k >= 2 ? "none" : "power2.out");
+          tl.fromTo($("s10-ord-" + k), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, t + durs[k] - 0.1);
+        });
+
+        // ---- Scene 3 (5.6–7.06): random layer lands (6.2), all layers + series hold together
+        // quiet settle: series stroke firms up as the decomposition completes
+        tl.fromTo($("s10-series"), { strokeWidth: 5 }, { strokeWidth: 6, duration: 0.5, ease: "power1.out" }, 6.5);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[FID] = tl;
+      })();
+    </script>
+  </div>
+</template>
