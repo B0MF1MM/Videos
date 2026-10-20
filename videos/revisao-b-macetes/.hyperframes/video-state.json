@@ -700,5 +700,18 @@
       ]
     },
     "unversioned": []
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "e4fc35b6-afb8-4ca9-b803-894a8619df46",
+      "completedAt": 1792540326867,
+      "output": "/home/user/Videos/videos/revisao-b-macetes/renders/video.mp4",
+      "status": "completed",
+      "revision": "eca9f636-b37c-4e24-a83c-9f1dd70a36f2"
+    },
+    "retainedRevisions": [
+      "eca9f636-b37c-4e24-a83c-9f1dd70a36f2"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
