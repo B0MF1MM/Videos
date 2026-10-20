@@ -1,0 +1,82 @@
+{
+  "provider": "kokoro",
+  "speed": "1.0",
+  "lines": [
+    {
+      "id": "01",
+      "text": "A prova é amanhã. São quatro perguntas, e todas pedem a mesma coisa: explicar com suas palavras. Com uma fórmula de quatro passos, você responde qualquer uma delas."
+    },
+    {
+      "id": "02",
+      "text": "Grave a fórmula das quatro iniciais: importância, definição, efeito e fecho. Importância: comece dizendo por que o tema é importante. Definição: explique cada elemento em uma frase curta."
+    },
+    {
+      "id": "03",
+      "text": "Efeito: mostre o que muda na empresa, com um exemplo. Fecho: termine com as palavras que aparecem em todo gabarito: produtividade, qualidade, eficiência e satisfação do cliente."
+    },
+    {
+      "id": "04",
+      "text": "Primeira questão: os quatro vês. Macete: transforme cada um em uma pergunta. Volume: quanto produz? Variedade: quantos tipos diferentes? Variação: a demanda muda ao longo do tempo? Visibilidade: quanto o cliente vê da operação?"
+    },
+    {
+      "id": "05",
+      "text": "Agora o exemplo que o gabarito quer: uma fábrica de parafusos tem volume alto e variedade baixa, então trabalha padronizada. Um alfaiate faz peças personalizadas, em pouca quantidade, então precisa de flexibilidade."
+    },
+    {
+      "id": "06",
+      "text": "Montando a resposta: os quatro vês ajudam a entender as diferenças entre as operações. Defina os quatro, use o contraste entre padronização e flexibilidade, e feche: estratégias adequadas trazem produtividade, qualidade, eficiência e satisfação."
+    },
+    {
+      "id": "07",
+      "text": "Questão dois: PPCP. Separe as letras em três perguntas. Planejamento: o que produzir e com quais recursos. Programação: quando e em que sequência. Controle: o que foi feito bate com o que foi planejado?"
+    },
+    {
+      "id": "08",
+      "text": "Agora o trio, com um verbo para cada um. O Kanban sinaliza, como um cartão que avisa o que repor. O Just in Time entrega na quantidade e no momento certos. E a Produção Enxuta enxuga: corta desperdícios e melhora continuamente."
+    },
+    {
+      "id": "09",
+      "text": "No efeito, cite quatro ganhos: menos estoque desnecessário, menos atrasos, melhor uso dos recursos e mais eficiência. E feche: a empresa produz de forma coordenada e atende melhor o cliente."
+    },
+    {
+      "id": "10",
+      "text": "Questão três: previsão de demanda. A palavra da importância é antecipar. Com a previsão, a empresa planeja estoques, produção, compras, recursos e capacidade."
+    },
+    {
+      "id": "11",
+      "text": "Mas cuidado: previsão não é garantia, nem é meta. Meta é o que a empresa quer alcançar; previsão é só uma estimativa, e pode errar."
+    },
+    {
+      "id": "12",
+      "text": "O macete da gangorra. Previu demais? Sobra: excesso de estoque, desperdício e custo alto. Previu de menos? Falta: produto em falta, atraso e cliente insatisfeito."
+    },
+    {
+      "id": "13",
+      "text": "E qual é a solução? Três As: acompanhar os resultados, analisar os erros e atualizar as estimativas. Assim, a previsão reduz incertezas e apoia decisões melhores."
+    },
+    {
+      "id": "14",
+      "text": "Questão quatro: indicadores de desempenho. Eles são importantes porque permitem acompanhar resultados, avaliar os processos e encontrar oportunidades de melhoria."
+    },
+    {
+      "id": "15",
+      "text": "Decore o trio produtividade, eficiência e qualidade com um exemplo. Uma máquina faz duzentas peças em oito horas: produtividade de vinte e cinco por hora, resultado sobre recursos. O padrão era trinta: eficiência é comparar com o esperado. Cento e noventa saíram boas: qualidade é cumprir os requisitos."
+    },
+    {
+      "id": "16",
+      "text": "Com os números, o gestor identifica problemas, compara com as metas, reconhece desperdícios e age. A frase de ouro: indicadores não servem só para medir; servem para orientar decisões e gerar melhoria contínua."
+    },
+    {
+      "id": "17",
+      "text": "Revise a cola. Volume, variedade, variação e visibilidade viram perguntas. PPCP: o quê, quando e conferiu. Kanban sinaliza, Just in Time na hora, Enxuta enxuga. Previsão: sobra custa, falta atrasa, e os três As. Indicadores: produtividade, eficiência e qualidade."
+    },
+    {
+      "id": "18",
+      "text": "E em toda resposta: importância, definição, efeito e fecho. Respire, siga a fórmula, e boa prova!"
+    }
+  ],
+  "bgm": {
+    "mode": "none"
+  },
+  "voice": "pf_dora"
+}

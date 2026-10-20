@@ -1,0 +1,5581 @@
+{
+  "total_duration_s": 208.838,
+  "width": 1920,
+  "height": 1080,
+  "groups": [
+    {
+      "id": "caption-group-0",
+      "frame": 1,
+      "start": 0,
+      "end": 0.48,
+      "text": "A prova",
+      "words": [
+        {
+          "id": "caption-word-0-0",
+          "text": "A",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "caption-word-0-1",
+          "text": "prova",
+          "start": 0.16,
+          "end": 0.48
+        }
+      ]
+    },
+    {
+      "id": "caption-group-1",
+      "frame": 1,
+      "start": 0.48,
+      "end": 1.28,
+      "text": "é amanhã.",
+      "words": [
+        {
+          "id": "caption-word-1-0",
+          "text": "é",
+          "start": 0.48,
+          "end": 0.64
+        },
+        {
+          "id": "caption-word-1-1",
+          "text": "amanhã.",
+          "start": 0.64,
+          "end": 1.28
+        }
+      ]
+    },
+    {
+      "id": "caption-group-2",
+      "frame": 1,
+      "start": 1.28,
+      "end": 2.32,
+      "text": "São quatro perguntas,",
+      "words": [
+        {
+          "id": "caption-word-2-0",
+          "text": "São",
+          "start": 1.28,
+          "end": 1.52
+        },
+        {
+          "id": "caption-word-2-1",
+          "text": "quatro",
+          "start": 1.52,
+          "end": 1.84
+        },
+        {
+          "id": "caption-word-2-2",
+          "text": "perguntas,",
+          "start": 1.84,
+          "end": 2.24
+        }
+      ]
+    },
+    {
+      "id": "caption-group-3",
+      "frame": 1,
+      "start": 2.32,
+      "end": 2.76,
+      "text": "e todas",
+      "words": [
+        {
+          "id": "caption-word-3-0",
+          "text": "e",
+          "start": 2.32,
+          "end": 2.48
+        },
+        {
+          "id": "caption-word-3-1",
+          "text": "todas",
+          "start": 2.48,
+          "end": 2.64
+        }
+      ]
+    },
+    {
+      "id": "caption-group-4",
+      "frame": 1,
+      "start": 2.8,
+      "end": 3.36,
+      "text": "pedem a",
+      "words": [
+        {
+          "id": "caption-word-4-0",
+          "text": "pedem",
+          "start": 2.8,
+          "end": 3.28
+        },
+        {
+          "id": "caption-word-4-1",
+          "text": "a",
+          "start": 3.28,
+          "end": 3.36
+        }
+      ]
+    },
+    {
+      "id": "caption-group-5",
+      "frame": 1,
+      "start": 3.36,
+      "end": 4.08,
+      "text": "mesma coisa:",
+      "words": [
+        {
+          "id": "caption-word-5-0",
+          "text": "mesma",
+          "start": 3.36,
+          "end": 3.68
+        },
+        {
+          "id": "caption-word-5-1",
+          "text": "coisa:",
+          "start": 3.68,
+          "end": 4.08
+        }
+      ]
+    },
+    {
+      "id": "caption-group-6",
+      "frame": 1,
+      "start": 4.08,
+      "end": 5.12,
+      "text": "explicar com suas",
+      "words": [
+        {
+          "id": "caption-word-6-0",
+          "text": "explicar",
+          "start": 4.08,
+          "end": 4.64
+        },
+        {
+          "id": "caption-word-6-1",
+          "text": "com",
+          "start": 4.64,
+          "end": 4.88
+        },
+        {
+          "id": "caption-word-6-2",
+          "text": "suas",
+          "start": 4.88,
+          "end": 5.12
+        }
+      ]
+    },
+    {
+      "id": "caption-group-7",
+      "frame": 1,
+      "start": 5.12,
+      "end": 5.92,
+      "text": "palavras.",
+      "words": [
+        {
+          "id": "caption-word-7-0",
+          "text": "palavras.",
+          "start": 5.12,
+          "end": 5.92
+        }
+      ]
+    },
+    {
+      "id": "caption-group-8",
+      "frame": 1,
+      "start": 5.92,
+      "end": 6.32,
+      "text": "Com uma",
+      "words": [
+        {
+          "id": "caption-word-8-0",
+          "text": "Com",
+          "start": 5.92,
+          "end": 6.16
+        },
+        {
+          "id": "caption-word-8-1",
+          "text": "uma",
+          "start": 6.16,
+          "end": 6.32
+        }
+      ]
+    },
+    {
+      "id": "caption-group-9",
+      "frame": 1,
+      "start": 6.32,
+      "end": 6.88,
+      "text": "fórmula de",
+      "words": [
+        {
+          "id": "caption-word-9-0",
+          "text": "fórmula",
+          "start": 6.32,
+          "end": 6.72
+        },
+        {
+          "id": "caption-word-9-1",
+          "text": "de",
+          "start": 6.72,
+          "end": 6.88
+        }
+      ]
+    },
+    {
+      "id": "caption-group-10",
+      "frame": 1,
+      "start": 6.88,
+      "end": 7.68,
+      "text": "quatro passos,",
+      "words": [
+        {
+          "id": "caption-word-10-0",
+          "text": "quatro",
+          "start": 6.88,
+          "end": 7.2
+        },
+        {
+          "id": "caption-word-10-1",
+          "text": "passos,",
+          "start": 7.2,
+          "end": 7.68
+        }
+      ]
+    },
+    {
+      "id": "caption-group-11",
+      "frame": 1,
+      "start": 7.68,
+      "end": 8.8,
+      "text": "você responde qualquer",
+      "words": [
+        {
+          "id": "caption-word-11-0",
+          "text": "você",
+          "start": 7.68,
+          "end": 7.92
+        },
+        {
+          "id": "caption-word-11-1",
+          "text": "responde",
+          "start": 7.92,
+          "end": 8.48
+        },
+        {
+          "id": "caption-word-11-2",
+          "text": "qualquer",
+          "start": 8.48,
+          "end": 8.8
+        }
+      ]
+    },
+    {
+      "id": "caption-group-12",
+      "frame": 1,
+      "start": 8.8,
+      "end": 9.472,
+      "text": "uma delas.",
+      "words": [
+        {
+          "id": "caption-word-12-0",
+          "text": "uma",
+          "start": 8.8,
+          "end": 8.96
+        },
+        {
+          "id": "caption-word-12-1",
+          "text": "delas.",
+          "start": 8.96,
+          "end": 9.36
+        }
+      ]
+    },
+    {
+      "id": "caption-group-13",
+      "frame": 2,
+      "start": 9.472,
+      "end": 9.952,
+      "text": "Grave a",
+      "words": [
+        {
+          "id": "caption-word-13-0",
+          "text": "Grave",
+          "start": 9.472,
+          "end": 9.792
+        },
+        {
+          "id": "caption-word-13-1",
+          "text": "a",
+          "start": 9.872,
+          "end": 9.952
+        }
+      ]
+    },
+    {
+      "id": "caption-group-14",
+      "frame": 2,
+      "start": 9.952,
+      "end": 10.512,
+      "text": "fórmula das",
+      "words": [
+        {
+          "id": "caption-word-14-0",
+          "text": "fórmula",
+          "start": 9.952,
+          "end": 10.352
+        },
+        {
+          "id": "caption-word-14-1",
+          "text": "das",
+          "start": 10.352,
+          "end": 10.512
+        }
+      ]
+    },
+    {
+      "id": "caption-group-15",
+      "frame": 2,
+      "start": 10.512,
+      "end": 11.432,
+      "text": "quatro iniciais:",
+      "words": [
+        {
+          "id": "caption-word-15-0",
+          "text": "quatro",
+          "start": 10.512,
+          "end": 10.752
+        },
+        {
+          "id": "caption-word-15-1",
+          "text": "iniciais:",
+          "start": 10.752,
+          "end": 11.312
+        }
+      ]
+    },
+    {
+      "id": "caption-group-16",
+      "frame": 2,
+      "start": 11.472,
+      "end": 12.112,
+      "text": "importância,",
+      "words": [
+        {
+          "id": "caption-word-16-0",
+          "text": "importância,",
+          "start": 11.472,
+          "end": 12.112
+        }
+      ]
+    },
+    {
+      "id": "caption-group-17",
+      "frame": 2,
+      "start": 12.112,
+      "end": 12.672,
+      "text": "definição,",
+      "words": [
+        {
+          "id": "caption-word-17-0",
+          "text": "definição,",
+          "start": 12.112,
+          "end": 12.592
+        }
+      ]
+    },
+    {
+      "id": "caption-group-18",
+      "frame": 2,
+      "start": 12.672,
+      "end": 13.952,
+      "text": "efeito e fecho.",
+      "words": [
+        {
+          "id": "caption-word-18-0",
+          "text": "efeito",
+          "start": 12.672,
+          "end": 13.152
+        },
+        {
+          "id": "caption-word-18-1",
+          "text": "e",
+          "start": 13.152,
+          "end": 13.232
+        },
+        {
+          "id": "caption-word-18-2",
+          "text": "fecho.",
+          "start": 13.232,
+          "end": 13.952
+        }
+      ]
+    },
+    {
+      "id": "caption-group-19",
+      "frame": 2,
+      "start": 13.952,
+      "end": 14.672,
+      "text": "Importância:",
+      "words": [
+        {
+          "id": "caption-word-19-0",
+          "text": "Importância:",
+          "start": 13.952,
+          "end": 14.672
+        }
+      ]
+    },
+    {
+      "id": "caption-group-20",
+      "frame": 2,
+      "start": 14.672,
+      "end": 15.552,
+      "text": "comece dizendo",
+      "words": [
+        {
+          "id": "caption-word-20-0",
+          "text": "comece",
+          "start": 14.672,
+          "end": 14.992
+        },
+        {
+          "id": "caption-word-20-1",
+          "text": "dizendo",
+          "start": 15.152,
+          "end": 15.472
+        }
+      ]
+    },
+    {
+      "id": "caption-group-21",
+      "frame": 2,
+      "start": 15.552,
+      "end": 15.752,
+      "text": "por que",
+      "words": [
+        {
+          "id": "caption-word-21-0",
+          "text": "por",
+          "start": 15.552,
+          "end": 15.592
+        },
+        {
+          "id": "caption-word-21-1",
+          "text": "que",
+          "start": 15.592,
+          "end": 15.632
+        }
+      ]
+    },
+    {
+      "id": "caption-group-22",
+      "frame": 2,
+      "start": 15.792,
+      "end": 16.112,
+      "text": "o tema",
+      "words": [
+        {
+          "id": "caption-word-22-0",
+          "text": "o",
+          "start": 15.792,
+          "end": 15.872
+        },
+        {
+          "id": "caption-word-22-1",
+          "text": "tema",
+          "start": 15.872,
+          "end": 16.112
+        }
+      ]
+    },
+    {
+      "id": "caption-group-23",
+      "frame": 2,
+      "start": 16.112,
+      "end": 17.072,
+      "text": "é importante.",
+      "words": [
+        {
+          "id": "caption-word-23-0",
+          "text": "é",
+          "start": 16.112,
+          "end": 16.352
+        },
+        {
+          "id": "caption-word-23-1",
+          "text": "importante.",
+          "start": 16.352,
+          "end": 17.072
+        }
+      ]
+    },
+    {
+      "id": "caption-group-24",
+      "frame": 2,
+      "start": 17.072,
+      "end": 17.832,
+      "text": "Definição:",
+      "words": [
+        {
+          "id": "caption-word-24-0",
+          "text": "Definição:",
+          "start": 17.072,
+          "end": 17.712
+        }
+      ]
+    },
+    {
+      "id": "caption-group-25",
+      "frame": 2,
+      "start": 17.872,
+      "end": 18.992,
+      "text": "explique cada elemento",
+      "words": [
+        {
+          "id": "caption-word-25-0",
+          "text": "explique",
+          "start": 17.872,
+          "end": 18.352
+        },
+        {
+          "id": "caption-word-25-1",
+          "text": "cada",
+          "start": 18.352,
+          "end": 18.592
+        },
+        {
+          "id": "caption-word-25-2",
+          "text": "elemento",
+          "start": 18.592,
+          "end": 18.992
+        }
+      ]
+    },
+    {
+      "id": "caption-group-26",
+      "frame": 2,
+      "start": 18.992,
+      "end": 19.392,
+      "text": "em uma",
+      "words": [
+        {
+          "id": "caption-word-26-0",
+          "text": "em",
+          "start": 18.992,
+          "end": 19.232
+        },
+        {
+          "id": "caption-word-26-1",
+          "text": "uma",
+          "start": 19.232,
+          "end": 19.392
+        }
+      ]
+    },
+    {
+      "id": "caption-group-27",
+      "frame": 2,
+      "start": 19.392,
+      "end": 20.232,
+      "text": "frase curta.",
+      "words": [
+        {
+          "id": "caption-word-27-0",
+          "text": "frase",
+          "start": 19.392,
+          "end": 19.712
+        },
+        {
+          "id": "caption-word-27-1",
+          "text": "curta.",
+          "start": 19.712,
+          "end": 20.112
+        }
+      ]
+    },
+    {
+      "id": "caption-group-28",
+      "frame": 3,
+      "start": 20.32,
+      "end": 20.72,
+      "text": "Efeito:",
+      "words": [
+        {
+          "id": "caption-word-28-0",
+          "text": "Efeito:",
+          "start": 20.32,
+          "end": 20.64
+        }
+      ]
+    },
+    {
+      "id": "caption-group-29",
+      "frame": 3,
+      "start": 20.72,
+      "end": 21.12,
+      "text": "mostre o",
+      "words": [
+        {
+          "id": "caption-word-29-0",
+          "text": "mostre",
+          "start": 20.72,
+          "end": 21.04
+        },
+        {
+          "id": "caption-word-29-1",
+          "text": "o",
+          "start": 21.04,
+          "end": 21.12
+        }
+      ]
+    },
+    {
+      "id": "caption-group-30",
+      "frame": 3,
+      "start": 21.12,
+      "end": 21.52,
+      "text": "que muda",
+      "words": [
+        {
+          "id": "caption-word-30-0",
+          "text": "que",
+          "start": 21.12,
+          "end": 21.2
+        },
+        {
+          "id": "caption-word-30-1",
+          "text": "muda",
+          "start": 21.2,
+          "end": 21.52
+        }
+      ]
+    },
+    {
+      "id": "caption-group-31",
+      "frame": 3,
+      "start": 21.52,
+      "end": 22.08,
+      "text": "na empresa,",
+      "words": [
+        {
+          "id": "caption-word-31-0",
+          "text": "na",
+          "start": 21.52,
+          "end": 21.68
+        },
+        {
+          "id": "caption-word-31-1",
+          "text": "empresa,",
+          "start": 21.68,
+          "end": 22
+        }
+      ]
+    },
+    {
+      "id": "caption-group-32",
+      "frame": 3,
+      "start": 22.08,
+      "end": 23,
+      "text": "com um exemplo.",
+      "words": [
+        {
+          "id": "caption-word-32-0",
+          "text": "com",
+          "start": 22.08,
+          "end": 22.24
+        },
+        {
+          "id": "caption-word-32-1",
+          "text": "um",
+          "start": 22.24,
+          "end": 22.4
+        },
+        {
+          "id": "caption-word-32-2",
+          "text": "exemplo.",
+          "start": 22.4,
+          "end": 22.88
+        }
+      ]
+    },
+    {
+      "id": "caption-group-33",
+      "frame": 3,
+      "start": 23.12,
+      "end": 23.84,
+      "text": "Fecho:",
+      "words": [
+        {
+          "id": "caption-word-33-0",
+          "text": "Fecho:",
+          "start": 23.12,
+          "end": 23.84
+        }
+      ]
+    },
+    {
+      "id": "caption-group-34",
+      "frame": 3,
+      "start": 23.84,
+      "end": 24.48,
+      "text": "termine com",
+      "words": [
+        {
+          "id": "caption-word-34-0",
+          "text": "termine",
+          "start": 23.84,
+          "end": 24.32
+        },
+        {
+          "id": "caption-word-34-1",
+          "text": "com",
+          "start": 24.32,
+          "end": 24.48
+        }
+      ]
+    },
+    {
+      "id": "caption-group-35",
+      "frame": 3,
+      "start": 24.48,
+      "end": 25.04,
+      "text": "as palavras",
+      "words": [
+        {
+          "id": "caption-word-35-0",
+          "text": "as",
+          "start": 24.48,
+          "end": 24.64
+        },
+        {
+          "id": "caption-word-35-1",
+          "text": "palavras",
+          "start": 24.64,
+          "end": 25.04
+        }
+      ]
+    },
+    {
+      "id": "caption-group-36",
+      "frame": 3,
+      "start": 25.04,
+      "end": 25.68,
+      "text": "que aparecem",
+      "words": [
+        {
+          "id": "caption-word-36-0",
+          "text": "que",
+          "start": 25.04,
+          "end": 25.2
+        },
+        {
+          "id": "caption-word-36-1",
+          "text": "aparecem",
+          "start": 25.2,
+          "end": 25.68
+        }
+      ]
+    },
+    {
+      "id": "caption-group-37",
+      "frame": 3,
+      "start": 25.68,
+      "end": 26.84,
+      "text": "em todo gabarito:",
+      "words": [
+        {
+          "id": "caption-word-37-0",
+          "text": "em",
+          "start": 25.68,
+          "end": 25.84
+        },
+        {
+          "id": "caption-word-37-1",
+          "text": "todo",
+          "start": 25.84,
+          "end": 26
+        },
+        {
+          "id": "caption-word-37-2",
+          "text": "gabarito:",
+          "start": 26.08,
+          "end": 26.72
+        }
+      ]
+    },
+    {
+      "id": "caption-group-38",
+      "frame": 3,
+      "start": 26.88,
+      "end": 27.84,
+      "text": "produtividade,",
+      "words": [
+        {
+          "id": "caption-word-38-0",
+          "text": "produtividade,",
+          "start": 26.88,
+          "end": 27.84
+        }
+      ]
+    },
+    {
+      "id": "caption-group-39",
+      "frame": 3,
+      "start": 27.84,
+      "end": 28.56,
+      "text": "qualidade,",
+      "words": [
+        {
+          "id": "caption-word-39-0",
+          "text": "qualidade,",
+          "start": 27.84,
+          "end": 28.56
+        }
+      ]
+    },
+    {
+      "id": "caption-group-40",
+      "frame": 3,
+      "start": 28.56,
+      "end": 30,
+      "text": "eficiência e satisfação",
+      "words": [
+        {
+          "id": "caption-word-40-0",
+          "text": "eficiência",
+          "start": 28.56,
+          "end": 29.2
+        },
+        {
+          "id": "caption-word-40-1",
+          "text": "e",
+          "start": 29.2,
+          "end": 29.36
+        },
+        {
+          "id": "caption-word-40-2",
+          "text": "satisfação",
+          "start": 29.36,
+          "end": 30
+        }
+      ]
+    },
+    {
+      "id": "caption-group-41",
+      "frame": 3,
+      "start": 30,
+      "end": 30.677,
+      "text": "do cliente.",
+      "words": [
+        {
+          "id": "caption-word-41-0",
+          "text": "do",
+          "start": 30,
+          "end": 30.16
+        },
+        {
+          "id": "caption-word-41-1",
+          "text": "cliente.",
+          "start": 30.16,
+          "end": 30.64
+        }
+      ]
+    },
+    {
+      "id": "caption-group-42",
+      "frame": 4,
+      "start": 30.677,
+      "end": 31.557,
+      "text": "Primeira questão:",
+      "words": [
+        {
+          "id": "caption-word-42-0",
+          "text": "Primeira",
+          "start": 30.677,
+          "end": 31.157
+        },
+        {
+          "id": "caption-word-42-1",
+          "text": "questão:",
+          "start": 31.157,
+          "end": 31.557
+        }
+      ]
+    },
+    {
+      "id": "caption-group-43",
+      "frame": 4,
+      "start": 31.557,
+      "end": 31.957,
+      "text": "os 4",
+      "words": [
+        {
+          "id": "caption-word-43-0",
+          "text": "os",
+          "start": 31.557,
+          "end": 31.717
+        },
+        {
+          "id": "caption-word-43-1",
+          "text": "4",
+          "start": 31.717,
+          "end": 31.957
+        }
+      ]
+    },
+    {
+      "id": "caption-group-44",
+      "frame": 4,
+      "start": 31.957,
+      "end": 32.357,
+      "text": "V's.",
+      "words": [
+        {
+          "id": "caption-word-44-0",
+          "text": "V's.",
+          "start": 31.957,
+          "end": 32.277
+        }
+      ]
+    },
+    {
+      "id": "caption-group-45",
+      "frame": 4,
+      "start": 32.357,
+      "end": 32.957,
+      "text": "Macete:",
+      "words": [
+        {
+          "id": "caption-word-45-0",
+          "text": "Macete:",
+          "start": 32.357,
+          "end": 32.837
+        }
+      ]
+    },
+    {
+      "id": "caption-group-46",
+      "frame": 4,
+      "start": 33.077,
+      "end": 33.797,
+      "text": "transforme cada",
+      "words": [
+        {
+          "id": "caption-word-46-0",
+          "text": "transforme",
+          "start": 33.077,
+          "end": 33.557
+        },
+        {
+          "id": "caption-word-46-1",
+          "text": "cada",
+          "start": 33.557,
+          "end": 33.797
+        }
+      ]
+    },
+    {
+      "id": "caption-group-47",
+      "frame": 4,
+      "start": 33.797,
+      "end": 34.117,
+      "text": "um em",
+      "words": [
+        {
+          "id": "caption-word-47-0",
+          "text": "um",
+          "start": 33.797,
+          "end": 33.957
+        },
+        {
+          "id": "caption-word-47-1",
+          "text": "em",
+          "start": 33.957,
+          "end": 34.117
+        }
+      ]
+    },
+    {
+      "id": "caption-group-48",
+      "frame": 4,
+      "start": 34.117,
+      "end": 34.877,
+      "text": "uma pergunta.",
+      "words": [
+        {
+          "id": "caption-word-48-0",
+          "text": "uma",
+          "start": 34.117,
+          "end": 34.277
+        },
+        {
+          "id": "caption-word-48-1",
+          "text": "pergunta.",
+          "start": 34.277,
+          "end": 34.757
+        }
+      ]
+    },
+    {
+      "id": "caption-group-49",
+      "frame": 4,
+      "start": 34.997,
+      "end": 35.557,
+      "text": "Volume:",
+      "words": [
+        {
+          "id": "caption-word-49-0",
+          "text": "Volume:",
+          "start": 34.997,
+          "end": 35.557
+        }
+      ]
+    },
+    {
+      "id": "caption-group-50",
+      "frame": 4,
+      "start": 35.557,
+      "end": 36.357,
+      "text": "quanto produz?",
+      "words": [
+        {
+          "id": "caption-word-50-0",
+          "text": "quanto",
+          "start": 35.557,
+          "end": 35.877
+        },
+        {
+          "id": "caption-word-50-1",
+          "text": "produz?",
+          "start": 35.877,
+          "end": 36.357
+        }
+      ]
+    },
+    {
+      "id": "caption-group-51",
+      "frame": 4,
+      "start": 36.357,
+      "end": 36.997,
+      "text": "Variedade:",
+      "words": [
+        {
+          "id": "caption-word-51-0",
+          "text": "Variedade:",
+          "start": 36.357,
+          "end": 36.997
+        }
+      ]
+    },
+    {
+      "id": "caption-group-52",
+      "frame": 4,
+      "start": 36.997,
+      "end": 38.517,
+      "text": "quantos tipos diferentes?",
+      "words": [
+        {
+          "id": "caption-word-52-0",
+          "text": "quantos",
+          "start": 36.997,
+          "end": 37.397
+        },
+        {
+          "id": "caption-word-52-1",
+          "text": "tipos",
+          "start": 37.397,
+          "end": 37.717
+        },
+        {
+          "id": "caption-word-52-2",
+          "text": "diferentes?",
+          "start": 37.717,
+          "end": 38.517
+        }
+      ]
+    },
+    {
+      "id": "caption-group-53",
+      "frame": 4,
+      "start": 38.517,
+      "end": 39.077,
+      "text": "Variação:",
+      "words": [
+        {
+          "id": "caption-word-53-0",
+          "text": "Variação:",
+          "start": 38.517,
+          "end": 38.997
+        }
+      ]
+    },
+    {
+      "id": "caption-group-54",
+      "frame": 4,
+      "start": 39.077,
+      "end": 39.557,
+      "text": "a demanda",
+      "words": [
+        {
+          "id": "caption-word-54-0",
+          "text": "a",
+          "start": 39.077,
+          "end": 39.237
+        },
+        {
+          "id": "caption-word-54-1",
+          "text": "demanda",
+          "start": 39.237,
+          "end": 39.557
+        }
+      ]
+    },
+    {
+      "id": "caption-group-55",
+      "frame": 4,
+      "start": 39.557,
+      "end": 40.037,
+      "text": "muda ao",
+      "words": [
+        {
+          "id": "caption-word-55-0",
+          "text": "muda",
+          "start": 39.557,
+          "end": 39.877
+        },
+        {
+          "id": "caption-word-55-1",
+          "text": "ao",
+          "start": 39.877,
+          "end": 39.957
+        }
+      ]
+    },
+    {
+      "id": "caption-group-56",
+      "frame": 4,
+      "start": 40.037,
+      "end": 41.077,
+      "text": "longo do tempo?",
+      "words": [
+        {
+          "id": "caption-word-56-0",
+          "text": "longo",
+          "start": 40.037,
+          "end": 40.277
+        },
+        {
+          "id": "caption-word-56-1",
+          "text": "do",
+          "start": 40.277,
+          "end": 40.437
+        },
+        {
+          "id": "caption-word-56-2",
+          "text": "tempo?",
+          "start": 40.437,
+          "end": 41.077
+        }
+      ]
+    },
+    {
+      "id": "caption-group-57",
+      "frame": 4,
+      "start": 41.077,
+      "end": 41.837,
+      "text": "Visibilidade:",
+      "words": [
+        {
+          "id": "caption-word-57-0",
+          "text": "Visibilidade:",
+          "start": 41.077,
+          "end": 41.717
+        }
+      ]
+    },
+    {
+      "id": "caption-group-58",
+      "frame": 4,
+      "start": 41.957,
+      "end": 42.277,
+      "text": "quanto o",
+      "words": [
+        {
+          "id": "caption-word-58-0",
+          "text": "quanto",
+          "start": 41.957,
+          "end": 42.197
+        },
+        {
+          "id": "caption-word-58-1",
+          "text": "o",
+          "start": 42.197,
+          "end": 42.277
+        }
+      ]
+    },
+    {
+      "id": "caption-group-59",
+      "frame": 4,
+      "start": 42.277,
+      "end": 42.917,
+      "text": "cliente vê",
+      "words": [
+        {
+          "id": "caption-word-59-0",
+          "text": "cliente",
+          "start": 42.277,
+          "end": 42.677
+        },
+        {
+          "id": "caption-word-59-1",
+          "text": "vê",
+          "start": 42.677,
+          "end": 42.917
+        }
+      ]
+    },
+    {
+      "id": "caption-group-60",
+      "frame": 4,
+      "start": 42.917,
+      "end": 43.605,
+      "text": "da operação?",
+      "words": [
+        {
+          "id": "caption-word-60-0",
+          "text": "da",
+          "start": 42.917,
+          "end": 43.077
+        },
+        {
+          "id": "caption-word-60-1",
+          "text": "operação?",
+          "start": 43.077,
+          "end": 43.557
+        }
+      ]
+    },
+    {
+      "id": "caption-group-61",
+      "frame": 5,
+      "start": 43.605,
+      "end": 44.085,
+      "text": "Agora o",
+      "words": [
+        {
+          "id": "caption-word-61-0",
+          "text": "Agora",
+          "start": 43.605,
+          "end": 43.925
+        },
+        {
+          "id": "caption-word-61-1",
+          "text": "o",
+          "start": 43.925,
+          "end": 44.085
+        }
+      ]
+    },
+    {
+      "id": "caption-group-62",
+      "frame": 5,
+      "start": 44.085,
+      "end": 44.565,
+      "text": "exemplo que",
+      "words": [
+        {
+          "id": "caption-word-62-0",
+          "text": "exemplo",
+          "start": 44.085,
+          "end": 44.405
+        },
+        {
+          "id": "caption-word-62-1",
+          "text": "que",
+          "start": 44.405,
+          "end": 44.565
+        }
+      ]
+    },
+    {
+      "id": "caption-group-63",
+      "frame": 5,
+      "start": 44.565,
+      "end": 45.645,
+      "text": "o gabarito quer:",
+      "words": [
+        {
+          "id": "caption-word-63-0",
+          "text": "o",
+          "start": 44.565,
+          "end": 44.645
+        },
+        {
+          "id": "caption-word-63-1",
+          "text": "gabarito",
+          "start": 44.645,
+          "end": 45.205
+        },
+        {
+          "id": "caption-word-63-2",
+          "text": "quer:",
+          "start": 45.205,
+          "end": 45.525
+        }
+      ]
+    },
+    {
+      "id": "caption-group-64",
+      "frame": 5,
+      "start": 45.685,
+      "end": 46.325,
+      "text": "uma fábrica",
+      "words": [
+        {
+          "id": "caption-word-64-0",
+          "text": "uma",
+          "start": 45.685,
+          "end": 45.925
+        },
+        {
+          "id": "caption-word-64-1",
+          "text": "fábrica",
+          "start": 45.925,
+          "end": 46.325
+        }
+      ]
+    },
+    {
+      "id": "caption-group-65",
+      "frame": 5,
+      "start": 46.325,
+      "end": 47.365,
+      "text": "de parafusos tem",
+      "words": [
+        {
+          "id": "caption-word-65-0",
+          "text": "de",
+          "start": 46.325,
+          "end": 46.485
+        },
+        {
+          "id": "caption-word-65-1",
+          "text": "parafusos",
+          "start": 46.485,
+          "end": 47.125
+        },
+        {
+          "id": "caption-word-65-2",
+          "text": "tem",
+          "start": 47.125,
+          "end": 47.365
+        }
+      ]
+    },
+    {
+      "id": "caption-group-66",
+      "frame": 5,
+      "start": 47.365,
+      "end": 48.005,
+      "text": "volume alto",
+      "words": [
+        {
+          "id": "caption-word-66-0",
+          "text": "volume",
+          "start": 47.365,
+          "end": 47.765
+        },
+        {
+          "id": "caption-word-66-1",
+          "text": "alto",
+          "start": 47.765,
+          "end": 48.005
+        }
+      ]
+    },
+    {
+      "id": "caption-group-67",
+      "frame": 5,
+      "start": 48.005,
+      "end": 49.365,
+      "text": "e variedade baixa,",
+      "words": [
+        {
+          "id": "caption-word-67-0",
+          "text": "e",
+          "start": 48.005,
+          "end": 48.165
+        },
+        {
+          "id": "caption-word-67-1",
+          "text": "variedade",
+          "start": 48.165,
+          "end": 48.725
+        },
+        {
+          "id": "caption-word-67-2",
+          "text": "baixa,",
+          "start": 48.725,
+          "end": 49.365
+        }
+      ]
+    },
+    {
+      "id": "caption-group-68",
+      "frame": 5,
+      "start": 49.365,
+      "end": 51.125,
+      "text": "então trabalha padronizada.",
+      "words": [
+        {
+          "id": "caption-word-68-0",
+          "text": "então",
+          "start": 49.365,
+          "end": 49.685
+        },
+        {
+          "id": "caption-word-68-1",
+          "text": "trabalha",
+          "start": 49.685,
+          "end": 50.165
+        },
+        {
+          "id": "caption-word-68-2",
+          "text": "padronizada.",
+          "start": 50.165,
+          "end": 51.125
+        }
+      ]
+    },
+    {
+      "id": "caption-group-69",
+      "frame": 5,
+      "start": 51.125,
+      "end": 52.365,
+      "text": "Um alfaiate faz",
+      "words": [
+        {
+          "id": "caption-word-69-0",
+          "text": "Um",
+          "start": 51.125,
+          "end": 51.365
+        },
+        {
+          "id": "caption-word-69-1",
+          "text": "alfaiate",
+          "start": 51.365,
+          "end": 52.085
+        },
+        {
+          "id": "caption-word-69-2",
+          "text": "faz",
+          "start": 52.085,
+          "end": 52.245
+        }
+      ]
+    },
+    {
+      "id": "caption-group-70",
+      "frame": 5,
+      "start": 52.405,
+      "end": 53.605,
+      "text": "peças personalizadas,",
+      "words": [
+        {
+          "id": "caption-word-70-0",
+          "text": "peças",
+          "start": 52.405,
+          "end": 52.725
+        },
+        {
+          "id": "caption-word-70-1",
+          "text": "personalizadas,",
+          "start": 52.725,
+          "end": 53.605
+        }
+      ]
+    },
+    {
+      "id": "caption-group-71",
+      "frame": 5,
+      "start": 53.605,
+      "end": 54.925,
+      "text": "em pouca quantidade,",
+      "words": [
+        {
+          "id": "caption-word-71-0",
+          "text": "em",
+          "start": 53.605,
+          "end": 53.765
+        },
+        {
+          "id": "caption-word-71-1",
+          "text": "pouca",
+          "start": 53.765,
+          "end": 54.165
+        },
+        {
+          "id": "caption-word-71-2",
+          "text": "quantidade,",
+          "start": 54.165,
+          "end": 54.805
+        }
+      ]
+    },
+    {
+      "id": "caption-group-72",
+      "frame": 5,
+      "start": 55.045,
+      "end": 55.845,
+      "text": "então precisa",
+      "words": [
+        {
+          "id": "caption-word-72-0",
+          "text": "então",
+          "start": 55.045,
+          "end": 55.365
+        },
+        {
+          "id": "caption-word-72-1",
+          "text": "precisa",
+          "start": 55.445,
+          "end": 55.845
+        }
+      ]
+    },
+    {
+      "id": "caption-group-73",
+      "frame": 5,
+      "start": 55.845,
+      "end": 57.005,
+      "text": "de flexibilidade.",
+      "words": [
+        {
+          "id": "caption-word-73-0",
+          "text": "de",
+          "start": 55.845,
+          "end": 56.005
+        },
+        {
+          "id": "caption-word-73-1",
+          "text": "flexibilidade.",
+          "start": 56.005,
+          "end": 56.885
+        }
+      ]
+    },
+    {
+      "id": "caption-group-74",
+      "frame": 6,
+      "start": 57.082,
+      "end": 58.202,
+      "text": "Montando a resposta:",
+      "words": [
+        {
+          "id": "caption-word-74-0",
+          "text": "Montando",
+          "start": 57.082,
+          "end": 57.482
+        },
+        {
+          "id": "caption-word-74-1",
+          "text": "a",
+          "start": 57.482,
+          "end": 57.642
+        },
+        {
+          "id": "caption-word-74-2",
+          "text": "resposta:",
+          "start": 57.642,
+          "end": 58.202
+        }
+      ]
+    },
+    {
+      "id": "caption-group-75",
+      "frame": 6,
+      "start": 58.202,
+      "end": 58.762,
+      "text": "os 4",
+      "words": [
+        {
+          "id": "caption-word-75-0",
+          "text": "os",
+          "start": 58.202,
+          "end": 58.442
+        },
+        {
+          "id": "caption-word-75-1",
+          "text": "4",
+          "start": 58.442,
+          "end": 58.762
+        }
+      ]
+    },
+    {
+      "id": "caption-group-76",
+      "frame": 6,
+      "start": 58.762,
+      "end": 59.562,
+      "text": "V's ajudam",
+      "words": [
+        {
+          "id": "caption-word-76-0",
+          "text": "V's",
+          "start": 58.762,
+          "end": 59.002
+        },
+        {
+          "id": "caption-word-76-1",
+          "text": "ajudam",
+          "start": 59.082,
+          "end": 59.562
+        }
+      ]
+    },
+    {
+      "id": "caption-group-77",
+      "frame": 6,
+      "start": 59.562,
+      "end": 60.042,
+      "text": "a entender",
+      "words": [
+        {
+          "id": "caption-word-77-0",
+          "text": "a",
+          "start": 59.562,
+          "end": 59.642
+        },
+        {
+          "id": "caption-word-77-1",
+          "text": "entender",
+          "start": 59.642,
+          "end": 60.042
+        }
+      ]
+    },
+    {
+      "id": "caption-group-78",
+      "frame": 6,
+      "start": 60.042,
+      "end": 60.762,
+      "text": "as diferenças",
+      "words": [
+        {
+          "id": "caption-word-78-0",
+          "text": "as",
+          "start": 60.042,
+          "end": 60.202
+        },
+        {
+          "id": "caption-word-78-1",
+          "text": "diferenças",
+          "start": 60.202,
+          "end": 60.762
+        }
+      ]
+    },
+    {
+      "id": "caption-group-79",
+      "frame": 6,
+      "start": 60.762,
+      "end": 62.122,
+      "text": "entre as operações.",
+      "words": [
+        {
+          "id": "caption-word-79-0",
+          "text": "entre",
+          "start": 60.762,
+          "end": 61.002
+        },
+        {
+          "id": "caption-word-79-1",
+          "text": "as",
+          "start": 61.002,
+          "end": 61.242
+        },
+        {
+          "id": "caption-word-79-2",
+          "text": "operações.",
+          "start": 61.242,
+          "end": 62.122
+        }
+      ]
+    },
+    {
+      "id": "caption-group-80",
+      "frame": 6,
+      "start": 62.122,
+      "end": 63.322,
+      "text": "Defina os quatro,",
+      "words": [
+        {
+          "id": "caption-word-80-0",
+          "text": "Defina",
+          "start": 62.122,
+          "end": 62.682
+        },
+        {
+          "id": "caption-word-80-1",
+          "text": "os",
+          "start": 62.682,
+          "end": 62.762
+        },
+        {
+          "id": "caption-word-80-2",
+          "text": "quatro,",
+          "start": 62.842,
+          "end": 63.322
+        }
+      ]
+    },
+    {
+      "id": "caption-group-81",
+      "frame": 6,
+      "start": 63.322,
+      "end": 63.722,
+      "text": "use o",
+      "words": [
+        {
+          "id": "caption-word-81-0",
+          "text": "use",
+          "start": 63.322,
+          "end": 63.642
+        },
+        {
+          "id": "caption-word-81-1",
+          "text": "o",
+          "start": 63.642,
+          "end": 63.722
+        }
+      ]
+    },
+    {
+      "id": "caption-group-82",
+      "frame": 6,
+      "start": 63.722,
+      "end": 65.162,
+      "text": "contraste entre padronização",
+      "words": [
+        {
+          "id": "caption-word-82-0",
+          "text": "contraste",
+          "start": 63.722,
+          "end": 64.202
+        },
+        {
+          "id": "caption-word-82-1",
+          "text": "entre",
+          "start": 64.202,
+          "end": 64.442
+        },
+        {
+          "id": "caption-word-82-2",
+          "text": "padronização",
+          "start": 64.442,
+          "end": 65.162
+        }
+      ]
+    },
+    {
+      "id": "caption-group-83",
+      "frame": 6,
+      "start": 65.162,
+      "end": 66.122,
+      "text": "e flexibilidade,",
+      "words": [
+        {
+          "id": "caption-word-83-0",
+          "text": "e",
+          "start": 65.162,
+          "end": 65.322
+        },
+        {
+          "id": "caption-word-83-1",
+          "text": "flexibilidade,",
+          "start": 65.322,
+          "end": 66.042
+        }
+      ]
+    },
+    {
+      "id": "caption-group-84",
+      "frame": 6,
+      "start": 66.122,
+      "end": 67.162,
+      "text": "e feche:",
+      "words": [
+        {
+          "id": "caption-word-84-0",
+          "text": "e",
+          "start": 66.122,
+          "end": 66.362
+        },
+        {
+          "id": "caption-word-84-1",
+          "text": "feche:",
+          "start": 66.362,
+          "end": 67.162
+        }
+      ]
+    },
+    {
+      "id": "caption-group-85",
+      "frame": 6,
+      "start": 67.162,
+      "end": 69.882,
+      "text": "estratégias adequadas trazem produtividade,",
+      "words": [
+        {
+          "id": "caption-word-85-0",
+          "text": "estratégias",
+          "start": 67.162,
+          "end": 67.802
+        },
+        {
+          "id": "caption-word-85-1",
+          "text": "adequadas",
+          "start": 67.802,
+          "end": 68.362
+        },
+        {
+          "id": "caption-word-85-2",
+          "text": "trazem",
+          "start": 68.362,
+          "end": 68.842
+        },
+        {
+          "id": "caption-word-85-3",
+          "text": "produtividade,",
+          "start": 69.002,
+          "end": 69.882
+        }
+      ]
+    },
+    {
+      "id": "caption-group-86",
+      "frame": 6,
+      "start": 69.882,
+      "end": 70.602,
+      "text": "qualidade,",
+      "words": [
+        {
+          "id": "caption-word-86-0",
+          "text": "qualidade,",
+          "start": 69.882,
+          "end": 70.602
+        }
+      ]
+    },
+    {
+      "id": "caption-group-87",
+      "frame": 6,
+      "start": 70.602,
+      "end": 72.162,
+      "text": "eficiência e satisfação.",
+      "words": [
+        {
+          "id": "caption-word-87-0",
+          "text": "eficiência",
+          "start": 70.602,
+          "end": 71.242
+        },
+        {
+          "id": "caption-word-87-1",
+          "text": "e",
+          "start": 71.242,
+          "end": 71.402
+        },
+        {
+          "id": "caption-word-87-2",
+          "text": "satisfação.",
+          "start": 71.402,
+          "end": 72.042
+        }
+      ]
+    },
+    {
+      "id": "caption-group-88",
+      "frame": 7,
+      "start": 72.17,
+      "end": 72.89,
+      "text": "Questão dois:",
+      "words": [
+        {
+          "id": "caption-word-88-0",
+          "text": "Questão",
+          "start": 72.17,
+          "end": 72.57
+        },
+        {
+          "id": "caption-word-88-1",
+          "text": "dois:",
+          "start": 72.57,
+          "end": 72.89
+        }
+      ]
+    },
+    {
+      "id": "caption-group-89",
+      "frame": 7,
+      "start": 72.89,
+      "end": 73.61,
+      "text": "PPCP.",
+      "words": [
+        {
+          "id": "caption-word-89-0",
+          "text": "PPCP.",
+          "start": 72.89,
+          "end": 73.61
+        }
+      ]
+    },
+    {
+      "id": "caption-group-90",
+      "frame": 7,
+      "start": 73.61,
+      "end": 74.25,
+      "text": "Separe as",
+      "words": [
+        {
+          "id": "caption-word-90-0",
+          "text": "Separe",
+          "start": 73.61,
+          "end": 74.17
+        },
+        {
+          "id": "caption-word-90-1",
+          "text": "as",
+          "start": 74.17,
+          "end": 74.25
+        }
+      ]
+    },
+    {
+      "id": "caption-group-91",
+      "frame": 7,
+      "start": 74.25,
+      "end": 74.81,
+      "text": "letras em",
+      "words": [
+        {
+          "id": "caption-word-91-0",
+          "text": "letras",
+          "start": 74.25,
+          "end": 74.57
+        },
+        {
+          "id": "caption-word-91-1",
+          "text": "em",
+          "start": 74.57,
+          "end": 74.81
+        }
+      ]
+    },
+    {
+      "id": "caption-group-92",
+      "frame": 7,
+      "start": 74.81,
+      "end": 75.77,
+      "text": "três perguntas.",
+      "words": [
+        {
+          "id": "caption-word-92-0",
+          "text": "três",
+          "start": 74.81,
+          "end": 75.05
+        },
+        {
+          "id": "caption-word-92-1",
+          "text": "perguntas.",
+          "start": 75.05,
+          "end": 75.77
+        }
+      ]
+    },
+    {
+      "id": "caption-group-93",
+      "frame": 7,
+      "start": 75.77,
+      "end": 76.49,
+      "text": "Planejamento:",
+      "words": [
+        {
+          "id": "caption-word-93-0",
+          "text": "Planejamento:",
+          "start": 75.77,
+          "end": 76.49
+        }
+      ]
+    },
+    {
+      "id": "caption-group-94",
+      "frame": 7,
+      "start": 76.49,
+      "end": 76.81,
+      "text": "o que",
+      "words": [
+        {
+          "id": "caption-word-94-0",
+          "text": "o",
+          "start": 76.49,
+          "end": 76.65
+        },
+        {
+          "id": "caption-word-94-1",
+          "text": "que",
+          "start": 76.65,
+          "end": 76.81
+        }
+      ]
+    },
+    {
+      "id": "caption-group-95",
+      "frame": 7,
+      "start": 76.81,
+      "end": 77.45,
+      "text": "produzir e",
+      "words": [
+        {
+          "id": "caption-word-95-0",
+          "text": "produzir",
+          "start": 76.81,
+          "end": 77.29
+        },
+        {
+          "id": "caption-word-95-1",
+          "text": "e",
+          "start": 77.29,
+          "end": 77.45
+        }
+      ]
+    },
+    {
+      "id": "caption-group-96",
+      "frame": 7,
+      "start": 77.45,
+      "end": 78.65,
+      "text": "com quais recursos.",
+      "words": [
+        {
+          "id": "caption-word-96-0",
+          "text": "com",
+          "start": 77.45,
+          "end": 77.61
+        },
+        {
+          "id": "caption-word-96-1",
+          "text": "quais",
+          "start": 77.61,
+          "end": 77.93
+        },
+        {
+          "id": "caption-word-96-2",
+          "text": "recursos.",
+          "start": 77.93,
+          "end": 78.65
+        }
+      ]
+    },
+    {
+      "id": "caption-group-97",
+      "frame": 7,
+      "start": 78.65,
+      "end": 79.21,
+      "text": "Programação:",
+      "words": [
+        {
+          "id": "caption-word-97-0",
+          "text": "Programação:",
+          "start": 78.65,
+          "end": 79.13
+        }
+      ]
+    },
+    {
+      "id": "caption-group-98",
+      "frame": 7,
+      "start": 79.21,
+      "end": 79.65,
+      "text": "quando e",
+      "words": [
+        {
+          "id": "caption-word-98-0",
+          "text": "quando",
+          "start": 79.21,
+          "end": 79.45
+        },
+        {
+          "id": "caption-word-98-1",
+          "text": "e",
+          "start": 79.45,
+          "end": 79.53
+        }
+      ]
+    },
+    {
+      "id": "caption-group-99",
+      "frame": 7,
+      "start": 79.69,
+      "end": 80.81,
+      "text": "em que sequência.",
+      "words": [
+        {
+          "id": "caption-word-99-0",
+          "text": "em",
+          "start": 79.69,
+          "end": 79.77
+        },
+        {
+          "id": "caption-word-99-1",
+          "text": "que",
+          "start": 79.93,
+          "end": 80.09
+        },
+        {
+          "id": "caption-word-99-2",
+          "text": "sequência.",
+          "start": 80.09,
+          "end": 80.81
+        }
+      ]
+    },
+    {
+      "id": "caption-group-100",
+      "frame": 7,
+      "start": 80.81,
+      "end": 81.41,
+      "text": "Controle:",
+      "words": [
+        {
+          "id": "caption-word-100-0",
+          "text": "Controle:",
+          "start": 80.81,
+          "end": 81.29
+        }
+      ]
+    },
+    {
+      "id": "caption-group-101",
+      "frame": 7,
+      "start": 81.45,
+      "end": 81.69,
+      "text": "o que",
+      "words": [
+        {
+          "id": "caption-word-101-0",
+          "text": "o",
+          "start": 81.45,
+          "end": 81.61
+        },
+        {
+          "id": "caption-word-101-1",
+          "text": "que",
+          "start": 81.61,
+          "end": 81.69
+        }
+      ]
+    },
+    {
+      "id": "caption-group-102",
+      "frame": 7,
+      "start": 81.69,
+      "end": 82.17,
+      "text": "foi feito",
+      "words": [
+        {
+          "id": "caption-word-102-0",
+          "text": "foi",
+          "start": 81.69,
+          "end": 81.85
+        },
+        {
+          "id": "caption-word-102-1",
+          "text": "feito",
+          "start": 81.85,
+          "end": 82.09
+        }
+      ]
+    },
+    {
+      "id": "caption-group-103",
+      "frame": 7,
+      "start": 82.17,
+      "end": 82.81,
+      "text": "bate com",
+      "words": [
+        {
+          "id": "caption-word-103-0",
+          "text": "bate",
+          "start": 82.17,
+          "end": 82.65
+        },
+        {
+          "id": "caption-word-103-1",
+          "text": "com",
+          "start": 82.65,
+          "end": 82.81
+        }
+      ]
+    },
+    {
+      "id": "caption-group-104",
+      "frame": 7,
+      "start": 82.81,
+      "end": 82.97,
+      "text": "o que",
+      "words": [
+        {
+          "id": "caption-word-104-0",
+          "text": "o",
+          "start": 82.81,
+          "end": 82.89
+        },
+        {
+          "id": "caption-word-104-1",
+          "text": "que",
+          "start": 82.89,
+          "end": 82.97
+        }
+      ]
+    },
+    {
+      "id": "caption-group-105",
+      "frame": 7,
+      "start": 82.97,
+      "end": 83.818,
+      "text": "foi planejado?",
+      "words": [
+        {
+          "id": "caption-word-105-0",
+          "text": "foi",
+          "start": 82.97,
+          "end": 83.13
+        },
+        {
+          "id": "caption-word-105-1",
+          "text": "planejado?",
+          "start": 83.13,
+          "end": 83.77
+        }
+      ]
+    },
+    {
+      "id": "caption-group-106",
+      "frame": 8,
+      "start": 83.818,
+      "end": 84.218,
+      "text": "Agora o",
+      "words": [
+        {
+          "id": "caption-word-106-0",
+          "text": "Agora",
+          "start": 83.818,
+          "end": 84.138
+        },
+        {
+          "id": "caption-word-106-1",
+          "text": "o",
+          "start": 84.138,
+          "end": 84.218
+        }
+      ]
+    },
+    {
+      "id": "caption-group-107",
+      "frame": 8,
+      "start": 84.218,
+      "end": 84.618,
+      "text": "trio,",
+      "words": [
+        {
+          "id": "caption-word-107-0",
+          "text": "trio,",
+          "start": 84.218,
+          "end": 84.618
+        }
+      ]
+    },
+    {
+      "id": "caption-group-108",
+      "frame": 8,
+      "start": 84.618,
+      "end": 84.858,
+      "text": "com um",
+      "words": [
+        {
+          "id": "caption-word-108-0",
+          "text": "com",
+          "start": 84.618,
+          "end": 84.778
+        },
+        {
+          "id": "caption-word-108-1",
+          "text": "um",
+          "start": 84.778,
+          "end": 84.858
+        }
+      ]
+    },
+    {
+      "id": "caption-group-109",
+      "frame": 8,
+      "start": 84.858,
+      "end": 85.418,
+      "text": "verbo para",
+      "words": [
+        {
+          "id": "caption-word-109-0",
+          "text": "verbo",
+          "start": 84.858,
+          "end": 85.178
+        },
+        {
+          "id": "caption-word-109-1",
+          "text": "para",
+          "start": 85.178,
+          "end": 85.418
+        }
+      ]
+    },
+    {
+      "id": "caption-group-110",
+      "frame": 8,
+      "start": 85.418,
+      "end": 85.978,
+      "text": "cada um.",
+      "words": [
+        {
+          "id": "caption-word-110-0",
+          "text": "cada",
+          "start": 85.418,
+          "end": 85.658
+        },
+        {
+          "id": "caption-word-110-1",
+          "text": "um.",
+          "start": 85.658,
+          "end": 85.978
+        }
+      ]
+    },
+    {
+      "id": "caption-group-111",
+      "frame": 8,
+      "start": 85.978,
+      "end": 87.058,
+      "text": "O Kanban sinaliza,",
+      "words": [
+        {
+          "id": "caption-word-111-0",
+          "text": "O",
+          "start": 85.978,
+          "end": 86.058
+        },
+        {
+          "id": "caption-word-111-1",
+          "text": "Kanban",
+          "start": 86.058,
+          "end": 86.378
+        },
+        {
+          "id": "caption-word-111-2",
+          "text": "sinaliza,",
+          "start": 86.538,
+          "end": 86.938
+        }
+      ]
+    },
+    {
+      "id": "caption-group-112",
+      "frame": 8,
+      "start": 87.178,
+      "end": 87.418,
+      "text": "como um",
+      "words": [
+        {
+          "id": "caption-word-112-0",
+          "text": "como",
+          "start": 87.178,
+          "end": 87.338
+        },
+        {
+          "id": "caption-word-112-1",
+          "text": "um",
+          "start": 87.338,
+          "end": 87.418
+        }
+      ]
+    },
+    {
+      "id": "caption-group-113",
+      "frame": 8,
+      "start": 87.418,
+      "end": 87.818,
+      "text": "cartão que",
+      "words": [
+        {
+          "id": "caption-word-113-0",
+          "text": "cartão",
+          "start": 87.418,
+          "end": 87.738
+        },
+        {
+          "id": "caption-word-113-1",
+          "text": "que",
+          "start": 87.738,
+          "end": 87.818
+        }
+      ]
+    },
+    {
+      "id": "caption-group-114",
+      "frame": 8,
+      "start": 87.818,
+      "end": 88.298,
+      "text": "avisa o",
+      "words": [
+        {
+          "id": "caption-word-114-0",
+          "text": "avisa",
+          "start": 87.818,
+          "end": 88.138
+        },
+        {
+          "id": "caption-word-114-1",
+          "text": "o",
+          "start": 88.218,
+          "end": 88.298
+        }
+      ]
+    },
+    {
+      "id": "caption-group-115",
+      "frame": 8,
+      "start": 88.298,
+      "end": 89.098,
+      "text": "que repor.",
+      "words": [
+        {
+          "id": "caption-word-115-0",
+          "text": "que",
+          "start": 88.298,
+          "end": 88.458
+        },
+        {
+          "id": "caption-word-115-1",
+          "text": "repor.",
+          "start": 88.458,
+          "end": 89.098
+        }
+      ]
+    },
+    {
+      "id": "caption-group-116",
+      "frame": 8,
+      "start": 89.098,
+      "end": 89.578,
+      "text": "O Just",
+      "words": [
+        {
+          "id": "caption-word-116-0",
+          "text": "O",
+          "start": 89.098,
+          "end": 89.178
+        },
+        {
+          "id": "caption-word-116-1",
+          "text": "Just",
+          "start": 89.178,
+          "end": 89.578
+        }
+      ]
+    },
+    {
+      "id": "caption-group-117",
+      "frame": 8,
+      "start": 89.578,
+      "end": 89.938,
+      "text": "in Time",
+      "words": [
+        {
+          "id": "caption-word-117-0",
+          "text": "in",
+          "start": 89.578,
+          "end": 89.658
+        },
+        {
+          "id": "caption-word-117-1",
+          "text": "Time",
+          "start": 89.738,
+          "end": 89.818
+        }
+      ]
+    },
+    {
+      "id": "caption-group-118",
+      "frame": 8,
+      "start": 90.138,
+      "end": 91.178,
+      "text": "entrega na quantidade",
+      "words": [
+        {
+          "id": "caption-word-118-0",
+          "text": "entrega",
+          "start": 90.138,
+          "end": 90.538
+        },
+        {
+          "id": "caption-word-118-1",
+          "text": "na",
+          "start": 90.538,
+          "end": 90.698
+        },
+        {
+          "id": "caption-word-118-2",
+          "text": "quantidade",
+          "start": 90.698,
+          "end": 91.178
+        }
+      ]
+    },
+    {
+      "id": "caption-group-119",
+      "frame": 8,
+      "start": 91.178,
+      "end": 91.498,
+      "text": "e no",
+      "words": [
+        {
+          "id": "caption-word-119-0",
+          "text": "e",
+          "start": 91.178,
+          "end": 91.338
+        },
+        {
+          "id": "caption-word-119-1",
+          "text": "no",
+          "start": 91.338,
+          "end": 91.498
+        }
+      ]
+    },
+    {
+      "id": "caption-group-120",
+      "frame": 8,
+      "start": 91.498,
+      "end": 92.458,
+      "text": "momento certos.",
+      "words": [
+        {
+          "id": "caption-word-120-0",
+          "text": "momento",
+          "start": 91.498,
+          "end": 91.818
+        },
+        {
+          "id": "caption-word-120-1",
+          "text": "certos.",
+          "start": 91.818,
+          "end": 92.458
+        }
+      ]
+    },
+    {
+      "id": "caption-group-121",
+      "frame": 8,
+      "start": 92.458,
+      "end": 92.698,
+      "text": "E a",
+      "words": [
+        {
+          "id": "caption-word-121-0",
+          "text": "E",
+          "start": 92.458,
+          "end": 92.618
+        },
+        {
+          "id": "caption-word-121-1",
+          "text": "a",
+          "start": 92.618,
+          "end": 92.698
+        }
+      ]
+    },
+    {
+      "id": "caption-group-122",
+      "frame": 8,
+      "start": 92.698,
+      "end": 94.298,
+      "text": "Produção Enxuta enxuga:",
+      "words": [
+        {
+          "id": "caption-word-122-0",
+          "text": "Produção",
+          "start": 92.698,
+          "end": 93.018
+        },
+        {
+          "id": "caption-word-122-1",
+          "text": "Enxuta",
+          "start": 93.098,
+          "end": 93.578
+        },
+        {
+          "id": "caption-word-122-2",
+          "text": "enxuga:",
+          "start": 93.658,
+          "end": 94.218
+        }
+      ]
+    },
+    {
+      "id": "caption-group-123",
+      "frame": 8,
+      "start": 94.298,
+      "end": 96.058,
+      "text": "corta desperdícios e melhora",
+      "words": [
+        {
+          "id": "caption-word-123-0",
+          "text": "corta",
+          "start": 94.298,
+          "end": 94.698
+        },
+        {
+          "id": "caption-word-123-1",
+          "text": "desperdícios",
+          "start": 94.698,
+          "end": 95.418
+        },
+        {
+          "id": "caption-word-123-2",
+          "text": "e",
+          "start": 95.418,
+          "end": 95.578
+        },
+        {
+          "id": "caption-word-123-3",
+          "text": "melhora",
+          "start": 95.578,
+          "end": 96.058
+        }
+      ]
+    },
+    {
+      "id": "caption-group-124",
+      "frame": 8,
+      "start": 96.058,
+      "end": 96.898,
+      "text": "continuamente.",
+      "words": [
+        {
+          "id": "caption-word-124-0",
+          "text": "continuamente.",
+          "start": 96.058,
+          "end": 96.778
+        }
+      ]
+    },
+    {
+      "id": "caption-group-125",
+      "frame": 9,
+      "start": 96.938,
+      "end": 97.498,
+      "text": "No efeito,",
+      "words": [
+        {
+          "id": "caption-word-125-0",
+          "text": "No",
+          "start": 96.938,
+          "end": 97.098
+        },
+        {
+          "id": "caption-word-125-1",
+          "text": "efeito,",
+          "start": 97.098,
+          "end": 97.498
+        }
+      ]
+    },
+    {
+      "id": "caption-group-126",
+      "frame": 9,
+      "start": 97.498,
+      "end": 98.858,
+      "text": "cite quatro ganhos:",
+      "words": [
+        {
+          "id": "caption-word-126-0",
+          "text": "cite",
+          "start": 97.498,
+          "end": 97.898
+        },
+        {
+          "id": "caption-word-126-1",
+          "text": "quatro",
+          "start": 97.898,
+          "end": 98.138
+        },
+        {
+          "id": "caption-word-126-2",
+          "text": "ganhos:",
+          "start": 98.218,
+          "end": 98.858
+        }
+      ]
+    },
+    {
+      "id": "caption-group-127",
+      "frame": 9,
+      "start": 98.858,
+      "end": 100.458,
+      "text": "menos estoque desnecessário,",
+      "words": [
+        {
+          "id": "caption-word-127-0",
+          "text": "menos",
+          "start": 98.858,
+          "end": 99.018
+        },
+        {
+          "id": "caption-word-127-1",
+          "text": "estoque",
+          "start": 99.178,
+          "end": 99.578
+        },
+        {
+          "id": "caption-word-127-2",
+          "text": "desnecessário,",
+          "start": 99.578,
+          "end": 100.458
+        }
+      ]
+    },
+    {
+      "id": "caption-group-128",
+      "frame": 9,
+      "start": 100.458,
+      "end": 101.418,
+      "text": "menos atrasos,",
+      "words": [
+        {
+          "id": "caption-word-128-0",
+          "text": "menos",
+          "start": 100.458,
+          "end": 100.778
+        },
+        {
+          "id": "caption-word-128-1",
+          "text": "atrasos,",
+          "start": 100.778,
+          "end": 101.418
+        }
+      ]
+    },
+    {
+      "id": "caption-group-129",
+      "frame": 9,
+      "start": 101.418,
+      "end": 101.898,
+      "text": "melhor uso",
+      "words": [
+        {
+          "id": "caption-word-129-0",
+          "text": "melhor",
+          "start": 101.418,
+          "end": 101.738
+        },
+        {
+          "id": "caption-word-129-1",
+          "text": "uso",
+          "start": 101.738,
+          "end": 101.898
+        }
+      ]
+    },
+    {
+      "id": "caption-group-130",
+      "frame": 9,
+      "start": 101.898,
+      "end": 102.538,
+      "text": "dos recursos",
+      "words": [
+        {
+          "id": "caption-word-130-0",
+          "text": "dos",
+          "start": 101.898,
+          "end": 102.058
+        },
+        {
+          "id": "caption-word-130-1",
+          "text": "recursos",
+          "start": 102.058,
+          "end": 102.538
+        }
+      ]
+    },
+    {
+      "id": "caption-group-131",
+      "frame": 9,
+      "start": 102.538,
+      "end": 103.818,
+      "text": "e mais eficiência.",
+      "words": [
+        {
+          "id": "caption-word-131-0",
+          "text": "e",
+          "start": 102.538,
+          "end": 102.698
+        },
+        {
+          "id": "caption-word-131-1",
+          "text": "mais",
+          "start": 102.698,
+          "end": 102.938
+        },
+        {
+          "id": "caption-word-131-2",
+          "text": "eficiência.",
+          "start": 102.938,
+          "end": 103.818
+        }
+      ]
+    },
+    {
+      "id": "caption-group-132",
+      "frame": 9,
+      "start": 103.818,
+      "end": 104.778,
+      "text": "E feche:",
+      "words": [
+        {
+          "id": "caption-word-132-0",
+          "text": "E",
+          "start": 103.818,
+          "end": 103.978
+        },
+        {
+          "id": "caption-word-132-1",
+          "text": "feche:",
+          "start": 104.058,
+          "end": 104.778
+        }
+      ]
+    },
+    {
+      "id": "caption-group-133",
+      "frame": 9,
+      "start": 104.778,
+      "end": 105.818,
+      "text": "a empresa produz",
+      "words": [
+        {
+          "id": "caption-word-133-0",
+          "text": "a",
+          "start": 104.778,
+          "end": 104.938
+        },
+        {
+          "id": "caption-word-133-1",
+          "text": "empresa",
+          "start": 104.938,
+          "end": 105.258
+        },
+        {
+          "id": "caption-word-133-2",
+          "text": "produz",
+          "start": 105.338,
+          "end": 105.818
+        }
+      ]
+    },
+    {
+      "id": "caption-group-134",
+      "frame": 9,
+      "start": 105.818,
+      "end": 106.138,
+      "text": "de forma",
+      "words": [
+        {
+          "id": "caption-word-134-0",
+          "text": "de",
+          "start": 105.818,
+          "end": 105.898
+        },
+        {
+          "id": "caption-word-134-1",
+          "text": "forma",
+          "start": 105.898,
+          "end": 106.138
+        }
+      ]
+    },
+    {
+      "id": "caption-group-135",
+      "frame": 9,
+      "start": 106.138,
+      "end": 107.418,
+      "text": "coordenada e atende",
+      "words": [
+        {
+          "id": "caption-word-135-0",
+          "text": "coordenada",
+          "start": 106.138,
+          "end": 106.698
+        },
+        {
+          "id": "caption-word-135-1",
+          "text": "e",
+          "start": 106.698,
+          "end": 106.858
+        },
+        {
+          "id": "caption-word-135-2",
+          "text": "atende",
+          "start": 106.858,
+          "end": 107.418
+        }
+      ]
+    },
+    {
+      "id": "caption-group-136",
+      "frame": 9,
+      "start": 107.418,
+      "end": 107.818,
+      "text": "melhor o",
+      "words": [
+        {
+          "id": "caption-word-136-0",
+          "text": "melhor",
+          "start": 107.418,
+          "end": 107.738
+        },
+        {
+          "id": "caption-word-136-1",
+          "text": "o",
+          "start": 107.738,
+          "end": 107.818
+        }
+      ]
+    },
+    {
+      "id": "caption-group-137",
+      "frame": 9,
+      "start": 107.818,
+      "end": 108.394,
+      "text": "cliente.",
+      "words": [
+        {
+          "id": "caption-word-137-0",
+          "text": "cliente.",
+          "start": 107.818,
+          "end": 108.378
+        }
+      ]
+    },
+    {
+      "id": "caption-group-138",
+      "frame": 10,
+      "start": 108.394,
+      "end": 109.194,
+      "text": "Questão três:",
+      "words": [
+        {
+          "id": "caption-word-138-0",
+          "text": "Questão",
+          "start": 108.394,
+          "end": 108.794
+        },
+        {
+          "id": "caption-word-138-1",
+          "text": "três:",
+          "start": 108.794,
+          "end": 109.194
+        }
+      ]
+    },
+    {
+      "id": "caption-group-139",
+      "frame": 10,
+      "start": 109.194,
+      "end": 110.474,
+      "text": "previsão de demanda.",
+      "words": [
+        {
+          "id": "caption-word-139-0",
+          "text": "previsão",
+          "start": 109.194,
+          "end": 109.674
+        },
+        {
+          "id": "caption-word-139-1",
+          "text": "de",
+          "start": 109.674,
+          "end": 109.834
+        },
+        {
+          "id": "caption-word-139-2",
+          "text": "demanda.",
+          "start": 109.834,
+          "end": 110.474
+        }
+      ]
+    },
+    {
+      "id": "caption-group-140",
+      "frame": 10,
+      "start": 110.474,
+      "end": 111.114,
+      "text": "A palavra",
+      "words": [
+        {
+          "id": "caption-word-140-0",
+          "text": "A",
+          "start": 110.474,
+          "end": 110.634
+        },
+        {
+          "id": "caption-word-140-1",
+          "text": "palavra",
+          "start": 110.634,
+          "end": 111.114
+        }
+      ]
+    },
+    {
+      "id": "caption-group-141",
+      "frame": 10,
+      "start": 111.114,
+      "end": 111.754,
+      "text": "da importância",
+      "words": [
+        {
+          "id": "caption-word-141-0",
+          "text": "da",
+          "start": 111.114,
+          "end": 111.274
+        },
+        {
+          "id": "caption-word-141-1",
+          "text": "importância",
+          "start": 111.274,
+          "end": 111.754
+        }
+      ]
+    },
+    {
+      "id": "caption-group-142",
+      "frame": 10,
+      "start": 111.754,
+      "end": 112.714,
+      "text": "é antecipar.",
+      "words": [
+        {
+          "id": "caption-word-142-0",
+          "text": "é",
+          "start": 111.754,
+          "end": 111.914
+        },
+        {
+          "id": "caption-word-142-1",
+          "text": "antecipar.",
+          "start": 111.914,
+          "end": 112.714
+        }
+      ]
+    },
+    {
+      "id": "caption-group-143",
+      "frame": 10,
+      "start": 112.714,
+      "end": 113.034,
+      "text": "Com a",
+      "words": [
+        {
+          "id": "caption-word-143-0",
+          "text": "Com",
+          "start": 112.714,
+          "end": 112.954
+        },
+        {
+          "id": "caption-word-143-1",
+          "text": "a",
+          "start": 112.954,
+          "end": 113.034
+        }
+      ]
+    },
+    {
+      "id": "caption-group-144",
+      "frame": 10,
+      "start": 113.034,
+      "end": 113.594,
+      "text": "previsão,",
+      "words": [
+        {
+          "id": "caption-word-144-0",
+          "text": "previsão,",
+          "start": 113.034,
+          "end": 113.594
+        }
+      ]
+    },
+    {
+      "id": "caption-group-145",
+      "frame": 10,
+      "start": 113.594,
+      "end": 115.194,
+      "text": "a empresa planeja estoques,",
+      "words": [
+        {
+          "id": "caption-word-145-0",
+          "text": "a",
+          "start": 113.594,
+          "end": 113.754
+        },
+        {
+          "id": "caption-word-145-1",
+          "text": "empresa",
+          "start": 113.754,
+          "end": 114.634
+        },
+        {
+          "id": "caption-word-145-2",
+          "text": "planeja",
+          "start": 114.634,
+          "end": 114.684
+        },
+        {
+          "id": "caption-word-145-3",
+          "text": "estoques,",
+          "start": 114.634,
+          "end": 115.194
+        }
+      ]
+    },
+    {
+      "id": "caption-group-146",
+      "frame": 10,
+      "start": 115.194,
+      "end": 115.754,
+      "text": "produção,",
+      "words": [
+        {
+          "id": "caption-word-146-0",
+          "text": "produção,",
+          "start": 115.194,
+          "end": 115.754
+        }
+      ]
+    },
+    {
+      "id": "caption-group-147",
+      "frame": 10,
+      "start": 115.754,
+      "end": 116.314,
+      "text": "compras,",
+      "words": [
+        {
+          "id": "caption-word-147-0",
+          "text": "compras,",
+          "start": 115.754,
+          "end": 116.314
+        }
+      ]
+    },
+    {
+      "id": "caption-group-148",
+      "frame": 10,
+      "start": 116.314,
+      "end": 117.794,
+      "text": "recursos e capacidade.",
+      "words": [
+        {
+          "id": "caption-word-148-0",
+          "text": "recursos",
+          "start": 116.314,
+          "end": 116.794
+        },
+        {
+          "id": "caption-word-148-1",
+          "text": "e",
+          "start": 116.794,
+          "end": 116.954
+        },
+        {
+          "id": "caption-word-148-2",
+          "text": "capacidade.",
+          "start": 116.954,
+          "end": 117.674
+        }
+      ]
+    },
+    {
+      "id": "caption-group-149",
+      "frame": 11,
+      "start": 117.823,
+      "end": 118.543,
+      "text": "Mas cuidado:",
+      "words": [
+        {
+          "id": "caption-word-149-0",
+          "text": "Mas",
+          "start": 117.823,
+          "end": 118.063
+        },
+        {
+          "id": "caption-word-149-1",
+          "text": "cuidado:",
+          "start": 118.063,
+          "end": 118.543
+        }
+      ]
+    },
+    {
+      "id": "caption-group-150",
+      "frame": 11,
+      "start": 118.543,
+      "end": 119.103,
+      "text": "previsão não",
+      "words": [
+        {
+          "id": "caption-word-150-0",
+          "text": "previsão",
+          "start": 118.543,
+          "end": 119.023
+        },
+        {
+          "id": "caption-word-150-1",
+          "text": "não",
+          "start": 119.023,
+          "end": 119.103
+        }
+      ]
+    },
+    {
+      "id": "caption-group-151",
+      "frame": 11,
+      "start": 119.103,
+      "end": 119.823,
+      "text": "é garantia,",
+      "words": [
+        {
+          "id": "caption-word-151-0",
+          "text": "é",
+          "start": 119.103,
+          "end": 119.263
+        },
+        {
+          "id": "caption-word-151-1",
+          "text": "garantia,",
+          "start": 119.263,
+          "end": 119.743
+        }
+      ]
+    },
+    {
+      "id": "caption-group-152",
+      "frame": 11,
+      "start": 119.823,
+      "end": 120.223,
+      "text": "nem é",
+      "words": [
+        {
+          "id": "caption-word-152-0",
+          "text": "nem",
+          "start": 119.823,
+          "end": 120.063
+        },
+        {
+          "id": "caption-word-152-1",
+          "text": "é",
+          "start": 120.063,
+          "end": 120.223
+        }
+      ]
+    },
+    {
+      "id": "caption-group-153",
+      "frame": 11,
+      "start": 120.223,
+      "end": 120.783,
+      "text": "meta.",
+      "words": [
+        {
+          "id": "caption-word-153-0",
+          "text": "meta.",
+          "start": 120.223,
+          "end": 120.783
+        }
+      ]
+    },
+    {
+      "id": "caption-group-154",
+      "frame": 11,
+      "start": 120.783,
+      "end": 121.263,
+      "text": "Meta é",
+      "words": [
+        {
+          "id": "caption-word-154-0",
+          "text": "Meta",
+          "start": 120.783,
+          "end": 121.103
+        },
+        {
+          "id": "caption-word-154-1",
+          "text": "é",
+          "start": 121.103,
+          "end": 121.263
+        }
+      ]
+    },
+    {
+      "id": "caption-group-155",
+      "frame": 11,
+      "start": 121.263,
+      "end": 121.503,
+      "text": "o que",
+      "words": [
+        {
+          "id": "caption-word-155-0",
+          "text": "o",
+          "start": 121.263,
+          "end": 121.343
+        },
+        {
+          "id": "caption-word-155-1",
+          "text": "que",
+          "start": 121.343,
+          "end": 121.503
+        }
+      ]
+    },
+    {
+      "id": "caption-group-156",
+      "frame": 11,
+      "start": 121.503,
+      "end": 122.063,
+      "text": "a empresa",
+      "words": [
+        {
+          "id": "caption-word-156-0",
+          "text": "a",
+          "start": 121.503,
+          "end": 121.583
+        },
+        {
+          "id": "caption-word-156-1",
+          "text": "empresa",
+          "start": 121.583,
+          "end": 122.063
+        }
+      ]
+    },
+    {
+      "id": "caption-group-157",
+      "frame": 11,
+      "start": 122.063,
+      "end": 122.863,
+      "text": "quer alcançar;",
+      "words": [
+        {
+          "id": "caption-word-157-0",
+          "text": "quer",
+          "start": 122.063,
+          "end": 122.223
+        },
+        {
+          "id": "caption-word-157-1",
+          "text": "alcançar;",
+          "start": 122.223,
+          "end": 122.863
+        }
+      ]
+    },
+    {
+      "id": "caption-group-158",
+      "frame": 11,
+      "start": 122.863,
+      "end": 123.423,
+      "text": "previsão é",
+      "words": [
+        {
+          "id": "caption-word-158-0",
+          "text": "previsão",
+          "start": 122.863,
+          "end": 123.343
+        },
+        {
+          "id": "caption-word-158-1",
+          "text": "é",
+          "start": 123.343,
+          "end": 123.423
+        }
+      ]
+    },
+    {
+      "id": "caption-group-159",
+      "frame": 11,
+      "start": 123.423,
+      "end": 124.423,
+      "text": "só uma estimativa,",
+      "words": [
+        {
+          "id": "caption-word-159-0",
+          "text": "só",
+          "start": 123.423,
+          "end": 123.583
+        },
+        {
+          "id": "caption-word-159-1",
+          "text": "uma",
+          "start": 123.583,
+          "end": 123.743
+        },
+        {
+          "id": "caption-word-159-2",
+          "text": "estimativa,",
+          "start": 123.743,
+          "end": 124.303
+        }
+      ]
+    },
+    {
+      "id": "caption-group-160",
+      "frame": 11,
+      "start": 124.463,
+      "end": 124.943,
+      "text": "e pode",
+      "words": [
+        {
+          "id": "caption-word-160-0",
+          "text": "e",
+          "start": 124.463,
+          "end": 124.623
+        },
+        {
+          "id": "caption-word-160-1",
+          "text": "pode",
+          "start": 124.623,
+          "end": 124.943
+        }
+      ]
+    },
+    {
+      "id": "caption-group-161",
+      "frame": 11,
+      "start": 124.943,
+      "end": 125.396,
+      "text": "errar.",
+      "words": [
+        {
+          "id": "caption-word-161-0",
+          "text": "errar.",
+          "start": 124.943,
+          "end": 125.343
+        }
+      ]
+    },
+    {
+      "id": "caption-group-162",
+      "frame": 12,
+      "start": 125.396,
+      "end": 125.956,
+      "text": "O macete",
+      "words": [
+        {
+          "id": "caption-word-162-0",
+          "text": "O",
+          "start": 125.396,
+          "end": 125.476
+        },
+        {
+          "id": "caption-word-162-1",
+          "text": "macete",
+          "start": 125.476,
+          "end": 125.956
+        }
+      ]
+    },
+    {
+      "id": "caption-group-163",
+      "frame": 12,
+      "start": 125.956,
+      "end": 126.676,
+      "text": "da gangorra.",
+      "words": [
+        {
+          "id": "caption-word-163-0",
+          "text": "da",
+          "start": 125.956,
+          "end": 126.036
+        },
+        {
+          "id": "caption-word-163-1",
+          "text": "gangorra.",
+          "start": 126.036,
+          "end": 126.676
+        }
+      ]
+    },
+    {
+      "id": "caption-group-164",
+      "frame": 12,
+      "start": 126.676,
+      "end": 127.636,
+      "text": "Previu demais?",
+      "words": [
+        {
+          "id": "caption-word-164-0",
+          "text": "Previu",
+          "start": 126.676,
+          "end": 127.156
+        },
+        {
+          "id": "caption-word-164-1",
+          "text": "demais?",
+          "start": 127.156,
+          "end": 127.636
+        }
+      ]
+    },
+    {
+      "id": "caption-group-165",
+      "frame": 12,
+      "start": 127.636,
+      "end": 128.116,
+      "text": "Sobra:",
+      "words": [
+        {
+          "id": "caption-word-165-0",
+          "text": "Sobra:",
+          "start": 127.636,
+          "end": 128.116
+        }
+      ]
+    },
+    {
+      "id": "caption-group-166",
+      "frame": 12,
+      "start": 128.116,
+      "end": 128.516,
+      "text": "excesso de",
+      "words": [
+        {
+          "id": "caption-word-166-0",
+          "text": "excesso",
+          "start": 128.116,
+          "end": 128.436
+        },
+        {
+          "id": "caption-word-166-1",
+          "text": "de",
+          "start": 128.436,
+          "end": 128.516
+        }
+      ]
+    },
+    {
+      "id": "caption-group-167",
+      "frame": 12,
+      "start": 128.516,
+      "end": 128.996,
+      "text": "estoque,",
+      "words": [
+        {
+          "id": "caption-word-167-0",
+          "text": "estoque,",
+          "start": 128.516,
+          "end": 128.996
+        }
+      ]
+    },
+    {
+      "id": "caption-group-168",
+      "frame": 12,
+      "start": 128.996,
+      "end": 130.116,
+      "text": "desperdício e custo",
+      "words": [
+        {
+          "id": "caption-word-168-0",
+          "text": "desperdício",
+          "start": 128.996,
+          "end": 129.636
+        },
+        {
+          "id": "caption-word-168-1",
+          "text": "e",
+          "start": 129.636,
+          "end": 129.796
+        },
+        {
+          "id": "caption-word-168-2",
+          "text": "custo",
+          "start": 129.796,
+          "end": 130.116
+        }
+      ]
+    },
+    {
+      "id": "caption-group-169",
+      "frame": 12,
+      "start": 130.116,
+      "end": 130.596,
+      "text": "alto.",
+      "words": [
+        {
+          "id": "caption-word-169-0",
+          "text": "alto.",
+          "start": 130.116,
+          "end": 130.596
+        }
+      ]
+    },
+    {
+      "id": "caption-group-170",
+      "frame": 12,
+      "start": 130.596,
+      "end": 131.716,
+      "text": "Previu de menos?",
+      "words": [
+        {
+          "id": "caption-word-170-0",
+          "text": "Previu",
+          "start": 130.596,
+          "end": 131.076
+        },
+        {
+          "id": "caption-word-170-1",
+          "text": "de",
+          "start": 131.076,
+          "end": 131.236
+        },
+        {
+          "id": "caption-word-170-2",
+          "text": "menos?",
+          "start": 131.236,
+          "end": 131.716
+        }
+      ]
+    },
+    {
+      "id": "caption-group-171",
+      "frame": 12,
+      "start": 131.716,
+      "end": 132.196,
+      "text": "Falta:",
+      "words": [
+        {
+          "id": "caption-word-171-0",
+          "text": "Falta:",
+          "start": 131.716,
+          "end": 132.196
+        }
+      ]
+    },
+    {
+      "id": "caption-group-172",
+      "frame": 12,
+      "start": 132.196,
+      "end": 132.756,
+      "text": "produto em",
+      "words": [
+        {
+          "id": "caption-word-172-0",
+          "text": "produto",
+          "start": 132.196,
+          "end": 132.596
+        },
+        {
+          "id": "caption-word-172-1",
+          "text": "em",
+          "start": 132.596,
+          "end": 132.756
+        }
+      ]
+    },
+    {
+      "id": "caption-group-173",
+      "frame": 12,
+      "start": 132.756,
+      "end": 133.156,
+      "text": "falta,",
+      "words": [
+        {
+          "id": "caption-word-173-0",
+          "text": "falta,",
+          "start": 132.756,
+          "end": 133.076
+        }
+      ]
+    },
+    {
+      "id": "caption-group-174",
+      "frame": 12,
+      "start": 133.156,
+      "end": 133.796,
+      "text": "atraso e",
+      "words": [
+        {
+          "id": "caption-word-174-0",
+          "text": "atraso",
+          "start": 133.156,
+          "end": 133.636
+        },
+        {
+          "id": "caption-word-174-1",
+          "text": "e",
+          "start": 133.636,
+          "end": 133.796
+        }
+      ]
+    },
+    {
+      "id": "caption-group-175",
+      "frame": 12,
+      "start": 133.796,
+      "end": 134.975,
+      "text": "cliente insatisfeito.",
+      "words": [
+        {
+          "id": "caption-word-175-0",
+          "text": "cliente",
+          "start": 133.796,
+          "end": 134.116
+        },
+        {
+          "id": "caption-word-175-1",
+          "text": "insatisfeito.",
+          "start": 134.116,
+          "end": 134.916
+        }
+      ]
+    },
+    {
+      "id": "caption-group-176",
+      "frame": 13,
+      "start": 134.975,
+      "end": 135.375,
+      "text": "E qual",
+      "words": [
+        {
+          "id": "caption-word-176-0",
+          "text": "E",
+          "start": 134.975,
+          "end": 135.135
+        },
+        {
+          "id": "caption-word-176-1",
+          "text": "qual",
+          "start": 135.135,
+          "end": 135.375
+        }
+      ]
+    },
+    {
+      "id": "caption-group-177",
+      "frame": 13,
+      "start": 135.375,
+      "end": 135.615,
+      "text": "é a",
+      "words": [
+        {
+          "id": "caption-word-177-0",
+          "text": "é",
+          "start": 135.375,
+          "end": 135.535
+        },
+        {
+          "id": "caption-word-177-1",
+          "text": "a",
+          "start": 135.535,
+          "end": 135.615
+        }
+      ]
+    },
+    {
+      "id": "caption-group-178",
+      "frame": 13,
+      "start": 135.615,
+      "end": 136.255,
+      "text": "solução?",
+      "words": [
+        {
+          "id": "caption-word-178-0",
+          "text": "solução?",
+          "start": 135.615,
+          "end": 136.255
+        }
+      ]
+    },
+    {
+      "id": "caption-group-179",
+      "frame": 13,
+      "start": 136.255,
+      "end": 137.175,
+      "text": "Três As:",
+      "words": [
+        {
+          "id": "caption-word-179-0",
+          "text": "Três",
+          "start": 136.255,
+          "end": 136.655
+        },
+        {
+          "id": "caption-word-179-1",
+          "text": "As:",
+          "start": 136.655,
+          "end": 137.055
+        }
+      ]
+    },
+    {
+      "id": "caption-group-180",
+      "frame": 13,
+      "start": 137.215,
+      "end": 138.495,
+      "text": "acompanhar os resultados,",
+      "words": [
+        {
+          "id": "caption-word-180-0",
+          "text": "acompanhar",
+          "start": 137.215,
+          "end": 137.775
+        },
+        {
+          "id": "caption-word-180-1",
+          "text": "os",
+          "start": 137.775,
+          "end": 137.855
+        },
+        {
+          "id": "caption-word-180-2",
+          "text": "resultados,",
+          "start": 137.855,
+          "end": 138.495
+        }
+      ]
+    },
+    {
+      "id": "caption-group-181",
+      "frame": 13,
+      "start": 138.495,
+      "end": 139.055,
+      "text": "analisar os",
+      "words": [
+        {
+          "id": "caption-word-181-0",
+          "text": "analisar",
+          "start": 138.495,
+          "end": 138.895
+        },
+        {
+          "id": "caption-word-181-1",
+          "text": "os",
+          "start": 138.895,
+          "end": 139.055
+        }
+      ]
+    },
+    {
+      "id": "caption-group-182",
+      "frame": 13,
+      "start": 139.055,
+      "end": 139.535,
+      "text": "erros e",
+      "words": [
+        {
+          "id": "caption-word-182-0",
+          "text": "erros",
+          "start": 139.055,
+          "end": 139.375
+        },
+        {
+          "id": "caption-word-182-1",
+          "text": "e",
+          "start": 139.375,
+          "end": 139.535
+        }
+      ]
+    },
+    {
+      "id": "caption-group-183",
+      "frame": 13,
+      "start": 139.535,
+      "end": 141.175,
+      "text": "atualizar as estimativas.",
+      "words": [
+        {
+          "id": "caption-word-183-0",
+          "text": "atualizar",
+          "start": 139.535,
+          "end": 140.015
+        },
+        {
+          "id": "caption-word-183-1",
+          "text": "as",
+          "start": 140.015,
+          "end": 140.175
+        },
+        {
+          "id": "caption-word-183-2",
+          "text": "estimativas.",
+          "start": 140.175,
+          "end": 141.055
+        }
+      ]
+    },
+    {
+      "id": "caption-group-184",
+      "frame": 13,
+      "start": 141.295,
+      "end": 141.695,
+      "text": "Assim,",
+      "words": [
+        {
+          "id": "caption-word-184-0",
+          "text": "Assim,",
+          "start": 141.295,
+          "end": 141.615
+        }
+      ]
+    },
+    {
+      "id": "caption-group-185",
+      "frame": 13,
+      "start": 141.695,
+      "end": 142.815,
+      "text": "a previsão reduz",
+      "words": [
+        {
+          "id": "caption-word-185-0",
+          "text": "a",
+          "start": 141.695,
+          "end": 141.855
+        },
+        {
+          "id": "caption-word-185-1",
+          "text": "previsão",
+          "start": 141.855,
+          "end": 142.335
+        },
+        {
+          "id": "caption-word-185-2",
+          "text": "reduz",
+          "start": 142.335,
+          "end": 142.815
+        }
+      ]
+    },
+    {
+      "id": "caption-group-186",
+      "frame": 13,
+      "start": 142.815,
+      "end": 143.935,
+      "text": "incertezas e apoia",
+      "words": [
+        {
+          "id": "caption-word-186-0",
+          "text": "incertezas",
+          "start": 142.815,
+          "end": 143.375
+        },
+        {
+          "id": "caption-word-186-1",
+          "text": "e",
+          "start": 143.375,
+          "end": 143.455
+        },
+        {
+          "id": "caption-word-186-2",
+          "text": "apoia",
+          "start": 143.455,
+          "end": 143.935
+        }
+      ]
+    },
+    {
+      "id": "caption-group-187",
+      "frame": 13,
+      "start": 143.935,
+      "end": 145.023,
+      "text": "decisões melhores.",
+      "words": [
+        {
+          "id": "caption-word-187-0",
+          "text": "decisões",
+          "start": 143.935,
+          "end": 144.415
+        },
+        {
+          "id": "caption-word-187-1",
+          "text": "melhores.",
+          "start": 144.415,
+          "end": 144.975
+        }
+      ]
+    },
+    {
+      "id": "caption-group-188",
+      "frame": 14,
+      "start": 145.023,
+      "end": 145.983,
+      "text": "Questão quatro:",
+      "words": [
+        {
+          "id": "caption-word-188-0",
+          "text": "Questão",
+          "start": 145.023,
+          "end": 145.503
+        },
+        {
+          "id": "caption-word-188-1",
+          "text": "quatro:",
+          "start": 145.503,
+          "end": 145.983
+        }
+      ]
+    },
+    {
+      "id": "caption-group-189",
+      "frame": 14,
+      "start": 145.983,
+      "end": 147.703,
+      "text": "indicadores de desempenho.",
+      "words": [
+        {
+          "id": "caption-word-189-0",
+          "text": "indicadores",
+          "start": 145.983,
+          "end": 146.623
+        },
+        {
+          "id": "caption-word-189-1",
+          "text": "de",
+          "start": 146.623,
+          "end": 146.783
+        },
+        {
+          "id": "caption-word-189-2",
+          "text": "desempenho.",
+          "start": 146.783,
+          "end": 147.583
+        }
+      ]
+    },
+    {
+      "id": "caption-group-190",
+      "frame": 14,
+      "start": 147.823,
+      "end": 148.943,
+      "text": "Eles são importantes",
+      "words": [
+        {
+          "id": "caption-word-190-0",
+          "text": "Eles",
+          "start": 147.823,
+          "end": 148.143
+        },
+        {
+          "id": "caption-word-190-1",
+          "text": "são",
+          "start": 148.143,
+          "end": 148.463
+        },
+        {
+          "id": "caption-word-190-2",
+          "text": "importantes",
+          "start": 148.463,
+          "end": 148.943
+        }
+      ]
+    },
+    {
+      "id": "caption-group-191",
+      "frame": 14,
+      "start": 148.943,
+      "end": 150.543,
+      "text": "porque permitem acompanhar",
+      "words": [
+        {
+          "id": "caption-word-191-0",
+          "text": "porque",
+          "start": 148.943,
+          "end": 149.263
+        },
+        {
+          "id": "caption-word-191-1",
+          "text": "permitem",
+          "start": 149.343,
+          "end": 149.903
+        },
+        {
+          "id": "caption-word-191-2",
+          "text": "acompanhar",
+          "start": 149.903,
+          "end": 150.543
+        }
+      ]
+    },
+    {
+      "id": "caption-group-192",
+      "frame": 14,
+      "start": 150.543,
+      "end": 151.343,
+      "text": "resultados,",
+      "words": [
+        {
+          "id": "caption-word-192-0",
+          "text": "resultados,",
+          "start": 150.543,
+          "end": 151.343
+        }
+      ]
+    },
+    {
+      "id": "caption-group-193",
+      "frame": 14,
+      "start": 151.343,
+      "end": 152.543,
+      "text": "avaliar os processos",
+      "words": [
+        {
+          "id": "caption-word-193-0",
+          "text": "avaliar",
+          "start": 151.343,
+          "end": 151.903
+        },
+        {
+          "id": "caption-word-193-1",
+          "text": "os",
+          "start": 151.903,
+          "end": 152.063
+        },
+        {
+          "id": "caption-word-193-2",
+          "text": "processos",
+          "start": 152.063,
+          "end": 152.543
+        }
+      ]
+    },
+    {
+      "id": "caption-group-194",
+      "frame": 14,
+      "start": 152.543,
+      "end": 153.983,
+      "text": "e encontrar oportunidades",
+      "words": [
+        {
+          "id": "caption-word-194-0",
+          "text": "e",
+          "start": 152.543,
+          "end": 152.783
+        },
+        {
+          "id": "caption-word-194-1",
+          "text": "encontrar",
+          "start": 152.783,
+          "end": 153.343
+        },
+        {
+          "id": "caption-word-194-2",
+          "text": "oportunidades",
+          "start": 153.343,
+          "end": 153.983
+        }
+      ]
+    },
+    {
+      "id": "caption-group-195",
+      "frame": 14,
+      "start": 153.983,
+      "end": 154.815,
+      "text": "de melhoria.",
+      "words": [
+        {
+          "id": "caption-word-195-0",
+          "text": "de",
+          "start": 153.983,
+          "end": 154.143
+        },
+        {
+          "id": "caption-word-195-1",
+          "text": "melhoria.",
+          "start": 154.143,
+          "end": 154.703
+        }
+      ]
+    },
+    {
+      "id": "caption-group-196",
+      "frame": 15,
+      "start": 154.815,
+      "end": 155.295,
+      "text": "Decore o",
+      "words": [
+        {
+          "id": "caption-word-196-0",
+          "text": "Decore",
+          "start": 154.815,
+          "end": 155.055
+        },
+        {
+          "id": "caption-word-196-1",
+          "text": "o",
+          "start": 155.215,
+          "end": 155.295
+        }
+      ]
+    },
+    {
+      "id": "caption-group-197",
+      "frame": 15,
+      "start": 155.295,
+      "end": 156.495,
+      "text": "trio produtividade,",
+      "words": [
+        {
+          "id": "caption-word-197-0",
+          "text": "trio",
+          "start": 155.295,
+          "end": 155.535
+        },
+        {
+          "id": "caption-word-197-1",
+          "text": "produtividade,",
+          "start": 155.695,
+          "end": 156.495
+        }
+      ]
+    },
+    {
+      "id": "caption-group-198",
+      "frame": 15,
+      "start": 156.495,
+      "end": 157.775,
+      "text": "eficiência e qualidade",
+      "words": [
+        {
+          "id": "caption-word-198-0",
+          "text": "eficiência",
+          "start": 156.495,
+          "end": 157.135
+        },
+        {
+          "id": "caption-word-198-1",
+          "text": "e",
+          "start": 157.135,
+          "end": 157.295
+        },
+        {
+          "id": "caption-word-198-2",
+          "text": "qualidade",
+          "start": 157.295,
+          "end": 157.695
+        }
+      ]
+    },
+    {
+      "id": "caption-group-199",
+      "frame": 15,
+      "start": 157.775,
+      "end": 158.815,
+      "text": "com um exemplo.",
+      "words": [
+        {
+          "id": "caption-word-199-0",
+          "text": "com",
+          "start": 157.775,
+          "end": 157.935
+        },
+        {
+          "id": "caption-word-199-1",
+          "text": "um",
+          "start": 157.935,
+          "end": 158.095
+        },
+        {
+          "id": "caption-word-199-2",
+          "text": "exemplo.",
+          "start": 158.095,
+          "end": 158.815
+        }
+      ]
+    },
+    {
+      "id": "caption-group-200",
+      "frame": 15,
+      "start": 158.815,
+      "end": 159.455,
+      "text": "Uma máquina",
+      "words": [
+        {
+          "id": "caption-word-200-0",
+          "text": "Uma",
+          "start": 158.815,
+          "end": 159.055
+        },
+        {
+          "id": "caption-word-200-1",
+          "text": "máquina",
+          "start": 159.055,
+          "end": 159.455
+        }
+      ]
+    },
+    {
+      "id": "caption-group-201",
+      "frame": 15,
+      "start": 159.455,
+      "end": 160.575,
+      "text": "faz 200 peças",
+      "words": [
+        {
+          "id": "caption-word-201-0",
+          "text": "faz",
+          "start": 159.455,
+          "end": 159.775
+        },
+        {
+          "id": "caption-word-201-1",
+          "text": "200",
+          "start": 159.775,
+          "end": 160.255
+        },
+        {
+          "id": "caption-word-201-2",
+          "text": "peças",
+          "start": 160.255,
+          "end": 160.575
+        }
+      ]
+    },
+    {
+      "id": "caption-group-202",
+      "frame": 15,
+      "start": 160.575,
+      "end": 161.055,
+      "text": "em 8",
+      "words": [
+        {
+          "id": "caption-word-202-0",
+          "text": "em",
+          "start": 160.575,
+          "end": 160.735
+        },
+        {
+          "id": "caption-word-202-1",
+          "text": "8",
+          "start": 160.735,
+          "end": 161.055
+        }
+      ]
+    },
+    {
+      "id": "caption-group-203",
+      "frame": 15,
+      "start": 161.055,
+      "end": 161.495,
+      "text": "horas:",
+      "words": [
+        {
+          "id": "caption-word-203-0",
+          "text": "horas:",
+          "start": 161.055,
+          "end": 161.375
+        }
+      ]
+    },
+    {
+      "id": "caption-group-204",
+      "frame": 15,
+      "start": 161.535,
+      "end": 163.135,
+      "text": "produtividade de 25",
+      "words": [
+        {
+          "id": "caption-word-204-0",
+          "text": "produtividade",
+          "start": 161.535,
+          "end": 162.175
+        },
+        {
+          "id": "caption-word-204-1",
+          "text": "de",
+          "start": 162.335,
+          "end": 162.495
+        },
+        {
+          "id": "caption-word-204-2",
+          "text": "25",
+          "start": 162.495,
+          "end": 163.135
+        }
+      ]
+    },
+    {
+      "id": "caption-group-205",
+      "frame": 15,
+      "start": 163.135,
+      "end": 163.615,
+      "text": "por hora,",
+      "words": [
+        {
+          "id": "caption-word-205-0",
+          "text": "por",
+          "start": 163.135,
+          "end": 163.295
+        },
+        {
+          "id": "caption-word-205-1",
+          "text": "hora,",
+          "start": 163.295,
+          "end": 163.615
+        }
+      ]
+    },
+    {
+      "id": "caption-group-206",
+      "frame": 15,
+      "start": 163.615,
+      "end": 165.215,
+      "text": "resultado sobre recursos.",
+      "words": [
+        {
+          "id": "caption-word-206-0",
+          "text": "resultado",
+          "start": 163.615,
+          "end": 164.175
+        },
+        {
+          "id": "caption-word-206-1",
+          "text": "sobre",
+          "start": 164.175,
+          "end": 164.415
+        },
+        {
+          "id": "caption-word-206-2",
+          "text": "recursos.",
+          "start": 164.415,
+          "end": 165.215
+        }
+      ]
+    },
+    {
+      "id": "caption-group-207",
+      "frame": 15,
+      "start": 165.215,
+      "end": 165.695,
+      "text": "O padrão",
+      "words": [
+        {
+          "id": "caption-word-207-0",
+          "text": "O",
+          "start": 165.215,
+          "end": 165.375
+        },
+        {
+          "id": "caption-word-207-1",
+          "text": "padrão",
+          "start": 165.375,
+          "end": 165.695
+        }
+      ]
+    },
+    {
+      "id": "caption-group-208",
+      "frame": 15,
+      "start": 165.695,
+      "end": 166.455,
+      "text": "era 30:",
+      "words": [
+        {
+          "id": "caption-word-208-0",
+          "text": "era",
+          "start": 165.695,
+          "end": 165.935
+        },
+        {
+          "id": "caption-word-208-1",
+          "text": "30:",
+          "start": 165.935,
+          "end": 166.335
+        }
+      ]
+    },
+    {
+      "id": "caption-group-209",
+      "frame": 15,
+      "start": 166.495,
+      "end": 167.695,
+      "text": "eficiência é comparar",
+      "words": [
+        {
+          "id": "caption-word-209-0",
+          "text": "eficiência",
+          "start": 166.495,
+          "end": 167.055
+        },
+        {
+          "id": "caption-word-209-1",
+          "text": "é",
+          "start": 167.055,
+          "end": 167.215
+        },
+        {
+          "id": "caption-word-209-2",
+          "text": "comparar",
+          "start": 167.215,
+          "end": 167.695
+        }
+      ]
+    },
+    {
+      "id": "caption-group-210",
+      "frame": 15,
+      "start": 167.695,
+      "end": 168.735,
+      "text": "com o esperado.",
+      "words": [
+        {
+          "id": "caption-word-210-0",
+          "text": "com",
+          "start": 167.695,
+          "end": 167.855
+        },
+        {
+          "id": "caption-word-210-1",
+          "text": "o",
+          "start": 167.855,
+          "end": 167.935
+        },
+        {
+          "id": "caption-word-210-2",
+          "text": "esperado.",
+          "start": 167.935,
+          "end": 168.735
+        }
+      ]
+    },
+    {
+      "id": "caption-group-211",
+      "frame": 15,
+      "start": 168.735,
+      "end": 170.535,
+      "text": "190 saíram boas:",
+      "words": [
+        {
+          "id": "caption-word-211-0",
+          "text": "190",
+          "start": 168.735,
+          "end": 169.615
+        },
+        {
+          "id": "caption-word-211-1",
+          "text": "saíram",
+          "start": 169.615,
+          "end": 170.095
+        },
+        {
+          "id": "caption-word-211-2",
+          "text": "boas:",
+          "start": 170.095,
+          "end": 170.415
+        }
+      ]
+    },
+    {
+      "id": "caption-group-212",
+      "frame": 15,
+      "start": 170.575,
+      "end": 171.615,
+      "text": "qualidade é cumprir",
+      "words": [
+        {
+          "id": "caption-word-212-0",
+          "text": "qualidade",
+          "start": 170.575,
+          "end": 171.055
+        },
+        {
+          "id": "caption-word-212-1",
+          "text": "é",
+          "start": 171.055,
+          "end": 171.215
+        },
+        {
+          "id": "caption-word-212-2",
+          "text": "cumprir",
+          "start": 171.215,
+          "end": 171.615
+        }
+      ]
+    },
+    {
+      "id": "caption-group-213",
+      "frame": 15,
+      "start": 171.615,
+      "end": 172.375,
+      "text": "os requisitos.",
+      "words": [
+        {
+          "id": "caption-word-213-0",
+          "text": "os",
+          "start": 171.615,
+          "end": 171.695
+        },
+        {
+          "id": "caption-word-213-1",
+          "text": "requisitos.",
+          "start": 171.695,
+          "end": 172.255
+        }
+      ]
+    },
+    {
+      "id": "caption-group-214",
+      "frame": 16,
+      "start": 172.394,
+      "end": 172.714,
+      "text": "Com os",
+      "words": [
+        {
+          "id": "caption-word-214-0",
+          "text": "Com",
+          "start": 172.394,
+          "end": 172.554
+        },
+        {
+          "id": "caption-word-214-1",
+          "text": "os",
+          "start": 172.554,
+          "end": 172.714
+        }
+      ]
+    },
+    {
+      "id": "caption-group-215",
+      "frame": 16,
+      "start": 172.714,
+      "end": 173.194,
+      "text": "números,",
+      "words": [
+        {
+          "id": "caption-word-215-0",
+          "text": "números,",
+          "start": 172.714,
+          "end": 173.114
+        }
+      ]
+    },
+    {
+      "id": "caption-group-216",
+      "frame": 16,
+      "start": 173.194,
+      "end": 174.434,
+      "text": "o gestor identifica",
+      "words": [
+        {
+          "id": "caption-word-216-0",
+          "text": "o",
+          "start": 173.194,
+          "end": 173.274
+        },
+        {
+          "id": "caption-word-216-1",
+          "text": "gestor",
+          "start": 173.274,
+          "end": 173.834
+        },
+        {
+          "id": "caption-word-216-2",
+          "text": "identifica",
+          "start": 173.834,
+          "end": 174.314
+        }
+      ]
+    },
+    {
+      "id": "caption-group-217",
+      "frame": 16,
+      "start": 174.474,
+      "end": 174.954,
+      "text": "problemas,",
+      "words": [
+        {
+          "id": "caption-word-217-0",
+          "text": "problemas,",
+          "start": 174.474,
+          "end": 174.954
+        }
+      ]
+    },
+    {
+      "id": "caption-group-218",
+      "frame": 16,
+      "start": 174.954,
+      "end": 175.594,
+      "text": "compara com",
+      "words": [
+        {
+          "id": "caption-word-218-0",
+          "text": "compara",
+          "start": 174.954,
+          "end": 175.434
+        },
+        {
+          "id": "caption-word-218-1",
+          "text": "com",
+          "start": 175.434,
+          "end": 175.594
+        }
+      ]
+    },
+    {
+      "id": "caption-group-219",
+      "frame": 16,
+      "start": 175.594,
+      "end": 176.154,
+      "text": "as metas,",
+      "words": [
+        {
+          "id": "caption-word-219-0",
+          "text": "as",
+          "start": 175.594,
+          "end": 175.674
+        },
+        {
+          "id": "caption-word-219-1",
+          "text": "metas,",
+          "start": 175.674,
+          "end": 176.154
+        }
+      ]
+    },
+    {
+      "id": "caption-group-220",
+      "frame": 16,
+      "start": 176.154,
+      "end": 178.154,
+      "text": "reconhece desperdícios e age.",
+      "words": [
+        {
+          "id": "caption-word-220-0",
+          "text": "reconhece",
+          "start": 176.154,
+          "end": 176.714
+        },
+        {
+          "id": "caption-word-220-1",
+          "text": "desperdícios",
+          "start": 176.714,
+          "end": 177.354
+        },
+        {
+          "id": "caption-word-220-2",
+          "text": "e",
+          "start": 177.354,
+          "end": 177.514
+        },
+        {
+          "id": "caption-word-220-3",
+          "text": "age.",
+          "start": 177.514,
+          "end": 178.154
+        }
+      ]
+    },
+    {
+      "id": "caption-group-221",
+      "frame": 16,
+      "start": 178.154,
+      "end": 178.634,
+      "text": "A frase",
+      "words": [
+        {
+          "id": "caption-word-221-0",
+          "text": "A",
+          "start": 178.154,
+          "end": 178.314
+        },
+        {
+          "id": "caption-word-221-1",
+          "text": "frase",
+          "start": 178.314,
+          "end": 178.634
+        }
+      ]
+    },
+    {
+      "id": "caption-group-222",
+      "frame": 16,
+      "start": 178.634,
+      "end": 179.234,
+      "text": "de ouro:",
+      "words": [
+        {
+          "id": "caption-word-222-0",
+          "text": "de",
+          "start": 178.634,
+          "end": 178.794
+        },
+        {
+          "id": "caption-word-222-1",
+          "text": "ouro:",
+          "start": 178.794,
+          "end": 179.114
+        }
+      ]
+    },
+    {
+      "id": "caption-group-223",
+      "frame": 16,
+      "start": 179.514,
+      "end": 180.834,
+      "text": "indicadores não servem",
+      "words": [
+        {
+          "id": "caption-word-223-0",
+          "text": "indicadores",
+          "start": 179.514,
+          "end": 180.074
+        },
+        {
+          "id": "caption-word-223-1",
+          "text": "não",
+          "start": 180.234,
+          "end": 180.394
+        },
+        {
+          "id": "caption-word-223-2",
+          "text": "servem",
+          "start": 180.394,
+          "end": 180.714
+        }
+      ]
+    },
+    {
+      "id": "caption-group-224",
+      "frame": 16,
+      "start": 180.874,
+      "end": 181.914,
+      "text": "só para medir;",
+      "words": [
+        {
+          "id": "caption-word-224-0",
+          "text": "só",
+          "start": 180.874,
+          "end": 181.034
+        },
+        {
+          "id": "caption-word-224-1",
+          "text": "para",
+          "start": 181.034,
+          "end": 181.194
+        },
+        {
+          "id": "caption-word-224-2",
+          "text": "medir;",
+          "start": 181.194,
+          "end": 181.914
+        }
+      ]
+    },
+    {
+      "id": "caption-group-225",
+      "frame": 16,
+      "start": 181.914,
+      "end": 183.074,
+      "text": "servem para orientar",
+      "words": [
+        {
+          "id": "caption-word-225-0",
+          "text": "servem",
+          "start": 181.914,
+          "end": 182.394
+        },
+        {
+          "id": "caption-word-225-1",
+          "text": "para",
+          "start": 182.394,
+          "end": 182.554
+        },
+        {
+          "id": "caption-word-225-2",
+          "text": "orientar",
+          "start": 182.554,
+          "end": 182.954
+        }
+      ]
+    },
+    {
+      "id": "caption-group-226",
+      "frame": 16,
+      "start": 183.114,
+      "end": 183.754,
+      "text": "decisões e",
+      "words": [
+        {
+          "id": "caption-word-226-0",
+          "text": "decisões",
+          "start": 183.114,
+          "end": 183.594
+        },
+        {
+          "id": "caption-word-226-1",
+          "text": "e",
+          "start": 183.594,
+          "end": 183.754
+        }
+      ]
+    },
+    {
+      "id": "caption-group-227",
+      "frame": 16,
+      "start": 183.754,
+      "end": 185.173,
+      "text": "gerar melhoria contínua.",
+      "words": [
+        {
+          "id": "caption-word-227-0",
+          "text": "gerar",
+          "start": 183.754,
+          "end": 184.074
+        },
+        {
+          "id": "caption-word-227-1",
+          "text": "melhoria",
+          "start": 184.074,
+          "end": 184.634
+        },
+        {
+          "id": "caption-word-227-2",
+          "text": "contínua.",
+          "start": 184.634,
+          "end": 185.114
+        }
+      ]
+    },
+    {
+      "id": "caption-group-228",
+      "frame": 17,
+      "start": 185.173,
+      "end": 185.733,
+      "text": "Revise a",
+      "words": [
+        {
+          "id": "caption-word-228-0",
+          "text": "Revise",
+          "start": 185.173,
+          "end": 185.653
+        },
+        {
+          "id": "caption-word-228-1",
+          "text": "a",
+          "start": 185.653,
+          "end": 185.733
+        }
+      ]
+    },
+    {
+      "id": "caption-group-229",
+      "frame": 17,
+      "start": 185.733,
+      "end": 186.133,
+      "text": "cola.",
+      "words": [
+        {
+          "id": "caption-word-229-0",
+          "text": "cola.",
+          "start": 185.733,
+          "end": 186.133
+        }
+      ]
+    },
+    {
+      "id": "caption-group-230",
+      "frame": 17,
+      "start": 186.133,
+      "end": 186.693,
+      "text": "Volume,",
+      "words": [
+        {
+          "id": "caption-word-230-0",
+          "text": "Volume,",
+          "start": 186.133,
+          "end": 186.693
+        }
+      ]
+    },
+    {
+      "id": "caption-group-231",
+      "frame": 17,
+      "start": 186.693,
+      "end": 187.333,
+      "text": "variedade,",
+      "words": [
+        {
+          "id": "caption-word-231-0",
+          "text": "variedade,",
+          "start": 186.693,
+          "end": 187.333
+        }
+      ]
+    },
+    {
+      "id": "caption-group-232",
+      "frame": 17,
+      "start": 187.333,
+      "end": 188.693,
+      "text": "variação e visibilidade",
+      "words": [
+        {
+          "id": "caption-word-232-0",
+          "text": "variação",
+          "start": 187.333,
+          "end": 187.813
+        },
+        {
+          "id": "caption-word-232-1",
+          "text": "e",
+          "start": 187.813,
+          "end": 187.973
+        },
+        {
+          "id": "caption-word-232-2",
+          "text": "visibilidade",
+          "start": 187.973,
+          "end": 188.693
+        }
+      ]
+    },
+    {
+      "id": "caption-group-233",
+      "frame": 17,
+      "start": 188.693,
+      "end": 189.733,
+      "text": "viram perguntas.",
+      "words": [
+        {
+          "id": "caption-word-233-0",
+          "text": "viram",
+          "start": 188.693,
+          "end": 189.173
+        },
+        {
+          "id": "caption-word-233-1",
+          "text": "perguntas.",
+          "start": 189.173,
+          "end": 189.733
+        }
+      ]
+    },
+    {
+      "id": "caption-group-234",
+      "frame": 17,
+      "start": 189.733,
+      "end": 190.453,
+      "text": "PPCP:",
+      "words": [
+        {
+          "id": "caption-word-234-0",
+          "text": "PPCP:",
+          "start": 189.733,
+          "end": 190.453
+        }
+      ]
+    },
+    {
+      "id": "caption-group-235",
+      "frame": 17,
+      "start": 190.453,
+      "end": 190.773,
+      "text": "o quê,",
+      "words": [
+        {
+          "id": "caption-word-235-0",
+          "text": "o",
+          "start": 190.453,
+          "end": 190.533
+        },
+        {
+          "id": "caption-word-235-1",
+          "text": "quê,",
+          "start": 190.533,
+          "end": 190.693
+        }
+      ]
+    },
+    {
+      "id": "caption-group-236",
+      "frame": 17,
+      "start": 190.773,
+      "end": 191.093,
+      "text": "quando e",
+      "words": [
+        {
+          "id": "caption-word-236-0",
+          "text": "quando",
+          "start": 190.773,
+          "end": 190.853
+        },
+        {
+          "id": "caption-word-236-1",
+          "text": "e",
+          "start": 191.013,
+          "end": 191.093
+        }
+      ]
+    },
+    {
+      "id": "caption-group-237",
+      "frame": 17,
+      "start": 191.093,
+      "end": 191.653,
+      "text": "conferiu.",
+      "words": [
+        {
+          "id": "caption-word-237-0",
+          "text": "conferiu.",
+          "start": 191.093,
+          "end": 191.653
+        }
+      ]
+    },
+    {
+      "id": "caption-group-238",
+      "frame": 17,
+      "start": 191.653,
+      "end": 192.493,
+      "text": "Kanban sinaliza,",
+      "words": [
+        {
+          "id": "caption-word-238-0",
+          "text": "Kanban",
+          "start": 191.653,
+          "end": 191.973
+        },
+        {
+          "id": "caption-word-238-1",
+          "text": "sinaliza,",
+          "start": 192.133,
+          "end": 192.373
+        }
+      ]
+    },
+    {
+      "id": "caption-group-239",
+      "frame": 17,
+      "start": 192.773,
+      "end": 193.173,
+      "text": "Just in",
+      "words": [
+        {
+          "id": "caption-word-239-0",
+          "text": "Just",
+          "start": 192.773,
+          "end": 193.04
+        },
+        {
+          "id": "caption-word-239-1",
+          "text": "in",
+          "start": 193.04,
+          "end": 193.173
+        }
+      ]
+    },
+    {
+      "id": "caption-group-240",
+      "frame": 17,
+      "start": 193.173,
+      "end": 193.573,
+      "text": "Time na",
+      "words": [
+        {
+          "id": "caption-word-240-0",
+          "text": "Time",
+          "start": 193.173,
+          "end": 193.333
+        },
+        {
+          "id": "caption-word-240-1",
+          "text": "na",
+          "start": 193.493,
+          "end": 193.573
+        }
+      ]
+    },
+    {
+      "id": "caption-group-241",
+      "frame": 17,
+      "start": 193.573,
+      "end": 193.813,
+      "text": "hora,",
+      "words": [
+        {
+          "id": "caption-word-241-0",
+          "text": "hora,",
+          "start": 193.573,
+          "end": 193.813
+        }
+      ]
+    },
+    {
+      "id": "caption-group-242",
+      "frame": 17,
+      "start": 193.813,
+      "end": 195.093,
+      "text": "Enxuta enxuga.",
+      "words": [
+        {
+          "id": "caption-word-242-0",
+          "text": "Enxuta",
+          "start": 193.813,
+          "end": 194.293
+        },
+        {
+          "id": "caption-word-242-1",
+          "text": "enxuga.",
+          "start": 194.373,
+          "end": 195.093
+        }
+      ]
+    },
+    {
+      "id": "caption-group-243",
+      "frame": 17,
+      "start": 195.093,
+      "end": 195.573,
+      "text": "Previsão:",
+      "words": [
+        {
+          "id": "caption-word-243-0",
+          "text": "Previsão:",
+          "start": 195.093,
+          "end": 195.493
+        }
+      ]
+    },
+    {
+      "id": "caption-group-244",
+      "frame": 17,
+      "start": 195.573,
+      "end": 196.373,
+      "text": "sobra custa,",
+      "words": [
+        {
+          "id": "caption-word-244-0",
+          "text": "sobra",
+          "start": 195.573,
+          "end": 195.973
+        },
+        {
+          "id": "caption-word-244-1",
+          "text": "custa,",
+          "start": 195.973,
+          "end": 196.293
+        }
+      ]
+    },
+    {
+      "id": "caption-group-245",
+      "frame": 17,
+      "start": 196.373,
+      "end": 197.173,
+      "text": "falta atrasa,",
+      "words": [
+        {
+          "id": "caption-word-245-0",
+          "text": "falta",
+          "start": 196.373,
+          "end": 196.693
+        },
+        {
+          "id": "caption-word-245-1",
+          "text": "atrasa,",
+          "start": 196.693,
+          "end": 197.173
+        }
+      ]
+    },
+    {
+      "id": "caption-group-246",
+      "frame": 17,
+      "start": 197.173,
+      "end": 197.413,
+      "text": "e os",
+      "words": [
+        {
+          "id": "caption-word-246-0",
+          "text": "e",
+          "start": 197.173,
+          "end": 197.253
+        },
+        {
+          "id": "caption-word-246-1",
+          "text": "os",
+          "start": 197.253,
+          "end": 197.413
+        }
+      ]
+    },
+    {
+      "id": "caption-group-247",
+      "frame": 17,
+      "start": 197.413,
+      "end": 198.293,
+      "text": "três As.",
+      "words": [
+        {
+          "id": "caption-word-247-0",
+          "text": "três",
+          "start": 197.413,
+          "end": 197.733
+        },
+        {
+          "id": "caption-word-247-1",
+          "text": "As.",
+          "start": 197.733,
+          "end": 198.293
+        }
+      ]
+    },
+    {
+      "id": "caption-group-248",
+      "frame": 17,
+      "start": 198.293,
+      "end": 199.093,
+      "text": "Indicadores:",
+      "words": [
+        {
+          "id": "caption-word-248-0",
+          "text": "Indicadores:",
+          "start": 198.293,
+          "end": 199.093
+        }
+      ]
+    },
+    {
+      "id": "caption-group-249",
+      "frame": 17,
+      "start": 199.093,
+      "end": 199.973,
+      "text": "produtividade,",
+      "words": [
+        {
+          "id": "caption-word-249-0",
+          "text": "produtividade,",
+          "start": 199.093,
+          "end": 199.973
+        }
+      ]
+    },
+    {
+      "id": "caption-group-250",
+      "frame": 17,
+      "start": 199.973,
+      "end": 201.429,
+      "text": "eficiência e qualidade.",
+      "words": [
+        {
+          "id": "caption-word-250-0",
+          "text": "eficiência",
+          "start": 199.973,
+          "end": 200.613
+        },
+        {
+          "id": "caption-word-250-1",
+          "text": "e",
+          "start": 200.613,
+          "end": 200.773
+        },
+        {
+          "id": "caption-word-250-2",
+          "text": "qualidade.",
+          "start": 200.773,
+          "end": 201.333
+        }
+      ]
+    },
+    {
+      "id": "caption-group-251",
+      "frame": 18,
+      "start": 201.429,
+      "end": 201.829,
+      "text": "E em",
+      "words": [
+        {
+          "id": "caption-word-251-0",
+          "text": "E",
+          "start": 201.429,
+          "end": 201.669
+        },
+        {
+          "id": "caption-word-251-1",
+          "text": "em",
+          "start": 201.669,
+          "end": 201.829
+        }
+      ]
+    },
+    {
+      "id": "caption-group-252",
+      "frame": 18,
+      "start": 201.829,
+      "end": 202.629,
+      "text": "toda resposta:",
+      "words": [
+        {
+          "id": "caption-word-252-0",
+          "text": "toda",
+          "start": 201.829,
+          "end": 202.069
+        },
+        {
+          "id": "caption-word-252-1",
+          "text": "resposta:",
+          "start": 202.069,
+          "end": 202.629
+        }
+      ]
+    },
+    {
+      "id": "caption-group-253",
+      "frame": 18,
+      "start": 202.629,
+      "end": 203.349,
+      "text": "importância,",
+      "words": [
+        {
+          "id": "caption-word-253-0",
+          "text": "importância,",
+          "start": 202.629,
+          "end": 203.349
+        }
+      ]
+    },
+    {
+      "id": "caption-group-254",
+      "frame": 18,
+      "start": 203.349,
+      "end": 203.829,
+      "text": "definição,",
+      "words": [
+        {
+          "id": "caption-word-254-0",
+          "text": "definição,",
+          "start": 203.349,
+          "end": 203.829
+        }
+      ]
+    },
+    {
+      "id": "caption-group-255",
+      "frame": 18,
+      "start": 203.829,
+      "end": 204.989,
+      "text": "efeito e fecho.",
+      "words": [
+        {
+          "id": "caption-word-255-0",
+          "text": "efeito",
+          "start": 203.829,
+          "end": 204.309
+        },
+        {
+          "id": "caption-word-255-1",
+          "text": "e",
+          "start": 204.309,
+          "end": 204.389
+        },
+        {
+          "id": "caption-word-255-2",
+          "text": "fecho.",
+          "start": 204.389,
+          "end": 204.869
+        }
+      ]
+    },
+    {
+      "id": "caption-group-256",
+      "frame": 18,
+      "start": 205.029,
+      "end": 205.669,
+      "text": "Respire,",
+      "words": [
+        {
+          "id": "caption-word-256-0",
+          "text": "Respire,",
+          "start": 205.029,
+          "end": 205.589
+        }
+      ]
+    },
+    {
+      "id": "caption-group-257",
+      "frame": 18,
+      "start": 205.669,
+      "end": 206.069,
+      "text": "siga a",
+      "words": [
+        {
+          "id": "caption-word-257-0",
+          "text": "siga",
+          "start": 205.669,
+          "end": 205.989
+        },
+        {
+          "id": "caption-word-257-1",
+          "text": "a",
+          "start": 205.989,
+          "end": 206.069
+        }
+      ]
+    },
+    {
+      "id": "caption-group-258",
+      "frame": 18,
+      "start": 206.069,
+      "end": 206.469,
+      "text": "fórmula,",
+      "words": [
+        {
+          "id": "caption-word-258-0",
+          "text": "fórmula,",
+          "start": 206.069,
+          "end": 206.469
+        }
+      ]
+    },
+    {
+      "id": "caption-group-259",
+      "frame": 18,
+      "start": 206.469,
+      "end": 207.389,
+      "text": "e boa prova!",
+      "words": [
+        {
+          "id": "caption-word-259-0",
+          "text": "e",
+          "start": 206.469,
+          "end": 206.629
+        },
+        {
+          "id": "caption-word-259-1",
+          "text": "boa",
+          "start": 206.629,
+          "end": 206.949
+        },
+        {
+          "id": "caption-word-259-2",
+          "text": "prova!",
+          "start": 206.949,
+          "end": 207.269
+        }
+      ]
+    }
+  ]
+}
