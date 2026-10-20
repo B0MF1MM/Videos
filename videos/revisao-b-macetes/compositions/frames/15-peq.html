@@ -1,0 +1,759 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f15-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f15-stage { position: absolute; inset: 0; }
+    .f15-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f15-hair-top { top: 70px; }
+    .f15-hair-bot { top: 892px; }
+    .f15-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f15-chrome-tag { left: 77px; }
+    .f15-chrome-num { right: 77px; }
+
+    .f15-content { position: absolute; inset: 0; transform-origin: 50% 45%; }
+    .f15-layer { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .f15-abs { position: absolute; }
+
+    /* ---------- headline P · E · Q ---------- */
+    .f15-slot {
+      position: absolute;
+      top: 96px;
+      display: flex;
+      align-items: baseline;
+      white-space: nowrap;
+    }
+    .f15-hl {
+      font-family: "Newsreader", serif;
+      font-size: 112px;
+      line-height: 1;
+      letter-spacing: -0.008em;
+    }
+    .f15-hr {
+      margin-left: 8px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: 0.12em;
+    }
+    .f15-dot {
+      position: absolute;
+      top: 96px;
+      font-family: "Newsreader", serif;
+      font-size: 112px;
+      line-height: 1;
+    }
+
+    /* ---------- machine ---------- */
+    .f15-box { position: absolute; box-sizing: border-box; border: 5px solid #1F2BE0; background: #F0EBDE; }
+    .f15-fill { position: absolute; background: #1F2BE0; }
+    .f15-paper { position: absolute; background: #F0EBDE; }
+    .f15-gear {
+      position: absolute;
+      left: 192px;
+      top: 442px;
+      width: 56px;
+      height: 56px;
+      box-sizing: border-box;
+      border: 4px solid #1F2BE0;
+    }
+    .f15-gear i { position: absolute; background: #1F2BE0; }
+    .f15-puff {
+      position: absolute;
+      left: 335px;
+      top: 266px;
+      width: 26px;
+      height: 26px;
+      box-sizing: border-box;
+      border: 4px solid #1F2BE0;
+    }
+
+    /* ---------- conveyor ---------- */
+    .f15-belt {
+      position: absolute;
+      left: 430px;
+      top: 660px;
+      width: 570px;
+      height: 30px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      overflow: hidden;
+      background: #F0EBDE;
+    }
+    .f15-strip {
+      position: absolute;
+      left: -2800px;
+      top: 9px;
+      width: 3400px;
+      height: 6px;
+      background: repeating-linear-gradient(90deg, #1F2BE0 0 14px, transparent 14px 40px);
+    }
+    .f15-roller {
+      position: absolute;
+      top: 696px;
+      width: 20px;
+      height: 20px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+    }
+    .f15-roller i { position: absolute; left: 6px; top: -1px; width: 3px; height: 16px; background: #1F2BE0; }
+    .f15-pc {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background: #1F2BE0;
+    }
+    .f15-pc b {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      border: 4px solid #1F2BE0;
+      background: #F0EBDE;
+      opacity: 0;
+    }
+    .f15-pc b i {
+      position: absolute;
+      left: 9px;
+      top: -1px;
+      width: 4px;
+      height: 24px;
+      background: #1F2BE0;
+    }
+    .f15-pc b i.a { transform: rotate(45deg); }
+    .f15-pc b i.b { transform: rotate(-45deg); }
+
+    /* ---------- counters on the scene ---------- */
+    .f15-peca {
+      position: absolute;
+      left: 470px;
+      top: 262px;
+      width: 300px;
+      height: 140px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+    }
+    .f15-peca-lab {
+      position: absolute;
+      left: 20px;
+      top: 14px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 34px;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+    }
+    .f15-peca-num {
+      position: absolute;
+      left: 20px;
+      top: 44px;
+      width: 200px;
+      font-family: "Newsreader", serif;
+      font-size: 86px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      transform-origin: 0% 100%;
+      white-space: nowrap;
+    }
+    .f15-clock {
+      position: absolute;
+      left: 800px;
+      top: 262px;
+      width: 130px;
+      height: 130px;
+      box-sizing: border-box;
+      border: 4px solid #1F2BE0;
+      background: #F0EBDE;
+    }
+    .f15-clock .tk { position: absolute; width: 10px; height: 10px; background: #1F2BE0; }
+    .f15-hand { position: absolute; background: #1F2BE0; transform-origin: 50% 100%; }
+    .f15-8h {
+      position: absolute;
+      left: 946px;
+      top: 298px;
+      font-family: "Newsreader", serif;
+      font-size: 60px;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    /* ---------- ruler ---------- */
+    .f15-mono {
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      line-height: 34px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .f15-real {
+      position: absolute;
+      left: 490px;
+      top: 506px;
+      width: 350px;
+      height: 50px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      transform-origin: 0% 50%;
+    }
+    .f15-real span { position: absolute; left: 16px; top: 8px; }
+    .f15-gap {
+      position: absolute;
+      left: 843px;
+      top: 509px;
+      width: 61px;
+      height: 44px;
+      background: repeating-linear-gradient(45deg, rgba(31,43,224,0.45) 0 3px, transparent 3px 10px);
+    }
+    .f15-tklab { position: absolute; top: 586px; width: 60px; text-align: center; font-size: 27px; }
+
+    /* ---------- basket ---------- */
+    .f15-bcell { position: absolute; width: 30px; height: 30px; background: #1F2BE0; }
+    .f15-reflab {
+      position: absolute;
+      left: 862px;
+      top: 770px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 34px;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+    .f15-refnum {
+      position: absolute;
+      left: 862px;
+      top: 808px;
+      width: 120px;
+      font-family: "Newsreader", serif;
+      font-size: 56px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    /* ---------- P · E · Q counter cards ---------- */
+    .f15-card {
+      position: absolute;
+      left: 1060px;
+      width: 750px;
+      height: 200px;
+      background: #F0EBDE;
+    }
+    .f15-cb-off { position: absolute; inset: 0; box-sizing: border-box; border: 3px dashed rgba(31,43,224,0.40); }
+    .f15-cb-on { position: absolute; inset: 0; box-sizing: border-box; border: 4px solid #1F2BE0; }
+    .f15-sq {
+      position: absolute;
+      left: 24px;
+      top: 40px;
+      width: 120px;
+      height: 120px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Newsreader", serif;
+      font-size: 96px;
+      line-height: 112px;
+      text-align: center;
+    }
+    .f15-expr { position: absolute; left: 170px; top: 14px; font-size: 34px; line-height: 40px; }
+    .f15-big {
+      position: absolute;
+      left: 170px;
+      display: flex;
+      align-items: baseline;
+      white-space: nowrap;
+    }
+    .f15-num {
+      display: inline-block;
+      font-family: "Newsreader", serif;
+      font-size: 104px;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      font-variant-numeric: tabular-nums;
+      transform-origin: 0% 100%;
+    }
+    .f15-suf-ser { font-family: "Newsreader", serif; font-size: 52px; line-height: 1; margin-left: 10px; }
+    .f15-suf-it { font-family: "Newsreader", serif; font-style: italic; font-size: 40px; line-height: 1; margin-left: 12px; }
+    .f15-suf-mono { font-family: "DM Mono", monospace; font-size: 34px; line-height: 1; margin: 0 12px 0 14px; }
+    .f15-lab { position: absolute; left: 170px; top: 152px; font-size: 27px; line-height: 34px; }
+    .f15-pbar { position: absolute; top: 56px; width: 14px; height: 100px; background: #1F2BE0; transform-origin: 50% 100%; }
+    .f15-pbase { position: absolute; left: 572px; top: 158px; width: 158px; height: 3px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f15-ebar { position: absolute; width: 50px; transform-origin: 50% 100%; box-sizing: border-box; }
+    .f15-qcell { position: absolute; width: 20px; height: 20px; background: #1F2BE0; }
+    .f15-qoff { position: absolute; width: 20px; height: 20px; box-sizing: border-box; border: 3px solid #1F2BE0; }
+  </style>
+
+  <div id="root" data-composition-id="15-peq" data-width="1920" data-height="1080" data-duration="18.079">
+    <div id="f15-ground" class="f15-ground clip" data-start="0" data-duration="18.079" data-track-index="0"></div>
+
+    <div id="f15-stage" class="f15-stage clip" data-start="0" data-duration="18.079" data-track-index="1">
+      <div class="f15-hair f15-hair-top"></div>
+      <div class="f15-hair f15-hair-bot"></div>
+      <div class="f15-chrome f15-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f15-chrome f15-chrome-num">15 / 18</div>
+
+      <div class="f15-content" id="f15-content">
+
+        <!-- ===== headline P · E · Q ===== -->
+        <div class="f15-slot" id="f15-hP" style="left:110px;"><span class="f15-hl" id="f15-hP-l">P</span><span class="f15-hr" id="f15-hP-r">RODUTIVIDADE</span></div>
+        <div class="f15-dot" id="f15-d1" style="left:606px;">·</div>
+        <div class="f15-slot" id="f15-hE" style="left:650px;"><span class="f15-hl" id="f15-hE-l">E</span><span class="f15-hr" id="f15-hE-r">FICIÊNCIA</span></div>
+        <div class="f15-dot" id="f15-d2" style="left:1055px;">·</div>
+        <div class="f15-slot" id="f15-hQ" style="left:1100px;"><span class="f15-hl" id="f15-hQ-l">Q</span><span class="f15-hr" id="f15-hQ-r">UALIDADE</span></div>
+
+        <!-- ===== ruler (Scene 3) ===== -->
+        <div class="f15-layer" id="f15-ruler">
+          <div class="f15-abs f15-mono" id="f15-padlab" style="left:820px; top:438px; width:180px; text-align:center;">PADRÃO 30</div>
+          <div class="f15-fill" id="f15-axis" style="left:480px; top:568px; width:500px; height:4px; transform-origin:0% 50%;"></div>
+          <div class="f15-layer" id="f15-ticks"></div>
+          <div class="f15-abs f15-mono f15-tklab" id="f15-t0" style="left:460px;">0</div>
+          <div class="f15-abs f15-mono f15-tklab" id="f15-t10" style="left:600px;">10</div>
+          <div class="f15-abs f15-mono f15-tklab" id="f15-t20" style="left:740px;">20</div>
+          <div class="f15-abs f15-mono f15-tklab" id="f15-t30" style="left:880px;">30</div>
+          <div class="f15-gap" id="f15-gap"></div>
+          <div class="f15-real" id="f15-real"><span class="f15-mono" id="f15-real-t">REAL 25</span></div>
+          <div class="f15-fill" id="f15-mark" style="left:907px; top:480px; width:6px; height:96px; transform-origin:50% 100%;"></div>
+        </div>
+
+        <!-- ===== counters on the scene ===== -->
+        <div class="f15-peca" id="f15-peca">
+          <div class="f15-peca-lab" id="f15-peca-lab">PEÇAS</div>
+          <div class="f15-peca-num" id="f15-peca-num">0</div>
+        </div>
+        <div class="f15-clock" id="f15-clock">
+          <div class="tk" style="left:56px; top:6px;"></div>
+          <div class="tk" style="left:106px; top:56px;"></div>
+          <div class="tk" style="left:56px; top:106px;"></div>
+          <div class="tk" style="left:6px; top:56px;"></div>
+          <div class="f15-hand" id="f15-hand-h" style="left:57px; top:24px; width:8px; height:37px;"></div>
+          <div class="f15-hand" id="f15-hand-m" style="left:58px; top:12px; width:6px; height:49px;"></div>
+          <div class="f15-fill" style="left:54px; top:54px; width:14px; height:14px;"></div>
+        </div>
+        <div class="f15-8h" id="f15-8h">8 h</div>
+
+        <!-- ===== basket (Scene 4) ===== -->
+        <div class="f15-layer" id="f15-basket">
+          <div class="f15-fill" style="left:600px; top:750px; width:5px; height:122px;"></div>
+          <div class="f15-fill" style="left:835px; top:750px; width:5px; height:122px;"></div>
+          <div class="f15-fill" style="left:600px; top:867px; width:240px; height:5px;"></div>
+        </div>
+        <div class="f15-layer" id="f15-bcells"></div>
+        <div class="f15-reflab" id="f15-reflab">REFUGO</div>
+        <div class="f15-refnum" id="f15-refnum">0</div>
+
+        <!-- ===== conveyor ===== -->
+        <div class="f15-layer" id="f15-conv" style="transform-origin:430px 680px;">
+          <div class="f15-fill" style="left:468px; top:690px; width:4px; height:70px;"></div>
+          <div class="f15-fill" style="left:968px; top:690px; width:4px; height:70px;"></div>
+          <div class="f15-belt" id="f15-belt"><div class="f15-strip" id="f15-strip"></div></div>
+          <div class="f15-roller" id="f15-r0" style="left:446px;"><i></i></div>
+          <div class="f15-roller" id="f15-r1" style="left:576px;"><i></i></div>
+          <div class="f15-roller" id="f15-r2" style="left:880px;"><i></i></div>
+          <div class="f15-roller" id="f15-r3" style="left:960px;"><i></i></div>
+        </div>
+        <!-- gate: hole + flap + sensor -->
+        <div class="f15-paper" id="f15-hole" style="left:690px; top:657px; width:44px; height:36px; transform-origin:50% 50%;"></div>
+        <div class="f15-fill" id="f15-flap" style="left:690px; top:660px; width:44px; height:6px; transform-origin:0% 50%;"></div>
+        <div class="f15-abs" id="f15-sensor" style="left:701px; top:604px; width:24px; height:16px; box-sizing:border-box; border:3px solid #1F2BE0;">
+          <div class="f15-fill" id="f15-sensor-i" style="left:3px; top:2px; width:12px; height:6px;"></div>
+        </div>
+
+        <!-- pieces (generated) -->
+        <div class="f15-layer" id="f15-pieces"></div>
+
+        <!-- ===== machine ===== -->
+        <div class="f15-layer" id="f15-machine">
+          <div class="f15-layer" id="f15-puffs">
+            <div class="f15-puff" id="f15-pf0"></div>
+            <div class="f15-puff" id="f15-pf1"></div>
+            <div class="f15-puff" id="f15-pf2"></div>
+          </div>
+          <div class="f15-layer" id="f15-mbody">
+            <div class="f15-fill" style="left:310px; top:296px; width:76px; height:12px;"></div>
+            <div class="f15-box" style="left:320px; top:304px; width:56px; height:92px;"></div>
+            <div class="f15-box" style="left:140px; top:390px; width:280px; height:300px;"></div>
+            <div class="f15-box" style="left:172px; top:422px; width:96px; height:96px; border-width:4px;"></div>
+            <div class="f15-gear" id="f15-gear">
+              <i style="left:22px; top:-12px; width:4px; height:72px;"></i>
+              <i style="left:-12px; top:22px; width:72px; height:4px;"></i>
+            </div>
+            <div class="f15-fill" style="left:290px; top:432px; width:100px; height:6px;"></div>
+            <div class="f15-fill" style="left:290px; top:452px; width:100px; height:6px;"></div>
+            <div class="f15-fill" style="left:290px; top:472px; width:100px; height:6px;"></div>
+            <div class="f15-fill" style="left:290px; top:492px; width:100px; height:6px;"></div>
+            <div class="f15-box" style="left:176px; top:572px; width:56px; height:56px; border-width:4px;"></div>
+            <div class="f15-fill" id="f15-btn" style="left:190px; top:586px; width:28px; height:28px;"></div>
+            <div class="f15-fill" id="f15-lamp" style="left:290px; top:590px; width:22px; height:22px;"></div>
+            <div class="f15-paper" style="left:413px; top:621px; width:14px; height:39px;"></div>
+            <div class="f15-fill" style="left:404px; top:614px; width:30px; height:6px;"></div>
+            <div class="f15-fill" style="left:160px; top:690px; width:30px; height:22px;"></div>
+            <div class="f15-fill" style="left:370px; top:690px; width:30px; height:22px;"></div>
+          </div>
+        </div>
+
+        <!-- ===== card P ===== -->
+        <div class="f15-card" id="f15-cP" style="top:236px;">
+          <div class="f15-cb-off" id="f15-cP-off"></div>
+          <div class="f15-cb-on" id="f15-cP-on"></div>
+          <div class="f15-sq" id="f15-cP-sq">P</div>
+          <div class="f15-expr f15-mono" id="f15-p-expr">200 ÷ 8 =</div>
+          <div class="f15-big" id="f15-p-big" style="top:48px;">
+            <span class="f15-num" id="f15-p-num" style="width:112px;">0</span><span class="f15-suf-ser" id="f15-p-suf">/h</span>
+          </div>
+          <div class="f15-lab f15-mono" id="f15-p-lab">RESULTADO ÷ RECURSOS</div>
+          <div class="f15-abs" id="f15-p-gfx" style="left:0; top:0; width:750px; height:200px;">
+            <div class="f15-pbar" id="f15-pb0" style="left:576px;"></div>
+            <div class="f15-pbar" id="f15-pb1" style="left:596px;"></div>
+            <div class="f15-pbar" id="f15-pb2" style="left:616px;"></div>
+            <div class="f15-pbar" id="f15-pb3" style="left:636px;"></div>
+            <div class="f15-pbar" id="f15-pb4" style="left:656px;"></div>
+            <div class="f15-pbar" id="f15-pb5" style="left:676px;"></div>
+            <div class="f15-pbar" id="f15-pb6" style="left:696px;"></div>
+            <div class="f15-pbar" id="f15-pb7" style="left:716px; width:10px;"></div>
+            <div class="f15-pbase" id="f15-pbase"></div>
+          </div>
+        </div>
+
+        <!-- ===== card E ===== -->
+        <div class="f15-card" id="f15-cE" style="top:450px;">
+          <div class="f15-cb-off" id="f15-cE-off"></div>
+          <div class="f15-cb-on" id="f15-cE-on"></div>
+          <div class="f15-sq" id="f15-cE-sq">E</div>
+          <div class="f15-big" id="f15-e-big" style="top:34px;">
+            <span class="f15-num" id="f15-e-num" style="width:112px;">0</span><span class="f15-suf-mono" id="f15-e-vs">vs</span><span class="f15-num" id="f15-e-30">30</span>
+          </div>
+          <div class="f15-lab f15-mono" id="f15-e-lab">COMPARA COM O ESPERADO</div>
+          <div class="f15-ebar" id="f15-e-pad" style="left:660px; top:36px; height:120px; border:3px dashed #1F2BE0;"></div>
+          <div class="f15-ebar" id="f15-e-real" style="left:596px; top:56px; height:100px; background:#1F2BE0;"></div>
+          <div class="f15-fill" id="f15-e-base" style="left:584px; top:158px; width:142px; height:3px; transform-origin:0% 50%;"></div>
+        </div>
+
+        <!-- ===== card Q ===== -->
+        <div class="f15-card" id="f15-cQ" style="top:664px;">
+          <div class="f15-cb-off" id="f15-cQ-off"></div>
+          <div class="f15-cb-on" id="f15-cQ-on"></div>
+          <div class="f15-sq" id="f15-cQ-sq">Q</div>
+          <div class="f15-big" id="f15-q-big" style="top:34px;">
+            <span class="f15-num" id="f15-q-num" style="width:164px;">0</span><span class="f15-suf-it" id="f15-q-suf">de 200 boas</span>
+          </div>
+          <div class="f15-lab f15-mono" id="f15-q-lab">CUMPRE OS REQUISITOS</div>
+          <div class="f15-abs" id="f15-q-gfx" style="left:0; top:0; width:750px; height:200px;"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var D = 17.579;
+        var tl = gsap.timeline({ paused: true });
+        var SHOW = "inset(-30% -4% -15% -4%)";
+        var HIDE = "inset(-30% 104% -15% -4%)";
+        var BELT_V = 200;          // px / s — belt and pieces share it
+        var ON = 4.25;             // machine switches on
+
+        function $(id) { return document.getElementById(id); }
+
+        // ---------- build-time DOM (deterministic) ----------
+        // ruler ticks every 5 units (14 px / unit)
+        var tks = $("f15-ticks");
+        for (var v = 0; v <= 35; v += 5) {
+          var t = document.createElement("div");
+          t.className = "f15-fill";
+          t.style.left = (490 + v * 14 - 1) + "px";
+          t.style.top = "572px";
+          t.style.width = "3px";
+          t.style.height = (v % 10 === 0 ? 14 : 8) + "px";
+          tks.appendChild(t);
+        }
+        // Q card: 5×4 cell grid, 19 on + 1 off
+        var qg = $("f15-q-gfx");
+        var qCells = [];
+        for (var qi = 0; qi < 20; qi++) {
+          var qc = document.createElement("div");
+          qc.className = qi < 19 ? "f15-qcell" : "f15-qoff";
+          qc.style.left = (598 + (qi % 5) * 25) + "px";
+          qc.style.top = (61 + Math.floor(qi / 5) * 25) + "px";
+          qg.appendChild(qc);
+          qCells.push(qc);
+        }
+        // basket cell coordinates (5 × 2)
+        var CELL = [];
+        for (var bc = 0; bc < 10; bc++) CELL.push({ x: 621 + (bc % 5) * 42, y: 790 + Math.floor(bc / 5) * 42 });
+
+        // slow camera push under the whole shot
+        tl.fromTo("#f15-content", { scale: 1 }, { scale: 1.02, duration: D, ease: "none" }, 0);
+
+        // ================= Scene 1 (0.0–4.0) =================
+        // compact "P · E · Q" → each letter unfolds into its word
+        tl.set("#f15-d1", { x: -410 }, 0);
+        tl.set("#f15-hE", { x: -400 }, 0);
+        tl.set("#f15-d2", { x: -715 }, 0);
+        tl.set("#f15-hQ", { x: -710 }, 0);
+        ["P", "E", "Q"].forEach(function (L) { tl.set("#f15-h" + L + "-r", { opacity: 0, clipPath: HIDE }, 0); });
+        tl.fromTo(["#f15-hP-l", "#f15-d1", "#f15-hE-l", "#f15-d2", "#f15-hQ-l"], { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: "power3.out", stagger: 0.06 }, 0.05);
+
+        function unfold(L, t) {
+          tl.to("#f15-h" + L + "-l", { keyframes: { scale: [1, 1.12, 1] }, duration: 0.35, ease: "none" }, t);
+          tl.set("#f15-h" + L + "-r", { opacity: 1 }, t);
+          tl.fromTo("#f15-h" + L + "-r", { clipPath: HIDE, x: -24 }, { clipPath: SHOW, x: 0, duration: 0.55, ease: "power3.out", immediateRender: false }, t);
+        }
+        unfold("P", 0.9);
+        tl.to(["#f15-d1", "#f15-hE"], { x: 0, duration: 0.55, ease: "power3.out" }, 0.9);
+        tl.to("#f15-d2", { x: -315, duration: 0.55, ease: "power3.out" }, 0.9);
+        tl.to("#f15-hQ", { x: -310, duration: 0.55, ease: "power3.out" }, 0.9);
+        unfold("E", 1.7);
+        tl.to(["#f15-d2", "#f15-hQ"], { x: 0, duration: 0.55, ease: "power3.out" }, 1.7);
+        unfold("Q", 2.5);
+
+        // machine slides in, conveyor rolls out
+        tl.fromTo("#f15-machine", { x: -460, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9, ease: "power3.out" }, 0.25);
+        tl.fromTo("#f15-conv", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 1.0);
+        tl.set("#f15-btn", { scale: 0 }, 0);
+        tl.set("#f15-lamp", { opacity: 0.2 }, 0);
+        // standby blink on the square button
+        tl.to("#f15-btn", { keyframes: { scale: [0, 0.45, 0, 0.45, 0, 0.45, 0] }, duration: 2.2, ease: "none" }, 1.6);
+
+        // empty counter cards arrive with their letters
+        ["P", "E", "Q"].forEach(function (L, i) {
+          var t0 = 2.9 + i * 0.2;
+          tl.set("#f15-c" + L + "-on", { opacity: 0 }, 0);
+          tl.fromTo("#f15-c" + L, { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, t0);
+          tl.fromTo("#f15-c" + L + "-sq", { scale: 0.3 }, { scale: 1, duration: 0.5, ease: "back.out(2.4)" }, t0 + 0.12);
+        });
+        // hide all card contents until their cue
+        ["#f15-p-expr", "#f15-p-lab", "#f15-e-lab", "#f15-q-lab"].forEach(function (s) { tl.set(s, { clipPath: HIDE }, 0); });
+        ["#f15-p-big", "#f15-e-big", "#f15-q-big", "#f15-p-suf", "#f15-e-vs", "#f15-e-30", "#f15-q-suf"].forEach(function (s) { tl.set(s, { opacity: 0 }, 0); });
+        for (var pb = 0; pb < 8; pb++) tl.set("#f15-pb" + pb, { scaleY: 0 }, 0);
+        tl.set(["#f15-pbase", "#f15-e-base"], { scaleX: 0 }, 0);
+        tl.set(["#f15-e-real", "#f15-e-pad"], { scaleY: 0 }, 0);
+        tl.set(qCells, { scale: 0 }, 0);
+
+        // scene objects hidden until their cue
+        tl.set(["#f15-peca", "#f15-clock"], { opacity: 0 }, 0);
+        tl.set("#f15-8h", { clipPath: HIDE }, 0);
+        tl.set(["#f15-padlab", "#f15-real-t"], { clipPath: HIDE }, 0);
+        tl.set("#f15-axis", { scaleX: 0 }, 0);
+        tl.set("#f15-real", { scaleX: 0 }, 0);
+        tl.set(["#f15-ticks", "#f15-t0", "#f15-t10", "#f15-t20", "#f15-t30", "#f15-gap"], { opacity: 0 }, 0);
+        tl.set("#f15-mark", { scaleY: 0 }, 0);
+        tl.set(["#f15-basket", "#f15-hole", "#f15-flap", "#f15-sensor"], { opacity: 0 }, 0);
+        tl.set("#f15-sensor-i", { opacity: 0 }, 0);
+        tl.set(["#f15-reflab", "#f15-refnum"], { clipPath: HIDE }, 0);
+        tl.set(["#f15-pf0", "#f15-pf1", "#f15-pf2"], { opacity: 0 }, 0);
+
+        // ================= Scene 2 (4.0–10.4) =================
+        // machine switches on
+        tl.fromTo("#f15-btn", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)", immediateRender: false }, 4.2);
+        tl.to("#f15-lamp", { keyframes: { opacity: [0.2, 1, 0.3, 1] }, duration: 0.35, ease: "none" }, 4.25);
+        tl.to("#f15-mbody", { keyframes: { x: [0, -6, 5, -3, 2, 0] }, duration: 0.35, ease: "none" }, 4.25);
+        // steady hum
+        var hum = [];
+        for (var h = 0; h < 52; h++) hum.push(0, -2, 0, 2);
+        hum.push(0);
+        tl.to("#f15-mbody", { keyframes: { y: hum }, duration: D - 4.7, ease: "none" }, 4.6);
+        // lamp keeps pulsing while it runs
+        var lampK = [];
+        for (var lk = 0; lk < 16; lk++) lampK.push(1, 0.35);
+        lampK.push(1);
+        tl.to("#f15-lamp", { keyframes: { opacity: lampK }, duration: D - 4.7, ease: "none" }, 4.65);
+        tl.fromTo("#f15-gear", { rotation: 0 }, { rotation: 360 * 5, duration: D - 4.2, ease: "none" }, 4.2);
+        tl.fromTo("#f15-strip", { x: 0 }, { x: BELT_V * (D - ON), duration: D - ON, ease: "none" }, ON);
+        ["#f15-r0", "#f15-r1", "#f15-r2", "#f15-r3"].forEach(function (r) {
+          tl.fromTo(r, { rotation: 0 }, { rotation: 360 * 12, duration: D - ON, ease: "none" }, ON);
+        });
+        // chimney puffs (square smoke)
+        var pk = 0;
+        for (var pt = 4.4; pt < D - 0.5; pt += 0.4) {
+          tl.fromTo("#f15-pf" + (pk % 3),
+            { x: 0, y: 0, scale: 0.6, rotation: 0, opacity: 0.9 },
+            { x: (pk % 2 ? 16 : -12), y: -50, scale: 1.3, rotation: (pk % 2 ? 30 : -25), opacity: 0, duration: 1.15, ease: "power1.out", immediateRender: false }, pt);
+          pk++;
+        }
+
+        // ----- pieces on the conveyor -----
+        var pc = $("f15-pieces");
+        var spawns = [];
+        var s;
+        for (s = 4.35; s < 12.0; s += 0.32) spawns.push(+s.toFixed(3));
+        for (s = 12.0; s <= 17.3; s += 0.2) spawns.push(+s.toFixed(3));
+        var X0 = 380, XG = 697, XEND = 1000;
+        var TG = (XG - X0) / BELT_V;
+        var drops = [];
+        spawns.forEach(function (st, k) {
+          var el = document.createElement("div");
+          el.className = "f15-pc";
+          el.innerHTML = '<b><i class="a"></i><i class="b"></i></b>';
+          pc.appendChild(el);
+          var bad = el.firstChild;
+          var g = st + TG;
+          tl.set(el, { x: X0, y: 626, opacity: 0, rotation: 0 }, 0);
+          tl.set(el, { opacity: 1 }, st);
+          var isBad = g >= 13.95 && g <= 16.7 && (k % 3 !== 1) && drops.length < 10;
+          if (isBad) {
+            var cell = CELL[drops.length];
+            tl.to(el, { x: XG, duration: TG, ease: "none" }, st);
+            var f = Math.max(13.9, st + 0.3, g - 0.75);
+            tl.set(bad, { opacity: 1 }, f);
+            tl.to(el, { keyframes: { scale: [1, 1.3, 1] }, duration: 0.25, ease: "none" }, f);
+            tl.to("#f15-sensor-i", { keyframes: { opacity: [0, 1, 1, 0] }, duration: 0.3, ease: "none" }, g - 0.2);
+            tl.to(el, { x: cell.x, y: cell.y, rotation: 90, duration: 0.42, ease: "power2.in" }, g);
+            tl.to(el, { keyframes: { y: [cell.y, cell.y - 6, cell.y] }, duration: 0.18, ease: "none" }, g + 0.42);
+            drops.push(g + 0.42);
+          } else {
+            tl.to(el, { x: XEND, duration: (XEND - X0) / BELT_V, ease: "none" }, st);
+            tl.to(el, { opacity: 0, duration: 0.25, ease: "none" }, st + (950 - X0) / BELT_V);
+          }
+        });
+
+        // PEÇAS counter: 0 → 200
+        tl.fromTo("#f15-peca", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out", immediateRender: false }, 4.55);
+        var pState = { v: 0 };
+        var pNum = $("f15-peca-num");
+        tl.to(pState, { v: 200, duration: 0.6, ease: "power2.out", onUpdate: function () { pNum.textContent = Math.round(pState.v); } }, 5.0);
+        tl.fromTo("#f15-peca-num", { scale: 0.55 }, { scale: 1, duration: 0.6, ease: "power2.out" }, 5.0);
+
+        // square clock → 8 h
+        tl.fromTo("#f15-clock", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 5.7);
+        tl.fromTo("#f15-hand-m", { rotation: 0 }, { rotation: 360 * 8, duration: 0.9, ease: "power2.inOut" }, 5.9);
+        tl.fromTo("#f15-hand-h", { rotation: 0 }, { rotation: 240, duration: 0.9, ease: "power2.inOut" }, 5.9);
+        tl.fromTo("#f15-8h", { clipPath: HIDE, x: -16 }, { clipPath: SHOW, x: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, 6.25);
+        // inputs pulse as P reads them
+        tl.to(["#f15-peca", "#f15-clock"], { keyframes: { scale: [1, 1.07, 1] }, duration: 0.4, ease: "none", stagger: 0.15 }, 6.7);
+
+        function lightCard(L, t) {
+          tl.to("#f15-c" + L + "-on", { keyframes: { opacity: [0, 1, 0.3, 1] }, duration: 0.3, ease: "none" }, t);
+          tl.set("#f15-c" + L + "-off", { opacity: 0 }, t + 0.3);
+          tl.to("#f15-c" + L + "-sq", { keyframes: { scale: [1, 1.12, 1] }, duration: 0.35, ease: "none" }, t);
+        }
+        function countUp(numSel, wrapSel, target, t, dur) {
+          var el = document.querySelector(numSel);
+          var st = { v: 0 };
+          tl.set(wrapSel, { opacity: 1 }, t);
+          tl.to(st, { v: target, duration: dur, ease: "power3.out", onUpdate: function () { el.textContent = Math.round(st.v); } }, t);
+          tl.fromTo(numSel, { scale: 0.5 }, { scale: 1, duration: dur, ease: "power3.out" }, t);
+        }
+
+        // card P
+        lightCard("P", 6.7);
+        tl.fromTo("#f15-p-expr", { clipPath: HIDE }, { clipPath: SHOW, duration: 0.45, ease: "power3.out", immediateRender: false }, 6.75);
+        countUp("#f15-p-num", "#f15-p-big", 25, 6.95, 0.75);
+        tl.fromTo("#f15-pbase", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 6.9);
+        for (var b = 0; b < 8; b++) {
+          tl.fromTo("#f15-pb" + b, { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 6.95 + b * 0.05);
+        }
+        tl.fromTo("#f15-p-suf", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.7)", immediateRender: false }, 7.7);
+        tl.fromTo("#f15-p-lab", { clipPath: HIDE }, { clipPath: SHOW, duration: 0.55, ease: "power3.out", immediateRender: false }, 8.8);
+        // hour bars ripple: 8 equal hours of 25
+        for (var rp = 0; rp < 2; rp++) {
+          for (var b2 = 0; b2 < 8; b2++) {
+            tl.to("#f15-pb" + b2, { keyframes: { scaleY: [1, 0.75, 1] }, duration: 0.3, ease: "none" }, 9.2 + rp * 0.75 + b2 * 0.05);
+          }
+        }
+
+        // ================= Scene 3 (10.4–13.9) =================
+        tl.fromTo("#f15-axis", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out", immediateRender: false }, 10.55);
+        tl.fromTo(["#f15-ticks", "#f15-t0", "#f15-t10", "#f15-t20", "#f15-t30"], { opacity: 0, y: -8 },
+          { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", stagger: 0.05, immediateRender: false }, 10.7);
+        tl.fromTo("#f15-mark", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 10.65);
+        tl.fromTo("#f15-padlab", { clipPath: HIDE, y: 10 }, { clipPath: SHOW, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, 10.75);
+        tl.fromTo("#f15-real", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power3.out", immediateRender: false }, 11.0);
+        tl.fromTo("#f15-real-t", { clipPath: HIDE }, { clipPath: SHOW, duration: 0.4, ease: "power3.out", immediateRender: false }, 11.45);
+        tl.fromTo("#f15-gap", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "none", immediateRender: false }, 11.75);
+
+        // card E
+        lightCard("E", 11.65);
+        countUp("#f15-e-num", "#f15-e-big", 25, 11.7, 0.65);
+        tl.fromTo("#f15-e-base", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, 11.7);
+        tl.fromTo("#f15-e-real", { scaleY: 0 }, { scaleY: 1, duration: 0.65, ease: "power3.out", immediateRender: false }, 11.75);
+        tl.fromTo("#f15-e-pad", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, 11.95);
+        tl.fromTo(["#f15-e-vs", "#f15-e-30"], { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.7)", stagger: 0.08, immediateRender: false }, 12.3);
+        tl.fromTo("#f15-e-lab", { clipPath: HIDE }, { clipPath: SHOW, duration: 0.55, ease: "power3.out", immediateRender: false }, 12.4);
+        // REAL keeps pushing toward the standard, never reaches it
+        tl.to("#f15-real", { keyframes: { scaleX: [1, 1.04, 1, 1.04, 1, 1.04, 1] }, duration: 1.2, ease: "none" }, 12.6);
+        tl.to("#f15-gap", { keyframes: { opacity: [1, 0.3, 1, 0.3, 1] }, duration: 1.0, ease: "none" }, 12.7);
+        tl.to("#f15-e-real", { keyframes: { scaleY: [1, 1.06, 1, 1.06, 1] }, duration: 1.0, ease: "none" }, 12.75);
+
+        // ================= Scene 4 (13.9–17.579) =================
+        tl.fromTo("#f15-hole", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.25, ease: "power2.out", immediateRender: false }, 13.85);
+        tl.set("#f15-flap", { opacity: 1 }, 13.85);
+        tl.fromTo("#f15-flap", { rotation: 0 }, { rotation: 70, duration: 0.35, ease: "power2.in", immediateRender: false }, 13.9);
+        tl.fromTo("#f15-sensor", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 13.85);
+        tl.fromTo("#f15-basket", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(2)", immediateRender: false }, 13.9);
+        tl.fromTo("#f15-reflab", { clipPath: HIDE }, { clipPath: SHOW, duration: 0.45, ease: "power3.out", immediateRender: false }, 14.1);
+        tl.fromTo("#f15-refnum", { clipPath: HIDE }, { clipPath: SHOW, duration: 0.3, ease: "power3.out", immediateRender: false }, 14.2);
+
+        // basket fills: dropped pieces + remaining cells pop
+        var bl = $("f15-bcells");
+        var lastLand = drops.length ? drops[drops.length - 1] : 14.4;
+        for (var fc = drops.length; fc < 10; fc++) {
+          var cEl = document.createElement("div");
+          cEl.className = "f15-bcell";
+          cEl.style.left = CELL[fc].x + "px";
+          cEl.style.top = CELL[fc].y + "px";
+          bl.appendChild(cEl);
+          tl.set(cEl, { scale: 0 }, 0);
+          tl.fromTo(cEl, { scale: 0, y: -60 }, { scale: 1, y: 0, duration: 0.3, ease: "power2.in", immediateRender: false }, lastLand + 0.1 + (fc - drops.length) * 0.12);
+        }
+        var refEnd = lastLand + 0.4 + Math.max(0, 10 - drops.length) * 0.12;
+        var firstLand = drops.length ? drops[0] : 14.3;
+        var rState = { v: 0 };
+        var rNum = $("f15-refnum");
+        tl.to(rState, { v: 10, duration: Math.max(0.5, refEnd - firstLand), ease: "none", onUpdate: function () { rNum.textContent = Math.round(rState.v); } }, firstLand);
+
+        // card Q
+        lightCard("Q", 13.95);
+        countUp("#f15-q-num", "#f15-q-big", 190, 14.0, 1.6);
+        qCells.forEach(function (c, i) {
+          if (i < 19) tl.fromTo(c, { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2.5)", immediateRender: false }, 14.0 + i * 0.075);
+          else tl.fromTo(c, { scale: 0, rotation: -45 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.5)", immediateRender: false }, 15.55);
+        });
+        tl.fromTo("#f15-q-suf", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.7)", immediateRender: false }, 15.6);
+        tl.fromTo("#f15-q-lab", { clipPath: HIDE }, { clipPath: SHOW, duration: 0.55, ease: "power3.out", immediateRender: false }, 16.4);
+
+        // hold: the three letters pulse in a slow chase
+        ["P", "E", "Q"].forEach(function (L, i) {
+          tl.to("#f15-c" + L + "-sq", { keyframes: { scale: [1, 1.08, 1] }, duration: 0.4, ease: "none" }, 16.95 + i * 0.15);
+        });
+
+        window.__timelines["15-peq"] = tl;
+      })();
+    </script>
+  </div>
+</template>

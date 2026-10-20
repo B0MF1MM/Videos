@@ -27,7 +27,7 @@ music_brief: calm focused minimal study underscore, soft piano and light pulse (
 - voiceover: "A prova é amanhã. São quatro perguntas, e todas pedem a mesma coisa: explicar com suas palavras. Com uma fórmula de quatro passos, você responde qualquer uma delas."
 - duration: 9.472s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-amanha.html
 - type: hook
 - persuasion: Stakes + promise
@@ -51,7 +51,7 @@ Scene 4 (5.9–9.472s): em "fórmula de quatro passos" (6.3s) os cartões se ali
 - voiceover: "Grave a fórmula das quatro iniciais: importância, definição, efeito e fecho. Importância: comece dizendo por que o tema é importante. Definição: explique cada elemento em uma frase curta."
 - duration: 10.688s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-formula-id.html
 - type: feature_showcase
 - persuasion: Acronym mnemonic
@@ -75,7 +75,7 @@ Scene 4 (7.6–10.688s): em "Definição" (7.6s) o bloco D acende; seu cartão m
 - voiceover: "Efeito: mostre o que muda na empresa, com um exemplo. Fecho: termine com as palavras que aparecem em todo gabarito: produtividade, qualidade, eficiência e satisfação do cliente."
 - duration: 10.517s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/03-formula-ef.html
 - type: feature_showcase
 - persuasion: Acronym mnemonic + magic words
@@ -98,7 +98,7 @@ Scene 3 (6.7–10.517s): quatro palavras caem uma a uma dentro da caixa com over
 - voiceover: "Primeira questão: os quatro vês. Macete: transforme cada um em uma pergunta. Volume: quanto produz? Variedade: quantos tipos diferentes? Variação: a demanda muda ao longo do tempo? Visibilidade: quanto o cliente vê da operação?"
 - duration: 12.928s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/04-quatro-v.html
 - type: feature_showcase
 - persuasion: Mnemonic: turn terms into questions
@@ -122,7 +122,7 @@ Scene 4 (10.4–12.928s): VISIBILIDADE (10.4s) "o cliente vê?" com uma janela r
 - voiceover: "Agora o exemplo que o gabarito quer: uma fábrica de parafusos tem volume alto e variedade baixa, então trabalha padronizada. Um alfaiate faz peças personalizadas, em pouca quantidade, então precisa de flexibilidade."
 - duration: 13.397s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/05-parafuso-alfaiate.html
 - type: feature_showcase
 - persuasion: Concrete contrast example
@@ -145,7 +145,7 @@ Scene 3 (7.5–13.397s): à direita, em "alfaiate" (7.8s), uma mesa com uma fita
 - voiceover: "Montando a resposta: os quatro vês ajudam a entender as diferenças entre as operações. Defina os quatro, use o contraste entre padronização e flexibilidade, e feche: estratégias adequadas trazem produtividade, qualidade, eficiência e satisfação."
 - duration: 15.168s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/06-q1-resposta.html
 - type: benefit_highlight
 - persuasion: Worked answer
@@ -169,7 +169,7 @@ Scene 4 (9.1–15.168s): em "feche" (9.4s) o marcador F acende: "Estratégias ad
 - voiceover: "Questão dois: PPCP. Separe as letras em três perguntas. Planejamento: o que produzir e com quais recursos. Programação: quando e em que sequência. Controle: o que foi feito bate com o que foi planejado?"
 - duration: 11.648s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/07-ppcp.html
 - type: feature_showcase
 - persuasion: Mnemonic: letters → questions
@@ -193,7 +193,7 @@ Scene 4 (8.6–11.648s): coluna 3 CONTROLE (8.6s): "BATEU COM O PLANO?"; mini-ce
 - voiceover: "Agora o trio, com um verbo para cada um. O Kanban sinaliza, como um cartão que avisa o que repor. O Just in Time entrega na quantidade e no momento certos. E a Produção Enxuta enxuga: corta desperdícios e melhora continuamente."
 - duration: 13.12s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/08-trio.html
 - type: feature_showcase
 - persuasion: One verb per tool
@@ -217,7 +217,7 @@ Scene 4 (8.6–13.12s): painel 3 PRODUÇÃO ENXUTA (8.9s): uma pilha de blocos r
 - voiceover: "No efeito, cite quatro ganhos: menos estoque desnecessário, menos atrasos, melhor uso dos recursos e mais eficiência. E feche: a empresa produz de forma coordenada e atende melhor o cliente."
 - duration: 11.456s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/09-ganhos.html
 - type: benefit_highlight
 - persuasion: Before/after gauges
@@ -240,7 +240,7 @@ Scene 3 (6.9–11.456s): em "feche" (7.1s) uma faixa invertida desliza sob os me
 - voiceover: "Questão três: previsão de demanda. A palavra da importância é antecipar. Com a previsão, a empresa planeja estoques, produção, compras, recursos e capacidade."
 - duration: 9.429s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/10-antecipar.html
 - type: feature_showcase
 - persuasion: Keyword + fan-out
@@ -263,7 +263,7 @@ Scene 3 (4.3–9.429s): da palavra ANTECIPAR saem cinco setas retas em leque par
 - voiceover: "Mas cuidado: previsão não é garantia, nem é meta. Meta é o que a empresa quer alcançar; previsão é só uma estimativa, e pode errar."
 - duration: 7.573s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/11-nao-garantia.html
 - type: pain_point
 - persuasion: Common-mistake warning
@@ -286,7 +286,7 @@ Scene 3 (5.0–7.573s): em "previsão" (5.0s) o cartão direito entra (cobalto i
 - voiceover: "O macete da gangorra. Previu demais? Sobra: excesso de estoque, desperdício e custo alto. Previu de menos? Falta: produto em falta, atraso e cliente insatisfeito."
 - duration: 9.579s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/12-gangorra.html
 - type: feature_showcase
 - persuasion: Physical metaphor + symmetric contrast
@@ -309,7 +309,7 @@ Scene 3 (5.2–9.579s): em "Previu de menos" (5.2s) as caixas somem, a gangorra 
 - voiceover: "E qual é a solução? Três As: acompanhar os resultados, analisar os erros e atualizar as estimativas. Assim, a previsão reduz incertezas e apoia decisões melhores."
 - duration: 10.048s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/13-tres-as.html
 - type: benefit_highlight
 - persuasion: Alliteration mnemonic
@@ -333,7 +333,7 @@ Scene 4 (4.6–10.048s): bloco 3 ATUALIZAR (4.6s): uma seta em ciclo quadrado gi
 - voiceover: "Questão quatro: indicadores de desempenho. Eles são importantes porque permitem acompanhar resultados, avaliar os processos e encontrar oportunidades de melhoria."
 - duration: 9.792s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/14-medir.html
 - type: feature_showcase
 - persuasion: Rule of three
@@ -356,7 +356,7 @@ Scene 3 (4.9–9.792s): cada mostrador liga no tempo da fala e ganha seu verbo e
 - voiceover: "Decore o trio produtividade, eficiência e qualidade com um exemplo. Uma máquina faz duzentas peças em oito horas: produtividade de vinte e cinco por hora, resultado sobre recursos. O padrão era trinta: eficiência é comparar com o esperado. Cento e noventa saíram boas: qualidade é cumprir os requisitos."
 - duration: 17.579s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/15-peq.html
 - type: social_proof
 - persuasion: Worked numeric example
@@ -380,7 +380,7 @@ Scene 4 (13.9–17.579s): em "190" (13.9s) as peças na esteira se separam: 190 
 - voiceover: "Com os números, o gestor identifica problemas, compara com as metas, reconhece desperdícios e age. A frase de ouro: indicadores não servem só para medir; servem para orientar decisões e gerar melhoria contínua."
 - duration: 12.779s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/16-decidir.html
 - type: benefit_highlight
 - persuasion: Cycle + golden sentence
@@ -403,7 +403,7 @@ Scene 3 (5.8–12.779s): em "A frase de ouro" (5.9s) um selo "FRASE DE OURO" no 
 - voiceover: "Revise a cola. Volume, variedade, variação e visibilidade viram perguntas. PPCP: o quê, quando e conferiu. Kanban sinaliza, Just in Time na hora, Enxuta enxuga. Previsão: sobra custa, falta atrasa, e os três As. Indicadores: produtividade, eficiência e qualidade."
 - duration: 16.256s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/17-cola.html
 - type: branding
 - persuasion: Recap grid
@@ -428,7 +428,7 @@ Scene 5 (13.1–16.256s): Q4 (13.1s): "P · E · Q" em display com as palavras e
 - voiceover: "E em toda resposta: importância, definição, efeito e fecho. Respire, siga a fórmula, e boa prova!"
 - duration: 7.409s
 - transition_in: blur-crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/18-boa-prova.html
 - type: branding
 - persuasion: Callback

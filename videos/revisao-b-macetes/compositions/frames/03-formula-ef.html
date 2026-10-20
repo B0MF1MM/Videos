@@ -1,0 +1,474 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f03-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f03-stage { position: absolute; inset: 0; }
+    .f03-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f03-hair-top { top: 70px; }
+    .f03-hair-bot { top: 892px; }
+    .f03-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f03-chrome-tag { left: 77px; }
+    .f03-chrome-num { right: 77px; }
+
+    .f03-content { position: absolute; inset: 0; transform-origin: 50% 50%; }
+
+    /* QR block */
+    .f03-qr {
+      position: absolute;
+      right: 77px;
+      top: 96px;
+      width: 96px;
+      height: 96px;
+      display: grid;
+      grid-template-columns: repeat(8, 12px);
+      grid-template-rows: repeat(8, 12px);
+      box-shadow: 0 0 0 2px #F0EBDE;
+      background: #F0EBDE;
+    }
+    .f03-qc { width: 12px; height: 12px; background: rgba(31,43,224,0.10); }
+    .f03-qc.on { background: #1F2BE0; }
+
+    /* acronym row squares */
+    .f03-sq { position: absolute; transform-origin: 50% 100%; }
+    .f03-sq-line { position: absolute; inset: 0; border: 3px solid #1F2BE0; }
+    .f03-sq-fill { position: absolute; inset: 0; background: #1F2BE0; }
+    .f03-let {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.008em;
+      box-sizing: border-box;
+    }
+    .f03-let-lit { color: #F0EBDE; }
+    .f03-sq-s .f03-let { font-size: 80px; padding-bottom: 8px; }
+    .f03-sq-b .f03-let { font-size: 118px; padding-bottom: 12px; }
+
+    /* FECHO header in the top strip */
+    .f03-fhead {
+      position: absolute;
+      left: 720px;
+      top: 92px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 88px;
+      line-height: 1.05;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+      padding-top: 10px;
+    }
+    .f03-fch { display: inline-block; }
+    .f03-flabel {
+      position: absolute;
+      left: 724px;
+      top: 214px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+      padding-top: 6px;
+    }
+    .f03-lw { display: inline-block; margin-right: 0.42em; }
+
+    /* E card */
+    .f03-card {
+      position: absolute;
+      left: 77px;
+      top: 320px;
+      width: 800px;
+      height: 560px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+    }
+    .f03-kick {
+      position: absolute;
+      left: 36px;
+      top: 28px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0.18em;
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+    .f03-title {
+      position: absolute;
+      left: 36px;
+      top: 78px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 1.1;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+    .f03-tw { display: inline-block; margin-right: 0.22em; position: relative; }
+    .f03-tw-txt { position: relative; z-index: 1; }
+    .f03-mark {
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: 4px;
+      height: 6px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+      z-index: 0;
+    }
+    .f03-mini {
+      position: absolute;
+      left: 36px;
+      top: 180px;
+      width: 728px;
+      height: 300px;
+      overflow: visible;
+    }
+    .f03-mini .f03-o { fill: none; stroke: #1F2BE0; stroke-width: 3; stroke-linejoin: miter; }
+    .f03-mini .f03-f { fill: #1F2BE0; }
+    .f03-mini .f03-p { fill: #F0EBDE; }
+    .f03-tag {
+      position: absolute;
+      top: 486px;
+      width: 250px;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    /* full-frame line layer */
+    .f03-lines { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .f03-lines .f03-stroke { fill: none; stroke: #1F2BE0; stroke-width: 4; stroke-linecap: square; stroke-linejoin: miter; }
+    .f03-lines .f03-box { fill: none; stroke: #1F2BE0; stroke-width: 6; stroke-linecap: square; stroke-linejoin: miter; }
+    .f03-lines .f03-ghost { fill: none; stroke: rgba(31,43,224,0.45); stroke-width: 2; stroke-dasharray: 12 10; }
+    .f03-lines .f03-head { fill: #1F2BE0; }
+
+    /* word stack */
+    .f03-row {
+      position: absolute;
+      left: 957px;
+      width: 846px;
+      height: 92px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .f03-blk {
+      height: 92px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      color: #1F2BE0;
+      padding: 0 32px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 44px;
+      line-height: 88px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transform-origin: 50% 100%;
+    }
+    .f03-blk-inv { background: #1F2BE0; color: #F0EBDE; }
+  </style>
+
+  <div id="root" data-composition-id="03-formula-ef" data-width="1920" data-height="1080" data-duration="10.917">
+    <div id="f03-ground" class="f03-ground clip" data-start="0" data-duration="10.917" data-track-index="0"></div>
+
+    <div id="f03-stage" class="f03-stage clip" data-start="0" data-duration="10.917" data-track-index="1">
+      <div class="f03-hair f03-hair-top"></div>
+      <div class="f03-hair f03-hair-bot"></div>
+      <div class="f03-chrome f03-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f03-chrome f03-chrome-num">03 / 18</div>
+
+      <div class="f03-content" id="f03-content">
+        <div class="f03-qr" id="f03-qr"></div>
+
+        <!-- acronym row: I D (lit, small) · E F (big) -->
+        <div class="f03-sq f03-sq-s" id="f03-sq0" style="left:77px;top:150px;width:110px;height:110px">
+          <div class="f03-sq-fill"><div class="f03-let f03-let-lit">I</div></div>
+        </div>
+        <div class="f03-sq f03-sq-s" id="f03-sq1" style="left:207px;top:150px;width:110px;height:110px">
+          <div class="f03-sq-fill"><div class="f03-let f03-let-lit">D</div></div>
+        </div>
+        <div class="f03-sq f03-sq-b" id="f03-sq2" style="left:337px;top:100px;width:160px;height:160px">
+          <div class="f03-sq-line"></div>
+          <div class="f03-let" id="f03-let2">E</div>
+          <div class="f03-sq-fill" id="f03-fill2"><div class="f03-let f03-let-lit" id="f03-lit2">E</div></div>
+        </div>
+        <div class="f03-sq f03-sq-b" id="f03-sq3" style="left:517px;top:100px;width:160px;height:160px">
+          <div class="f03-sq-line"></div>
+          <div class="f03-let" id="f03-let3">F</div>
+          <div class="f03-sq-fill" id="f03-fill3"><div class="f03-let f03-let-lit" id="f03-lit3">F</div></div>
+        </div>
+
+        <!-- FECHO header + label -->
+        <div class="f03-fhead" id="f03-fhead"><span class="f03-fch">F</span><span class="f03-fch">E</span><span class="f03-fch">C</span><span class="f03-fch">H</span><span class="f03-fch">O</span></div>
+        <div class="f03-flabel" id="f03-flabel"><span class="f03-lw">PALAVRAS</span><span class="f03-lw">QUE</span><span class="f03-lw">O</span><span class="f03-lw">PROFESSOR</span><span class="f03-lw">ESPERA</span></div>
+
+        <!-- E card -->
+        <div class="f03-card" id="f03-card">
+          <div class="f03-kick" id="f03-kick">EFEITO</div>
+          <div class="f03-title" id="f03-title"><span class="f03-tw"><span class="f03-tw-txt">O</span></span><span class="f03-tw"><span class="f03-tw-txt">que</span></span><span class="f03-tw"><span class="f03-mark" id="f03-mark"></span><span class="f03-tw-txt">muda</span></span><span class="f03-tw"><span class="f03-tw-txt">na</span></span><span class="f03-tw"><span class="f03-tw-txt">empresa</span></span></div>
+
+          <svg class="f03-mini" id="f03-mini" viewBox="0 0 728 300" aria-hidden="true">
+            <!-- ANTES factory -->
+            <g transform="translate(0,40)"><g id="f03-facA">
+              <g id="f03-puffsA"></g>
+              <rect class="f03-o" x="200" y="30" width="30" height="170" />
+              <path class="f03-o" d="M0 200 V100 L0 60 L50 100 V60 L100 100 V60 L150 100 V60 L200 100 V200 Z" />
+              <rect class="f03-o" x="22" y="130" width="30" height="30" />
+              <rect class="f03-o" x="85" y="130" width="30" height="30" />
+              <rect class="f03-o" x="148" y="130" width="30" height="30" />
+              <line class="f03-o" x1="0" y1="232" x2="250" y2="232" stroke-dasharray="10 10" />
+            </g></g>
+            <!-- straight arrow ANTES -> DEPOIS -->
+            <g id="f03-arrow">
+              <line id="f03-arrline" class="f03-o" x1="282" y1="170" x2="438" y2="170" stroke-width="5" pathLength="1" stroke-dasharray="1" />
+              <path id="f03-arrhead" class="f03-f" d="M432 156 L452 170 L432 184 Z" />
+            </g>
+            <!-- DEPOIS factory -->
+            <g transform="translate(478,40)"><g id="f03-facB">
+              <g id="f03-puffsB"></g>
+              <rect class="f03-o" x="200" y="20" width="30" height="180" />
+              <path class="f03-o" d="M0 200 V100 L0 60 L50 100 V60 L100 100 V60 L150 100 V60 L200 100 V200 Z" />
+              <rect class="f03-f" id="f03-wB0" x="22" y="130" width="30" height="30" />
+              <rect class="f03-f" id="f03-wB1" x="85" y="130" width="30" height="30" />
+              <rect class="f03-f" id="f03-wB2" x="148" y="130" width="30" height="30" />
+              <rect class="f03-p" id="f03-gear" x="91" y="136" width="18" height="18" />
+              <g id="f03-boxes"></g>
+              <line class="f03-o" x1="0" y1="232" x2="250" y2="232" />
+              <rect class="f03-f" id="f03-rol0" x="30" y="240" width="12" height="12" />
+              <rect class="f03-f" id="f03-rol1" x="100" y="240" width="12" height="12" />
+              <rect class="f03-f" id="f03-rol2" x="170" y="240" width="12" height="12" />
+              <rect class="f03-f" id="f03-rol3" x="230" y="240" width="12" height="12" />
+            </g></g>
+          </svg>
+          <div class="f03-tag" id="f03-tagA" style="left:36px">ANTES</div>
+          <div class="f03-tag" id="f03-tagB" style="left:514px">DEPOIS</div>
+        </div>
+
+        <!-- connectors, open box, ghost slots, underline -->
+        <svg class="f03-lines" viewBox="0 0 1920 1080" aria-hidden="true">
+          <line id="f03-conE" class="f03-stroke" x1="417" y1="262" x2="417" y2="318" pathLength="1" stroke-dasharray="1" />
+          <path id="f03-conF" class="f03-stroke" d="M597 262 V290 H1380 V310" pathLength="1" stroke-dasharray="1" />
+          <path id="f03-conFhead" class="f03-head" d="M1366 306 L1380 326 L1394 306 Z" />
+          <rect id="f03-g0" class="f03-ghost" x="977" y="760" width="806" height="92" />
+          <rect id="f03-g1" class="f03-ghost" x="977" y="656" width="806" height="92" />
+          <rect id="f03-g2" class="f03-ghost" x="977" y="552" width="806" height="92" />
+          <rect id="f03-g3" class="f03-ghost" x="977" y="448" width="806" height="92" />
+          <g id="f03-boxg">
+            <path id="f03-box" class="f03-box" d="M957 336 V862 H1803 V336" pathLength="1" stroke-dasharray="1" />
+          </g>
+          <line id="f03-under" class="f03-box" x1="957" y1="878" x2="1803" y2="878" pathLength="1" stroke-dasharray="1" />
+        </svg>
+
+        <!-- four magic words -->
+        <div class="f03-row" style="top:760px"><div class="f03-blk" id="f03-b0">PRODUTIVIDADE</div></div>
+        <div class="f03-row" style="top:656px"><div class="f03-blk" id="f03-b1">QUALIDADE</div></div>
+        <div class="f03-row" style="top:552px"><div class="f03-blk" id="f03-b2">EFICIÊNCIA</div></div>
+        <div class="f03-row" style="top:448px"><div class="f03-blk f03-blk-inv" id="f03-b3">SATISFAÇÃO DO CLIENTE</div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var D = 10.517;
+      var SVGNS = "http://www.w3.org/2000/svg";
+      var tl = gsap.timeline({ paused: true });
+      var q = function (id) { return document.getElementById(id); };
+
+      // ---- build-time DOM (deterministic) ----
+      var QR = ["10110111", "01101001", "11010110", "00101011", "11100100", "01011101", "10010110", "11101001"];
+      var qr = q("f03-qr");
+      var qrOn = [];
+      QR.forEach(function (row) {
+        row.split("").forEach(function (b) {
+          var cell = document.createElement("div");
+          cell.className = "f03-qc" + (b === "1" ? " on" : "");
+          qr.appendChild(cell);
+          if (b === "1") qrOn.push(cell);
+        });
+      });
+      function mkRect(parent, x, y, s, cls) {
+        var r = document.createElementNS(SVGNS, "rect");
+        r.setAttribute("x", x); r.setAttribute("y", y);
+        r.setAttribute("width", s); r.setAttribute("height", s);
+        r.setAttribute("class", cls);
+        parent.appendChild(r);
+        return r;
+      }
+
+      // ---- macro push-in ----
+      tl.fromTo("#f03-content", { scale: 1 }, { scale: 1.015, duration: D, ease: "none" }, 0);
+
+      // ---- Scene 1 (0.0–3.0): row returns, E lights, effect card + factories ----
+      [0, 1, 2, 3].forEach(function (i) {
+        tl.fromTo("#f03-sq" + i, { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, i * 0.04);
+      });
+      qrOn.forEach(function (cell, i) {
+        tl.fromTo(cell, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none" }, 0.3 + (i * 5 % qrOn.length) * 0.025);
+      });
+      tl.fromTo("#f03-fill2", { clipPath: "inset(100% 0% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.4, ease: "power3.inOut" }, 0.2);
+      tl.set("#f03-let2", { opacity: 0 }, 0.62);
+      tl.to("#f03-sq2", { scale: 1.08, duration: 0.45, ease: "power3.out" }, 0.25);
+
+      tl.fromTo("#f03-conE", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, 0.45);
+      tl.fromTo("#f03-card", { y: -36, clipPath: "inset(0% 0% 100% 0%)" },
+        { y: 0, clipPath: "inset(-30% -4% -15% -4%)", duration: 0.55, ease: "power3.out" }, 0.6);
+      tl.fromTo("#f03-kick", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.85);
+      gsap.utils.toArray("#f03-title .f03-tw").forEach(function (el, k) {
+        tl.fromTo(el, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.0 + k * 0.09);
+      });
+      tl.fromTo("#f03-mark", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 1.6);
+
+      // "exemplo" (2.2): ANTES factory, arrow, DEPOIS factory
+      tl.fromTo("#f03-facA", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.2);
+      tl.fromTo("#f03-tagA", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.3);
+      tl.fromTo("#f03-arrline", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.inOut" }, 2.45);
+      tl.fromTo("#f03-arrhead", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.2, ease: "power3.out" }, 2.75);
+      tl.fromTo("#f03-facB", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.8);
+      tl.fromTo("#f03-tagB", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.9);
+      ["f03-wB0", "f03-wB1", "f03-wB2"].forEach(function (id, k) {
+        tl.fromTo("#" + id, { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, 3.0 + k * 0.12);
+      });
+      // arrow nudges forward a few times (finite, deterministic)
+      [4.2, 6.0, 7.8].forEach(function (t) {
+        tl.to("#f03-arrow", { x: 10, duration: 0.25, ease: "power2.out" }, t);
+        tl.to("#f03-arrow", { x: 0, duration: 0.35, ease: "power2.inOut" }, t + 0.25);
+      });
+
+      // DEPOIS: gear + rollers spin, puffs rise, boxes ride the conveyor
+      tl.fromTo("#f03-gear", { rotation: 0, transformOrigin: "50% 50%" },
+        { rotation: 900, transformOrigin: "50% 50%", duration: D - 3.0, ease: "none" }, 3.0);
+      ["f03-rol0", "f03-rol1", "f03-rol2", "f03-rol3"].forEach(function (id) {
+        tl.fromTo("#" + id, { rotation: 0, transformOrigin: "50% 50%" },
+          { rotation: 1440, transformOrigin: "50% 50%", duration: D - 3.0, ease: "none" }, 3.0);
+      });
+      var puffsB = q("f03-puffsB");
+      for (var t = 3.0; t < D - 0.3; t += 0.45) {
+        var p = mkRect(puffsB, 207, 4, 16, "f03-f");
+        tl.fromTo(p, { opacity: 0, x: 0, y: 0, scale: 0.6, transformOrigin: "50% 50%" },
+          { opacity: 1, x: 6, y: -14, scale: 1, duration: 0.25, ease: "power2.out" }, t);
+        tl.to(p, { opacity: 0, x: 30, y: -70, scale: 1.5, duration: 1.0, ease: "power1.out" }, t + 0.25);
+      }
+      var puffsA = q("f03-puffsA");
+      for (var ta = 2.6; ta < D - 0.6; ta += 1.7) {
+        var pa = mkRect(puffsA, 207, 14, 14, "f03-o");
+        tl.fromTo(pa, { opacity: 0, y: 0, scale: 0.6, transformOrigin: "50% 50%" },
+          { opacity: 1, y: -10, scale: 1, duration: 0.4, ease: "power2.out" }, ta);
+        tl.to(pa, { opacity: 0, x: 12, y: -50, duration: 1.2, ease: "power1.out" }, ta + 0.4);
+      }
+      var boxes = q("f03-boxes");
+      for (var tb = 3.1; tb < D - 0.2; tb += 0.5) {
+        var bx = mkRect(boxes, 10, 210, 20, "f03-f");
+        tl.fromTo(bx, { opacity: 0, x: 0 }, { opacity: 1, x: 20, duration: 0.15, ease: "none" }, tb);
+        tl.to(bx, { x: 200, duration: 1.4, ease: "none" }, tb + 0.15);
+        tl.to(bx, { opacity: 0, duration: 0.15, ease: "none" }, tb + 1.4);
+      }
+
+      // ---- Scene 2 (3.0–6.7): F lights, FECHO, open box, label ----
+      tl.to("#f03-sq2", { scale: 1, duration: 0.4, ease: "power3.inOut" }, 3.0);
+      tl.fromTo("#f03-fill3", { clipPath: "inset(100% 0% 0% 0%)" },
+        { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.4, ease: "power3.inOut" }, 3.0);
+      tl.set("#f03-let3", { opacity: 0 }, 3.42);
+      tl.to("#f03-sq3", { scale: 1.08, duration: 0.45, ease: "power3.out" }, 3.05);
+      gsap.utils.toArray("#f03-fhead .f03-fch").forEach(function (el, k) {
+        tl.fromTo(el, { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.15 + k * 0.06);
+      });
+      tl.fromTo("#f03-conF", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 3.35);
+      tl.fromTo("#f03-conFhead", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }, 3.9);
+      tl.fromTo("#f03-box", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 3.95);
+      ["f03-g0", "f03-g1", "f03-g2", "f03-g3"].forEach(function (id, k) {
+        tl.fromTo("#" + id, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "none" }, 4.5 + k * 0.12);
+        tl.fromTo("#" + id, { strokeDashoffset: 0 }, { strokeDashoffset: -110, duration: 6.0, ease: "none" }, 4.5);
+      });
+      gsap.utils.toArray("#f03-flabel .f03-lw").forEach(function (el, k) {
+        tl.fromTo(el, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.0 + k * 0.1);
+      });
+      // anticipation: arrowhead into the box mouth bobs
+      [5.7, 6.1].forEach(function (t2) {
+        tl.to("#f03-conFhead", { y: 10, duration: 0.18, ease: "power2.out" }, t2);
+        tl.to("#f03-conFhead", { y: 0, duration: 0.2, ease: "power2.in" }, t2 + 0.18);
+      });
+
+      // ---- Scene 3 (6.7–10.517): four words fall in, stack with overshoot ----
+      var DROPS = [
+        { id: "f03-b0", g: "f03-g0", t: 6.7, off: -430, rot: -4 },
+        { id: "f03-b1", g: "f03-g1", t: 7.7, off: -326, rot: 3 },
+        { id: "f03-b2", g: "f03-g2", t: 8.4, off: -222, rot: -3 },
+        { id: "f03-b3", g: "f03-g3", t: 9.2, off: -118, rot: 2 }
+      ];
+      DROPS.forEach(function (d, k) {
+        tl.set("#" + d.id, { opacity: 0 }, 0);
+        tl.set("#" + d.id, { opacity: 1 }, d.t);
+        tl.fromTo("#" + d.id, { y: d.off, rotation: d.rot },
+          { y: 0, rotation: 0, duration: 0.38, ease: "power2.in" }, d.t);
+        var land = d.t + 0.38;
+        // overshoot: rebound up, then settle back into the stack
+        tl.to("#" + d.id, { y: -16, duration: 0.14, ease: "power2.out" }, land + 0.06);
+        tl.to("#" + d.id, { y: 0, duration: 0.22, ease: "power2.in" }, land + 0.2);
+        tl.set("#" + d.g, { opacity: 0 }, land);
+        // squash on landing
+        tl.fromTo("#" + d.id, { scaleY: 1 }, { scaleY: 0.9, duration: 0.08, ease: "power2.out" }, land);
+        tl.to("#" + d.id, { scaleY: 1, duration: 0.3, ease: "power3.out" }, land + 0.08);
+        // the box and already-stacked words take the hit
+        tl.to("#f03-boxg", { y: 6, duration: 0.08, ease: "power2.out" }, land);
+        tl.to("#f03-boxg", { y: 0, duration: 0.3, ease: "power3.out" }, land + 0.08);
+        for (var j = 0; j < k; j++) {
+          tl.to("#" + DROPS[j].id, { y: 4, duration: 0.08, ease: "power2.out" }, land);
+          tl.to("#" + DROPS[j].id, { y: 0, duration: 0.3, ease: "power3.out" }, land + 0.08);
+        }
+      });
+      // cobalt underline traced under the box, then hold
+      tl.fromTo("#f03-under", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 9.75);
+
+      tl.set({}, {}, D);
+      window.__timelines["03-formula-ef"] = tl;
+    })();
+  </script>
+</template>

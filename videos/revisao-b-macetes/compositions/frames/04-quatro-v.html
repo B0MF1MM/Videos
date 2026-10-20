@@ -1,0 +1,497 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f04-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f04-stage { position: absolute; inset: 0; }
+    .f04-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f04-hair-top { top: 70px; }
+    .f04-hair-bot { top: 892px; }
+    .f04-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f04-chrome-tag { left: 77px; }
+    .f04-chrome-num { right: 77px; }
+
+    .f04-content { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+    /* section band (inverted) */
+    .f04-band {
+      position: absolute;
+      left: 77px;
+      top: 94px;
+      height: 64px;
+      padding: 0 26px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      letter-spacing: 0.16em;
+      line-height: 64px;
+      white-space: nowrap;
+    }
+    .f04-macete {
+      position: absolute;
+      right: 77px;
+      top: 94px;
+      height: 64px;
+      line-height: 64px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    /* columns */
+    .f04-col { position: absolute; top: 0; width: 425px; height: 900px; }
+    .f04-blk {
+      position: absolute;
+      left: 127.5px;
+      top: 186px;
+      width: 170px;
+      height: 170px;
+      perspective: 900px;
+      transform-origin: 50% 50%;
+    }
+    .f04-flip { position: absolute; inset: 0; transform-origin: 50% 100%; }
+    .f04-face { position: absolute; inset: 0; }
+    .f04-front { border: 4px solid #1F2BE0; background: #F0EBDE; box-sizing: border-box; }
+    .f04-back { background: #1F2BE0; opacity: 0; }
+    .f04-fill { position: absolute; inset: -4px; background: #1F2BE0; }
+    .f04-let {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 150px;
+      line-height: 1;
+      letter-spacing: -0.008em;
+      padding-bottom: 12px;
+      box-sizing: border-box;
+    }
+    .f04-let-lit { color: #F0EBDE; }
+
+    .f04-name {
+      position: absolute;
+      left: 0;
+      top: 376px;
+      width: 425px;
+      text-align: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1.1;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+      padding-top: 8px;
+    }
+    .f04-q { position: absolute; left: 0; top: 432px; width: 425px; height: 72px; }
+    .f04-qt {
+      position: absolute;
+      inset: 0;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 72px;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .f04-ql { position: absolute; inset: 0; background: #1F2BE0; }
+    .f04-qt-lit { color: #F0EBDE; }
+
+    .f04-ico {
+      position: absolute;
+      left: 0;
+      top: 524px;
+      width: 425px;
+      height: 340px;
+      border: 3px solid #1F2BE0;
+      box-sizing: border-box;
+      overflow: hidden;
+      background: #F0EBDE;
+      transform-origin: 50% 50%;
+    }
+    .f04-idx {
+      position: absolute;
+      left: 14px;
+      top: 12px;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+    }
+
+    /* VOLUME — stacking boxes */
+    .f04-floor { position: absolute; left: 40px; width: 339px; top: 310px; height: 4px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f04-box {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      border: 4px solid #1F2BE0;
+      box-sizing: border-box;
+      background: #F0EBDE;
+      transform-origin: 50% 100%;
+    }
+    .f04-box-tape { position: absolute; left: 0; right: 0; top: 24px; height: 4px; background: #1F2BE0; }
+    .f04-box-fill { position: absolute; inset: 0; background: #1F2BE0; opacity: 0; }
+
+    /* VARIEDADE — different shapes */
+    .f04-shape { position: absolute; top: 118px; width: 120px; height: 120px; transform-origin: 50% 50%; }
+    .f04-shape svg { position: absolute; inset: 0; width: 120px; height: 120px; overflow: visible; }
+    .f04-shape .f04-sp { fill: #1F2BE0; fill-opacity: 0; stroke: #1F2BE0; stroke-width: 7; stroke-linejoin: miter; stroke-linecap: square; }
+    .f04-shelf { position: absolute; left: 30px; width: 359px; top: 268px; height: 4px; background: #1F2BE0; transform-origin: 50% 50%; }
+
+    /* VARIAÇÃO — step line */
+    .f04-chart { position: absolute; inset: 0; width: 419px; height: 334px; overflow: visible; }
+    .f04-chart polyline { fill: none; stroke: #1F2BE0; stroke-linejoin: miter; stroke-linecap: square; }
+    .f04-axis { stroke-width: 4; }
+    .f04-steps { stroke-width: 7; }
+    .f04-marker { position: absolute; left: 18px; top: 238px; width: 24px; height: 24px; background: #1F2BE0; transform-origin: 50% 50%; }
+
+    /* VISIBILIDADE — window with blinds */
+    .f04-win {
+      position: absolute;
+      left: 79.5px;
+      top: 50px;
+      width: 260px;
+      height: 236px;
+      border: 6px solid #1F2BE0;
+      box-sizing: border-box;
+      overflow: hidden;
+      background: #F0EBDE;
+      transform-origin: 50% 50%;
+    }
+    .f04-sill { position: absolute; left: 60px; width: 299px; top: 292px; height: 6px; background: #1F2BE0; transform-origin: 50% 50%; }
+    .f04-belt { position: absolute; left: 0; right: 0; top: 168px; height: 4px; background: #1F2BE0; }
+    .f04-cbox { position: absolute; top: 130px; width: 34px; height: 34px; border: 4px solid #1F2BE0; box-sizing: border-box; }
+    .f04-piston { position: absolute; left: 110px; top: -10px; width: 22px; height: 70px; background: #1F2BE0; }
+    .f04-mull-v { position: absolute; left: 121px; top: 0; bottom: 0; width: 4px; background: #1F2BE0; }
+    .f04-blinds { position: absolute; inset: 0; }
+    .f04-blind { position: absolute; left: 0; right: 0; height: 28px; background: #1F2BE0; border-bottom: 3px solid #F0EBDE; box-sizing: border-box; transform-origin: 50% 0%; }
+  </style>
+
+  <div id="root" data-composition-id="04-quatro-v" data-width="1920" data-height="1080" data-duration="13.428">
+    <div id="f04-ground" class="f04-ground clip" data-start="0" data-duration="13.428" data-track-index="0"></div>
+
+    <div id="f04-stage" class="f04-stage clip" data-start="0" data-duration="13.428" data-track-index="1">
+      <div class="f04-hair f04-hair-top"></div>
+      <div class="f04-hair f04-hair-bot"></div>
+      <div class="f04-chrome f04-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f04-chrome f04-chrome-num">04 / 18</div>
+
+      <div class="f04-content" id="f04-content">
+        <div class="f04-band" id="f04-band"><span id="f04-band-t" style="display:inline-block">QUESTÃO 1 · OS 4 V'S</span></div>
+        <div class="f04-macete" id="f04-macete">MACETE: V VIRA ?</div>
+
+        <!-- column 0 : VOLUME -->
+        <div class="f04-col" style="left:77px">
+          <div class="f04-blk" id="f04-blk0">
+            <div class="f04-flip" id="f04-flip0">
+              <div class="f04-face f04-front" id="f04-front0">
+                <div class="f04-let" id="f04-let0">V</div>
+                <div class="f04-fill" id="f04-fill0"><div class="f04-let f04-let-lit">V</div></div>
+              </div>
+              <div class="f04-face f04-back" id="f04-back0"><div class="f04-let f04-let-lit">?</div></div>
+            </div>
+          </div>
+          <div class="f04-name" id="f04-name0">VOLUME</div>
+          <div class="f04-q" id="f04-q0">
+            <div class="f04-qt" id="f04-qt0">quanto?</div>
+            <div class="f04-ql" id="f04-ql0"><div class="f04-qt f04-qt-lit">quanto?</div></div>
+          </div>
+          <div class="f04-ico" id="f04-ico0">
+            <div class="f04-idx">V1</div>
+            <div class="f04-floor" id="f04-floor0"></div>
+            <div class="f04-box" id="f04-bx0" style="left:104px;top:246px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf0"></div></div>
+            <div class="f04-box" id="f04-bx1" style="left:176px;top:246px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf1"></div></div>
+            <div class="f04-box" id="f04-bx2" style="left:248px;top:246px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf2"></div></div>
+            <div class="f04-box" id="f04-bx3" style="left:104px;top:178px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf3"></div></div>
+            <div class="f04-box" id="f04-bx4" style="left:176px;top:178px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf4"></div></div>
+            <div class="f04-box" id="f04-bx5" style="left:248px;top:178px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf5"></div></div>
+            <div class="f04-box" id="f04-bx6" style="left:176px;top:110px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf6"></div></div>
+            <div class="f04-box" id="f04-bx7" style="left:104px;top:110px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf7"></div></div>
+            <div class="f04-box" id="f04-bx8" style="left:248px;top:110px"><div class="f04-box-tape"></div><div class="f04-box-fill" id="f04-bf8"></div></div>
+          </div>
+        </div>
+
+        <!-- column 1 : VARIEDADE -->
+        <div class="f04-col" style="left:524px">
+          <div class="f04-blk" id="f04-blk1">
+            <div class="f04-flip" id="f04-flip1">
+              <div class="f04-face f04-front" id="f04-front1">
+                <div class="f04-let" id="f04-let1">V</div>
+                <div class="f04-fill" id="f04-fill1"><div class="f04-let f04-let-lit">V</div></div>
+              </div>
+              <div class="f04-face f04-back" id="f04-back1"><div class="f04-let f04-let-lit">?</div></div>
+            </div>
+          </div>
+          <div class="f04-name" id="f04-name1">VARIEDADE</div>
+          <div class="f04-q" id="f04-q1">
+            <div class="f04-qt" id="f04-qt1">quantos tipos?</div>
+            <div class="f04-ql" id="f04-ql1"><div class="f04-qt f04-qt-lit">quantos tipos?</div></div>
+          </div>
+          <div class="f04-ico" id="f04-ico1">
+            <div class="f04-idx">V2</div>
+            <div class="f04-shelf" id="f04-shelf1"></div>
+            <div class="f04-shape" id="f04-sh0" style="left:19.5px"><svg viewBox="0 0 120 120"><rect class="f04-sp" id="f04-sp0" x="18" y="18" width="84" height="84" /></svg></div>
+            <div class="f04-shape" id="f04-sh1" style="left:149.5px"><svg viewBox="0 0 120 120"><polygon class="f04-sp" id="f04-sp1" points="60,6 107,87 13,87" /></svg></div>
+            <div class="f04-shape" id="f04-sh2" style="left:279.5px"><svg viewBox="0 0 120 120"><rect class="f04-sp" id="f04-sp2" x="4" y="36" width="112" height="48" /></svg></div>
+          </div>
+        </div>
+
+        <!-- column 2 : VARIAÇÃO -->
+        <div class="f04-col" style="left:971px">
+          <div class="f04-blk" id="f04-blk2">
+            <div class="f04-flip" id="f04-flip2">
+              <div class="f04-face f04-front" id="f04-front2">
+                <div class="f04-let" id="f04-let2">V</div>
+                <div class="f04-fill" id="f04-fill2"><div class="f04-let f04-let-lit">V</div></div>
+              </div>
+              <div class="f04-face f04-back" id="f04-back2"><div class="f04-let f04-let-lit">?</div></div>
+            </div>
+          </div>
+          <div class="f04-name" id="f04-name2">VARIAÇÃO</div>
+          <div class="f04-q" id="f04-q2">
+            <div class="f04-qt" id="f04-qt2">a demanda muda?</div>
+            <div class="f04-ql" id="f04-ql2"><div class="f04-qt f04-qt-lit">a demanda muda?</div></div>
+          </div>
+          <div class="f04-ico" id="f04-ico2">
+            <div class="f04-idx">V3</div>
+            <svg class="f04-chart" viewBox="0 0 419 334" aria-hidden="true">
+              <polyline class="f04-axis" id="f04-axis" points="30,60 30,290 390,290" />
+              <polyline class="f04-steps" id="f04-steps" points="30,250 95,250 95,175 160,175 160,225 225,225 225,110 290,110 290,195 380,195" />
+            </svg>
+            <div class="f04-marker" id="f04-marker"></div>
+          </div>
+        </div>
+
+        <!-- column 3 : VISIBILIDADE -->
+        <div class="f04-col" style="left:1418px">
+          <div class="f04-blk" id="f04-blk3">
+            <div class="f04-flip" id="f04-flip3">
+              <div class="f04-face f04-front" id="f04-front3">
+                <div class="f04-let" id="f04-let3">V</div>
+                <div class="f04-fill" id="f04-fill3"><div class="f04-let f04-let-lit">V</div></div>
+              </div>
+              <div class="f04-face f04-back" id="f04-back3"><div class="f04-let f04-let-lit">?</div></div>
+            </div>
+          </div>
+          <div class="f04-name" id="f04-name3">VISIBILIDADE</div>
+          <div class="f04-q" id="f04-q3">
+            <div class="f04-qt" id="f04-qt3">o cliente vê?</div>
+            <div class="f04-ql" id="f04-ql3"><div class="f04-qt f04-qt-lit">o cliente vê?</div></div>
+          </div>
+          <div class="f04-ico" id="f04-ico3">
+            <div class="f04-idx">V4</div>
+            <div class="f04-win" id="f04-win">
+              <div class="f04-belt"></div>
+              <div class="f04-cbox" id="f04-cb0" style="left:-60px"></div>
+              <div class="f04-cbox" id="f04-cb1" style="left:20px"></div>
+              <div class="f04-cbox" id="f04-cb2" style="left:100px"></div>
+              <div class="f04-cbox" id="f04-cb3" style="left:180px"></div>
+              <div class="f04-piston" id="f04-piston"></div>
+              <div class="f04-mull-v"></div>
+              <div class="f04-blinds">
+                <div class="f04-blind" id="f04-bl0" style="top:0px"></div>
+                <div class="f04-blind" id="f04-bl1" style="top:28px"></div>
+                <div class="f04-blind" id="f04-bl2" style="top:56px"></div>
+                <div class="f04-blind" id="f04-bl3" style="top:84px"></div>
+                <div class="f04-blind" id="f04-bl4" style="top:112px"></div>
+                <div class="f04-blind" id="f04-bl5" style="top:140px"></div>
+                <div class="f04-blind" id="f04-bl6" style="top:168px"></div>
+                <div class="f04-blind" id="f04-bl7" style="top:196px"></div>
+              </div>
+            </div>
+            <div class="f04-sill" id="f04-sill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var D = 12.928;
+      var tl = gsap.timeline({ paused: true });
+      function q(id) { return document.getElementById(id); }
+      var TXT_OPEN = "inset(-30% -4% -15% -4%)";
+
+      // measured stroke lengths for path draws
+      ["f04-sp0", "f04-sp1", "f04-sp2", "f04-axis", "f04-steps"].forEach(function (id) {
+        var el = q(id);
+        if (!el) return;
+        var len = Math.ceil(el.getTotalLength() * 1.05);
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+        el.setAttribute("data-len", len);
+      });
+
+      // slow camera push under the whole shot
+      tl.fromTo("#f04-content", { scale: 1 }, { scale: 1.025, duration: D, ease: "none" }, 0);
+
+      // ---- Scene 1 (0.0–2.4): empty icon frames, band, four V blocks drop ----
+      [0, 1, 2, 3].forEach(function (i) {
+        tl.fromTo("#f04-ico" + i, { clipPath: "inset(0% 0% 100% 0%)" },
+          { clipPath: "inset(-2% -2% -2% -2%)", duration: 0.5, ease: "power2.out" }, 0.1 + i * 0.08);
+      });
+      tl.fromTo("#f04-band", { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: TXT_OPEN, duration: 0.5, ease: "power3.inOut" }, 0.5);
+      tl.fromTo("#f04-band-t", { x: -24 }, { x: 0, duration: 0.6, ease: "power3.out" }, 0.55);
+
+      [0, 1, 2, 3].forEach(function (i) {
+        var t = 1.0 + i * 0.13;
+        tl.fromTo("#f04-blk" + i, { y: -330, opacity: 0 }, { y: 0, opacity: 1, duration: 0.36, ease: "power2.in" }, t);
+        tl.to("#f04-flip" + i, { scaleY: 0.86, scaleX: 1.05, duration: 0.08, ease: "power2.out" }, t + 0.36);
+        tl.to("#f04-flip" + i, { scaleY: 1, scaleX: 1, duration: 0.35, ease: "power3.out" }, t + 0.44);
+      });
+
+      // ---- Scene 2 (2.4–4.3): each V flips (rotationY) into "?" and back at 3.6 ----
+      tl.fromTo("#f04-macete", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.4);
+      function flip(i, t, toQuestion) {
+        var f = "#f04-flip" + i;
+        tl.to(f, { rotationY: 90, duration: 0.22, ease: "power2.in" }, t);
+        tl.set("#f04-front" + i, { opacity: toQuestion ? 0 : 1 }, t + 0.22);
+        tl.set("#f04-back" + i, { opacity: toQuestion ? 1 : 0 }, t + 0.22);
+        tl.set(f, { rotationY: -90 }, t + 0.22);
+        tl.to(f, { rotationY: 0, duration: 0.3, ease: "power2.out" }, t + 0.22);
+      }
+      tl.set(".f04-back", { opacity: 0 }, 0);
+      [0, 1, 2, 3].forEach(function (i) {
+        flip(i, 2.45 + i * 0.09, true);
+        flip(i, 3.6 + i * 0.09, false);
+      });
+      // "?" state: icon frames nudge while the question gesture holds
+      [0, 1, 2, 3].forEach(function (i) {
+        tl.to("#f04-ico" + i, { y: -10, duration: 0.25, ease: "power2.out" }, 2.75 + i * 0.09);
+        tl.to("#f04-ico" + i, { y: 0, duration: 0.35, ease: "power2.inOut" }, 3.1 + i * 0.09);
+      });
+
+      // ---- column activation (block lights, name + question arrive) ----
+      function activate(i, t) {
+        tl.fromTo("#f04-fill" + i, { clipPath: "inset(100% 0% 0% 0%)" },
+          { clipPath: TXT_OPEN, duration: 0.45, ease: "power3.inOut" }, t);
+        tl.set("#f04-let" + i, { opacity: 0 }, t + 0.46);
+        tl.to("#f04-blk" + i, { scale: 1.07, duration: 0.2, ease: "power2.out" }, t);
+        tl.to("#f04-blk" + i, { scale: 1, duration: 0.4, ease: "power3.out" }, t + 0.2);
+        tl.fromTo("#f04-name" + i, { clipPath: "inset(-30% 100% -15% -4%)" },
+          { clipPath: TXT_OPEN, duration: 0.5, ease: "power3.out" }, t + 0.1);
+        tl.fromTo("#f04-qt" + i, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t + 0.3);
+        tl.to("#f04-ico" + i, { scale: 1.03, duration: 0.22, ease: "power2.out" }, t + 0.05);
+        tl.to("#f04-ico" + i, { scale: 1, duration: 0.4, ease: "power3.out" }, t + 0.27);
+      }
+
+      // ---- Scene 3a (4.3): VOLUME — boxes stack ----
+      activate(0, 4.3);
+      tl.fromTo("#f04-floor0", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, 4.35);
+      for (var k = 0; k < 9; k++) {
+        var bt = 4.55 + k * 0.48;
+        var b = "#f04-bx" + k;
+        tl.fromTo(b, { y: -300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power2.in" }, bt);
+        tl.to(b, { scaleY: 0.84, scaleX: 1.08, duration: 0.07, ease: "power2.out" }, bt + 0.3);
+        tl.to(b, { scaleY: 1, scaleX: 1, duration: 0.25, ease: "power3.out" }, bt + 0.37);
+      }
+      // count the stack: each box fills in sequence ("quanto?")
+      for (var c = 0; c < 9; c++) {
+        tl.fromTo("#f04-bf" + c, { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power1.out" }, 9.0 + c * 0.3);
+      }
+
+      // ---- Scene 3b (5.7): VARIEDADE — three different shapes, shuffling ----
+      activate(1, 5.7);
+      tl.fromTo("#f04-shelf1", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 5.75);
+      [0, 1, 2].forEach(function (s) {
+        var st = 5.85 + s * 0.3;
+        tl.fromTo("#f04-sh" + s, { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, st);
+        tl.to("#f04-sp" + s, { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, st + 0.05);
+      });
+      tl.to("#f04-sp0", { fillOpacity: 1, duration: 0.35, ease: "power1.out" }, 6.95);
+      var SLOT_STEP = 130, ROT = [90, 120, 180];
+      [7.5, 8.7, 9.9, 11.1, 12.25].forEach(function (t, n) {
+        [0, 1, 2].forEach(function (s) {
+          var slot = (s + n + 1) % 3;
+          var sh = "#f04-sh" + s;
+          tl.to(sh, { x: (slot - s) * SLOT_STEP, rotation: ROT[s] * (n + 1), duration: 0.6, ease: "power3.inOut" }, t);
+          if (slot === 0) {
+            tl.to(sh, { y: -70, duration: 0.3, ease: "power2.out" }, t);
+            tl.to(sh, { y: 0, duration: 0.3, ease: "power2.in" }, t + 0.3);
+          }
+        });
+      });
+
+      // ---- Scene 3c (7.8): VARIAÇÃO — stepped line drawn, marker rides it ----
+      activate(2, 7.8);
+      tl.to("#f04-axis", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 7.85);
+      tl.to("#f04-steps", { strokeDashoffset: 0, duration: 1.5, ease: "power1.inOut" }, 8.1);
+      tl.fromTo("#f04-marker", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power3.out" }, 9.45);
+      var PTS = [[30,250],[95,250],[95,175],[160,175],[160,225],[225,225],[225,110],[290,110],[290,195],[380,195]];
+      for (var p = 1; p < PTS.length; p++) {
+        tl.to("#f04-marker", { x: PTS[p][0] - PTS[0][0], y: PTS[p][1] - PTS[0][1], duration: 0.34, ease: "power1.inOut" }, 9.75 + (p - 1) * 0.34);
+      }
+
+      // ---- Scene 4 (10.4–end): VISIBILIDADE — blinds open on the operation ----
+      activate(3, 10.4);
+      tl.fromTo("#f04-win", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 10.45);
+      tl.fromTo("#f04-sill", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, 10.55);
+      for (var j = 0; j < 8; j++) {
+        tl.to("#f04-bl" + j, { scaleY: 0.14, duration: 0.42, ease: "power3.inOut" }, 10.85 + j * 0.05);
+      }
+      [0, 1, 2, 3].forEach(function (m) {
+        tl.fromTo("#f04-cb" + m, { x: 0 }, { x: 150, duration: D - 10.45, ease: "none" }, 10.45);
+      });
+      [11.2, 11.8, 12.35].forEach(function (t) {
+        tl.to("#f04-piston", { y: 46, duration: 0.24, ease: "power2.in" }, t);
+        tl.to("#f04-piston", { y: 0, duration: 0.3, ease: "power2.out" }, t + 0.24);
+      });
+
+      // the four questions lock into an inverted block
+      [0, 1, 2, 3].forEach(function (i) {
+        var t = 11.75 + i * 0.12;
+        tl.fromTo("#f04-ql" + i, { clipPath: "inset(0% 100% 0% 0%)" },
+          { clipPath: TXT_OPEN, duration: 0.45, ease: "power3.inOut" }, t);
+        tl.set("#f04-qt" + i, { opacity: 0 }, t + 0.46);
+      });
+
+      // hold to the end — no exit (root transition owns it)
+      tl.set({}, {}, D);
+
+      window.__timelines["04-quatro-v"] = tl;
+    })();
+  </script>
+</template>

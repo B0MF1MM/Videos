@@ -1,0 +1,396 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f16-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f16-stage { position: absolute; inset: 0; }
+    .f16-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f16-hair-top { top: 70px; }
+    .f16-hair-bot { top: 892px; }
+    .f16-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f16-chrome-tag { left: 77px; }
+    .f16-chrome-num { right: 77px; }
+
+    .f16-content { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+    /* ---------- scene 1: small counters ---------- */
+    .f16-nums-label {
+      position: absolute;
+      left: 120px;
+      top: 100px;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      line-height: 40px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .f16-num {
+      position: absolute;
+      top: 94px;
+      height: 52px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      padding: 0 16px;
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      line-height: 46px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      background: #F0EBDE;
+      transform-origin: 0% 50%;
+    }
+
+    /* ---------- cycle arrows ---------- */
+    .f16-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .f16-svg path { fill: none; stroke: #1F2BE0; stroke-linecap: butt; stroke-linejoin: miter; }
+    .f16-svg .f16-track { stroke: rgba(31,43,224,0.30); stroke-width: 3; stroke-dasharray: 10 10; }
+    .f16-svg .f16-arrow { stroke-width: 6; }
+    .f16-svg .f16-thick { stroke-width: 16; }
+
+    /* ---------- blocks ---------- */
+    .f16-slot {
+      position: absolute;
+      width: 460px;
+      height: 150px;
+      box-sizing: border-box;
+      border: 3px dashed rgba(31,43,224,0.35);
+    }
+    .f16-block {
+      position: absolute;
+      width: 460px;
+      height: 150px;
+      box-sizing: border-box;
+      border: 5px solid #1F2BE0;
+      background: #F0EBDE;
+      transform-origin: 50% 50%;
+    }
+    .f16-block.f16-inv { background: #1F2BE0; color: #F0EBDE; border-color: #1F2BE0; }
+    .f16-bnum {
+      position: absolute;
+      left: 20px;
+      top: 14px;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      line-height: 30px;
+      letter-spacing: 0.06em;
+    }
+    .f16-led {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      width: 26px;
+      height: 26px;
+      box-sizing: border-box;
+      border: 3px solid currentColor;
+    }
+    .f16-led i {
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 14px;
+      height: 14px;
+      background: currentColor;
+      transform-origin: 50% 50%;
+    }
+    .f16-blabel {
+      position: absolute;
+      left: 20px;
+      right: 16px;
+      bottom: 16px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.15;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .f16-blabel-big {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 76px;
+      line-height: 1;
+      letter-spacing: -0.005em;
+      bottom: 14px;
+    }
+
+    .f16-b1 { left: 120px; top: 180px; }
+    .f16-b2 { left: 1340px; top: 180px; }
+    .f16-b3 { left: 1340px; top: 700px; }
+    .f16-b4 { left: 120px; top: 700px; }
+
+    /* travelling token */
+    .f16-token {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 26px;
+      height: 26px;
+      background: #1F2BE0;
+      box-shadow: 0 0 0 5px #F0EBDE;
+    }
+
+    /* ---------- golden sentence ---------- */
+    .f16-sealwrap {
+      position: absolute;
+      left: 400px;
+      width: 1120px;
+      top: 372px;
+      text-align: center;
+    }
+    .f16-seal {
+      display: inline-block;
+      box-sizing: border-box;
+      border: 4px solid #1F2BE0;
+      padding: 0 22px;
+      height: 58px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 52px;
+      letter-spacing: 0.18em;
+      white-space: nowrap;
+      background: #F0EBDE;
+      transform-origin: 50% 50%;
+    }
+    .f16-seal b {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: #1F2BE0;
+      margin: 0 16px 4px 0;
+      vertical-align: middle;
+    }
+    .f16-seal b:last-child { margin: 0 0 4px 16px; }
+    .f16-line1 {
+      position: absolute;
+      left: 400px;
+      width: 1120px;
+      top: 452px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 76px;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .f16-w { display: inline-block; }
+    .f16-line2wrap {
+      position: absolute;
+      left: 400px;
+      width: 1120px;
+      top: 548px;
+      text-align: center;
+    }
+    .f16-line2 {
+      display: inline-block;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      padding: 4px 30px 10px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 76px;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="16-decidir" data-width="1920" data-height="1080" data-duration="13.279">
+    <div id="f16-ground" class="f16-ground clip" data-start="0" data-duration="13.279" data-track-index="0"></div>
+
+    <div id="f16-stage" class="f16-stage clip" data-start="0" data-duration="13.279" data-track-index="1">
+      <div class="f16-hair f16-hair-top"></div>
+      <div class="f16-hair f16-hair-bot"></div>
+      <div class="f16-chrome f16-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f16-chrome f16-chrome-num">16 / 18</div>
+
+      <div class="f16-content" id="f16-content">
+        <!-- Scene 1: counters from the previous frame -->
+        <div class="f16-nums-label" id="f16-nums-label">COM OS NÚMEROS…</div>
+        <div class="f16-num" id="f16-n1" style="left: 430px;">25/h</div>
+        <div class="f16-num" id="f16-n2" style="left: 580px;">25 vs 30</div>
+        <div class="f16-num" id="f16-n3" style="left: 805px;">190/200</div>
+
+        <!-- ghost slots -->
+        <div class="f16-slot f16-b1" id="f16-s1"></div>
+        <div class="f16-slot f16-b2" id="f16-s2"></div>
+        <div class="f16-slot f16-b3" id="f16-s3"></div>
+        <div class="f16-slot f16-b4" id="f16-s4"></div>
+
+        <!-- arrows -->
+        <svg class="f16-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+          <path class="f16-track" d="M590 255 L1330 255" />
+          <path class="f16-track" d="M1570 340 L1570 690" />
+          <path class="f16-track" d="M1330 775 L590 775" />
+          <path class="f16-track" d="M350 690 L350 340" />
+
+          <path id="f16-a1" class="f16-arrow f16-draw" d="M590 255 L1326 255 M1300 237 L1326 255 L1300 273" />
+          <path id="f16-a2" class="f16-arrow f16-draw" d="M1570 340 L1570 686 M1552 660 L1570 686 L1588 660" />
+          <path id="f16-a3" class="f16-arrow f16-draw" d="M1330 775 L594 775 M620 757 L594 775 L620 793" />
+          <path id="f16-a4" class="f16-arrow f16-draw" d="M350 690 L350 344 M332 370 L350 344 L368 370" />
+
+          <path id="f16-t1" class="f16-thick f16-draw" d="M590 255 L1326 255" />
+          <path id="f16-t2" class="f16-thick f16-draw" d="M1570 340 L1570 686" />
+          <path id="f16-t3" class="f16-thick f16-draw" d="M1330 775 L594 775" />
+          <path id="f16-t4" class="f16-thick f16-draw" d="M350 690 L350 344" />
+        </svg>
+
+        <!-- lit blocks -->
+        <div class="f16-block f16-b1" id="f16-b1">
+          <div class="f16-bnum">01</div>
+          <div class="f16-led"><i id="f16-l1"></i></div>
+          <div class="f16-blabel">IDENTIFICAR<br>PROBLEMAS</div>
+        </div>
+        <div class="f16-block f16-b2" id="f16-b2">
+          <div class="f16-bnum">02</div>
+          <div class="f16-led"><i id="f16-l2"></i></div>
+          <div class="f16-blabel">COMPARAR<br>COM METAS</div>
+        </div>
+        <div class="f16-block f16-b3" id="f16-b3">
+          <div class="f16-bnum">03</div>
+          <div class="f16-led"><i id="f16-l3"></i></div>
+          <div class="f16-blabel">RECONHECER<br>DESPERDÍCIOS</div>
+        </div>
+        <div class="f16-block f16-b4 f16-inv" id="f16-b4">
+          <div class="f16-bnum">04</div>
+          <div class="f16-led"><i id="f16-l4"></i></div>
+          <div class="f16-blabel f16-blabel-big">AGIR</div>
+        </div>
+
+        <div class="f16-token" id="f16-token"></div>
+
+        <!-- Scene 3: golden sentence -->
+        <div class="f16-sealwrap"><div class="f16-seal" id="f16-seal"><b></b>FRASE DE OURO<b></b></div></div>
+        <div class="f16-line1" id="f16-line1"><span class="f16-w">Indicadores</span> <span class="f16-w">não</span> <span class="f16-w">servem</span> <span class="f16-w">só</span> <span class="f16-w">para</span> <span class="f16-w">medir;</span></div>
+        <div class="f16-line2wrap"><div class="f16-line2" id="f16-line2">servem para orientar decisões</div></div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const D = 12.779;
+          const R = document.querySelector('[data-composition-id="16-decidir"]');
+          const q = (s) => R.querySelector(s);
+          const qa = (s) => Array.from(R.querySelectorAll(s));
+
+          // measured dash setup
+          qa(".f16-draw").forEach((p) => {
+            const len = p.getTotalLength() * 1.02;
+            p.style.strokeDasharray = len + " " + len;
+            p.style.strokeDashoffset = len;
+          });
+
+          // macro camera drift
+          tl.fromTo(q("#f16-content"), { scale: 1 }, { scale: 1.025, duration: D, ease: "none" }, 0);
+
+          // ---------- Scene 1 (0.0–1.4) ----------
+          tl.fromTo(q("#f16-nums-label"), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.1);
+          ["#f16-n1", "#f16-n2", "#f16-n3"].forEach((s, i) => {
+            tl.fromTo(q(s), { scale: 0, opacity: 0, y: 12 }, { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3 + i * 0.18);
+          });
+          // ghost slots + dashed tracks fade in as the empty cycle
+          qa(".f16-slot").forEach((el, i) => {
+            tl.fromTo(el, { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0.4 + i * 0.08);
+          });
+          tl.fromTo(qa(".f16-track"), { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0.7);
+
+          // ---------- Scene 2 (1.4–5.8): blocks light in sequence ----------
+          const lit = [1.4, 2.6, 3.8, 5.1];
+          [1, 2, 3].forEach((n, i) => {
+            tl.fromTo(q("#f16-b" + n), { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, lit[i]);
+            tl.fromTo(q("#f16-l" + n), { scale: 0 }, { scale: 1, duration: 0.3, ease: "power2.out" }, lit[i] + 0.35);
+            tl.set(q("#f16-s" + n), { opacity: 0 }, lit[i] + 0.55);
+          });
+          // AGIR: inverted with slight overshoot
+          tl.fromTo(q("#f16-b4"), { scale: 0, opacity: 0, rotation: -4 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, lit[3]);
+          tl.fromTo(q("#f16-l4"), { scale: 0 }, { scale: 1, duration: 0.3, ease: "power2.out" }, lit[3] + 0.35);
+          tl.set(q("#f16-s4"), { opacity: 0 }, lit[3] + 0.6);
+
+          // arrows draw from each block to the next
+          const draws = [["#f16-a1", 1.9, 0.7], ["#f16-a2", 3.1, 0.7], ["#f16-a3", 4.3, 0.8], ["#f16-a4", 5.3, 0.5]];
+          draws.forEach(([s, t, d]) => tl.to(q(s), { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t));
+
+          // travelling token rides the cycle
+          const tok = q("#f16-token");
+          const P = [
+            [590, 255], [1330, 255], [1570, 340], [1570, 690],
+            [1330, 775], [590, 775], [350, 690], [350, 340], [590, 255]
+          ];
+          const at = (p) => ({ x: p[0] - 13, y: p[1] - 13 });
+          tl.fromTo(tok, Object.assign({ scale: 0, opacity: 0 }, at(P[0])), Object.assign({ scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, at(P[0])), 1.5);
+          const firstLap = [[1.9, 0.7], [2.6, 0.45], [3.1, 0.7], [3.8, 0.45], [4.3, 0.8], [5.1, 0.2], [5.3, 0.5], [5.8, 0.3]];
+          firstLap.forEach(([t, d], i) => tl.to(tok, Object.assign({ duration: d, ease: "power2.inOut" }, at(P[i + 1])), t));
+          // slow lap under the golden sentence (6.1–11.7)
+          const slow = 5.6 / 8;
+          for (let i = 0; i < 8; i++) {
+            tl.to(tok, Object.assign({ duration: slow, ease: "sine.inOut" }, at(P[i + 1])), 6.1 + i * slow);
+          }
+
+          // ---------- Scene 3 (5.8–12.779) ----------
+          tl.fromTo(q("#f16-seal"), { scale: 1.6, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "power3.out" }, 5.9);
+
+          qa("#f16-line1 .f16-w").forEach((w, i) => {
+            tl.fromTo(w, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 7.1 + i * 0.16);
+          });
+
+          tl.fromTo(q("#f16-line2"),
+            { clipPath: "inset(-30% 100% -15% -4%)" },
+            { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.9, ease: "power2.inOut" }, 9.5);
+          tl.fromTo(q("#f16-line2"), { y: 10 }, { y: 0, duration: 0.9, ease: "power3.out" }, 9.5);
+
+          // pulse: arrows thicken in sequence, blocks nudge as the pulse passes
+          const pulse = 11.7;
+          ["#f16-t1", "#f16-t2", "#f16-t3", "#f16-t4"].forEach((s, i) => {
+            tl.to(q(s), { strokeDashoffset: 0, duration: 0.28, ease: "power2.out" }, pulse + i * 0.25);
+          });
+          ["#f16-b2", "#f16-b3", "#f16-b4", "#f16-b1"].forEach((s, i) => {
+            const t = pulse + 0.2 + i * 0.25;
+            tl.to(q(s), { scale: 1.05, duration: 0.12, ease: "power2.out" }, t);
+            tl.to(q(s), { scale: 1, duration: 0.2, ease: "power2.out" }, t + 0.12);
+          });
+          // token rides the pulse, one fast lap
+          for (let i = 0; i < 4; i++) {
+            tl.to(tok, Object.assign({ duration: 0.25, ease: "power2.inOut" }, at(P[2 * i + 1])), pulse + i * 0.25);
+          }
+
+          tl.to({}, { duration: 0.001 }, D - 0.001);
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["16-decidir"] = tl;
+        })();
+      </script>
+    </div>
+  </div>
+</template>

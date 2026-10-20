@@ -1,0 +1,412 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f08-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f08-stage { position: absolute; inset: 0; }
+    .f08-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f08-hair-top { top: 70px; }
+    .f08-hair-bot { top: 892px; }
+    .f08-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f08-chrome-tag { left: 77px; }
+    .f08-chrome-num { right: 77px; }
+
+    .f08-content { position: absolute; inset: 0; transform-origin: 50% 50%; }
+
+    .f08-headline {
+      position: absolute;
+      left: 110px;
+      top: 88px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 68px;
+      line-height: 1.1;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+
+    /* ---------- panels ---------- */
+    .f08-panel { position: absolute; top: 196px; width: 540px; height: 676px; transform-origin: 50% 50%; }
+    .f08-pline { position: absolute; left: 0; top: 0; width: 540px; height: 676px; overflow: visible; }
+    .f08-pline rect { fill: none; stroke: #1F2BE0; stroke-width: 3; }
+    .f08-plabel {
+      position: absolute;
+      left: 24px;
+      top: 26px;
+      height: 40px;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 40px;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+    .f08-pidx {
+      position: absolute;
+      right: 24px;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+    }
+    .f08-prule { position: absolute; left: 24px; top: 76px; width: 492px; height: 2px; background: rgba(31,43,224,0.18); transform-origin: 0% 50%; }
+    .f08-scene { position: absolute; left: 24px; top: 92px; width: 492px; height: 330px; overflow: hidden; }
+    .f08-verb {
+      position: absolute;
+      left: 24px;
+      top: 440px;
+      width: 492px;
+      height: 112px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 76px;
+      line-height: 112px;
+      letter-spacing: -0.008em;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .f08-cap {
+      position: absolute;
+      left: 24px;
+      top: 576px;
+      width: 492px;
+      font-size: 30px;
+      line-height: 1.3;
+      font-weight: 400;
+    }
+    .f08-capbar { position: absolute; left: 24px; top: 568px; width: 40px; height: 4px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+    /* ---------- panel 1 · kanban ---------- */
+    .f08-floor { position: absolute; left: 0; top: 300px; width: 492px; height: 3px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f08-shelf { position: absolute; left: 16px; top: 236px; width: 290px; height: 6px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f08-shelfleg { position: absolute; top: 242px; width: 6px; height: 58px; background: #1F2BE0; transform-origin: 50% 100%; }
+    .f08-box { position: absolute; top: 152px; width: 80px; height: 80px; box-sizing: border-box; border: 3px solid #1F2BE0; background: #F0EBDE; }
+    .f08-box i { position: absolute; left: 28px; top: 0; width: 18px; height: 26px; background: #1F2BE0; }
+    .f08-post { position: absolute; left: 401px; top: 136px; width: 6px; height: 164px; background: #1F2BE0; transform-origin: 50% 100%; }
+    .f08-card {
+      position: absolute;
+      left: 324px;
+      top: 40px;
+      width: 160px;
+      height: 104px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      transform-origin: 50% 100%;
+    }
+    .f08-cardtxt {
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 154px;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+    }
+    .f08-cardln { position: absolute; left: 20px; height: 4px; background: #1F2BE0; }
+
+    /* ---------- panel 2 · JIT ---------- */
+    .f08-clock { position: absolute; left: 156px; top: 24px; width: 180px; height: 180px; overflow: visible; transform-origin: 50% 50%; }
+    .f08-clock .fr { fill: #F0EBDE; stroke: #1F2BE0; stroke-width: 4; }
+    .f08-clock .tk { stroke: #1F2BE0; stroke-width: 4; }
+    .f08-clock .hd { stroke: #1F2BE0; stroke-width: 6; stroke-linecap: square; }
+    .f08-clock .hb { fill: #1F2BE0; }
+    .f08-clock .tp { fill: #1F2BE0; }
+    .f08-belt { position: absolute; left: 0; top: 240px; width: 492px; height: 80px; overflow: visible; }
+    .f08-belt .rl { stroke: #1F2BE0; stroke-width: 4; fill: none; }
+    .f08-belt .dash { stroke: #1F2BE0; stroke-width: 6; fill: none; stroke-dasharray: 10 22; }
+    .f08-belt .slot { fill: none; stroke: #1F2BE0; stroke-width: 3; stroke-dasharray: 8 6; }
+    .f08-piece { position: absolute; left: 8px; top: 248px; width: 52px; height: 52px; background: #1F2BE0; }
+    .f08-tickline { position: absolute; left: 410px; top: 186px; width: 4px; height: 50px; background: #1F2BE0; transform-origin: 50% 0%; }
+
+    /* ---------- panel 3 · enxuta ---------- */
+    .f08-wblock {
+      position: absolute;
+      left: 12px;
+      width: 280px;
+      height: 56px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      font-weight: 600;
+      font-size: 27px;
+      line-height: 50px;
+      letter-spacing: 0.06em;
+      text-align: center;
+      white-space: nowrap;
+      transform-origin: 50% 100%;
+    }
+    .f08-press { position: absolute; left: 0; top: 32px; width: 304px; height: 14px; background: #1F2BE0; }
+    .f08-pressrod { position: absolute; left: 146px; top: -300px; width: 12px; height: 300px; background: #1F2BE0; }
+    .f08-cycle { position: absolute; left: 330px; top: 92px; width: 150px; height: 150px; overflow: visible; transform-origin: 50% 50%; }
+    .f08-cycle path { fill: none; stroke: #1F2BE0; stroke-width: 8; stroke-linecap: square; stroke-linejoin: miter; }
+    .f08-cycle polygon { fill: #1F2BE0; }
+  </style>
+
+  <div id="root" data-composition-id="08-trio" data-width="1920" data-height="1080" data-duration="13.62">
+    <div id="f08-ground" class="f08-ground clip" data-start="0" data-duration="13.62" data-track-index="0"></div>
+
+    <div id="f08-stage" class="f08-stage clip" data-start="0" data-duration="13.62" data-track-index="1">
+      <div class="f08-hair f08-hair-top"></div>
+      <div class="f08-hair f08-hair-bot"></div>
+      <div class="f08-chrome f08-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f08-chrome f08-chrome-num">08 / 18</div>
+
+      <div class="f08-content" id="f08-content">
+        <div class="f08-headline" id="f08-headline">Um verbo para cada um</div>
+
+        <!-- ================= PANEL 1 · KANBAN ================= -->
+        <div class="f08-panel" id="f08-p0" style="left:110px">
+          <svg class="f08-pline" viewBox="0 0 540 676"><rect id="f08-pr0" x="1.5" y="1.5" width="537" height="673" pathLength="1" stroke-dasharray="1"/></svg>
+          <div class="f08-plabel" id="f08-pl0">KANBAN</div>
+          <div class="f08-pidx" id="f08-pi0">01</div>
+          <div class="f08-prule" id="f08-ru0"></div>
+          <div class="f08-scene" id="f08-sc0">
+            <div class="f08-floor" id="f08-floor0"></div>
+            <div class="f08-shelf" id="f08-shelf"></div>
+            <div class="f08-shelfleg" id="f08-leg0" style="left:22px"></div>
+            <div class="f08-shelfleg" id="f08-leg1" style="left:294px"></div>
+            <div class="f08-box" id="f08-bx0" style="left:30px"><i></i></div>
+            <div class="f08-box" id="f08-bx1" style="left:122px"><i></i></div>
+            <div class="f08-box" id="f08-bx2" style="left:214px"><i></i></div>
+            <div class="f08-box" id="f08-nb0" style="left:30px"><i></i></div>
+            <div class="f08-box" id="f08-nb1" style="left:122px"><i></i></div>
+            <div class="f08-box" id="f08-nb2" style="left:214px"><i></i></div>
+            <div class="f08-post" id="f08-post"></div>
+            <div class="f08-card" id="f08-card">
+              <div class="f08-cardtxt">REPOR</div>
+              <div class="f08-cardln" style="top:60px;width:114px"></div>
+              <div class="f08-cardln" style="top:76px;width:70px"></div>
+            </div>
+          </div>
+          <div class="f08-verb" id="f08-v0">SINALIZA</div>
+          <div class="f08-capbar" id="f08-cb0"></div>
+          <div class="f08-cap" id="f08-c0">cartão que avisa o que repor</div>
+        </div>
+
+        <!-- ================= PANEL 2 · JUST IN TIME ================= -->
+        <div class="f08-panel" id="f08-p1" style="left:690px">
+          <svg class="f08-pline" viewBox="0 0 540 676"><rect id="f08-pr1" x="1.5" y="1.5" width="537" height="673" pathLength="1" stroke-dasharray="1"/></svg>
+          <div class="f08-plabel" id="f08-pl1">JUST IN TIME</div>
+          <div class="f08-pidx" id="f08-pi1">02</div>
+          <div class="f08-prule" id="f08-ru1"></div>
+          <div class="f08-scene" id="f08-sc1">
+            <svg class="f08-clock" id="f08-clock" viewBox="0 0 180 180">
+              <rect class="fr" x="2" y="2" width="176" height="176"/>
+              <line class="tk" x1="90" y1="12" x2="90" y2="30"/>
+              <line class="tk" x1="90" y1="150" x2="90" y2="168"/>
+              <line class="tk" x1="12" y1="90" x2="30" y2="90"/>
+              <line class="tk" x1="150" y1="90" x2="168" y2="90"/>
+              <line class="tk" x1="141" y1="39" x2="133" y2="47"/>
+              <line class="tk" x1="39" y1="39" x2="47" y2="47"/>
+              <line class="tk" x1="141" y1="141" x2="133" y2="133"/>
+              <line class="tk" x1="39" y1="141" x2="47" y2="133"/>
+              <rect class="tp" id="f08-top" x="82" y="-16" width="16" height="12"/>
+              <line class="hd" id="f08-hand" x1="90" y1="90" x2="90" y2="34"/>
+              <rect class="hb" x="82" y="82" width="16" height="16"/>
+            </svg>
+            <div class="f08-tickline" id="f08-tickline"></div>
+            <svg class="f08-belt" viewBox="0 0 492 80">
+              <rect class="slot" id="f08-slot" x="386" y="6" width="60" height="58"/>
+              <line class="rl" id="f08-rail" x1="0" y1="66" x2="492" y2="66"/>
+              <line class="dash" id="f08-dash" x1="0" y1="76" x2="492" y2="76"/>
+            </svg>
+            <div class="f08-piece" id="f08-piece"></div>
+          </div>
+          <div class="f08-verb" id="f08-v1">NA HORA</div>
+          <div class="f08-capbar" id="f08-cb1"></div>
+          <div class="f08-cap" id="f08-c1">quantidade e momento certos</div>
+        </div>
+
+        <!-- ================= PANEL 3 · PRODUÇÃO ENXUTA ================= -->
+        <div class="f08-panel" id="f08-p2" style="left:1270px">
+          <svg class="f08-pline" viewBox="0 0 540 676"><rect id="f08-pr2" x="1.5" y="1.5" width="537" height="673" pathLength="1" stroke-dasharray="1"/></svg>
+          <div class="f08-plabel" id="f08-pl2">PRODUÇÃO ENXUTA</div>
+          <div class="f08-pidx" id="f08-pi2">03</div>
+          <div class="f08-prule" id="f08-ru2"></div>
+          <div class="f08-scene" id="f08-sc2">
+            <div class="f08-floor" id="f08-floor2"></div>
+            <div class="f08-wblock" id="f08-w3" style="top:54px">DESPERDÍCIO</div>
+            <div class="f08-wblock" id="f08-w2" style="top:114px">DESPERDÍCIO</div>
+            <div class="f08-wblock" id="f08-w1" style="top:174px">DESPERDÍCIO</div>
+            <div class="f08-wblock" id="f08-w0" style="top:234px">DESPERDÍCIO</div>
+            <div class="f08-press" id="f08-press"><div class="f08-pressrod"></div></div>
+            <svg class="f08-cycle" id="f08-cycle" viewBox="0 0 150 150">
+              <path id="f08-cyc" pathLength="1" stroke-dasharray="1" d="M75 14 L136 14 L136 136 L14 136 L14 14 L44 14"/>
+              <polygon id="f08-cyh" points="44,0 66,14 44,28"/>
+            </svg>
+          </div>
+          <div class="f08-verb" id="f08-v2">ENXUGA</div>
+          <div class="f08-capbar" id="f08-cb2"></div>
+          <div class="f08-cap" id="f08-c2">melhoria contínua</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var D = 13.12;
+        var tl = gsap.timeline({ paused: true });
+        var SHOW = "inset(-30% -4% -15% -4%)";
+        var HIDE = "inset(-30% 104% -15% -4%)";
+
+        // slow camera push under the whole shot
+        tl.fromTo("#f08-content", { scale: 1 }, { scale: 1.02, duration: D, ease: "none" }, 0);
+
+        // ---------- Scene 1 (0–2.2): headline + three outlined panels ----------
+        tl.fromTo("#f08-headline", { clipPath: HIDE, y: 16 }, { clipPath: SHOW, y: 0, duration: 0.6, ease: "power3.out" }, 0.4);
+        [0, 1, 2].forEach(function (i) {
+          var t = 0.45 + i * 0.15;
+          tl.fromTo("#f08-p" + i, { scale: 0.86, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, t);
+          tl.fromTo("#f08-pr" + i, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, t);
+          tl.fromTo("#f08-pl" + i, { clipPath: HIDE }, { clipPath: SHOW, duration: 0.45, ease: "power3.out" }, t + 0.3);
+          tl.fromTo("#f08-pi" + i, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, t + 0.35);
+          tl.fromTo("#f08-ru" + i, { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, t + 0.4);
+        });
+
+        // hidden-until-cue states
+        tl.set(["#f08-v0", "#f08-v1", "#f08-v2"], { opacity: 0 }, 0);
+        tl.set(["#f08-c0", "#f08-c1", "#f08-c2"], { clipPath: HIDE }, 0);
+        tl.set(["#f08-cb0", "#f08-cb1", "#f08-cb2"], { scaleX: 0 }, 0);
+
+        function stamp(i, t) {
+          tl.fromTo("#f08-v" + i, { scale: 2.0, opacity: 0, rotation: -7 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.24, ease: "power4.in" }, t);
+          tl.to("#f08-p" + i, { keyframes: { y: [0, 7, -2, 0] }, duration: 0.3, ease: "none" }, t + 0.24);
+        }
+        function caption(i, t) {
+          tl.to("#f08-cb" + i, { scaleX: 1, duration: 0.35, ease: "power2.out" }, t);
+          tl.to("#f08-c" + i, { clipPath: SHOW, duration: 0.55, ease: "power3.out" }, t + 0.08);
+        }
+        function focus(i, t) {
+          tl.to("#f08-p" + i, { keyframes: { scale: [1, 1.025, 1] }, duration: 0.6, ease: "power2.out" }, t);
+        }
+
+        // panel 1 scene furniture + panel 2/3 furniture assemble quietly in Scene 1
+        tl.fromTo(["#f08-floor0", "#f08-floor2"], { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 1.2);
+        tl.fromTo("#f08-shelf", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.3);
+        tl.fromTo(["#f08-leg0", "#f08-leg1"], { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power2.out" }, 1.4);
+        ["#f08-bx0", "#f08-bx1", "#f08-bx2"].forEach(function (b, k) {
+          tl.fromTo(b, { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 1.5 + k * 0.1);
+        });
+        tl.set(["#f08-nb0", "#f08-nb1", "#f08-nb2"], { x: -460 }, 0);
+        tl.fromTo("#f08-post", { scaleY: 0 }, { scaleY: 0.25, duration: 0.4, ease: "power2.out" }, 1.6);
+        tl.set("#f08-card", { y: 260 }, 0);
+
+        // panel 2 + 3 idle furniture
+        tl.fromTo("#f08-clock", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 1.5);
+        tl.set("#f08-hand", { svgOrigin: "90 90", rotation: -120 }, 0);
+        tl.fromTo("#f08-rail", { strokeDasharray: "492 492", strokeDashoffset: 492 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 1.6);
+        tl.fromTo("#f08-slot", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.9);
+        tl.fromTo("#f08-tickline", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.out" }, 1.95);
+        tl.set("#f08-piece", { opacity: 0 }, 0);
+        tl.set(["#f08-w0", "#f08-w1", "#f08-w2", "#f08-w3"], { opacity: 0 }, 0);
+        tl.set("#f08-press", { y: -120 }, 0);
+        tl.set("#f08-cycle", { opacity: 0 }, 0);
+        tl.set("#f08-cyc", { strokeDashoffset: 1 }, 0);
+
+        // ---------- Scene 2 (2.2–5.3): KANBAN sinaliza ----------
+        focus(0, 2.2);
+        // boxes consumed, one by one, sliding off the shelf
+        ["#f08-bx2", "#f08-bx1", "#f08-bx0"].forEach(function (b, k) {
+          tl.to(b, { x: -420, duration: 0.3, ease: "power2.in" }, 2.2 + k * 0.16);
+        });
+        // last box gone → card lifts like a sign (2.7)
+        tl.to("#f08-post", { scaleY: 1, duration: 0.3, ease: "power3.out" }, 2.66);
+        tl.to("#f08-card", { y: 0, duration: 0.34, ease: "power3.out" }, 2.7);
+        tl.to("#f08-card", { keyframes: { rotation: [0, -6, 4, 0] }, duration: 0.5, ease: "none" }, 3.04);
+        stamp(0, 2.95);
+        caption(0, 3.6);
+        // card keeps waving while replenishment slides in
+        tl.to("#f08-card", { keyframes: { rotation: [0, -5, 5, -3, 0] }, duration: 1.2, ease: "none" }, 3.6);
+        ["#f08-nb0", "#f08-nb1", "#f08-nb2"].forEach(function (b, k) {
+          tl.to(b, { x: 0, duration: 0.45, ease: "power3.out" }, 4.1 + k * 0.32);
+          tl.to("#f08-shelf", { keyframes: { y: [0, 3, 0] }, duration: 0.2, ease: "none" }, 4.55 + k * 0.32);
+        });
+        tl.to("#f08-card", { rotationY: 360, duration: 0.6, ease: "power2.inOut" }, 5.0);
+
+        // ---------- Scene 3 (5.3–8.6): JUST IN TIME na hora ----------
+        focus(1, 5.4);
+        // hand sweeps to the top exactly at 7.7
+        tl.to("#f08-hand", { rotation: 360, duration: 2.3, ease: "none" }, 5.4);
+        tl.fromTo("#f08-dash", { strokeDashoffset: 0 }, { strokeDashoffset: -160, duration: 2.3, ease: "none" }, 5.4);
+        tl.fromTo("#f08-piece", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 5.5);
+        tl.to("#f08-piece", { x: 384, duration: 1.9, ease: "none" }, 5.8);
+        tl.to("#f08-piece", { keyframes: { y: [0, -6, 0] }, duration: 0.18, ease: "none" }, 7.7);
+        tl.to("#f08-clock", { keyframes: { scale: [1, 1.1, 1] }, duration: 0.35, ease: "power2.out" }, 7.7);
+        tl.to("#f08-top", { keyframes: { y: [0, -8, 0] }, duration: 0.3, ease: "power2.out" }, 7.7);
+        tl.to("#f08-tickline", { keyframes: { scaleY: [1, 0.4, 1] }, duration: 0.3, ease: "power2.out" }, 7.7);
+        stamp(1, 7.75);
+        caption(1, 8.05);
+        // clock keeps ticking in steps after the hit
+        for (var s = 1; s <= 5; s++) {
+          tl.to("#f08-hand", { rotation: 360 + s * 30, duration: 0.12, ease: "power3.out" }, 7.7 + s * 0.9);
+        }
+
+        // ---------- Scene 4 (8.6–13.12): PRODUÇÃO ENXUTA enxuga ----------
+        focus(2, 8.9);
+        ["#f08-w0", "#f08-w1", "#f08-w2", "#f08-w3"].forEach(function (b, k) {
+          tl.fromTo(b, { opacity: 0, y: -80 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.in" }, 8.95 + k * 0.14);
+        });
+        tl.to("#f08-press", { y: 0, duration: 0.35, ease: "power3.out" }, 9.45);
+        // first squeeze thud with the verb
+        stamp(2, 9.8);
+        tl.to("#f08-press", { keyframes: { y: [0, 8, 0] }, duration: 0.25, ease: "none" }, 10.04);
+        // stack shrinks in steps (10.5 …)
+        ["#f08-w3", "#f08-w2", "#f08-w1"].forEach(function (b, k) {
+          var t = 10.5 + k * 0.45;
+          tl.to("#f08-press", { y: 60 * (k + 1), duration: 0.22, ease: "power3.in" }, t);
+          tl.to(b, { scaleY: 0, duration: 0.22, ease: "power3.in" }, t);
+          tl.set(b, { opacity: 0 }, t + 0.22);
+          tl.to("#f08-sc2", { keyframes: { y: [0, 4, 0] }, duration: 0.16, ease: "none" }, t + 0.22);
+        });
+        // continuous-improvement square cycle (11.8)
+        tl.set("#f08-cycle", { opacity: 1 }, 11.8);
+        tl.to("#f08-cyc", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.8);
+        tl.fromTo("#f08-cyh", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.25, ease: "power3.out" }, 12.2);
+        tl.fromTo("#f08-cycle", { rotation: 0 }, { rotation: 270, duration: D - 11.8, ease: "none" }, 11.8);
+        caption(2, 12.0);
+        tl.to("#f08-press", { keyframes: { y: [180, 172, 180] }, duration: 0.5, ease: "none" }, 12.4);
+
+        tl.set({}, {}, D);
+        window.__timelines["08-trio"] = tl;
+      })();
+    </script>
+  </div>
+</template>

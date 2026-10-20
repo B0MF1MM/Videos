@@ -1,0 +1,418 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f10-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f10-stage { position: absolute; inset: 0; }
+    .f10-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f10-hair-top { top: 70px; }
+    .f10-hair-bot { top: 892px; }
+    .f10-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f10-chrome-tag { left: 77px; }
+    .f10-chrome-num { right: 77px; }
+
+    .f10-content { position: absolute; inset: 0; transform-origin: 50% 46%; }
+
+    .f10-band {
+      position: absolute;
+      left: 110px;
+      top: 94px;
+      height: 62px;
+      padding: 0 24px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 62px;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+    }
+
+    /* ---------- time line HOJE -> FUTURO ---------- */
+    .f10-tline { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .f10-tline .ln { stroke: #1F2BE0; stroke-width: 3; fill: none; }
+    .f10-tline .tk { stroke: rgba(31,43,224,0.45); stroke-width: 2; }
+    .f10-tline .hd { fill: #1F2BE0; }
+    .f10-tlab {
+      position: absolute;
+      top: 850px;
+      font-family: "DM Mono", monospace;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .f10-now { position: absolute; left: 101px; top: 827px; width: 18px; height: 18px; background: #1F2BE0; }
+
+    /* ---------- telescope ---------- */
+    .f10-tripod { position: absolute; left: 110px; top: 416px; width: 480px; height: 360px; overflow: visible; }
+    .f10-tripod line { stroke: #1F2BE0; stroke-width: 6; stroke-linecap: square; }
+    .f10-scope { position: absolute; left: 110px; top: 416px; width: 480px; height: 160px; transform-origin: 170px 135px; }
+    .f10-tube { position: absolute; box-sizing: border-box; border: 4px solid #1F2BE0; background: #F0EBDE; }
+    .f10-tube i { position: absolute; background: #1F2BE0; }
+    .f10-mount { position: absolute; left: 140px; top: 125px; width: 60px; height: 22px; background: #1F2BE0; }
+
+    /* rays from lens */
+    .f10-rays { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .f10-rays line { stroke: #1F2BE0; stroke-width: 3; stroke-dasharray: 1; }
+
+    /* ---------- hero word block ---------- */
+    .f10-word {
+      position: absolute;
+      left: 656px;
+      top: 421px;
+      width: 600px;
+      height: 150px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 90px;
+      line-height: 150px;
+      letter-spacing: -0.005em;
+      text-align: center;
+      white-space: nowrap;
+      transform-origin: 0% 50%;
+    }
+    .f10-hub { position: absolute; left: 1268px; top: 484px; width: 24px; height: 24px; background: #1F2BE0; transform-origin: 50% 50%; }
+
+    /* ---------- fan arrows ---------- */
+    .f10-fan { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .f10-fan line { stroke: #1F2BE0; stroke-width: 4; stroke-linecap: butt; fill: none; }
+    .f10-fan polygon { fill: #1F2BE0; }
+
+    /* ---------- destinations ---------- */
+    .f10-ghost {
+      position: absolute;
+      left: 1450px;
+      width: 360px;
+      height: 112px;
+      box-sizing: border-box;
+      border: 2px dashed rgba(31,43,224,0.35);
+    }
+    .f10-dest {
+      position: absolute;
+      left: 1450px;
+      width: 360px;
+      height: 112px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      transform-origin: 0% 50%;
+    }
+    .f10-ico { position: absolute; left: 13px; top: 13px; width: 80px; height: 80px; overflow: visible; }
+    .f10-ico .st { fill: none; stroke: #1F2BE0; stroke-width: 4; stroke-linejoin: miter; stroke-linecap: square; }
+    .f10-ico .fl { fill: #1F2BE0; }
+    .f10-ico .pp { fill: #F0EBDE; }
+    .f10-ico .off { fill: rgba(31,43,224,0.10); }
+    .f10-dlab {
+      position: absolute;
+      left: 110px;
+      top: 0;
+      height: 106px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 106px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .f10-didx {
+      position: absolute;
+      right: 10px;
+      top: 8px;
+      font-family: "DM Mono", monospace;
+      font-size: 14px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      color: rgba(31,43,224,0.6);
+    }
+  </style>
+
+  <div id="root" data-composition-id="10-antecipar" data-width="1920" data-height="1080" data-duration="9.929">
+    <div id="f10-ground" class="f10-ground clip" data-start="0" data-duration="9.929" data-track-index="0"></div>
+
+    <div id="f10-stage" class="f10-stage clip" data-start="0" data-duration="9.929" data-track-index="1">
+      <div class="f10-hair f10-hair-top"></div>
+      <div class="f10-hair f10-hair-bot"></div>
+      <div class="f10-chrome f10-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f10-chrome f10-chrome-num">10 / 18</div>
+
+      <div class="f10-content" id="f10-content">
+        <div class="f10-band" id="f10-band">QUESTÃO 3 · PREVISÃO DE DEMANDA</div>
+
+        <!-- time line HOJE -> FUTURO -->
+        <svg class="f10-tline" viewBox="0 0 1920 1080">
+          <line id="f10-tl" class="ln" x1="110" y1="836" x2="1792" y2="836" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+          <g id="f10-ticks">
+            <line class="tk" x1="290" y1="828" x2="290" y2="844" />
+            <line class="tk" x1="470" y1="828" x2="470" y2="844" />
+            <line class="tk" x1="650" y1="828" x2="650" y2="844" />
+            <line class="tk" x1="830" y1="828" x2="830" y2="844" />
+            <line class="tk" x1="1010" y1="828" x2="1010" y2="844" />
+            <line class="tk" x1="1190" y1="828" x2="1190" y2="844" />
+            <line class="tk" x1="1370" y1="828" x2="1370" y2="844" />
+            <line class="tk" x1="1550" y1="828" x2="1550" y2="844" />
+          </g>
+          <polygon id="f10-tlhead" class="hd" points="1810,836 1788,825 1788,847" />
+        </svg>
+        <div class="f10-tlab" id="f10-hoje" style="left:110px">HOJE</div>
+        <div class="f10-tlab" id="f10-futuro" style="right:110px">FUTURO</div>
+        <div class="f10-now" id="f10-now"></div>
+
+        <!-- telescope: tripod + three nested tubes -->
+        <svg class="f10-tripod" viewBox="0 0 480 360">
+          <line id="f10-leg0" x1="170" y1="146" x2="80" y2="344" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+          <line id="f10-leg1" x1="170" y1="146" x2="170" y2="344" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+          <line id="f10-leg2" x1="170" y1="146" x2="260" y2="344" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+        </svg>
+        <div class="f10-scope" id="f10-scope">
+          <div class="f10-mount" id="f10-mount"></div>
+          <div class="f10-tube" id="f10-tc" style="left:230px;top:15px;width:240px;height:130px">
+            <i style="right:-4px;top:-4px;width:16px;height:130px"></i>
+            <i style="left:40px;top:-4px;width:6px;height:130px"></i>
+          </div>
+          <div class="f10-tube" id="f10-tb" style="left:80px;top:35px;width:170px;height:90px">
+            <i style="left:30px;top:-4px;width:6px;height:90px"></i>
+          </div>
+          <div class="f10-tube" id="f10-ta" style="left:0px;top:55px;width:90px;height:50px">
+            <i style="left:-4px;top:-4px;width:12px;height:50px"></i>
+          </div>
+        </div>
+
+        <!-- light rays: lens -> word block -->
+        <svg class="f10-rays" viewBox="0 0 1920 1080">
+          <line id="f10-ray0" x1="571" y1="410" x2="656" y2="421" pathLength="1" stroke-dashoffset="1" />
+          <line id="f10-ray1" x1="580" y1="540" x2="656" y2="571" pathLength="1" stroke-dashoffset="1" />
+        </svg>
+
+        <!-- ghost slots -->
+        <div class="f10-ghost" id="f10-g0" style="top:180px"></div>
+        <div class="f10-ghost" id="f10-g1" style="top:310px"></div>
+        <div class="f10-ghost" id="f10-g2" style="top:440px"></div>
+        <div class="f10-ghost" id="f10-g3" style="top:570px"></div>
+        <div class="f10-ghost" id="f10-g4" style="top:700px"></div>
+
+        <!-- fan arrows (geometry set in script) -->
+        <svg class="f10-fan" viewBox="0 0 1920 1080">
+          <line id="f10-ar0" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" /><polygon id="f10-ah0" />
+          <line id="f10-ar1" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" /><polygon id="f10-ah1" />
+          <line id="f10-ar2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" /><polygon id="f10-ah2" />
+          <line id="f10-ar3" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" /><polygon id="f10-ah3" />
+          <line id="f10-ar4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" /><polygon id="f10-ah4" />
+        </svg>
+
+        <!-- hero word -->
+        <div class="f10-word" id="f10-word">ANTECIPAR</div>
+        <div class="f10-hub" id="f10-hub"></div>
+
+        <!-- destination 0 · ESTOQUES -->
+        <div class="f10-dest" id="f10-d0" style="top:180px">
+          <svg class="f10-ico" viewBox="0 0 80 80">
+            <rect id="f10-bx0" class="st" x="4" y="46" width="32" height="30" />
+            <rect id="f10-bx1" class="st" x="44" y="46" width="32" height="30" />
+            <g id="f10-bx2"><rect class="st" x="24" y="10" width="32" height="30" /><rect class="fl" x="36" y="10" width="8" height="10" /></g>
+            <rect class="fl" x="16" y="46" width="8" height="10" />
+            <rect class="fl" x="56" y="46" width="8" height="10" />
+          </svg>
+          <div class="f10-dlab" id="f10-l0">ESTOQUES</div>
+        </div>
+
+        <!-- destination 1 · PRODUÇÃO -->
+        <div class="f10-dest" id="f10-d1" style="top:310px">
+          <svg class="f10-ico" viewBox="0 0 80 80">
+            <g id="f10-gear">
+              <rect class="fl" x="17" y="17" width="46" height="46" />
+              <rect class="fl" x="17" y="17" width="46" height="46" transform="rotate(45 40 40)" />
+              <rect class="pp" x="31" y="31" width="18" height="18" />
+            </g>
+          </svg>
+          <div class="f10-dlab" id="f10-l1">PRODUÇÃO</div>
+        </div>
+
+        <!-- destination 2 · COMPRAS -->
+        <div class="f10-dest" id="f10-d2" style="top:440px">
+          <svg class="f10-ico" viewBox="0 0 80 80">
+            <g id="f10-cart">
+              <polyline class="st" points="2,12 14,12 22,52 66,52 74,24 17,24" />
+              <line class="st" x1="20" y1="38" x2="70" y2="38" />
+              <rect class="fl" x="22" y="60" width="12" height="12" />
+              <rect class="fl" x="54" y="60" width="12" height="12" />
+              <rect id="f10-cartbox" class="fl" x="34" y="28" width="14" height="10" />
+            </g>
+          </svg>
+          <div class="f10-dlab" id="f10-l2">COMPRAS</div>
+        </div>
+
+        <!-- destination 3 · RECURSOS -->
+        <div class="f10-dest" id="f10-d3" style="top:570px">
+          <svg class="f10-ico" viewBox="0 0 80 80">
+            <g id="f10-person">
+              <rect class="fl" x="30" y="4" width="20" height="20" />
+              <rect class="fl" x="24" y="28" width="32" height="30" />
+              <rect class="fl" x="26" y="60" width="11" height="16" />
+              <rect class="fl" x="43" y="60" width="11" height="16" />
+              <rect class="fl" x="12" y="28" width="9" height="26" />
+              <rect id="f10-arm" class="fl" x="59" y="28" width="9" height="26" />
+            </g>
+          </svg>
+          <div class="f10-dlab" id="f10-l3">RECURSOS</div>
+        </div>
+
+        <!-- destination 4 · CAPACIDADE -->
+        <div class="f10-dest" id="f10-d4" style="top:700px">
+          <svg class="f10-ico" viewBox="0 0 80 80">
+            <rect class="st" x="2" y="22" width="76" height="36" />
+            <rect class="off" x="8" y="28" width="10" height="24" />
+            <rect class="off" x="22" y="28" width="10" height="24" />
+            <rect class="off" x="36" y="28" width="10" height="24" />
+            <rect class="off" x="50" y="28" width="10" height="24" />
+            <rect class="off" x="64" y="28" width="10" height="24" />
+            <rect id="f10-c0" class="fl" x="8" y="28" width="10" height="24" />
+            <rect id="f10-c1" class="fl" x="22" y="28" width="10" height="24" />
+            <rect id="f10-c2" class="fl" x="36" y="28" width="10" height="24" />
+            <rect id="f10-c3" class="fl" x="50" y="28" width="10" height="24" />
+            <rect id="f10-c4" class="fl" x="64" y="28" width="10" height="24" />
+          </svg>
+          <div class="f10-dlab" id="f10-l4">CAPACIDADE</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var D = 9.429;
+        var tl = gsap.timeline({ paused: true });
+        var SHOW = "inset(-30% -4% -15% -4%)";
+        var HIDE = "inset(-30% 104% -15% -4%)";
+
+        // ---- fan arrow geometry: hub (1292,496) -> left edge of each destination ----
+        var HX = 1292, HY = 496, TX = 1446;
+        var CY = [236, 366, 496, 626, 756];
+        CY.forEach(function (cy, i) {
+          var dx = TX - HX, dy = cy - HY, L = Math.sqrt(dx * dx + dy * dy);
+          var ux = dx / L, uy = dy / L, nx = -uy, ny = ux;
+          var bx = TX - 18 * ux, by = cy - 18 * uy;
+          var ln = document.getElementById("f10-ar" + i);
+          ln.setAttribute("x1", HX); ln.setAttribute("y1", HY);
+          ln.setAttribute("x2", bx.toFixed(1)); ln.setAttribute("y2", by.toFixed(1));
+          var hd = document.getElementById("f10-ah" + i);
+          hd.setAttribute("points",
+            TX + "," + cy + " " +
+            (bx + 10 * nx).toFixed(1) + "," + (by + 10 * ny).toFixed(1) + " " +
+            (bx - 10 * nx).toFixed(1) + "," + (by - 10 * ny).toFixed(1));
+        });
+
+        // slow camera push under the whole shot
+        tl.fromTo("#f10-content", { scale: 1 }, { scale: 1.025, duration: D, ease: "none" }, 0);
+
+        // ---------- Scene 1 (0–2.1): band + telescope telescoping open ----------
+        tl.fromTo("#f10-scope", { scale: 0.6, opacity: 0, rotation: 0 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+        ["#f10-leg0", "#f10-leg1", "#f10-leg2"].forEach(function (l, k) {
+          tl.fromTo(l, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 0.25 + k * 0.1);
+        });
+        tl.fromTo("#f10-band", { clipPath: "inset(0% 100% 0% 0%)", x: -20 }, { clipPath: SHOW, x: 0, duration: 0.5, ease: "power3.out" }, 0.8);
+        // tubes start nested inside the objective tube, then slide out (telescope opening)
+        tl.fromTo("#f10-tb", { x: 150 }, { x: 0, duration: 0.6, ease: "power3.inOut" }, 0.95);
+        tl.fromTo("#f10-ta", { x: 240 }, { x: 0, duration: 0.75, ease: "power3.inOut" }, 1.15);
+        tl.to("#f10-tc", { keyframes: { x: [0, 6, 0] }, duration: 0.25, ease: "none" }, 1.55);
+        tl.to("#f10-tc", { keyframes: { x: [0, 5, 0] }, duration: 0.25, ease: "none" }, 1.85);
+
+        // ---------- Scene 2 (2.1–4.3): aim, timeline, ANTECIPAR leaves the tip ----------
+        // telescope sweeps then aims up toward the future
+        tl.to("#f10-scope", { rotation: 3, duration: 0.45, ease: "power2.inOut" }, 2.1);
+        tl.to("#f10-scope", { rotation: -4, duration: 0.7, ease: "power3.inOut" }, 2.55);
+        // background time line HOJE -> FUTURO draws
+        tl.fromTo("#f10-tl", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 2.2);
+        tl.fromTo("#f10-ticks", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 2.5);
+        tl.fromTo("#f10-hoje", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.25);
+        tl.fromTo("#f10-tlhead", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 3.1);
+        tl.fromTo("#f10-futuro", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.15);
+        // "now" marker travels toward the future for the rest of the shot
+        tl.fromTo("#f10-now", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 2.3);
+        tl.fromTo("#f10-now", { x: 0 }, { x: 760, duration: D - 2.4, ease: "none" }, 2.4);
+
+        // lens flash + rays, then the word shoots out of the tip (3.5)
+        tl.to("#f10-tc", { keyframes: { scale: [1, 1.06, 1] }, duration: 0.35, ease: "power2.out" }, 3.35);
+        tl.fromTo("#f10-ray0", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, 3.35);
+        tl.fromTo("#f10-ray1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, 3.38);
+        tl.set("#f10-word", { opacity: 0 }, 0);
+        tl.set("#f10-word", { opacity: 1 }, 3.5);
+        tl.fromTo("#f10-word", { x: -76, y: -20, scale: 0.06 }, { x: 0, y: 0, scale: 1, duration: 0.65, ease: "power3.out", immediateRender: false }, 3.5);
+        tl.to("#f10-scope", { keyframes: { x: [0, -10, 0] }, duration: 0.4, ease: "power2.out" }, 3.5);
+
+        // ---------- Scene 3 (4.3–9.429): fan of five arrows to the plan ----------
+        tl.fromTo("#f10-hub", { scale: 0 }, { scale: 1, duration: 0.4, ease: "power3.out" }, 4.35);
+        [0, 1, 2, 3, 4].forEach(function (i) {
+          tl.fromTo("#f10-g" + i, { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.6 + i * 0.12);
+        });
+
+        var CUE = [6.2, 6.8, 7.4, 7.9, 8.6];
+        CUE.forEach(function (t, i) {
+          var a = t - 0.42;
+          tl.to("#f10-hub", { keyframes: { scale: [1, 1.35, 1] }, duration: 0.3, ease: "power2.out" }, a);
+          tl.to("#f10-word", { keyframes: { x: [0, 6, 0] }, duration: 0.25, ease: "power2.out" }, a);
+          tl.fromTo("#f10-ar" + i, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.38, ease: "power2.out" }, a);
+          tl.fromTo("#f10-ah" + i, { opacity: 0, scale: 0, svgOrigin: TX + " " + CY[i] }, { opacity: 1, scale: 1, duration: 0.2, ease: "power3.out" }, a + 0.3);
+          tl.fromTo("#f10-d" + i, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, t);
+          tl.fromTo("#f10-l" + i, { clipPath: HIDE }, { clipPath: SHOW, duration: 0.4, ease: "power3.out" }, t + 0.12);
+          tl.set("#f10-g" + i, { opacity: 0 }, t + 0.5);
+        });
+
+        // icon life: ESTOQUES — top box drops in, then boxes keep getting stacked
+        tl.fromTo("#f10-bx2", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.in" }, 6.35);
+        for (var s = 0; s < 4; s++) {
+          tl.to("#f10-bx2", { keyframes: { y: [0, -8, 0] }, duration: 0.3, ease: "power2.inOut" }, 6.95 + s * 0.6);
+        }
+        // PRODUÇÃO — square gear turns
+        tl.fromTo("#f10-gear", { rotation: 0, svgOrigin: "40 40" }, { rotation: 225, svgOrigin: "40 40", duration: D - 6.8, ease: "none" }, 6.8);
+        // COMPRAS — cart rolls, item drops in
+        tl.fromTo("#f10-cartbox", { y: -26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.in" }, 7.6);
+        tl.to("#f10-cart", { keyframes: { x: [0, 6, 0, -4, 0, 5, 0] }, duration: D - 7.5, ease: "none" }, 7.5);
+        // RECURSOS — person raises arm
+        tl.fromTo("#f10-arm", { rotation: 0, svgOrigin: "63 30" }, { rotation: -150, svgOrigin: "63 30", duration: 0.35, ease: "power3.out" }, 8.1);
+        tl.to("#f10-arm", { keyframes: { rotation: [-150, -125, -150, -128, -150] }, duration: 1.0, ease: "none" }, 8.45);
+        // CAPACIDADE — cells fill one by one
+        [0, 1, 2, 3, 4].forEach(function (k) {
+          tl.fromTo("#f10-c" + k, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none" }, 8.72 + k * 0.1);
+        });
+
+        tl.set({}, {}, D);
+        window.__timelines["10-antecipar"] = tl;
+      })();
+    </script>
+  </div>
+</template>

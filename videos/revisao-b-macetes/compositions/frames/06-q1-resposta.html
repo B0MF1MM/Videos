@@ -1,0 +1,413 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f06-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f06-stage { position: absolute; inset: 0; }
+    .f06-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f06-hair-top { top: 70px; }
+    .f06-hair-bot { top: 892px; }
+    .f06-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f06-chrome-tag { left: 77px; }
+    .f06-chrome-num { right: 77px; }
+
+    .f06-content { position: absolute; inset: 0; transform-origin: 50% 40%; }
+
+    /* ---------- markers I D E F ---------- */
+    .f06-mk {
+      position: absolute;
+      left: 120px;
+      width: 120px;
+      height: 120px;
+      transform-origin: 50% 50%;
+    }
+    .f06-mbox {
+      position: absolute;
+      inset: 0;
+      border: 4px solid #1F2BE0;
+      background: #F0EBDE;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .f06-mlet {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 84px;
+      line-height: 1;
+      letter-spacing: -0.008em;
+      padding-bottom: 8px;
+      box-sizing: border-box;
+    }
+    .f06-mfill { position: absolute; inset: -4px; background: #1F2BE0; transform-origin: 50% 100%; }
+    .f06-mlit { color: #F0EBDE; opacity: 0; }
+    .f06-con {
+      position: absolute;
+      left: 240px;
+      width: 60px;
+      height: 4px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+
+    /* ---------- answer sheet ---------- */
+    .f06-sheetwrap { position: absolute; left: 300px; top: 104px; width: 1480px; height: 776px; }
+    .f06-sheet {
+      position: absolute;
+      inset: 0;
+      background: #F0EBDE;
+      border: 4px solid #1F2BE0;
+      box-sizing: border-box;
+      transform-origin: 50% 50%;
+    }
+    .f06-ruling { position: absolute; left: 0; right: 0; top: 0; bottom: 0; overflow: hidden; }
+    .f06-rule {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(31,43,224,0.10);
+      transform-origin: 0% 50%;
+    }
+    .f06-margin {
+      position: absolute;
+      left: 44px;
+      top: 88px;
+      bottom: 0;
+      width: 2px;
+      background: rgba(31,43,224,0.18);
+      transform-origin: 50% 0%;
+    }
+    .f06-head {
+      position: absolute;
+      left: 64px;
+      top: 22px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 44px;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+    }
+    .f06-headrule {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 84px;
+      height: 4px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+    .f06-sep {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(31,43,224,0.18);
+      transform-origin: 0% 50%;
+    }
+    .f06-band { position: absolute; left: 0; right: 0; height: 170px; }
+    .f06-tab {
+      position: absolute;
+      left: 0;
+      top: 18px;
+      width: 12px;
+      height: 134px;
+      background: #1F2BE0;
+      transform-origin: 50% 0%;
+    }
+    .f06-line {
+      position: absolute;
+      left: 64px;
+      height: 52px;
+      white-space: nowrap;
+    }
+    .f06-txt {
+      display: block;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 42px;
+      line-height: 52px;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .f06-txt em { font-style: italic; }
+    .f06-arr { display: inline-block; width: 52px; height: 22px; vertical-align: -1px; margin: 0 6px; }
+    .f06-arr svg { display: block; width: 52px; height: 22px; overflow: visible; }
+    .f06-arr path { fill: none; stroke: #1F2BE0; stroke-width: 3.5; stroke-linecap: square; stroke-linejoin: miter; }
+    .f06-w { display: inline-block; position: relative; }
+    .f06-ul {
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: -10px;
+      height: 12px;
+      width: calc(100% + 8px);
+      overflow: visible;
+    }
+    .f06-ul path { fill: none; stroke: #1F2BE0; stroke-width: 5; stroke-linecap: square; stroke-linejoin: miter; }
+
+    /* pen */
+    .f06-rail { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+    .f06-pen { position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; }
+    .f06-pensvg {
+      position: absolute;
+      left: -10px;
+      top: -128px;
+      width: 110px;
+      height: 175px;
+      overflow: visible;
+      transform-origin: 10px 170px;
+    }
+
+    /* stamp */
+    .f06-stamp {
+      position: absolute;
+      right: 40px;
+      top: 14px;
+      width: 160px;
+      height: 150px;
+      border: 6px solid #1F2BE0;
+      background: #F0EBDE;
+      box-sizing: border-box;
+      transform-origin: 50% 50%;
+    }
+    .f06-stamp-in { position: absolute; inset: 7px; border: 2px solid #1F2BE0; }
+    .f06-stamp-chk { position: absolute; left: 16px; top: 44px; width: 50px; height: 46px; overflow: visible; }
+    .f06-stamp-chk path { fill: none; stroke: #1F2BE0; stroke-width: 9; stroke-linecap: square; stroke-linejoin: miter; }
+    .f06-stamp-q {
+      position: absolute;
+      left: 70px;
+      top: 34px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 62px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="06-q1-resposta" data-width="1920" data-height="1080" data-duration="15.568">
+    <div id="f06-ground" class="f06-ground clip" data-start="0" data-duration="15.568" data-track-index="0"></div>
+
+    <div id="f06-stage" class="f06-stage clip" data-start="0" data-duration="15.568" data-track-index="1">
+      <div class="f06-hair f06-hair-top"></div>
+      <div class="f06-hair f06-hair-bot"></div>
+      <div class="f06-chrome f06-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f06-chrome f06-chrome-num">06 / 18</div>
+
+      <div class="f06-content" id="f06-content">
+        <!-- markers -->
+        <div class="f06-mk" id="f06-mk0" style="top:217px">
+          <div class="f06-mbox"><div class="f06-mlet" id="f06-mlet0">I</div><div class="f06-mfill" id="f06-mfill0"><div class="f06-mlet f06-mlit" id="f06-mlit0">I</div></div></div>
+        </div>
+        <div class="f06-mk" id="f06-mk1" style="top:387px">
+          <div class="f06-mbox"><div class="f06-mlet" id="f06-mlet1">D</div><div class="f06-mfill" id="f06-mfill1"><div class="f06-mlet f06-mlit" id="f06-mlit1">D</div></div></div>
+        </div>
+        <div class="f06-mk" id="f06-mk2" style="top:557px">
+          <div class="f06-mbox"><div class="f06-mlet" id="f06-mlet2">E</div><div class="f06-mfill" id="f06-mfill2"><div class="f06-mlet f06-mlit" id="f06-mlit2">E</div></div></div>
+        </div>
+        <div class="f06-mk" id="f06-mk3" style="top:727px">
+          <div class="f06-mbox"><div class="f06-mlet" id="f06-mlet3">F</div><div class="f06-mfill" id="f06-mfill3"><div class="f06-mlet f06-mlit" id="f06-mlit3">F</div></div></div>
+        </div>
+        <div class="f06-con" id="f06-con0" style="top:275px"></div>
+        <div class="f06-con" id="f06-con1" style="top:445px"></div>
+        <div class="f06-con" id="f06-con2" style="top:615px"></div>
+        <div class="f06-con" id="f06-con3" style="top:785px"></div>
+
+        <!-- sheet -->
+        <div class="f06-sheetwrap" id="f06-sheetwrap">
+          <div class="f06-sheet" id="f06-sheet">
+            <div class="f06-ruling" id="f06-ruling"></div>
+            <div class="f06-margin" id="f06-margin"></div>
+            <div class="f06-sep" id="f06-sep1" style="top:257px"></div>
+            <div class="f06-sep" id="f06-sep2" style="top:427px"></div>
+            <div class="f06-sep" id="f06-sep3" style="top:597px"></div>
+            <div class="f06-head" id="f06-head">Q1 · RESPOSTA</div>
+            <div class="f06-headrule" id="f06-headrule"></div>
+
+            <!-- band I -->
+            <div class="f06-band" style="top:88px">
+              <div class="f06-tab" id="f06-tab0"></div>
+              <div class="f06-line" style="top:59px">
+                <span class="f06-txt" id="f06-t0">Os 4 V's ajudam a entender as diferenças entre as operações.</span>
+                <div class="f06-rail" id="f06-rail0"><div class="f06-pen" id="f06-pen0"><svg class="f06-pensvg" id="f06-pensvg0" viewBox="0 0 110 175"><g transform="translate(10,170) rotate(30)"><polygon points="0,0 -10,-28 10,-28" fill="#1F2BE0"/><rect x="-12" y="-150" width="24" height="120" fill="#1F2BE0"/><rect x="-12" y="-66" width="24" height="6" fill="#F0EBDE"/><rect x="-15" y="-156" width="30" height="16" fill="#1F2BE0"/></g></svg></div></div>
+              </div>
+            </div>
+
+            <!-- band D -->
+            <div class="f06-band" style="top:258px">
+              <div class="f06-tab" id="f06-tab1"></div>
+              <div class="f06-line" style="top:33px">
+                <span class="f06-txt" id="f06-t1">Volume = quantidade · Variedade = diversidade ·</span>
+                <div class="f06-rail" id="f06-rail1"><div class="f06-pen" id="f06-pen1"><svg class="f06-pensvg" id="f06-pensvg1" viewBox="0 0 110 175"><g transform="translate(10,170) rotate(30)"><polygon points="0,0 -10,-28 10,-28" fill="#1F2BE0"/><rect x="-12" y="-150" width="24" height="120" fill="#1F2BE0"/><rect x="-12" y="-66" width="24" height="6" fill="#F0EBDE"/><rect x="-15" y="-156" width="30" height="16" fill="#1F2BE0"/></g></svg></div></div>
+              </div>
+              <div class="f06-line" style="top:85px">
+                <span class="f06-txt" id="f06-t2">Variação = mudanças na demanda · Visibilidade = contato com o cliente.</span>
+                <div class="f06-rail" id="f06-rail2"><div class="f06-pen" id="f06-pen2"><svg class="f06-pensvg" id="f06-pensvg2" viewBox="0 0 110 175"><g transform="translate(10,170) rotate(30)"><polygon points="0,0 -10,-28 10,-28" fill="#1F2BE0"/><rect x="-12" y="-150" width="24" height="120" fill="#1F2BE0"/><rect x="-12" y="-66" width="24" height="6" fill="#F0EBDE"/><rect x="-15" y="-156" width="30" height="16" fill="#1F2BE0"/></g></svg></div></div>
+              </div>
+            </div>
+
+            <!-- band E -->
+            <div class="f06-band" style="top:428px">
+              <div class="f06-tab" id="f06-tab2"></div>
+              <div class="f06-line" style="top:33px">
+                <span class="f06-txt" id="f06-t3">Alto volume + baixa variedade<span class="f06-arr"><svg viewBox="0 0 52 22"><path d="M2 11 H46 M37 3 L47 11 L37 19"/></svg></span><em>padronizada</em>;</span>
+                <div class="f06-rail" id="f06-rail3"><div class="f06-pen" id="f06-pen3"><svg class="f06-pensvg" id="f06-pensvg3" viewBox="0 0 110 175"><g transform="translate(10,170) rotate(30)"><polygon points="0,0 -10,-28 10,-28" fill="#1F2BE0"/><rect x="-12" y="-150" width="24" height="120" fill="#1F2BE0"/><rect x="-12" y="-66" width="24" height="6" fill="#F0EBDE"/><rect x="-15" y="-156" width="30" height="16" fill="#1F2BE0"/></g></svg></div></div>
+              </div>
+              <div class="f06-line" style="top:85px">
+                <span class="f06-txt" id="f06-t4">personalizado<span class="f06-arr"><svg viewBox="0 0 52 22"><path d="M2 11 H46 M37 3 L47 11 L37 19"/></svg></span><em>flexível</em>.</span>
+                <div class="f06-rail" id="f06-rail4"><div class="f06-pen" id="f06-pen4"><svg class="f06-pensvg" id="f06-pensvg4" viewBox="0 0 110 175"><g transform="translate(10,170) rotate(30)"><polygon points="0,0 -10,-28 10,-28" fill="#1F2BE0"/><rect x="-12" y="-150" width="24" height="120" fill="#1F2BE0"/><rect x="-12" y="-66" width="24" height="6" fill="#F0EBDE"/><rect x="-15" y="-156" width="30" height="16" fill="#1F2BE0"/></g></svg></div></div>
+              </div>
+            </div>
+
+            <!-- band F -->
+            <div class="f06-band" style="top:598px">
+              <div class="f06-tab" id="f06-tab3"></div>
+              <div class="f06-line" style="top:33px">
+                <span class="f06-txt" id="f06-t5">Estratégias adequadas<span class="f06-arr"><svg viewBox="0 0 52 22"><path d="M2 11 H46 M37 3 L47 11 L37 19"/></svg></span></span>
+                <div class="f06-rail" id="f06-rail5"><div class="f06-pen" id="f06-pen5"><svg class="f06-pensvg" id="f06-pensvg5" viewBox="0 0 110 175"><g transform="translate(10,170) rotate(30)"><polygon points="0,0 -10,-28 10,-28" fill="#1F2BE0"/><rect x="-12" y="-150" width="24" height="120" fill="#1F2BE0"/><rect x="-12" y="-66" width="24" height="6" fill="#F0EBDE"/><rect x="-15" y="-156" width="30" height="16" fill="#1F2BE0"/></g></svg></div></div>
+              </div>
+              <div class="f06-line" style="top:85px">
+                <span class="f06-txt" id="f06-t6"><span class="f06-w" id="f06-w0">produtividade<svg class="f06-ul" id="f06-ul0" viewBox="0 0 100 12" preserveAspectRatio="none"><path pathLength="1" stroke-dasharray="1" vector-effect="non-scaling-stroke" d="M1 7 L34 5 L68 8 L99 5"/></svg></span>, <span class="f06-w" id="f06-w1">qualidade<svg class="f06-ul" id="f06-ul1" viewBox="0 0 100 12" preserveAspectRatio="none"><path pathLength="1" stroke-dasharray="1" vector-effect="non-scaling-stroke" d="M1 6 L36 8 L70 5 L99 7"/></svg></span>, <span class="f06-w" id="f06-w2">eficiência<svg class="f06-ul" id="f06-ul2" viewBox="0 0 100 12" preserveAspectRatio="none"><path pathLength="1" stroke-dasharray="1" vector-effect="non-scaling-stroke" d="M1 7 L33 5 L66 8 L99 5"/></svg></span> e <span class="f06-w" id="f06-w3">satisfação<svg class="f06-ul" id="f06-ul3" viewBox="0 0 100 12" preserveAspectRatio="none"><path pathLength="1" stroke-dasharray="1" vector-effect="non-scaling-stroke" d="M1 6 L35 8 L69 5 L99 7"/></svg></span> dos clientes.</span>
+                <div class="f06-rail" id="f06-rail6"><div class="f06-pen" id="f06-pen6"><svg class="f06-pensvg" id="f06-pensvg6" viewBox="0 0 110 175"><g transform="translate(10,170) rotate(30)"><polygon points="0,0 -10,-28 10,-28" fill="#1F2BE0"/><rect x="-12" y="-150" width="24" height="120" fill="#1F2BE0"/><rect x="-12" y="-66" width="24" height="6" fill="#F0EBDE"/><rect x="-15" y="-156" width="30" height="16" fill="#1F2BE0"/></g></svg></div></div>
+              </div>
+            </div>
+
+            <!-- stamp -->
+            <div class="f06-stamp" id="f06-stamp">
+              <div class="f06-stamp-in"></div>
+              <svg class="f06-stamp-chk" viewBox="0 0 50 46"><path id="f06-chk" pathLength="1" stroke-dasharray="1" d="M5 24 L19 38 L45 8"/></svg>
+              <div class="f06-stamp-q">Q1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var D = 15.168;
+
+        // faint ruled lines (pautas) on the sheet — built once, deterministic
+        var ruling = document.getElementById("f06-ruling");
+        var rules = [];
+        for (var y = 122; y < 772; y += 34) {
+          var r = document.createElement("div");
+          r.className = "f06-rule";
+          r.style.top = y + "px";
+          ruling.appendChild(r);
+          rules.push(r);
+        }
+
+        var tl = gsap.timeline({ paused: true });
+
+        // ---------- Scene 1 (0.0–1.2): sheet slides in, header, markers ----------
+        tl.fromTo("#f06-sheet", { x: 260, rotation: 1.5, opacity: 0 }, { x: 0, rotation: 0, opacity: 1, duration: 0.85, ease: "power3.out" }, 0);
+        tl.fromTo(rules, { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out", stagger: 0.025 }, 0.3);
+        tl.fromTo("#f06-margin", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power2.out" }, 0.4);
+        tl.fromTo(["#f06-sep1", "#f06-sep2", "#f06-sep3"], { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out", stagger: 0.08 }, 0.55);
+        tl.fromTo("#f06-head", { clipPath: "inset(-30% 104% -15% -4%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "power2.out" }, 0.45);
+        tl.fromTo("#f06-headrule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.5);
+        tl.fromTo(["#f06-mk0", "#f06-mk1", "#f06-mk2", "#f06-mk3"], { scale: 0.4, opacity: 0, x: -30 }, { scale: 1, opacity: 1, x: 0, duration: 0.45, ease: "back.out(1.8)", stagger: 0.12 }, 0.45);
+        tl.fromTo(["#f06-tab0", "#f06-tab1", "#f06-tab2", "#f06-tab3"], { scaleY: 0 }, { scaleY: 0, duration: 0.01 }, 0);
+        tl.fromTo(["#f06-con0", "#f06-con1", "#f06-con2", "#f06-con3"], { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, 0);
+        tl.set(["#f06-mlit0", "#f06-mlit1", "#f06-mlit2", "#f06-mlit3"], { opacity: 0 }, 0);
+
+        // slow camera push under the whole shot
+        tl.fromTo("#f06-content", { scale: 1 }, { scale: 1.02, duration: D - 1.0, ease: "sine.inOut" }, 1.0);
+
+        // ---------- helpers ----------
+        function light(i, t) {
+          tl.set("#f06-mlit" + i, { opacity: 1 }, t);
+          tl.fromTo("#f06-mfill" + i, { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power2.out" }, t);
+          tl.set("#f06-mlet" + i, { opacity: 0 }, t + 0.36);
+          tl.to("#f06-mk" + i, { keyframes: { scale: [1, 1.14, 1] }, duration: 0.45, ease: "power1.out" }, t);
+          tl.to("#f06-con" + i, { scaleX: 1, duration: 0.3, ease: "power2.out" }, t + 0.12);
+          tl.to("#f06-tab" + i, { scaleY: 1, duration: 0.35, ease: "power2.out" }, t + 0.22);
+        }
+        function write(i, t, dur) {
+          tl.fromTo("#f06-t" + i, { clipPath: "inset(-30% 104% -60% -4%)" }, { clipPath: "inset(-30% -4% -60% -4%)", duration: dur, ease: "none" }, t);
+          tl.fromTo("#f06-rail" + i, { xPercent: -4 }, { xPercent: 104, duration: dur, ease: "none" }, t);
+          tl.fromTo("#f06-pen" + i, { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.14, ease: "power2.out" }, t - 0.12);
+          var n = Math.max(4, Math.round(dur * 6));
+          var ys = [0], rs = [0];
+          for (var k = 1; k < n; k++) { ys.push(k % 2 ? -5 : 0); rs.push(k % 2 ? -4 : 1); }
+          ys.push(0); rs.push(0);
+          tl.to("#f06-pensvg" + i, { keyframes: { y: ys, rotation: rs }, duration: dur, ease: "none" }, t);
+          tl.to("#f06-pen" + i, { opacity: 0, y: -24, duration: 0.18, ease: "power1.in" }, t + dur);
+        }
+
+        // ---------- Scene 2 (1.2–5.1): I ----------
+        light(0, 1.4);
+        write(0, 1.6, 2.8);
+
+        // ---------- Scene 3 (5.1–9.1): D, then E ----------
+        light(1, 5.1);
+        write(1, 5.25, 0.6);
+        write(2, 5.9, 0.75);
+        light(2, 6.7);
+        write(3, 6.85, 1.05);
+        write(4, 7.95, 0.6);
+
+        // ---------- Scene 4 (9.1–15.168): F, underlines, stamp ----------
+        light(3, 9.4);
+        write(5, 9.55, 0.7);
+        write(6, 10.3, 1.5);
+
+        var ulTimes = [12.0, 12.9, 13.6, 14.4];
+        ulTimes.forEach(function (t, k) {
+          tl.fromTo("#f06-ul" + k + " path", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.42, ease: "power2.inOut" }, t);
+          tl.to("#f06-w" + k, { keyframes: { y: [0, -7, 0] }, duration: 0.42, ease: "power1.out" }, t);
+        });
+        tl.to("#f06-mk3", { keyframes: { scale: [1, 1.08, 1] }, duration: 0.4, ease: "power1.out" }, 12.0);
+
+        tl.fromTo("#f06-stamp", { scale: 2.3, opacity: 0, rotation: -16 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.24, ease: "power4.in" }, 14.62);
+        tl.to("#f06-sheetwrap", { keyframes: { y: [0, 6, -3, 1, 0] }, duration: 0.3, ease: "none" }, 14.86);
+        tl.fromTo("#f06-chk", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.24, ease: "power2.out" }, 14.86);
+
+        // hold to the end (camera push carries through)
+        tl.set({}, {}, D);
+
+        window.__timelines["06-q1-resposta"] = tl;
+      })();
+    </script>
+  </div>
+</template>

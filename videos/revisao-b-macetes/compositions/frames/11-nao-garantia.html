@@ -1,0 +1,367 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f11-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f11-stage { position: absolute; inset: 0; }
+    .f11-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f11-hair-top { top: 70px; }
+    .f11-hair-bot { top: 892px; }
+    .f11-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f11-chrome-tag { left: 77px; }
+    .f11-chrome-num { right: 77px; }
+
+    /* ---------- warning band ---------- */
+    .f11-warn {
+      position: absolute;
+      left: 110px;
+      top: 98px;
+      width: 66px;
+      height: 66px;
+      box-sizing: border-box;
+      border: 5px solid #1F2BE0;
+      background: #F0EBDE;
+      transform-origin: 50% 100%;
+    }
+    .f11-warn i { position: absolute; left: 25px; width: 6px; background: #1F2BE0; }
+    .f11-band {
+      position: absolute;
+      left: 192px;
+      top: 98px;
+      height: 66px;
+      padding: 0 28px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 66px;
+      letter-spacing: 0.18em;
+      white-space: nowrap;
+    }
+
+    /* ---------- GARANTIA + stamp ---------- */
+    .f11-grp {
+      position: absolute;
+      left: 0;
+      top: 300px;
+      width: 1920px;
+      height: 320px;
+      transform-origin: 50% 50%;
+    }
+    .f11-shake { position: absolute; inset: 0; text-align: center; }
+    .f11-word {
+      position: relative;
+      display: inline-block;
+      margin-top: 40px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 200px;
+      line-height: 220px;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+      transform-origin: 50% 50%;
+    }
+    .f11-strike {
+      position: absolute;
+      left: -4%;
+      right: -4%;
+      top: 52%;
+      height: 14px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+    .f11-stamp {
+      position: absolute;
+      right: -9%;
+      bottom: -30%;
+      padding: 10px;
+      background: #F0EBDE;
+      border: 7px solid #1F2BE0;
+      transform-origin: 50% 50%;
+    }
+    .f11-stamp-in {
+      border: 3px solid #1F2BE0;
+      padding: 0 34px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 70px;
+      line-height: 104px;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      color: #1F2BE0;
+    }
+
+    /* ---------- split-tilt cards ---------- */
+    .f11-split {
+      position: absolute;
+      inset: 0;
+      perspective: 1800px;
+      perspective-origin: 50% 58%;
+      transform-style: preserve-3d;
+    }
+    .f11-cw {
+      position: absolute;
+      top: 395px;
+      width: 760px;
+      height: 450px;
+      transform-style: preserve-3d;
+    }
+    .f11-cw-l { left: 140px; }
+    .f11-cw-r { left: 1020px; }
+    .f11-card {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      border: 4px solid #1F2BE0;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .f11-card-l { background: #F0EBDE; color: #1F2BE0; }
+    .f11-card-r { background: #1F2BE0; color: #F0EBDE; }
+    .f11-lab {
+      position: absolute;
+      left: 44px;
+      top: 26px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 104px;
+      line-height: 1.15;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    .f11-rule { position: absolute; left: 44px; right: 44px; top: 172px; height: 3px; transform-origin: 0% 50%; }
+    .f11-card-l .f11-rule { background: #1F2BE0; }
+    .f11-card-r .f11-rule { background: #F0EBDE; }
+    .f11-sub {
+      position: absolute;
+      left: 44px;
+      top: 214px;
+      width: 420px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1.3;
+    }
+    .f11-sub b { position: relative; display: inline-block; font-weight: 600; }
+    .f11-ul { position: absolute; left: 0; right: 0; bottom: -2px; height: 6px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f11-vis { position: absolute; right: 40px; top: 206px; width: 210px; height: 210px; overflow: visible; }
+    .f11-tg { fill: none; stroke: #1F2BE0; stroke-width: 6; }
+    .f11-tc { fill: #1F2BE0; }
+    .f11-dart line { stroke: #1F2BE0; stroke-width: 7; }
+    .f11-dart polygon { fill: #1F2BE0; }
+    .f11-ch-frame { fill: none; stroke: #F0EBDE; stroke-width: 4; }
+    .f11-ch-band { fill: rgba(240,235,222,0.22); }
+    .f11-ch-est { stroke: #F0EBDE; stroke-width: 4; stroke-dasharray: 14 10; }
+    .f11-ch-seg { stroke: #F0EBDE; stroke-width: 4; fill: none; }
+    .f11-ch-mk { fill: #F0EBDE; }
+    .f11-err { display: inline-block; }
+
+    /* ± badge between the cards (on the parent, not inside a card) */
+    .f11-pm {
+      position: absolute;
+      left: 911px;
+      top: 586px;
+      width: 98px;
+      height: 98px;
+      box-sizing: border-box;
+      border: 5px solid #1F2BE0;
+      background: #F0EBDE;
+      color: #1F2BE0;
+      font-family: "Newsreader", serif;
+      font-size: 76px;
+      line-height: 84px;
+      text-align: center;
+      transform-origin: 50% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="11-nao-garantia" data-width="1920" data-height="1080" data-duration="8.073">
+    <div id="f11-ground" class="f11-ground clip" data-start="0" data-duration="8.073" data-track-index="0"></div>
+
+    <div id="f11-stage" class="f11-stage clip" data-start="0" data-duration="8.073" data-track-index="1">
+      <div class="f11-hair f11-hair-top"></div>
+      <div class="f11-hair f11-hair-bot"></div>
+      <div class="f11-chrome f11-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f11-chrome f11-chrome-num">11 / 18</div>
+
+      <!-- Scene 1: warning band -->
+      <div class="f11-warn" id="f11-warn">
+        <i style="top:8px;height:28px"></i>
+        <i style="top:42px;height:6px"></i>
+      </div>
+      <div class="f11-band" id="f11-band">CUIDADO</div>
+
+      <!-- GARANTIA struck through + ESTIMATIVA stamp -->
+      <div class="f11-grp" id="f11-grp">
+        <div class="f11-shake" id="f11-shake">
+          <div class="f11-word" id="f11-word">GARANTIA
+            <div class="f11-strike" id="f11-strike"></div>
+            <div class="f11-stamp" id="f11-stamp"><div class="f11-stamp-in">ESTIMATIVA</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- split-tilt cards -->
+      <div class="f11-split" id="f11-split">
+        <div class="f11-cw f11-cw-l" id="f11-cwl">
+          <div class="f11-card f11-card-l" id="f11-cl">
+            <div class="f11-lab" id="f11-lab-l">META</div>
+            <div class="f11-rule" id="f11-rule-l"></div>
+            <div class="f11-sub" id="f11-sub-l">o que a empresa <b>QUER<span class="f11-ul" id="f11-ul"></span></b> alcançar</div>
+            <svg class="f11-vis" id="f11-target" viewBox="0 0 210 210">
+              <rect id="f11-r0" class="f11-tg" x="5" y="5" width="200" height="200" />
+              <rect id="f11-r1" class="f11-tg" x="30" y="30" width="150" height="150" />
+              <rect id="f11-r2" class="f11-tg" x="55" y="55" width="100" height="100" />
+              <rect id="f11-r3" class="f11-tc" x="85" y="85" width="40" height="40" />
+              <g class="f11-dart" id="f11-dart">
+                <line x1="105" y1="105" x2="196" y2="14" />
+                <polygon points="186,10 206,-10 214,-2 194,18" />
+                <polygon points="196,24 216,4 222,12 202,32" />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="f11-cw f11-cw-r" id="f11-cwr">
+          <div class="f11-card f11-card-r" id="f11-cr">
+            <div class="f11-lab" id="f11-lab-r">PREVISÃO</div>
+            <div class="f11-rule" id="f11-rule-r"></div>
+            <div class="f11-sub" id="f11-sub-r">estimativa — pode <span class="f11-err" id="f11-err">errar</span></div>
+            <svg class="f11-vis" id="f11-chart" viewBox="0 0 210 210">
+              <rect class="f11-ch-frame" x="4" y="4" width="202" height="202" />
+              <rect id="f11-chband" class="f11-ch-band" x="10" y="72" width="190" height="66" />
+              <line id="f11-est" class="f11-ch-est" x1="10" y1="105" x2="200" y2="105" />
+              <line id="f11-s0" class="f11-ch-seg" x1="18" y1="105" x2="55" y2="82" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <line id="f11-s1" class="f11-ch-seg" x1="55" y1="82" x2="92" y2="128" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <line id="f11-s2" class="f11-ch-seg" x1="92" y1="128" x2="129" y2="66" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <line id="f11-s3" class="f11-ch-seg" x1="129" y1="66" x2="166" y2="120" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <line id="f11-s4" class="f11-ch-seg" x1="166" y1="120" x2="196" y2="150" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <rect id="f11-mk" class="f11-ch-mk" x="9" y="96" width="18" height="18" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="f11-pm" id="f11-pm">±</div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var D = 7.573;
+        var tl = gsap.timeline({ paused: true });
+        var SHOW = "inset(-30% -4% -15% -4%)";
+        var HIDE = "inset(-30% 104% -15% -4%)";
+        var HIDE_UP = "inset(-30% -4% 100% -4%)";
+
+        // ---------- Scene 1 (0.0–2.4): CUIDADO, GARANTIA struck, ESTIMATIVA stamp ----------
+        tl.fromTo("#f11-warn", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.2)" }, 0.12);
+        tl.fromTo("#f11-band", { clipPath: "inset(0% 100% 0% 0%)", x: -24 }, { clipPath: SHOW, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+        // warning sign rocks while the word "cuidado" lands
+        tl.to("#f11-warn", { keyframes: { rotation: [0, -10, 9, -6, 4, 0] }, duration: 0.6, ease: "none" }, 0.65);
+
+        // GARANTIA slams in large at centre
+        tl.fromTo("#f11-word", { scale: 1.3, opacity: 0, filter: "blur(14px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power4.out" }, 1.4);
+        // cobalt strike-through
+        tl.fromTo("#f11-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "expo.out" }, 1.52);
+        // ESTIMATIVA stamp slams on top
+        tl.fromTo("#f11-stamp", { scale: 2.4, rotation: -18, opacity: 0 }, { scale: 1, rotation: -7, opacity: 1, duration: 0.16, ease: "power4.in" }, 1.7);
+        // impact tremor
+        tl.to("#f11-shake", { keyframes: { x: [0, -16, 12, -9, 6, -3, 0], y: [0, 7, -6, 4, -2, 1, 0] }, duration: 0.42, ease: "none" }, 1.86);
+        tl.to("#f11-warn", { keyframes: { rotation: [0, 8, -7, 4, 0] }, duration: 0.42, ease: "none" }, 1.86);
+        tl.to("#f11-stamp", { keyframes: { scale: [1, 1.035, 1] }, duration: 0.3, ease: "power2.out" }, 2.08);
+
+        // ---------- Scene 2 (2.4–5.0): word shrinks to top, META card tilts in ----------
+        tl.fromTo("#f11-grp", { scale: 1, y: 0 }, { scale: 0.44, y: -195, duration: 0.6, ease: "power3.inOut" }, 2.4);
+
+        tl.fromTo("#f11-cl", { x: -900, rotateY: 22, scale: 0.85 }, { x: 0, rotateY: 12, scale: 1, duration: 0.8, ease: "power3.out" }, 3.0);
+        tl.fromTo("#f11-lab-l", { clipPath: HIDE_UP, y: 30 }, { clipPath: SHOW, y: 0, duration: 0.45, ease: "power3.out" }, 3.3);
+        tl.fromTo("#f11-rule-l", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 3.4);
+        tl.fromTo("#f11-sub-l", { clipPath: HIDE, x: -16 }, { clipPath: SHOW, x: 0, duration: 0.5, ease: "power3.out" }, 3.5);
+        ["#f11-r0", "#f11-r1", "#f11-r2", "#f11-r3"].forEach(function (r, k) {
+          tl.fromTo(r, { scale: 0, svgOrigin: "105 105" }, { scale: 1, svgOrigin: "105 105", duration: 0.35, ease: "back.out(1.8)" }, 3.4 + k * 0.08);
+        });
+        // QUER emphasis underline
+        tl.fromTo("#f11-ul", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 3.75);
+        // dart flies in and hits the centre ("alcançar")
+        tl.fromTo("#f11-dart", { x: 170, y: -170, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.3, ease: "expo.in" }, 3.95);
+        tl.to("#f11-target", { keyframes: { x: [0, -8, 6, -3, 0], y: [0, 5, -4, 2, 0] }, duration: 0.3, ease: "none" }, 4.25);
+        tl.to("#f11-dart", { keyframes: { rotation: [0, 6, -4, 2, 0] }, svgOrigin: "105 105", duration: 0.35, ease: "none" }, 4.25);
+        // target rings keep pulsing outward, sequentially, through the rest of the shot
+        for (var p = 0; p < 6; p++) {
+          var t0 = 4.45 + p * 0.5;
+          ["#f11-r3", "#f11-r2", "#f11-r1", "#f11-r0"].forEach(function (r, k) {
+            tl.to(r, { keyframes: { scale: [1, 1.07, 1] }, svgOrigin: "105 105", duration: 0.22, ease: "power1.inOut" }, t0 + k * 0.07);
+          });
+        }
+        // left card idle bob before the right arrives
+        tl.to("#f11-cwl", { keyframes: { y: [0, -6, 0] }, duration: 1.1, ease: "sine.inOut" }, 4.1);
+
+        // ---------- Scene 3 (5.0–7.573): PREVISÃO card (inverted), chart misses, ± blinks ----------
+        tl.fromTo("#f11-cr", { x: 900, rotateY: -22, scale: 0.85 }, { x: 0, rotateY: -12, scale: 1, duration: 0.8, ease: "power3.out" }, 5.0);
+        tl.fromTo("#f11-lab-r", { clipPath: HIDE_UP, y: 30 }, { clipPath: SHOW, y: 0, duration: 0.45, ease: "power3.out" }, 5.3);
+        tl.fromTo("#f11-rule-r", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 5.4);
+        tl.fromTo("#f11-sub-r", { clipPath: HIDE, x: -16 }, { clipPath: SHOW, x: 0, duration: 0.5, ease: "power3.out" }, 5.5);
+        tl.fromTo("#f11-chart", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(-10% -10% -10% -10%)", duration: 0.35, ease: "power2.out" }, 5.45);
+        tl.fromTo("#f11-est", { scaleX: 0, svgOrigin: "10 105" }, { scaleX: 1, svgOrigin: "10 105", duration: 0.45, ease: "power2.out" }, 5.6);
+        tl.fromTo("#f11-chband", { scaleY: 0, svgOrigin: "105 105" }, { scaleY: 1, svgOrigin: "105 105", duration: 0.4, ease: "power3.out" }, 5.85);
+        // the real value wanders around the estimate
+        var P = [[18, 105], [55, 82], [92, 128], [129, 66], [166, 120], [196, 150]];
+        tl.fromTo("#f11-mk", { scale: 0, svgOrigin: "18 105" }, { scale: 1, svgOrigin: "18 105", duration: 0.2, ease: "back.out(2)" }, 5.9);
+        for (var s = 0; s < 5; s++) {
+          var ts = 6.1 + s * 0.26;
+          tl.fromTo("#f11-s" + s, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.26, ease: "none" }, ts);
+          tl.to("#f11-mk", { x: P[s + 1][0] - P[0][0], y: P[s + 1][1] - P[0][1], duration: 0.26, ease: "none" }, ts);
+        }
+        // last point escapes the band: marker jitters
+        tl.to("#f11-mk", { keyframes: { x: [178, 172, 180, 175, 178] }, duration: 0.17, ease: "none" }, 7.4);
+
+        // counter-phase idle on the pair
+        tl.to("#f11-cwl", { keyframes: { y: [0, -6, 0] }, duration: 1.5, ease: "sine.inOut" }, 5.95);
+        tl.to("#f11-cwr", { keyframes: { y: [0, 6, 0] }, duration: 1.5, ease: "sine.inOut" }, 5.95);
+
+        // "errar" wobbles
+        tl.to("#f11-err", { keyframes: { x: [0, -5, 5, -3, 3, 0], rotation: [0, -3, 3, -2, 1, 0] }, duration: 0.45, ease: "none" }, 6.85);
+
+        // ± pops in the gap at "errar" and blinks, then holds
+        tl.fromTo("#f11-pm", { scale: 0, rotation: -25, opacity: 1 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.32, ease: "back.out(2.5)" }, 7.1);
+        tl.to("#f11-pm", { keyframes: { opacity: [1, 0.2, 1, 0.2, 1] }, duration: 0.36, ease: "none" }, 7.2);
+
+        tl.set({}, {}, D);
+        window.__timelines["11-nao-garantia"] = tl;
+      })();
+    </script>
+  </div>
+</template>

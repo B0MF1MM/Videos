@@ -1,0 +1,539 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f05-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f05-stage { position: absolute; inset: 0; }
+    .f05-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f05-hair-top { top: 70px; }
+    .f05-hair-bot { top: 892px; }
+    .f05-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f05-chrome-tag { left: 77px; }
+    .f05-chrome-num { right: 77px; }
+
+    .f05-content { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+    .f05-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 88px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 1.1;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    .f05-title em { font-style: italic; }
+
+    .f05-divider { position: absolute; left: 958px; top: 196px; width: 4px; height: 676px; background: #1F2BE0; transform-origin: 50% 0%; }
+
+    .f05-slot {
+      position: absolute;
+      top: 200px;
+      width: 806px;
+      height: 420px;
+      border: 3px dashed rgba(31,43,224,0.18);
+      box-sizing: border-box;
+    }
+
+    .f05-persp { position: absolute; inset: 0; perspective: 1800px; perspective-origin: 960px 410px; }
+    .f05-bob { position: absolute; top: 200px; width: 806px; height: 420px; transform-style: preserve-3d; }
+    .f05-card {
+      position: absolute;
+      inset: 0;
+      background: #F0EBDE;
+      border: 4px solid #1F2BE0;
+      box-sizing: border-box;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .f05-card-left { transform-origin: 0% 50%; }
+    .f05-card-right { transform-origin: 100% 50%; }
+    .f05-in { position: absolute; left: -4px; top: -4px; width: 806px; height: 420px; }
+    .f05-head-row { position: absolute; left: 0; right: 0; top: 0; height: 64px; border-bottom: 3px solid #1F2BE0; box-sizing: border-box; }
+    .f05-hname {
+      position: absolute;
+      left: 26px;
+      top: 0;
+      line-height: 64px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .f05-hcount {
+      position: absolute;
+      right: 26px;
+      top: 0;
+      line-height: 64px;
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .f05-dg { display: inline-block; position: relative; width: 19px; height: 40px; overflow: hidden; vertical-align: middle; margin-top: -4px; }
+    .f05-dgs { position: absolute; left: 0; top: 0; width: 19px; line-height: 40px; text-align: center; }
+
+    /* ---------- conveyor ---------- */
+    .f05-housing {
+      position: absolute;
+      left: 300px;
+      top: 74px;
+      width: 120px;
+      height: 78px;
+      background: #F0EBDE;
+      border: 4px solid #1F2BE0;
+      box-sizing: border-box;
+      z-index: 3;
+      background-image: repeating-linear-gradient(135deg, rgba(31,43,224,0.18) 0 4px, transparent 4px 14px);
+    }
+    .f05-piston { position: absolute; left: 325px; top: 96px; width: 70px; height: 116px; z-index: 2; }
+    .f05-rod { position: absolute; left: 23px; top: 0; width: 24px; height: 100px; background: #1F2BE0; }
+    .f05-phead { position: absolute; left: 0; top: 100px; width: 70px; height: 16px; background: #1F2BE0; }
+    .f05-win { position: absolute; left: 20px; top: 240px; width: 766px; height: 92px; overflow: hidden; z-index: 1; }
+    .f05-screws { position: absolute; left: 0; top: 0; width: 2200px; height: 92px; }
+    .f05-screw { position: absolute; top: 12px; width: 36px; height: 78px; transform-origin: 50% 100%; }
+    .f05-head { position: absolute; left: 0; top: 0; width: 36px; height: 16px; border: 4px solid #1F2BE0; box-sizing: border-box; background: #F0EBDE; overflow: hidden; }
+    .f05-headfill { position: absolute; inset: 0; background: #1F2BE0; opacity: 0; }
+    .f05-shank {
+      position: absolute;
+      left: 11px;
+      top: 14px;
+      width: 14px;
+      height: 64px;
+      border: 3px solid #1F2BE0;
+      box-sizing: border-box;
+      background: repeating-linear-gradient(170deg, #1F2BE0 0 3px, transparent 3px 9px);
+    }
+    .f05-belt { position: absolute; left: 20px; top: 330px; width: 766px; height: 22px; border: 4px solid #1F2BE0; box-sizing: border-box; overflow: hidden; background: #F0EBDE; }
+    .f05-belt-strip { position: absolute; left: -1200px; top: 0; width: 2300px; height: 14px; background: repeating-linear-gradient(90deg, #1F2BE0 0 5px, transparent 5px 35px); }
+    .f05-roller { position: absolute; top: 358px; width: 24px; height: 24px; border: 4px solid #1F2BE0; box-sizing: border-box; background: #F0EBDE; transform-origin: 50% 50%; }
+    .f05-roller-bar { position: absolute; left: 6px; top: -4px; width: 4px; height: 24px; background: #1F2BE0; }
+    .f05-base { position: absolute; left: 20px; top: 388px; width: 766px; height: 6px; background: #1F2BE0; }
+    .f05-leg { position: absolute; top: 394px; width: 10px; height: 26px; background: #1F2BE0; }
+
+    /* ---------- tailor ---------- */
+    .f05-rail { position: absolute; left: 30px; top: 76px; width: 746px; height: 6px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f05-gslot { position: absolute; top: 80px; width: 248px; height: 240px; }
+    .f05-garment { position: absolute; left: 24px; top: 0; width: 200px; height: 190px; transform-origin: 50% 0%; }
+    .f05-garment svg { position: absolute; inset: 0; width: 200px; height: 190px; overflow: visible; }
+    .f05-hanger { fill: none; stroke: #1F2BE0; stroke-width: 5; stroke-linejoin: miter; stroke-linecap: square; }
+    .f05-gpoly { fill: #F0EBDE; stroke: #1F2BE0; stroke-width: 6; stroke-linejoin: miter; stroke-linecap: square; }
+    .f05-gline { fill: none; stroke: #1F2BE0; stroke-width: 5; stroke-linecap: square; }
+    .f05-btn { fill: #1F2BE0; }
+    .f05-sob {
+      position: absolute;
+      left: 50%;
+      top: 196px;
+      margin-left: -112px;
+      width: 224px;
+      height: 40px;
+      border: 3px solid #1F2BE0;
+      box-sizing: border-box;
+      background: #F0EBDE;
+      text-align: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 27px;
+      line-height: 36px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transform-origin: 50% 0%;
+      padding-top: 1px;
+    }
+    .f05-tape {
+      position: absolute;
+      left: 30px;
+      top: 330px;
+      width: 746px;
+      height: 26px;
+      border: 3px solid #1F2BE0;
+      box-sizing: border-box;
+      background-color: #F0EBDE;
+      background-image:
+        repeating-linear-gradient(90deg, #1F2BE0 0 3px, transparent 3px 62px),
+        repeating-linear-gradient(90deg, #1F2BE0 0 2px, transparent 2px 15.5px);
+      background-size: 100% 100%, 100% 45%;
+      background-repeat: no-repeat;
+      transform-origin: 0% 50%;
+      overflow: hidden;
+    }
+    .f05-seg { position: absolute; top: 12px; width: 150px; height: 8px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f05-marker { position: absolute; left: 0; top: 324px; width: 14px; height: 38px; background: #1F2BE0; z-index: 2; }
+    .f05-table { position: absolute; left: 20px; top: 364px; width: 766px; height: 14px; background: #1F2BE0; }
+    .f05-tleg { position: absolute; top: 378px; width: 14px; height: 42px; background: #1F2BE0; }
+
+    /* ---------- tags + stamps ---------- */
+    .f05-tag {
+      position: absolute;
+      height: 56px;
+      border: 3px solid #1F2BE0;
+      box-sizing: border-box;
+      background: #F0EBDE;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 20px 0 16px;
+      white-space: nowrap;
+    }
+    .f05-tag-t {
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 27px;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      padding-top: 3px;
+    }
+    .f05-gauge { display: flex; align-items: flex-end; gap: 4px; height: 38px; }
+    .f05-bar { position: relative; width: 12px; border: 2px solid #1F2BE0; box-sizing: border-box; overflow: hidden; }
+    .f05-bar-fill { position: absolute; inset: 0; background: #1F2BE0; transform-origin: 50% 100%; }
+    .f05-stamp {
+      position: absolute;
+      top: 788px;
+      height: 74px;
+      padding: 0 30px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      outline: 3px solid #1F2BE0;
+      outline-offset: 6px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      letter-spacing: 0.14em;
+      line-height: 76px;
+      white-space: nowrap;
+      transform-origin: 50% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="05-parafuso-alfaiate" data-width="1920" data-height="1080" data-duration="13.897">
+    <div id="f05-ground" class="f05-ground clip" data-start="0" data-duration="13.897" data-track-index="0"></div>
+
+    <div id="f05-stage" class="f05-stage clip" data-start="0" data-duration="13.897" data-track-index="1">
+      <div class="f05-hair f05-hair-top"></div>
+      <div class="f05-hair f05-hair-bot"></div>
+      <div class="f05-chrome f05-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f05-chrome f05-chrome-num">05 / 18</div>
+
+      <div class="f05-content" id="f05-content">
+        <div class="f05-title" id="f05-title">O exemplo do <em>gabarito</em></div>
+        <div class="f05-divider" id="f05-divider"></div>
+        <div class="f05-slot" id="f05-slotL" style="left:97px"></div>
+        <div class="f05-slot" id="f05-slotR" style="left:1017px"></div>
+
+        <div class="f05-persp">
+          <!-- LEFT: fábrica de parafusos -->
+          <div class="f05-bob" id="f05-bobL" style="left:97px">
+            <div class="f05-card f05-card-left" id="f05-cardL">
+              <div class="f05-in">
+                <div class="f05-head-row">
+                  <div class="f05-hname">FÁBRICA DE PARAFUSOS</div>
+                  <div class="f05-hcount" id="f05-count">UN. <span class="f05-dg"><span class="f05-dgs" id="f05-dth"></span></span>.<span class="f05-dg"><span class="f05-dgs" id="f05-dhu"></span></span><span class="f05-dg"><span class="f05-dgs" id="f05-dte"></span></span><span class="f05-dg"><span class="f05-dgs">0</span></span></div>
+                </div>
+                <div class="f05-housing"></div>
+                <div class="f05-piston" id="f05-piston"><div class="f05-rod"></div><div class="f05-phead"></div></div>
+                <div class="f05-win">
+                  <div class="f05-screws" id="f05-screws">
+              <div class="f05-screw" id="f05-sc0" style="left:-1290px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf0"></div></div></div>
+              <div class="f05-screw" id="f05-sc1" style="left:-1220px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf1"></div></div></div>
+              <div class="f05-screw" id="f05-sc2" style="left:-1150px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf2"></div></div></div>
+              <div class="f05-screw" id="f05-sc3" style="left:-1080px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf3"></div></div></div>
+              <div class="f05-screw" id="f05-sc4" style="left:-1010px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf4"></div></div></div>
+              <div class="f05-screw" id="f05-sc5" style="left:-940px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf5"></div></div></div>
+              <div class="f05-screw" id="f05-sc6" style="left:-870px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf6"></div></div></div>
+              <div class="f05-screw" id="f05-sc7" style="left:-800px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf7"></div></div></div>
+              <div class="f05-screw" id="f05-sc8" style="left:-730px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf8"></div></div></div>
+              <div class="f05-screw" id="f05-sc9" style="left:-660px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf9"></div></div></div>
+              <div class="f05-screw" id="f05-sc10" style="left:-590px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf10"></div></div></div>
+              <div class="f05-screw" id="f05-sc11" style="left:-520px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf11"></div></div></div>
+              <div class="f05-screw" id="f05-sc12" style="left:-450px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf12"></div></div></div>
+              <div class="f05-screw" id="f05-sc13" style="left:-380px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf13"></div></div></div>
+              <div class="f05-screw" id="f05-sc14" style="left:-310px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf14"></div></div></div>
+              <div class="f05-screw" id="f05-sc15" style="left:-240px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf15"></div></div></div>
+              <div class="f05-screw" id="f05-sc16" style="left:-170px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf16"></div></div></div>
+              <div class="f05-screw" id="f05-sc17" style="left:-100px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf17"></div></div></div>
+              <div class="f05-screw" id="f05-sc18" style="left:-30px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf18"></div></div></div>
+              <div class="f05-screw" id="f05-sc19" style="left:40px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf19"></div></div></div>
+              <div class="f05-screw" id="f05-sc20" style="left:110px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf20"></div></div></div>
+              <div class="f05-screw" id="f05-sc21" style="left:180px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf21"></div></div></div>
+              <div class="f05-screw" id="f05-sc22" style="left:250px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf22"></div></div></div>
+              <div class="f05-screw" id="f05-sc23" style="left:320px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf23"></div></div></div>
+              <div class="f05-screw" id="f05-sc24" style="left:390px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf24"></div></div></div>
+              <div class="f05-screw" id="f05-sc25" style="left:460px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf25"></div></div></div>
+              <div class="f05-screw" id="f05-sc26" style="left:530px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf26"></div></div></div>
+              <div class="f05-screw" id="f05-sc27" style="left:600px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf27"></div></div></div>
+              <div class="f05-screw" id="f05-sc28" style="left:670px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf28"></div></div></div>
+              <div class="f05-screw" id="f05-sc29" style="left:740px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf29"></div></div></div>
+              <div class="f05-screw" id="f05-sc30" style="left:810px"><div class="f05-shank"></div><div class="f05-head"><div class="f05-headfill" id="f05-hf30"></div></div></div>
+                  </div>
+                </div>
+                <div class="f05-belt"><div class="f05-belt-strip" id="f05-strip"></div></div>
+            <div class="f05-roller" id="f05-rl0" style="left:36px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl1" style="left:100px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl2" style="left:164px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl3" style="left:228px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl4" style="left:292px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl5" style="left:356px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl6" style="left:420px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl7" style="left:484px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl8" style="left:548px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl9" style="left:612px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl10" style="left:676px"><div class="f05-roller-bar"></div></div>
+            <div class="f05-roller" id="f05-rl11" style="left:740px"><div class="f05-roller-bar"></div></div>
+                <div class="f05-base"></div>
+                <div class="f05-leg" style="left:60px"></div>
+                <div class="f05-leg" style="left:736px"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: alfaiate -->
+          <div class="f05-bob" id="f05-bobR" style="left:1017px">
+            <div class="f05-card f05-card-right" id="f05-cardR">
+              <div class="f05-in">
+                <div class="f05-head-row">
+                  <div class="f05-hname">ALFAIATE</div>
+                  <div class="f05-hcount">
+                    <span id="f05-pc0" style="position:absolute;right:0;top:0">PEÇA 01</span>
+                    <span id="f05-pc1" style="position:absolute;right:0;top:0">PEÇA 02</span>
+                    <span id="f05-pc2" style="position:absolute;right:0;top:0">PEÇA 03</span>
+                  </div>
+                </div>
+                <div class="f05-rail" id="f05-rail"></div>
+            <div class="f05-gslot" style="left:30px">
+              <div class="f05-garment" id="f05-g0"><svg viewBox="0 0 200 190" aria-hidden="true"><polyline class="f05-hanger" points="100,0 100,12 56,28 144,28 100,12" /><polygon class="f05-gpoly" id="f05-gp0" points="60,26 82,26 100,40 118,26 140,26 190,60 170,92 150,78 150,182 50,182 50,78 30,92 10,60" /></svg></div>
+              <div class="f05-sob" id="f05-sob0">SOB MEDIDA</div>
+            </div>
+            <div class="f05-gslot" style="left:279px">
+              <div class="f05-garment" id="f05-g1"><svg viewBox="0 0 200 190" aria-hidden="true"><polyline class="f05-hanger" points="100,0 100,12 56,28 144,28 100,12" /><polygon class="f05-gpoly" id="f05-gp1" points="52,26 148,26 158,182 114,182 100,78 86,182 42,182" /><polyline class="f05-gline" points="52,44 148,44" /></svg></div>
+              <div class="f05-sob" id="f05-sob1">SOB MEDIDA</div>
+            </div>
+            <div class="f05-gslot" style="left:528px">
+              <div class="f05-garment" id="f05-g2"><svg viewBox="0 0 200 190" aria-hidden="true"><polyline class="f05-hanger" points="100,0 100,12 56,28 144,28 100,12" /><polygon class="f05-gpoly" id="f05-gp2" points="62,26 84,26 100,92 116,26 138,26 156,46 152,182 48,182 44,46" /><polyline class="f05-gline" points="100,92 100,182" /><rect class="f05-btn" x="106" y="110" width="9" height="9" /><rect class="f05-btn" x="106" y="136" width="9" height="9" /><rect class="f05-btn" x="106" y="162" width="9" height="9" /></svg></div>
+              <div class="f05-sob" id="f05-sob2">SOB MEDIDA</div>
+            </div>
+                <div class="f05-tape" id="f05-tape"><div class="f05-seg" id="f05-seg0" style="left:46px"></div><div class="f05-seg" id="f05-seg1" style="left:295px"></div><div class="f05-seg" id="f05-seg2" style="left:544px"></div></div>
+                <div class="f05-marker" id="f05-marker"></div>
+                <div class="f05-table"></div>
+                <div class="f05-tleg" style="left:60px"></div>
+                <div class="f05-tleg" style="left:732px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- conclusion tags (on the parent, never inside the tilted cards) -->
+        <div class="f05-tag" id="f05-tagA" style="left:97px;top:640px"><div class="f05-gauge"><div class="f05-bar" style="height:14px"><div class="f05-bar-fill" id="f05-ga0"></div></div><div class="f05-bar" style="height:20px"><div class="f05-bar-fill" id="f05-ga1"></div></div><div class="f05-bar" style="height:26px"><div class="f05-bar-fill" id="f05-ga2"></div></div><div class="f05-bar" style="height:32px"><div class="f05-bar-fill" id="f05-ga3"></div></div><div class="f05-bar" style="height:38px"><div class="f05-bar-fill" id="f05-ga4"></div></div></div><div class="f05-tag-t">VOLUME ALTO</div></div>
+        <div class="f05-tag" id="f05-tagB" style="left:97px;top:710px"><div class="f05-gauge"><div class="f05-bar" style="height:14px"><div class="f05-bar-fill" id="f05-gb0"></div></div><div class="f05-bar" style="height:20px"><div class="f05-bar-fill" id="f05-gb1"></div></div><div class="f05-bar" style="height:26px"><div class="f05-bar-fill" id="f05-gb2"></div></div><div class="f05-bar" style="height:32px"><div class="f05-bar-fill" id="f05-gb3"></div></div><div class="f05-bar" style="height:38px"><div class="f05-bar-fill" id="f05-gb4"></div></div></div><div class="f05-tag-t">VARIEDADE BAIXA</div></div>
+        <div class="f05-tag" id="f05-tagC" style="right:97px;top:640px"><div class="f05-gauge"><div class="f05-bar" style="height:14px"><div class="f05-bar-fill" id="f05-gc0"></div></div><div class="f05-bar" style="height:20px"><div class="f05-bar-fill" id="f05-gc1"></div></div><div class="f05-bar" style="height:26px"><div class="f05-bar-fill" id="f05-gc2"></div></div><div class="f05-bar" style="height:32px"><div class="f05-bar-fill" id="f05-gc3"></div></div><div class="f05-bar" style="height:38px"><div class="f05-bar-fill" id="f05-gc4"></div></div></div><div class="f05-tag-t">PERSONALIZADO</div></div>
+        <div class="f05-tag" id="f05-tagD" style="right:97px;top:710px"><div class="f05-gauge"><div class="f05-bar" style="height:14px"><div class="f05-bar-fill" id="f05-gd0"></div></div><div class="f05-bar" style="height:20px"><div class="f05-bar-fill" id="f05-gd1"></div></div><div class="f05-bar" style="height:26px"><div class="f05-bar-fill" id="f05-gd2"></div></div><div class="f05-bar" style="height:32px"><div class="f05-bar-fill" id="f05-gd3"></div></div><div class="f05-bar" style="height:38px"><div class="f05-bar-fill" id="f05-gd4"></div></div></div><div class="f05-tag-t">POUCA QUANTIDADE</div></div>
+
+        <div class="f05-stamp" id="f05-stampL" style="right:1017px">PADRONIZADA</div>
+        <div class="f05-stamp" id="f05-stampR" style="left:1017px">FLEXÍVEL</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var D = 13.397;
+      var tl = gsap.timeline({ paused: true });
+      function q(id) { return document.getElementById(id); }
+      var TXT_OPEN = "inset(-30% -4% -15% -4%)";
+
+      // ---- belt kinematics (shared by strip, screws, rollers, piston, counter) ----
+      var A0 = 2.6, A1 = 7.5, VA = 160;           // fast phase
+      var VB = 50;                                 // slow phase to the end
+      var DA = (A1 - A0) * VA;                     // 784px
+      var DB = (D - A1) * VB;                      // ~295px
+      var ROLL = 57.2958 / 12;                     // deg per px for a 24px roller
+
+      // camera: slow push under the whole shot
+      tl.fromTo("#f05-content", { scale: 1 }, { scale: 1.02, duration: D, ease: "none" }, 0);
+
+      // ---- Scene 1 (0–2.1): title slides down, divider draws, slots appear ----
+      tl.fromTo("#f05-title", { y: -46, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 0.1);
+      tl.fromTo("#f05-divider", { scaleY: 0 }, { scaleY: 1, duration: 1.0, ease: "power3.inOut" }, 0.5);
+      tl.fromTo("#f05-slotL", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.9);
+      tl.fromTo("#f05-slotR", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.05);
+
+      // ---- Scene 2 (2.1–7.5): LEFT card — split-tilt entry from the left wing ----
+      tl.fromTo("#f05-cardL", { x: -340, rotationY: 20, opacity: 0, scale: 0.88 },
+        { x: 0, rotationY: 10, opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" }, 2.3);
+
+      // belt strip + screws travel together
+      ["#f05-strip", "#f05-screws"].forEach(function (s) {
+        tl.fromTo(s, { x: 0 }, { x: DA, duration: A1 - A0, ease: "none" }, A0);
+        tl.to(s, { x: DA + DB, duration: D - A1, ease: "none" }, A1);
+      });
+      for (var r = 0; r < 12; r++) {
+        tl.fromTo("#f05-rl" + r, { rotation: 0 }, { rotation: DA * ROLL, duration: A1 - A0, ease: "none" }, A0);
+        tl.to("#f05-rl" + r, { rotation: (DA + DB) * ROLL, duration: D - A1, ease: "none" }, A1);
+      }
+
+      // screws already past the press start stamped (filled heads)
+      tl.set(".f05-headfill", { opacity: 0 }, 0);
+      for (var s0 = 24; s0 < 31; s0++) tl.set("#f05-hf" + s0, { opacity: 1 }, 0);
+
+      // press stomps each screw as it passes under (x = 322 - screwLeft)
+      for (var i = 0; i < 31; i++) {
+        var off = 1612 - 70 * i, t;
+        if (off <= 0) continue;
+        if (off <= DA) t = A0 + off / VA;
+        else if (off <= DA + DB) t = A1 + (off - DA) / VB;
+        else continue;
+        if (t - 0.1 > D - 0.05) continue;
+        tl.to("#f05-piston", { y: 40, duration: 0.1, ease: "power2.in" }, t - 0.1);
+        tl.to("#f05-piston", { y: 0, duration: 0.22, ease: "power2.out" }, t);
+        tl.set("#f05-hf" + i, { opacity: 1 }, t);
+        tl.to("#f05-sc" + i, { scaleY: 0.9, duration: 0.05, ease: "power2.out" }, t);
+        tl.to("#f05-sc" + i, { scaleY: 1, duration: 0.2, ease: "power3.out" }, t + 0.05);
+      }
+
+      // counter climbs fast, then slows with the belt
+      // odometer counter (transform-only): tens roll continuously, hundreds/thousands click over
+      var DH = 40, VA_END = 8400, VB_END = 9600;
+      function strip(id, n) { var h = ""; for (var k = 0; k < n; k++) h += (k % 10) + "<br>"; q(id).innerHTML = h; }
+      strip("f05-dte", 11);
+      var wrapTens = gsap.utils.unitize(gsap.utils.wrap(-10 * DH, 0));
+      strip("f05-dhu", VB_END / 100 + 2);
+      strip("f05-dth", 11);
+      function timeAt(v) { return v <= VA_END ? A0 + (A1 - A0) * v / VA_END : A1 + (D - A1) * (v - VA_END) / (VB_END - VA_END); }
+      tl.fromTo("#f05-dte", { y: 0 }, { y: -DH * VA_END / 10, duration: A1 - A0, ease: "none", modifiers: { y: wrapTens } }, A0);
+      tl.to("#f05-dte", { y: -DH * VB_END / 10, duration: D - A1, ease: "none", modifiers: { y: wrapTens } }, A1);
+      for (var h = 1; h <= VB_END / 100; h++) {
+        tl.to("#f05-dhu", { y: -DH * h, duration: 0.04, ease: "power2.out" }, timeAt(h * 100) - 0.04);
+      }
+      for (var th = 1; th <= Math.floor(VB_END / 1000); th++) {
+        tl.to("#f05-dth", { y: -DH * th, duration: 0.12, ease: "power2.out" }, timeAt(th * 1000) - 0.12);
+      }
+      tl.set(["#f05-dte", "#f05-dhu", "#f05-dth"], { y: 0 }, 0);
+
+      // tag reveal helper: wipe from the outer side + gauge bars fill
+      function tag(id, gaugePrefix, fillCount, t, fromRight) {
+        tl.fromTo(id, { clipPath: fromRight ? "inset(-30% -4% -15% 100%)" : "inset(-30% 100% -15% -4%)", x: fromRight ? 30 : -30 },
+          { clipPath: TXT_OPEN, x: 0, duration: 0.55, ease: "power3.out" }, t);
+        for (var k = 0; k < 5; k++) {
+          tl.fromTo("#" + gaugePrefix + k, { scaleY: 0 },
+            { scaleY: k < fillCount ? 1 : 0, duration: 0.25, ease: "power2.out" }, t + 0.3 + k * 0.08);
+        }
+      }
+      tag("#f05-tagA", "f05-ga", 5, 3.8, false);
+      tag("#f05-tagB", "f05-gb", 1, 4.6, false);
+
+      // PADRONIZADA stamp slams at the inner edge
+      function stamp(id, card, t, rot) {
+        tl.fromTo(id, { scale: 1.9, opacity: 0, rotation: rot * 3 },
+          { scale: 1, opacity: 1, rotation: rot, duration: 0.26, ease: "power3.in" }, t);
+        tl.to(card, { scale: 0.975, duration: 0.07, ease: "power2.out" }, t + 0.26);
+        tl.to(card, { scale: 1, duration: 0.35, ease: "power3.out" }, t + 0.33);
+      }
+      stamp("#f05-stampL", "#f05-cardL", 6.6, -3);
+
+      // left card idle bob (counter-phase with the right one)
+      function bob(id, start, sign) {
+        var y = sign * 5, t = start;
+        while (t + 1.3 <= D) {
+          tl.to(id, { y: y, duration: 1.3, ease: "sine.inOut" }, t);
+          y = -y; t += 1.3;
+        }
+      }
+      bob("#f05-bobL", 3.3, -1);
+
+      // ---- Scene 3 (7.5–end): RIGHT card — mirrored entry from the right wing ----
+      tl.fromTo("#f05-cardR", { x: 340, rotationY: -20, opacity: 0, scale: 0.88 },
+        { x: 0, rotationY: -10, opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" }, 7.8);
+      tl.fromTo("#f05-rail", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 8.05);
+      tl.fromTo("#f05-tape", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 8.15);
+      tl.fromTo("#f05-marker", { opacity: 0, x: 0 }, { opacity: 1, x: 30, duration: 0.3, ease: "power2.out" }, 8.3);
+
+      ["f05-gp0", "f05-gp1", "f05-gp2"].forEach(function (id) {
+        var el = q(id);
+        var len = Math.ceil(el.getTotalLength() * 1.05);
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+        el.setAttribute("data-len", len);
+      });
+
+      tl.set(["#f05-pc0", "#f05-pc1", "#f05-pc2"], { opacity: 0 }, 0);
+      var GT = [8.4, 9.0, 9.6];
+      GT.forEach(function (t, g) {
+        var cx = 154 + 249 * g;
+        tl.fromTo("#f05-g" + g, { scale: 0, opacity: 0, y: -20 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t);
+        tl.to("#f05-gp" + g, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, t + 0.05);
+        tl.fromTo("#f05-sob" + g, { scaleY: 0, opacity: 0 },
+          { scaleY: 1, opacity: 1, duration: 0.35, ease: "power3.out" }, t + 0.25);
+        // tape: marker runs to the piece, its width gets measured
+        tl.to("#f05-marker", { x: cx - 7, duration: 0.35, ease: "power3.inOut" }, t);
+        tl.fromTo("#f05-seg" + g, { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, t + 0.2);
+        // header count
+        if (g > 0) tl.set("#f05-pc" + (g - 1), { opacity: 0 }, t);
+        tl.set("#f05-pc" + g, { opacity: 1 }, t);
+        // gentle sway on the hanger (sequential, no repeat)
+        var rt = t + 0.5, ang = (g % 2 ? -2.5 : 2.5);
+        while (rt + 1.1 <= D) {
+          tl.to("#f05-g" + g, { rotation: ang, duration: 1.1, ease: "sine.inOut" }, rt);
+          ang = -ang; rt += 1.1;
+        }
+      });
+
+      tag("#f05-tagC", "f05-gc", 5, 9.1, true);
+      tag("#f05-tagD", "f05-gd", 1, 10.2, true);
+
+      // marker keeps measuring while the line talks
+      [[10.9, 154], [11.6, 652], [12.2, 403]].forEach(function (m) {
+        tl.to("#f05-marker", { x: m[1] - 7, duration: 0.5, ease: "power3.inOut" }, m[0]);
+      });
+
+      bob("#f05-bobR", 8.8, 1);
+
+      // FLEXÍVEL stamp
+      stamp("#f05-stampR", "#f05-cardR", 12.4, 3);
+
+      // hold to the end — no exit (root transition owns it)
+      tl.set({}, {}, D);
+
+      window.__timelines["05-parafuso-alfaiate"] = tl;
+    })();
+  </script>
+</template>

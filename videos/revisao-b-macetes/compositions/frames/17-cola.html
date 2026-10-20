@@ -1,0 +1,556 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f17-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f17-stage { position: absolute; inset: 0; }
+    .f17-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f17-hair-top { top: 70px; }
+    .f17-hair-bot { top: 892px; }
+    .f17-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f17-chrome-tag { left: 77px; }
+    .f17-chrome-num { right: 77px; }
+
+    /* ---------- the sheet ---------- */
+    .f17-cam { position: absolute; inset: 0; transform-origin: 960px 487px; }
+    .f17-sheet {
+      position: absolute;
+      left: 110px;
+      top: 96px;
+      width: 1700px;
+      height: 782px;
+      box-sizing: border-box;
+      border: 4px solid #1F2BE0;
+      background-color: #F0EBDE;
+      background-image: repeating-linear-gradient(180deg, transparent 0 43px, rgba(31,43,224,0.12) 43px 45px);
+      background-position: 0 70px;
+    }
+    .f17-title {
+      position: absolute;
+      left: 28px;
+      top: 4px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 54px;
+      line-height: 62px;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+    .f17-rule { position: absolute; background: #1F2BE0; }
+    .f17-rule-h0 { left: 0; top: 66px; width: 1692px; height: 4px; transform-origin: 0% 50%; }
+    .f17-rule-h1 { left: 0; top: 420px; width: 1692px; height: 3px; transform-origin: 50% 50%; }
+    .f17-rule-v { left: 845px; top: 70px; width: 3px; height: 704px; transform-origin: 50% 0%; }
+
+    .f17-checks { position: absolute; right: 24px; top: 18px; height: 32px; }
+    .f17-ck {
+      position: absolute;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      box-sizing: border-box;
+      border: 3px solid #1F2BE0;
+    }
+    .f17-ck i {
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      background: #1F2BE0;
+      transform-origin: 50% 50%;
+    }
+
+    .f17-q { position: absolute; width: 846px; height: 352px; }
+    .f17-q1 { left: 0; top: 70px; }
+    .f17-q2 { left: 846px; top: 70px; }
+    .f17-q3 { left: 0; top: 422px; }
+    .f17-q4 { left: 846px; top: 422px; }
+
+    .f17-qtag {
+      position: absolute;
+      left: 28px;
+      top: 18px;
+      height: 44px;
+      padding: 0 12px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "DM Mono", monospace;
+      font-size: 30px;
+      line-height: 44px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transform-origin: 0% 50%;
+    }
+
+    /* inverted / outlined word blocks */
+    .f17-inv {
+      position: absolute;
+      box-sizing: border-box;
+      height: 50px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 50px;
+      letter-spacing: 0.06em;
+      text-align: center;
+      white-space: nowrap;
+      transform-origin: 50% 50%;
+    }
+    .f17-out {
+      position: absolute;
+      box-sizing: border-box;
+      height: 50px;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 44px;
+      letter-spacing: 0.04em;
+      text-align: center;
+      white-space: nowrap;
+      transform-origin: 50% 50%;
+    }
+    .f17-word {
+      position: absolute;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 50px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .f17-serif {
+      position: absolute;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 42px;
+      line-height: 54px;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+
+    .f17-svg { position: absolute; left: 0; top: 0; width: 846px; height: 352px; overflow: visible; }
+    .f17-svg path, .f17-svg line { fill: none; stroke: #1F2BE0; stroke-width: 4; stroke-linecap: butt; stroke-linejoin: miter; }
+
+    /* Q2 mini objects */
+    .f17-slot { position: absolute; width: 36px; height: 36px; box-sizing: border-box; border: 3px solid #1F2BE0; }
+    .f17-card { position: absolute; width: 36px; height: 36px; background: #1F2BE0; }
+    .f17-clock { position: absolute; width: 46px; height: 46px; box-sizing: border-box; border: 4px solid #1F2BE0; }
+    .f17-hand { position: absolute; left: 19px; top: 4px; width: 4px; height: 17px; background: #1F2BE0; transform-origin: 50% 100%; }
+    .f17-tick { position: absolute; left: 18px; top: 0; width: 2px; height: 6px; background: #1F2BE0; }
+    .f17-box { position: absolute; width: 34px; height: 34px; background: #1F2BE0; }
+    .f17-rail { position: absolute; height: 3px; background: rgba(31,43,224,0.35); }
+    .f17-ghost { position: absolute; height: 32px; box-sizing: border-box; border: 3px dashed rgba(31,43,224,0.45); }
+    .f17-bar { position: absolute; height: 32px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+    /* Q3 seesaw */
+    .f17-beamgrp { position: absolute; left: 60px; top: 116px; width: 580px; height: 150px; transform-origin: 290px 145px; }
+    .f17-beam { position: absolute; left: 0; top: 140px; width: 580px; height: 10px; background: #1F2BE0; }
+    .f17-load {
+      position: absolute;
+      top: 24px;
+      width: 200px;
+      height: 112px;
+      box-sizing: border-box;
+      border: 4px solid #1F2BE0;
+      background: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 40px;
+      padding-top: 12px;
+      letter-spacing: 0.06em;
+      text-align: center;
+      white-space: nowrap;
+      transform-origin: 50% 100%;
+    }
+    .f17-threeas {
+      position: absolute;
+      left: 668px;
+      top: 150px;
+      width: 150px;
+      height: 112px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 104px;
+      letter-spacing: -0.005em;
+      text-align: center;
+      white-space: nowrap;
+      transform-origin: 50% 50%;
+    }
+    .f17-ground3 { position: absolute; left: 40px; top: 324px; width: 620px; height: 3px; background: #1F2BE0; }
+
+    /* Q4 */
+    .f17-pcol { position: absolute; top: 64px; width: 264px; text-align: center; }
+    .f17-letter {
+      display: block;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 120px;
+      line-height: 124px;
+      letter-spacing: -0.015em;
+      transform-origin: 50% 80%;
+    }
+    .f17-dot { position: absolute; top: 124px; width: 14px; height: 14px; background: #1F2BE0; }
+    .f17-pword {
+      position: absolute;
+      top: 196px;
+      width: 264px;
+      text-align: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 27px;
+      line-height: 44px;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .f17-gauge { position: absolute; top: 258px; width: 200px; height: 30px; box-sizing: border-box; border: 3px solid #1F2BE0; }
+    .f17-gfill { position: absolute; left: 3px; top: 3px; width: 188px; height: 18px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+    /* pencil */
+    .f17-pencil { position: absolute; left: 0; top: 0; width: 40px; height: 140px; }
+    .f17-pencil-in { position: absolute; left: 0; top: 0; width: 40px; height: 140px; transform: rotate(32deg) scale(0.6); transform-origin: 20px 140px; }
+  </style>
+
+  <div id="root" data-composition-id="17-cola" data-width="1920" data-height="1080" data-duration="16.856">
+    <div id="f17-ground" class="f17-ground clip" data-start="0" data-duration="16.856" data-track-index="0"></div>
+
+    <div id="f17-stage" class="f17-stage clip" data-start="0" data-duration="16.856" data-track-index="1">
+      <div class="f17-hair f17-hair-top"></div>
+      <div class="f17-hair f17-hair-bot"></div>
+      <div class="f17-chrome f17-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f17-chrome f17-chrome-num">17 / 18</div>
+
+      <div class="f17-cam" id="f17-cam">
+        <div class="f17-sheet" id="f17-sheet">
+          <div class="f17-title" id="f17-title">COLA</div>
+          <div class="f17-checks" id="f17-checks" style="width: 152px;">
+            <div class="f17-ck" style="left: 0;"><i id="f17-ck1"></i></div>
+            <div class="f17-ck" style="left: 40px;"><i id="f17-ck2"></i></div>
+            <div class="f17-ck" style="left: 80px;"><i id="f17-ck3"></i></div>
+            <div class="f17-ck" style="left: 120px;"><i id="f17-ck4"></i></div>
+          </div>
+          <div class="f17-rule f17-rule-h0" id="f17-rh0"></div>
+          <div class="f17-rule f17-rule-h1" id="f17-rh1"></div>
+          <div class="f17-rule f17-rule-v" id="f17-rv"></div>
+
+          <!-- ================= Q1 ================= -->
+          <div class="f17-q f17-q1" id="f17-q1">
+            <div class="f17-qtag" id="f17-q1tag">Q1</div>
+            <svg class="f17-svg" viewBox="0 0 846 352" xmlns="http://www.w3.org/2000/svg">
+              <path id="f17-q1a1" class="f17-draw" d="M330 103 L470 103 M454 92 L470 103 L454 114" />
+              <path id="f17-q1a2" class="f17-draw" d="M330 167 L470 167 M454 156 L470 167 L454 178" />
+              <path id="f17-q1a3" class="f17-draw" d="M330 231 L470 231 M454 220 L470 231 L454 242" />
+              <path id="f17-q1a4" class="f17-draw" d="M330 295 L470 295 M454 284 L470 295 L454 306" />
+            </svg>
+            <div class="f17-word" id="f17-v1" style="left: 28px; top: 78px;">VOLUME</div>
+            <div class="f17-word" id="f17-v2" style="left: 28px; top: 142px;">VARIEDADE</div>
+            <div class="f17-word" id="f17-v3" style="left: 28px; top: 206px;">VARIAÇÃO</div>
+            <div class="f17-word" id="f17-v4" style="left: 28px; top: 270px;">VISIBILIDADE</div>
+            <div class="f17-inv" id="f17-k1" style="left: 490px; top: 78px; width: 190px;">QUANTO?</div>
+            <div class="f17-inv" id="f17-k2" style="left: 490px; top: 142px; width: 190px;">QUAIS?</div>
+            <div class="f17-inv" id="f17-k3" style="left: 490px; top: 206px; width: 190px;">MUDA?</div>
+            <div class="f17-inv" id="f17-k4" style="left: 490px; top: 270px; width: 190px;">VÊ?</div>
+            <!-- square magnifier on VÊ? -->
+            <svg class="f17-svg" viewBox="0 0 846 352" xmlns="http://www.w3.org/2000/svg">
+              <g id="f17-mag">
+                <path d="M712 274 L744 274 L744 306 L712 306 Z" />
+                <path d="M744 306 L768 330" style="stroke-width: 7;" />
+              </g>
+            </svg>
+          </div>
+
+          <!-- ================= Q2 ================= -->
+          <div class="f17-q f17-q2" id="f17-q2">
+            <div class="f17-qtag" id="f17-q2tag">Q2</div>
+            <div class="f17-serif" id="f17-ppcp" style="left: 140px; top: 12px;">PPCP =</div>
+            <div class="f17-out" id="f17-o1" style="left: 300px; top: 14px; width: 130px;">O QUÊ</div>
+            <div class="f17-out" id="f17-o2" style="left: 442px; top: 14px; width: 160px;">QUANDO</div>
+            <div class="f17-out" id="f17-o3" style="left: 614px; top: 14px; width: 186px;">CONFERIU</div>
+            <svg class="f17-svg" viewBox="0 0 846 352" xmlns="http://www.w3.org/2000/svg">
+              <path id="f17-tick" class="f17-draw" d="M808 44 L820 56 L840 28" style="stroke-width: 6;" />
+            </svg>
+
+            <div class="f17-serif" id="f17-r1" style="left: 28px; top: 112px;">KANBAN</div>
+            <div class="f17-serif" id="f17-r2" style="left: 28px; top: 190px;">JIT</div>
+            <div class="f17-serif" id="f17-r3" style="left: 28px; top: 268px;">ENXUTA</div>
+
+            <div class="f17-out" id="f17-u1" style="left: 236px; top: 114px; width: 210px;">SINALIZA</div>
+            <div class="f17-inv" id="f17-l1" style="left: 236px; top: 114px; width: 210px;">SINALIZA</div>
+            <div class="f17-out" id="f17-u2" style="left: 236px; top: 192px; width: 210px;">NA HORA</div>
+            <div class="f17-inv" id="f17-l2" style="left: 236px; top: 192px; width: 210px;">NA HORA</div>
+            <div class="f17-out" id="f17-u3" style="left: 236px; top: 270px; width: 210px;">ENXUGA</div>
+            <div class="f17-inv" id="f17-l3" style="left: 236px; top: 270px; width: 210px;">ENXUGA</div>
+
+            <!-- kanban board: three slots, signal cards drop in -->
+            <div id="f17-kb" style="position: absolute; left: 480px; top: 121px; width: 300px; height: 36px;">
+              <div class="f17-slot" style="left: 0;"></div>
+              <div class="f17-slot" style="left: 52px;"></div>
+              <div class="f17-slot" style="left: 104px;"></div>
+              <div class="f17-card" id="f17-c1" style="left: 0;"></div>
+              <div class="f17-card" id="f17-c2" style="left: 52px;"></div>
+              <div class="f17-card" id="f17-c3" style="left: 104px;"></div>
+            </div>
+            <!-- JIT: square clock + box arriving on time -->
+            <div id="f17-jit" style="position: absolute; left: 480px; top: 194px; width: 340px; height: 46px;">
+              <div class="f17-clock"><div class="f17-tick"></div><div class="f17-hand" id="f17-hand"></div></div>
+              <div class="f17-rail" style="left: 60px; top: 30px; width: 270px;"></div>
+              <div class="f17-box" id="f17-jbox" style="left: 64px; top: -4px;"></div>
+            </div>
+            <!-- Enxuta: bar shrinks, ghost of old size stays -->
+            <div id="f17-ex" style="position: absolute; left: 480px; top: 279px; width: 340px; height: 32px;">
+              <div class="f17-ghost" style="left: 0; top: 0; width: 330px;"></div>
+              <div class="f17-bar" id="f17-bar" style="left: 0; top: 0; width: 330px;"></div>
+            </div>
+          </div>
+
+          <!-- ================= Q3 ================= -->
+          <div class="f17-q f17-q3" id="f17-q3">
+            <div class="f17-qtag" id="f17-q3tag">Q3</div>
+            <div class="f17-ground3" id="f17-gr3"></div>
+            <svg class="f17-svg" viewBox="0 0 846 352" xmlns="http://www.w3.org/2000/svg">
+              <path id="f17-fulcrum" d="M350 266 L310 324 L390 324 Z" style="fill: #1F2BE0;" />
+            </svg>
+            <div class="f17-beamgrp" id="f17-beamgrp">
+              <div class="f17-beam" id="f17-beam"></div>
+              <div class="f17-load" id="f17-ls" style="left: 10px;">SOBRA<br>CUSTA</div>
+              <div class="f17-load" id="f17-lf" style="left: 370px;">FALTA<br>ATRASA</div>
+            </div>
+            <div class="f17-threeas" id="f17-3as">3 As</div>
+          </div>
+
+          <!-- ================= Q4 ================= -->
+          <div class="f17-q f17-q4" id="f17-q4">
+            <div class="f17-qtag" id="f17-q4tag">Q4</div>
+            <div class="f17-pcol" style="left: 30px;"><span class="f17-letter" id="f17-P">P</span></div>
+            <div class="f17-pcol" style="left: 294px;"><span class="f17-letter" id="f17-E">E</span></div>
+            <div class="f17-pcol" style="left: 558px;"><span class="f17-letter" id="f17-Q">Q</span></div>
+            <div class="f17-dot" id="f17-d1" style="left: 287px;"></div>
+            <div class="f17-dot" id="f17-d2" style="left: 551px;"></div>
+            <div class="f17-pword" id="f17-w1" style="left: 30px;">PRODUTIVIDADE</div>
+            <div class="f17-pword" id="f17-w2" style="left: 294px;">EFICIÊNCIA</div>
+            <div class="f17-pword" id="f17-w3" style="left: 558px;">QUALIDADE</div>
+            <div class="f17-gauge" style="left: 62px;"><div class="f17-gfill" id="f17-g1"></div></div>
+            <div class="f17-gauge" style="left: 326px;"><div class="f17-gfill" id="f17-g2"></div></div>
+            <div class="f17-gauge" style="left: 590px;"><div class="f17-gfill" id="f17-g3"></div></div>
+          </div>
+
+          <!-- pencil writing the cola -->
+          <div class="f17-pencil" id="f17-pencil">
+            <div class="f17-pencil-in">
+              <svg width="40" height="140" viewBox="0 0 40 140" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="0" width="24" height="20" fill="#1F2BE0" />
+                <rect x="8" y="24" width="24" height="88" fill="#F0EBDE" stroke="#1F2BE0" stroke-width="4" />
+                <path d="M8 112 L32 112 L20 140 Z" fill="#F0EBDE" stroke="#1F2BE0" stroke-width="4" stroke-linejoin="miter" />
+                <path d="M16 131 L24 131 L20 140 Z" fill="#1F2BE0" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const D = 16.256;
+          const R = document.querySelector('[data-composition-id="17-cola"]');
+          const q = (s) => R.querySelector(s);
+          const qa = (s) => Array.from(R.querySelectorAll(s));
+          const pop = (el, t, d) => tl.fromTo(q(el), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: d || 0.45, ease: "power3.out" }, t);
+          const rise = (el, t) => tl.fromTo(q(el), { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, t);
+
+          qa(".f17-draw").forEach((p) => {
+            const len = p.getTotalLength() * 1.02;
+            p.style.strokeDasharray = len + " " + len;
+            p.style.strokeDashoffset = len;
+          });
+
+          // ---------- Scene 1 (0.0–1.0): sheet slides in, quadrants divide ----------
+          tl.fromTo(q("#f17-sheet"), { x: 260, opacity: 0, rotation: 2 }, { x: 0, opacity: 1, rotation: 0, duration: 0.7, ease: "power3.out" }, 0);
+          tl.fromTo(q("#f17-title"), { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+          tl.fromTo(q("#f17-rh0"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.3);
+          tl.fromTo(q("#f17-rv"), { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.out" }, 0.45);
+          tl.fromTo(q("#f17-rh1"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.5);
+          ["#f17-q1tag", "#f17-q2tag", "#f17-q3tag", "#f17-q4tag"].forEach((s, i) => {
+            tl.fromTo(q(s), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.55 + i * 0.08);
+          });
+          tl.fromTo(qa(".f17-ck"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out", stagger: 0.05 }, 0.6);
+          ["#f17-ck1", "#f17-ck2", "#f17-ck3", "#f17-ck4"].forEach((s) => tl.set(q(s), { scale: 0 }, 0));
+
+          // pencil travels to each quadrant and scribbles
+          const pen = q("#f17-pencil");
+          const spots = [[760, -10], [1526, 85], [720, 402], [1626, 342]];
+          tl.fromTo(pen, { x: 1760, y: -200, opacity: 0 }, { x: spots[0][0], y: spots[0][1], opacity: 1, duration: 0.7, ease: "power3.out" }, 0.4);
+          const scribble = (base, t0, t1) => {
+            let t = t0, k = 0;
+            while (t + 0.25 <= t1) {
+              tl.to(pen, { x: base[0] + (k % 2 ? -14 : 10), y: base[1] + (k % 2 ? 4 : -3), duration: 0.25, ease: "sine.inOut" }, t);
+              t += 0.25; k++;
+            }
+            tl.to(pen, { x: base[0], y: base[1], duration: 0.2, ease: "sine.inOut" }, t);
+          };
+          scribble(spots[0], 1.1, 4.2);
+          tl.to(pen, { x: spots[1][0], y: spots[1][1], duration: 0.4, ease: "power2.inOut" }, 4.4);
+          scribble(spots[1], 4.8, 9.5);
+          tl.to(pen, { x: spots[2][0], y: spots[2][1], duration: 0.4, ease: "power2.inOut" }, 9.65);
+          scribble(spots[2], 10.05, 12.8);
+          tl.to(pen, { x: spots[3][0], y: spots[3][1], duration: 0.4, ease: "power2.inOut" }, 12.95);
+          scribble(spots[3], 13.35, 15.7);
+
+          // ---------- Scene 2 (1.0–4.6): Q1 ----------
+          tl.to(q("#f17-q1tag"), { scale: 1.15, duration: 0.15, ease: "power2.out" }, 1.0);
+          tl.to(q("#f17-q1tag"), { scale: 1, duration: 0.25, ease: "power2.out" }, 1.15);
+          [["#f17-v1", 1.1], ["#f17-v2", 1.6], ["#f17-v3", 2.1], ["#f17-v4", 2.6]].forEach(([s, t]) => {
+            tl.fromTo(q(s), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, t);
+          });
+          ["#f17-q1a1", "#f17-q1a2", "#f17-q1a3", "#f17-q1a4"].forEach((s, i) => {
+            tl.to(q(s), { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 3.2 + i * 0.12);
+          });
+          ["#f17-k1", "#f17-k2", "#f17-k3", "#f17-k4"].forEach((s, i) => pop(s, 3.5 + i * 0.22, 0.45));
+          tl.fromTo(q("#f17-mag"), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.2);
+          // magnifier scans left-right for the rest of the frame
+          for (let i = 0; i < 11; i++) {
+            tl.to(q("#f17-mag"), { x: i % 2 ? 0 : 26, y: i % 2 ? 0 : -4, duration: 1.0, ease: "sine.inOut" }, 4.6 + i * 1.0);
+          }
+          tl.fromTo(q("#f17-ck1"), { scale: 0 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 4.4);
+
+          // ---------- Scene 3 (4.6–9.9): Q2 ----------
+          tl.to(q("#f17-q2tag"), { scale: 1.15, duration: 0.15, ease: "power2.out" }, 4.6);
+          tl.to(q("#f17-q2tag"), { scale: 1, duration: 0.25, ease: "power2.out" }, 4.75);
+          rise("#f17-ppcp", 4.65);
+          pop("#f17-o1", 5.1);
+          pop("#f17-o2", 5.5);
+          pop("#f17-o3", 5.95);
+          tl.to(q("#f17-tick"), { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 6.3);
+
+          [["#f17-r1", "#f17-u1", 6.5], ["#f17-r2", "#f17-u2", 6.65], ["#f17-r3", "#f17-u3", 6.8]].forEach(([r, u, t]) => {
+            tl.fromTo(q(r), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t);
+            tl.fromTo(q(u), { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, t + 0.08);
+          });
+          tl.fromTo(q("#f17-kb"), { opacity: 0 }, { opacity: 1, duration: 0.4 }, 6.6);
+          tl.fromTo(q("#f17-jit"), { opacity: 0 }, { opacity: 1, duration: 0.4 }, 6.75);
+          tl.fromTo(q("#f17-ex"), { opacity: 0 }, { opacity: 1, duration: 0.4 }, 6.9);
+
+          // lit copies: hidden until their verb is spoken, then wipe in; unlit copy removed
+          const HID = "inset(-30% 100% -15% -4%)";
+          const SHOW = "inset(-30% -4% -15% -4%)";
+          ["#f17-l1", "#f17-l2", "#f17-l3"].forEach((s) => tl.set(q(s), { opacity: 0, clipPath: HID }, 0));
+          [["#f17-l1", "#f17-u1", 7.0], ["#f17-l2", "#f17-u2", 8.4], ["#f17-l3", "#f17-u3", 9.2]].forEach(([l, u, t]) => {
+            tl.set(q(l), { opacity: 1 }, t);
+            tl.fromTo(q(l), { clipPath: HID }, { clipPath: SHOW, duration: 0.35, ease: "power2.inOut" }, t);
+            tl.set(q(u), { opacity: 0 }, t + 0.36);
+            tl.to(q(l), { scale: 1.06, duration: 0.12, ease: "power2.out" }, t + 0.36);
+            tl.to(q(l), { scale: 1, duration: 0.2, ease: "power2.out" }, t + 0.48);
+          });
+
+          // kanban signal cards drop into slots
+          ["#f17-c1", "#f17-c2", "#f17-c3"].forEach((s, i) => {
+            tl.fromTo(q(s), { y: -50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 7.0 + i * 0.2);
+          });
+          // then the signal keeps cycling: first card lifts and returns
+          for (let i = 0; i < 4; i++) {
+            const t = 8.0 + i * 2.0;
+            const c = ["#f17-c1", "#f17-c2", "#f17-c3", "#f17-c1"][i];
+            tl.to(q(c), { y: -14, duration: 0.25, ease: "power2.out" }, t);
+            tl.to(q(c), { y: 0, duration: 0.3, ease: "power2.in" }, t + 0.25);
+          }
+          // JIT clock: hand sweeps, box arrives exactly at 8.4
+          tl.fromTo(q("#f17-hand"), { rotation: -270 }, { rotation: 360, duration: 1.65, ease: "power1.inOut" }, 6.75);
+          tl.fromTo(q("#f17-jbox"), { x: 260, opacity: 0 }, { x: 0, opacity: 1, duration: 1.0, ease: "power2.out" }, 7.4);
+          tl.to(q("#f17-jbox"), { scale: 1.2, duration: 0.12, ease: "power2.out" }, 8.4);
+          tl.to(q("#f17-jbox"), { scale: 1, duration: 0.2, ease: "power2.out" }, 8.52);
+          tl.to(q("#f17-hand"), { rotation: 720, duration: D - 8.6, ease: "none" }, 8.6);
+          // Enxuta: bar shrinks
+          tl.fromTo(q("#f17-bar"), { scaleX: 1 }, { scaleX: 0.42, duration: 0.6, ease: "power3.inOut" }, 9.2);
+          tl.fromTo(q("#f17-ck2"), { scale: 0 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 9.7);
+
+          // ---------- Scene 4 (9.9–13.1): Q3 seesaw ----------
+          tl.to(q("#f17-q3tag"), { scale: 1.15, duration: 0.15, ease: "power2.out" }, 9.9);
+          tl.to(q("#f17-q3tag"), { scale: 1, duration: 0.25, ease: "power2.out" }, 10.05);
+          tl.fromTo(q("#f17-gr3"), { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.out" }, 9.9);
+          tl.fromTo(q("#f17-fulcrum"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.95);
+          tl.fromTo(q("#f17-beam"), { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 10.05);
+          const beam = q("#f17-beamgrp");
+          tl.set(beam, { rotation: 0 }, 0);
+          tl.fromTo(q("#f17-ls"), { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power2.in" }, 10.3);
+          tl.to(beam, { rotation: -8, duration: 0.5, ease: "back.out(1.4)" }, 10.62);
+          tl.fromTo(q("#f17-lf"), { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power2.in" }, 11.1);
+          tl.to(beam, { rotation: 8, duration: 0.6, ease: "back.out(1.4)" }, 11.42);
+          // keeps teetering toward balance
+          const sway = [[-5, 12.05], [4, 12.65], [-3, 13.25], [2.5, 13.9], [-2, 14.6], [1.5, 15.3], [0, 15.95]];
+          sway.forEach(([r, t], i) => {
+            const nextT = i + 1 < sway.length ? sway[i + 1][1] : D;
+            tl.to(beam, { rotation: r, duration: Math.min(0.6, nextT - t), ease: "sine.inOut" }, t);
+          });
+          tl.fromTo(q("#f17-3as"), { scale: 0, opacity: 0, rotation: -5 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, 12.2);
+          tl.fromTo(q("#f17-ck3"), { scale: 0 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 12.8);
+
+          // ---------- Scene 5 (13.1–16.256): Q4 P · E · Q ----------
+          tl.to(q("#f17-q4tag"), { scale: 1.15, duration: 0.15, ease: "power2.out" }, 13.1);
+          tl.to(q("#f17-q4tag"), { scale: 1, duration: 0.25, ease: "power2.out" }, 13.25);
+          [["#f17-P", 13.1], ["#f17-E", 13.25], ["#f17-Q", 13.4]].forEach(([s, t]) => {
+            tl.fromTo(q(s), { scale: 0.3, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, t);
+          });
+          pop("#f17-d1", 13.3, 0.3);
+          pop("#f17-d2", 13.45, 0.3);
+          qa(".f17-gauge").forEach((g, i) => {
+            tl.fromTo(g, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 13.5 + i * 0.08);
+          });
+          ["#f17-g1", "#f17-g2", "#f17-g3"].forEach((s) => tl.set(q(s), { scaleX: 0 }, 0));
+          [["#f17-w1", "#f17-g1", "#f17-P", 13.9], ["#f17-w2", "#f17-g2", "#f17-E", 14.8], ["#f17-w3", "#f17-g3", "#f17-Q", 15.6]].forEach(([w, g, L, t]) => {
+            rise(w, t);
+            tl.fromTo(q(g), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, t + 0.05);
+            tl.to(q(L), { scale: 1.1, duration: 0.14, ease: "power2.out" }, t);
+            tl.to(q(L), { scale: 1, duration: 0.25, ease: "power2.out" }, t + 0.14);
+          });
+          tl.fromTo(q("#f17-ck4"), { scale: 0 }, { scale: 1, duration: 0.3, ease: "power3.out" }, 15.75);
+
+          // whole sheet: light final zoom, then hold
+          tl.fromTo(q("#f17-cam"), { scale: 1 }, { scale: 1.025, duration: D - 13.1, ease: "power1.inOut" }, 13.1);
+
+          tl.to({}, { duration: 0.001 }, D - 0.001);
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["17-cola"] = tl;
+        })();
+      </script>
+    </div>
+  </div>
+</template>

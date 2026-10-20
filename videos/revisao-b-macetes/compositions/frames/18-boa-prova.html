@@ -1,0 +1,261 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f18-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f18-stage { position: absolute; inset: 0; }
+    .f18-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f18-hair-top { top: 70px; }
+    .f18-hair-bot { top: 892px; }
+    .f18-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 27px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f18-chrome-tag { left: 77px; }
+    .f18-chrome-num { right: 77px; }
+
+    .f18-cam { position: absolute; inset: 0; transform-origin: 960px 380px; }
+
+    .f18-label {
+      position: absolute;
+      left: 0;
+      width: 1920px;
+      top: 116px;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      font-size: 34px;
+      line-height: 44px;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    .f18-blk {
+      position: absolute;
+      top: 190px;
+      width: 280px;
+      height: 280px;
+      transform-origin: 50% 50%;
+    }
+    .f18-frame {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      border: 5px solid #1F2BE0;
+      background: #F0EBDE;
+    }
+    .f18-fill {
+      position: absolute;
+      inset: 0;
+      background: #1F2BE0;
+      transform-origin: 50% 100%;
+    }
+    .f18-let {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 280px;
+      height: 280px;
+      box-sizing: border-box;
+      padding-bottom: 14px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 210px;
+      line-height: 266px;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    .f18-let-lit { color: #F0EBDE; }
+
+    .f18-word {
+      position: absolute;
+      top: 494px;
+      width: 280px;
+      text-align: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 40px;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    .f18-rule {
+      position: absolute;
+      left: 310px;
+      top: 566px;
+      width: 1300px;
+      height: 3px;
+      background: #1F2BE0;
+      transform-origin: 0% 50%;
+    }
+    .f18-cursor {
+      position: absolute;
+      left: 438px;
+      top: 556px;
+      width: 24px;
+      height: 24px;
+      background: #1F2BE0;
+    }
+
+    .f18-close {
+      position: absolute;
+      left: 0;
+      width: 1920px;
+      top: 618px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 180px;
+      line-height: 176px;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="18-boa-prova" data-width="1920" data-height="1080" data-duration="7.409">
+    <div id="f18-ground" class="f18-ground clip" data-start="0" data-duration="7.409" data-track-index="0"></div>
+
+    <div id="f18-stage" class="f18-stage clip" data-start="0" data-duration="7.409" data-track-index="1">
+      <div class="f18-hair f18-hair-top"></div>
+      <div class="f18-hair f18-hair-bot"></div>
+      <div class="f18-chrome f18-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f18-chrome f18-chrome-num">18 / 18</div>
+
+      <div class="f18-cam" id="f18-cam">
+        <div class="f18-label" id="f18-label">EM TODA RESPOSTA</div>
+
+        <div class="f18-blk" id="f18-b1" style="left: 310px;">
+          <div class="f18-frame"></div>
+          <div class="f18-fill" id="f18-f1"></div>
+          <div class="f18-let" id="f18-u1">I</div>
+          <div class="f18-let f18-let-lit" id="f18-l1">I</div>
+        </div>
+        <div class="f18-blk" id="f18-b2" style="left: 650px;">
+          <div class="f18-frame"></div>
+          <div class="f18-fill" id="f18-f2"></div>
+          <div class="f18-let" id="f18-u2">D</div>
+          <div class="f18-let f18-let-lit" id="f18-l2">D</div>
+        </div>
+        <div class="f18-blk" id="f18-b3" style="left: 990px;">
+          <div class="f18-frame"></div>
+          <div class="f18-fill" id="f18-f3"></div>
+          <div class="f18-let" id="f18-u3">E</div>
+          <div class="f18-let f18-let-lit" id="f18-l3">E</div>
+        </div>
+        <div class="f18-blk" id="f18-b4" style="left: 1330px;">
+          <div class="f18-frame"></div>
+          <div class="f18-fill" id="f18-f4"></div>
+          <div class="f18-let" id="f18-u4">F</div>
+          <div class="f18-let f18-let-lit" id="f18-l4">F</div>
+        </div>
+
+        <div class="f18-word" id="f18-w1" style="left: 310px;">IMPORTÂNCIA</div>
+        <div class="f18-word" id="f18-w2" style="left: 650px;">DEFINIÇÃO</div>
+        <div class="f18-word" id="f18-w3" style="left: 990px;">EFEITO</div>
+        <div class="f18-word" id="f18-w4" style="left: 1330px;">FECHO</div>
+
+        <div class="f18-rule" id="f18-rule"></div>
+        <div class="f18-cursor" id="f18-cursor"></div>
+      </div>
+
+      <div class="f18-close" id="f18-close">Boa prova!</div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const D = 7.409;
+          const R = document.querySelector('[data-composition-id="18-boa-prova"]');
+          const q = (s) => R.querySelector(s);
+
+          const HID = "inset(100% -4% -15% -4%)";
+          const SHOW = "inset(-30% -4% -15% -4%)";
+
+          // initial states
+          ["#f18-f1", "#f18-f2", "#f18-f3", "#f18-f4"].forEach((s) => tl.set(q(s), { scaleY: 0 }, 0));
+          ["#f18-l1", "#f18-l2", "#f18-l3", "#f18-l4"].forEach((s) => tl.set(q(s), { opacity: 0, clipPath: HID }, 0));
+          tl.set(q("#f18-rule"), { scaleX: 0 }, 0);
+
+          // ---------- Scene 1 (0.0–3.6): I D E F come back big, light on each word ----------
+          ["#f18-b1", "#f18-b2", "#f18-b3", "#f18-b4"].forEach((s, i) => {
+            tl.fromTo(q(s), { opacity: 0, scale: 0.6, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.0 + i * 0.12);
+          });
+          tl.fromTo(q("#f18-cursor"), { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 0.8);
+
+          const COLX = [0, 340, 680, 1020];
+          const beats = [
+            ["#f18-b1", "#f18-f1", "#f18-l1", "#f18-u1", "#f18-w1", 1.2],
+            ["#f18-b2", "#f18-f2", "#f18-l2", "#f18-u2", "#f18-w2", 1.9],
+            ["#f18-b3", "#f18-f3", "#f18-l3", "#f18-u3", "#f18-w3", 2.4],
+            ["#f18-b4", "#f18-f4", "#f18-l4", "#f18-u4", "#f18-w4", 3.0],
+          ];
+          beats.forEach(([b, f, l, u, w, t], i) => {
+            // cursor hops under the column
+            if (i > 0) tl.to(q("#f18-cursor"), { x: COLX[i], duration: 0.28, ease: "power2.inOut" }, t - 0.28);
+            tl.to(q("#f18-cursor"), { y: -10, duration: 0.1, ease: "power2.out" }, t);
+            tl.to(q("#f18-cursor"), { y: 0, duration: 0.14, ease: "power2.in" }, t + 0.1);
+            // block fills with cobalt, letter turns cream
+            tl.to(q(f), { scaleY: 1, duration: 0.32, ease: "power2.inOut" }, t);
+            tl.set(q(l), { opacity: 1 }, t);
+            tl.fromTo(q(l), { clipPath: HID }, { clipPath: SHOW, duration: 0.32, ease: "power2.inOut" }, t);
+            tl.set(q(u), { opacity: 0 }, t + 0.33);
+            tl.to(q(b), { scale: 1.06, duration: 0.12, ease: "power2.out" }, t + 0.3);
+            tl.to(q(b), { scale: 1, duration: 0.22, ease: "power2.out" }, t + 0.42);
+            // word rises underneath
+            tl.fromTo(q(w), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, t + 0.05);
+          });
+          // a small wave runs through the lit row
+          ["#f18-b1", "#f18-b2", "#f18-b3", "#f18-b4"].forEach((s, i) => {
+            tl.to(q(s), { y: -12, duration: 0.18, ease: "sine.out" }, 3.2 + i * 0.07);
+            tl.to(q(s), { y: 0, duration: 0.24, ease: "sine.in" }, 3.38 + i * 0.07);
+          });
+
+          // ---------- Scene 2 (3.6–5.2): "Respire" — motion slows ----------
+          tl.fromTo(q("#f18-label"), { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 3.65);
+          // one rule links all four answers; cursor glides slowly to its end
+          tl.to(q("#f18-rule"), { scaleX: 1, duration: 1.4, ease: "sine.inOut" }, 3.7);
+          tl.to(q("#f18-cursor"), { x: 1148, duration: 1.4, ease: "sine.inOut" }, 3.7);
+          // one slow breath of the whole row
+          tl.fromTo(q("#f18-cam"), { scale: 1 }, { scale: 1.018, duration: 0.8, ease: "sine.inOut" }, 3.6);
+          tl.to(q("#f18-cam"), { scale: 1, duration: 0.8, ease: "sine.inOut" }, 4.4);
+
+          // ---------- Scene 3 (5.2–7.409): "Boa prova!" rises once, then full stop ----------
+          tl.fromTo(q("#f18-close"), { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 5.2);
+
+          tl.to({}, { duration: 0.001 }, D - 0.001);
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["18-boa-prova"] = tl;
+        })();
+      </script>
+    </div>
+  </div>
+</template>

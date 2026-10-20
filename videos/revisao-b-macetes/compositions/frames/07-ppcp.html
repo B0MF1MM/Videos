@@ -1,0 +1,522 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .f07-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .f07-stage { position: absolute; inset: 0; }
+    .f07-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .f07-hair-top { top: 70px; }
+    .f07-hair-bot { top: 892px; }
+    .f07-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .f07-chrome-tag { left: 77px; }
+    .f07-chrome-num { right: 77px; }
+
+    .f07-content { position: absolute; inset: 0; transform-origin: 50% 45%; }
+
+    /* inverted band */
+    .f07-band {
+      position: absolute;
+      left: 110px;
+      top: 94px;
+      height: 62px;
+      padding: 0 24px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 62px;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
+    }
+
+    /* cards */
+    .f07-card { position: absolute; top: 176px; width: 540px; height: 704px; }
+    .f07-cardline { position: absolute; left: 0; top: 0; width: 540px; height: 704px; overflow: visible; }
+    .f07-cardline rect { fill: none; stroke: #1F2BE0; stroke-width: 3; }
+    .f07-label {
+      position: absolute;
+      left: 164px;
+      top: 42px;
+      height: 40px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 40px;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+    .f07-labelrule { position: absolute; left: 164px; top: 96px; width: 120px; height: 4px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f07-q1 {
+      position: absolute;
+      left: 24px;
+      top: 156px;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 68px;
+      line-height: 76px;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    .f07-q2 {
+      position: absolute;
+      left: 26px;
+      top: 238px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 29px;
+      line-height: 38px;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .f07-sep { position: absolute; left: 24px; right: 24px; top: 296px; height: 2px; background: rgba(31,43,224,0.18); transform-origin: 0% 50%; }
+    .f07-scene { position: absolute; left: 24px; top: 312px; width: 492px; height: 380px; }
+
+    /* letter markers */
+    .f07-box {
+      position: absolute;
+      top: 196px;
+      width: 120px;
+      height: 120px;
+      transform-origin: 50% 50%;
+    }
+    .f07-boxin {
+      position: absolute;
+      inset: 0;
+      border: 4px solid #1F2BE0;
+      background: #F0EBDE;
+      box-sizing: border-box;
+    }
+    .f07-fill { position: absolute; inset: 0; background: #1F2BE0; }
+    .f07-let {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 1;
+      letter-spacing: -0.008em;
+      padding-bottom: 8px;
+      box-sizing: border-box;
+    }
+    .f07-lit { color: #F0EBDE; }
+    .f07-glyph {
+      position: absolute;
+      top: 196px;
+      width: 120px;
+      height: 120px;
+      transform-origin: 50% 50%;
+    }
+    .f07-dot { position: absolute; top: 424px; width: 30px; height: 30px; background: #1F2BE0; transform-origin: 50% 50%; }
+
+    /* generic svg strokes */
+    .f07-svg { position: absolute; overflow: visible; }
+    .f07-stroke { fill: none; stroke: #1F2BE0; stroke-linecap: square; stroke-linejoin: miter; }
+
+    /* scene 1: clipboard + resources */
+    .f07-clip { position: absolute; left: 10px; top: 22px; width: 220px; height: 340px; transform-origin: 50% 0%; }
+    .f07-board { position: absolute; inset: 0; border: 5px solid #1F2BE0; background: #F0EBDE; box-sizing: border-box; }
+    .f07-clamp { position: absolute; left: 60px; top: -16px; width: 100px; height: 30px; background: #1F2BE0; }
+    .f07-row { position: absolute; left: 24px; width: 172px; height: 52px; }
+    .f07-chkbox { position: absolute; left: 0; top: 0; width: 44px; height: 44px; border: 4px solid #1F2BE0; box-sizing: border-box; background: #F0EBDE; }
+    .f07-chkbox svg { position: absolute; left: -4px; top: -10px; width: 52px; height: 52px; overflow: visible; }
+    .f07-chkbox path { fill: none; stroke: #1F2BE0; stroke-width: 7; stroke-linecap: square; stroke-linejoin: miter; }
+    .f07-bar1 { position: absolute; left: 60px; top: 8px; width: 108px; height: 9px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f07-bar2 { position: absolute; left: 60px; top: 28px; width: 72px; height: 7px; background: rgba(31,43,224,0.18); transform-origin: 0% 50%; }
+    .f07-ico { position: absolute; left: 320px; width: 132px; height: 112px; overflow: visible; transform-origin: 50% 50%; }
+
+    /* scene 2: square clock + sequence */
+    .f07-clock { position: absolute; left: 156px; top: 0; width: 180px; height: 180px; overflow: visible; transform-origin: 50% 50%; }
+    .f07-slot { position: absolute; top: 240px; width: 90px; height: 90px; border: 3px dashed rgba(31,43,224,0.45); box-sizing: border-box; transform-origin: 50% 50%; }
+    .f07-blk {
+      position: absolute;
+      top: 240px;
+      width: 90px;
+      height: 90px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      font-family: "Newsreader", serif;
+      font-size: 64px;
+      line-height: 82px;
+      text-align: center;
+      transform-origin: 50% 100%;
+    }
+    .f07-arr { position: absolute; top: 272px; width: 60px; height: 26px; overflow: visible; }
+    .f07-track { position: absolute; left: 20px; top: 344px; width: 452px; height: 4px; background: #1F2BE0; transform-origin: 0% 50%; }
+    .f07-head { position: absolute; left: 0; top: 354px; width: 20px; height: 20px; background: #1F2BE0; }
+
+    /* scene 3: plan vs real */
+    .f07-col { position: absolute; top: 44px; width: 110px; height: 256px; }
+    .f07-cell { position: absolute; left: 0; width: 110px; height: 28px; background: rgba(31,43,224,0.10); }
+    .f07-on { position: absolute; inset: 0; background: #1F2BE0; transform-origin: 50% 100%; }
+    .f07-base { position: absolute; left: 40px; top: 302px; width: 412px; height: 4px; background: #1F2BE0; transform-origin: 50% 50%; }
+    .f07-target {
+      position: absolute;
+      left: 52px;
+      top: 40px;
+      width: 388px;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, #1F2BE0 0 14px, transparent 14px 24px);
+      transform-origin: 0% 50%;
+    }
+    .f07-blabel {
+      position: absolute;
+      top: 318px;
+      width: 200px;
+      text-align: center;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 27px;
+      line-height: 36px;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .f07-times {
+      position: absolute;
+      left: 231px;
+      top: 308px;
+      width: 30px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-size: 44px;
+      line-height: 50px;
+    }
+    .f07-stamp {
+      position: absolute;
+      left: 198px;
+      top: 92px;
+      width: 96px;
+      height: 96px;
+      border: 6px solid #1F2BE0;
+      background: #F0EBDE;
+      box-sizing: border-box;
+      transform-origin: 50% 50%;
+    }
+    .f07-stamp-in { position: absolute; inset: 5px; border: 2px solid #1F2BE0; }
+    .f07-stamp svg { position: absolute; left: 14px; top: 16px; width: 56px; height: 52px; overflow: visible; }
+    .f07-stamp path { fill: none; stroke: #1F2BE0; stroke-width: 9; stroke-linecap: square; stroke-linejoin: miter; }
+  </style>
+
+  <div id="root" data-composition-id="07-ppcp" data-width="1920" data-height="1080" data-duration="12.148">
+    <div id="f07-ground" class="f07-ground clip" data-start="0" data-duration="12.148" data-track-index="0"></div>
+
+    <div id="f07-stage" class="f07-stage clip" data-start="0" data-duration="12.148" data-track-index="1">
+      <div class="f07-hair f07-hair-top"></div>
+      <div class="f07-hair f07-hair-bot"></div>
+      <div class="f07-chrome f07-chrome-tag">REVISÃO B · MACETES</div>
+      <div class="f07-chrome f07-chrome-num">07 / 18</div>
+
+      <div class="f07-content" id="f07-content">
+        <div class="f07-band" id="f07-band">QUESTÃO 2 · PPCP</div>
+
+        <!-- ================= CARD 1 · PLANEJAMENTO ================= -->
+        <div class="f07-card" id="f07-card0" style="left:110px">
+          <svg class="f07-cardline" viewBox="0 0 540 704"><rect id="f07-cr0" x="1.5" y="1.5" width="537" height="701" pathLength="1" stroke-dasharray="1"/></svg>
+          <div class="f07-label" id="f07-lab0">PLANEJAMENTO</div>
+          <div class="f07-labelrule" id="f07-lr0"></div>
+          <div class="f07-q1" id="f07-q10">O QUÊ?</div>
+          <div class="f07-q2" id="f07-q20">COM QUAIS RECURSOS?</div>
+          <div class="f07-sep" id="f07-sep0"></div>
+          <div class="f07-scene">
+            <div class="f07-clip" id="f07-clipb">
+              <div class="f07-board"></div>
+              <div class="f07-clamp"></div>
+              <div class="f07-row" style="top:58px">
+                <div class="f07-chkbox"><svg viewBox="0 0 52 52"><path id="f07-ck0" pathLength="1" stroke-dasharray="1" d="M8 28 L20 40 L46 10"/></svg></div>
+                <div class="f07-bar1" id="f07-b10"></div><div class="f07-bar2" id="f07-b20"></div>
+              </div>
+              <div class="f07-row" style="top:144px">
+                <div class="f07-chkbox"><svg viewBox="0 0 52 52"><path id="f07-ck1" pathLength="1" stroke-dasharray="1" d="M8 28 L20 40 L46 10"/></svg></div>
+                <div class="f07-bar1" id="f07-b11"></div><div class="f07-bar2" id="f07-b21"></div>
+              </div>
+              <div class="f07-row" style="top:230px">
+                <div class="f07-chkbox"><svg viewBox="0 0 52 52"><path id="f07-ck2" pathLength="1" stroke-dasharray="1" d="M8 28 L20 40 L46 10"/></svg></div>
+                <div class="f07-bar1" id="f07-b12"></div><div class="f07-bar2" id="f07-b22"></div>
+              </div>
+            </div>
+
+            <!-- gear made of squares -->
+            <svg class="f07-ico" id="f07-gearw" style="top:8px" viewBox="0 0 132 112">
+              <g id="f07-gear">
+                <rect x="58" y="10" width="16" height="16" fill="#1F2BE0" transform="rotate(0 66 56)"/>
+                <rect x="58" y="10" width="16" height="16" fill="#1F2BE0" transform="rotate(45 66 56)"/>
+                <rect x="58" y="10" width="16" height="16" fill="#1F2BE0" transform="rotate(90 66 56)"/>
+                <rect x="58" y="10" width="16" height="16" fill="#1F2BE0" transform="rotate(135 66 56)"/>
+                <rect x="58" y="10" width="16" height="16" fill="#1F2BE0" transform="rotate(180 66 56)"/>
+                <rect x="58" y="10" width="16" height="16" fill="#1F2BE0" transform="rotate(225 66 56)"/>
+                <rect x="58" y="10" width="16" height="16" fill="#1F2BE0" transform="rotate(270 66 56)"/>
+                <rect x="58" y="10" width="16" height="16" fill="#1F2BE0" transform="rotate(315 66 56)"/>
+                <rect x="40" y="30" width="52" height="52" fill="#1F2BE0"/>
+                <rect x="57" y="47" width="18" height="18" fill="#F0EBDE"/>
+              </g>
+            </svg>
+            <!-- person in blocks -->
+            <svg class="f07-ico" id="f07-person" style="top:132px" viewBox="0 0 132 112">
+              <rect x="52" y="2" width="28" height="28" fill="#1F2BE0"/>
+              <rect x="40" y="36" width="52" height="44" fill="#1F2BE0"/>
+              <rect id="f07-armL" x="24" y="38" width="12" height="38" fill="#1F2BE0"/>
+              <rect id="f07-armR" x="96" y="38" width="12" height="38" fill="#1F2BE0"/>
+              <rect x="42" y="84" width="20" height="26" fill="#1F2BE0"/>
+              <rect x="70" y="84" width="20" height="26" fill="#1F2BE0"/>
+            </svg>
+            <!-- material crate -->
+            <svg class="f07-ico" id="f07-crate" style="top:254px" viewBox="0 0 132 112">
+              <rect x="20" y="30" width="92" height="76" fill="#F0EBDE" stroke="#1F2BE0" stroke-width="6"/>
+              <rect x="20" y="30" width="92" height="20" fill="#1F2BE0"/>
+              <rect x="58" y="30" width="16" height="76" fill="#1F2BE0"/>
+              <rect x="30" y="64" width="20" height="5" fill="#1F2BE0"/>
+              <rect x="30" y="76" width="14" height="5" fill="#1F2BE0"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- ================= CARD 2 · PROGRAMAÇÃO ================= -->
+        <div class="f07-card" id="f07-card1" style="left:690px">
+          <svg class="f07-cardline" viewBox="0 0 540 704"><rect id="f07-cr1" x="1.5" y="1.5" width="537" height="701" pathLength="1" stroke-dasharray="1"/></svg>
+          <div class="f07-label" id="f07-lab1">PROGRAMAÇÃO</div>
+          <div class="f07-labelrule" id="f07-lr1"></div>
+          <div class="f07-q1" id="f07-q11">QUANDO?</div>
+          <div class="f07-q2" id="f07-q21">EM QUE ORDEM?</div>
+          <div class="f07-sep" id="f07-sep1"></div>
+          <div class="f07-scene">
+            <svg class="f07-clock" id="f07-clock" viewBox="0 0 180 180">
+              <rect x="5" y="5" width="170" height="170" fill="#F0EBDE" stroke="#1F2BE0" stroke-width="8"/>
+              <rect x="85" y="16" width="10" height="20" fill="#1F2BE0"/>
+              <rect x="85" y="144" width="10" height="20" fill="#1F2BE0"/>
+              <rect x="16" y="85" width="20" height="10" fill="#1F2BE0"/>
+              <rect x="144" y="85" width="20" height="10" fill="#1F2BE0"/>
+              <rect id="f07-hhour" x="86" y="50" width="8" height="42" fill="#1F2BE0"/>
+              <rect id="f07-hmin" x="88" y="28" width="4" height="64" fill="#1F2BE0"/>
+              <rect x="82" y="82" width="16" height="16" fill="#1F2BE0"/>
+            </svg>
+            <div class="f07-slot" id="f07-slot0" style="left:36px"></div>
+            <div class="f07-slot" id="f07-slot1" style="left:201px"></div>
+            <div class="f07-slot" id="f07-slot2" style="left:366px"></div>
+            <svg class="f07-arr" style="left:133px" viewBox="0 0 60 26"><path id="f07-ar0" class="f07-stroke" stroke-width="4" pathLength="1" stroke-dasharray="1" d="M4 13 H52 M42 4 L54 13 L42 22"/></svg>
+            <svg class="f07-arr" style="left:298px" viewBox="0 0 60 26"><path id="f07-ar1" class="f07-stroke" stroke-width="4" pathLength="1" stroke-dasharray="1" d="M4 13 H52 M42 4 L54 13 L42 22"/></svg>
+            <div class="f07-blk" id="f07-blk0" style="left:36px">1</div>
+            <div class="f07-blk" id="f07-blk1" style="left:201px">2</div>
+            <div class="f07-blk" id="f07-blk2" style="left:366px">3</div>
+            <div class="f07-track" id="f07-track"></div>
+            <div class="f07-head" id="f07-head"></div>
+          </div>
+        </div>
+
+        <!-- ================= CARD 3 · CONTROLE ================= -->
+        <div class="f07-card" id="f07-card2" style="left:1270px">
+          <svg class="f07-cardline" viewBox="0 0 540 704"><rect id="f07-cr2" x="1.5" y="1.5" width="537" height="701" pathLength="1" stroke-dasharray="1"/></svg>
+          <div class="f07-label" id="f07-lab2">CONTROLE</div>
+          <div class="f07-labelrule" id="f07-lr2"></div>
+          <div class="f07-q1" id="f07-q12">BATEU COM</div>
+          <div class="f07-q2" id="f07-q22">O PLANO?</div>
+          <div class="f07-sep" id="f07-sep2"></div>
+          <div class="f07-scene">
+            <div class="f07-col" id="f07-colA" style="left:75px"></div>
+            <div class="f07-col" id="f07-colB" style="left:307px"></div>
+            <div class="f07-target" id="f07-target"></div>
+            <div class="f07-base" id="f07-base"></div>
+            <div class="f07-blabel" id="f07-blA" style="left:30px">PLANEJADO</div>
+            <div class="f07-times" id="f07-times">×</div>
+            <div class="f07-blabel" id="f07-blB" style="left:262px">REALIZADO</div>
+            <div class="f07-stamp" id="f07-stamp">
+              <div class="f07-stamp-in"></div>
+              <svg viewBox="0 0 56 52"><path id="f07-sck" pathLength="1" stroke-dasharray="1" d="M6 28 L22 44 L50 8"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= letter boxes + falling letters ================= -->
+        <div class="f07-box" id="f07-box0" style="left:134px"><div class="f07-boxin"></div><div class="f07-fill" id="f07-fill0"><div class="f07-let f07-lit" id="f07-lit0">P</div></div></div>
+        <div class="f07-box" id="f07-box1" style="left:714px"><div class="f07-boxin"></div><div class="f07-fill" id="f07-fill1"><div class="f07-let f07-lit" id="f07-lit1">P</div></div></div>
+        <div class="f07-box" id="f07-box2" style="left:1294px"><div class="f07-boxin"></div><div class="f07-fill" id="f07-fill2"><div class="f07-let f07-lit" id="f07-lit2">C</div></div></div>
+
+        <div class="f07-dot" id="f07-dot0" style="left:655px"></div>
+        <div class="f07-dot" id="f07-dot1" style="left:1235px"></div>
+
+        <div class="f07-glyph" id="f07-g0" style="left:134px"><div class="f07-let">P</div></div>
+        <div class="f07-glyph" id="f07-g1" style="left:714px"><div class="f07-let">P</div></div>
+        <div class="f07-glyph" id="f07-g2" style="left:1294px"><div class="f07-let">C</div></div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var D = 11.648;
+
+        // build pixel-stack cells for the plan × real bars (8 cells each)
+        function buildCells(colId) {
+          var col = document.getElementById(colId);
+          var ons = [];
+          for (var k = 0; k < 8; k++) {
+            var c = document.createElement("div");
+            c.className = "f07-cell";
+            c.style.top = (256 - (k + 1) * 32 + 4) + "px";
+            var on = document.createElement("div");
+            on.className = "f07-on";
+            c.appendChild(on);
+            col.appendChild(c);
+            ons.push(on);
+          }
+          return ons;
+        }
+        var onA = buildCells("f07-colA");
+        var onB = buildCells("f07-colB");
+
+        var tl = gsap.timeline({ paused: true });
+        var SHOW = "inset(-30% -4% -15% -4%)";
+        var HIDE = "inset(-30% 104% -15% -4%)";
+
+        // ---------- initial states ----------
+        tl.set(["#f07-lit0", "#f07-lit1", "#f07-lit2"], { opacity: 0 }, 0);
+        tl.set(["#f07-fill0", "#f07-fill1", "#f07-fill2"], { clipPath: "inset(100% 0% 0% 0%)" }, 0);
+
+        // ---------- Scene 1 (0.0–3.6): band, P · P · C fall, shrink to columns ----------
+        tl.fromTo("#f07-band", { clipPath: "inset(0% 100% 0% 0%)", x: -20 }, { clipPath: "inset(-30% -4% -15% -4%)", x: 0, duration: 0.5, ease: "power3.out" }, 0.25);
+
+        // big letters: final slot = box; big state offset to the column centre row
+        var BIGX = 186, BIGY = 244, BIGS = 3.2;
+        [0, 1, 2].forEach(function (i) {
+          var g = "#f07-g" + i;
+          var t = 0.6 + i * 0.16;
+          tl.fromTo(g, { x: BIGX, y: -600, scale: BIGS, opacity: 1 }, { y: BIGY, duration: 0.45, ease: "power3.in" }, t);
+          tl.to(g, { keyframes: { scaleX: [BIGS, 3.55, 3.12, BIGS], scaleY: [BIGS, 2.8, 3.28, BIGS] }, duration: 0.36, ease: "power1.out" }, t + 0.45);
+          // gentle breathing while held
+          tl.to(g, { keyframes: { y: [BIGY, BIGY - 10, BIGY] }, duration: 1.0, ease: "sine.inOut" }, t + 0.85);
+        });
+        tl.fromTo(["#f07-dot0", "#f07-dot1"], { scale: 0, rotation: 45 }, { scale: 1, rotation: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 1.45);
+
+        // "três perguntas" (2.6s): letters shrink into the head of their columns
+        tl.to(["#f07-dot0", "#f07-dot1"], { scale: 0, duration: 0.3, ease: "power2.in" }, 2.6);
+        [0, 1, 2].forEach(function (i) {
+          var t = 2.6 + i * 0.1;
+          tl.to("#f07-g" + i, { x: 0, y: 0, scaleX: 1, scaleY: 1, duration: 0.7, ease: "power3.inOut" }, t);
+          tl.fromTo("#f07-cr" + i, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.85, ease: "power2.inOut" }, 2.7 + i * 0.1);
+          tl.fromTo("#f07-box" + i, { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power3.out" }, t + 0.45);
+        });
+
+        // slow camera push under the whole shot
+        tl.fromTo("#f07-content", { scale: 1 }, { scale: 1.018, duration: D - 3.4, ease: "sine.inOut" }, 3.4);
+
+        // ---------- helpers ----------
+        function light(i, t) {
+          tl.set("#f07-lit" + i, { opacity: 1 }, t);
+          tl.to("#f07-fill" + i, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.32, ease: "power2.out" }, t);
+          tl.set("#f07-g" + i, { opacity: 0 }, t + 0.34);
+          tl.to("#f07-box" + i, { keyframes: { scale: [1, 1.14, 1] }, duration: 0.45, ease: "power1.out" }, t + 0.05);
+        }
+        function header(i, t) {
+          tl.fromTo("#f07-lab" + i, { clipPath: HIDE, x: -16 }, { clipPath: SHOW, x: 0, duration: 0.45, ease: "power3.out" }, t + 0.05);
+          tl.fromTo("#f07-lr" + i, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, t + 0.2);
+          tl.fromTo("#f07-q1" + i, { clipPath: HIDE, y: 14 }, { clipPath: SHOW, y: 0, duration: 0.5, ease: "power3.out" }, t + 0.2);
+          tl.fromTo("#f07-q2" + i, { clipPath: HIDE, y: 10 }, { clipPath: SHOW, y: 0, duration: 0.5, ease: "power3.out" }, t + 0.5);
+          tl.fromTo("#f07-sep" + i, { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, t + 0.55);
+        }
+
+        // ---------- Scene 2 (3.6–6.5): PLANEJAMENTO ----------
+        light(0, 3.6);
+        header(0, 3.6);
+        tl.fromTo("#f07-clipb", { scale: 0, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 4.0);
+        [0, 1, 2].forEach(function (k) {
+          var t = 4.35 + k * 0.32;
+          tl.fromTo("#f07-b1" + k, { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, t);
+          tl.fromTo("#f07-b2" + k, { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, t + 0.08);
+          tl.fromTo("#f07-ck" + k, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, t + 0.18);
+        });
+        // clipboard sways gently from its clamp
+        tl.to("#f07-clipb", { keyframes: { rotation: [0, -1.6, 1.2, -0.8, 0] }, duration: 5.4, ease: "sine.inOut" }, 5.6);
+
+        // resources pop in on "recursos" (5.4s)
+        ["#f07-gearw", "#f07-person", "#f07-crate"].forEach(function (s, k) {
+          tl.fromTo(s, { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.4 + k * 0.08);
+        });
+        tl.fromTo("#f07-gear", { rotation: 0, svgOrigin: "66 56" }, { rotation: 360, svgOrigin: "66 56", duration: D - 5.4, ease: "none" }, 5.4);
+        tl.to("#f07-person", { keyframes: { y: [0, -8, 0, -8, 0, -8, 0] }, duration: 3.0, ease: "sine.inOut" }, 6.0);
+        tl.set("#f07-armR", { svgOrigin: "102 40", rotation: 0 }, 0);
+        tl.to("#f07-armR", { keyframes: { rotation: [0, -150, -120, -150, -120, 0] }, duration: 2.2, ease: "sine.inOut" }, 5.9);
+        tl.to("#f07-crate", { keyframes: { y: [0, -14, 0, -6, 0] }, duration: 0.8, ease: "power1.out" }, 6.0);
+
+        // ---------- Scene 3 (6.5–8.6): PROGRAMAÇÃO ----------
+        light(1, 6.5);
+        header(1, 6.5);
+        tl.fromTo("#f07-clock", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 6.75);
+        tl.fromTo("#f07-hmin", { rotation: 0, svgOrigin: "90 90" }, { rotation: 1080, svgOrigin: "90 90", duration: D - 6.75, ease: "power2.out" }, 6.75);
+        tl.fromTo("#f07-hhour", { rotation: 0, svgOrigin: "90 90" }, { rotation: 90, svgOrigin: "90 90", duration: D - 6.75, ease: "power2.out" }, 6.75);
+        tl.fromTo("#f07-track", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 7.1);
+        tl.fromTo(["#f07-slot0", "#f07-slot1", "#f07-slot2"], { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out", stagger: 0.08 }, 7.25);
+        tl.fromTo("#f07-head", { opacity: 0, x: 71 }, { opacity: 1, x: 71, duration: 0.2 }, 7.6);
+        // blocks 1 → 2 → 3 drop into their slots (7.9s)
+        [0, 1, 2].forEach(function (k) {
+          var t = 7.9 + k * 0.24;
+          tl.set("#f07-blk" + k, { opacity: 1 }, t);
+          tl.fromTo("#f07-blk" + k, { y: -300, scaleY: 1 }, { y: 0, duration: 0.28, ease: "power3.in" }, t);
+          tl.to("#f07-blk" + k, { keyframes: { scaleY: [1, 0.86, 1.04, 1] }, duration: 0.25, ease: "power1.out" }, t + 0.28);
+          if (k < 2) tl.fromTo("#f07-ar" + k, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, t + 0.28);
+        });
+        tl.set(["#f07-blk0", "#f07-blk1", "#f07-blk2"], { opacity: 0 }, 0);
+        // playhead steps along the sequence, block by block, for the rest of the shot
+        var heads = [71, 236, 401];
+        var ht = 8.6;
+        for (var r = 0; r < 2; r++) {
+          for (var k = 0; k < 3; k++) {
+            var tgt = heads[k];
+            tl.to("#f07-head", { x: tgt, duration: 0.22, ease: "power3.inOut" }, ht);
+            tl.to("#f07-blk" + k, { keyframes: { y: [0, -14, 0] }, duration: 0.3, ease: "power1.out" }, ht + 0.12);
+            ht += 0.48;
+          }
+        }
+
+        // ---------- Scene 4 (8.6–11.648): CONTROLE ----------
+        light(2, 8.6);
+        header(2, 8.6);
+        tl.fromTo("#f07-base", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 9.0);
+        tl.fromTo(["#f07-blA", "#f07-times", "#f07-blB"], { clipPath: HIDE, y: 10 }, { clipPath: SHOW, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 9.05);
+        tl.fromTo(onA, { scaleY: 0 }, { scaleY: 1, duration: 0.14, ease: "power2.out", stagger: 0.07 }, 9.3);
+        tl.fromTo("#f07-target", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 9.9);
+        tl.fromTo(onB, { scaleY: 0 }, { scaleY: 1, duration: 0.16, ease: "power2.out", stagger: 0.12 }, 10.0);
+        tl.to("#f07-colB", { keyframes: { y: [0, -6, 0] }, duration: 0.3, ease: "power1.out" }, 10.98);
+        // seal ✓ slams between the bars on "planejado" (11.0s)
+        tl.fromTo("#f07-stamp", { scale: 2.2, opacity: 0, rotation: -18 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.22, ease: "power4.in" }, 11.0);
+        tl.fromTo("#f07-sck", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.24, ease: "power2.out" }, 11.22);
+        tl.to("#f07-card2", { keyframes: { y: [0, 5, -2, 0] }, duration: 0.28, ease: "none" }, 11.22);
+
+        tl.set({}, {}, D);
+        window.__timelines["07-ppcp"] = tl;
+      })();
+    </script>
+  </div>
+</template>
