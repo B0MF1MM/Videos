@@ -27,7 +27,7 @@ music_brief: calm focused minimal study underscore, soft piano and light pulse (
 - voiceover: "E se você pudesse descobrir onde o seu processo vai falhar, antes de ele falhar? É exatamente isso que a FMEA faz."
 - duration: 6.891s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-antes.html
 - type: hook
 - persuasion: Imagine / scenario
@@ -50,7 +50,7 @@ Scene 3 (4.4–6.891s): em "exatamente isso" (4.6s) a rachadura se apaga para tr
 - voiceover: "FMEA vem do inglês e significa Análise dos Modos de Falha e seus Efeitos. Macete: as quatro letras já contam a história: falha, modo, efeito, análise."
 - duration: 9.536s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-nome.html
 - type: product_intro
 - persuasion: Acronym decoding
@@ -73,7 +73,7 @@ Scene 3 (4.6–9.536s): em "Macete" (4.6s) faixa invertida "AS LETRAS CONTAM A H
 - voiceover: "Para que serve? Para identificar problemas potenciais antes que causem três estragos: dano ao cliente, parada de produção ou retrabalho."
 - duration: 8.171s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/03-evita.html
 - type: benefit_highlight
 - persuasion: Rule of three (losses avoided)
@@ -96,7 +96,7 @@ Scene 3 (6.2–8.171s): em "parada de produção" (6.2s) painel 2: uma esteira q
 - voiceover: "Pense numa viagem de carro. Antes de sair, você confere o pneu, o freio e o óleo, porque sabe o que pode dar errado na estrada. A FMEA faz isso com um processo: pensa nas falhas antes de elas acontecerem."
 - duration: 12.352s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/04-viagem.html
 - type: feature_showcase
 - persuasion: Everyday analogy
@@ -120,7 +120,7 @@ Scene 4 (7.4–12.352s): em "A FMEA faz isso com um processo" (7.6s) o carro se 
 - voiceover: "O coração da FMEA são três elementos em corrente. A causa responde por quê. O modo de falha responde o quê pode dar errado. E o efeito responde: e daí, qual a consequência?"
 - duration: 10.56s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/05-corrente.html
 - type: feature_showcase
 - persuasion: Causal chain + question mnemonic
@@ -144,7 +144,7 @@ Scene 4 (7.6–10.56s): em "efeito" (7.8s) o elo 3: "EFEITO"; pergunta "E DAÍ?"
 - voiceover: "Veja na bomba centrífuga. Causa: treinamento insuficiente. Modo de falha: a vedação foi mal montada. Efeito: vazamento. Dica de prova: a causa vem antes, o efeito vem depois, e o modo de falha fica no meio."
 - duration: 12.48s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/06-bomba.html
 - type: feature_showcase
 - persuasion: Worked example + exam tip
@@ -168,7 +168,7 @@ Scene 4 (7.6–12.48s): em "Dica de prova" (7.6s) faixa invertida "DICA DE PROVA
 - voiceover: "Depois, cada falha ganha três notas, de um a dez. Severidade: o efeito é sério? Ocorrência: a causa ocorre muito? Detecção: dá para perceber a falha antes que ela chegue ao cliente?"
 - duration: 10.432s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/07-notas.html
 - type: feature_showcase
 - persuasion: Rule of three + question mnemonic
@@ -192,7 +192,7 @@ Scene 4 (6.9–10.432s): em "Detecção" (6.9s) coluna 3: D, "DETECÇÃO", "DÁ 
 - voiceover: "Agora a pegadinha mais cobrada. Na detecção, nota alta é ruim. Nota um: a falha é pega na hora. Nota dez: a falha se esconde e só o cliente descobre. Macete: detecção alta, falha escondida."
 - duration: 11.349s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/08-pegadinha.html
 - type: pain_point
 - persuasion: Counterintuitive warning + game metaphor
@@ -216,7 +216,7 @@ Scene 4 (8.7–11.349s): em "detecção alta, falha escondida" (9.5s) um carimbo
 - voiceover: "As três notas se multiplicam no NPR, o Número de Prioridade de Risco. Macete: multiplica, não soma. Por isso o NPR vai de um a mil."
 - duration: 8.427s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/09-npr.html
 - type: product_intro
 - persuasion: Formula + range
@@ -240,7 +240,7 @@ Scene 4 (6.6–8.427s): em "vai de 1 a 1.000" (7.5s) uma escala horizontal se de
 - voiceover: "No exemplo da bomba: severidade oito, ocorrência sete e detecção seis. Oito vezes sete, cinquenta e seis. Vezes seis: o NPR é trezentos e trinta e seis."
 - duration: 9.6s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/10-336.html
 - type: social_proof
 - persuasion: Worked numeric example
@@ -263,7 +263,7 @@ Scene 3 (6.5–9.6s): em "× 6" (6.5s) o 56 e o 6 se juntam; em "336" (8.2s) o r
 - voiceover: "Para que serve o número? Para priorizar. A equipe calcula o NPR de cada falha, coloca em ordem, e ataca primeiro as que têm o NPR mais alto."
 - duration: 8.448s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/11-ranking.html
 - type: feature_showcase
 - persuasion: Sorting animation
@@ -286,7 +286,7 @@ Scene 3 (5.2–8.448s): em "coloca em ordem" (5.2s) as linhas deslizam e trocam 
 - voiceover: "Com a prioridade definida, vêm as ações. Uma instrução visual reduz a ocorrência. Uma verificação específica melhora a detecção. E a severidade? É teimosa: só muda se a consequência mudar."
 - duration: 11.328s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/12-agir.html
 - type: benefit_highlight
 - persuasion: Before/after + personification
@@ -310,7 +310,7 @@ Scene 4 (7.5–11.328s): em "severidade" (7.8s) um martelo tenta bater na barra 
 - voiceover: "Depois, a equipe recalcula o NPR. Se a ocorrência caiu para três e a detecção para dois, o risco despenca de trezentos e trinta e seis para quarenta e oito. E essa análise é feita em equipe: projeto, produção, qualidade e manutenção."
 - duration: 13.547s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/13-reavaliar.html
 - type: benefit_highlight
 - persuasion: Before/after count-down + team
@@ -334,7 +334,7 @@ Scene 4 (8.8–13.547s): em "em equipe" (10.4s) quatro crachás quadrados com í
 - voiceover: "Resumindo o método em cinco verbos: listar as falhas, avaliar com as três notas, priorizar pelo NPR, agir e reavaliar. E o ciclo recomeça."
 - duration: 8.555s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/14-ciclo.html
 - type: feature_showcase
 - persuasion: Process cycle
@@ -357,7 +357,7 @@ Scene 3 (6.2–8.555s): em "o ciclo recomeça" (7.2s) a seta de REAVALIAR volta 
 - voiceover: "Na prova, use a fórmula. Importância: identifica falhas antes que causem dano ao cliente, parada ou retrabalho. Definição: modo, efeito e causa, com severidade, ocorrência e detecção. Efeito: o NPR mostra o que atacar primeiro. Fecho: a empresa previne problemas, reduz custos e melhora a qualidade."
 - duration: 17.877s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/15-resposta.html
 - type: benefit_highlight
 - persuasion: Worked exam answer
@@ -382,7 +382,7 @@ Scene 5 (13.7–17.877s): em "Fecho" (13.7s) F acende: "A empresa previne proble
 - voiceover: "Sua cola: corrente causa, modo, efeito; três notas, com detecção alta sendo pior; NPR multiplica, oito vezes sete vezes seis dá trezentos e trinta e seis; e o ciclo: listar, avaliar, priorizar, agir e reavaliar. Boa prova!"
 - duration: 14.812s
 - transition_in: blur-crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/16-cola.html
 - type: branding
 - persuasion: Recap grid + send-off

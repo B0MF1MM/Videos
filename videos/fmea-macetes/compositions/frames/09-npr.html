@@ -1,0 +1,357 @@
+<template id="09-npr-template">
+  <div id="root" data-composition-id="09-npr" data-start="0" data-duration="8.927" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="09-npr-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="09-npr-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="09-npr-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="09-npr-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      [class~="09-npr-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 50% 45%; }
+      [class~="09-npr-mask"] { position: absolute; left: 0; top: 84px; width: 1920px; height: 794px; overflow: hidden; }
+      [class~="09-npr-inner"] { position: absolute; left: 0; top: -84px; width: 1920px; height: 1080px; }
+
+      /* formula tokens */
+      [class~="09-npr-tok"] { position: absolute; top: 150px; height: 230px; padding-top: 40px; box-sizing: border-box; text-align: center; font-family: "Newsreader", serif; font-weight: 400; font-size: 170px; line-height: 170px; letter-spacing: -0.005em; color: #1F2BE0; white-space: nowrap; }
+      [class~="09-npr-in"] { display: inline-block; }
+      [class~="09-npr-ruler"] { position: absolute; top: 334px; width: 64px; height: 300px; border: 3px solid #1F2BE0; box-sizing: border-box; transform-origin: 50% 0%; }
+      [class~="09-npr-rc"] { position: absolute; left: 8px; width: 42px; height: 20px; background: #1F2BE0; }
+      [class~="09-npr-rcoff"] { position: absolute; left: 8px; width: 42px; height: 20px; background: rgba(31,43,224,0.10); }
+
+      /* drawn operators (rects only) */
+      [class~="09-npr-op"] { position: absolute; width: 100px; height: 100px; }
+      [class~="09-npr-bar"] { position: absolute; background: #1F2BE0; }
+      [class~="09-npr-strike"] { position: absolute; width: 150px; height: 10px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+      /* full name */
+      [class~="09-npr-name"] { position: absolute; left: 324px; top: 396px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 32px; letter-spacing: 0.18em; line-height: 1.3; text-transform: uppercase; white-space: nowrap; color: #1F2BE0; padding-top: 0.25em; margin-top: -0.25em; min-width: 840px; }
+      [class~="09-npr-ch"] { position: relative; display: inline-block; white-space: pre; }
+      [class~="09-npr-ul"] { position: absolute; left: 0; bottom: -4px; width: 78%; height: 5px; background: #1F2BE0; transform-origin: 0% 50%; }
+      [class~="09-npr-caret"] { display: inline-block; width: 14px; height: 32px; background: #1F2BE0; margin-left: 4px; vertical-align: -4px; }
+
+      /* band */
+      [class~="09-npr-bandwrap"] { position: absolute; left: 0; top: 486px; width: 1920px; text-align: center; }
+      [class~="09-npr-band"] { display: inline-block; background: #1F2BE0; color: #F0EBDE; padding: 18px 36px 12px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 50px; letter-spacing: 0.08em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
+
+      /* side panels */
+      [class~="09-npr-panel"] { position: absolute; width: 340px; height: 210px; }
+      [class~="09-npr-sq"] { position: absolute; top: 110px; width: 70px; height: 70px; background: #1F2BE0; }
+      [class~="09-npr-cell"] { position: absolute; width: 19px; height: 19px; background: rgba(31,43,224,0.10); }
+      [class~="09-npr-on"] { position: absolute; left: 0; top: 0; width: 19px; height: 19px; background: #1F2BE0; }
+
+      /* scale */
+      [class~="09-npr-base"] { position: absolute; left: 220px; top: 770px; width: 1312px; height: 4px; background: #1F2BE0; transform-origin: 0% 50%; }
+      [class~="09-npr-sbar"] { position: absolute; width: 48px; background: #1F2BE0; transform-origin: 50% 100%; }
+      [class~="09-npr-num"] { position: absolute; top: 676px; font-family: "Newsreader", serif; font-weight: 400; font-size: 96px; line-height: 96px; letter-spacing: -0.015em; color: #1F2BE0; white-space: nowrap; }
+      [class~="09-npr-mono"] { position: absolute; left: 1562px; top: 792px; font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.04em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+      [class~="09-npr-marker"] { position: absolute; left: 206px; top: 790px; width: 28px; height: 28px; background: #1F2BE0; }
+    </style>
+
+    <!-- ground -->
+    <div id="09-npr-bg" class="clip 09-npr-layer 09-npr-ground" data-start="0" data-duration="8.927" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="09-npr-stage" class="clip 09-npr-layer" data-start="0" data-duration="8.927" data-track-index="1">
+      <div id="09-npr-cam" class="09-npr-cam">
+        <div id="09-npr-mask" class="09-npr-mask">
+          <div id="09-npr-inner" class="09-npr-inner">
+
+            <!-- NPR = -->
+            <div id="09-npr-t-npr" class="09-npr-tok" style="left:320px;width:380px"><span id="09-npr-n" class="09-npr-in">N</span><span id="09-npr-p" class="09-npr-in">P</span><span id="09-npr-r" class="09-npr-in">R</span></div>
+            <div id="09-npr-t-eq" class="09-npr-tok" style="left:700px;width:130px">=</div>
+
+            <!-- S / O / D, each riding up on a ruler stub from the previous frame -->
+            <div id="09-npr-g-s" class="09-npr-layer">
+              <div id="09-npr-ru-s" class="09-npr-ruler" style="left:878px"></div>
+              <div id="09-npr-t-s" class="09-npr-tok" style="left:830px;width:160px"><span id="09-npr-l-s" class="09-npr-in">S</span></div>
+            </div>
+            <div id="09-npr-g-o" class="09-npr-layer">
+              <div id="09-npr-ru-o" class="09-npr-ruler" style="left:1183px"></div>
+              <div id="09-npr-t-o" class="09-npr-tok" style="left:1130px;width:170px"><span id="09-npr-l-o" class="09-npr-in">O</span></div>
+            </div>
+            <div id="09-npr-g-d" class="09-npr-layer">
+              <div id="09-npr-ru-d" class="09-npr-ruler" style="left:1488px"></div>
+              <div id="09-npr-t-d" class="09-npr-tok" style="left:1440px;width:160px"><span id="09-npr-l-d" class="09-npr-in">D</span></div>
+            </div>
+
+            <!-- operator slot 1 (center x 1060, y 268) -->
+            <div id="09-npr-plus-1" class="09-npr-op" style="left:1010px;top:218px">
+              <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px"></div>
+              <div class="09-npr-bar" style="left:44px;top:12px;width:12px;height:76px"></div>
+            </div>
+            <div id="09-npr-strike-1" class="09-npr-strike" style="left:985px;top:263px;transform:rotate(-32deg)"></div>
+            <div id="09-npr-times-1" class="09-npr-op" style="left:1010px;top:218px">
+              <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(45deg)"></div>
+              <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(-45deg)"></div>
+            </div>
+
+            <!-- operator slot 2 (center x 1370) -->
+            <div id="09-npr-plus-2" class="09-npr-op" style="left:1320px;top:218px">
+              <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px"></div>
+              <div class="09-npr-bar" style="left:44px;top:12px;width:12px;height:76px"></div>
+            </div>
+            <div id="09-npr-strike-2" class="09-npr-strike" style="left:1295px;top:263px;transform:rotate(-32deg)"></div>
+            <div id="09-npr-times-2" class="09-npr-op" style="left:1320px;top:218px">
+              <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(45deg)"></div>
+              <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(-45deg)"></div>
+            </div>
+
+            <!-- full name, typed under NPR -->
+            <div id="09-npr-name" class="09-npr-name"></div>
+
+            <!-- band -->
+            <div id="09-npr-bandwrap" class="09-npr-bandwrap"><div id="09-npr-band" class="09-npr-band">MULTIPLICA, NÃO SOMA</div></div>
+
+            <!-- left panel: soma = three blocks in a short row, struck out -->
+            <div id="09-npr-pl" class="09-npr-panel" style="left:130px;top:450px">
+              <div id="09-npr-pl-icon" class="09-npr-op" style="left:0;top:0;transform:scale(0.5);transform-origin:0 0">
+                <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px"></div>
+                <div class="09-npr-bar" style="left:44px;top:12px;width:12px;height:76px"></div>
+              </div>
+              <div id="09-npr-sq-0" class="09-npr-sq" style="left:65px"></div>
+              <div id="09-npr-sq-1" class="09-npr-sq" style="left:135px"></div>
+              <div id="09-npr-sq-2" class="09-npr-sq" style="left:205px"></div>
+              <div id="09-npr-pl-slash" class="09-npr-strike" style="left:40px;top:140px;width:300px;transform:rotate(-18deg)"></div>
+            </div>
+
+            <!-- right panel: multiplica = area explodes -->
+            <div id="09-npr-pr" class="09-npr-panel" style="left:1500px;top:440px;width:300px;height:220px">
+              <div id="09-npr-pr-icon" class="09-npr-op" style="left:0;top:0;transform:scale(0.5);transform-origin:0 0">
+                <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(45deg)"></div>
+                <div class="09-npr-bar" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(-45deg)"></div>
+              </div>
+              <div id="09-npr-grid" style="position:absolute;left:70px;top:8px;width:208px;height:208px"></div>
+            </div>
+
+            <!-- scale 1 → 1.000 -->
+            <div id="09-npr-bars" class="09-npr-layer"></div>
+            <div id="09-npr-base" class="09-npr-base"></div>
+            <div id="09-npr-one" class="09-npr-num" style="left:120px;width:80px;text-align:right">1</div>
+            <div id="09-npr-mil" class="09-npr-num" style="left:1558px">1.000</div>
+            <div id="09-npr-mono" class="09-npr-mono">= 10 × 10 × 10</div>
+            <div id="09-npr-marker" class="09-npr-marker"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- chrome -->
+    <div id="09-npr-chromewrap" class="clip 09-npr-layer" data-start="0" data-duration="8.927" data-track-index="2">
+      <div id="09-npr-tag" class="09-npr-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="09-npr-num" class="09-npr-chrome" style="right:80px">09 / 16</div>
+      <div id="09-npr-hair-top" class="09-npr-hair" style="top:80px"></div>
+      <div id="09-npr-hair-bot" class="09-npr-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 8.427;
+        var $ = function (id) { return document.getElementById("09-npr-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["09-npr"] = tl;
+
+        var CLIP_HIDE = "inset(-30% 100% -15% -4%)";
+        var CLIP_SHOW = "inset(-30% -4% -15% -4%)";
+        function ease3(p) { return 1 - Math.pow(1 - p, 3); }
+
+        // ---------- build: ruler cells ----------
+        ["s", "o", "d"].forEach(function (k, idx) {
+          var ru = $("ru-" + k);
+          var lit = [7, 5, 8][idx];
+          for (var i = 0; i < 10; i++) {
+            var c = document.createElement("div");
+            c.id = "09-npr-rc-" + k + "-" + i;
+            c.className = i < lit ? "09-npr-rc" : "09-npr-rcoff";
+            c.style.top = (8 + i * 28) + "px";
+            ru.appendChild(c);
+          }
+        });
+
+        // ---------- build: typed name (per-char spans) ----------
+        var NAME = "NÚMERO DE PRIORIDADE DE RISCO";
+        var INIT = { 0: "n", 10: "p", 24: "r" };
+        var nameEl = $("name");
+        var chars = [];
+        for (var ci = 0; ci < NAME.length; ci++) {
+          var sp = document.createElement("span");
+          sp.id = "09-npr-ch-" + ci;
+          sp.className = "09-npr-ch";
+          sp.textContent = NAME[ci];
+          if (INIT[ci]) {
+            var ul = document.createElement("div");
+            ul.id = "09-npr-ul-" + INIT[ci];
+            ul.className = "09-npr-ul";
+            sp.appendChild(ul);
+          }
+          nameEl.appendChild(sp);
+          chars.push(sp);
+        }
+        var caret = document.createElement("span");
+        caret.id = "09-npr-caret";
+        caret.className = "09-npr-caret";
+        nameEl.appendChild(caret);
+
+        // ---------- build: 10x10 grid ----------
+        var grid = $("grid"), gOn = [];
+        for (var gy = 0; gy < 10; gy++) {
+          for (var gx = 0; gx < 10; gx++) {
+            var cell = document.createElement("div");
+            cell.id = "09-npr-gc-" + gy + "-" + gx;
+            cell.className = "09-npr-cell";
+            cell.style.left = (gx * 21) + "px";
+            cell.style.top = (gy * 21) + "px";
+            var on = document.createElement("div");
+            on.id = "09-npr-go-" + gy + "-" + gx;
+            on.className = "09-npr-on";
+            cell.appendChild(on);
+            grid.appendChild(cell);
+            gOn.push({ el: on, d: gx + gy });
+          }
+        }
+
+        // ---------- build: exponential scale bars (1 → 1.000) ----------
+        var barsWrap = $("bars"), sBars = [];
+        for (var b = 0; b < 20; b++) {
+          var h = Math.round(6 * Math.pow(110 / 6, b / 19));
+          var bar = document.createElement("div");
+          bar.id = "09-npr-sb-" + b;
+          bar.className = "09-npr-sbar";
+          bar.style.left = (226 + b * 65) + "px";
+          bar.style.top = (770 - h) + "px";
+          bar.style.height = h + "px";
+          barsWrap.appendChild(bar);
+          sBars.push(bar);
+        }
+
+        // ---------- ambient (deterministic, timeline-driven) ----------
+        var T_TYPE0 = 2.5, T_TYPE1 = 3.55;
+        var T_GRID = 5.5, T_SCALE = 7.5;
+        var letters = [$("l-s"), $("l-o"), $("l-d")];
+        var marker = $("marker");
+        function ambient(t) {
+          // name types itself char by char, block caret blinks
+          var n = t < T_TYPE0 ? 0 : Math.min(NAME.length, Math.floor((t - T_TYPE0) / (T_TYPE1 - T_TYPE0) * NAME.length) + 1);
+          for (var i = 0; i < chars.length; i++) chars[i].style.opacity = i < n ? "1" : "0";
+          var caretOn = t >= T_TYPE0 - 0.2 && t < 4.3 && (t < T_TYPE1 || Math.sin((t - T_TYPE1) * 12) > 0);
+          caret.style.opacity = caretOn ? "1" : "0";
+
+          // S O D idle bob once landed
+          for (var k = 0; k < 3; k++) {
+            var land = 0.85 + k * 0.3;
+            var a = t < land ? 0 : Math.min(1, (t - land) / 0.6);
+            letters[k].style.transform = "translateY(" + (Math.sin(t * 3.2 + k * 1.3) * 5 * a).toFixed(2) + "px)";
+          }
+
+          // multiplication grid: diagonal cascade fill, then a travelling wave
+          for (var g = 0; g < gOn.length; g++) {
+            var cg = gOn[g];
+            var start = T_GRID + cg.d * 0.045;
+            var s = t < start ? 0 : Math.min(1, (t - start) / 0.18);
+            var wave = t > T_GRID + 1.1 ? 0.12 * Math.max(0, Math.sin((t - T_GRID) * 5 - cg.d * 0.5)) : 0;
+            cg.el.style.transform = "scale(" + (ease3(s) * (1 - wave)).toFixed(3) + ")";
+          }
+
+          // scale marker: rides from 1 to 1.000, then breathes at the top
+          var mx = 0;
+          if (t >= T_SCALE) {
+            var q = Math.min(1, (t - T_SCALE) / 0.75);
+            mx = 1300 * (q < 1 ? 1 - Math.pow(1 - q, 2.4) : 1);
+          }
+          var my = t >= T_SCALE + 0.75 ? -Math.abs(Math.sin((t - T_SCALE - 0.75) * 6)) * 10 : 0;
+          marker.style.transform = "translate(" + mx.toFixed(2) + "px," + my.toFixed(2) + "px)";
+          marker.style.opacity = t >= T_SCALE ? "1" : "0";
+        }
+        ambient(0);
+        tl.to({ v: 0 }, { v: 1, duration: D, ease: "none", onUpdate: function () { ambient(this.progress() * D); } }, 0);
+
+        // camera: slow push-in under everything
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.035, duration: D, ease: "none" }, 0);
+
+        // ---------- Scene 1 (0.0–2.3): S, O, D rise on ruler stubs; "NPR =" snaps in ----------
+        var SOD = ["s", "o", "d"];
+        for (var j = 0; j < 3; j++) {
+          var at = 0.1 + j * 0.3;
+          tl.fromTo($("g-" + SOD[j]), { y: 640 }, { y: 0, duration: 0.75, ease: "power3.out" }, at);
+          tl.fromTo($("ru-" + SOD[j]), { scaleY: 1, opacity: 1 }, { scaleY: 0, opacity: 0, duration: 0.45, ease: "power2.in" }, at + 0.65);
+          tl.fromTo($("t-" + SOD[j]), { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out" }, at + 0.95);
+          tl.to($("t-" + SOD[j]), { scale: 1, duration: 0.3, ease: "power3.out" }, at + 1.07);
+        }
+        tl.fromTo($("t-npr"), { x: -180, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "expo.out" }, 1.7);
+        tl.fromTo($("t-eq"), { x: -120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "expo.out" }, 1.78);
+
+        // ---------- Scene 2 (2.3–4.4): full name types under NPR; initials marked ----------
+        var INIT_AT = [3.7, 3.85, 4.0];
+        ["n", "p", "r"].forEach(function (k, i) {
+          tl.fromTo($("ul-" + k), { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.out" }, INIT_AT[i]);
+          tl.fromTo($(k), { y: 0 }, { y: -22, duration: 0.14, ease: "power2.out" }, INIT_AT[i]);
+          tl.to($(k), { y: 0, duration: 0.32, ease: "power3.out" }, INIT_AT[i] + 0.14);
+        });
+
+        // ---------- Scene 3 (4.4–6.6): "+" appears, is struck, swapped for "×"; band ----------
+        // hidden until cue
+        tl.fromTo([$("plus-1"), $("plus-2")], { scale: 0, opacity: 0 }, { scale: 0, opacity: 0, duration: 0.01 }, 0);
+        tl.fromTo([$("times-1"), $("times-2")], { scale: 0, opacity: 0 }, { scale: 0, opacity: 0, duration: 0.01 }, 0);
+        tl.fromTo([$("strike-1"), $("strike-2")], { scaleX: 0, rotation: -32 }, { scaleX: 0, rotation: -32, duration: 0.01 }, 0);
+
+        tl.to($("plus-1"), { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 4.4);
+        tl.to($("plus-2"), { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 4.52);
+        tl.to($("strike-1"), { scaleX: 1, duration: 0.25, ease: "power2.out" }, 5.1);
+        tl.to($("strike-2"), { scaleX: 1, duration: 0.25, ease: "power2.out" }, 5.2);
+        // discrete swap: + and its strike vanish, × pops in its place
+        tl.set([$("plus-1"), $("strike-1")], { opacity: 0 }, 5.5);
+        tl.set([$("plus-2"), $("strike-2")], { opacity: 0 }, 5.62);
+        tl.fromTo($("times-1"), { scale: 0, opacity: 0, rotation: -90 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, 5.5);
+        tl.fromTo($("times-2"), { scale: 0, opacity: 0, rotation: -90 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, 5.62);
+        // letters kick as each × lands
+        [[5.55, "s"], [5.62, "o"], [5.7, "d"]].forEach(function (p) {
+          tl.to($("t-" + p[1]), { scale: 1.1, duration: 0.12, ease: "power2.out" }, p[0]);
+          tl.to($("t-" + p[1]), { scale: 1, duration: 0.35, ease: "power3.out" }, p[0] + 0.12);
+        });
+
+        // band
+        tl.fromTo($("band"), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.5, ease: "power3.out" }, 5.15);
+        tl.fromTo($("band"), { y: 0 }, { y: -8, duration: 0.14, ease: "power2.out" }, 5.95);
+        tl.to($("band"), { y: 0, duration: 0.3, ease: "power3.out" }, 6.09);
+
+        // left panel: soma -> three blocks crowd into a short row, then get struck
+        tl.fromTo($("pl-icon"), { scale: 0, opacity: 0 }, { scale: 0.5, opacity: 1, duration: 0.4, ease: "power3.out" }, 4.45);
+        var SQX = [-50, 0, 50];
+        for (var q = 0; q < 3; q++) {
+          tl.fromTo($("sq-" + q), { scale: 0, opacity: 0, x: SQX[q] }, { scale: 1, opacity: 1, x: SQX[q], duration: 0.4, ease: "power3.out" }, 4.5 + q * 0.07);
+          tl.to($("sq-" + q), { x: 0, duration: 0.35, ease: "power3.inOut" }, 4.85);
+          tl.to($("sq-" + q), { opacity: 0.3, duration: 0.3, ease: "power2.out" }, 5.4);
+        }
+        tl.fromTo($("pl-slash"), { scaleX: 0, rotation: -18 }, { scaleX: 1, rotation: -18, duration: 0.28, ease: "power2.out" }, 5.15);
+        tl.to($("pl-icon"), { opacity: 0.3, duration: 0.3, ease: "power2.out" }, 5.4);
+
+        // right panel: multiplica -> grid area explodes (driven in ambient)
+        tl.fromTo($("pr-icon"), { scale: 0, opacity: 0, rotation: -90 }, { scale: 0.5, opacity: 1, rotation: 0, duration: 0.45, ease: "power3.out" }, 5.45);
+
+        // ---------- Scene 4 (6.6–8.427): scale 1 → 1.000 draws under the formula ----------
+        tl.fromTo($("base"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 6.75);
+        for (var sb = 0; sb < sBars.length; sb++) {
+          tl.fromTo(sBars[sb], { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power3.out" }, T_SCALE + sb * 0.03);
+        }
+        tl.fromTo($("one"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 7.5);
+        tl.fromTo($("mil"), { scale: 0, opacity: 0, transformOrigin: "0% 80%" }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 7.95);
+        tl.fromTo($("mono"), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.4, ease: "power3.out" }, 8.05);
+      })();
+    </script>
+  </div>
+</template>

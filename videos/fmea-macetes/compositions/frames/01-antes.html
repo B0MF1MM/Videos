@@ -1,0 +1,393 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      color: #1F2BE0;
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+    .a01an-ground {
+      position: absolute;
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 38.4px 38.4px;
+      background-position: -1px -1px;
+    }
+    .a01an-stage { position: absolute; inset: 0; }
+    .a01an-hair { position: absolute; left: 77px; right: 77px; height: 2px; background: #1F2BE0; }
+    .a01an-hair-top { top: 70px; }
+    .a01an-hair-bot { top: 892px; }
+    .a01an-chrome {
+      position: absolute;
+      top: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      color: #1F2BE0;
+      white-space: nowrap;
+    }
+    .a01an-chrome-tag { left: 77px; }
+    .a01an-chrome-num { right: 77px; }
+
+    .a01an-shake { position: absolute; inset: 0; }
+
+    /* gear */
+    .a01an-gear-wrap { position: absolute; left: 750px; top: 190px; width: 420px; height: 420px; }
+    .a01an-gear { position: absolute; inset: 0; transform-origin: 50% 50%; }
+    .a01an-gear svg { width: 420px; height: 420px; display: block; overflow: visible; }
+    .a01an-crack, .a01an-crack-halo { fill: none; stroke-linecap: square; stroke-linejoin: miter; }
+    .a01an-crack { stroke: #1F2BE0; stroke-width: 9; }
+    .a01an-crack-halo { stroke: #F0EBDE; stroke-width: 22; }
+
+    /* magnifier */
+    .a01an-lens { position: absolute; left: 780px; top: 210px; width: 200px; height: 200px; }
+    .a01an-lens svg { width: 200px; height: 200px; display: block; overflow: visible; }
+
+    /* freeze brackets */
+    .a01an-brackets { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+    .a01an-brackets path { fill: none; stroke: #1F2BE0; stroke-width: 5; stroke-linecap: square; }
+
+    /* conveyor */
+    .a01an-belt { position: absolute; left: 200px; top: 620px; width: 1520px; height: 140px; overflow: hidden; }
+    .a01an-belt-svg { position: absolute; left: 0; top: 0; width: 1520px; height: 140px; }
+    .a01an-belt-svg line { stroke: #1F2BE0; }
+    .a01an-boxes { position: absolute; left: -300px; top: 6px; width: 2100px; height: 74px; }
+    .a01an-box {
+      position: absolute;
+      top: 0;
+      width: 74px;
+      height: 74px;
+      background: #F0EBDE;
+      border: 4px solid #1F2BE0;
+      box-sizing: border-box;
+    }
+    .a01an-box::before {
+      content: "";
+      position: absolute;
+      left: 29px;
+      top: 0;
+      width: 8px;
+      height: 30px;
+      background: #1F2BE0;
+    }
+    .a01an-roller {
+      position: absolute;
+      top: 89px;
+      width: 22px;
+      height: 22px;
+      background: #1F2BE0;
+      transform-origin: 50% 50%;
+    }
+
+    /* clock */
+    .a01an-clock { position: absolute; left: 260px; top: 305px; width: 220px; height: 220px; }
+    .a01an-clock svg { width: 220px; height: 220px; display: block; overflow: visible; }
+    .a01an-pause {
+      position: absolute;
+      left: 452px;
+      top: 277px;
+      width: 56px;
+      height: 56px;
+      background: #1F2BE0;
+    }
+    .a01an-pause i {
+      position: absolute;
+      top: 14px;
+      width: 9px;
+      height: 28px;
+      background: #F0EBDE;
+    }
+    .a01an-pause i:first-child { left: 15px; }
+    .a01an-pause i:last-child { left: 32px; }
+
+    /* ANTES inverted block */
+    .a01an-block {
+      position: absolute;
+      left: 1300px;
+      top: 320px;
+      width: 500px;
+      height: 190px;
+      background: #1F2BE0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .a01an-block-word {
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 124px;
+      line-height: 0.9;
+      letter-spacing: -0.008em;
+      color: #F0EBDE;
+      white-space: nowrap;
+      padding-top: 10px;
+    }
+
+    /* FMEA plaque */
+    .a01an-plaque {
+      position: absolute;
+      left: 650px;
+      top: 250px;
+      width: 620px;
+      height: 300px;
+      background: #F0EBDE;
+      border: 4px solid #1F2BE0;
+      box-sizing: border-box;
+      transform-origin: 50% 100%;
+    }
+    .a01an-fmea {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 22px;
+      text-align: center;
+      font-family: "Newsreader", serif;
+      font-weight: 400;
+      font-size: 190px;
+      line-height: 0.9;
+      letter-spacing: -0.008em;
+      white-space: nowrap;
+    }
+    .a01an-rule {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 214px;
+      height: 2px;
+      background: #1F2BE0;
+      transform-origin: 50% 50%;
+    }
+    .a01an-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 234px;
+      text-align: center;
+      font-family: "DM Mono", monospace;
+      font-size: 32px;
+      line-height: 1.1;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-antes" data-width="1920" data-height="1080" data-duration="7.391">
+    <div id="a01an-ground" class="a01an-ground clip" data-start="0" data-duration="7.391" data-track-index="0"></div>
+
+    <div id="a01an-stage" class="a01an-stage clip" data-start="0" data-duration="7.391" data-track-index="1">
+      <div class="a01an-hair a01an-hair-top"></div>
+      <div class="a01an-hair a01an-hair-bot"></div>
+      <div class="a01an-chrome a01an-chrome-tag">FMEA · MACETES</div>
+      <div class="a01an-chrome a01an-chrome-num">01 / 16</div>
+
+      <div class="a01an-shake" id="a01an-shake">
+        <!-- conveyor (process) -->
+        <div class="a01an-belt" id="a01an-belt">
+          <svg class="a01an-belt-svg" viewBox="0 0 1520 140" aria-hidden="true">
+            <line x1="0" y1="82" x2="1520" y2="82" stroke-width="5" />
+            <line x1="0" y1="118" x2="1520" y2="118" stroke-width="5" />
+            <line id="a01an-belt-dash" x1="0" y1="130" x2="1520" y2="130" stroke-width="4" stroke-dasharray="26 22" />
+          </svg>
+          <div class="a01an-boxes" id="a01an-boxes">
+            <div class="a01an-box" style="left: 0px"></div>
+            <div class="a01an-box" style="left: 300px"></div>
+            <div class="a01an-box" style="left: 600px"></div>
+            <div class="a01an-box" style="left: 900px"></div>
+            <div class="a01an-box" style="left: 1200px"></div>
+            <div class="a01an-box" style="left: 1500px"></div>
+            <div class="a01an-box" style="left: 1800px"></div>
+          </div>
+          <div class="a01an-roller" style="left: 60px"></div>
+          <div class="a01an-roller" style="left: 240px"></div>
+          <div class="a01an-roller" style="left: 420px"></div>
+          <div class="a01an-roller" style="left: 600px"></div>
+          <div class="a01an-roller" style="left: 780px"></div>
+          <div class="a01an-roller" style="left: 960px"></div>
+          <div class="a01an-roller" style="left: 1140px"></div>
+          <div class="a01an-roller" style="left: 1320px"></div>
+          <div class="a01an-roller" style="left: 1480px"></div>
+        </div>
+
+        <!-- square gear -->
+        <div class="a01an-gear-wrap" id="a01an-gear-wrap">
+          <div class="a01an-gear" id="a01an-gear">
+            <svg viewBox="-210 -210 420 420" aria-hidden="true">
+              <g fill="#1F2BE0">
+                <rect x="-123" y="-200" width="46" height="56" />
+                <rect x="-23" y="-200" width="46" height="56" />
+                <rect x="77" y="-200" width="46" height="56" />
+                <rect x="-123" y="144" width="46" height="56" />
+                <rect x="-23" y="144" width="46" height="56" />
+                <rect x="77" y="144" width="46" height="56" />
+                <rect x="-200" y="-123" width="56" height="46" />
+                <rect x="-200" y="-23" width="56" height="46" />
+                <rect x="-200" y="77" width="56" height="46" />
+                <rect x="144" y="-123" width="56" height="46" />
+                <rect x="144" y="-23" width="56" height="46" />
+                <rect x="144" y="77" width="56" height="46" />
+              </g>
+              <rect x="-152" y="-152" width="304" height="304" fill="#F0EBDE" stroke="#1F2BE0" stroke-width="8" />
+              <rect x="-104" y="-104" width="208" height="208" fill="none" stroke="#1F2BE0" stroke-width="3" />
+              <g stroke="#1F2BE0" stroke-width="3">
+                <line x1="-42" y1="-42" x2="-104" y2="-104" />
+                <line x1="42" y1="-42" x2="104" y2="-104" />
+                <line x1="-42" y1="42" x2="-104" y2="104" />
+                <line x1="42" y1="42" x2="104" y2="104" />
+              </g>
+              <rect x="-42" y="-42" width="84" height="84" fill="#1F2BE0" />
+              <rect x="-16" y="-16" width="32" height="32" fill="#F0EBDE" />
+              <path id="a01an-crack-halo" class="a01an-crack-halo" d="M -134 -136 L -98 -96 L -120 -66 L -72 -36 L -94 -2 L -50 30 L -70 66 L -16 96 L -30 134" />
+              <path id="a01an-crack" class="a01an-crack" d="M -134 -136 L -98 -96 L -120 -66 L -72 -36 L -94 -2 L -50 30 L -70 66 L -16 96 L -30 134" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- square magnifier -->
+        <div class="a01an-lens" id="a01an-lens">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <rect x="0" y="0" width="120" height="120" fill="none" stroke="#1F2BE0" stroke-width="9" />
+            <line x1="22" y1="30" x2="22" y2="62" stroke="#1F2BE0" stroke-width="6" />
+            <line x1="124" y1="124" x2="186" y2="186" stroke="#1F2BE0" stroke-width="18" />
+          </svg>
+        </div>
+
+        <!-- freeze brackets -->
+        <svg class="a01an-brackets" viewBox="0 0 1920 1080" aria-hidden="true">
+          <path id="a01an-br1" d="M 724 226 L 724 176 L 774 176" />
+          <path id="a01an-br2" d="M 1146 176 L 1196 176 L 1196 226" />
+          <path id="a01an-br3" d="M 1196 574 L 1196 624 L 1146 624" />
+          <path id="a01an-br4" d="M 774 624 L 724 624 L 724 574" />
+        </svg>
+
+        <!-- paused square clock -->
+        <div class="a01an-clock" id="a01an-clock">
+          <svg viewBox="0 0 220 220" aria-hidden="true">
+            <rect x="4" y="4" width="212" height="212" fill="#F0EBDE" stroke="#1F2BE0" stroke-width="7" />
+            <g fill="#1F2BE0">
+              <rect x="105" y="16" width="10" height="24" />
+              <rect x="105" y="180" width="10" height="24" />
+              <rect x="16" y="105" width="24" height="10" />
+              <rect x="180" y="105" width="24" height="10" />
+            </g>
+            <line id="a01an-hand-h" x1="110" y1="110" x2="110" y2="62" stroke="#1F2BE0" stroke-width="10" />
+            <line id="a01an-hand-m" x1="110" y1="110" x2="110" y2="36" stroke="#1F2BE0" stroke-width="6" />
+            <rect x="100" y="100" width="20" height="20" fill="#1F2BE0" />
+          </svg>
+        </div>
+        <div class="a01an-pause" id="a01an-pause"><i></i><i></i></div>
+
+        <!-- ANTES block -->
+        <div class="a01an-block" id="a01an-block">
+          <div class="a01an-block-word">ANTES</div>
+        </div>
+
+        <!-- FMEA plaque -->
+        <div class="a01an-plaque" id="a01an-plaque">
+          <div class="a01an-fmea" id="a01an-fmea">FMEA</div>
+          <div class="a01an-rule" id="a01an-rule"></div>
+          <div class="a01an-label" id="a01an-label">ANÁLISE PREVENTIVA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var q = function (id) { return document.getElementById(id); };
+      var DUR = 6.891;
+
+      // voiceover cues
+      var T_PROC = 2.0, T_FAIL = 2.6, T_FREEZE = 3.1, T_UNDO = 4.6, T_FMEA = 5.6;
+
+      // crack dash setup (measured)
+      var crack = q("a01an-crack"), halo = q("a01an-crack-halo");
+      var LEN = crack.getTotalLength() * 1.05;
+      [crack, halo].forEach(function (p) {
+        p.style.strokeDasharray = LEN + " " + LEN;
+        p.style.strokeDashoffset = LEN;
+      });
+      ["a01an-br1", "a01an-br2", "a01an-br3", "a01an-br4"].forEach(function (id) {
+        var p = q(id), l = p.getTotalLength();
+        p.style.strokeDasharray = l + " " + l;
+        p.style.strokeDashoffset = l;
+      });
+      var rollers = gsap.utils.toArray("#a01an-belt .a01an-roller");
+
+      // ---------- Scene 1: the square gear spins ----------
+      tl.fromTo("#a01an-gear-wrap", { scale: 0.82, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 0);
+      tl.fromTo("#a01an-gear", { rotation: 0 }, { rotation: 150, duration: T_FREEZE, ease: "none" }, 0);
+
+      // magnifier hunts "onde" the process will fail
+      tl.fromTo("#a01an-lens", { x: -620, y: 160, opacity: 0 }, { x: -260, y: 60, opacity: 1, duration: 0.6, ease: "power2.out" }, 0.6);
+      tl.to("#a01an-lens", { x: 0, y: 0, duration: 1.1, ease: "power2.inOut" }, 1.2);
+
+      // "processo": conveyor wipes in under the gear and runs
+      tl.fromTo("#a01an-belt", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.45, ease: "power3.out" }, T_PROC);
+      tl.fromTo("#a01an-boxes", { x: 0 }, { x: 250, duration: T_FREEZE - T_PROC, ease: "none" }, T_PROC);
+      tl.fromTo("#a01an-belt-dash", { strokeDashoffset: 0 }, { strokeDashoffset: -250, duration: T_FREEZE - T_PROC, ease: "none" }, T_PROC);
+      tl.fromTo(rollers, { rotation: 0 }, { rotation: 360, duration: T_FREEZE - T_PROC, ease: "none" }, T_PROC);
+
+      // ---------- Scene 2: crack starts, everything freezes ----------
+      tl.to([crack, halo], { strokeDashoffset: LEN * 0.5, duration: T_FREEZE - T_FAIL, ease: "none" }, T_FAIL);
+      tl.fromTo("#a01an-lens", { scale: 1 }, { scale: 1.12, duration: 0.25, ease: "power2.out" }, T_FAIL);
+
+      // freeze: brackets snap around the frozen gear
+      ["a01an-br1", "a01an-br2", "a01an-br3", "a01an-br4"].forEach(function (id, i) {
+        tl.to("#" + id, { strokeDashoffset: 0, duration: 0.22, ease: "power2.out" }, T_FREEZE + i * 0.05);
+      });
+      // ANTES inverted block wipes in
+      tl.fromTo("#a01an-block", { clipPath: "inset(0% 100% 0% 0%)", x: 40 }, { clipPath: "inset(-30% -4% -15% -4%)", x: 0, duration: 0.4, ease: "expo.out" }, T_FREEZE + 0.1);
+      // square clock slams in, hands swing then stop (paused)
+      tl.fromTo("#a01an-clock", { scale: 1.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power4.out" }, T_FREEZE + 0.15);
+      tl.fromTo("#a01an-hand-m", { rotation: -200, svgOrigin: "110 110" }, { rotation: 0, svgOrigin: "110 110", duration: 0.5, ease: "power4.out" }, T_FREEZE + 0.15);
+      tl.fromTo("#a01an-hand-h", { rotation: -60, svgOrigin: "110 110" }, { rotation: 90, svgOrigin: "110 110", duration: 0.5, ease: "power4.out" }, T_FREEZE + 0.15);
+      tl.fromTo("#a01an-pause", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, T_FREEZE + 0.55);
+
+      // ---------- Scene 3: rewind — the crack is undone ----------
+      tl.to([crack, halo], { strokeDashoffset: LEN, duration: 0.6, ease: "power2.inOut" }, T_UNDO);
+      tl.to("#a01an-gear", { rotation: 115, duration: 0.6, ease: "power2.inOut" }, T_UNDO);
+      tl.to("#a01an-hand-m", { rotation: -360, svgOrigin: "110 110", duration: 0.6, ease: "power2.inOut" }, T_UNDO);
+      tl.to("#a01an-hand-h", { rotation: 60, svgOrigin: "110 110", duration: 0.6, ease: "power2.inOut" }, T_UNDO);
+      tl.to("#a01an-boxes", { x: 170, duration: 0.6, ease: "power2.inOut" }, T_UNDO);
+      tl.to(rollers, { rotation: 250, duration: 0.6, ease: "power2.inOut" }, T_UNDO);
+      tl.to("#a01an-lens", { x: -140, y: -80, opacity: 0, duration: 0.4, ease: "power2.in" }, T_UNDO);
+
+      // "FMEA": the acronym falls from above and slams onto the frozen gear
+      tl.fromTo("#a01an-plaque", { y: -840 }, { y: 0, duration: 0.36, ease: "power3.in" }, T_FMEA);
+      var LAND = T_FMEA + 0.36;
+      tl.fromTo("#a01an-plaque", { scaleY: 0.88, scaleX: 1.05 }, { scaleY: 1, scaleX: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, LAND);
+      // tremor
+      var SH = [12, -10, 7, -4, 2, 0];
+      SH.forEach(function (v, i) {
+        tl.to("#a01an-shake", { x: v, y: (i % 2 ? -1 : 1) * Math.abs(v) * 0.4, duration: 0.04, ease: "none" }, LAND + i * 0.04);
+      });
+      tl.fromTo("#a01an-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, LAND + 0.15);
+      tl.fromTo("#a01an-label", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.4, ease: "power2.out" }, LAND + 0.25);
+
+      // hold: the process runs again, now safely
+      var HOLD = LAND + 0.3;
+      tl.to("#a01an-gear", { rotation: 128, duration: DUR - HOLD, ease: "none" }, HOLD);
+      tl.to("#a01an-boxes", { x: 230, duration: DUR - HOLD, ease: "none" }, HOLD);
+      tl.to("#a01an-belt-dash", { strokeDashoffset: -310, duration: DUR - HOLD, ease: "none" }, HOLD);
+      tl.to(rollers, { rotation: 330, duration: DUR - HOLD, ease: "none" }, HOLD);
+
+      window.__timelines["01-antes"] = tl;
+    })();
+  </script>
+</template>

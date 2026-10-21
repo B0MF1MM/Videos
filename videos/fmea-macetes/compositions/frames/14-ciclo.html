@@ -1,0 +1,342 @@
+<template id="14-ciclo-template">
+  <div id="root" data-composition-id="14-ciclo" data-start="0" data-duration="9.055" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="14-ciclo-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="14-ciclo-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="14-ciclo-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="14-ciclo-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      [class~="14-ciclo-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 50% 52%; }
+
+      [class~="14-ciclo-title"] { position: absolute; left: 80px; top: 100px; font-family: "Newsreader", serif; font-weight: 400; font-size: 80px; line-height: 1.1; letter-spacing: -0.008em; white-space: nowrap; color: #1F2BE0; padding-top: 0.1em; }
+
+      /* blocks */
+      [class~="14-ciclo-blk"] { position: absolute; width: 300px; height: 170px; border: 4px solid #1F2BE0; box-sizing: border-box; background: #F0EBDE; transform-origin: 50% 50%; }
+      [class~="14-ciclo-idx"] { position: absolute; left: 14px; top: 10px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; }
+      [class~="14-ciclo-fill"] { position: absolute; left: -1px; top: -1px; right: -1px; bottom: -1px; background: #1F2BE0; }
+      [class~="14-ciclo-lit"] { position: absolute; left: 0; top: 0; width: 292px; height: 162px; transform-origin: 50% 50%; }
+      [class~="14-ciclo-icon"] { position: absolute; left: 96px; top: 14px; width: 100px; height: 70px; overflow: visible; }
+      [class~="14-ciclo-verb"] { position: absolute; left: 0; top: 96px; width: 292px; text-align: center; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 36px; letter-spacing: 0.06em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; color: #F0EBDE; }
+
+      svg [class~="14-ciclo-cs"] { fill: none; stroke: #F0EBDE; stroke-width: 6; stroke-linecap: square; stroke-linejoin: miter; }
+      svg [class~="14-ciclo-cf"] { fill: #F0EBDE; }
+      svg [class~="14-ciclo-ar"] { fill: none; stroke: #1F2BE0; stroke-width: 5; stroke-linecap: square; stroke-linejoin: miter; }
+
+      /* trail */
+      [class~="14-ciclo-let"] { position: absolute; top: 470px; width: 90px; text-align: center; font-family: "Newsreader", serif; font-weight: 400; font-size: 84px; line-height: 1.05; letter-spacing: -0.015em; color: #1F2BE0; padding-top: 0.1em; transform-origin: 50% 80%; }
+      [class~="14-ciclo-slot"] { position: absolute; top: 578px; width: 60px; height: 5px; background: #1F2BE0; transform-origin: 50% 50%; }
+
+      /* pulse */
+      [class~="14-ciclo-pulse"] { position: absolute; left: 0; top: 0; width: 34px; height: 34px; box-sizing: border-box; background: #1F2BE0; border: 6px solid #F0EBDE; outline: 4px solid #1F2BE0; transform-origin: 50% 50%; }
+    </style>
+
+    <!-- ground -->
+    <div id="14-ciclo-bg" class="clip 14-ciclo-layer 14-ciclo-ground" data-start="0" data-duration="9.055" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="14-ciclo-stage" class="clip 14-ciclo-layer" data-start="0" data-duration="9.055" data-track-index="1">
+      <div id="14-ciclo-cam" class="14-ciclo-cam">
+
+        <div id="14-ciclo-title" class="14-ciclo-title">O método em 5 verbos</div>
+
+        <!-- arrows (ring + trail) -->
+        <svg id="14-ciclo-arrows" class="14-ciclo-layer" width="1920" height="1080" viewBox="0 0 1920 1080" style="overflow:visible">
+          <path id="14-ciclo-a0" class="14-ciclo-ar" d="" />
+          <path id="14-ciclo-a1" class="14-ciclo-ar" d="" />
+          <path id="14-ciclo-a2" class="14-ciclo-ar" d="" />
+          <path id="14-ciclo-a3" class="14-ciclo-ar" d="" />
+          <path id="14-ciclo-a4" class="14-ciclo-ar" d="" />
+          <path id="14-ciclo-t0" class="14-ciclo-ar" d="M 770 524 L 796 524 M 788 516 L 796 524 L 788 532" style="stroke-width:4" />
+          <path id="14-ciclo-t1" class="14-ciclo-ar" d="M 888 524 L 914 524 M 906 516 L 914 524 L 906 532" style="stroke-width:4" />
+          <path id="14-ciclo-t2" class="14-ciclo-ar" d="M 1006 524 L 1032 524 M 1024 516 L 1032 524 L 1024 532" style="stroke-width:4" />
+          <path id="14-ciclo-t3" class="14-ciclo-ar" d="M 1124 524 L 1150 524 M 1142 516 L 1150 524 L 1142 532" style="stroke-width:4" />
+          <path id="14-ciclo-tloop" class="14-ciclo-ar" d="M 1196 598 L 1196 624 L 724 624 L 724 598 M 712 610 L 724 598 L 736 610" style="stroke-width:4" />
+        </svg>
+
+        <!-- trail of initials -->
+        <div id="14-ciclo-slot-0" class="14-ciclo-slot" style="left:694px"></div>
+        <div id="14-ciclo-slot-1" class="14-ciclo-slot" style="left:812px"></div>
+        <div id="14-ciclo-slot-2" class="14-ciclo-slot" style="left:930px"></div>
+        <div id="14-ciclo-slot-3" class="14-ciclo-slot" style="left:1048px"></div>
+        <div id="14-ciclo-slot-4" class="14-ciclo-slot" style="left:1166px"></div>
+        <div id="14-ciclo-let-0" class="14-ciclo-let" style="left:679px">L</div>
+        <div id="14-ciclo-let-1" class="14-ciclo-let" style="left:797px">A</div>
+        <div id="14-ciclo-let-2" class="14-ciclo-let" style="left:915px">P</div>
+        <div id="14-ciclo-let-3" class="14-ciclo-let" style="left:1033px">A</div>
+        <div id="14-ciclo-let-4" class="14-ciclo-let" style="left:1151px">R</div>
+
+        <!-- B0 LISTAR -->
+        <div id="14-ciclo-b0" class="14-ciclo-blk" style="left:810px;top:215px">
+          <div id="14-ciclo-b0-idx" class="14-ciclo-idx">01</div>
+          <div id="14-ciclo-b0-fill" class="14-ciclo-fill"></div>
+          <div id="14-ciclo-b0-lit" class="14-ciclo-lit">
+            <svg id="14-ciclo-ic0" class="14-ciclo-icon" viewBox="0 0 100 70">
+              <rect id="14-ciclo-l-b0" class="14-ciclo-cf" x="8" y="6" width="12" height="12" />
+              <rect id="14-ciclo-l-b1" class="14-ciclo-cf" x="8" y="29" width="12" height="12" />
+              <rect id="14-ciclo-l-b2" class="14-ciclo-cf" x="8" y="52" width="12" height="12" />
+              <path id="14-ciclo-l-l0" class="14-ciclo-cs" d="M 32 12 L 92 12" />
+              <path id="14-ciclo-l-l1" class="14-ciclo-cs" d="M 32 35 L 82 35" />
+              <path id="14-ciclo-l-l2" class="14-ciclo-cs" d="M 32 58 L 88 58" />
+              <rect id="14-ciclo-l-mk" class="14-ciclo-cs" x="0" y="-2" width="100" height="28" style="stroke-width:3" />
+            </svg>
+            <div id="14-ciclo-v0" class="14-ciclo-verb">LISTAR</div>
+          </div>
+        </div>
+
+        <!-- B1 AVALIAR -->
+        <div id="14-ciclo-b1" class="14-ciclo-blk" style="left:1290px;top:395px">
+          <div id="14-ciclo-b1-idx" class="14-ciclo-idx">02</div>
+          <div id="14-ciclo-b1-fill" class="14-ciclo-fill"></div>
+          <div id="14-ciclo-b1-lit" class="14-ciclo-lit">
+            <svg id="14-ciclo-ic1" class="14-ciclo-icon" viewBox="0 0 100 70">
+              <rect id="14-ciclo-g-f0" class="14-ciclo-cs" x="12" y="4" width="18" height="62" style="stroke-width:4" />
+              <rect id="14-ciclo-g-f1" class="14-ciclo-cs" x="41" y="4" width="18" height="62" style="stroke-width:4" />
+              <rect id="14-ciclo-g-f2" class="14-ciclo-cs" x="70" y="4" width="18" height="62" style="stroke-width:4" />
+              <rect id="14-ciclo-g-v0" class="14-ciclo-cf" x="16" y="8" width="10" height="54" />
+              <rect id="14-ciclo-g-v1" class="14-ciclo-cf" x="45" y="8" width="10" height="54" />
+              <rect id="14-ciclo-g-v2" class="14-ciclo-cf" x="74" y="8" width="10" height="54" />
+            </svg>
+            <div id="14-ciclo-v1" class="14-ciclo-verb">AVALIAR</div>
+          </div>
+        </div>
+
+        <!-- B2 PRIORIZAR -->
+        <div id="14-ciclo-b2" class="14-ciclo-blk" style="left:1100px;top:675px">
+          <div id="14-ciclo-b2-idx" class="14-ciclo-idx">03</div>
+          <div id="14-ciclo-b2-fill" class="14-ciclo-fill"></div>
+          <div id="14-ciclo-b2-lit" class="14-ciclo-lit">
+            <svg id="14-ciclo-ic2" class="14-ciclo-icon" viewBox="0 0 100 70">
+              <rect id="14-ciclo-p-c1" class="14-ciclo-cf" x="10" y="40" width="26" height="28" />
+              <rect id="14-ciclo-p-c0" class="14-ciclo-cf" x="38" y="26" width="26" height="42" />
+              <rect id="14-ciclo-p-c2" class="14-ciclo-cf" x="66" y="50" width="26" height="18" />
+              <rect id="14-ciclo-p-top" class="14-ciclo-cf" x="44" y="4" width="14" height="14" />
+            </svg>
+            <div id="14-ciclo-v2" class="14-ciclo-verb">PRIORIZAR</div>
+          </div>
+        </div>
+
+        <!-- B3 AGIR -->
+        <div id="14-ciclo-b3" class="14-ciclo-blk" style="left:520px;top:675px">
+          <div id="14-ciclo-b3-idx" class="14-ciclo-idx">04</div>
+          <div id="14-ciclo-b3-fill" class="14-ciclo-fill"></div>
+          <div id="14-ciclo-b3-lit" class="14-ciclo-lit">
+            <svg id="14-ciclo-ic3" class="14-ciclo-icon" viewBox="0 0 100 70">
+              <rect id="14-ciclo-w-bolt" class="14-ciclo-cs" x="68" y="27" width="16" height="16" style="stroke-width:4" />
+              <g id="14-ciclo-w-tool">
+                <rect id="14-ciclo-w-handle" class="14-ciclo-cf" x="6" y="30" width="52" height="10" />
+                <polygon id="14-ciclo-w-head" class="14-ciclo-cf" points="56,18 94,18 94,26 66,26 66,44 94,44 94,52 56,52" />
+              </g>
+            </svg>
+            <div id="14-ciclo-v3" class="14-ciclo-verb">AGIR</div>
+          </div>
+        </div>
+
+        <!-- B4 REAVALIAR -->
+        <div id="14-ciclo-b4" class="14-ciclo-blk" style="left:330px;top:395px">
+          <div id="14-ciclo-b4-idx" class="14-ciclo-idx">05</div>
+          <div id="14-ciclo-b4-fill" class="14-ciclo-fill"></div>
+          <div id="14-ciclo-b4-lit" class="14-ciclo-lit">
+            <svg id="14-ciclo-ic4" class="14-ciclo-icon" viewBox="0 0 100 70">
+              <g id="14-ciclo-r-g">
+                <path id="14-ciclo-r-loop" class="14-ciclo-cs" d="M 40 10 L 75 10 L 75 60 L 25 60 L 25 24 M 15 34 L 25 24 L 35 34" />
+              </g>
+            </svg>
+            <div id="14-ciclo-v4" class="14-ciclo-verb">REAVALIAR</div>
+          </div>
+        </div>
+
+        <div id="14-ciclo-pulse" class="14-ciclo-pulse"></div>
+      </div>
+    </div>
+
+    <!-- chrome -->
+    <div id="14-ciclo-chromewrap" class="clip 14-ciclo-layer" data-start="0" data-duration="9.055" data-track-index="2">
+      <div id="14-ciclo-tag" class="14-ciclo-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="14-ciclo-num" class="14-ciclo-chrome" style="right:80px">14 / 16</div>
+      <div id="14-ciclo-hair-top" class="14-ciclo-hair" style="top:80px"></div>
+      <div id="14-ciclo-hair-bot" class="14-ciclo-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 8.555;
+        var $ = function (id) { return document.getElementById("14-ciclo-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["14-ciclo"] = tl;
+
+        var CLIP_HIDE = "inset(-30% 100% -15% -4%)";
+        var CLIP_SHOW = "inset(-30% -4% -15% -4%)";
+        var FILL_HIDE = "inset(0% 100% 0% 0%)";
+        var FILL_SHOW = "inset(0% 0% 0% 0%)";
+
+        // block centers (300 x 170)
+        var C = [[960, 300], [1440, 480], [1250, 760], [670, 760], [480, 480]];
+        var HW = 150 + 18, HH = 85 + 18;
+        var LIGHT = [1.9, 3.0, 4.3, 5.8, 6.2];
+
+        // build ring arrows i -> i+1 (clipped to block edges, chevron head)
+        function arrowD(a, b) {
+          var dx = b[0] - a[0], dy = b[1] - a[1];
+          var t = Math.min(HW / Math.abs(dx || 1e-6), HH / Math.abs(dy || 1e-6));
+          var sx = a[0] + dx * t, sy = a[1] + dy * t;
+          var ex = b[0] - dx * t, ey = b[1] - dy * t;
+          var L = Math.sqrt(dx * dx + dy * dy), ux = dx / L, uy = dy / L;
+          var h1x = ex - ux * 20 - uy * 13, h1y = ey - uy * 20 + ux * 13;
+          var h2x = ex - ux * 20 + uy * 13, h2y = ey - uy * 20 - ux * 13;
+          var f = function (n) { return n.toFixed(1); };
+          return "M " + f(sx) + " " + f(sy) + " L " + f(ex) + " " + f(ey) +
+                 " M " + f(h1x) + " " + f(h1y) + " L " + f(ex) + " " + f(ey) + " L " + f(h2x) + " " + f(h2y);
+        }
+        for (var i = 0; i < 5; i++) $("a" + i).setAttribute("d", arrowD(C[i], C[(i + 1) % 5]));
+
+        // measure every drawn stroke
+        var drawIds = ["a0", "a1", "a2", "a3", "a4", "t0", "t1", "t2", "t3", "tloop", "l-l0", "l-l1", "l-l2", "r-loop"];
+        var LEN = {};
+        drawIds.forEach(function (id) {
+          var p = $(id), len = Math.ceil(p.getTotalLength() * 1.05) + 2;
+          LEN[id] = len;
+          p.style.strokeDasharray = len + " " + len;
+        });
+        function draw(id, at, dur, ease) {
+          tl.fromTo($(id), { strokeDashoffset: LEN[id] }, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.out" }, at);
+        }
+        // pre-hide all strokes at t=0
+        drawIds.forEach(function (id) { tl.set($(id), { strokeDashoffset: LEN[id] }, 0); });
+
+        // ---------- camera: slow push across the shot ----------
+        tl.fromTo($("cam"), { scale: 0.965 }, { scale: 1.0, duration: 7.1, ease: "sine.inOut" }, 0);
+        tl.to($("cam"), { scale: 1.02, duration: 1.3, ease: "power2.out" }, 7.15);
+
+        // ---------- Scene 1: title + five outlined squares ----------
+        tl.fromTo($("title"), { clipPath: CLIP_HIDE, y: 14 }, { clipPath: CLIP_SHOW, y: 0, duration: 0.6, ease: "power3.out" }, 0.05);
+        for (var b = 0; b < 5; b++) {
+          tl.fromTo($("b" + b), { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.15 + b * 0.08);
+          tl.fromTo($("b" + b + "-fill"), { clipPath: FILL_HIDE }, { clipPath: FILL_HIDE, duration: 0.01 }, 0);
+          tl.fromTo($("b" + b + "-lit"), { scale: 0.5, opacity: 0 }, { scale: 0.5, opacity: 0, duration: 0.01 }, 0);
+        }
+        // empty slots of the trail
+        for (var s = 0; s < 5; s++) {
+          tl.fromTo($("slot-" + s), { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, 0.9 + s * 0.07);
+          tl.fromTo($("let-" + s), { opacity: 0, scale: 0, y: 20 }, { opacity: 0, scale: 0, y: 20, duration: 0.01 }, 0);
+        }
+        // waiting beat: the first square breathes, inviting the first verb
+        tl.fromTo($("b0"), { scale: 1 }, { scale: 1.04, duration: 0.35, ease: "sine.inOut", immediateRender: false }, 1.3);
+        tl.to($("b0"), { scale: 1, duration: 0.3, ease: "sine.inOut" }, 1.65);
+
+        // ---------- Scene 2: each block lights on its verb ----------
+        function light(k, at) {
+          tl.to($("b" + k + "-fill"), { clipPath: FILL_SHOW, duration: 0.32, ease: "power2.inOut" }, at);
+          tl.set($("b" + k + "-idx"), { opacity: 0 }, at + 0.32);
+          tl.to($("b" + k + "-lit"), { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, at + 0.18);
+          tl.fromTo($("b" + k), { scale: 1 }, { scale: 1.07, duration: 0.14, ease: "power2.out", immediateRender: false }, at);
+          tl.to($("b" + k), { scale: 1, duration: 0.4, ease: "power3.out" }, at + 0.14);
+          // initial lands in the trail
+          tl.to($("let-" + k), { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power3.out" }, at + 0.2);
+          if (k > 0) draw("t" + (k - 1), at + 0.05, 0.3);
+        }
+        // arrow from previous block draws into each block just before it lights
+        draw("a0", 2.6, 0.4);
+        draw("a1", 3.9, 0.4);
+        draw("a2", 5.35, 0.45);
+        draw("a3", 5.82, 0.36);
+        for (var k = 0; k < 5; k++) light(k, LIGHT[k]);
+
+        // --- icon 0: LISTAR — lines write, a marker walks down the list
+        tl.fromTo([$("l-b0"), $("l-b1"), $("l-b2")], { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "power3.out", stagger: 0.12 }, 2.05);
+        draw("l-l0", 2.1, 0.3);
+        draw("l-l1", 2.25, 0.3);
+        draw("l-l2", 2.4, 0.3);
+        tl.fromTo($("l-mk"), { opacity: 0, y: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, 2.7);
+        var rows = [0, 23, 46];
+        var mt = 3.1, r = 1;
+        while (mt < 8.3) {
+          tl.to($("l-mk"), { y: rows[r % 3], duration: 0.25, ease: "power3.inOut" }, mt);
+          r++; mt += 0.62;
+        }
+
+        // --- icon 1: AVALIAR — three mini-rulers fill to S / O / D levels and keep re-scoring
+        var gv = [$("g-v0"), $("g-v1"), $("g-v2")];
+        gv.forEach(function (el) { tl.fromTo(el, { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 0, duration: 0.01 }, 0); });
+        var levels = [[0.8, 0.5, 0.3], [0.6, 0.9, 0.4], [0.9, 0.4, 0.7], [0.7, 0.7, 0.2], [0.8, 0.5, 0.3]];
+        var gt = 3.2;
+        levels.forEach(function (lv, li) {
+          gv.forEach(function (el, gi) {
+            tl.to(el, { scaleY: lv[gi], duration: 0.45, ease: "power3.out" }, gt + gi * 0.1);
+          });
+          gt += li === 0 ? 1.1 : 0.95;
+        });
+
+        // --- icon 2: PRIORIZAR — podium rises, the top square drops on the winner
+        tl.fromTo($("p-c1"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.4, ease: "power3.out" }, 4.5);
+        tl.fromTo($("p-c2"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.4, ease: "power3.out" }, 4.58);
+        tl.fromTo($("p-c0"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 4.66);
+        tl.fromTo($("p-top"), { y: -40, opacity: 0 }, { y: 6, opacity: 1, duration: 0.35, ease: "power2.in" }, 5.05);
+        tl.to($("p-top"), { y: 0, duration: 0.3, ease: "power3.out" }, 5.4);
+        var pt = 5.95;
+        while (pt < 8.2) {
+          tl.to($("p-top"), { y: -10, duration: 0.18, ease: "power2.out" }, pt);
+          tl.to($("p-top"), { y: 0, duration: 0.22, ease: "power2.in" }, pt + 0.18);
+          pt += 0.7;
+        }
+
+        // --- icon 3: AGIR — the square wrench turns the square bolt
+        tl.fromTo($("w-tool"), { rotation: -40, svgOrigin: "76 35" }, { rotation: -40, svgOrigin: "76 35", duration: 0.01 }, 0);
+        tl.fromTo($("w-bolt"), { rotation: 0, svgOrigin: "76 35" }, { rotation: 0, svgOrigin: "76 35", duration: 0.01 }, 0);
+        var wt = 6.0, rot = -40, brot = 0;
+        while (wt < 8.3) {
+          rot += 45; brot += 45;
+          tl.to($("w-tool"), { rotation: rot, duration: 0.3, ease: "power2.inOut" }, wt);
+          tl.to($("w-bolt"), { rotation: brot, duration: 0.3, ease: "power2.inOut" }, wt);
+          rot -= 45;
+          tl.to($("w-tool"), { rotation: rot, duration: 0.22, ease: "power2.inOut" }, wt + 0.34);
+          wt += 0.62;
+        }
+
+        // --- icon 4: REAVALIAR — square loop arrow draws, then turns in quarter steps
+        draw("r-loop", 6.3, 0.5, "none");
+        tl.fromTo($("r-g"), { rotation: 0, svgOrigin: "50 35" }, { rotation: 0, svgOrigin: "50 35", duration: 0.01 }, 0);
+        tl.to($("r-g"), { rotation: 90, duration: 0.35, ease: "power3.inOut" }, 6.95);
+        tl.to($("r-g"), { rotation: 180, duration: 0.35, ease: "power3.inOut" }, 7.55);
+        tl.to($("r-g"), { rotation: 270, duration: 0.35, ease: "power3.inOut" }, 8.1);
+
+        // ---------- Scene 3: "o ciclo recomeça" — close the ring, pulse runs once ----------
+        draw("a4", 7.2, 0.4);
+        draw("tloop", 7.2, 0.55, "power2.inOut");
+
+        var P = $("pulse");
+        var PH = 17;
+        tl.fromTo(P, { x: C[0][0] - PH, y: C[0][1] - PH, scale: 0, opacity: 0 }, { scale: 0, opacity: 0, duration: 0.01 }, 0);
+        tl.to(P, { scale: 1, opacity: 1, duration: 0.15, ease: "power3.out" }, 7.42);
+        var seq = [1, 2, 3, 4, 0];
+        var st = 7.5, SEG = 0.17;
+        seq.forEach(function (bi, n) {
+          var at = st + n * SEG;
+          tl.to(P, { x: C[bi][0] - PH, y: C[bi][1] - PH, duration: SEG, ease: "none" }, at);
+          // each block and its initial kick as the pulse arrives
+          tl.fromTo($("b" + bi), { scale: 1 }, { scale: 1.06, duration: 0.08, ease: "power2.out", immediateRender: false }, at + SEG - 0.02);
+          tl.to($("b" + bi), { scale: 1, duration: 0.28, ease: "power3.out" }, at + SEG + 0.06);
+          tl.fromTo($("let-" + bi), { y: 0 }, { y: -14, duration: 0.08, ease: "power2.out", immediateRender: false }, at + SEG - 0.02);
+          tl.to($("let-" + bi), { y: 0, duration: 0.28, ease: "power3.out" }, at + SEG + 0.06);
+        });
+        // pulse sinks into LISTAR: the cycle starts again, then hold
+        tl.to(P, { scale: 0, duration: 0.12, ease: "power2.in" }, st + 5 * SEG + 0.02);
+      })();
+    </script>
+  </div>
+</template>

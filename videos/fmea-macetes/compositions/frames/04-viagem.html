@@ -1,0 +1,475 @@
+<template id="04-viagem-template">
+  <div id="root" data-composition-id="04-viagem" data-start="0" data-duration="12.852" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="04-viagem-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="04-viagem-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="04-viagem-abs"] { position: absolute; }
+
+      /* chrome */
+      [class~="04-viagem-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="04-viagem-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      /* labels */
+      [class~="04-viagem-tag"] { position: absolute; display: flex; align-items: center; gap: 18px; font-family: "DM Mono", monospace; font-size: 36px; letter-spacing: 0.06em; line-height: 1.3; white-space: nowrap; color: #1F2BE0; padding-top: 0.25em; }
+      [class~="04-viagem-pip"] { width: 20px; height: 20px; background: #1F2BE0; flex: 0 0 auto; }
+      [class~="04-viagem-mono"] { position: absolute; font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.06em; line-height: 1.2; white-space: nowrap; color: #1F2BE0; }
+
+      /* car */
+      [class~="04-viagem-box"] { position: absolute; border: 4px solid #1F2BE0; background: #F0EBDE; }
+      [class~="04-viagem-ink"] { position: absolute; background: #1F2BE0; }
+      [class~="04-viagem-wheel"] { position: absolute; top: 140px; width: 56px; height: 56px; background: #1F2BE0; transform-origin: 50% 50%; }
+      [class~="04-viagem-hub"] { position: absolute; left: 14px; top: 14px; width: 16px; height: 16px; background: #F0EBDE; }
+      [class~="04-viagem-ring"] { position: absolute; top: 128px; width: 80px; height: 80px; border: 4px solid #1F2BE0; opacity: 0; }
+
+      /* signs */
+      [class~="04-viagem-sign"] { position: absolute; top: 340px; width: 196px; height: 310px; transform-origin: 50% 100%; }
+      [class~="04-viagem-plate"] { position: absolute; left: 0; top: 0; width: 196px; height: 196px; border: 5px solid #1F2BE0; background: #F0EBDE; }
+      [class~="04-viagem-post"] { position: absolute; left: 92px; top: 196px; width: 12px; height: 114px; background: #1F2BE0; }
+      [class~="04-viagem-slab"] { position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.1em; line-height: 1.2; white-space: nowrap; color: #1F2BE0; }
+
+      /* clipboard */
+      [class~="04-viagem-board"] { position: absolute; left: 1250px; top: 150px; width: 570px; height: 700px; border: 5px solid #1F2BE0; background: #F0EBDE; }
+      [class~="04-viagem-clip"] { position: absolute; left: 180px; top: -26px; width: 200px; height: 46px; background: #1F2BE0; }
+      [class~="04-viagem-clipin"] { position: absolute; left: 70px; top: 12px; width: 60px; height: 14px; background: #F0EBDE; }
+      [class~="04-viagem-row"] { position: absolute; left: 0; width: 560px; height: 150px; transform-origin: 30% 50%; }
+      [class~="04-viagem-cbox"] { position: absolute; left: 50px; top: 35px; width: 80px; height: 80px; border: 5px solid #1F2BE0; }
+      [class~="04-viagem-rlab"] { position: absolute; left: 172px; top: 12px; font-family: "Newsreader", serif; font-weight: 400; font-size: 92px; line-height: 1.2; letter-spacing: -0.008em; white-space: nowrap; color: #1F2BE0; padding-top: 0.1em; }
+      [class~="04-viagem-rdiv"] { position: absolute; left: 40px; right: 40px; bottom: 0; height: 2px; background: rgba(31,43,224,0.18); }
+
+      /* table */
+      [class~="04-viagem-thead"] { position: absolute; left: 40px; top: 44px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 32px; letter-spacing: 0.12em; line-height: 1.3; white-space: nowrap; color: #1F2BE0; padding-top: 0.25em; }
+      [class~="04-viagem-trule"] { position: absolute; left: 40px; top: 122px; width: 480px; height: 3px; background: #1F2BE0; transform-origin: 0% 50%; }
+      [class~="04-viagem-trow"] { position: absolute; left: 40px; width: 480px; height: 130px; }
+      [class~="04-viagem-tnum"] { position: absolute; left: 0; top: 44px; font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; }
+      [class~="04-viagem-tbar"] { position: absolute; left: 80px; height: 14px; background: #1F2BE0; transform-origin: 0% 50%; }
+      [class~="04-viagem-tbarbg"] { position: absolute; left: 80px; height: 14px; background: rgba(31,43,224,0.10); }
+      [class~="04-viagem-tsq"] { position: absolute; left: 424px; top: 40px; width: 50px; height: 50px; border: 4px solid #1F2BE0; }
+      [class~="04-viagem-tsqf"] { position: absolute; left: 8px; top: 8px; width: 26px; height: 26px; background: #1F2BE0; transform-origin: 50% 50%; }
+      [class~="04-viagem-tdiv"] { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(31,43,224,0.18); }
+
+      /* production line */
+      [class~="04-viagem-belt"] { position: absolute; left: 120px; top: 600px; width: 1020px; height: 38px; border: 4px solid #1F2BE0; background: #F0EBDE; overflow: hidden; }
+      [class~="04-viagem-tick"] { position: absolute; top: 0; width: 4px; height: 30px; background: rgba(31,43,224,0.45); }
+      [class~="04-viagem-roller"] { position: absolute; top: 654px; width: 30px; height: 30px; border: 4px solid #1F2BE0; transform-origin: 50% 50%; }
+      [class~="04-viagem-lane"] { position: absolute; left: 120px; top: 526px; width: 1020px; height: 74px; overflow: hidden; }
+      [class~="04-viagem-blk"] { position: absolute; top: 4px; width: 70px; height: 70px; }
+      [class~="04-viagem-blkin"] { position: absolute; inset: 0; border: 4px solid #1F2BE0; background: #F0EBDE; overflow: hidden; transform-origin: 50% 100%; }
+      [class~="04-viagem-blkf"] { position: absolute; inset: 0; background: #1F2BE0; transform-origin: 50% 100%; }
+
+      /* band */
+      [class~="04-viagem-bandwrap"] { position: absolute; left: 80px; top: 748px; width: 1100px; text-align: center; }
+      [class~="04-viagem-band"] { display: inline-flex; align-items: center; gap: 24px; background: #1F2BE0; color: #F0EBDE; padding: 22px 40px 20px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 42px; letter-spacing: 0.14em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
+      [class~="04-viagem-bpip"] { width: 20px; height: 20px; background: #F0EBDE; flex: 0 0 auto; }
+    </style>
+
+    <!-- ground -->
+    <div id="04-viagem-bg" class="clip 04-viagem-layer 04-viagem-ground" data-start="0" data-duration="12.852" data-track-index="0"></div>
+
+    <!-- stage: road trip (scenes 1-3) + production line (scene 4) + clipboard -->
+    <div id="04-viagem-stage" class="clip 04-viagem-layer" data-start="0" data-duration="12.852" data-track-index="1">
+
+      <!-- ===== STAGE A: the road trip ===== -->
+      <div id="04-viagem-sa" class="04-viagem-layer" style="transform-origin: 440px 640px;">
+        <div id="04-viagem-cam" class="04-viagem-layer" style="transform-origin: 440px 640px;">
+
+          <div id="04-viagem-tag" class="04-viagem-tag" style="left:80px; top:118px;"><span id="04-viagem-tagpip" class="04-viagem-pip"></span><span id="04-viagem-tagtxt" style="display:inline-block;">ANTES DE SAIR</span></div>
+
+          <!-- road -->
+          <svg id="04-viagem-road" class="04-viagem-layer" width="1920" height="1080" viewBox="0 0 1920 1080">
+            <line id="04-viagem-rd-top" x1="80" y1="650" x2="1180" y2="650" stroke="#1F2BE0" stroke-width="5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></line>
+            <line id="04-viagem-rd-bot" x1="80" y1="850" x2="1180" y2="790" stroke="#1F2BE0" stroke-width="5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></line>
+            <g id="04-viagem-dashes"></g>
+          </svg>
+
+          <!-- pothole -->
+          <div id="04-viagem-hole" class="04-viagem-ink" style="left:760px; top:742px; width:130px; height:24px; transform-origin:50% 50%;"></div>
+
+          <!-- start strip -->
+          <div id="04-viagem-strip" class="04-viagem-abs" style="left:640px; top:652px; width:40px; height:160px; transform-origin:50% 100%;"></div>
+          <div id="04-viagem-largada" class="04-viagem-mono" style="left:600px; top:822px; width:120px; text-align:center;">LARGADA</div>
+
+          <!-- rain (behind sign) -->
+          <div id="04-viagem-rainbox" class="04-viagem-abs" style="left:930px; top:300px; width:260px; height:350px; overflow:hidden;">
+            <svg id="04-viagem-rain" class="04-viagem-abs" style="left:0; top:0;" width="260" height="700" viewBox="0 0 260 700"></svg>
+          </div>
+
+          <!-- signs -->
+          <div id="04-viagem-sign-a" class="04-viagem-sign" style="left:716px;">
+            <div id="04-viagem-post-a" class="04-viagem-post"></div>
+            <div id="04-viagem-plate-a" class="04-viagem-plate">
+              <svg id="04-viagem-ico-a" class="04-viagem-abs" style="left:38px; top:26px;" width="110" height="80" viewBox="0 0 110 80">
+                <polyline points="0,28 30,28 30,62 80,62 80,28 110,28" fill="none" stroke="#1F2BE0" stroke-width="8"></polyline>
+                <rect x="40" y="48" width="30" height="14" fill="#1F2BE0"></rect>
+              </svg>
+              <div id="04-viagem-slab-a" class="04-viagem-slab">BURACO</div>
+            </div>
+          </div>
+          <div id="04-viagem-sign-b" class="04-viagem-sign" style="left:958px;">
+            <div id="04-viagem-post-b" class="04-viagem-post"></div>
+            <div id="04-viagem-plate-b" class="04-viagem-plate">
+              <svg id="04-viagem-ico-b" class="04-viagem-abs" style="left:38px; top:22px;" width="110" height="90" viewBox="0 0 110 90">
+                <rect x="10" y="4" width="90" height="34" fill="#1F2BE0"></rect>
+                <line x1="24" y1="50" x2="14" y2="84" stroke="#1F2BE0" stroke-width="7"></line>
+                <line x1="58" y1="50" x2="48" y2="84" stroke="#1F2BE0" stroke-width="7"></line>
+                <line x1="92" y1="50" x2="82" y2="84" stroke="#1F2BE0" stroke-width="7"></line>
+              </svg>
+              <div id="04-viagem-slab-b" class="04-viagem-slab">CHUVA</div>
+            </div>
+          </div>
+
+          <!-- exhaust puffs -->
+          <div id="04-viagem-puffs" class="04-viagem-layer"></div>
+
+          <!-- car: x entry > rock > idle -->
+          <div id="04-viagem-car" class="04-viagem-abs" style="left:250px; top:524px; width:380px; height:200px;">
+            <div id="04-viagem-carrock" class="04-viagem-abs" style="left:0; top:0; width:380px; height:200px; transform-origin:50% 100%;">
+              <div id="04-viagem-caridle" class="04-viagem-abs" style="left:0; top:0; width:380px; height:200px;">
+                <!-- dipstick + drop -->
+                <div id="04-viagem-stick" class="04-viagem-ink" style="left:298px; top:-30px; width:10px; height:114px; transform-origin:50% 100%;"></div>
+                <div id="04-viagem-drop" class="04-viagem-ink" style="left:292px; top:56px; width:22px; height:22px;"></div>
+                <div id="04-viagem-cabin" class="04-viagem-box" style="left:80px; top:0; width:190px; height:86px;">
+                  <div id="04-viagem-win1" class="04-viagem-box" style="left:14px; top:12px; width:70px; height:50px;"></div>
+                  <div id="04-viagem-win2" class="04-viagem-box" style="left:96px; top:12px; width:72px; height:50px;"></div>
+                </div>
+                <div id="04-viagem-body" class="04-viagem-box" style="left:0; top:80px; width:380px; height:84px;">
+                  <div id="04-viagem-light" class="04-viagem-ink" style="left:338px; top:14px; width:26px; height:22px;"></div>
+                  <div id="04-viagem-tail" class="04-viagem-box" style="left:6px; top:14px; width:22px; height:22px;"></div>
+                  <div id="04-viagem-door" class="04-viagem-ink" style="left:186px; top:0; width:4px; height:76px;"></div>
+                </div>
+                <div id="04-viagem-pad" class="04-viagem-ink" style="left:112px; top:146px; width:14px; height:44px; opacity:0;"></div>
+                <div id="04-viagem-ring-r" class="04-viagem-ring" style="left:38px;"></div>
+                <div id="04-viagem-ring-f" class="04-viagem-ring" style="left:262px;"></div>
+                <div id="04-viagem-wheel-r" class="04-viagem-wheel" style="left:50px;"><div id="04-viagem-hub-r" class="04-viagem-hub"></div></div>
+                <div id="04-viagem-wheel-f" class="04-viagem-wheel" style="left:274px;"><div id="04-viagem-hub-f" class="04-viagem-hub"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- square magnifier -->
+          <svg id="04-viagem-mag" class="04-viagem-abs" style="left:0; top:0; overflow:visible;" width="170" height="170" viewBox="0 0 170 170">
+            <rect x="10" y="10" width="110" height="110" fill="none" stroke="#1F2BE0" stroke-width="7"></rect>
+            <rect x="22" y="22" width="20" height="8" fill="#1F2BE0"></rect>
+            <line x1="122" y1="122" x2="166" y2="166" stroke="#1F2BE0" stroke-width="16"></line>
+          </svg>
+        </div>
+      </div>
+
+      <!-- ===== STAGE B: production line ===== -->
+      <div id="04-viagem-sb" class="04-viagem-layer" style="transform-origin: 630px 560px;">
+        <!-- machine -->
+        <div id="04-viagem-rod" class="04-viagem-ink" style="left:654px; top:400px; width:12px; height:60px;"></div>
+        <div id="04-viagem-ram" class="04-viagem-ink" style="left:605px; top:442px; width:110px; height:34px;"></div>
+        <div id="04-viagem-mach" class="04-viagem-box" style="left:540px; top:240px; width:240px; height:170px;">
+          <div id="04-viagem-ml1" class="04-viagem-ink" style="left:24px; top:24px; width:28px; height:28px;"></div>
+          <div id="04-viagem-ml2" class="04-viagem-box" style="left:66px; top:24px; width:28px; height:28px;"></div>
+          <div id="04-viagem-mgl" class="04-viagem-abs" style="left:24px; top:76px; width:184px; height:58px; background: repeating-linear-gradient(90deg, #1F2BE0 0 4px, transparent 4px 14px);"></div>
+        </div>
+        <div id="04-viagem-chute" class="04-viagem-box" style="left:110px; top:430px; width:120px; height:90px;"></div>
+        <div id="04-viagem-lane" class="04-viagem-lane"></div>
+        <div id="04-viagem-belt" class="04-viagem-belt"><div id="04-viagem-ticks" class="04-viagem-abs" style="left:0; top:0; width:2100px; height:30px;"></div></div>
+        <div id="04-viagem-rollers" class="04-viagem-layer"></div>
+        <div id="04-viagem-floor" class="04-viagem-ink" style="left:110px; top:700px; width:1040px; height:3px;"></div>
+
+        <div id="04-viagem-bandwrap" class="04-viagem-bandwrap">
+          <div id="04-viagem-band" class="04-viagem-band"><span id="04-viagem-bp1" class="04-viagem-bpip"></span><span id="04-viagem-bandtxt">PENSAR NAS FALHAS ANTES</span><span id="04-viagem-bp2" class="04-viagem-bpip"></span></div>
+        </div>
+      </div>
+
+      <!-- ===== clipboard / table ===== -->
+      <div id="04-viagem-board" class="04-viagem-board">
+        <div id="04-viagem-clip" class="04-viagem-clip"><div id="04-viagem-clipin" class="04-viagem-clipin"></div></div>
+
+        <div id="04-viagem-check" class="04-viagem-abs" style="left:0; top:0; width:560px; height:690px;">
+          <div id="04-viagem-row-0" class="04-viagem-row" style="top:96px;">
+            <div id="04-viagem-cb-0" class="04-viagem-cbox"><svg id="04-viagem-cs-0" width="70" height="70" viewBox="0 0 70 70"><polyline id="04-viagem-ck-0" points="12,36 29,53 60,16" fill="none" stroke="#1F2BE0" stroke-width="9" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></polyline></svg></div>
+            <div id="04-viagem-rl-0" class="04-viagem-rlab">PNEU</div>
+            <div id="04-viagem-rd-0" class="04-viagem-rdiv"></div>
+          </div>
+          <div id="04-viagem-row-1" class="04-viagem-row" style="top:286px;">
+            <div id="04-viagem-cb-1" class="04-viagem-cbox"><svg id="04-viagem-cs-1" width="70" height="70" viewBox="0 0 70 70"><polyline id="04-viagem-ck-1" points="12,36 29,53 60,16" fill="none" stroke="#1F2BE0" stroke-width="9" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></polyline></svg></div>
+            <div id="04-viagem-rl-1" class="04-viagem-rlab">FREIO</div>
+            <div id="04-viagem-rd-1" class="04-viagem-rdiv"></div>
+          </div>
+          <div id="04-viagem-row-2" class="04-viagem-row" style="top:476px;">
+            <div id="04-viagem-cb-2" class="04-viagem-cbox"><svg id="04-viagem-cs-2" width="70" height="70" viewBox="0 0 70 70"><polyline id="04-viagem-ck-2" points="12,36 29,53 60,16" fill="none" stroke="#1F2BE0" stroke-width="9" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></polyline></svg></div>
+            <div id="04-viagem-rl-2" class="04-viagem-rlab">ÓLEO</div>
+          </div>
+        </div>
+
+        <div id="04-viagem-table" class="04-viagem-abs" style="left:0; top:0; width:560px; height:690px;">
+          <div id="04-viagem-thead" class="04-viagem-thead">FALHAS POSSÍVEIS</div>
+          <div id="04-viagem-trule" class="04-viagem-trule"></div>
+          <div id="04-viagem-trows"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- chrome (static) -->
+    <div id="04-viagem-chromewrap" class="clip 04-viagem-layer" data-start="0" data-duration="12.852" data-track-index="2">
+      <div id="04-viagem-ctag" class="04-viagem-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="04-viagem-cnum" class="04-viagem-chrome" style="right:80px">04 / 16</div>
+      <div id="04-viagem-hair-top" class="04-viagem-hair" style="top:80px"></div>
+      <div id="04-viagem-hair-bot" class="04-viagem-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var P = "04-viagem-";
+        var $ = function (id) { return document.getElementById(P + id); };
+        var NS = "http://www.w3.org/2000/svg";
+        var D = 12.352;
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["04-viagem"] = tl;
+
+        function mk(parent, cls, id, css) {
+          var d = document.createElement("div");
+          d.id = P + id;
+          d.className = cls;
+          d.setAttribute("style", css);
+          parent.appendChild(d);
+          return d;
+        }
+
+        // ---------- generated geometry ----------
+        // road centre dashes (slight perspective)
+        var dashG = $("dashes");
+        var NDASH = 9;
+        for (var i = 0; i < NDASH; i++) {
+          var x1 = 100 + i * 120, x2 = x1 + 62;
+          var y1 = 750 - (x1 - 80) * 30 / 1100, y2 = 750 - (x2 - 80) * 30 / 1100;
+          var ln = document.createElementNS(NS, "line");
+          ln.setAttribute("id", P + "dash-" + i);
+          ln.setAttribute("x1", x1); ln.setAttribute("y1", y1);
+          ln.setAttribute("x2", x2); ln.setAttribute("y2", y2);
+          ln.setAttribute("stroke", "#1F2BE0"); ln.setAttribute("stroke-width", "6");
+          ln.setAttribute("pathLength", "1"); ln.setAttribute("stroke-dasharray", "1"); ln.setAttribute("stroke-dashoffset", "1");
+          dashG.appendChild(ln);
+        }
+        // checkered start strip (2 x 8 squares of 20px)
+        var strip = $("strip");
+        for (var r = 0; r < 8; r++) {
+          for (var c = 0; c < 2; c++) {
+            mk(strip, "04-viagem-abs", "sq-" + r + "-" + c,
+              "left:" + (c * 20) + "px; top:" + (r * 20) + "px; width:20px; height:20px; background:" + ((r + c) % 2 ? "transparent" : "#1F2BE0") + ";");
+          }
+        }
+        // rain: two identical 350px periods of slanted streaks
+        var rain = $("rain");
+        for (var k = 0; k < 2; k++) {
+          for (var j = 0; j < 12; j++) {
+            var rx = 14 + (j * 47) % 240, ry = k * 350 + (j * 83) % 330;
+            var rl = document.createElementNS(NS, "line");
+            rl.setAttribute("x1", rx + 10); rl.setAttribute("y1", ry);
+            rl.setAttribute("x2", rx); rl.setAttribute("y2", ry + 34);
+            rl.setAttribute("stroke", "#1F2BE0"); rl.setAttribute("stroke-width", "5");
+            rain.appendChild(rl);
+          }
+        }
+        // exhaust puffs
+        var puffs = $("puffs");
+        var PUFF_T = [];
+        for (var t0 = 1.9; t0 < 7.5; t0 += 0.55) PUFF_T.push(t0);
+        for (var p = 0; p < PUFF_T.length; p++) {
+          mk(puffs, "04-viagem-ink", "puff-" + p, "left:226px; top:668px; width:16px; height:16px; opacity:0;");
+        }
+        // belt ticks
+        var ticks = $("ticks");
+        for (var q = 0; q < 52; q++) mk(ticks, "04-viagem-tick", "tick-" + q, "left:" + (q * 40) + "px;");
+        // rollers
+        var rollers = $("rollers");
+        for (var q2 = 0; q2 < 9; q2++) mk(rollers, "04-viagem-roller", "rol-" + q2, "left:" + (138 + q2 * 120) + "px;");
+        // blocks on the line
+        var lane = $("lane");
+        var BASES = [-360, -160, 40, 240, 440, 640, 840];
+        for (var b = 0; b < BASES.length; b++) {
+          var blk = mk(lane, "04-viagem-blk", "blk-" + b, "left:" + BASES[b] + "px;");
+          var bin = mk(blk, "04-viagem-blkin", "bin-" + b, "");
+          mk(bin, "04-viagem-blkf", "bf-" + b, "");
+        }
+        // table rows
+        var trows = $("trows");
+        var BARW = [[300, 210], [250, 280], [320, 170], [230, 260]];
+        for (var tr = 0; tr < 4; tr++) {
+          var row = mk(trows, "04-viagem-trow", "tr-" + tr, "top:" + (140 + tr * 132) + "px;");
+          var num = mk(row, "04-viagem-tnum", "tn-" + tr, "");
+          num.textContent = "0" + (tr + 1);
+          mk(row, "04-viagem-tbarbg", "tbg1-" + tr, "top:42px; width:" + BARW[tr][0] + "px;");
+          mk(row, "04-viagem-tbarbg", "tbg2-" + tr, "top:76px; width:" + BARW[tr][1] + "px;");
+          mk(row, "04-viagem-tbar", "tb1-" + tr, "top:42px; width:" + BARW[tr][0] + "px;");
+          mk(row, "04-viagem-tbar", "tb2-" + tr, "top:76px; width:" + BARW[tr][1] + "px;");
+          var sq = mk(row, "04-viagem-tsq", "ts-" + tr, "");
+          mk(sq, "04-viagem-tsqf", "tsf-" + tr, "");
+          mk(row, "04-viagem-tdiv", "td-" + tr, "");
+        }
+
+        // ---------- initial states ----------
+        gsap.set($("sb"), { opacity: 0 });
+        gsap.set($("table"), { opacity: 0 });
+        gsap.set($("mag"), { x: 1150, y: 200, opacity: 0, scale: 0 });
+
+        // ================= SCENE 1 (0.0-2.9): road draws, car arrives =================
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.04, duration: 7.6, ease: "none" }, 0);
+
+        tl.fromTo($("rd-top"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 0.05);
+        tl.fromTo($("rd-bot"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 0.2);
+        for (var i2 = 0; i2 < NDASH; i2++) {
+          tl.fromTo($("dash-" + i2), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, 0.35 + i2 * 0.06);
+        }
+        tl.fromTo($("strip"), { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0.6);
+        tl.fromTo($("largada"), { clipPath: "inset(-30% 100% -15% -4%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "power3.out" }, 0.9);
+
+        // car drives in and stops at LARGADA
+        tl.fromTo($("car"), { x: -700 }, { x: 0, duration: 1.45, ease: "power3.out" }, 0.15);
+        tl.fromTo([$("wheel-r"), $("wheel-f")], { rotation: -900 }, { rotation: 0, duration: 1.45, ease: "power3.out" }, 0.15);
+        tl.fromTo($("carrock"), { rotation: 0 }, { rotation: 1.6, duration: 0.18, ease: "power2.out" }, 1.45);
+        tl.to($("carrock"), { rotation: 0, duration: 0.4, ease: "power3.out" }, 1.63);
+        // headlight blink on arrival
+        tl.set($("light"), { opacity: 0 }, 1.7); tl.set($("light"), { opacity: 1 }, 1.82);
+        tl.set($("light"), { opacity: 0 }, 1.94); tl.set($("light"), { opacity: 1 }, 2.06);
+
+        tl.fromTo($("tagpip"), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.45, ease: "power3.out" }, 1.6);
+        tl.fromTo($("tagtxt"), { clipPath: "inset(-30% 100% -15% -4%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.6, ease: "power3.out" }, 1.7);
+
+        // idle: engine shiver + exhaust puffs while the car waits
+        var flip = 1;
+        for (var it = 1.9; it < 7.5; it += 0.14) {
+          tl.to($("caridle"), { y: flip * 1.6, duration: 0.07, ease: "sine.inOut" }, it);
+          flip = -flip;
+        }
+        for (var p2 = 0; p2 < PUFF_T.length; p2++) {
+          tl.fromTo($("puff-" + p2),
+            { x: 0, y: 0, scale: 0.6, opacity: 1 },
+            { x: -90, y: -34, scale: 2, opacity: 0, duration: 0.9, ease: "power1.out" }, PUFF_T[p2]);
+        }
+
+        // ================= SCENE 2 (2.9-5.0): clipboard + checks =================
+        tl.fromTo($("board"), { x: 720, rotation: 4 }, { x: 0, rotation: 0, duration: 0.55, ease: "power3.out" }, 2.9);
+        for (var rr = 0; rr < 3; rr++) {
+          tl.fromTo($("row-" + rr), { scale: 0, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.0 + rr * 0.07);
+        }
+        var CK = [3.4, 3.8, 4.4];
+        for (var c2 = 0; c2 < 3; c2++) {
+          tl.fromTo($("ck-" + c2), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.28, ease: "power2.out" }, CK[c2]);
+          tl.fromTo($("cb-" + c2), { scale: 1.18 }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, CK[c2]);
+          tl.fromTo($("rl-" + c2), { x: 14 }, { x: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, CK[c2]);
+        }
+
+        // magnifier flies to the front tyre (PNEU 3.4)
+        tl.fromTo($("mag"), { x: 1150, y: 200, opacity: 0, scale: 0 }, { x: 487, y: 627, opacity: 1, scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 3.05);
+        for (var f = 0; f < 4; f++) {
+          tl.set($("ring-f"), { opacity: 1 }, 3.4 + f * 0.12);
+          tl.set($("ring-f"), { opacity: 0 }, 3.46 + f * 0.12);
+          tl.set($("wheel-f"), { opacity: 0.25 }, 3.4 + f * 0.12);
+          tl.set($("wheel-f"), { opacity: 1 }, 3.46 + f * 0.12);
+        }
+        tl.set($("ring-f"), { opacity: 1 }, 3.9);
+        // FREIO 3.8: magnifier to rear wheel, brake pad clamps, car dips
+        tl.to($("mag"), { x: 263, y: 627, duration: 0.3, ease: "power3.inOut" }, 3.52);
+        tl.fromTo($("pad"), { x: 20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.18, ease: "power3.out" }, 3.8);
+        tl.fromTo($("ring-r"), { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power3.out" }, 3.8);
+        tl.to($("carrock"), { rotation: 1.4, duration: 0.12, ease: "power2.out" }, 3.8);
+        tl.to($("carrock"), { rotation: 0, duration: 0.35, ease: "power3.out" }, 3.92);
+        // OLEO 4.4: magnifier to hood, dipstick rises, square drop climbs
+        tl.to($("mag"), { x: 489, y: 470, duration: 0.3, ease: "power3.inOut" }, 4.0);
+        tl.fromTo($("stick"), { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "power3.out" }, 4.1);
+        tl.fromTo($("drop"), { y: 0, opacity: 0 }, { y: -78, opacity: 1, duration: 0.4, ease: "power2.out" }, 4.25);
+        tl.fromTo($("drop"), { scale: 1 }, { scale: 1.35, duration: 0.15, ease: "power2.out", immediateRender: false }, 4.65);
+        tl.to($("drop"), { scale: 1, duration: 0.2, ease: "power2.in" }, 4.8);
+        tl.to($("stick"), { scaleY: 0, duration: 0.3, ease: "power2.in" }, 5.05);
+        tl.to($("drop"), { y: 0, opacity: 0, duration: 0.3, ease: "power2.in" }, 5.05);
+
+        // ================= SCENE 3 (5.0-7.4): hazards ahead, car waits =================
+        tl.fromTo($("sign-a"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 5.5);
+        tl.fromTo($("sign-b"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 5.68);
+        tl.fromTo($("hole"), { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, 5.6);
+        tl.fromTo($("rainbox"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 5.75);
+        tl.fromTo($("rain"), { y: -350 }, { y: 0, duration: 0.9, ease: "none" }, 5.75);
+        tl.fromTo($("rain"), { y: -350 }, { y: 0, duration: 0.9, ease: "none", immediateRender: false }, 6.65);
+        tl.fromTo($("rain"), { y: -350 }, { y: 0, duration: 0.9, ease: "none", immediateRender: false }, 7.55);
+        // magnifier scouts the road ahead
+        tl.to($("mag"), { x: 750, y: 380, duration: 0.4, ease: "power3.inOut" }, 5.35);
+        tl.to($("mag"), { x: 992, y: 380, duration: 0.4, ease: "power3.inOut" }, 6.3);
+        // signs wobble as they are inspected
+        tl.fromTo($("plate-a"), { rotation: -3 }, { rotation: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 5.8);
+        tl.fromTo($("plate-b"), { rotation: 3 }, { rotation: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 6.7);
+        // car inches forward then holds back
+        tl.to($("car"), { x: -14, duration: 0.25, ease: "power2.out" }, 6.0);
+        tl.to($("car"), { x: 0, duration: 0.35, ease: "power3.out" }, 6.25);
+        tl.set($("light"), { opacity: 0 }, 6.9); tl.set($("light"), { opacity: 1 }, 7.02);
+
+        // ================= SCENE 4 (7.4-12.352): process + table + band =================
+        // zoom-through swap: road scene pushes past camera, production line settles in
+        tl.fromTo($("sa"), { scale: 1, opacity: 1 }, { scale: 1.6, opacity: 0, duration: 0.45, ease: "power2.in" }, 7.5);
+        tl.fromTo($("sb"), { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 7.75);
+
+        // conveyor runs to the end
+        var T0 = 7.6, RUN = D - T0, DIST = 950;
+        tl.fromTo($("ticks"), { x: 0 }, { x: -DIST, duration: RUN, ease: "none" }, T0);
+        for (var q3 = 0; q3 < 9; q3++) {
+          tl.fromTo($("rol-" + q3), { rotation: 0 }, { rotation: 720, duration: RUN, ease: "none" }, T0);
+        }
+        var PRESS_X = 540; // press centre in lane coords
+        var stampN = 0;
+        for (var b2 = 0; b2 < BASES.length; b2++) {
+          tl.fromTo($("blk-" + b2), { x: 0 }, { x: DIST, duration: RUN, ease: "none" }, T0);
+          var centre = BASES[b2] + 35;
+          if (centre > PRESS_X) {
+            gsap.set($("bf-" + b2), { scaleY: 1 });
+            continue;
+          }
+          tl.fromTo($("bf-" + b2), { scaleY: 0 }, { scaleY: 0, duration: 0.01 }, 0);
+          var T = T0 + (PRESS_X - centre) / (DIST / RUN);
+          if (T > D - 0.3) continue;
+          tl.fromTo($("ram"), { y: 0 }, { y: 54, duration: 0.18, ease: "power2.in", immediateRender: false }, T - 0.18);
+          tl.to($("ram"), { y: 0, duration: 0.3, ease: "power2.out" }, T + 0.04);
+          tl.fromTo($("bin-" + b2), { scaleY: 0.86, scaleX: 1.08 }, { scaleY: 1, scaleX: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, T);
+          tl.fromTo($("bf-" + b2), { scaleY: 0 }, { scaleY: 1, duration: 0.16, ease: "power2.out", immediateRender: false }, T);
+          tl.set($("ml1"), { opacity: 0 }, T); tl.set($("ml1"), { opacity: 1 }, T + 0.12);
+          // each stamped block writes one row in the table
+          if (stampN < 4) {
+            var RT = Math.max(T + 0.1, 8.3);
+            tl.fromTo($("tb1-" + stampN), { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power2.out" }, RT);
+            tl.fromTo($("tb2-" + stampN), { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, RT + 0.15);
+            tl.fromTo($("tsf-" + stampN), { scale: 0 }, { scale: 1, duration: 0.35, ease: "power3.out" }, RT + 0.3);
+          }
+          stampN++;
+        }
+
+        // clipboard flips into the table
+        tl.fromTo($("board"), { rotationY: 0 }, { rotationY: 90, transformPerspective: 1400, duration: 0.25, ease: "power2.in", immediateRender: false }, 7.6);
+        tl.set($("check"), { opacity: 0 }, 7.85);
+        tl.set($("table"), { opacity: 1 }, 7.85);
+        tl.fromTo($("board"), { rotationY: -90 }, { rotationY: 0, transformPerspective: 1400, duration: 0.35, ease: "power3.out", immediateRender: false }, 7.85);
+        tl.fromTo($("thead"), { clipPath: "inset(-30% 100% -15% -4%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "power3.out" }, 8.0);
+        tl.fromTo($("trule"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 8.05);
+        for (var tr2 = 0; tr2 < 4; tr2++) {
+          tl.fromTo($("tr-" + tr2), { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 8.1 + tr2 * 0.07);
+        }
+
+        // band: PENSAR NAS FALHAS ANTES (10.9) then hold
+        tl.fromTo($("band"), { clipPath: "inset(-30% 100% -15% -4%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.55, ease: "power3.inOut" }, 10.9);
+        tl.fromTo($("bandtxt"), { x: 40 }, { x: 0, duration: 0.6, ease: "power3.out" }, 11.0);
+        tl.fromTo([$("bp1"), $("bp2")], { rotation: -90, scale: 0 }, { rotation: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 11.15);
+
+        // pad the timeline to the full duration
+        tl.set({}, {}, D);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,351 @@
+<template id="08-pegadinha-template">
+  <div id="root" data-composition-id="08-pegadinha" data-start="0" data-duration="11.849" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="08-pegadinha-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="08-pegadinha-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="08-pegadinha-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="08-pegadinha-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      [class~="08-pegadinha-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 50% 55%; }
+
+      /* banner */
+      [class~="08-pegadinha-sign"] { position: absolute; left: 80px; top: 100px; width: 96px; height: 96px; overflow: visible; }
+      [class~="08-pegadinha-banner"] { position: absolute; left: 200px; top: 104px; background: #1F2BE0; color: #F0EBDE; padding: 14px 26px 10px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 54px; letter-spacing: 0.12em; line-height: 1.2; text-transform: uppercase; white-space: nowrap; }
+
+      /* ruler */
+      [class~="08-pegadinha-ruler"] { position: absolute; left: 206px; top: 690px; width: 1508px; height: 84px; }
+      [class~="08-pegadinha-cell"] { position: absolute; top: 0; width: 140px; height: 84px; box-sizing: border-box; border: 4px solid #1F2BE0; background: #F0EBDE; font-family: "DM Mono", monospace; font-size: 44px; letter-spacing: 0.02em; line-height: 76px; text-align: center; color: #1F2BE0; }
+      [class~="08-pegadinha-cell-hot"] { background: #1F2BE0; color: #F0EBDE; }
+      [class~="08-pegadinha-rbase"] { position: absolute; left: 206px; top: 782px; width: 1508px; height: 4px; background: #1F2BE0; transform-origin: 0% 50%; }
+      [class~="08-pegadinha-mark"] { position: absolute; top: 654px; width: 32px; height: 26px; overflow: visible; }
+
+      /* labels under the ruler */
+      [class~="08-pegadinha-lab"] { position: absolute; top: 800px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 38px; letter-spacing: 0.1em; line-height: 1.2; text-transform: uppercase; white-space: nowrap; color: #1F2BE0; padding-top: 0.25em; margin-top: -0.25em; }
+
+      /* mini scenes */
+      [class~="08-pegadinha-mini-l"] { position: absolute; left: 100px; top: 400px; width: 480px; height: 260px; overflow: visible; }
+      [class~="08-pegadinha-mini-r"] { position: absolute; left: 1220px; top: 360px; width: 620px; height: 300px; overflow: visible; }
+      [class~="08-pegadinha-who"] { position: absolute; left: 1692px; top: 548px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; text-transform: uppercase; white-space: nowrap; color: #1F2BE0; padding-top: 0.25em; margin-top: -0.25em; }
+
+      /* stamp (Scene 4) */
+      [class~="08-pegadinha-tagrow"] { position: absolute; left: 0; top: 128px; width: 1920px; height: 60px; display: flex; justify-content: center; }
+      [class~="08-pegadinha-tag"] { background: #1F2BE0; color: #F0EBDE; padding: 8px 18px 6px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 32px; letter-spacing: 0.16em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
+      [class~="08-pegadinha-stamprow"] { position: absolute; left: 0; top: 196px; width: 1920px; height: 270px; display: flex; justify-content: center; align-items: flex-start; }
+      [class~="08-pegadinha-stamp"] { position: relative; background: #F0EBDE; border: 8px solid #1F2BE0; padding: 24px 56px 26px; text-align: center; transform-origin: 50% 50%; }
+      [class~="08-pegadinha-stamp-in"] { position: absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border: 2px solid #1F2BE0; }
+      [class~="08-pegadinha-s1"] { font-family: "Newsreader", serif; font-weight: 400; font-size: 74px; line-height: 1.1; letter-spacing: -0.008em; white-space: nowrap; color: #1F2BE0; }
+      [class~="08-pegadinha-s2"] { display: inline-block; font-family: "Newsreader", serif; font-weight: 400; font-size: 110px; line-height: 1.0; letter-spacing: -0.008em; white-space: nowrap; color: #1F2BE0; }
+
+      svg [class~="08-pegadinha-stk"] { fill: #F0EBDE; stroke: #1F2BE0; stroke-linecap: square; stroke-linejoin: miter; }
+      svg [class~="08-pegadinha-ink"] { fill: #1F2BE0; }
+      svg [class~="08-pegadinha-paper"] { fill: #F0EBDE; }
+      svg [class~="08-pegadinha-line"] { fill: none; stroke: #1F2BE0; stroke-linecap: butt; }
+    </style>
+
+    <!-- ground -->
+    <div id="08-pegadinha-bg" class="clip 08-pegadinha-layer 08-pegadinha-ground" data-start="0" data-duration="11.849" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="08-pegadinha-stage" class="clip 08-pegadinha-layer" data-start="0" data-duration="11.849" data-track-index="1">
+      <div id="08-pegadinha-cam" class="08-pegadinha-cam">
+
+        <!-- Scene 1 : warning + PEGADINHA -->
+        <svg id="08-pegadinha-sign" class="08-pegadinha-sign" viewBox="0 0 96 96">
+          <g id="08-pegadinha-sign-in">
+            <rect class="08-pegadinha-stk" x="6" y="6" width="84" height="84" stroke-width="8"></rect>
+            <g id="08-pegadinha-sign-bang">
+              <rect class="08-pegadinha-ink" x="42" y="20" width="12" height="38"></rect>
+              <rect class="08-pegadinha-ink" x="42" y="64" width="12" height="12"></rect>
+            </g>
+          </g>
+        </svg>
+        <div id="08-pegadinha-banner" class="08-pegadinha-banner">PEGADINHA</div>
+
+        <!-- Scene 2 : nota 1 — falha + alarme -->
+        <svg id="08-pegadinha-mini-l" class="08-pegadinha-mini-l" viewBox="0 0 480 260">
+          <g id="08-pegadinha-fail-l">
+            <g id="08-pegadinha-fail-l-in">
+              <rect class="08-pegadinha-stk" x="45" y="130" width="90" height="90" stroke-width="8"></rect>
+              <rect class="08-pegadinha-ink" x="48" y="170" width="84" height="10" transform="rotate(45 90 175)"></rect>
+              <rect class="08-pegadinha-ink" x="48" y="170" width="84" height="10" transform="rotate(-45 90 175)"></rect>
+            </g>
+          </g>
+          <g id="08-pegadinha-brk">
+            <rect class="08-pegadinha-ink" x="22" y="106" width="30" height="7"></rect>
+            <rect class="08-pegadinha-ink" x="22" y="106" width="7" height="30"></rect>
+            <rect class="08-pegadinha-ink" x="128" y="106" width="30" height="7"></rect>
+            <rect class="08-pegadinha-ink" x="151" y="106" width="7" height="30"></rect>
+            <rect class="08-pegadinha-ink" x="22" y="237" width="30" height="7"></rect>
+            <rect class="08-pegadinha-ink" x="22" y="214" width="7" height="30"></rect>
+            <rect class="08-pegadinha-ink" x="128" y="237" width="30" height="7"></rect>
+            <rect class="08-pegadinha-ink" x="151" y="214" width="7" height="30"></rect>
+          </g>
+          <g id="08-pegadinha-alarm">
+            <rect class="08-pegadinha-ink" x="240" y="200" width="140" height="20"></rect>
+            <rect class="08-pegadinha-stk" x="255" y="150" width="110" height="50" stroke-width="6"></rect>
+            <rect class="08-pegadinha-ink" x="275" y="168" width="70" height="8"></rect>
+            <rect id="08-pegadinha-lamp" class="08-pegadinha-stk" x="282" y="94" width="56" height="56" stroke-width="6"></rect>
+            <rect class="08-pegadinha-ink" x="292" y="84" width="36" height="10"></rect>
+            <g id="08-pegadinha-wave-in">
+              <rect class="08-pegadinha-ink" x="258" y="100" width="7" height="40"></rect>
+              <rect class="08-pegadinha-ink" x="355" y="100" width="7" height="40"></rect>
+              <rect class="08-pegadinha-ink" x="290" y="64" width="40" height="7"></rect>
+            </g>
+            <g id="08-pegadinha-wave-out">
+              <rect class="08-pegadinha-ink" x="236" y="88" width="7" height="64"></rect>
+              <rect class="08-pegadinha-ink" x="377" y="88" width="7" height="64"></rect>
+              <rect class="08-pegadinha-ink" x="278" y="44" width="64" height="7"></rect>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Scene 3 : nota 10 — muro, falha escondida, cliente -->
+        <svg id="08-pegadinha-mini-r" class="08-pegadinha-mini-r" viewBox="0 0 620 300">
+          <g id="08-pegadinha-fail-r">
+            <g id="08-pegadinha-fail-r-in">
+              <rect class="08-pegadinha-stk" x="75" y="10" width="90" height="90" stroke-width="8"></rect>
+              <rect class="08-pegadinha-ink" x="78" y="50" width="84" height="10" transform="rotate(45 120 55)"></rect>
+              <rect class="08-pegadinha-ink" x="78" y="50" width="84" height="10" transform="rotate(-45 120 55)"></rect>
+            </g>
+          </g>
+          <g id="08-pegadinha-wall">
+            <g id="08-pegadinha-row-0">
+              <rect class="08-pegadinha-stk" x="30" y="258" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="90" y="258" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="150" y="258" width="60" height="32" stroke-width="4"></rect>
+            </g>
+            <g id="08-pegadinha-row-1">
+              <rect class="08-pegadinha-stk" x="30" y="226" width="30" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="60" y="226" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="120" y="226" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="180" y="226" width="30" height="32" stroke-width="4"></rect>
+            </g>
+            <g id="08-pegadinha-row-2">
+              <rect class="08-pegadinha-stk" x="30" y="194" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="90" y="194" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="150" y="194" width="60" height="32" stroke-width="4"></rect>
+            </g>
+            <g id="08-pegadinha-row-3">
+              <rect class="08-pegadinha-stk" x="30" y="162" width="30" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="60" y="162" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="120" y="162" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="180" y="162" width="30" height="32" stroke-width="4"></rect>
+            </g>
+            <g id="08-pegadinha-row-4">
+              <rect class="08-pegadinha-stk" x="30" y="130" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="90" y="130" width="60" height="32" stroke-width="4"></rect>
+              <rect class="08-pegadinha-stk" x="150" y="130" width="60" height="32" stroke-width="4"></rect>
+            </g>
+          </g>
+          <g id="08-pegadinha-arrow">
+            <line id="08-pegadinha-arrow-line" class="08-pegadinha-line" x1="225" y1="210" x2="318" y2="210" stroke-width="6" stroke-dasharray="14 10"></line>
+            <polygon class="08-pegadinha-ink" points="318,194 344,210 318,226"></polygon>
+          </g>
+          <g id="08-pegadinha-client">
+            <g id="08-pegadinha-client-in">
+              <rect class="08-pegadinha-stk" x="390" y="80" width="56" height="56" stroke-width="6"></rect>
+              <rect class="08-pegadinha-ink" x="403" y="100" width="9" height="9"></rect>
+              <rect class="08-pegadinha-ink" x="424" y="100" width="9" height="9"></rect>
+              <rect class="08-pegadinha-ink" x="409" y="120" width="18" height="6"></rect>
+              <rect class="08-pegadinha-stk" x="375" y="146" width="86" height="120" stroke-width="6"></rect>
+              <rect class="08-pegadinha-ink" x="355" y="156" width="20" height="9"></rect>
+              <rect class="08-pegadinha-ink" x="461" y="156" width="20" height="9"></rect>
+              <rect class="08-pegadinha-ink" x="392" y="266" width="12" height="24"></rect>
+              <rect class="08-pegadinha-ink" x="432" y="266" width="12" height="24"></rect>
+            </g>
+          </g>
+          <g id="08-pegadinha-bang">
+            <g id="08-pegadinha-bang-in">
+              <rect class="08-pegadinha-ink" x="412" y="4" width="13" height="38"></rect>
+              <rect class="08-pegadinha-ink" x="412" y="48" width="13" height="13"></rect>
+              <rect class="08-pegadinha-ink" x="384" y="14" width="18" height="6" transform="rotate(30 393 17)"></rect>
+              <rect class="08-pegadinha-ink" x="435" y="14" width="18" height="6" transform="rotate(-30 444 17)"></rect>
+            </g>
+          </g>
+        </svg>
+        <div id="08-pegadinha-who" class="08-pegadinha-who">CLIENTE</div>
+
+        <!-- ruler 1..10 -->
+        <div id="08-pegadinha-ruler" class="08-pegadinha-ruler"></div>
+        <div id="08-pegadinha-rbase" class="08-pegadinha-rbase"></div>
+        <svg id="08-pegadinha-mk1" class="08-pegadinha-mark" style="left:260px" viewBox="0 0 32 26"><polygon class="08-pegadinha-ink" points="0,0 32,0 16,24"></polygon></svg>
+        <svg id="08-pegadinha-mk10" class="08-pegadinha-mark" style="left:1628px" viewBox="0 0 32 26"><polygon class="08-pegadinha-ink" points="0,0 32,0 16,24"></polygon></svg>
+
+        <div id="08-pegadinha-lab1" class="08-pegadinha-lab" style="left:206px">PEGA NA HORA</div>
+        <div id="08-pegadinha-lab10" class="08-pegadinha-lab" style="right:206px">SÓ O CLIENTE DESCOBRE</div>
+
+        <!-- Scene 4 : stamp -->
+        <div id="08-pegadinha-tagrow" class="08-pegadinha-tagrow"><div id="08-pegadinha-tag" class="08-pegadinha-tag">MACETE</div></div>
+        <div id="08-pegadinha-stamprow" class="08-pegadinha-stamprow">
+          <div id="08-pegadinha-stamp" class="08-pegadinha-stamp">
+            <div id="08-pegadinha-stamp-in" class="08-pegadinha-stamp-in"></div>
+            <div id="08-pegadinha-s1" class="08-pegadinha-s1">D ALTO = FALHA ESCONDIDA</div>
+            <div id="08-pegadinha-s2" class="08-pegadinha-s2">= PIOR</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- chrome -->
+    <div id="08-pegadinha-chromewrap" class="clip 08-pegadinha-layer" data-start="0" data-duration="11.849" data-track-index="2">
+      <div id="08-pegadinha-ctag" class="08-pegadinha-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="08-pegadinha-num" class="08-pegadinha-chrome" style="right:80px">08 / 16</div>
+      <div id="08-pegadinha-hair-top" class="08-pegadinha-hair" style="top:80px"></div>
+      <div id="08-pegadinha-hair-bot" class="08-pegadinha-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 11.349;
+        var $ = function (id) { return document.getElementById("08-pegadinha-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["08-pegadinha"] = tl;
+
+        var CLIP_HIDE = "inset(-30% 100% -15% -4%)";
+        var CLIP_SHOW = "inset(-30% -4% -15% -4%)";
+        var CLIP_HIDE_R = "inset(-30% -4% -15% 100%)";
+
+        // build ruler cells 1..10
+        var ruler = $("ruler"), cells = [];
+        for (var i = 0; i < 10; i++) {
+          var c = document.createElement("div");
+          c.id = "08-pegadinha-cell-" + (i + 1);
+          c.className = "08-pegadinha-cell" + (i === 9 ? " 08-pegadinha-cell-hot" : "");
+          c.style.left = (i * 152) + "px";
+          c.textContent = String(i + 1);
+          ruler.appendChild(c);
+          cells.push(c);
+        }
+
+        // ---------- ambient, deterministic (driven by timeline time) ----------
+        var signIn = $("sign-in"), signBang = $("sign-bang");
+        var lamp = $("lamp"), wIn = $("wave-in"), wOut = $("wave-out");
+        var failL = $("fail-l-in"), failR = $("fail-r-in");
+        var arrowLine = $("arrow-line"), bangIn = $("bang-in"), clientIn = $("client-in");
+        var A_AT = 4.05, CAUGHT = 4.6, HID = 7.0, BANG = 7.75;
+        function ambient(t) {
+          // warning sign wobbles, its "!" blinks
+          var amp = t < 3.9 ? 7 : 2.5;
+          signIn.setAttribute("transform", "rotate(" + (Math.sin(t * 8) * amp).toFixed(2) + " 48 48)");
+          signBang.setAttribute("opacity", (t > 0.4 && t < 3.9) ? (Math.floor(t * 4) % 2 === 0 ? 1 : 0.15) : 1);
+
+          // alarm: lamp flashes, straight-line waves pulse in/out
+          if (t >= A_AT) {
+            var on = Math.floor((t - A_AT) / 0.18) % 2 === 0;
+            lamp.style.fill = on ? "#1F2BE0" : "#F0EBDE";
+            var p = ((t - A_AT) % 0.54) / 0.54;
+            wIn.setAttribute("opacity", p < 0.62 ? 1 : 0);
+            wOut.setAttribute("opacity", p > 0.31 ? 1 : 0);
+          } else {
+            lamp.style.fill = "#F0EBDE";
+            wIn.setAttribute("opacity", 0);
+            wOut.setAttribute("opacity", 0);
+          }
+
+          // caught failure trembles inside the brackets
+          var fx = t >= CAUGHT ? Math.sin(t * 44) * 3 : 0;
+          failL.setAttribute("transform", "translate(" + fx.toFixed(2) + " 0)");
+
+          // hidden failure peeks over the wall (only the tip shows)
+          var px = 0, py = 0;
+          if (t >= HID) { px = Math.sin((t - HID) * 2.4) * 8; py = Math.sin((t - HID) * 5.2) * 5; }
+          failR.setAttribute("transform", "translate(" + px.toFixed(2) + " " + py.toFixed(2) + ")");
+
+          // arrow dashes march toward the client
+          arrowLine.setAttribute("stroke-dashoffset", (-(Math.max(0, t - 6.9)) * 70).toFixed(2));
+
+          // client: "!" and body hop
+          var hop = t >= BANG + 0.3 ? -Math.abs(Math.sin((t - BANG - 0.3) * 6.5)) : 0;
+          bangIn.setAttribute("transform", "translate(0 " + (hop * 10).toFixed(2) + ")");
+          clientIn.setAttribute("transform", "translate(0 " + (hop * 5).toFixed(2) + ")");
+        }
+        ambient(0);
+        tl.to({ v: 0 }, { v: 1, duration: D, ease: "none", onUpdate: function () { ambient(this.progress() * D); } }, 0);
+
+        // camera: slow push-in under everything
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
+
+        // ---------- Scene 1 (0.0–3.9): PEGADINHA + ruler 1..10 ----------
+        tl.fromTo($("sign"), { scale: 0, rotation: -25, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+        tl.fromTo($("banner"), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.55, ease: "expo.out" }, 0.4);
+        tl.to($("banner"), { x: 10, duration: 0.06, ease: "power2.out" }, 1.0);
+        tl.to($("banner"), { x: -8, duration: 0.08, ease: "power2.inOut" }, 1.06);
+        tl.to($("banner"), { x: 0, duration: 0.2, ease: "power3.out" }, 1.14);
+
+        tl.fromTo($("rbase"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 2.6);
+        for (var k = 0; k < 10; k++) {
+          var at = 2.65 + k * 0.05;
+          if (k < 9) {
+            tl.fromTo(cells[k], { scale: 0, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, at);
+          } else {
+            // the 10: inverted block lands last, heavier
+            tl.fromTo(cells[k], { scale: 0, y: -40 }, { scale: 1, y: 0, duration: 0.5, ease: "power4.out" }, at + 0.15);
+            tl.to(cells[k], { scale: 1.18, duration: 0.14, ease: "power2.out" }, at + 0.7);
+            tl.to(cells[k], { scale: 1, duration: 0.35, ease: "power3.out" }, at + 0.84);
+          }
+        }
+
+        // ---------- Scene 2 (3.9–5.8): nota 1 — falha + alarme, PEGA NA HORA ----------
+        tl.fromTo($("mk1"), { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 3.9);
+        tl.to(cells[0], { scale: 1.16, duration: 0.14, ease: "power2.out" }, 3.9);
+        tl.to(cells[0], { scale: 1, duration: 0.35, ease: "power3.out" }, 4.04);
+        tl.fromTo($("fail-l"), { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 3.9);
+        tl.fromTo($("alarm"), { scale: 0, opacity: 0, transformOrigin: "50% 100%" }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 4.05);
+        tl.fromTo($("brk"), { scale: 1.7, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, CAUGHT);
+        tl.fromTo($("lab1"), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.5, ease: "power3.out" }, 4.7);
+
+        // ---------- Scene 3 (5.8–8.7): nota 10 — muro, falha some, CLIENTE ----------
+        tl.fromTo($("mk10"), { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 5.8);
+        tl.to(cells[9], { scale: 1.16, duration: 0.14, ease: "power2.out" }, 5.8);
+        tl.to(cells[9], { scale: 1, duration: 0.35, ease: "power3.out" }, 5.94);
+        tl.fromTo($("fail-r"), { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 5.8);
+        for (var r = 0; r < 5; r++) {
+          tl.fromTo($("row-" + r), { scaleY: 0, opacity: 0, transformOrigin: "50% 100%" }, { scaleY: 1, opacity: 1, duration: 0.3, ease: "power3.out" }, 6.0 + r * 0.1);
+        }
+        // the failure ducks behind the wall — only the tip stays visible
+        tl.to($("fail-r"), { y: 106, duration: 0.4, ease: "power2.in" }, 6.6);
+        tl.fromTo($("arrow"), { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 6.95);
+        tl.fromTo($("client"), { scale: 0, opacity: 0, transformOrigin: "50% 100%" }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 7.2);
+        tl.fromTo($("who"), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.4, ease: "power3.out" }, 7.4);
+        tl.fromTo($("bang"), { scale: 0, opacity: 0, transformOrigin: "50% 100%" }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, BANG);
+        tl.fromTo($("lab10"), { clipPath: CLIP_HIDE_R }, { clipPath: CLIP_SHOW, duration: 0.55, ease: "power3.out" }, 7.7);
+
+        // ---------- Scene 4 (8.7–11.349): MACETE stamp ----------
+        tl.fromTo($("tag"), { scale: 0, y: 20 }, { scale: 1, y: 0, duration: 0.45, ease: "circ.out" }, 8.8);
+        // scan wave across the ruler 1 -> 10 ("detecção alta")
+        for (var w = 0; w < 10; w++) {
+          tl.to(cells[w], { y: -14, duration: 0.12, ease: "power2.out" }, 8.85 + w * 0.05);
+          tl.to(cells[w], { y: 0, duration: 0.25, ease: "power3.out" }, 8.97 + w * 0.05);
+        }
+        // the slam
+        tl.fromTo($("stamp"), { scale: 2.4, rotation: -9, opacity: 0 }, { scale: 1, rotation: -2, opacity: 1, duration: 0.32, ease: "power4.out" }, 9.5);
+        tl.fromTo($("s2"), { x: 240, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, 9.62);
+        // tremor
+        var SHAKE = [[10, -7], [-9, 6], [7, 4], [-5, -4], [3, 2], [0, 0]];
+        for (var s = 0; s < SHAKE.length; s++) {
+          tl.to($("cam"), { x: SHAKE[s][0], y: SHAKE[s][1], duration: 0.05, ease: "none" }, 9.8 + s * 0.05);
+        }
+        // hold: one slow breath (no repeat)
+        tl.to($("stamp"), { scale: 1.02, duration: 0.45, ease: "sine.inOut" }, 10.45);
+        tl.to($("stamp"), { scale: 1, duration: 0.42, ease: "sine.inOut" }, 10.9);
+      })();
+    </script>
+  </div>
+</template>

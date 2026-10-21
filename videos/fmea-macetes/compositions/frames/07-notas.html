@@ -1,0 +1,334 @@
+<template id="07-notas-template">
+  <div id="root" data-composition-id="07-notas" data-start="0" data-duration="10.832" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="07-notas-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="07-notas-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="07-notas-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="07-notas-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      [class~="07-notas-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 50% 55%; }
+
+      /* title */
+      [class~="07-notas-title"] { position: absolute; left: 80px; top: 96px; font-family: "Newsreader", serif; font-weight: 400; font-size: 104px; line-height: 1.1; letter-spacing: -0.008em; white-space: nowrap; color: #1F2BE0; }
+      [class~="07-notas-tw"] { display: inline-block; padding-top: 0.06em; }
+      [class~="07-notas-scale"] { position: absolute; left: 640px; top: 150px; font-family: "DM Mono", monospace; font-size: 34px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      /* columns */
+      [class~="07-notas-col"] { position: absolute; top: 230px; width: 520px; height: 640px; }
+
+      /* question block (inverted, never dimmed) */
+      [class~="07-notas-qwrap"] { position: absolute; left: 0; top: 0; width: 520px; height: 84px; display: flex; align-items: flex-end; justify-content: center; }
+      [class~="07-notas-q"] { background: #1F2BE0; color: #F0EBDE; padding: 14px 22px 10px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 36px; letter-spacing: 0.04em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; transform-origin: 50% 100%; }
+
+      /* ruler */
+      [class~="07-notas-ruler"] { position: absolute; left: 70px; top: 126px; width: 100px; height: 472px; transform-origin: 50% 100%; }
+      [class~="07-notas-frame"] { position: absolute; left: 0; top: 0; width: 100px; height: 472px; border: 3px solid #1F2BE0; box-sizing: border-box; }
+      [class~="07-notas-cell"] { position: absolute; left: 9px; width: 82px; height: 38px; background: rgba(31,43,224,0.10); }
+      [class~="07-notas-on"] { position: absolute; left: 0; top: 0; width: 82px; height: 38px; background: #1F2BE0; transform-origin: 50% 100%; }
+      [class~="07-notas-tick"] { position: absolute; left: 0; width: 58px; text-align: right; font-family: "DM Mono", monospace; font-size: 32px; letter-spacing: 0.04em; line-height: 1.2; color: #1F2BE0; }
+
+      /* letter + name */
+      [class~="07-notas-letter"] { position: absolute; left: 210px; top: 96px; width: 200px; font-family: "Newsreader", serif; font-weight: 400; font-size: 210px; line-height: 1; letter-spacing: -0.015em; color: #1F2BE0; transform-origin: 30% 70%; }
+      [class~="07-notas-name"] { position: absolute; left: 214px; top: 336px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 33px; letter-spacing: 0.1em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; color: #1F2BE0; padding-top: 0.25em; margin-top: -0.25em; }
+      [class~="07-notas-under"] { position: absolute; left: 214px; top: 390px; width: 290px; height: 4px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+      /* icon */
+      [class~="07-notas-icon"] { position: absolute; left: 210px; top: 420px; width: 300px; height: 170px; overflow: visible; }
+
+      svg [class~="07-notas-stk"] { fill: none; stroke: #1F2BE0; stroke-linecap: square; stroke-linejoin: miter; }
+      svg [class~="07-notas-ink"] { fill: #1F2BE0; }
+      svg [class~="07-notas-paper"] { fill: #F0EBDE; }
+      svg [class~="07-notas-faint"] { fill: rgba(31,43,224,0.18); }
+    </style>
+
+    <!-- ground -->
+    <div id="07-notas-bg" class="clip 07-notas-layer 07-notas-ground" data-start="0" data-duration="10.832" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="07-notas-stage" class="clip 07-notas-layer" data-start="0" data-duration="10.832" data-track-index="1">
+      <div id="07-notas-cam" class="07-notas-cam">
+
+        <div id="07-notas-title" class="07-notas-title"><span id="07-notas-tw-0" class="07-notas-tw">Três</span> <span id="07-notas-tw-1" class="07-notas-tw">notas</span></div>
+        <div id="07-notas-scale" class="07-notas-scale">1 — 10</div>
+
+        <!-- COLUMN 1 : SEVERIDADE -->
+        <div id="07-notas-col-0" class="07-notas-col" style="left:110px">
+          <div id="07-notas-qwrap-0" class="07-notas-qwrap"><div id="07-notas-q-0" class="07-notas-q">É SÉRIO?</div></div>
+          <div id="07-notas-ruler-0" class="07-notas-ruler">
+            <div id="07-notas-frame-0" class="07-notas-frame"></div>
+          </div>
+          <div id="07-notas-t10-0" class="07-notas-tick" style="top:141px">10</div>
+          <div id="07-notas-t1-0" class="07-notas-tick" style="top:546px">1</div>
+          <div id="07-notas-letter-0" class="07-notas-letter">S</div>
+          <div id="07-notas-name-0" class="07-notas-name">SEVERIDADE</div>
+          <div id="07-notas-under-0" class="07-notas-under"></div>
+          <svg id="07-notas-icon-0" class="07-notas-icon" viewBox="0 0 300 170">
+            <!-- weight slams the part: severity of the effect -->
+            <g id="07-notas-base">
+              <rect class="07-notas-ink" x="20" y="152" width="260" height="10"></rect>
+              <rect id="07-notas-part" class="07-notas-stk" x="90" y="112" width="120" height="40" stroke-width="6"></rect>
+              <g id="07-notas-crack" opacity="0">
+                <rect class="07-notas-ink" x="146" y="112" width="8" height="18"></rect>
+                <rect class="07-notas-ink" x="138" y="128" width="8" height="12"></rect>
+                <rect class="07-notas-ink" x="150" y="138" width="8" height="14"></rect>
+              </g>
+            </g>
+            <g id="07-notas-weight">
+              <rect class="07-notas-ink" x="100" y="20" width="100" height="70"></rect>
+              <rect class="07-notas-paper" x="124" y="36" width="52" height="10"></rect>
+              <rect class="07-notas-ink" x="146" y="0" width="8" height="20"></rect>
+            </g>
+            <g id="07-notas-impact" opacity="0">
+              <rect class="07-notas-ink" x="50" y="120" width="28" height="6"></rect>
+              <rect class="07-notas-ink" x="56" y="100" width="22" height="6" transform="rotate(-30 67 103)"></rect>
+              <rect class="07-notas-ink" x="222" y="120" width="28" height="6"></rect>
+              <rect class="07-notas-ink" x="222" y="100" width="22" height="6" transform="rotate(30 233 103)"></rect>
+            </g>
+          </svg>
+        </div>
+
+        <!-- COLUMN 2 : OCORRÊNCIA -->
+        <div id="07-notas-col-1" class="07-notas-col" style="left:700px">
+          <div id="07-notas-qwrap-1" class="07-notas-qwrap"><div id="07-notas-q-1" class="07-notas-q">OCORRE MUITO?</div></div>
+          <div id="07-notas-ruler-1" class="07-notas-ruler">
+            <div id="07-notas-frame-1" class="07-notas-frame"></div>
+          </div>
+          <div id="07-notas-t10-1" class="07-notas-tick" style="top:141px">10</div>
+          <div id="07-notas-t1-1" class="07-notas-tick" style="top:546px">1</div>
+          <div id="07-notas-letter-1" class="07-notas-letter">O</div>
+          <div id="07-notas-name-1" class="07-notas-name">OCORRÊNCIA</div>
+          <div id="07-notas-under-1" class="07-notas-under"></div>
+          <svg id="07-notas-icon-1" class="07-notas-icon" viewBox="0 0 300 170">
+            <!-- square clock spinning + tally of occurrences -->
+            <rect class="07-notas-stk" x="10" y="20" width="130" height="130" stroke-width="8"></rect>
+            <rect class="07-notas-ink" x="71" y="28" width="8" height="14"></rect>
+            <rect class="07-notas-ink" x="71" y="128" width="8" height="14"></rect>
+            <rect class="07-notas-ink" x="18" y="81" width="14" height="8"></rect>
+            <rect class="07-notas-ink" x="118" y="81" width="14" height="8"></rect>
+            <g id="07-notas-hand-m"><rect class="07-notas-ink" x="72" y="38" width="6" height="50"></rect></g>
+            <g id="07-notas-hand-h"><rect class="07-notas-ink" x="71" y="58" width="8" height="30"></rect></g>
+            <rect class="07-notas-ink" x="67" y="77" width="16" height="16"></rect>
+            <g id="07-notas-tally">
+              <rect id="07-notas-tl-0" class="07-notas-ink" x="164" y="40" width="10" height="46" opacity="0"></rect>
+              <rect id="07-notas-tl-1" class="07-notas-ink" x="184" y="40" width="10" height="46" opacity="0"></rect>
+              <rect id="07-notas-tl-2" class="07-notas-ink" x="204" y="40" width="10" height="46" opacity="0"></rect>
+              <rect id="07-notas-tl-3" class="07-notas-ink" x="224" y="40" width="10" height="46" opacity="0"></rect>
+              <rect id="07-notas-tl-4" class="07-notas-ink" x="156" y="58" width="90" height="10" opacity="0" transform="rotate(-24 201 63)"></rect>
+              <rect id="07-notas-tl-5" class="07-notas-ink" x="164" y="104" width="10" height="46" opacity="0"></rect>
+              <rect id="07-notas-tl-6" class="07-notas-ink" x="184" y="104" width="10" height="46" opacity="0"></rect>
+              <rect id="07-notas-tl-7" class="07-notas-ink" x="204" y="104" width="10" height="46" opacity="0"></rect>
+              <rect id="07-notas-tl-8" class="07-notas-ink" x="224" y="104" width="10" height="46" opacity="0"></rect>
+              <rect id="07-notas-tl-9" class="07-notas-ink" x="156" y="122" width="90" height="10" opacity="0" transform="rotate(-24 201 127)"></rect>
+            </g>
+          </svg>
+        </div>
+
+        <!-- COLUMN 3 : DETECÇÃO -->
+        <div id="07-notas-col-2" class="07-notas-col" style="left:1290px">
+          <div id="07-notas-qwrap-2" class="07-notas-qwrap"><div id="07-notas-q-2" class="07-notas-q">DÁ PRA PERCEBER?</div></div>
+          <div id="07-notas-ruler-2" class="07-notas-ruler">
+            <div id="07-notas-frame-2" class="07-notas-frame"></div>
+          </div>
+          <div id="07-notas-t10-2" class="07-notas-tick" style="top:141px">10</div>
+          <div id="07-notas-t1-2" class="07-notas-tick" style="top:546px">1</div>
+          <div id="07-notas-letter-2" class="07-notas-letter">D</div>
+          <div id="07-notas-name-2" class="07-notas-name">DETECÇÃO</div>
+          <div id="07-notas-under-2" class="07-notas-under"></div>
+          <svg id="07-notas-icon-2" class="07-notas-icon" viewBox="0 0 300 170">
+            <!-- parts on a line; square magnifier scans, finds the defect -->
+            <rect class="07-notas-ink" x="0" y="150" width="300" height="8"></rect>
+            <rect class="07-notas-ink" x="14" y="112" width="34" height="34"></rect>
+            <rect class="07-notas-ink" x="72" y="112" width="34" height="34"></rect>
+            <g id="07-notas-defect">
+              <rect class="07-notas-stk" x="133" y="115" width="28" height="28" stroke-width="6"></rect>
+              <rect class="07-notas-ink" x="140" y="122" width="14" height="6"></rect>
+            </g>
+            <rect class="07-notas-ink" x="188" y="112" width="34" height="34"></rect>
+            <rect class="07-notas-ink" x="246" y="112" width="34" height="34"></rect>
+            <g id="07-notas-alert" opacity="0">
+              <rect class="07-notas-ink" x="142" y="2" width="10" height="26"></rect>
+              <rect class="07-notas-ink" x="142" y="34" width="10" height="10"></rect>
+            </g>
+            <g id="07-notas-lens">
+              <rect class="07-notas-faint" x="117" y="90" width="60" height="60"></rect>
+              <rect class="07-notas-stk" x="117" y="90" width="60" height="60" stroke-width="8"></rect>
+              <rect class="07-notas-ink" x="173" y="66" width="12" height="40" transform="rotate(45 179 86)"></rect>
+            </g>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- chrome -->
+    <div id="07-notas-chromewrap" class="clip 07-notas-layer" data-start="0" data-duration="10.832" data-track-index="2">
+      <div id="07-notas-tag" class="07-notas-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="07-notas-num" class="07-notas-chrome" style="right:80px">07 / 16</div>
+      <div id="07-notas-hair-top" class="07-notas-hair" style="top:80px"></div>
+      <div id="07-notas-hair-bot" class="07-notas-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 10.432;
+        var $ = function (id) { return document.getElementById("07-notas-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["07-notas"] = tl;
+
+        var CLIP_HIDE = "inset(-30% 100% -15% -4%)";
+        var CLIP_SHOW = "inset(-30% -4% -15% -4%)";
+        var CELL_H = 38, CELL_GAP = 7, CELLS = 10;
+
+        // build the 10 cells of each ruler (index 0 = bottom = nota 1)
+        var on = [[], [], []];
+        for (var c = 0; c < 3; c++) {
+          var ruler = $("ruler-" + c);
+          for (var k = 0; k < CELLS; k++) {
+            var cell = document.createElement("div");
+            cell.id = "07-notas-cell-" + c + "-" + k;
+            cell.className = "07-notas-cell";
+            cell.style.top = (472 - 14 - CELL_H - k * (CELL_H + CELL_GAP)) + "px";
+            var fill = document.createElement("div");
+            fill.id = "07-notas-on-" + c + "-" + k;
+            fill.className = "07-notas-on";
+            cell.appendChild(fill);
+            ruler.appendChild(cell);
+            on[c].push(fill);
+          }
+        }
+
+        // ---------- ambient mini-scenes (deterministic, driven by timeline time) ----------
+        var weight = $("weight"), base = $("base"), crack = $("crack"), impact = $("impact");
+        var handM = $("hand-m"), handH = $("hand-h");
+        var lens = $("lens"), alert = $("alert"), defect = $("defect");
+        var S_AT = 3.35, O_AT = 5.25, D_AT = 7.25, D_FIND = 8.1;
+        function ease3(p) { return 1 - Math.pow(1 - p, 3); }
+        function ambient(t) {
+          // SEVERIDADE: a heavy square weight slams the part again and again
+          var wy = -26, by = 0, hit = 0;
+          if (t >= S_AT) {
+            var ph = ((t - S_AT) % 0.9) / 0.9;
+            if (ph < 0.22) { var p = ph / 0.22; wy = -26 + 48 * p * p; }
+            else if (ph < 0.32) { wy = 22; hit = 1; by = Math.sin((ph - 0.22) / 0.1 * Math.PI * 3) * 4; }
+            else { var r = (ph - 0.32) / 0.68; wy = 22 - 48 * ease3(r); }
+          }
+          weight.setAttribute("transform", "translate(0 " + wy.toFixed(2) + ")");
+          base.setAttribute("transform", "translate(" + by.toFixed(2) + " 0)");
+          impact.setAttribute("opacity", hit);
+          crack.setAttribute("opacity", t >= S_AT + 0.25 ? 1 : 0);
+
+          // OCORRÊNCIA: clock hands race, tally marks pile up
+          var spin = t < O_AT ? 0 : (t - O_AT) * 720;
+          handM.setAttribute("transform", "rotate(" + spin.toFixed(2) + " 75 88)");
+          handH.setAttribute("transform", "rotate(" + (spin / 12).toFixed(2) + " 75 88)");
+          var n = t < O_AT ? 0 : Math.min(10, Math.floor((t - O_AT) / 0.28) + 1);
+          for (var i = 0; i < 10; i++) $("tl-" + i).setAttribute("opacity", i < n ? 1 : 0);
+
+          // DETECÇÃO: square magnifier sweeps the line, then locks on the defect
+          var lx = -100, found = 0;
+          if (t >= D_AT && t < D_FIND) {
+            lx = Math.sin(((t - D_AT) / (D_FIND - D_AT)) * Math.PI * 2.5 - Math.PI / 2) * 100;
+          } else if (t >= D_FIND) {
+            var q = Math.min(1, (t - D_FIND) / 0.35);
+            var from = Math.sin(Math.PI * 2.5 - Math.PI / 2) * 100;
+            lx = from + (0 - from) * ease3(q);
+            found = q >= 1 ? 1 : 0;
+          }
+          lens.setAttribute("transform", "translate(" + lx.toFixed(2) + " 0)");
+          alert.setAttribute("opacity", found ? (Math.sin((t - D_FIND) * 14) > -0.4 ? 1 : 0) : 0);
+          defect.setAttribute("transform", found ? "translate(0 " + (Math.sin((t - D_FIND) * 22) * 2).toFixed(2) + ")" : "translate(0 0)");
+        }
+        ambient(0);
+        tl.to({ v: 0 }, { v: 1, duration: D, ease: "none", onUpdate: function () { ambient(this.progress() * D); } }, 0);
+
+        // camera: slow push-in under everything
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
+
+        // ---------- Scene 1 : title, then three empty rulers "de 1 a 10" ----------
+        tl.fromTo($("tw-0"), { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0.05);
+        tl.fromTo($("tw-1"), { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0.15);
+        tl.fromTo($("scale"), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.5, ease: "power3.out" }, 2.0);
+
+        for (var c2 = 0; c2 < 3; c2++) {
+          var at = 2.05 + c2 * 0.14;
+          tl.fromTo($("ruler-" + c2), { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, at);
+          tl.fromTo($("t1-" + c2), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, at + 0.2);
+          tl.fromTo($("t10-" + c2), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, at + 0.35);
+          // a quick 1→10 tick sweep on each empty ruler (reads "de 1 a 10")
+          for (var k2 = 0; k2 < CELLS; k2++) {
+            tl.fromTo(on[c2][k2], { scaleY: 0 }, { scaleY: 0.25, duration: 0.08, ease: "power2.out" }, at + 0.3 + k2 * 0.035);
+            tl.to(on[c2][k2], { scaleY: 0, duration: 0.12, ease: "power2.in" }, at + 0.42 + k2 * 0.035);
+          }
+          // hidden until each column's cue
+          tl.fromTo($("letter-" + c2), { scale: 0, opacity: 0 }, { scale: 0, opacity: 0, duration: 0.01 }, 0);
+          tl.fromTo($("name-" + c2), { clipPath: CLIP_HIDE }, { clipPath: CLIP_HIDE, duration: 0.01 }, 0);
+          tl.fromTo($("under-" + c2), { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, 0);
+          tl.fromTo($("icon-" + c2), { scale: 0, opacity: 0, transformOrigin: "50% 100%" }, { scale: 0, opacity: 0, duration: 0.01 }, 0);
+          tl.fromTo($("q-" + c2), { scale: 0, y: 20 }, { scale: 0, y: 20, duration: 0.01 }, 0);
+        }
+
+        // ---------- helpers ----------
+        function revealColumn(c, at) {
+          tl.to($("letter-" + c), { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, at);
+          tl.to($("name-" + c), { clipPath: CLIP_SHOW, duration: 0.5, ease: "power3.out" }, at + 0.15);
+          tl.to($("under-" + c), { scaleX: 1, duration: 0.45, ease: "power3.out" }, at + 0.25);
+          tl.to($("icon-" + c), { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, at + 0.3);
+          tl.to($("ruler-" + c), { scale: 1.04, duration: 0.18, ease: "power2.out" }, at);
+          tl.to($("ruler-" + c), { scale: 1, duration: 0.35, ease: "power3.out" }, at + 0.18);
+        }
+        // thermometer: fill bottom->top to 10, then drain back down
+        function thermo(c, up, down) {
+          for (var k = 0; k < CELLS; k++) {
+            tl.to(on[c][k], { scaleY: 1, duration: 0.1, ease: "power2.out" }, up + k * 0.075);
+            tl.to(on[c][CELLS - 1 - k], { scaleY: 0, duration: 0.1, ease: "power2.in" }, down + k * 0.06);
+          }
+          tl.to($("t10-" + c), { scale: 1.3, duration: 0.12, ease: "power2.out", transformOrigin: "100% 50%" }, up + 0.7);
+          tl.to($("t10-" + c), { scale: 1, duration: 0.3, ease: "power3.out" }, up + 0.82);
+        }
+        function popQuestion(c, at) {
+          tl.to($("q-" + c), { scale: 1, y: 0, duration: 0.5, ease: "power3.out" }, at);
+        }
+
+        // ---------- Scene 2 : S / SEVERIDADE / É SÉRIO? ----------
+        revealColumn(0, 3.0);
+        thermo(0, 3.3, 4.25);
+        popQuestion(0, 4.4);
+
+        // ---------- Scene 3 : O / OCORRÊNCIA / OCORRE MUITO? ----------
+        revealColumn(1, 4.9);
+        thermo(1, 5.2, 6.15);
+        popQuestion(1, 6.2);
+
+        // ---------- Scene 4 : D / DETECÇÃO / DÁ PRA PERCEBER? ----------
+        revealColumn(2, 6.9);
+        thermo(2, 7.2, 8.2);
+        popQuestion(2, 8.1);
+
+        // final hold: the three questions nod in sequence, letters bounce with them
+        var NOD = [9.0, 9.18, 9.36];
+        for (var j = 0; j < 3; j++) {
+          tl.to($("q-" + j), { y: -14, duration: 0.14, ease: "power2.out" }, NOD[j]);
+          tl.to($("q-" + j), { y: 0, duration: 0.3, ease: "power3.out" }, NOD[j] + 0.14);
+          tl.to($("letter-" + j), { y: -10, duration: 0.14, ease: "power2.out" }, NOD[j]);
+          tl.to($("letter-" + j), { y: 0, duration: 0.3, ease: "power3.out" }, NOD[j] + 0.14);
+        }
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,227 @@
+<template id="02-nome-template">
+  <div id="root" data-composition-id="02-nome" data-start="0" data-duration="10.036" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="02-nome-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="02-nome-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+
+      /* chrome */
+      [class~="02-nome-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="02-nome-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 26px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      [class~="02-nome-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 50% 45%; }
+
+      /* letter blocks */
+      [class~="02-nome-blk"] { position: absolute; top: 130px; width: 200px; height: 200px; }
+      [class~="02-nome-inner"] { position: absolute; inset: 0; border: 3px solid #1F2BE0; background: #F0EBDE; overflow: hidden; transform-origin: 50% 100%; }
+      [class~="02-nome-fill"] { position: absolute; inset: 0; background: #1F2BE0; transform-origin: 50% 100%; }
+      [class~="02-nome-L"] { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Newsreader", serif; font-weight: 400; font-size: 156px; line-height: 1; letter-spacing: -0.01em; padding-bottom: 14px; }
+      [class~="02-nome-L-un"] { color: #1F2BE0; }
+      [class~="02-nome-L-lit"] { color: #F0EBDE; }
+
+      /* word boxes */
+      [class~="02-nome-wbox"] { position: absolute; top: 352px; width: 300px; height: 62px; border: 2px solid #1F2BE0; background: #F0EBDE; overflow: hidden; transform-origin: 50% 50%; }
+      [class~="02-nome-wfill"] { position: absolute; inset: 0; background: #1F2BE0; transform-origin: 50% 100%; }
+      [class~="02-nome-w"] { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "DM Mono", monospace; font-size: 32px; letter-spacing: 0.06em; line-height: 1; padding-top: 4px; white-space: nowrap; }
+      [class~="02-nome-w-en"] { color: #1F2BE0; }
+      [class~="02-nome-w-pt"] { color: #F0EBDE; }
+
+      /* left labels */
+      [class~="02-nome-lab"] { position: absolute; left: 80px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.3; white-space: nowrap; color: #1F2BE0; }
+      [class~="02-nome-strike"] { position: absolute; left: -6px; right: -6px; top: 52%; height: 3px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+      /* phrase */
+      [class~="02-nome-phrase"] { position: absolute; left: 80px; top: 548px; width: 1760px; text-align: center; white-space: nowrap; font-family: "Newsreader", serif; font-weight: 400; font-size: 80px; line-height: 1.15; letter-spacing: -0.008em; color: #1F2BE0; }
+      [class~="02-nome-pw"] { display: inline-block; position: relative; padding: 0.12em 0.04em 0.06em; }
+      [class~="02-nome-ul"] { position: absolute; left: 0.04em; right: 0.04em; bottom: 0.02em; height: 5px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+      /* band */
+      [class~="02-nome-bandwrap"] { position: absolute; left: 80px; top: 704px; width: 1760px; text-align: center; }
+      [class~="02-nome-band"] { display: inline-flex; align-items: center; gap: 26px; background: #1F2BE0; color: #F0EBDE; padding: 22px 44px 20px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 40px; letter-spacing: 0.16em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
+      [class~="02-nome-pip"] { width: 20px; height: 20px; background: #F0EBDE; flex: 0 0 auto; }
+
+      /* scan marker */
+      [class~="02-nome-marker"] { position: absolute; left: 540px; top: 110px; width: 240px; height: 240px; border: 3px solid #1F2BE0; transform-origin: 50% 50%; }
+    </style>
+
+    <!-- ground -->
+    <div id="02-nome-bg" class="clip 02-nome-layer 02-nome-ground" data-start="0" data-duration="10.036" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="02-nome-stage" class="clip 02-nome-layer" data-start="0" data-duration="10.036" data-track-index="1">
+      <div id="02-nome-cam" class="02-nome-cam">
+
+        <svg id="02-nome-lines" class="02-nome-layer" width="1920" height="1080" viewBox="0 0 1920 1080">
+          <line id="02-nome-ln-0" x1="660" y1="420" x2="660" y2="548" stroke="#1F2BE0" stroke-width="2.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></line>
+          <line id="02-nome-ln-1" x1="1010" y1="420" x2="1010" y2="548" stroke="#1F2BE0" stroke-width="2.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></line>
+          <line id="02-nome-ln-2" x1="1360" y1="420" x2="1360" y2="548" stroke="#1F2BE0" stroke-width="2.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></line>
+          <line id="02-nome-ln-3" x1="1710" y1="420" x2="1710" y2="548" stroke="#1F2BE0" stroke-width="2.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></line>
+          <rect id="02-nome-tip-0" x="655" y="543" width="10" height="10" fill="#1F2BE0" opacity="0"></rect>
+          <rect id="02-nome-tip-1" x="1005" y="543" width="10" height="10" fill="#1F2BE0" opacity="0"></rect>
+          <rect id="02-nome-tip-2" x="1355" y="543" width="10" height="10" fill="#1F2BE0" opacity="0"></rect>
+          <rect id="02-nome-tip-3" x="1705" y="543" width="10" height="10" fill="#1F2BE0" opacity="0"></rect>
+        </svg>
+
+        <div id="02-nome-marker" class="02-nome-marker"></div>
+
+        <!-- F M E A blocks -->
+        <div id="02-nome-blk-0" class="02-nome-blk" style="left:560px"><div id="02-nome-in-0" class="02-nome-inner"><div id="02-nome-fill-0" class="02-nome-fill"></div><div id="02-nome-un-0" class="02-nome-L 02-nome-L-un">F</div><div id="02-nome-lit-0" class="02-nome-L 02-nome-L-lit">F</div></div></div>
+        <div id="02-nome-blk-1" class="02-nome-blk" style="left:910px"><div id="02-nome-in-1" class="02-nome-inner"><div id="02-nome-fill-1" class="02-nome-fill"></div><div id="02-nome-un-1" class="02-nome-L 02-nome-L-un">M</div><div id="02-nome-lit-1" class="02-nome-L 02-nome-L-lit">M</div></div></div>
+        <div id="02-nome-blk-2" class="02-nome-blk" style="left:1260px"><div id="02-nome-in-2" class="02-nome-inner"><div id="02-nome-fill-2" class="02-nome-fill"></div><div id="02-nome-un-2" class="02-nome-L 02-nome-L-un">E</div><div id="02-nome-lit-2" class="02-nome-L 02-nome-L-lit">E</div></div></div>
+        <div id="02-nome-blk-3" class="02-nome-blk" style="left:1610px"><div id="02-nome-in-3" class="02-nome-inner"><div id="02-nome-fill-3" class="02-nome-fill"></div><div id="02-nome-un-3" class="02-nome-L 02-nome-L-un">A</div><div id="02-nome-lit-3" class="02-nome-L 02-nome-L-lit">A</div></div></div>
+
+        <!-- word boxes: english -> portuguese -->
+        <div id="02-nome-wb-0" class="02-nome-wbox" style="left:510px"><div id="02-nome-wf-0" class="02-nome-wfill"></div><div id="02-nome-en-0" class="02-nome-w 02-nome-w-en">FAILURE</div><div id="02-nome-pt-0" class="02-nome-w 02-nome-w-pt">FALHA</div></div>
+        <div id="02-nome-wb-1" class="02-nome-wbox" style="left:860px"><div id="02-nome-wf-1" class="02-nome-wfill"></div><div id="02-nome-en-1" class="02-nome-w 02-nome-w-en">MODE</div><div id="02-nome-pt-1" class="02-nome-w 02-nome-w-pt">MODO</div></div>
+        <div id="02-nome-wb-2" class="02-nome-wbox" style="left:1210px"><div id="02-nome-wf-2" class="02-nome-wfill"></div><div id="02-nome-en-2" class="02-nome-w 02-nome-w-en">EFFECTS</div><div id="02-nome-pt-2" class="02-nome-w 02-nome-w-pt">EFEITO</div></div>
+        <div id="02-nome-wb-3" class="02-nome-wbox" style="left:1560px"><div id="02-nome-wf-3" class="02-nome-wfill"></div><div id="02-nome-en-3" class="02-nome-w 02-nome-w-en">ANALYSIS</div><div id="02-nome-pt-3" class="02-nome-w 02-nome-w-pt">ANÁLISE</div></div>
+
+        <!-- left labels -->
+        <div id="02-nome-lab-en" class="02-nome-lab" style="top:362px">DO INGLÊS<div id="02-nome-strike" class="02-nome-strike"></div></div>
+        <div id="02-nome-lab-pt" class="02-nome-lab" style="top:414px">EM PORTUGUÊS</div>
+
+        <!-- full name phrase -->
+        <div id="02-nome-phrase" class="02-nome-phrase"><span id="02-nome-pw-0" class="02-nome-pw">Análise<span id="02-nome-ul-0" class="02-nome-ul"></span></span> <span id="02-nome-pw-1" class="02-nome-pw">dos</span> <span id="02-nome-pw-2" class="02-nome-pw">Modos<span id="02-nome-ul-2" class="02-nome-ul"></span></span> <span id="02-nome-pw-3" class="02-nome-pw">de</span> <span id="02-nome-pw-4" class="02-nome-pw">Falha<span id="02-nome-ul-4" class="02-nome-ul"></span></span> <span id="02-nome-pw-5" class="02-nome-pw">e</span> <span id="02-nome-pw-6" class="02-nome-pw">seus</span> <span id="02-nome-pw-7" class="02-nome-pw">Efeitos<span id="02-nome-ul-7" class="02-nome-ul"></span></span></div>
+
+        <!-- macete band -->
+        <div id="02-nome-bandwrap" class="02-nome-bandwrap"><div id="02-nome-band" class="02-nome-band"><span id="02-nome-pip" class="02-nome-pip"></span><span id="02-nome-bandtxt">AS LETRAS CONTAM A HISTÓRIA</span></div></div>
+      </div>
+    </div>
+
+    <!-- chrome (static, outside camera push) -->
+    <div id="02-nome-chromewrap" class="clip 02-nome-layer" data-start="0" data-duration="10.036" data-track-index="2">
+      <div id="02-nome-tag" class="02-nome-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="02-nome-num" class="02-nome-chrome" style="right:80px">02 / 16</div>
+      <div id="02-nome-hair-top" class="02-nome-hair" style="top:80px"></div>
+      <div id="02-nome-hair-bot" class="02-nome-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 9.536;
+        var $ = function (id) { return document.getElementById("02-nome-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["02-nome"] = tl;
+
+        var CX = [660, 1010, 1360, 1710];
+        // letter index -> phrase word index (F->Falha, M->Modos, E->Efeitos, A->Análise)
+        var MAP = [4, 2, 7, 0];
+
+        function placeLines() {
+          var phrase = $("phrase");
+          for (var i = 0; i < 4; i++) {
+            var w = $("pw-" + MAP[i]);
+            var x2 = 80 + w.offsetLeft + w.offsetWidth / 2;
+            var y2 = 548 + 10;
+            var ln = $("ln-" + i);
+            ln.setAttribute("x1", CX[i]);
+            ln.setAttribute("y1", 420);
+            ln.setAttribute("x2", x2);
+            ln.setAttribute("y2", y2);
+            var tip = $("tip-" + i);
+            tip.setAttribute("x", x2 - 5);
+            tip.setAttribute("y", y2 - 5);
+          }
+        }
+        placeLines();
+        // keep line geometry exact every frame (fonts may settle after build)
+        tl.to({ v: 0 }, { v: 1, duration: D, ease: "none", onUpdate: placeLines }, 0);
+
+        // initial hidden states (set synchronously, deterministic)
+        for (var k = 0; k < 4; k++) {
+          gsap.set($("lit-" + k), { opacity: 0 });
+          gsap.set($("pt-" + k), { opacity: 0 });
+        }
+
+        // slow camera push underneath everything
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.025, duration: D, ease: "none" }, 0);
+
+        // ---------- Scene 1: blocks fall (0.0-0.9) ----------
+        for (var i = 0; i < 4; i++) {
+          tl.fromTo($("blk-" + i),
+            { y: -470, rotation: i % 2 ? 7 : -7 },
+            { y: 0, rotation: 0, duration: 0.62, ease: "bounce.out" }, i * 0.09);
+          tl.fromTo($("in-" + i),
+            { scaleY: 0.9, scaleX: 1.06 },
+            { scaleY: 1, scaleX: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, i * 0.09 + 0.3);
+        }
+
+        // english words + label (1.2)
+        tl.fromTo($("lab-en"), { clipPath: "inset(-30% 100% -15% -4%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.5, ease: "power3.out" }, 1.2);
+        for (var i = 0; i < 4; i++) {
+          tl.fromTo($("wb-" + i), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 1.2 + i * 0.08);
+          tl.fromTo($("en-" + i), { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 1.36 + i * 0.08);
+        }
+
+        // ---------- Scene 2: phrase assembles word by word (2.2-4.6) ----------
+        var PT = [2.2, 2.45, 2.7, 2.95, 3.2, 3.45, 3.65, 3.9];
+        for (var j = 0; j < 8; j++) {
+          tl.fromTo($("pw-" + j), { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, PT[j]);
+        }
+        // lines tie each letter to its word: A 2.2, M 2.7, F 3.2, E 3.9
+        var LT = [3.2, 2.7, 3.9, 2.2];
+        for (var i = 0; i < 4; i++) {
+          tl.fromTo($("ln-" + i), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.inOut" }, LT[i]);
+          tl.fromTo($("tip-" + i), { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, LT[i] + 0.4);
+          // the source letter nods as its line leaves
+          tl.fromTo($("in-" + i), { y: 0 }, { y: -14, duration: 0.18, ease: "power2.out", immediateRender: false }, LT[i]);
+          tl.fromTo($("in-" + i), { y: -14 }, { y: 0, duration: 0.3, ease: "power2.in", immediateRender: false }, LT[i] + 0.18);
+        }
+
+        // ---------- Scene 3: macete band + scan + swaps (4.6-9.536) ----------
+        tl.fromTo($("band"), { clipPath: "inset(-30% 100% -15% -4%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.55, ease: "power3.inOut" }, 4.6);
+        tl.fromTo($("bandtxt"), { x: 40 }, { x: 0, duration: 0.6, ease: "power3.out" }, 4.7);
+        tl.fromTo($("pip"), { rotation: -90, scale: 0 }, { rotation: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 4.85);
+
+        // scan marker visits F, M, E, A then returns to F
+        tl.fromTo($("marker"), { scale: 1.35, opacity: 0, x: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 4.9);
+        var scanStops = [[5.3, 350, 1], [5.85, 700, 2], [6.4, 1050, 3], [6.95, 0, 0]];
+        tl.fromTo($("in-0"), { scale: 1.07 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 5.05);
+        for (var s = 0; s < scanStops.length; s++) {
+          var st = scanStops[s];
+          var dur = s === 3 ? 0.5 : 0.3;
+          tl.to($("marker"), { x: st[1], duration: dur, ease: "power3.inOut" }, st[0]);
+          tl.fromTo($("in-" + st[2]), { scale: 1.07 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, st[0] + dur - 0.05);
+        }
+
+        // left label: english struck, portuguese appears
+        tl.fromTo($("strike"), { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.out" }, 7.6);
+        tl.fromTo($("lab-pt"), { clipPath: "inset(-30% 100% -15% -4%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.45, ease: "power3.out" }, 7.75);
+
+        // swaps: FALHA 7.6, MODO 8.2, EFEITO 8.6, ANÁLISE 9.0
+        var ST = [7.6, 8.2, 8.6, 9.0];
+        var MX = [0, 350, 700, 1050];
+        for (var i = 0; i < 4; i++) {
+          var T = ST[i];
+          if (i > 0) tl.to($("marker"), { x: MX[i], duration: 0.2, ease: "power3.inOut" }, T - 0.22);
+          // word box: hard cut english out, cobalt fill, portuguese in
+          tl.set($("en-" + i), { opacity: 0 }, T);
+          tl.fromTo($("wf-" + i), { scaleY: 0 }, { scaleY: 1, duration: 0.16, ease: "power2.out" }, T);
+          tl.set($("pt-" + i), { opacity: 1 }, T + 0.16);
+          // letter block lights in inverted cobalt
+          tl.fromTo($("fill-" + i), { scaleY: 0 }, { scaleY: 1, duration: 0.22, ease: "power2.out" }, T);
+          tl.set($("un-" + i), { opacity: 0 }, T + 0.22);
+          tl.set($("lit-" + i), { opacity: 1 }, T + 0.22);
+          tl.fromTo($("in-" + i), { scale: 1.1 }, { scale: 1, duration: 0.3, ease: "power3.out", immediateRender: false }, T + 0.22);
+          // matching word in the full name gets underlined
+          tl.fromTo($("ul-" + MAP[i]), { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.out" }, T + 0.05);
+        }
+      })();
+    </script>
+  </div>
+</template>

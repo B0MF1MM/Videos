@@ -1,0 +1,400 @@
+<template id="16-cola-template">
+  <div id="root" data-composition-id="16-cola" data-start="0" data-duration="14.812" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="16-cola-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="16-cola-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="16-cola-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="16-cola-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      [class~="16-cola-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 960px 106px; }
+      [class~="16-cola-under"] { position: absolute; left: 194px; top: 120px; width: 1560px; height: 744px; border: 3px solid #1F2BE0; box-sizing: border-box; }
+      [class~="16-cola-sheet"] { position: absolute; left: 180px; top: 106px; width: 1560px; height: 744px; border: 4px solid #1F2BE0; box-sizing: border-box; background: #F0EBDE; }
+      [class~="16-cola-sheettitle"] { position: absolute; left: 24px; top: 4px; font-family: "Newsreader", serif; font-size: 46px; line-height: 1.15; letter-spacing: -0.008em; white-space: nowrap; padding-top: 0.06em; }
+      [class~="16-cola-qrwrap"] { position: absolute; right: 18px; top: 8px; width: 48px; height: 48px; background: rgba(31,43,224,0.10); }
+      [class~="16-cola-qr"] { position: absolute; width: 6px; height: 6px; background: #1F2BE0; }
+      [class~="16-cola-vline"] { position: absolute; top: 64px; width: 3px; height: 672px; background: #1F2BE0; transform-origin: 50% 0%; }
+      [class~="16-cola-hline"] { position: absolute; left: 0; width: 1552px; height: 3px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+      [class~="16-cola-cell"] { position: absolute; width: 517px; height: 336px; }
+      [class~="16-cola-cc"] { position: absolute; left: 22px; top: 0; width: 473px; height: 336px; }
+      [class~="16-cola-chead"] { position: absolute; left: 0; top: 14px; white-space: nowrap; line-height: 1.3; }
+      [class~="16-cola-cnum"] { font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; margin-right: 14px; }
+      [class~="16-cola-cname"] { font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 27px; letter-spacing: 0.16em; }
+
+      [class~="16-cola-bracket"] { position: absolute; left: 0; top: 0; width: 517px; height: 336px; }
+      [class~="16-cola-bk"] { position: absolute; width: 34px; height: 34px; border-color: #1F2BE0; border-style: solid; border-width: 0; }
+
+      /* cell 1 */
+      [class~="16-cola-link"] { position: absolute; top: 92px; width: 132px; height: 80px; border: 4px solid #1F2BE0; box-sizing: border-box; background: #F0EBDE; text-align: center; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 27px; letter-spacing: 0.04em; line-height: 72px; white-space: nowrap; transform-origin: 50% 50%; }
+      [class~="16-cola-q"] { position: absolute; top: 204px; width: 168px; text-align: center; font-family: "Newsreader", serif; font-style: italic; font-size: 32px; line-height: 1.3; white-space: nowrap; padding-top: 0.1em; }
+      svg [class~="16-cola-st"] { fill: none; stroke: #1F2BE0; stroke-width: 4; stroke-linecap: square; stroke-linejoin: miter; }
+
+      /* cell 2 */
+      [class~="16-cola-c2row"] { position: absolute; left: 0; width: 473px; height: 56px; }
+      [class~="16-cola-c2let"] { position: absolute; left: 0; top: 0; width: 56px; height: 56px; border: 4px solid #1F2BE0; box-sizing: border-box; text-align: center; font-family: "Newsreader", serif; font-size: 40px; line-height: 46px; transform-origin: 50% 50%; }
+      [class~="16-cola-c2lab"] { position: absolute; left: 74px; top: 0; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; letter-spacing: 0.04em; line-height: 56px; white-space: nowrap; }
+      [class~="16-cola-off"] { position: absolute; width: 17px; height: 26px; background: rgba(31,43,224,0.10); }
+      [class~="16-cola-on"] { position: absolute; width: 17px; height: 26px; background: #1F2BE0; transform-origin: 50% 100%; }
+
+      /* cell 3 */
+      [class~="16-cola-lens"] { position: absolute; left: 0; top: 62px; width: 60px; height: 50px; overflow: visible; }
+      [class~="16-cola-rcell"] { position: absolute; top: 116px; width: 40px; height: 26px; background: rgba(31,43,224,0.10); }
+      [class~="16-cola-rcell-on"] { background: #1F2BE0; transform-origin: 50% 100%; }
+      [class~="16-cola-rlab"] { position: absolute; top: 148px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; }
+      [class~="16-cola-inv"] { position: absolute; left: 0; background: #1F2BE0; color: #F0EBDE; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 0.08em; line-height: 1.3; padding: 8px 18px 6px; white-space: nowrap; }
+
+      /* cell 4 */
+      [class~="16-cola-formula"] { position: absolute; left: 0; top: 70px; display: flex; gap: 13px; font-family: "Newsreader", serif; font-size: 54px; line-height: 1.2; letter-spacing: -0.008em; white-space: nowrap; }
+      [class~="16-cola-tok"] { display: inline-block; transform-origin: 50% 70%; padding-top: 0.08em; }
+      [class~="16-cola-stamp"] { position: absolute; left: 334px; top: 190px; width: 62px; height: 62px; border: 4px solid #1F2BE0; box-sizing: border-box; text-align: center; font-family: "Newsreader", serif; font-size: 52px; line-height: 50px; transform-origin: 50% 50%; }
+
+      /* cell 5 */
+      [class~="16-cola-calc1"] { position: absolute; left: 0; top: 60px; display: flex; gap: 16px; font-family: "Newsreader", serif; font-size: 72px; line-height: 1.15; letter-spacing: -0.01em; white-space: nowrap; }
+      [class~="16-cola-calc2"] { position: absolute; left: 0; top: 166px; display: flex; gap: 16px; align-items: flex-start; font-family: "Newsreader", serif; font-size: 100px; line-height: 1.1; letter-spacing: -0.015em; white-space: nowrap; }
+      [class~="16-cola-res"] { position: relative; display: inline-block; padding: 0 14px; }
+      [class~="16-cola-reslit"] { position: absolute; left: 0; top: 0; padding: 0.08em 14px 0; background: #1F2BE0; color: #F0EBDE; white-space: nowrap; }
+      [class~="16-cola-bcell"] { position: absolute; width: 26px; height: 18px; background: #1F2BE0; transform-origin: 50% 100%; }
+      [class~="16-cola-blab"] { position: absolute; top: 288px; width: 26px; text-align: center; font-family: "DM Mono", monospace; font-size: 27px; line-height: 1.2; }
+
+      /* cell 6 */
+      [class~="16-cola-vidx"] { position: absolute; left: 0; width: 44px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.04em; line-height: 44px; }
+      [class~="16-cola-vbox"] { position: absolute; left: 48px; width: 300px; height: 44px; border: 3px solid #1F2BE0; box-sizing: border-box; transform-origin: 0% 50%; }
+      [class~="16-cola-vtxt"] { position: absolute; left: 0; top: 0; width: 294px; height: 38px; text-align: center; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 27px; letter-spacing: 0.06em; line-height: 38px; white-space: nowrap; color: #1F2BE0; }
+      [class~="16-cola-vlit"] { color: #F0EBDE; }
+      [class~="16-cola-vfill"] { position: absolute; left: 0; top: 0; width: 294px; height: 38px; background: #1F2BE0; transform-origin: 0% 50%; }
+      [class~="16-cola-pulse"] { position: absolute; left: 0; top: 0; width: 16px; height: 16px; background: #1F2BE0; outline: 3px solid #F0EBDE; }
+
+      [class~="16-cola-bye"] { position: absolute; left: 0; top: 676px; width: 1920px; text-align: center; font-family: "Newsreader", serif; font-size: 160px; line-height: 1.0; letter-spacing: -0.005em; white-space: nowrap; padding-top: 0.08em; color: #1F2BE0; }
+    </style>
+
+    <!-- ground -->
+    <div id="16-cola-bg" class="clip 16-cola-layer 16-cola-ground" data-start="0" data-duration="14.812" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="16-cola-stage" class="clip 16-cola-layer" data-start="0" data-duration="14.812" data-track-index="1">
+      <div id="16-cola-cam" class="16-cola-cam">
+        <div id="16-cola-under" class="16-cola-under"></div>
+        <div id="16-cola-sheet" class="16-cola-sheet">
+          <div id="16-cola-title" class="16-cola-sheettitle">COLA · FMEA</div>
+          <div id="16-cola-qrwrap" class="16-cola-qrwrap"><div class="16-cola-qr" style="left:0px;top:0px"></div><div class="16-cola-qr" style="left:6px;top:0px"></div><div class="16-cola-qr" style="left:12px;top:0px"></div><div class="16-cola-qr" style="left:24px;top:0px"></div><div class="16-cola-qr" style="left:36px;top:0px"></div><div class="16-cola-qr" style="left:42px;top:0px"></div><div class="16-cola-qr" style="left:0px;top:6px"></div><div class="16-cola-qr" style="left:12px;top:6px"></div><div class="16-cola-qr" style="left:24px;top:6px"></div><div class="16-cola-qr" style="left:30px;top:6px"></div><div class="16-cola-qr" style="left:36px;top:6px"></div><div class="16-cola-qr" style="left:0px;top:12px"></div><div class="16-cola-qr" style="left:6px;top:12px"></div><div class="16-cola-qr" style="left:12px;top:12px"></div><div class="16-cola-qr" style="left:30px;top:12px"></div><div class="16-cola-qr" style="left:42px;top:12px"></div><div class="16-cola-qr" style="left:18px;top:18px"></div><div class="16-cola-qr" style="left:24px;top:18px"></div><div class="16-cola-qr" style="left:36px;top:18px"></div><div class="16-cola-qr" style="left:0px;top:24px"></div><div class="16-cola-qr" style="left:12px;top:24px"></div><div class="16-cola-qr" style="left:18px;top:24px"></div><div class="16-cola-qr" style="left:30px;top:24px"></div><div class="16-cola-qr" style="left:36px;top:24px"></div><div class="16-cola-qr" style="left:42px;top:24px"></div><div class="16-cola-qr" style="left:6px;top:30px"></div><div class="16-cola-qr" style="left:24px;top:30px"></div><div class="16-cola-qr" style="left:42px;top:30px"></div><div class="16-cola-qr" style="left:0px;top:36px"></div><div class="16-cola-qr" style="left:6px;top:36px"></div><div class="16-cola-qr" style="left:18px;top:36px"></div><div class="16-cola-qr" style="left:30px;top:36px"></div><div class="16-cola-qr" style="left:36px;top:36px"></div><div class="16-cola-qr" style="left:0px;top:42px"></div><div class="16-cola-qr" style="left:12px;top:42px"></div><div class="16-cola-qr" style="left:18px;top:42px"></div><div class="16-cola-qr" style="left:24px;top:42px"></div><div class="16-cola-qr" style="left:30px;top:42px"></div><div class="16-cola-qr" style="left:42px;top:42px"></div></div>
+          <div id="16-cola-h0" class="16-cola-hline" style="top:62px"></div>
+          <div id="16-cola-h1" class="16-cola-hline" style="top:399px"></div>
+          <div id="16-cola-v0" class="16-cola-vline" style="left:516px"></div>
+          <div id="16-cola-v1" class="16-cola-vline" style="left:1033px"></div>
+
+          <!-- CELL 1 : corrente -->
+          <div id="16-cola-c1" class="16-cola-cell" style="left:0;top:64px">
+            <div class="16-cola-cc">
+              <div id="16-cola-c1-head" class="16-cola-chead"><span class="16-cola-cnum">01</span><span class="16-cola-cname">CORRENTE</span></div>
+              <svg id="16-cola-c1-svg" width="473" height="336" viewBox="0 0 473 336" style="position:absolute;left:0;top:0;overflow:visible">
+                <path id="16-cola-c1-a0" class="16-cola-st" d="M 136 132 L 164 132 M 154 122 L 164 132 L 154 142" />
+                <path id="16-cola-c1-a1" class="16-cola-st" d="M 306 132 L 334 132 M 324 122 L 334 132 L 324 142" />
+                <path id="16-cola-c1-t0" class="16-cola-st" d="M 66 176 L 66 198" />
+                <path id="16-cola-c1-t1" class="16-cola-st" d="M 236 176 L 236 198" />
+                <path id="16-cola-c1-t2" class="16-cola-st" d="M 406 176 L 406 198" />
+              </svg>
+              <div id="16-cola-c1-b0" class="16-cola-link" style="left:0">CAUSA</div>
+              <div id="16-cola-c1-b1" class="16-cola-link" style="left:170px">MODO</div>
+              <div id="16-cola-c1-b2" class="16-cola-link" style="left:340px">EFEITO</div>
+              <div id="16-cola-c1-q0" class="16-cola-q" style="left:-18px">POR QUÊ?</div>
+              <div id="16-cola-c1-q1" class="16-cola-q" style="left:152px">O QUÊ?</div>
+              <div id="16-cola-c1-q2" class="16-cola-q" style="left:322px">E DAÍ?</div>
+            </div>
+          </div>
+
+          <!-- CELL 2 : notas -->
+          <div id="16-cola-c2" class="16-cola-cell" style="left:517px;top:64px">
+            <div class="16-cola-cc">
+              <div id="16-cola-c2-head" class="16-cola-chead"><span class="16-cola-cnum">02</span><span class="16-cola-cname">NOTAS</span></div>
+            <div id="16-cola-c2-row0" class="16-cola-c2row" style="top:76px">
+              <div id="16-cola-c2-let0" class="16-cola-c2let">S</div>
+              <div id="16-cola-c2-lab0" class="16-cola-c2lab">SÉRIO?</div>
+              <div class="16-cola-off" style="left:281.0px;top:15px"></div><div id="16-cola-c2-on-0-0" class="16-cola-on" style="left:281.0px;top:15px"></div><div class="16-cola-off" style="left:300.2px;top:15px"></div><div id="16-cola-c2-on-0-1" class="16-cola-on" style="left:300.2px;top:15px"></div><div class="16-cola-off" style="left:319.4px;top:15px"></div><div id="16-cola-c2-on-0-2" class="16-cola-on" style="left:319.4px;top:15px"></div><div class="16-cola-off" style="left:338.6px;top:15px"></div><div id="16-cola-c2-on-0-3" class="16-cola-on" style="left:338.6px;top:15px"></div><div class="16-cola-off" style="left:357.8px;top:15px"></div><div id="16-cola-c2-on-0-4" class="16-cola-on" style="left:357.8px;top:15px"></div><div class="16-cola-off" style="left:377.0px;top:15px"></div><div id="16-cola-c2-on-0-5" class="16-cola-on" style="left:377.0px;top:15px"></div><div class="16-cola-off" style="left:396.2px;top:15px"></div><div id="16-cola-c2-on-0-6" class="16-cola-on" style="left:396.2px;top:15px"></div><div class="16-cola-off" style="left:415.4px;top:15px"></div><div id="16-cola-c2-on-0-7" class="16-cola-on" style="left:415.4px;top:15px"></div><div class="16-cola-off" style="left:434.6px;top:15px"></div><div class="16-cola-off" style="left:453.8px;top:15px"></div>
+            </div>
+            <div id="16-cola-c2-row1" class="16-cola-c2row" style="top:146px">
+              <div id="16-cola-c2-let1" class="16-cola-c2let">O</div>
+              <div id="16-cola-c2-lab1" class="16-cola-c2lab">OCORRE?</div>
+              <div class="16-cola-off" style="left:281.0px;top:15px"></div><div id="16-cola-c2-on-1-0" class="16-cola-on" style="left:281.0px;top:15px"></div><div class="16-cola-off" style="left:300.2px;top:15px"></div><div id="16-cola-c2-on-1-1" class="16-cola-on" style="left:300.2px;top:15px"></div><div class="16-cola-off" style="left:319.4px;top:15px"></div><div id="16-cola-c2-on-1-2" class="16-cola-on" style="left:319.4px;top:15px"></div><div class="16-cola-off" style="left:338.6px;top:15px"></div><div id="16-cola-c2-on-1-3" class="16-cola-on" style="left:338.6px;top:15px"></div><div class="16-cola-off" style="left:357.8px;top:15px"></div><div id="16-cola-c2-on-1-4" class="16-cola-on" style="left:357.8px;top:15px"></div><div class="16-cola-off" style="left:377.0px;top:15px"></div><div id="16-cola-c2-on-1-5" class="16-cola-on" style="left:377.0px;top:15px"></div><div class="16-cola-off" style="left:396.2px;top:15px"></div><div id="16-cola-c2-on-1-6" class="16-cola-on" style="left:396.2px;top:15px"></div><div class="16-cola-off" style="left:415.4px;top:15px"></div><div class="16-cola-off" style="left:434.6px;top:15px"></div><div class="16-cola-off" style="left:453.8px;top:15px"></div>
+            </div>
+            <div id="16-cola-c2-row2" class="16-cola-c2row" style="top:216px">
+              <div id="16-cola-c2-let2" class="16-cola-c2let">D</div>
+              <div id="16-cola-c2-lab2" class="16-cola-c2lab">PERCEBE?</div>
+              <div class="16-cola-off" style="left:281.0px;top:15px"></div><div id="16-cola-c2-on-2-0" class="16-cola-on" style="left:281.0px;top:15px"></div><div class="16-cola-off" style="left:300.2px;top:15px"></div><div id="16-cola-c2-on-2-1" class="16-cola-on" style="left:300.2px;top:15px"></div><div class="16-cola-off" style="left:319.4px;top:15px"></div><div id="16-cola-c2-on-2-2" class="16-cola-on" style="left:319.4px;top:15px"></div><div class="16-cola-off" style="left:338.6px;top:15px"></div><div id="16-cola-c2-on-2-3" class="16-cola-on" style="left:338.6px;top:15px"></div><div class="16-cola-off" style="left:357.8px;top:15px"></div><div id="16-cola-c2-on-2-4" class="16-cola-on" style="left:357.8px;top:15px"></div><div class="16-cola-off" style="left:377.0px;top:15px"></div><div id="16-cola-c2-on-2-5" class="16-cola-on" style="left:377.0px;top:15px"></div><div class="16-cola-off" style="left:396.2px;top:15px"></div><div class="16-cola-off" style="left:415.4px;top:15px"></div><div class="16-cola-off" style="left:434.6px;top:15px"></div><div class="16-cola-off" style="left:453.8px;top:15px"></div>
+            </div>
+            </div>
+          </div>
+
+          <!-- CELL 3 : pegadinha -->
+          <div id="16-cola-c3" class="16-cola-cell" style="left:1034px;top:64px">
+            <div class="16-cola-cc">
+              <div id="16-cola-c3-head" class="16-cola-chead"><span class="16-cola-cnum">03</span><span class="16-cola-cname">PEGADINHA</span></div>
+              <div class="16-cola-rcell" style="left:0px"></div><div id="16-cola-c3-on0" class="16-cola-rcell 16-cola-rcell-on" style="left:0px"></div><div class="16-cola-rcell" style="left:46px"></div><div id="16-cola-c3-on1" class="16-cola-rcell 16-cola-rcell-on" style="left:46px"></div><div class="16-cola-rcell" style="left:92px"></div><div id="16-cola-c3-on2" class="16-cola-rcell 16-cola-rcell-on" style="left:92px"></div><div class="16-cola-rcell" style="left:138px"></div><div id="16-cola-c3-on3" class="16-cola-rcell 16-cola-rcell-on" style="left:138px"></div><div class="16-cola-rcell" style="left:184px"></div><div id="16-cola-c3-on4" class="16-cola-rcell 16-cola-rcell-on" style="left:184px"></div><div class="16-cola-rcell" style="left:230px"></div><div id="16-cola-c3-on5" class="16-cola-rcell 16-cola-rcell-on" style="left:230px"></div><div class="16-cola-rcell" style="left:276px"></div><div id="16-cola-c3-on6" class="16-cola-rcell 16-cola-rcell-on" style="left:276px"></div><div class="16-cola-rcell" style="left:322px"></div><div id="16-cola-c3-on7" class="16-cola-rcell 16-cola-rcell-on" style="left:322px"></div><div class="16-cola-rcell" style="left:368px"></div><div id="16-cola-c3-on8" class="16-cola-rcell 16-cola-rcell-on" style="left:368px"></div><div class="16-cola-rcell" style="left:414px"></div><div id="16-cola-c3-on9" class="16-cola-rcell 16-cola-rcell-on" style="left:414px"></div>
+              <svg id="16-cola-c3-lens" class="16-cola-lens" viewBox="0 0 60 50">
+                <rect class="16-cola-st" x="4" y="4" width="30" height="30" style="stroke-width:5" />
+                <path class="16-cola-st" d="M 34 34 L 46 46" style="stroke-width:6" />
+              </svg>
+              <div id="16-cola-c3-l1" class="16-cola-rlab" style="left:12px">1</div>
+              <div id="16-cola-c3-l10" class="16-cola-rlab" style="left:416px">10</div>
+              <div id="16-cola-c3-inv" class="16-cola-inv" style="top:204px">D ALTO = PIOR</div>
+            </div>
+          </div>
+
+          <!-- CELL 4 : NPR -->
+          <div id="16-cola-c4" class="16-cola-cell" style="left:0;top:400px">
+            <div class="16-cola-cc">
+              <div id="16-cola-c4-head" class="16-cola-chead"><span class="16-cola-cnum">04</span><span class="16-cola-cname">NPR</span></div>
+              <div id="16-cola-c4-f" class="16-cola-formula">
+                <span id="16-cola-c4-k0" class="16-cola-tok">NPR</span><span id="16-cola-c4-k1" class="16-cola-tok">=</span><span id="16-cola-c4-k2" class="16-cola-tok">S</span><span id="16-cola-c4-k3" class="16-cola-tok">×</span><span id="16-cola-c4-k4" class="16-cola-tok">O</span><span id="16-cola-c4-k5" class="16-cola-tok">×</span><span id="16-cola-c4-k6" class="16-cola-tok">D</span>
+              </div>
+              <div id="16-cola-c4-inv" class="16-cola-inv" style="top:194px">MULTIPLICA</div>
+              <div id="16-cola-c4-stamp" class="16-cola-stamp">×</div>
+            </div>
+          </div>
+
+          <!-- CELL 5 : exemplo -->
+          <div id="16-cola-c5" class="16-cola-cell" style="left:517px;top:400px">
+            <div class="16-cola-cc">
+              <div id="16-cola-c5-head" class="16-cola-chead"><span class="16-cola-cnum">05</span><span class="16-cola-cname">EXEMPLO</span></div>
+              <div id="16-cola-c5-l1" class="16-cola-calc1">
+                <span id="16-cola-c5-k0" class="16-cola-tok">8</span><span id="16-cola-c5-k1" class="16-cola-tok">×</span><span id="16-cola-c5-k2" class="16-cola-tok">7</span><span id="16-cola-c5-k3" class="16-cola-tok">×</span><span id="16-cola-c5-k4" class="16-cola-tok">6</span>
+              </div>
+              <div id="16-cola-c5-l2" class="16-cola-calc2">
+                <span id="16-cola-c5-eq" class="16-cola-tok">=</span>
+                <span id="16-cola-c5-res" class="16-cola-res"><span id="16-cola-c5-d0" class="16-cola-tok">3</span><span id="16-cola-c5-d1" class="16-cola-tok">3</span><span id="16-cola-c5-d2" class="16-cola-tok">6</span><span id="16-cola-c5-lit" class="16-cola-reslit">336</span></span>
+              </div>
+              <div class="16-cola-bcell" style="left:372px;top:266px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar0-0" class="16-cola-bcell" style="left:372px;top:266px"></div><div class="16-cola-bcell" style="left:372px;top:245px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar0-1" class="16-cola-bcell" style="left:372px;top:245px"></div><div class="16-cola-bcell" style="left:372px;top:224px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar0-2" class="16-cola-bcell" style="left:372px;top:224px"></div><div class="16-cola-bcell" style="left:372px;top:203px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar0-3" class="16-cola-bcell" style="left:372px;top:203px"></div><div class="16-cola-bcell" style="left:372px;top:182px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar0-4" class="16-cola-bcell" style="left:372px;top:182px"></div><div class="16-cola-bcell" style="left:372px;top:161px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar0-5" class="16-cola-bcell" style="left:372px;top:161px"></div><div class="16-cola-bcell" style="left:372px;top:140px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar0-6" class="16-cola-bcell" style="left:372px;top:140px"></div><div class="16-cola-bcell" style="left:372px;top:119px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar0-7" class="16-cola-bcell" style="left:372px;top:119px"></div><div id="16-cola-c5-bl0" class="16-cola-blab" style="left:372px">S</div><div class="16-cola-bcell" style="left:406px;top:266px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar1-0" class="16-cola-bcell" style="left:406px;top:266px"></div><div class="16-cola-bcell" style="left:406px;top:245px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar1-1" class="16-cola-bcell" style="left:406px;top:245px"></div><div class="16-cola-bcell" style="left:406px;top:224px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar1-2" class="16-cola-bcell" style="left:406px;top:224px"></div><div class="16-cola-bcell" style="left:406px;top:203px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar1-3" class="16-cola-bcell" style="left:406px;top:203px"></div><div class="16-cola-bcell" style="left:406px;top:182px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar1-4" class="16-cola-bcell" style="left:406px;top:182px"></div><div class="16-cola-bcell" style="left:406px;top:161px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar1-5" class="16-cola-bcell" style="left:406px;top:161px"></div><div class="16-cola-bcell" style="left:406px;top:140px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar1-6" class="16-cola-bcell" style="left:406px;top:140px"></div><div id="16-cola-c5-bl1" class="16-cola-blab" style="left:406px">O</div><div class="16-cola-bcell" style="left:440px;top:266px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar2-0" class="16-cola-bcell" style="left:440px;top:266px"></div><div class="16-cola-bcell" style="left:440px;top:245px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar2-1" class="16-cola-bcell" style="left:440px;top:245px"></div><div class="16-cola-bcell" style="left:440px;top:224px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar2-2" class="16-cola-bcell" style="left:440px;top:224px"></div><div class="16-cola-bcell" style="left:440px;top:203px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar2-3" class="16-cola-bcell" style="left:440px;top:203px"></div><div class="16-cola-bcell" style="left:440px;top:182px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar2-4" class="16-cola-bcell" style="left:440px;top:182px"></div><div class="16-cola-bcell" style="left:440px;top:161px;background:rgba(31,43,224,0.10)"></div><div id="16-cola-c5-bar2-5" class="16-cola-bcell" style="left:440px;top:161px"></div><div id="16-cola-c5-bl2" class="16-cola-blab" style="left:440px">D</div>
+            </div>
+          </div>
+
+          <!-- CELL 6 : ciclo -->
+          <div id="16-cola-c6" class="16-cola-cell" style="left:1034px;top:400px">
+            <div class="16-cola-cc">
+              <div id="16-cola-c6-head" class="16-cola-chead"><span class="16-cola-cnum">06</span><span class="16-cola-cname">CICLO</span></div>
+            <div id="16-cola-c6-idx0" class="16-cola-vidx" style="top:66px">01</div>
+            <div id="16-cola-c6-box0" class="16-cola-vbox" style="top:66px">
+              <div id="16-cola-c6-un0" class="16-cola-vtxt">LISTAR</div>
+              <div id="16-cola-c6-fill0" class="16-cola-vfill"></div>
+              <div id="16-cola-c6-lit0" class="16-cola-vtxt 16-cola-vlit">LISTAR</div>
+            </div>
+            <div id="16-cola-c6-idx1" class="16-cola-vidx" style="top:116px">02</div>
+            <div id="16-cola-c6-box1" class="16-cola-vbox" style="top:116px">
+              <div id="16-cola-c6-un1" class="16-cola-vtxt">AVALIAR</div>
+              <div id="16-cola-c6-fill1" class="16-cola-vfill"></div>
+              <div id="16-cola-c6-lit1" class="16-cola-vtxt 16-cola-vlit">AVALIAR</div>
+            </div>
+            <div id="16-cola-c6-idx2" class="16-cola-vidx" style="top:166px">03</div>
+            <div id="16-cola-c6-box2" class="16-cola-vbox" style="top:166px">
+              <div id="16-cola-c6-un2" class="16-cola-vtxt">PRIORIZAR</div>
+              <div id="16-cola-c6-fill2" class="16-cola-vfill"></div>
+              <div id="16-cola-c6-lit2" class="16-cola-vtxt 16-cola-vlit">PRIORIZAR</div>
+            </div>
+            <div id="16-cola-c6-idx3" class="16-cola-vidx" style="top:216px">04</div>
+            <div id="16-cola-c6-box3" class="16-cola-vbox" style="top:216px">
+              <div id="16-cola-c6-un3" class="16-cola-vtxt">AGIR</div>
+              <div id="16-cola-c6-fill3" class="16-cola-vfill"></div>
+              <div id="16-cola-c6-lit3" class="16-cola-vtxt 16-cola-vlit">AGIR</div>
+            </div>
+            <div id="16-cola-c6-idx4" class="16-cola-vidx" style="top:266px">05</div>
+            <div id="16-cola-c6-box4" class="16-cola-vbox" style="top:266px">
+              <div id="16-cola-c6-un4" class="16-cola-vtxt">REAVALIAR</div>
+              <div id="16-cola-c6-fill4" class="16-cola-vfill"></div>
+              <div id="16-cola-c6-lit4" class="16-cola-vtxt 16-cola-vlit">REAVALIAR</div>
+            </div>
+              <svg id="16-cola-c6-svg" width="473" height="336" viewBox="0 0 473 336" style="position:absolute;left:0;top:0;overflow:visible">
+                <path id="16-cola-c6-dn" class="16-cola-st" d="M 30 112 L 30 128 M 30 162 L 30 178 M 30 212 L 30 228 M 30 262 L 30 278" style="stroke-width:3" />
+                <path id="16-cola-c6-loop" class="16-cola-st" d="M 352 288 L 410 288 L 410 88 L 356 88 M 368 76 L 356 88 L 368 100" />
+              </svg>
+              <div id="16-cola-c6-pulse" class="16-cola-pulse"></div>
+            </div>
+          </div>
+
+          <!-- focus bracket -->
+          <div id="16-cola-bracket" class="16-cola-bracket">
+            <div class="16-cola-bk" style="left:8px;top:8px;border-left-width:5px;border-top-width:5px"></div>
+            <div class="16-cola-bk" style="right:8px;top:8px;border-right-width:5px;border-top-width:5px"></div>
+            <div class="16-cola-bk" style="left:8px;bottom:8px;border-left-width:5px;border-bottom-width:5px"></div>
+            <div class="16-cola-bk" style="right:8px;bottom:8px;border-right-width:5px;border-bottom-width:5px"></div>
+          </div>
+        </div>
+      </div>
+      <div id="16-cola-bye" class="16-cola-bye">Boa prova!</div>
+    </div>
+
+    <!-- chrome -->
+    <div id="16-cola-chromewrap" class="clip 16-cola-layer" data-start="0" data-duration="14.812" data-track-index="2">
+      <div id="16-cola-tag" class="16-cola-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="16-cola-num" class="16-cola-chrome" style="right:80px">16 / 16</div>
+      <div id="16-cola-hair-top" class="16-cola-hair" style="top:80px"></div>
+      <div id="16-cola-hair-bot" class="16-cola-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 14.812;
+        var $ = function (id) { return document.getElementById("16-cola-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["16-cola"] = tl;
+
+        var CLIP_HIDE = "inset(-30% 100% -15% -4%)";
+        var CLIP_SHOW = "inset(-30% -4% -15% -4%)";
+        function wipe(id, t, d) {
+          tl.fromTo($(id), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: d || 0.45, ease: "power3.inOut" }, t);
+        }
+        function pop(id, t, d, y) {
+          tl.fromTo($(id), { scale: 0, opacity: 0, y: y || 0 }, { scale: 1, opacity: 1, y: 0, duration: d || 0.45, ease: "power3.out" }, t);
+        }
+        function rise(id, t, d) {
+          tl.fromTo($(id), { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: d || 0.4, ease: "power3.out" }, t);
+        }
+        function kick(id, t, s) {
+          tl.fromTo($(id), { scale: 1 }, { scale: s || 1.08, duration: 0.1, ease: "power2.out", immediateRender: false }, t);
+          tl.to($(id), { scale: 1, duration: 0.3, ease: "power3.out" }, t + 0.1);
+        }
+        function draw(id, t, d) {
+          var el = $(id), L = el.getTotalLength();
+          tl.fromTo(el, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d || 0.3, ease: "power2.out" }, t);
+        }
+
+        // ---------- Scene 1: sheet slides in, grid draws, cell 1 = corrente ----------
+        tl.fromTo($("sheet"), { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0);
+        tl.fromTo($("under"), { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: "power3.out" }, 0.05);
+        wipe("title", 0.15, 0.4);
+        tl.fromTo($("qrwrap"), { scale: 0 }, { scale: 1, duration: 0.35, ease: "power3.out" }, 0.3);
+        tl.fromTo($("h0"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.inOut" }, 0.15);
+        tl.fromTo($("h1"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.inOut" }, 0.25);
+        tl.fromTo($("v0"), { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.inOut" }, 0.3);
+        tl.fromTo($("v1"), { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.inOut" }, 0.38);
+
+        // slow push-in under everything (camera)
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.012, duration: 11.9, ease: "none" }, 0.6);
+
+        // focus bracket hops cell to cell
+        var CELLS = [[0, 64], [517, 64], [1034, 64], [0, 400], [517, 400], [1034, 400]];
+        var ACT = [0.6, 2.2, 3.0, 4.4, 5.6, 8.9];
+        tl.fromTo($("bracket"), { x: CELLS[0][0], y: CELLS[0][1], scale: 1.12, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power3.out" }, ACT[0]);
+        for (var k = 1; k < 6; k++) {
+          tl.to($("bracket"), { x: CELLS[k][0], y: CELLS[k][1], duration: 0.4, ease: "power3.inOut" }, ACT[k] - 0.1);
+        }
+        tl.to($("bracket"), { opacity: 0, duration: 0.3, ease: "power2.out" }, 12.3);
+
+        // cell 1
+        wipe("c1-head", 0.6, 0.4);
+        pop("c1-b0", 0.7, 0.4, 14);
+        draw("c1-a0", 0.85, 0.2);
+        pop("c1-b1", 0.95, 0.4, 14);
+        draw("c1-a1", 1.1, 0.2);
+        pop("c1-b2", 1.2, 0.4, 14);
+        draw("c1-t0", 1.0, 0.15); rise("c1-q0", 1.0);
+        draw("c1-t1", 1.4, 0.15); rise("c1-q1", 1.4);
+        draw("c1-t2", 1.8, 0.15); rise("c1-q2", 1.8);
+        // domino pulses along the chain (finite, scheduled)
+        [2.0, 4.6, 7.4, 10.2].forEach(function (t) {
+          kick("c1-b0", t, 1.08); kick("c1-b1", t + 0.22, 1.08); kick("c1-b2", t + 0.44, 1.08);
+        });
+
+        // ---------- Scene 2: cell 2 notas, cell 3 pegadinha ----------
+        wipe("c2-head", 2.2, 0.35);
+        for (var r = 0; r < 3; r++) {
+          var t0 = 2.25 + r * 0.2;
+          pop("c2-let" + r, t0, 0.4);
+          wipe("c2-lab" + r, t0 + 0.08, 0.35);
+          var nOn = [8, 7, 6][r];
+          for (var i = 0; i < nOn; i++) {
+            tl.fromTo($("c2-on-" + r + "-" + i), { scaleY: 0 }, { scaleY: 1, duration: 0.18, ease: "power2.out" }, t0 + 0.2 + i * 0.045);
+          }
+        }
+
+        wipe("c3-head", 3.0, 0.35);
+        tl.fromTo($("c3-lens"), { x: 0, opacity: 0 }, { x: 0, opacity: 1, duration: 0.15, ease: "power2.out" }, 3.0);
+        tl.to($("c3-lens"), { x: 414, duration: 0.55, ease: "power2.inOut" }, 3.05);
+        for (var j = 0; j < 10; j++) {
+          tl.fromTo($("c3-on" + j), { scaleY: 0 }, { scaleY: 1, duration: 0.15, ease: "power2.out" }, 3.08 + j * 0.052);
+        }
+        rise("c3-l1", 3.05, 0.3);
+        rise("c3-l10", 3.5, 0.3);
+        wipe("c3-inv", 3.4, 0.4);
+        kick("c3-inv", 3.85, 1.06);
+        // lens keeps peering at the high end
+        [4.3, 5.3, 6.3, 7.3].forEach(function (t) {
+          tl.to($("c3-lens"), { y: -8, duration: 0.25, ease: "power2.out" }, t);
+          tl.to($("c3-lens"), { y: 0, duration: 0.35, ease: "power2.in" }, t + 0.25);
+        });
+
+        // ---------- Scene 3: cell 4 NPR, cell 5 8x7x6 = 336 ----------
+        wipe("c4-head", 4.4, 0.35);
+        for (var f = 0; f < 7; f++) pop("c4-k" + f, 4.45 + f * 0.07, 0.4, 16);
+        wipe("c4-inv", 5.0, 0.4);
+        pop("c4-stamp", 5.1, 0.4);
+        kick("c4-k3", 5.1, 1.25); kick("c4-k5", 5.25, 1.25);
+        tl.to($("c4-stamp"), { rotation: 90, duration: 0.35, ease: "power3.inOut" }, 5.7);
+        tl.to($("c4-stamp"), { rotation: 180, duration: 0.35, ease: "power3.inOut" }, 6.6);
+        tl.to($("c4-stamp"), { rotation: 270, duration: 0.35, ease: "power3.inOut" }, 7.6);
+        tl.to($("c4-stamp"), { rotation: 360, duration: 0.35, ease: "power3.inOut" }, 8.6);
+
+        wipe("c5-head", 5.6, 0.35);
+        var C5 = [5.65, 5.85, 6.05, 6.25, 6.45];
+        for (var q = 0; q < 5; q++) pop("c5-k" + q, C5[q], 0.35, 18);
+        [[0, 5.65], [1, 6.05], [2, 6.45]].forEach(function (b) {
+          var n = [8, 7, 6][b[0]];
+          for (var z = 0; z < n; z++) {
+            tl.fromTo($("c5-bar" + b[0] + "-" + z), { scaleY: 0 }, { scaleY: 1, duration: 0.14, ease: "power2.out" }, b[1] + z * 0.04);
+          }
+          rise("c5-bl" + b[0], b[1], 0.3);
+        });
+        pop("c5-eq", 6.7, 0.35, 18);
+        pop("c5-d0", 6.85, 0.3, 18);
+        pop("c5-d1", 6.95, 0.3, 18);
+        pop("c5-d2", 7.05, 0.3, 18);
+        tl.fromTo($("c5-lit"), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.35, ease: "power3.inOut" }, 7.2);
+        tl.set([$("c5-d0"), $("c5-d1"), $("c5-d2")], { opacity: 0 }, 7.56);
+        kick("c5-res", 7.6, 1.08);
+
+        // ---------- Scene 4: cell 6 ciclo ----------
+        wipe("c6-head", 8.9, 0.35);
+        for (var v = 0; v < 5; v++) {
+          rise("c6-idx" + v, 8.95 + v * 0.06, 0.3);
+          tl.fromTo($("c6-box" + v), { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.35, ease: "power3.out" }, 8.95 + v * 0.06);
+        }
+        draw("c6-dn", 9.2, 0.3);
+        var LIT = [9.4, 9.9, 10.6, 11.1, 11.5];
+        tl.fromTo($("c6-pulse"), { x: 360, y: 80, opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power3.out" }, 9.3);
+        LIT.forEach(function (t, n) {
+          tl.to($("c6-pulse"), { y: 80 + n * 50, duration: 0.18, ease: "power2.inOut" }, t - 0.15);
+          tl.fromTo($("c6-fill" + n), { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.out" }, t);
+          tl.fromTo($("c6-lit" + n), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.3, ease: "power3.out" }, t);
+          tl.set($("c6-un" + n), { opacity: 0 }, t + 0.31);
+          kick("c6-box" + n, t + 0.02, 1.05);
+        });
+        draw("c6-loop", 11.75, 0.45);
+        // pulse rides the loop back to LISTAR, then sinks in
+        tl.to($("c6-pulse"), { x: 402, y: 280, duration: 0.18, ease: "power2.in" }, 11.8);
+        tl.to($("c6-pulse"), { y: 80, duration: 0.3, ease: "power2.inOut" }, 12.0);
+        tl.to($("c6-pulse"), { x: 340, duration: 0.14, ease: "power2.out" }, 12.3);
+        tl.to($("c6-pulse"), { scale: 0, opacity: 0, duration: 0.1, ease: "power2.in" }, 12.42);
+        kick("c6-box0", 12.42, 1.05);
+
+        // ---------- Scene 5: "Boa prova!" — sheet shrinks, closing line rises, full stop ----------
+        tl.to($("cam"), { scale: 0.74, duration: 0.7, ease: "power3.inOut" }, 12.5);
+        tl.fromTo($("bye"), { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 12.65);
+        tl.fromTo($("bye"), { clipPath: CLIP_HIDE }, { clipPath: CLIP_SHOW, duration: 0.6, ease: "power3.inOut" }, 12.65);
+        tl.to({}, { duration: 0.01 }, D - 0.01);
+      })();
+    </script>
+  </div>
+</template>

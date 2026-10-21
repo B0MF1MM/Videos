@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="assets/vendor/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
     <style>
       * {
         margin: 0;
@@ -12,25 +12,23 @@
       }
       html,
       body {
-        margin: 0;
         width: 1920px;
         height: 1080px;
         overflow: hidden;
-        background: #0a0a0a;
+        background: #000;
       }
       #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #F0EBDE;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      }
-      #title {
-        color: #f4f4f5;
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
       }
     </style>
   </head>
@@ -39,17 +37,373 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="10"
+      data-duration="174.365"
       data-width="1920"
       data-height="1080"
     >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+      <div
+        id="el-01-antes"
+        class="scene"
+        data-composition-id="01-antes"
+        data-composition-src="compositions/frames/01-antes.html"
+        data-start="0"
+        data-duration="7.391"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-01-antes-voice"
+        src="assets/voice/01.wav"
+        data-start="0"
+        data-duration="6.891"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-02-nome"
+        class="scene"
+        data-composition-id="02-nome"
+        data-composition-src="compositions/frames/02-nome.html"
+        data-start="6.891"
+        data-duration="10.036"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-02-nome-voice"
+        src="assets/voice/02.wav"
+        data-start="6.891"
+        data-duration="9.536"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-03-evita"
+        class="scene"
+        data-composition-id="03-evita"
+        data-composition-src="compositions/frames/03-evita.html"
+        data-start="16.427"
+        data-duration="8.671"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-03-evita-voice"
+        src="assets/voice/03.wav"
+        data-start="16.427"
+        data-duration="8.171"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-04-viagem"
+        class="scene"
+        data-composition-id="04-viagem"
+        data-composition-src="compositions/frames/04-viagem.html"
+        data-start="24.598"
+        data-duration="12.852"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-04-viagem-voice"
+        src="assets/voice/04.wav"
+        data-start="24.598"
+        data-duration="12.352"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-05-corrente"
+        class="scene"
+        data-composition-id="05-corrente"
+        data-composition-src="compositions/frames/05-corrente.html"
+        data-start="36.95"
+        data-duration="11.06"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-05-corrente-voice"
+        src="assets/voice/05.wav"
+        data-start="36.95"
+        data-duration="10.56"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-06-bomba"
+        class="scene"
+        data-composition-id="06-bomba"
+        data-composition-src="compositions/frames/06-bomba.html"
+        data-start="47.510000000000005"
+        data-duration="12.98"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-06-bomba-voice"
+        src="assets/voice/06.wav"
+        data-start="47.510000000000005"
+        data-duration="12.48"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-07-notas"
+        class="scene"
+        data-composition-id="07-notas"
+        data-composition-src="compositions/frames/07-notas.html"
+        data-start="59.99000000000001"
+        data-duration="10.832"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-07-notas-voice"
+        src="assets/voice/07.wav"
+        data-start="59.99000000000001"
+        data-duration="10.432"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-08-pegadinha"
+        class="scene"
+        data-composition-id="08-pegadinha"
+        data-composition-src="compositions/frames/08-pegadinha.html"
+        data-start="70.42200000000001"
+        data-duration="11.849"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-08-pegadinha-voice"
+        src="assets/voice/08.wav"
+        data-start="70.42200000000001"
+        data-duration="11.349"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-09-npr"
+        class="scene"
+        data-composition-id="09-npr"
+        data-composition-src="compositions/frames/09-npr.html"
+        data-start="81.77100000000002"
+        data-duration="8.927"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-09-npr-voice"
+        src="assets/voice/09.wav"
+        data-start="81.77100000000002"
+        data-duration="8.427"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-10-336"
+        class="scene"
+        data-composition-id="10-336"
+        data-composition-src="compositions/frames/10-336.html"
+        data-start="90.19800000000001"
+        data-duration="10.1"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-10-336-voice"
+        src="assets/voice/10.wav"
+        data-start="90.19800000000001"
+        data-duration="9.6"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-11-ranking"
+        class="scene"
+        data-composition-id="11-ranking"
+        data-composition-src="compositions/frames/11-ranking.html"
+        data-start="99.798"
+        data-duration="8.948"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-11-ranking-voice"
+        src="assets/voice/11.wav"
+        data-start="99.798"
+        data-duration="8.448"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-12-agir"
+        class="scene"
+        data-composition-id="12-agir"
+        data-composition-src="compositions/frames/12-agir.html"
+        data-start="108.24600000000001"
+        data-duration="11.828"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-12-agir-voice"
+        src="assets/voice/12.wav"
+        data-start="108.24600000000001"
+        data-duration="11.328"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-13-reavaliar"
+        class="scene"
+        data-composition-id="13-reavaliar"
+        data-composition-src="compositions/frames/13-reavaliar.html"
+        data-start="119.57400000000001"
+        data-duration="13.947"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-13-reavaliar-voice"
+        src="assets/voice/13.wav"
+        data-start="119.57400000000001"
+        data-duration="13.547"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-14-ciclo"
+        class="scene"
+        data-composition-id="14-ciclo"
+        data-composition-src="compositions/frames/14-ciclo.html"
+        data-start="133.121"
+        data-duration="9.055"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-14-ciclo-voice"
+        src="assets/voice/14.wav"
+        data-start="133.121"
+        data-duration="8.555"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-15-resposta"
+        class="scene"
+        data-composition-id="15-resposta"
+        data-composition-src="compositions/frames/15-resposta.html"
+        data-start="141.67600000000002"
+        data-duration="18.477"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-15-resposta-voice"
+        src="assets/voice/15.wav"
+        data-start="141.67600000000002"
+        data-duration="17.877"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-16-cola"
+        class="scene"
+        data-composition-id="16-cola"
+        data-composition-src="compositions/frames/16-cola.html"
+        data-start="159.55300000000003"
+        data-duration="14.812"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-16-cola-voice"
+        src="assets/voice/16.wav"
+        data-start="159.55300000000003"
+        data-duration="14.812"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <!-- BGM -->
+      <audio
+        id="el-bgm"
+        src="assets/music/underscore.mp3"
+        data-start="0"
+        data-duration="174.365"
+        data-track-index="11"
+        data-volume="0.12"
+      ></audio>
+
+      <!-- captions -->
+      <div
+        id="el-captions"
+        class="scene"
+        data-composition-id="captions"
+        data-composition-src="compositions/captions.html"
+        data-start="0"
+        data-duration="174.365"
+        data-track-index="2"
+      ></div>
+
     </div>
+
     <script>
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
-      window.__timelines["main"] = tl;
-      tl.seek(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-antes", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 6.891);
+        tl.fromTo("#el-02-nome", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 6.891);
+        tl.addLabel("hf:transition:01-antes:02-nome:crossfade", 6.891);
+        tl.to("#el-02-nome", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 16.427);
+        tl.fromTo("#el-03-evita", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 16.427);
+        tl.addLabel("hf:transition:02-nome:03-evita:push-slide", 16.427);
+        tl.to("#el-03-evita", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 24.598);
+        tl.fromTo("#el-04-viagem", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 24.598);
+        tl.addLabel("hf:transition:03-evita:04-viagem:crossfade", 24.598);
+        tl.to("#el-04-viagem", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 36.95);
+        tl.fromTo("#el-05-corrente", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 36.95);
+        tl.addLabel("hf:transition:04-viagem:05-corrente:push-slide", 36.95);
+        tl.to("#el-05-corrente", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 47.51);
+        tl.fromTo("#el-06-bomba", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 47.51);
+        tl.addLabel("hf:transition:05-corrente:06-bomba:crossfade", 47.51);
+        tl.to("#el-06-bomba", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 59.99);
+        tl.fromTo("#el-07-notas", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 59.99);
+        tl.addLabel("hf:transition:06-bomba:07-notas:push-slide", 59.99);
+        tl.to("#el-07-notas", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 70.422);
+        tl.fromTo("#el-08-pegadinha", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 70.422);
+        tl.addLabel("hf:transition:07-notas:08-pegadinha:zoom-through", 70.422);
+        tl.to("#el-08-pegadinha", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 81.771);
+        tl.fromTo("#el-09-npr", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 81.771);
+        tl.addLabel("hf:transition:08-pegadinha:09-npr:crossfade", 81.771);
+        tl.to("#el-09-npr", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 90.198);
+        tl.fromTo("#el-10-336", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 90.198);
+        tl.addLabel("hf:transition:09-npr:10-336:push-slide", 90.198);
+        tl.to("#el-10-336", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 99.798);
+        tl.fromTo("#el-11-ranking", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 99.798);
+        tl.addLabel("hf:transition:10-336:11-ranking:crossfade", 99.798);
+        tl.to("#el-11-ranking", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 108.246);
+        tl.fromTo("#el-12-agir", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 108.246);
+        tl.addLabel("hf:transition:11-ranking:12-agir:push-slide", 108.246);
+        tl.to("#el-12-agir", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 119.574);
+        tl.fromTo("#el-13-reavaliar", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 119.574);
+        tl.addLabel("hf:transition:12-agir:13-reavaliar:crossfade", 119.574);
+        tl.to("#el-13-reavaliar", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 133.121);
+        tl.fromTo("#el-14-ciclo", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 133.121);
+        tl.addLabel("hf:transition:13-reavaliar:14-ciclo:zoom-through", 133.121);
+        tl.to("#el-14-ciclo", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 141.676);
+        tl.fromTo("#el-15-resposta", { x: 1920, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 141.676);
+        tl.addLabel("hf:transition:14-ciclo:15-resposta:push-slide", 141.676);
+        tl.to("#el-15-resposta", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.6, ease: "power2.inOut" }, 159.553);
+        tl.fromTo("#el-16-cola", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, 159.553);
+        tl.addLabel("hf:transition:15-resposta:16-cola:blur-crossfade", 159.553);
+        tl.to({}, { duration: 174.365 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
     </script>
   </body>
 </html>

@@ -1,0 +1,386 @@
+<template id="10-336-template">
+  <div id="root" data-composition-id="10-336" data-start="0" data-duration="10.1" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="10-336-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="10-336-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="10-336-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="10-336-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      [class~="10-336-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 1545px 645px; }
+      [class~="10-336-mask"] { position: absolute; left: 0; top: 84px; width: 1920px; height: 794px; overflow: hidden; }
+      [class~="10-336-inner"] { position: absolute; left: 0; top: -84px; width: 1920px; height: 1080px; }
+
+      [class~="10-336-abs"] { position: absolute; }
+      [class~="10-336-ink"] { position: absolute; background: #1F2BE0; }
+      [class~="10-336-box"] { position: absolute; border: 5px solid #1F2BE0; background: #F0EBDE; box-sizing: border-box; }
+
+      /* formula */
+      [class~="10-336-tok"] { position: absolute; top: 120px; height: 230px; transform-origin: 50% 60%; }
+      [class~="10-336-g"] { position: absolute; left: 0; top: 40px; width: 100%; text-align: center; font-family: "Newsreader", serif; font-weight: 400; font-size: 170px; line-height: 170px; letter-spacing: -0.005em; color: #1F2BE0; white-space: nowrap; transform-origin: 50% 55%; }
+      [class~="10-336-op"] { position: absolute; top: 205px; width: 100px; height: 100px; }
+      [class~="10-336-lab"] { position: absolute; top: 340px; width: 300px; text-align: center; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 27px; letter-spacing: 0.1em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; color: #1F2BE0; padding-top: 0.25em; }
+      [class~="10-336-meter"] { position: absolute; top: 396px; width: 216px; height: 18px; }
+      [class~="10-336-mc"] { position: absolute; top: 0; width: 18px; height: 18px; background: rgba(31,43,224,0.10); }
+      [class~="10-336-mon"] { position: absolute; left: 0; top: 0; width: 18px; height: 18px; background: #1F2BE0; }
+      [class~="10-336-bracket"] { position: absolute; top: 432px; height: 6px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+      /* step boxes */
+      [class~="10-336-sbox"] { position: absolute; top: 520px; height: 130px; border: 5px solid #1F2BE0; background: #F0EBDE; box-sizing: border-box; }
+      [class~="10-336-m"] { position: absolute; top: 18px; height: 90px; text-align: center; font-family: "DM Mono", monospace; font-size: 70px; line-height: 90px; color: #1F2BE0; white-space: nowrap; font-variant-numeric: tabular-nums; transform-origin: 50% 50%; }
+      [class~="10-336-step"] { position: absolute; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.3; color: #1F2BE0; white-space: nowrap; padding-top: 0.2em; }
+      [class~="10-336-c1"] { position: absolute; width: 14px; height: 14px; background: rgba(31,43,224,0.10); }
+      [class~="10-336-c1on"] { position: absolute; left: 0; top: 0; width: 14px; height: 14px; background: #1F2BE0; }
+      [class~="10-336-mini"] { position: absolute; top: 690px; width: 56px; height: 49px; }
+      [class~="10-336-c2"] { position: absolute; width: 6px; height: 6px; background: #1F2BE0; }
+      [class~="10-336-arrow"] { position: absolute; height: 6px; background: #1F2BE0; transform-origin: 0% 50%; }
+      [class~="10-336-head"] { position: absolute; width: 22px; height: 22px; background: #1F2BE0; }
+
+      /* hero block */
+      [class~="10-336-hero"] { position: absolute; left: 1250px; top: 440px; width: 590px; height: 410px; transform-origin: 50% 50%; }
+      [class~="10-336-heroin"] { position: absolute; left: 0; top: 0; width: 590px; height: 410px; background: #1F2BE0; }
+      [class~="10-336-herolab"] { position: absolute; left: 32px; top: 26px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 32px; letter-spacing: 0.18em; line-height: 1.25; color: #F0EBDE; white-space: nowrap; padding-top: 0.2em; }
+      [class~="10-336-herowrap"] { position: absolute; left: 15px; top: 110px; width: 560px; height: 240px; display: flex; align-items: center; justify-content: center; }
+      [class~="10-336-heronum"] { display: inline-block; font-family: "Newsreader", serif; font-weight: 400; font-size: 240px; line-height: 216px; letter-spacing: -0.015em; color: #F0EBDE; font-variant-numeric: tabular-nums; transform-origin: 50% 55%; white-space: nowrap; }
+      [class~="10-336-heroul"] { position: absolute; left: 145px; top: 362px; width: 300px; height: 8px; background: #F0EBDE; transform-origin: 0% 50%; }
+    </style>
+
+    <!-- ground -->
+    <div id="10-336-bg" class="clip 10-336-layer 10-336-ground" data-start="0" data-duration="10.1" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="10-336-stage" class="clip 10-336-layer" data-start="0" data-duration="10.1" data-track-index="1">
+      <div id="10-336-cam" class="10-336-cam">
+        <div id="10-336-mask" class="10-336-mask">
+          <div id="10-336-inner" class="10-336-inner">
+
+            <!-- mini pump (callback), top-left corner -->
+            <div id="10-336-pump" class="10-336-layer">
+              <div id="10-336-ptag" class="10-336-step" style="left:110px;top:96px;">BOMBA</div>
+              <div id="10-336-pmotor" class="10-336-box" style="left:110px;top:178px;width:84px;height:84px;"></div>
+              <div id="10-336-pshaft" class="10-336-ink" style="left:194px;top:214px;width:16px;height:12px;"></div>
+              <div id="10-336-pbody" class="10-336-box" style="left:210px;top:160px;width:110px;height:120px;"></div>
+              <div id="10-336-pimp" class="10-336-ink" style="left:247px;top:202px;width:36px;height:36px;"></div>
+              <div id="10-336-ppipe" class="10-336-box" style="left:315px;top:200px;width:70px;height:34px;"></div>
+              <div id="10-336-pfoot" class="10-336-ink" style="left:100px;top:280px;width:300px;height:8px;"></div>
+              <div id="10-336-pdrop" class="10-336-ink" style="left:258px;top:284px;width:12px;height:16px;"></div>
+              <div id="10-336-ppud" class="10-336-ink" style="left:224px;top:322px;width:80px;height:6px;transform-origin:50% 100%;"></div>
+            </div>
+
+            <!-- formula: NPR = S × O × D -->
+            <div id="10-336-t-npr" class="10-336-tok" style="left:440px;width:380px;"><div id="10-336-g-npr" class="10-336-g">NPR</div></div>
+            <div id="10-336-t-eq" class="10-336-tok" style="left:820px;width:120px;"><div id="10-336-g-eq" class="10-336-g">=</div></div>
+
+            <div id="10-336-t-s" class="10-336-tok" style="left:940px;width:150px;">
+              <div id="10-336-l-s" class="10-336-g">S</div>
+              <div id="10-336-n-s" class="10-336-g">8</div>
+            </div>
+            <div id="10-336-op1" class="10-336-op" style="left:1110px;">
+              <div id="10-336-op1a" class="10-336-ink" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(45deg);"></div>
+              <div id="10-336-op1b" class="10-336-ink" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(-45deg);"></div>
+            </div>
+            <div id="10-336-t-o" class="10-336-tok" style="left:1230px;width:160px;">
+              <div id="10-336-l-o" class="10-336-g">O</div>
+              <div id="10-336-n-o" class="10-336-g">7</div>
+            </div>
+            <div id="10-336-op2" class="10-336-op" style="left:1410px;">
+              <div id="10-336-op2a" class="10-336-ink" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(45deg);"></div>
+              <div id="10-336-op2b" class="10-336-ink" style="left:12px;top:44px;width:76px;height:12px;transform:rotate(-45deg);"></div>
+            </div>
+            <div id="10-336-t-d" class="10-336-tok" style="left:1530px;width:150px;">
+              <div id="10-336-l-d" class="10-336-g">D</div>
+              <div id="10-336-n-d" class="10-336-g">6</div>
+            </div>
+
+            <!-- labels + 1..10 meters under each letter -->
+            <div id="10-336-lab-s" class="10-336-lab" style="left:865px;">SEVERIDADE</div>
+            <div id="10-336-lab-o" class="10-336-lab" style="left:1160px;">OCORRÊNCIA</div>
+            <div id="10-336-lab-d" class="10-336-lab" style="left:1455px;">DETECÇÃO</div>
+            <div id="10-336-me-s" class="10-336-meter" style="left:907px;"></div>
+            <div id="10-336-me-o" class="10-336-meter" style="left:1202px;"></div>
+            <div id="10-336-me-d" class="10-336-meter" style="left:1497px;"></div>
+
+            <!-- brackets -->
+            <div id="10-336-br1" class="10-336-bracket" style="left:1000px;width:325px;"></div>
+            <div id="10-336-br2" class="10-336-bracket" style="left:1400px;width:220px;"></div>
+
+            <!-- step 1: 8 × 7 = 56 -->
+            <div id="10-336-box1" class="10-336-sbox" style="left:110px;width:440px;"></div>
+            <div id="10-336-b1txt" class="10-336-abs" style="left:115px;top:525px;width:430px;height:120px;transform-origin:50% 50%;">
+              <div id="10-336-b1-8" class="10-336-m" style="left:25px;width:50px;">8</div>
+              <div id="10-336-b1-x" class="10-336-m" style="left:85px;width:60px;">×</div>
+              <div id="10-336-b1-7" class="10-336-m" style="left:155px;width:50px;">7</div>
+              <div id="10-336-b1-eq" class="10-336-m" style="left:215px;width:60px;">=</div>
+              <div id="10-336-b1-r" class="10-336-m" style="left:285px;width:110px;">0</div>
+            </div>
+            <div id="10-336-grid1" class="10-336-abs" style="left:130px;top:680px;width:136px;height:119px;"></div>
+            <div id="10-336-step1" class="10-336-step" style="left:300px;top:690px;">ETAPA 1</div>
+
+            <div id="10-336-ar1" class="10-336-arrow" style="left:560px;top:582px;width:140px;"></div>
+            <div id="10-336-ar1h" class="10-336-head" style="left:688px;top:574px;"></div>
+
+            <!-- step 2: 56 × 6 = -->
+            <div id="10-336-box2" class="10-336-sbox" style="left:720px;width:380px;"></div>
+            <div id="10-336-b2txt" class="10-336-abs" style="left:725px;top:525px;width:370px;height:120px;">
+              <div id="10-336-b2-56" class="10-336-m" style="left:25px;width:110px;">56</div>
+              <div id="10-336-b2-x" class="10-336-m" style="left:140px;width:60px;">×</div>
+              <div id="10-336-b2-6" class="10-336-m" style="left:210px;width:50px;">6</div>
+              <div id="10-336-b2-eq" class="10-336-m" style="left:280px;width:60px;">=</div>
+            </div>
+            <div id="10-336-minis" class="10-336-layer"></div>
+            <div id="10-336-step2" class="10-336-step" style="left:740px;top:760px;">ETAPA 2</div>
+
+            <div id="10-336-ar2" class="10-336-arrow" style="left:1110px;top:582px;width:120px;"></div>
+            <div id="10-336-ar2h" class="10-336-head" style="left:1218px;top:574px;"></div>
+
+            <!-- hero: 336 in an inverted cobalt block -->
+            <div id="10-336-hero" class="10-336-hero">
+              <div id="10-336-heroin" class="10-336-heroin">
+                <div id="10-336-herolab" class="10-336-herolab">NPR</div>
+                <div id="10-336-herowrap" class="10-336-herowrap"><span id="10-336-heronum" class="10-336-heronum">0</span></div>
+                <div id="10-336-heroul" class="10-336-heroul"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- chrome -->
+    <div id="10-336-chromewrap" class="clip 10-336-layer" data-start="0" data-duration="10.1" data-track-index="2">
+      <div id="10-336-tag" class="10-336-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="10-336-num" class="10-336-chrome" style="right:80px">10 / 16</div>
+      <div id="10-336-hair-top" class="10-336-hair" style="top:80px"></div>
+      <div id="10-336-hair-bot" class="10-336-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 9.6;
+        var $ = function (id) { return document.getElementById("10-336-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["10-336"] = tl;
+
+        var CLIP_HIDE = "inset(-30% 100% -15% -4%)";
+        var CLIP_SHOW = "inset(-30% -4% -15% -4%)";
+        function e3(p) { return 1 - Math.pow(1 - p, 3); }
+        function cl(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+        // ---------- timing (voiceover cues) ----------
+        var FLIP = { s: 1.9, o: 3.0, d: 3.9 };
+        var VAL = { s: 8, o: 7, d: 6 };
+        var T_S1 = 4.4, T_C1 = 4.85, C1_DUR = 0.75;     // 8 × 7 → 56
+        var T_S2 = 6.5;                                   // × 6
+        var T_MINI = 6.95;
+        var T_C2 = 7.45, C2_DUR = 1.2;                    // 336 counts, ~323 at 8.2
+
+        // ---------- build: meters ----------
+        var meters = {};
+        ["s", "o", "d"].forEach(function (k) {
+          var me = $("me-" + k), arr = [];
+          for (var i = 0; i < 10; i++) {
+            var c = document.createElement("div");
+            c.id = "10-336-mc-" + k + "-" + i;
+            c.className = "10-336-mc";
+            c.style.left = (i * 22) + "px";
+            var on = document.createElement("div");
+            on.id = "10-336-mo-" + k + "-" + i;
+            on.className = "10-336-mon";
+            c.appendChild(on);
+            me.appendChild(c);
+            arr.push(on);
+          }
+          meters[k] = arr;
+        });
+
+        // ---------- build: 8 × 7 grid (56 cells) ----------
+        var g1 = $("grid1"), g1on = [];
+        for (var r = 0; r < 7; r++) {
+          for (var c8 = 0; c8 < 8; c8++) {
+            var cell = document.createElement("div");
+            cell.id = "10-336-g1-" + r + "-" + c8;
+            cell.className = "10-336-c1";
+            cell.style.left = (c8 * 17) + "px";
+            cell.style.top = (r * 17) + "px";
+            var on1 = document.createElement("div");
+            on1.id = "10-336-g1on-" + r + "-" + c8;
+            on1.className = "10-336-c1on";
+            cell.appendChild(on1);
+            g1.appendChild(cell);
+            g1on.push(on1);
+          }
+        }
+
+        // ---------- build: six mini-grids of 56 = 336 cells ----------
+        var minis = $("minis"), miniEls = [];
+        for (var m = 0; m < 6; m++) {
+          var mg = document.createElement("div");
+          mg.id = "10-336-mini-" + m;
+          mg.className = "10-336-mini";
+          mg.style.left = (740 + m * 62) + "px";
+          for (var rr = 0; rr < 7; rr++) {
+            for (var cc = 0; cc < 8; cc++) {
+              var c2 = document.createElement("div");
+              c2.id = "10-336-c2-" + m + "-" + rr + "-" + cc;
+              c2.className = "10-336-c2";
+              c2.style.left = (cc * 7) + "px";
+              c2.style.top = (rr * 7) + "px";
+              mg.appendChild(c2);
+            }
+          }
+          minis.appendChild(mg);
+          miniEls.push(mg);
+        }
+
+        // ---------- ambient: deterministic, timeline-driven ----------
+        var drop = $("pdrop"), pud = $("ppud"), imp = $("pimp");
+        var nums = [$("n-s"), $("n-o"), $("n-d")];
+        var b1r = $("b1-r"), heroNum = $("heronum"), heroIn = $("heroin");
+        var ar1h = $("ar1h"), ar2h = $("ar2h");
+        function ambient(t) {
+          // pump: impeller spins, seal drips, puddle grows
+          imp.style.transform = "rotate(" + (t * 270).toFixed(1) + "deg)";
+          var ph = (t % 0.8) / 0.8;
+          drop.style.transform = "translateY(" + (ph * ph * 34).toFixed(2) + "px) scaleY(" + (1 + ph * 0.4).toFixed(2) + ")";
+          drop.style.opacity = ph < 0.92 ? "1" : "0";
+          pud.style.transform = "scaleX(" + (0.5 + 0.5 * cl(t / D) + 0.06 * Math.max(0, Math.sin(t * 7.85))).toFixed(3) + ")";
+
+          // flipped numbers idle-bob
+          var ks = ["s", "o", "d"];
+          for (var j = 0; j < 3; j++) {
+            var a = cl((t - FLIP[ks[j]] - 0.55) / 0.5);
+            nums[j].style.translate = "0px " + (Math.sin(t * 3 + j * 1.4) * 5 * a).toFixed(2) + "px";
+            // meters fill to the value, one cell per beat
+            var arr = meters[ks[j]];
+            for (var i = 0; i < 10; i++) {
+              var st = FLIP[ks[j]] + 0.25 + i * 0.045;
+              var s = i < VAL[ks[j]] ? e3(cl((t - st) / 0.16)) : 0;
+              arr[i].style.transform = "scale(" + s.toFixed(3) + ")";
+            }
+          }
+
+          // 56 count + grid lit cell by cell, in lockstep
+          var v1 = Math.round(56 * e3(cl((t - T_C1) / C1_DUR)));
+          b1r.textContent = String(v1);
+          for (var g = 0; g < g1on.length; g++) g1on[g].style.transform = g < v1 ? "scale(1)" : "scale(0)";
+
+          // six slabs of 56 stamp in
+          for (var q = 0; q < 6; q++) {
+            var sq = e3(cl((t - (T_MINI + q * 0.1)) / 0.22));
+            var wob = t > 8.3 ? 0.06 * Math.max(0, Math.sin((t - 8.3) * 6 - q * 0.7)) : 0;
+            miniEls[q].style.transform = "scale(" + (sq * (1 + wob)).toFixed(3) + ")";
+            miniEls[q].style.opacity = sq > 0 ? "1" : "0";
+          }
+
+          // 336 count
+          var v2 = Math.round(336 * e3(cl((t - T_C2) / C2_DUR)));
+          heroNum.textContent = String(v2);
+
+          // hero breathe after landing
+          var br = t > 8.9 ? 1 + 0.008 * Math.sin((t - 8.9) * 4) : 1;
+          heroIn.style.scale = br.toFixed(4);
+
+          // arrow heads nudge forward
+          ar1h.style.translate = (t > 6.9 ? 4 * Math.max(0, Math.sin((t - 6.9) * 6)) : 0).toFixed(2) + "px 0px";
+          ar2h.style.translate = (t > 7.7 ? 4 * Math.max(0, Math.sin((t - 7.7) * 6)) : 0).toFixed(2) + "px 0px";
+        }
+        ambient(0);
+        tl.to({ v: 0 }, { v: 1, duration: D, ease: "none", onUpdate: function () { ambient(this.progress() * D); } }, 0);
+
+        // ---------- camera: slow drift, then a push toward the hero ----------
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.015, duration: 8.1, ease: "none" }, 0);
+        tl.to($("cam"), { scale: 1.07, duration: 1.5, ease: "power2.out" }, 8.1);
+
+        // ---------- initial hidden states ----------
+        tl.fromTo([$("n-s"), $("n-o"), $("n-d")], { opacity: 0, scaleY: 0 }, { opacity: 0, scaleY: 0, duration: 0.01 }, 0);
+        tl.fromTo([$("lab-s"), $("lab-o"), $("lab-d")], { opacity: 0, y: 20 }, { opacity: 0, y: 20, duration: 0.01 }, 0);
+        tl.fromTo([$("br1"), $("br2")], { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, 0);
+        tl.fromTo([$("box1"), $("box2")], { clipPath: CLIP_HIDE }, { clipPath: CLIP_HIDE, duration: 0.01 }, 0);
+        tl.fromTo([$("b1-8"), $("b1-7"), $("b1-x"), $("b1-eq"), $("b1-r"), $("b2-56"), $("b2-6"), $("b2-x"), $("b2-eq")], { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+        tl.fromTo([$("ar1"), $("ar2")], { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, 0);
+        tl.fromTo([$("ar1h"), $("ar2h")], { scale: 0 }, { scale: 0, duration: 0.01 }, 0);
+        tl.fromTo([$("step1"), $("step2"), $("grid1")], { opacity: 0, y: 16 }, { opacity: 0, y: 16, duration: 0.01 }, 0);
+        tl.fromTo($("hero"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 100% 0% 0%)", duration: 0.01 }, 0);
+        tl.fromTo($("heronum"), { scale: 0.5 }, { scale: 0.5, duration: 0.01 }, 0);
+        tl.fromTo($("heroul"), { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, 0);
+
+        // ---------- Scene 1 (0.0–4.4): formula settles, letters flip to numbers ----------
+        var TOKS = ["t-npr", "t-eq", "t-s", "op1", "t-o", "op2", "t-d"];
+        TOKS.forEach(function (id, i) {
+          tl.fromTo($(id), { y: 46, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 0.05 + i * 0.05);
+        });
+        tl.fromTo($("pump"), { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+        tl.to($("pump"), { opacity: 0, x: -40, duration: 0.4, ease: "power2.in" }, 7.8);
+
+        ["s", "o", "d"].forEach(function (k) {
+          var T = FLIP[k];
+          // flip: letter folds shut, number unfolds in its place
+          tl.fromTo($("l-" + k), { scaleY: 1 }, { scaleY: 0, duration: 0.18, ease: "power2.in", immediateRender: false }, T);
+          tl.set($("l-" + k), { opacity: 0 }, T + 0.18);
+          tl.fromTo($("n-" + k), { opacity: 1, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.4, ease: "back.out(1.8)", immediateRender: false }, T + 0.18);
+          tl.fromTo($("t-" + k), { scale: 1 }, { scale: 1.1, duration: 0.14, ease: "power2.out", immediateRender: false }, T + 0.2);
+          tl.to($("t-" + k), { scale: 1, duration: 0.35, ease: "power3.out" }, T + 0.34);
+          tl.fromTo($("lab-" + k), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, T + 0.2);
+        });
+
+        // ---------- Scene 2 (4.4–6.5): 8 × 7 drop into a box; 56 counts ----------
+        tl.to($("br1"), { scaleX: 1, duration: 0.3, ease: "power3.out" }, T_S1);
+        [["t-s", 0], ["t-o", 0.08]].forEach(function (p) {
+          tl.to($(p[0]), { y: -14, duration: 0.14, ease: "power2.out" }, T_S1 + p[1]);
+          tl.to($(p[0]), { y: 0, duration: 0.3, ease: "power3.out" }, T_S1 + p[1] + 0.14);
+        });
+        tl.to($("box1"), { clipPath: CLIP_SHOW, duration: 0.4, ease: "power3.out" }, T_S1 + 0.05);
+        // 8 (from under S) and 7 (from under O) fly down into the box
+        tl.fromTo($("b1-8"), { x: 845, y: -153, opacity: 0, scale: 1.4 }, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "power3.inOut", immediateRender: false }, T_S1 + 0.1);
+        tl.fromTo($("b1-7"), { x: 1010, y: -153, opacity: 0, scale: 1.4 }, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "power3.inOut", immediateRender: false }, T_S1 + 0.18);
+        tl.fromTo($("b1-x"), { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)", immediateRender: false }, T_S1 + 0.45);
+        tl.fromTo($("b1-eq"), { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)", immediateRender: false }, T_C1 - 0.05);
+        // counting-dynamic-scale: 56 counts while growing to size
+        tl.set($("b1-r"), { opacity: 1 }, T_C1);
+        tl.fromTo($("b1-r"), { scale: 0.55 }, { scale: 1, duration: C1_DUR, ease: "power3.out", immediateRender: false }, T_C1);
+        tl.fromTo($("grid1"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, T_C1 - 0.1);
+        tl.fromTo($("step1"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, 5.6);
+        tl.to([$("box1"), $("b1txt")], { scale: 1.04, duration: 0.12, ease: "power2.out" }, T_C1 + C1_DUR);
+        tl.to([$("box1"), $("b1txt")], { scale: 1, duration: 0.3, ease: "power3.out" }, T_C1 + C1_DUR + 0.12);
+
+        // ---------- Scene 3 (6.5–9.6): 56 joins 6; 336 counts in the cobalt block ----------
+        tl.to($("br2"), { scaleX: 1, duration: 0.3, ease: "power3.out" }, T_S2);
+        tl.to($("t-d"), { y: -14, duration: 0.14, ease: "power2.out" }, T_S2);
+        tl.to($("t-d"), { y: 0, duration: 0.3, ease: "power3.out" }, T_S2 + 0.14);
+        tl.to($("ar1"), { scaleX: 1, duration: 0.35, ease: "power3.out" }, T_S2 - 0.05);
+        tl.to($("ar1h"), { scale: 1, duration: 0.3, ease: "back.out(2)" }, T_S2 + 0.2);
+        tl.to($("box2"), { clipPath: CLIP_SHOW, duration: 0.4, ease: "power3.out" }, T_S2 + 0.05);
+        tl.fromTo($("b2-56"), { x: -230, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, T_S2 + 0.12);
+        tl.fromTo($("b2-6"), { x: 645, y: -153, opacity: 0, scale: 1.4 }, { x: 0, y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "power3.inOut", immediateRender: false }, T_S2 + 0.15);
+        tl.fromTo($("b2-x"), { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)", immediateRender: false }, T_S2 + 0.45);
+        tl.fromTo($("b2-eq"), { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)", immediateRender: false }, 7.05);
+        tl.fromTo($("step2"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, 7.6);
+
+        tl.to($("ar2"), { scaleX: 1, duration: 0.3, ease: "power3.out" }, 7.1);
+        tl.to($("ar2h"), { scale: 1, duration: 0.3, ease: "back.out(2)" }, 7.3);
+        tl.to($("hero"), { clipPath: "inset(0% -2% 0% 0%)", duration: 0.45, ease: "power3.out" }, 7.2);
+        // counting-dynamic-scale on the hero numeral
+        tl.to($("heronum"), { scale: 1, duration: C2_DUR, ease: "power3.out" }, T_C2);
+        tl.to($("heroul"), { scaleX: 1, duration: 0.45, ease: "power3.out" }, T_C2 + C2_DUR);
+        tl.to($("hero"), { scale: 1.035, duration: 0.14, ease: "power2.out" }, T_C2 + C2_DUR);
+        tl.to($("hero"), { scale: 1, duration: 0.4, ease: "power3.out" }, T_C2 + C2_DUR + 0.14);
+      })();
+    </script>
+  </div>
+</template>

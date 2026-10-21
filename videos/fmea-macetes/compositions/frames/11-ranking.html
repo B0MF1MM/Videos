@@ -1,0 +1,269 @@
+<template id="11-ranking-template">
+  <div id="root" data-composition-id="11-ranking" data-start="0" data-duration="8.948" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="11-ranking-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="11-ranking-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="11-ranking-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="11-ranking-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+
+      [class~="11-ranking-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 40% 55%; }
+
+      /* headline */
+      [class~="11-ranking-hl"] { position: absolute; left: 120px; top: 104px; height: 160px; white-space: nowrap; font-family: "Newsreader", serif; font-weight: 400; font-size: 124px; line-height: 124px; letter-spacing: -0.008em; color: #1F2BE0; }
+      [class~="11-ranking-wmask"] { display: inline-block; overflow: hidden; padding-top: 0.25em; margin-top: -0.25em; padding-bottom: 0.18em; margin-bottom: -0.18em; vertical-align: top; }
+      [class~="11-ranking-w"] { display: inline-block; }
+      [class~="11-ranking-hlul"] { position: absolute; left: 392px; top: 250px; width: 486px; height: 6px; background: #1F2BE0; transform-origin: 0% 50%; }
+
+      /* header */
+      [class~="11-ranking-hd"] { position: absolute; top: 300px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.18em; line-height: 1.2; text-transform: uppercase; white-space: nowrap; color: #1F2BE0; }
+      [class~="11-ranking-hdrule"] { position: absolute; left: 120px; top: 352px; width: 1420px; height: 3px; background: #1F2BE0; transform-origin: 0% 50%; }
+      [class~="11-ranking-tag"] { position: absolute; left: 1585px; top: 290px; width: 240px; height: 58px; box-sizing: border-box; border: 3px solid #1F2BE0; font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.08em; line-height: 52px; text-align: center; color: #1F2BE0; white-space: nowrap; }
+
+      /* slots */
+      [class~="11-ranking-div"] { position: absolute; left: 120px; width: 1420px; height: 1px; background: rgba(31,43,224,0.18); transform-origin: 0% 50%; }
+      [class~="11-ranking-rk"] { position: absolute; left: 120px; width: 100px; height: 100px; box-sizing: border-box; border: 3px solid #1F2BE0; transform-origin: 50% 50%; }
+      [class~="11-ranking-rkfill"] { position: absolute; left: 0; top: 0; width: 94px; height: 94px; background: #1F2BE0; transform-origin: 50% 100%; }
+      [class~="11-ranking-rkt"] { position: absolute; left: 0; top: 0; width: 94px; height: 94px; text-align: center; font-family: "Newsreader", serif; font-weight: 400; font-size: 58px; line-height: 98px; letter-spacing: -0.01em; white-space: nowrap; }
+
+      /* rows */
+      [class~="11-ranking-row"] { position: absolute; left: 240px; width: 1300px; height: 160px; }
+      [class~="11-ranking-face"] { position: absolute; left: 0; top: 0; width: 1300px; height: 160px; }
+      [class~="11-ranking-name"] { position: absolute; left: 20px; top: 54px; width: 520px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 40px; letter-spacing: 0.07em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
+      [class~="11-ranking-track"] { position: absolute; left: 556px; top: 58px; width: 504px; height: 44px;
+        background-image: repeating-linear-gradient(90deg, rgba(31,43,224,0.10) 0 20px, transparent 20px 24px); }
+      [class~="11-ranking-fill"] { position: absolute; left: 0; top: 0; width: 504px; height: 44px;
+        background-image: repeating-linear-gradient(90deg, #1F2BE0 0 20px, transparent 20px 24px); }
+      [class~="11-ranking-num"] { position: absolute; left: 1070px; top: 22px; width: 216px; text-align: right; font-family: "Newsreader", serif; font-weight: 400; font-size: 112px; line-height: 112px; letter-spacing: -0.015em; white-space: nowrap; }
+
+      [class~="11-ranking-inv"] { position: absolute; left: 0; top: 0; width: 1300px; height: 160px; background: #1F2BE0; color: #F0EBDE; }
+      [class~="11-ranking-inv"] [class~="11-ranking-track"] { background-image: repeating-linear-gradient(90deg, rgba(240,235,222,0.22) 0 20px, transparent 20px 24px); }
+      [class~="11-ranking-inv"] [class~="11-ranking-fill"] { background-image: repeating-linear-gradient(90deg, #F0EBDE 0 20px, transparent 20px 24px); }
+
+      /* scanner */
+      [class~="11-ranking-scan"] { position: absolute; left: 1296px; width: 252px; height: 140px; box-sizing: border-box; border: 4px solid #1F2BE0; }
+      [class~="11-ranking-scantick"] { position: absolute; left: -24px; top: 58px; width: 16px; height: 16px; background: #1F2BE0; }
+
+      /* seal */
+      [class~="11-ranking-seal"] { position: absolute; left: 1590px; top: 376px; width: 232px; height: 168px; background: #1F2BE0; color: #F0EBDE; transform-origin: 50% 50%; box-sizing: border-box; padding-top: 42px;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 31px; letter-spacing: 0.08em; line-height: 1.32; text-transform: uppercase; text-align: center; white-space: nowrap; }
+      [class~="11-ranking-sealin"] { position: absolute; left: 8px; top: 8px; width: 216px; height: 152px; box-sizing: border-box; border: 2px solid #F0EBDE; }
+      [class~="11-ranking-ring"] { position: absolute; left: 1590px; top: 376px; width: 232px; height: 168px; box-sizing: border-box; border: 4px solid #1F2BE0; transform-origin: 50% 50%; }
+      [class~="11-ranking-arrow"] { position: absolute; left: 1548px; top: 446px; width: 40px; height: 28px; }
+      [class~="11-ranking-arbar"] { position: absolute; background: #1F2BE0; }
+    </style>
+
+    <!-- ground -->
+    <div id="11-ranking-bg" class="clip 11-ranking-layer 11-ranking-ground" data-start="0" data-duration="8.948" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="11-ranking-stage" class="clip 11-ranking-layer" data-start="0" data-duration="8.948" data-track-index="1">
+      <div id="11-ranking-cam" class="11-ranking-cam">
+
+        <!-- headline -->
+        <div id="11-ranking-hl" class="11-ranking-hl"><span id="11-ranking-m1" class="11-ranking-wmask"><span id="11-ranking-w1" class="11-ranking-w">Para</span></span> <span id="11-ranking-m2" class="11-ranking-wmask"><span id="11-ranking-w2" class="11-ranking-w">priorizar</span></span></div>
+        <div id="11-ranking-hlul" class="11-ranking-hlul"></div>
+
+        <!-- table header -->
+        <div id="11-ranking-hd-falha" class="11-ranking-hd" style="left:260px">FALHA</div>
+        <div id="11-ranking-hd-npr" class="11-ranking-hd" style="left:1300px;width:226px;text-align:right">NPR</div>
+        <div id="11-ranking-hdrule" class="11-ranking-hdrule"></div>
+        <div id="11-ranking-tag" class="11-ranking-tag">EXEMPLO</div>
+
+        <!-- slot furniture -->
+        <div id="11-ranking-div-0" class="11-ranking-div" style="top:530px"></div>
+        <div id="11-ranking-div-1" class="11-ranking-div" style="top:700px"></div>
+        <div id="11-ranking-div-2" class="11-ranking-div" style="top:870px"></div>
+
+        <div id="11-ranking-rk-0" class="11-ranking-rk" style="top:395px">
+          <div id="11-ranking-rkfill-0" class="11-ranking-rkfill"></div>
+          <div id="11-ranking-rkt-0" class="11-ranking-rkt" style="color:#F0EBDE">1º</div>
+        </div>
+        <div id="11-ranking-rk-1" class="11-ranking-rk" style="top:565px">
+          <div id="11-ranking-rkt-1" class="11-ranking-rkt" style="color:#1F2BE0">2º</div>
+        </div>
+        <div id="11-ranking-rk-2" class="11-ranking-rk" style="top:735px">
+          <div id="11-ranking-rkt-2" class="11-ranking-rkt" style="color:#1F2BE0">3º</div>
+        </div>
+
+        <!-- rows (enter out of order: RUÍDO slot 0, VAZAMENTO slot 1, PINTURA slot 2) -->
+        <div id="11-ranking-row-a" class="11-ranking-row" style="top:365px">
+          <div id="11-ranking-face-a" class="11-ranking-face" style="color:#1F2BE0">
+            <div id="11-ranking-name-a" class="11-ranking-name">RUÍDO NA BOMBA</div>
+            <div id="11-ranking-track-a" class="11-ranking-track"><div id="11-ranking-fill-a" class="11-ranking-fill"></div></div>
+            <div id="11-ranking-num-a" class="11-ranking-num">0</div>
+          </div>
+        </div>
+
+        <div id="11-ranking-row-b" class="11-ranking-row" style="top:535px">
+          <div id="11-ranking-face-b" class="11-ranking-face" style="color:#1F2BE0">
+            <div id="11-ranking-name-b" class="11-ranking-name">VAZAMENTO</div>
+            <div id="11-ranking-track-b" class="11-ranking-track"><div id="11-ranking-fill-b" class="11-ranking-fill"></div></div>
+            <div id="11-ranking-num-b" class="11-ranking-num">0</div>
+          </div>
+          <div id="11-ranking-inv" class="11-ranking-inv">
+            <div id="11-ranking-name-bi" class="11-ranking-name">VAZAMENTO</div>
+            <div id="11-ranking-track-bi" class="11-ranking-track"><div id="11-ranking-fill-bi" class="11-ranking-fill"></div></div>
+            <div id="11-ranking-num-bi" class="11-ranking-num">336</div>
+          </div>
+        </div>
+
+        <div id="11-ranking-row-c" class="11-ranking-row" style="top:705px">
+          <div id="11-ranking-face-c" class="11-ranking-face" style="color:#1F2BE0">
+            <div id="11-ranking-name-c" class="11-ranking-name">RISCO NA PINTURA</div>
+            <div id="11-ranking-track-c" class="11-ranking-track"><div id="11-ranking-fill-c" class="11-ranking-fill"></div></div>
+            <div id="11-ranking-num-c" class="11-ranking-num">0</div>
+          </div>
+        </div>
+
+        <!-- comparison scanner -->
+        <div id="11-ranking-scan" class="11-ranking-scan" style="top:715px"><div id="11-ranking-scantick" class="11-ranking-scantick"></div></div>
+
+        <!-- payoff seal -->
+        <div id="11-ranking-ring" class="11-ranking-ring"></div>
+        <div id="11-ranking-arrow" class="11-ranking-arrow">
+          <div id="11-ranking-ar1" class="11-ranking-arbar" style="left:8px;top:11px;width:32px;height:6px"></div>
+          <div id="11-ranking-ar2" class="11-ranking-arbar" style="left:0;top:6px;width:6px;height:16px"></div>
+        </div>
+        <div id="11-ranking-seal" class="11-ranking-seal">
+          <div id="11-ranking-sealin" class="11-ranking-sealin"></div>
+          <div id="11-ranking-seal-l1">ATACAR</div>
+          <div id="11-ranking-seal-l2">PRIMEIRO</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- chrome -->
+    <div id="11-ranking-chromewrap" class="clip 11-ranking-layer" data-start="0" data-duration="8.948" data-track-index="2">
+      <div id="11-ranking-chtag" class="11-ranking-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="11-ranking-chnum" class="11-ranking-chrome" style="right:80px">11 / 16</div>
+      <div id="11-ranking-hair-top" class="11-ranking-hair" style="top:80px"></div>
+      <div id="11-ranking-hair-bot" class="11-ranking-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 8.448;
+        var $ = function (id) { return document.getElementById("11-ranking-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["11-ranking"] = tl;
+
+        var CLIP_HIDE = "inset(-30% 100% -15% -4%)";
+        var CLIP_SHOW = "inset(-30% -4% -15% -4%)";
+        var MAX = 336;
+        var PITCH = 170;
+
+        // ---------- camera: slow continuous push ----------
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
+
+        // ---------- Scene 1 (0.0–2.2): header + headline ----------
+        tl.fromTo($("hdrule"), { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.inOut" }, 0.05);
+        ["hd-falha", "hd-npr"].forEach(function (k, i) {
+          tl.fromTo($(k), { clipPath: CLIP_HIDE, y: 14 }, { clipPath: CLIP_SHOW, y: 0, duration: 0.5, ease: "power3.out" }, 0.15 + i * 0.08);
+        });
+        tl.fromTo($("tag"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.35);
+        [0, 1, 2].forEach(function (i) {
+          tl.fromTo($("div-" + i), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.25 + i * 0.1);
+          tl.fromTo($("rk-" + i), { scale: 0, opacity: 0, rotation: -45 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "power3.out" }, 0.35 + i * 0.08);
+        });
+        // rank labels + fill wait for the sort
+        tl.set([$("rkt-0"), $("rkt-1"), $("rkt-2")], { opacity: 0, scale: 0.4 }, 0);
+        tl.set($("rkfill-0"), { scaleY: 0 }, 0);
+
+        tl.fromTo($("w1"), { yPercent: 110 }, { yPercent: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+        tl.fromTo($("w2"), { yPercent: 110 }, { yPercent: 0, duration: 0.65, ease: "power3.out" }, 1.3);
+        tl.fromTo($("hlul"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.inOut" }, 1.75);
+
+        // "calcula o NPR" — NPR header flexes
+        tl.to($("hd-npr"), { scale: 1.18, duration: 0.18, ease: "power2.out" }, 2.6);
+        tl.to($("hd-npr"), { scale: 1, duration: 0.3, ease: "power2.inOut" }, 2.78);
+
+        // ---------- Scene 2 (2.2–5.2): rows enter out of order, count + bars grow ----------
+        var rows = [
+          { k: "a", v: 120, at: 2.9 },
+          { k: "b", v: 336, at: 3.4 },
+          { k: "c", v: 45,  at: 3.9 }
+        ];
+        rows.forEach(function (r) {
+          tl.fromTo($("row-" + r.k), { x: 160, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, r.at);
+          var right = (1 - r.v / MAX) * 100;
+          tl.fromTo($("fill-" + r.k), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% " + right.toFixed(2) + "% 0% 0%)", duration: 0.8, ease: "power2.out" }, r.at + 0.15);
+          var numEl = $("num-" + r.k);
+          var proxy = { v: 0 };
+          tl.fromTo(proxy, { v: 0 }, {
+            v: r.v, duration: 0.8, ease: "power2.out",
+            onUpdate: function () { var s = String(Math.round(proxy.v)); if (numEl.textContent !== s) numEl.textContent = s; }
+          }, r.at + 0.15);
+          tl.fromTo(numEl, { scale: 0.8 }, { scale: 1, duration: 0.8, ease: "power2.out", transformOrigin: "100% 60%" }, r.at + 0.15);
+        });
+        // lit copy bar already at full length (336/336)
+        tl.set($("fill-bi"), { clipPath: "inset(-30% -4% -15% -4%)" }, 0);
+
+        // comparison scanner sweeps the NPR column bottom → top
+        tl.fromTo($("scan"), { opacity: 0, scale: 1.2 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power3.out" }, 4.45);
+        tl.to($("scan"), { y: -PITCH, duration: 0.22, ease: "power3.inOut" }, 4.72);
+        tl.to($("scan"), { y: -2 * PITCH, duration: 0.22, ease: "power3.inOut" }, 4.94);
+        tl.fromTo($("scantick"), { x: 0 }, { x: -10, duration: 0.15, ease: "power2.out" }, 4.94);
+        tl.to($("scan"), { opacity: 0, scale: 1.12, duration: 0.25, ease: "power2.in" }, 5.16);
+
+        // ---------- Scene 3 (5.2–end): sort, invert, seal ----------
+        // VAZAMENTO lifts right and climbs; RUÍDO ducks left and drops
+        tl.to($("row-b"), { x: 70, scale: 1.03, duration: 0.18, ease: "power2.out" }, 5.2);
+        tl.to($("row-b"), { y: -PITCH, duration: 0.42, ease: "power3.inOut" }, 5.26);
+        tl.to($("row-b"), { x: 0, scale: 1, duration: 0.24, ease: "power3.out" }, 5.56);
+        tl.to($("row-a"), { x: -40, scale: 0.97, duration: 0.18, ease: "power2.out" }, 5.2);
+        tl.to($("row-a"), { y: PITCH, duration: 0.42, ease: "power3.inOut" }, 5.26);
+        tl.to($("row-a"), { x: 0, scale: 1, duration: 0.24, ease: "power3.out" }, 5.56);
+        // PINTURA confirms its place with a small nudge
+        tl.to($("row-c"), { x: 18, duration: 0.14, ease: "power2.out" }, 5.4);
+        tl.to($("row-c"), { x: 0, duration: 0.3, ease: "power3.out" }, 5.54);
+
+        // podium ranks 1º 2º 3º
+        [0, 1, 2].forEach(function (i) {
+          tl.to($("rkt-" + i), { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 5.55 + i * 0.08);
+        });
+        tl.to($("rkfill-0"), { scaleY: 1, duration: 0.3, ease: "power3.out" }, 5.5);
+
+        // "ataca primeiro" — VAZAMENTO row turns into an inverted block
+        tl.fromTo($("inv"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(-30% -4% -15% -4%)", duration: 0.4, ease: "power3.inOut" }, 5.8);
+        tl.set($("face-b"), { opacity: 0 }, 6.2);
+        tl.fromTo($("num-bi"), { scale: 1 }, { scale: 1.12, duration: 0.16, ease: "power2.out", transformOrigin: "100% 60%" }, 6.2);
+        tl.to($("num-bi"), { scale: 1, duration: 0.3, ease: "power2.inOut" }, 6.36);
+
+        // seal springs in beside it
+        tl.fromTo($("seal"), { scale: 0, opacity: 0, rotation: -24 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.55, ease: "back.out(1.7)" }, 6.0);
+        tl.fromTo($("ring"), { scale: 1, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.05, ease: "none" }, 6.35);
+        tl.to($("ring"), { scale: 1.4, opacity: 0, duration: 0.6, ease: "power2.out" }, 6.4);
+        tl.fromTo($("arrow"), { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 6.25);
+
+        // 1º square thumps
+        tl.to($("rk-0"), { scale: 1.12, duration: 0.15, ease: "power2.out" }, 6.3);
+        tl.to($("rk-0"), { scale: 1, duration: 0.35, ease: "power2.inOut" }, 6.45);
+
+        // hold — keep the payoff alive (finite, deterministic nudges)
+        var nudges = [6.9, 7.5, 8.05];
+        nudges.forEach(function (t) {
+          tl.to($("arrow"), { x: -12, duration: 0.18, ease: "power2.out" }, t);
+          tl.to($("arrow"), { x: 0, duration: 0.3, ease: "power2.inOut" }, t + 0.18);
+        });
+        tl.to($("seal"), { rotation: -3, y: -6, duration: D - 6.6, ease: "sine.inOut" }, 6.6);
+      })();
+    </script>
+  </div>
+</template>

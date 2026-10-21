@@ -1,0 +1,395 @@
+<template id="13-reavaliar-template">
+  <div id="root" data-composition-id="13-reavaliar" data-start="0" data-duration="13.947" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; color: #1F2BE0; }
+
+      [class~="13-reavaliar-layer"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      [class~="13-reavaliar-ground"] {
+        background-color: #F0EBDE;
+        background-image:
+          linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+        background-size: 38.4px 38.4px;
+      }
+      [class~="13-reavaliar-hair"] { position: absolute; left: 80px; width: 1760px; height: 2px; background: #1F2BE0; }
+      [class~="13-reavaliar-chrome"] { position: absolute; top: 30px; font-family: "DM Mono", monospace; font-size: 27px; letter-spacing: 0.06em; line-height: 1.2; color: #1F2BE0; white-space: nowrap; }
+      [class~="13-reavaliar-cam"] { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 960px 480px; }
+
+      [class~="13-reavaliar-abs"] { position: absolute; }
+      [class~="13-reavaliar-ink"] { position: absolute; background: #1F2BE0; }
+      [class~="13-reavaliar-box"] { position: absolute; border: 5px solid #1F2BE0; background: #F0EBDE; box-sizing: border-box; }
+
+      [class~="13-reavaliar-head"] { position: absolute; left: 110px; top: 92px; font-family: "Newsreader", serif; font-weight: 400; font-size: 124px; line-height: 136px; letter-spacing: -0.008em; color: #1F2BE0; white-space: nowrap; }
+      [class~="13-reavaliar-tag"] { position: absolute; left: 660px; top: 146px; border: 3px solid #1F2BE0; padding: 6px 16px 4px; font-family: "DM Mono", monospace; font-size: 30px; letter-spacing: 0.12em; line-height: 1.25; color: #1F2BE0; background: #F0EBDE; white-space: nowrap; transform-origin: 50% 50%; }
+
+      [class~="13-reavaliar-boxlab"] { position: absolute; left: 30px; top: 22px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 40px; letter-spacing: 0.14em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; padding-top: 0.15em; }
+      [class~="13-reavaliar-bignum"] { font-family: "Newsreader", serif; font-weight: 400; letter-spacing: -0.015em; font-variant-numeric: tabular-nums; white-space: nowrap; display: inline-block; }
+
+      [class~="13-reavaliar-tok"] { position: absolute; top: 290px; width: 140px; height: 180px; text-align: center; font-family: "Newsreader", serif; font-weight: 400; font-size: 160px; line-height: 180px; letter-spacing: -0.005em; color: #1F2BE0; white-space: nowrap; }
+      [class~="13-reavaliar-op"] { position: absolute; top: 352px; width: 70px; height: 70px; transform-origin: 50% 50%; }
+      [class~="13-reavaliar-opbar"] { position: absolute; left: 0; top: 29px; width: 70px; height: 12px; background: #1F2BE0; }
+      [class~="13-reavaliar-lab"] { position: absolute; top: 476px; width: 260px; text-align: center; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; letter-spacing: 0.08em; line-height: 1.3; text-transform: uppercase; white-space: nowrap; color: #1F2BE0; padding-top: 0.2em; }
+      [class~="13-reavaliar-era"] { position: absolute; top: 528px; width: 260px; text-align: center; font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.08em; line-height: 1.3; white-space: nowrap; color: #1F2BE0; }
+
+      [class~="13-reavaliar-mono"] { position: absolute; font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.06em; line-height: 1.3; color: #1F2BE0; white-space: nowrap; }
+      [class~="13-reavaliar-mc"] { position: absolute; top: 50px; width: 28px; height: 28px; background: rgba(31,43,224,0.10); }
+      [class~="13-reavaliar-mon"] { position: absolute; left: 0; top: 0; width: 28px; height: 28px; background: #1F2BE0; }
+
+      [class~="13-reavaliar-badge"] { position: absolute; width: 130px; height: 130px; transform-origin: 50% 50%; }
+      [class~="13-reavaliar-blab"] { position: absolute; left: -85px; top: 138px; width: 300px; text-align: center; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; letter-spacing: 0.08em; line-height: 1.3; text-transform: uppercase; white-space: nowrap; color: #1F2BE0; }
+      [class~="13-reavaliar-pulse"] { position: absolute; left: 0; top: 0; width: 16px; height: 16px; background: #1F2BE0; opacity: 0; }
+    </style>
+
+    <!-- ground -->
+    <div id="13-reavaliar-bg" class="clip 13-reavaliar-layer 13-reavaliar-ground" data-start="0" data-duration="13.947" data-track-index="0"></div>
+
+    <!-- stage -->
+    <div id="13-reavaliar-stage" class="clip 13-reavaliar-layer" data-start="0" data-duration="13.947" data-track-index="1">
+      <div id="13-reavaliar-cam" class="13-reavaliar-cam">
+
+        <!-- headline + example stamp -->
+        <div id="13-reavaliar-head" class="13-reavaliar-head">Reavaliar</div>
+        <div id="13-reavaliar-tag" class="13-reavaliar-tag">EXEMPLO</div>
+
+        <!-- NPR ANTES: 336 -->
+        <div id="13-reavaliar-bmove" class="13-reavaliar-abs" style="left:110px;top:280px;width:430px;height:280px;transform-origin:0% 0%;">
+          <div id="13-reavaliar-bbox" class="13-reavaliar-box" style="left:0;top:0;width:430px;height:280px;transform-origin:50% 50%;">
+            <div id="13-reavaliar-blab" class="13-reavaliar-boxlab" style="color:#1F2BE0;">NPR ANTES</div>
+            <div id="13-reavaliar-bnumwrap" class="13-reavaliar-abs" style="left:0;top:86px;width:420px;height:170px;display:flex;align-items:center;justify-content:center;">
+              <span id="13-reavaliar-bnum" class="13-reavaliar-bignum" style="font-size:170px;line-height:170px;color:#1F2BE0;">336</span>
+            </div>
+            <div id="13-reavaliar-strikerot" class="13-reavaliar-abs" style="left:45px;top:164px;width:330px;height:16px;transform:rotate(-9deg);">
+              <div id="13-reavaliar-strike" class="13-reavaliar-ink" style="left:0;top:0;width:330px;height:16px;transform-origin:0% 50%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- formula: 8 × 3 × 2 -->
+        <div id="13-reavaliar-f8" class="13-reavaliar-tok" style="left:610px;">8</div>
+        <div id="13-reavaliar-fx1" class="13-reavaliar-op" style="left:780px;">
+          <div id="13-reavaliar-fx1a" class="13-reavaliar-opbar" style="transform:rotate(45deg);"></div>
+          <div id="13-reavaliar-fx1b" class="13-reavaliar-opbar" style="transform:rotate(-45deg);"></div>
+        </div>
+        <div id="13-reavaliar-f3" class="13-reavaliar-tok" style="left:880px;">3</div>
+        <div id="13-reavaliar-fx2" class="13-reavaliar-op" style="left:1050px;">
+          <div id="13-reavaliar-fx2a" class="13-reavaliar-opbar" style="transform:rotate(45deg);"></div>
+          <div id="13-reavaliar-fx2b" class="13-reavaliar-opbar" style="transform:rotate(-45deg);"></div>
+        </div>
+        <div id="13-reavaliar-f2" class="13-reavaliar-tok" style="left:1150px;">2</div>
+
+        <div id="13-reavaliar-l8" class="13-reavaliar-lab" style="left:550px;">SEVERIDADE</div>
+        <div id="13-reavaliar-l3" class="13-reavaliar-lab" style="left:820px;">OCORRÊNCIA</div>
+        <div id="13-reavaliar-l2" class="13-reavaliar-lab" style="left:1090px;">DETECÇÃO</div>
+        <div id="13-reavaliar-e3" class="13-reavaliar-era" style="left:820px;">ERA 7</div>
+        <div id="13-reavaliar-e2" class="13-reavaliar-era" style="left:1090px;">ERA 6</div>
+
+        <!-- risk meter: 20 cells of 50 (scale 0–1000) -->
+        <div id="13-reavaliar-meter" class="13-reavaliar-abs" style="left:610px;top:600px;width:674px;height:130px;">
+          <div id="13-reavaliar-mlab" class="13-reavaliar-mono" style="left:0;top:0;font-family:'Hanken Grotesk',sans-serif;font-weight:600;letter-spacing:0.14em;">RISCO</div>
+          <div id="13-reavaliar-mcells" class="13-reavaliar-abs" style="left:0;top:0;width:674px;height:80px;"></div>
+          <div id="13-reavaliar-mt0" class="13-reavaliar-mono" style="left:0;top:88px;">0</div>
+          <div id="13-reavaliar-mt1" class="13-reavaliar-mono" style="right:0;top:88px;">1000</div>
+        </div>
+
+        <!-- big falling arrow -->
+        <div id="13-reavaliar-arrow" class="13-reavaliar-abs" style="left:1340px;top:300px;width:56px;height:240px;transform-origin:50% 0%;">
+          <div id="13-reavaliar-tr1" class="13-reavaliar-ink" style="left:24px;top:0;width:8px;height:24px;"></div>
+          <div id="13-reavaliar-tr2" class="13-reavaliar-ink" style="left:24px;top:0;width:8px;height:24px;"></div>
+          <svg id="13-reavaliar-arrowsvg" width="56" height="240" viewBox="0 0 56 240" style="position:absolute;left:0;top:0;overflow:visible;">
+            <rect x="18" y="40" width="20" height="130" fill="#1F2BE0"></rect>
+            <polygon points="0,160 56,160 28,238" fill="#1F2BE0"></polygon>
+          </svg>
+        </div>
+
+        <!-- NPR DEPOIS: count 336 -> 48, then inverted block -->
+        <div id="13-reavaliar-rmove" class="13-reavaliar-abs" style="left:1410px;top:290px;width:430px;height:440px;transform-origin:0% 0%;">
+          <div id="13-reavaliar-rpop" class="13-reavaliar-abs" style="left:0;top:0;width:430px;height:440px;transform-origin:50% 50%;">
+            <div id="13-reavaliar-rout" class="13-reavaliar-box" style="left:0;top:0;width:430px;height:440px;"></div>
+            <div id="13-reavaliar-rfill" class="13-reavaliar-ink" style="left:0;top:0;width:430px;height:440px;"></div>
+            <div id="13-reavaliar-rink" class="13-reavaliar-abs" style="left:0;top:0;width:430px;height:440px;">
+              <div id="13-reavaliar-rlab" class="13-reavaliar-boxlab" style="color:#1F2BE0;">NPR DEPOIS</div>
+              <div id="13-reavaliar-rnumwrap" class="13-reavaliar-abs" style="left:0;top:120px;width:430px;height:260px;display:flex;align-items:center;justify-content:center;">
+                <span id="13-reavaliar-rnum" class="13-reavaliar-bignum" style="font-size:240px;line-height:240px;color:#1F2BE0;transform-origin:50% 55%;">336</span>
+              </div>
+            </div>
+            <div id="13-reavaliar-rcream" class="13-reavaliar-abs" style="left:0;top:0;width:430px;height:440px;">
+              <div id="13-reavaliar-rlab2" class="13-reavaliar-boxlab" style="color:#F0EBDE;">NPR DEPOIS</div>
+              <div id="13-reavaliar-rnumwrap2" class="13-reavaliar-abs" style="left:0;top:120px;width:430px;height:260px;display:flex;align-items:center;justify-content:center;">
+                <span id="13-reavaliar-rnum2" class="13-reavaliar-bignum" style="font-size:240px;line-height:240px;color:#F0EBDE;">48</span>
+              </div>
+              <div id="13-reavaliar-rul" class="13-reavaliar-abs" style="left:115px;top:388px;width:200px;height:8px;background:#F0EBDE;transform-origin:0% 50%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- small arrow between 336 and 48 (phase B) -->
+        <div id="13-reavaliar-sarrow" class="13-reavaliar-abs" style="left:236px;top:484px;width:50px;height:54px;transform-origin:50% 0%;">
+          <svg id="13-reavaliar-sarrowsvg" width="50" height="54" viewBox="0 0 50 54" style="position:absolute;left:0;top:0;">
+            <rect x="19" y="0" width="12" height="30" fill="#1F2BE0"></rect>
+            <polygon points="2,28 48,28 25,54" fill="#1F2BE0"></polygon>
+          </svg>
+        </div>
+
+        <!-- team around the table -->
+        <div id="13-reavaliar-team" class="13-reavaliar-layer">
+          <svg id="13-reavaliar-lines" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0;">
+            <line id="13-reavaliar-ln0" x1="705" y1="315" x2="1180" y2="550" stroke="#1F2BE0" stroke-width="5"></line>
+            <line id="13-reavaliar-ln1" x1="1655" y1="315" x2="1180" y2="550" stroke="#1F2BE0" stroke-width="5"></line>
+            <line id="13-reavaliar-ln2" x1="1655" y1="745" x2="1180" y2="550" stroke="#1F2BE0" stroke-width="5"></line>
+            <line id="13-reavaliar-ln3" x1="705" y1="745" x2="1180" y2="550" stroke="#1F2BE0" stroke-width="5"></line>
+          </svg>
+          <div id="13-reavaliar-pu0" class="13-reavaliar-pulse"></div>
+          <div id="13-reavaliar-pu1" class="13-reavaliar-pulse"></div>
+          <div id="13-reavaliar-pu2" class="13-reavaliar-pulse"></div>
+          <div id="13-reavaliar-pu3" class="13-reavaliar-pulse"></div>
+
+          <div id="13-reavaliar-table" class="13-reavaliar-box" style="left:960px;top:470px;width:440px;height:160px;transform-origin:50% 50%;overflow:hidden;">
+            <div id="13-reavaliar-tlab" class="13-reavaliar-abs" style="left:0;top:22px;width:430px;text-align:center;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:34px;letter-spacing:0.12em;line-height:1.3;white-space:nowrap;padding-top:0.15em;">ANÁLISE FMEA</div>
+            <div id="13-reavaliar-tnpr" class="13-reavaliar-mono" style="left:0;top:84px;width:430px;text-align:center;font-size:34px;">NPR 48</div>
+            <div id="13-reavaliar-tscan" class="13-reavaliar-ink" style="left:0;top:136px;width:70px;height:6px;"></div>
+          </div>
+
+          <!-- PROJETO -->
+          <div id="13-reavaliar-bg0" class="13-reavaliar-badge" style="left:640px;top:250px;">
+            <div id="13-reavaliar-bx0" class="13-reavaliar-box" style="left:0;top:0;width:130px;height:130px;"></div>
+            <svg id="13-reavaliar-ic0" width="90" height="90" viewBox="0 0 100 100" style="position:absolute;left:20px;top:20px;overflow:visible;">
+              <polygon points="15,88 15,15 88,88" fill="none" stroke="#1F2BE0" stroke-width="7" stroke-linejoin="miter"></polygon>
+              <line x1="15" y1="35" x2="27" y2="35" stroke="#1F2BE0" stroke-width="5"></line>
+              <line x1="15" y1="52" x2="27" y2="52" stroke="#1F2BE0" stroke-width="5"></line>
+              <line x1="15" y1="69" x2="27" y2="69" stroke="#1F2BE0" stroke-width="5"></line>
+              <g id="13-reavaliar-pencil"><rect x="44" y="20" width="10" height="34" fill="#1F2BE0" transform="rotate(-45 49 37)"></rect></g>
+            </svg>
+            <div id="13-reavaliar-bl0" class="13-reavaliar-blab">PROJETO</div>
+          </div>
+
+          <!-- PRODUÇÃO -->
+          <div id="13-reavaliar-bg1" class="13-reavaliar-badge" style="left:1590px;top:250px;">
+            <div id="13-reavaliar-bx1" class="13-reavaliar-box" style="left:0;top:0;width:130px;height:130px;"></div>
+            <svg id="13-reavaliar-ic1" width="90" height="90" viewBox="0 0 100 100" style="position:absolute;left:20px;top:20px;overflow:visible;">
+              <polygon points="10,88 10,56 32,42 32,56 54,42 54,56 72,44 72,22 86,22 86,88" fill="none" stroke="#1F2BE0" stroke-width="7" stroke-linejoin="miter"></polygon>
+              <rect x="20" y="66" width="10" height="10" fill="#1F2BE0"></rect>
+              <rect x="40" y="66" width="10" height="10" fill="#1F2BE0"></rect>
+              <rect x="60" y="66" width="10" height="10" fill="#1F2BE0"></rect>
+              <rect id="13-reavaliar-smk0" x="74" y="6" width="10" height="10" fill="#1F2BE0"></rect>
+              <rect id="13-reavaliar-smk1" x="74" y="6" width="10" height="10" fill="#1F2BE0"></rect>
+            </svg>
+            <div id="13-reavaliar-bl1" class="13-reavaliar-blab">PRODUÇÃO</div>
+          </div>
+
+          <!-- QUALIDADE -->
+          <div id="13-reavaliar-bg2" class="13-reavaliar-badge" style="left:1590px;top:680px;">
+            <div id="13-reavaliar-bx2" class="13-reavaliar-box" style="left:0;top:0;width:130px;height:130px;"></div>
+            <svg id="13-reavaliar-ic2" width="90" height="90" viewBox="0 0 100 100" style="position:absolute;left:20px;top:20px;overflow:visible;">
+              <rect x="12" y="12" width="76" height="76" fill="none" stroke="#1F2BE0" stroke-width="7"></rect>
+              <polyline id="13-reavaliar-check" points="27,52 44,69 75,33" fill="none" stroke="#1F2BE0" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" stroke-dasharray="72" stroke-dashoffset="72"></polyline>
+            </svg>
+            <div id="13-reavaliar-bl2" class="13-reavaliar-blab">QUALIDADE</div>
+          </div>
+
+          <!-- MANUTENÇÃO -->
+          <div id="13-reavaliar-bg3" class="13-reavaliar-badge" style="left:640px;top:680px;">
+            <div id="13-reavaliar-bx3" class="13-reavaliar-box" style="left:0;top:0;width:130px;height:130px;"></div>
+            <svg id="13-reavaliar-ic3" width="90" height="90" viewBox="0 0 100 100" style="position:absolute;left:20px;top:20px;overflow:visible;">
+              <g id="13-reavaliar-wrench">
+                <rect x="44" y="40" width="13" height="52" fill="#1F2BE0"></rect>
+                <polygon points="30,44 30,10 43,10 43,26 58,26 58,10 71,10 71,44" fill="#1F2BE0"></polygon>
+              </g>
+            </svg>
+            <div id="13-reavaliar-bl3" class="13-reavaliar-blab">MANUTENÇÃO</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- chrome -->
+    <div id="13-reavaliar-chromewrap" class="clip 13-reavaliar-layer" data-start="0" data-duration="13.947" data-track-index="2">
+      <div id="13-reavaliar-ctag" class="13-reavaliar-chrome" style="left:80px">FMEA · MACETES</div>
+      <div id="13-reavaliar-cnum" class="13-reavaliar-chrome" style="right:80px">13 / 16</div>
+      <div id="13-reavaliar-hair-top" class="13-reavaliar-hair" style="top:80px"></div>
+      <div id="13-reavaliar-hair-bot" class="13-reavaliar-hair" style="top:880px"></div>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 13.547;
+        var $ = function (id) { return document.getElementById("13-reavaliar-" + id); };
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["13-reavaliar"] = tl;
+
+        var SHOW = "inset(-30% -4% -15% -4%)";
+        var HIDE_R = "inset(-30% 100% -15% -4%)";
+        var HIDE_UP = "inset(100% -4% -15% -4%)";
+        function e3(p) { return 1 - Math.pow(1 - p, 3); }
+        function cl(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+        // ---------- timing (voiceover cues) ----------
+        var T_HEAD = 0.8, T_TAG = 1.3, T_METER = 1.1;
+        var T_8 = 2.3, T_3 = 3.7, T_2 = 4.8;
+        var T_RBOX = 5.2, T_COUNT = 5.5, COUNT_DUR = 2.3, T_STRIKE = 5.6;   // lands 7.8
+        var T_FLIP = 7.8, FLIP_DUR = 0.35;
+        var T_B = 8.9;
+        var T_TABLE = 10.4;
+        var T_BADGE = [11.0, 11.6, 12.2, 12.8];
+        var FROM = 336, TO = 48;
+
+        // ---------- build: meter cells ----------
+        var mcells = $("mcells"), cells = [];
+        for (var i = 0; i < 20; i++) {
+          var c = document.createElement("div");
+          c.id = "13-reavaliar-mc-" + i;
+          c.className = "13-reavaliar-mc";
+          c.style.left = (i * 34) + "px";
+          var on = document.createElement("div");
+          on.id = "13-reavaliar-mon-" + i;
+          on.className = "13-reavaliar-mon";
+          c.appendChild(on);
+          mcells.appendChild(c);
+          cells.push(on);
+        }
+
+        // ---------- geometry for team lines ----------
+        var TC = [1180, 550];
+        var BC = [[705, 315], [1655, 315], [1655, 745], [705, 745]];
+        var lines = [], LEN = [], pulses = [], badges = [];
+        for (var k = 0; k < 4; k++) {
+          var ln = $("ln" + k);
+          var L = Math.ceil(Math.hypot(TC[0] - BC[k][0], TC[1] - BC[k][1]));
+          ln.setAttribute("stroke-dasharray", String(L));
+          ln.setAttribute("stroke-dashoffset", String(L));
+          lines.push(ln); LEN.push(L);
+          pulses.push($("pu" + k));
+          badges.push($("bg" + k));
+        }
+
+        // ---------- ambient: deterministic, driven by the timeline ----------
+        var rnum = $("rnum"), bnum = $("bnum");
+        var tr1 = $("tr1"), tr2 = $("tr2");
+        var pencil = $("pencil"), smk0 = $("smk0"), smk1 = $("smk1"), wrench = $("wrench"), tscan = $("tscan");
+        function valueAt(t) {
+          return FROM - (FROM - TO) * e3(cl((t - T_COUNT) / COUNT_DUR));
+        }
+        function ambient(t) {
+          var v = valueAt(t);
+          rnum.textContent = String(Math.round(v));
+
+          // 336 trembles (warning) until it gets struck
+          var shake = t < T_STRIKE ? Math.sin(t * 31) * 2.2 * cl((t - 0.6) / 0.4) : 0;
+          bnum.style.translate = shake.toFixed(2) + "px 0px";
+
+          // risk meter: 1 cell = 50 NPR; cells switch off as the NPR falls
+          var lit = Math.round(v / 50);
+          var blink = t < T_COUNT && Math.floor(t * 3) % 2 === 1;
+          for (var i = 0; i < 20; i++) {
+            var s = i < lit ? e3(cl((t - (T_METER + 0.2 + i * 0.06)) / 0.16)) : 0;
+            cells[i].style.transform = "scale(" + s.toFixed(3) + ")";
+            cells[i].style.opacity = (i === lit - 1 && blink) ? "0.35" : "1";
+          }
+
+          // arrow speed-trail dashes above the arrow while it falls
+          var falling = t > T_COUNT && t < T_COUNT + COUNT_DUR;
+          var ph = (t * 2.2) % 1;
+          tr1.style.transform = "translateY(" + (-70 + ph * 50).toFixed(1) + "px)";
+          tr2.style.transform = "translateY(" + (-110 + ((ph + 0.5) % 1) * 50).toFixed(1) + "px)";
+          tr1.style.opacity = falling ? "1" : "0";
+          tr2.style.opacity = falling ? "1" : "0";
+
+          // badges: icons alive + gentle bob once arrived
+          for (var b = 0; b < 4; b++) {
+            var a = cl((t - T_BADGE[b] - 0.5) / 0.4);
+            badges[b].style.translate = "0px " + (Math.sin(t * 2.6 + b * 1.6) * 4 * a).toFixed(2) + "px";
+            // pulses run along each line toward the table
+            var st = T_BADGE[b] + 0.45;
+            if (t > st) {
+              var p = ((t - st) * 0.9) % 1;
+              var x = BC[b][0] + (TC[0] - BC[b][0]) * p, y = BC[b][1] + (TC[1] - BC[b][1]) * p;
+              pulses[b].style.transform = "translate(" + (x - 8).toFixed(1) + "px," + (y - 8).toFixed(1) + "px)";
+              pulses[b].style.opacity = "1";
+            } else {
+              pulses[b].style.opacity = "0";
+            }
+          }
+          // PROJETO: pencil slides along the drafting edge
+          var pp = (Math.sin(t * 2.4) + 1) / 2;
+          pencil.setAttribute("transform", "translate(" + (-10 + pp * 20).toFixed(1) + "," + (-10 + pp * 20).toFixed(1) + ")");
+          // PRODUÇÃO: chimney smoke squares rise
+          var s0 = (t * 0.9) % 1, s1 = (t * 0.9 + 0.5) % 1;
+          smk0.setAttribute("y", (6 - s0 * 30).toFixed(1)); smk0.setAttribute("opacity", (1 - s0).toFixed(2));
+          smk1.setAttribute("y", (6 - s1 * 30).toFixed(1)); smk1.setAttribute("opacity", (1 - s1).toFixed(2));
+          // MANUTENÇÃO: wrench turns back and forth
+          wrench.setAttribute("transform", "rotate(" + (-30 + Math.sin(t * 3.2) * 14).toFixed(1) + " 50 60)");
+          // table: scan bar sweeps across the analysis sheet
+          var sc = ((t - T_TABLE) * 0.6) % 1;
+          tscan.style.transform = "translateX(" + (sc < 0 ? 0 : sc * 360).toFixed(1) + "px)";
+        }
+        ambient(0);
+        tl.to({ v: 0 }, { v: 1, duration: D, ease: "none", onUpdate: function () { ambient(this.progress() * D); } }, 0);
+
+        // ---------- camera: slow continuous drift ----------
+        tl.fromTo($("cam"), { scale: 1 }, { scale: 1.02, duration: D, ease: "none" }, 0);
+
+        // ---------- Scene 1 (0.0–2.3): NPR ANTES 336, headline, EXEMPLO ----------
+        tl.fromTo($("bmove"), { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0.15);
+        tl.fromTo($("strike"), { scaleX: 0 }, { scaleX: 0, duration: 0.01 }, 0);
+        tl.fromTo($("head"), { clipPath: HIDE_R, y: 24 }, { clipPath: SHOW, y: 0, duration: 0.7, ease: "power3.out" }, T_HEAD);
+        tl.fromTo($("tag"), { scale: 1.5, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.45, ease: "power3.out" }, T_TAG);
+        tl.fromTo($("meter"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, T_METER - 0.1);
+
+        // ---------- Scene 2 (2.3–5.2): 8 × ... 3 ... × 2 ----------
+        tl.fromTo($("f8"), { y: -70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, T_8);
+        tl.fromTo($("l8"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, T_8 + 0.12);
+        tl.fromTo($("fx1"), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.45, ease: "power3.out" }, T_8 + 0.25);
+        // the 3 falls from higher: occurrence dropped
+        tl.fromTo($("f3"), { y: -160, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, T_3);
+        tl.fromTo($("l3"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, T_3 + 0.12);
+        tl.fromTo($("e3"), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, T_3 + 0.3);
+        tl.fromTo($("fx2"), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.45, ease: "power3.out" }, T_2);
+        tl.fromTo($("f2"), { y: -160, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, T_2 + 0.12);
+        tl.fromTo($("l2"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, T_2 + 0.22);
+        tl.fromTo($("e2"), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, T_2 + 0.4);
+
+        // ---------- Scene 3 (5.2–8.8): 336 counts down to 48, arrow falls ----------
+        tl.fromTo($("rmove"), { clipPath: HIDE_R }, { clipPath: SHOW, duration: 0.45, ease: "power3.out" }, T_RBOX);
+        tl.fromTo($("arrow"), { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power3.out" }, T_RBOX + 0.1);
+        tl.to($("arrow"), { y: 300, duration: COUNT_DUR, ease: "power3.out" }, T_COUNT);
+        // counting-dynamic-scale: value + scale share window and ease
+        tl.fromTo($("rnum"), { scale: 0.62 }, { scale: 1, duration: COUNT_DUR, ease: "power3.out" }, T_COUNT);
+        tl.to($("strike"), { scaleX: 1, duration: 0.4, ease: "power3.out" }, T_STRIKE);
+        tl.to($("bbox"), { scale: 0.97, duration: 0.12, ease: "power2.out" }, T_STRIKE + 0.05);
+        tl.to($("bbox"), { scale: 1, duration: 0.35, ease: "power3.out" }, T_STRIKE + 0.17);
+        // inverted block: ink fill + cream copy rise together from the bottom
+        tl.fromTo([$("rfill"), $("rcream")], { clipPath: HIDE_UP }, { clipPath: SHOW, duration: FLIP_DUR, ease: "power3.out" }, T_FLIP);
+        tl.set($("rink"), { opacity: 0 }, T_FLIP + FLIP_DUR);
+        tl.fromTo($("rul"), { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, T_FLIP + FLIP_DUR);
+        tl.to($("rpop"), { scale: 1.05, duration: 0.14, ease: "power2.out" }, T_FLIP + FLIP_DUR);
+        tl.to($("rpop"), { scale: 1, duration: 0.4, ease: "power3.out" }, T_FLIP + FLIP_DUR + 0.14);
+
+        // ---------- Scene 4 (8.8–13.547): clear the math, gather the team ----------
+        tl.to([$("f8"), $("fx1"), $("f3"), $("fx2"), $("f2"), $("l8"), $("l3"), $("l2"), $("e3"), $("e2"), $("meter"), $("arrow")],
+          { opacity: 0, y: "+=26", duration: 0.4, ease: "power2.in", stagger: 0.025 }, T_B);
+        tl.to($("bmove"), { scale: 0.7, duration: 0.85, ease: "power3.inOut" }, T_B + 0.2);
+        tl.to($("rmove"), { x: -1300, y: 255, scale: 0.7, duration: 0.95, ease: "power3.inOut" }, T_B + 0.25);
+        tl.fromTo($("sarrow"), { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "power3.out" }, T_B + 1.05);
+
+        // table "ANÁLISE FMEA"
+        tl.fromTo($("table"), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, T_TABLE);
+        // badges: spring-pop, lines draw from badge into the table
+        for (var q = 0; q < 4; q++) {
+          tl.fromTo(badges[q], { scale: 0, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, T_BADGE[q]);
+          tl.fromTo(lines[q], { attr: { "stroke-dashoffset": LEN[q] } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.4, ease: "power2.out" }, T_BADGE[q] + 0.05);
+          tl.to($("table"), { scale: 1.03, duration: 0.1, ease: "power2.out" }, T_BADGE[q] + 0.42);
+          tl.to($("table"), { scale: 1, duration: 0.25, ease: "power3.out" }, T_BADGE[q] + 0.52);
+        }
+        tl.fromTo($("check"), { attr: { "stroke-dashoffset": 72 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.4, ease: "power2.out" }, T_BADGE[2] + 0.3);
+      })();
+    </script>
+  </div>
+</template>
