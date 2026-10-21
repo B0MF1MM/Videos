@@ -31,10 +31,23 @@ def load_lyrics():
                 words.append([w, float(t)])
             else:
                 words.append([tok, None])
-        # fill missing times
+        # fill missing times: untimed words are spread between the previous
+        # timed word and the next one (e.g. "lá da toca,@14.10")
+        timed = [i for i, w in enumerate(words) if w[1] is not None]
         for i, w in enumerate(words):
-            if w[1] is None:
-                w[1] = (words[i - 1][1] + 0.25) if i else 0.0
+            if w[1] is not None:
+                continue
+            prv = max([j for j in timed if j < i], default=None)
+            nxt = min([j for j in timed if j > i], default=None)
+            if prv is not None and nxt is not None:
+                f = (i - prv) / (nxt - prv)
+                w[1] = round(words[prv][1] + f * (words[nxt][1] - words[prv][1]), 3)
+            elif nxt is not None:
+                w[1] = round(words[nxt][1] - 0.15 * (nxt - i), 3)
+            elif prv is not None:
+                w[1] = round(words[prv][1] + 0.25 * (i - prv), 3)
+            else:
+                w[1] = 0.0
         lines[lid] = words
     return lines
 

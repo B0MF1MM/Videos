@@ -184,6 +184,11 @@ def gobo(name, bars, cross):
         a[cy - 14:cy + 14, x0:x1] = 1.0
     im = Image.fromarray((a * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(26))
     al = np.asarray(im, np.float32)
+    # fade the shadow out toward the image borders so the element never shows a hard edge
+    yy = np.linspace(-1, 1, H)[:, None]
+    xx = np.linspace(-1, 1, W)[None, :]
+    edge = np.clip((1 - np.maximum(np.abs(xx), np.abs(yy))) / 0.35, 0, 1)
+    al = al * (edge * edge * (3 - 2 * edge))
     rgba = np.zeros((H, W, 4), np.float32)
     rgba[..., 0], rgba[..., 1], rgba[..., 2] = 22, 13, 6
     rgba[..., 3] = al

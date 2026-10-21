@@ -7,6 +7,8 @@ from kit import ROOT, Typer, frame_html, fx_layers, gobo, paper, t_of, LYR  # no
 import objects as O  # noqa: E402
 
 TITLE = "Tanto Faz"
+ARTIST = "Bomfim"
+CREDIT = "Bomfim — Tanto Faz (Prod. The Fox)"
 YEAR = "2026"
 DURATION = 167.68
 
@@ -90,6 +92,27 @@ def ph(img, x, y, w, h, extra="", inner=""):
             f'{inner}<div class="phfx" style="inset:0"></div></div>')
 
 
+GRADES = {
+    # filter on the photo, then a colour wash to sit it in each scene's palette
+    "teal": ("grayscale(.75) contrast(1.15) brightness(.85)", "rgba(40,150,150,.55)", "color"),
+    "pink": ("grayscale(.35) contrast(1.08) brightness(.95)", "rgba(232,70,124,.35)", "color"),
+    "warm": ("sepia(.25) saturate(.9) contrast(1.06)", "rgba(255,170,90,.18)", "soft-light"),
+    "green": ("saturate(.8) contrast(1.08) brightness(.92)", "rgba(80,140,60,.25)", "soft-light"),
+    "night": ("saturate(.8) contrast(1.1) brightness(.85)", "rgba(90,40,120,.3)", "soft-light"),
+    "mono": ("grayscale(1) brightness(1.2) contrast(1.2)", "rgba(0,0,0,0)", "normal"),
+    "teal2": ("grayscale(.5) contrast(1.1) brightness(.8)", "rgba(30,110,120,.45)", "color"),
+}
+
+
+def foto(name, x, y, w, h, grade="warm", pos="50% 30%", extra=""):
+    """One of the couple's photos, printed and graded like the rest of the set."""
+    flt, wash, blend = GRADES[grade]
+    return (f'<div class="photo" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;{extra}">'
+            f'<div style="position:absolute;inset:0;background:url(assets/img/eu/{name}.jpg) {pos}/cover no-repeat;filter:{flt}"></div>'
+            f'<div style="position:absolute;inset:0;background:{wash};mix-blend-mode:{blend}"></div>'
+            f'<div class="phfx" style="inset:0"></div></div>')
+
+
 def finish(fid, t0, t1, css, world, fx, T, cam, extra_js=""):
     script = T.js() + "\n        typeOn(TYPE);\n        " + cam + "\n" + extra_js
     return fid, round(t1 - t0, 3), frame_html(fid, t1 - t0, css, world, fx, script)
@@ -117,12 +140,11 @@ def f00():
       {prop(O.crt(), 170, 330, 660, 707)}
       {crt_screen}
       <div class="m0-tag">{T.text("Uma música sobre escolher", 7.6, "", 0.05)}<br><em>{T.text("e ser escolhido.", 9.2, "", 0.06)}</em></div>
-      <div class="m0-fine">Faixa 1 · Lado A · {YEAR} — Letra transcrita, sujeita a correção.</div>'''
-    tab = f'''<div class="m0-tmast">TANTO FAZ</div>{ph("ph-pink.jpg", 0, 170, 760, 860)}
-      {prop(O.lipstick(), 470, 380, 160, 480, 14)}
+      <div class="m0-fine">{CREDIT}</div>'''
+    tab = f'''<div class="m0-tmast">TANTO FAZ</div>{foto("d07", 0, 170, 760, 860, "pink", "50% 20%")}
       <div class="m0-tq">“SÓ NÃO FAZ EU ME ARREPENDER”</div>
       <div class="obj" style="left:520px;top:860px;width:200px;height:200px">{O.starburst()}</div>'''
-    wall = f'''<div class="m0-pw">PACI<br>ENTE</div>{ph("ph-yellow.jpg", 40, 330, 620, 420, "filter:grayscale(1) sepia(.6) saturate(2.4) hue-rotate(5deg)")}'''
+    wall = f'''<div class="m0-pw">PACI<br>ENTE</div>{foto("d20", 40, 330, 620, 420, "mono", "50% 25%")}<div style="position:absolute;left:40px;top:330px;width:620px;height:420px;background:#e9d23a;mix-blend-mode:multiply"></div>'''
     news = f'''<div class="m0-nm">O Tanto Faz</div><div class="m0-nl"></div>
       <div class="m0-nh">Você ainda<br>me <i>perdoou</i></div><div class="m0-nb">{BODY}</div>'''
     world = f'''
@@ -175,15 +197,14 @@ def f01():
     T = Typer(t0, "c1")
     W, H = 900, 1270
 
-    def poster(pid, x, y, rot, lid, photo, obj, obj_style, layout="top"):
+    def poster(pid, x, y, rot, lid, photo, pos, grade, layout="top"):
         inner = f'''
-        {ph(photo, 0, 0, W, H, "filter:saturate(.8) contrast(1.05)")}
-        <div class="prop" style="{obj_style}">{obj}</div>
+        {foto(photo, 0, 0, W, 860, grade, pos)}
         <div class="c1-grad"></div>
         <div class="c1-head c1-{layout}">{T.line(lid, "c1-big", title=True)}</div>
         <div class="c1-cols"><p>{BODY}</p><p>{BODY2}</p></div>
-        <div class="c1-sig">{TITLE.upper()} — {YEAR}</div>
-        <div class="c1-fine">Letra transcrita, sujeita a correção · Lado A, faixa 1</div>
+        <div class="c1-sig">{ARTIST.upper()} — {TITLE.upper()}</div>
+        <div class="c1-fine">Prod. The Fox · Lado A, faixa 1 · {YEAR}</div>
         <div class="obj" style="left:{W/2-22}px;top:14px;width:44px;height:44px">{O.pin()}</div>'''
         return paper(pid, x, y, W, H, rot, "#0f1718", inner)
 
@@ -194,12 +215,12 @@ def f01():
     world = f'''
       {surface("cork.jpg")}
       {paper("c1-cal", -820, -80, 420, 600, 4, "#e9e6df", cal)}
-      {poster("c1-p1", 0, 0, -2.2, "c1", "ph-teal.jpg", O.phone(), "left:400px;top:90px;width:420px;height:580px;transform:rotate(-14deg)")}
-      {poster("c1-p2", 1120, 90, 2.6, "c2", "ph-night.jpg", O.rose(), "left:300px;top:70px;width:320px;height:510px;transform:rotate(18deg)", "mid")}
+      {poster("c1-p1", 0, 0, -2.2, "c1", "d21", "50% 20%", "teal")}
+      {poster("c1-p2", 1120, 90, 2.6, "c2", "d34", "50% 40%", "teal2", "mid")}
       {paper("c1-note", 640, -720, 260, 240, -6, "#f3e27a", '<div class="c1-note">não esquecer:<br>ligar pra ela</div>')}
       {paper("c1-note2", 1680, 860, 230, 210, 8, "#f7b3c7", '<div class="c1-note">sábado<br>22h</div>')}
-      {poster("c1-p3", 2230, -40, -1.4, "c3", "ph-teal.jpg", O.cassette(), "left:200px;top:180px;width:520px;height:340px;transform:rotate(-8deg)")}
-      {poster("c1-p4", 3330, 60, 1.8, "c4", "ph-pink.jpg", O.ring(), "left:260px;top:110px;width:380px;height:380px;transform:rotate(6deg)", "mid")}
+      {poster("c1-p3", 2230, -40, -1.4, "c3", "d18", "50% 40%", "teal")}
+      {poster("c1-p4", 3330, 60, 1.8, "c4", "d06", "50% 30%", "teal2", "mid")}
       {paper("c1-flyer", 2800, -900, 520, 360, -3, "#111", '<div class="c1-fly">TANTO<br>FAZ</div>')}
       {paper("c1-flyer2", 4200, -700, 400, 560, 5, "#e9e6df", '<div class="c1-fly" style="color:#e2243c">SÁB<br>22H</div>')}
       {gobo(-900, -1400, 2600, 2000, -22, 0.5, 5)}
@@ -241,9 +262,7 @@ def f02():
     T = Typer(t0, "t2")
     W, H = 980, 1300
     cover = f'''
-      {ph("ph-pink.jpg", 0, 0, W, H, "filter:saturate(1.1)")}
-      {prop(O.lipstick(), 600, 420, 190, 560, 16)}
-      {prop(O.bag(), 120, 760, 330, 430, -8)}
+      {foto("d07", 0, 0, W, H, "pink", "60% 25%")}
       <div class="t2-mast">TANTO FAZ</div>
       <div class="t2-strap">EXCLUSIVO · A FAIXA QUE TODO MUNDO ESTÁ CANTANDO · Nº 01</div>
       <div class="t2-q t2-q1">{T.line("c5", "", upper=True, pre="“", post="”")}</div>
@@ -252,8 +271,8 @@ def f02():
       <div class="t2-burst" style="left:720px;top:1135px">SÓ<br>AQUI!</div>
       <div class="t2-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>'''
     left = f'''
-      {ph("ph-night.jpg", 0, 0, W, H)}
-      {prop(O.phone(), 520, 640, 380, 520, 20)}
+      {foto("d11", 0, 0, W, H, "night", "50% 30%")}
+      <div style="position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0) 45%)"></div>
       <div class="t2-q t2-q3">{T.line("c7", "", upper=True, pre="“", post="”")}</div>
       <div class="obj" style="left:80px;top:900px;width:300px;height:300px">{O.starburst("#e2243c")}</div>
       <div class="t2-burst2" style="left:80px;top:1000px">{T.line("c8", "", upper=True)}</div>
@@ -261,14 +280,13 @@ def f02():
     right = f'''
       <div class="t2-q t2-q4">{T.line("c9", "", upper=True, pre="“…", post="”")}</div>
       <div class="t2-body">{BODY} {BODY2}</div>
-      {ph("ph-teal.jpg", 90, 700, 400, 460, "border:8px solid #e2243c")}
-      {prop(O.ring(), 160, 760, 260, 260, -6)}
+      {foto("d12", 90, 700, 400, 460, "warm", "50% 40%", "border:8px solid #e2243c")}
       <div class="t2-q t2-q5">{T.line("c10", "", upper=True, pre="“", post="”")}</div>
       <div class="obj" style="left:640px;top:1020px;width:240px;height:240px">{O.starburst()}</div>
       <div class="t2-burst" style="left:640px;top:1100px;font-size:40px">{T.line("c11", "", upper=True)}</div>'''
     back = f'''
-      {ph("ph-yellow.jpg", 0, 0, W, H, "filter:saturate(1.2)")}
-      {prop(O.heart(), 520, 160, 380, 340, 10)}
+      {foto("d16", 0, 0, W, H, "warm", "50% 30%")}
+      <div style="position:absolute;left:0;right:0;top:500px;height:420px;background:rgba(244,232,58,.82)"></div>
       <div class="t2-q t2-q6">{T.line("c12", "", upper=True, pre="“", post="”")}</div>
       <div class="t2-strap" style="top:auto;bottom:40px;background:#111;color:#f4e83a">TANTO FAZ · {YEAR} · PÁGINA 6</div>'''
     world = f'''
@@ -323,31 +341,27 @@ def f03():
     W, H = 960, 1260
     pA = f'''
       <div class="g3-ttl" style="top:50px">{T.line("v1", "", title=True)}<br>{T.line("v2", "", title=True)}</div>
-      {ph("ph-garden.jpg", 60, 330, 840, 560)}
-      {prop(O.rose(), 520, 380, 300, 480, 24)}
-      {prop(O.perfume(), 140, 600, 220, 310, -6)}
+      {foto("d30", 60, 330, 840, 560, "green", "50% 30%")}
       <div class="g3-body" style="top:930px">{BODY}</div>
-      <div class="g3-fol">TANTO FAZ — {YEAR}<span>12</span></div>'''
+      <div class="g3-fol">BOMFIM — TANTO FAZ<span>12</span></div>'''
     pB = f'''
-      {ph("ph-garden.jpg", 60, 60, 840, 500, "filter:hue-rotate(-12deg)")}
-      {prop(O.perfume("#7fd8da"), 90, 560, 330, 470, 4)}
+      {foto("d31", 60, 60, 840, 500, "green", "50% 25%")}
+      {prop(O.perfume("#7fd8da"), 90, 600, 300, 420, 4)}
       <div class="g3-ttl g3-r" style="top:600px">{T.line("v3", "", title=True)}<br>{T.line("v4", "", title=True)}</div>
       <div class="g3-body" style="left:470px;top:860px;columns:1">{BODY2}</div>
-      <div class="g3-fol">TANTO FAZ — {YEAR}<span>13</span></div>'''
+      <div class="g3-fol">BOMFIM — TANTO FAZ<span>13</span></div>'''
     pC = f'''
-      {ph("ph-garden.jpg", 0, 0, W, 900, "filter:brightness(1.1) saturate(1.1)")}
-      {prop(O.rose("#e8b030", "#365a26"), 420, 200, 380, 600, -16)}
+      {foto("d20", 0, 0, W, 900, "green", "60% 30%")}
+      <div style="position:absolute;left:0;right:0;top:0;height:420px;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0))"></div>
       <div class="g3-ttl g3-big" style="top:60px;left:56px;color:#f5f0e6">{T.line("v5", "", title=True)}</div>
       <div class="g3-sub" style="top:960px">{T.line("v6", "")}</div>
       <div class="g3-body" style="top:1060px">{BODY}</div>'''
     pD = f'''
-      {ph("ph-garden.jpg", 50, 50, 420, 620)}
-      {ph("ph-teal.jpg", 490, 50, 420, 620)}
-      {prop(O.heart("#e8467c"), 560, 220, 280, 250, 12)}
-      {prop(O.perfume(), 150, 280, 220, 310, -10)}
+      {foto("d13", 50, 50, 420, 620, "green", "50% 30%")}
+      {foto("d34", 490, 50, 420, 620, "green", "50% 50%")}
       <div class="g3-sub" style="top:730px;left:60px;right:60px;font-size:64px">{T.line("v7", "")}<br>{T.line("v8", "")}</div>
       <div class="g3-body" style="top:1000px">{BODY2}</div>
-      <div class="g3-fol">Foto por — · TANTO FAZ<span>14</span></div>'''
+      <div class="g3-fol">{CREDIT}<span>14</span></div>'''
     leaves = "".join(
         f'<div class="obj g3-leaf" style="left:{x}px;top:{y}px;width:150px;height:88px;transform:rotate({r}deg)">{O.leaf(c)}</div>'
         for x, y, r, c in [(-700, -500, 20, "#8a4b1c"), (-560, 560, -40, "#a4651e"), (420, -760, 80, "#6b3a14"),
@@ -399,13 +413,13 @@ def f04():
     pA = f'''
       <div class="k4-mast" data-layout-allow-overlap>{rainbow("AMOR")}</div>
       {prop(O.crt(), 150, 300, 660, 707, 0, "filter:drop-shadow(0 30px 30px rgba(0,0,0,.35))")}
-      <div class="obj" style="left:268px;top:354px;width:390px;height:262px;border-radius:34px;overflow:hidden">{ph("ph-pink.jpg", 0, 0, 390, 262)}{prop(O.heart(), 120, 40, 160, 150, -8)}</div>
+      <div class="obj" style="left:268px;top:354px;width:390px;height:262px;border-radius:34px;overflow:hidden">{foto("d28", 0, 0, 390, 262, "pink", "50% 40%")}</div>
       <div class="k4-ser" style="top:1010px">{T.line("p1", "", title=True)}<div class="k4-s2">{T.line("p5", "", title=True)}</div></div>
-      <div class="k4-fine">Conceito e tipografia · TANTO FAZ {YEAR} · Lado A</div>'''
+      <div class="k4-fine">{CREDIT}</div>'''
     pB = f'''
       <div class="k4-blk">{T.line("p2", "", upper=True)}</div>
       {prop(O.crt("#203a52"), 150, 640, 660, 707)}
-      <div class="obj" style="left:268px;top:694px;width:390px;height:262px;border-radius:34px;overflow:hidden">{ph("ph-teal.jpg", 0, 0, 390, 262)}{prop(O.ring(), 120, 30, 170, 170)}</div>
+      <div class="obj" style="left:268px;top:694px;width:390px;height:262px;border-radius:34px;overflow:hidden">{foto("d05", 0, 0, 390, 262, "teal2", "50% 45%")}</div>
       <div class="k4-foot">TANTO FAZ | {YEAR}</div>'''
     pC = f'''
       <div class="k4-blk k4-blk2">{T.line("p3", "", upper=True)}<br>{T.line("p4", "", upper=True)}</div>
@@ -452,8 +466,7 @@ def f05():
     front = f'''
       <div class="n5-mast">O TANTO FAZ</div>
       <div class="n5-date">EDIÇÃO DE DOMINGO · {YEAR} · ANO I · Nº 1</div>
-      {ph("ph-pink.jpg", 50, 210, 520, 600, "filter:grayscale(.3)")}
-      {prop(O.ring(), 160, 330, 300, 300, -8)}
+      {foto("d25", 50, 210, 520, 600, "mono", "50% 40%")}
       <div class="n5-hd">{T.line("n1", "")}</div>
       <div class="n5-hd2">{T.line("n2", "")}</div>
       <div class="n5-body" style="top:1010px">{BODY} {BODY2}</div>'''
@@ -461,15 +474,13 @@ def f05():
       <div class="n5-k">{T.line("n3", "")}</div>
       <div class="n5-rule"></div>
       <div class="n5-huge">{T.line("n4", "", title=True)}</div>
-      {ph("ph-studio.jpg", 560, 520, 380, 470)}
-      {prop(O.lipstick(), 700, 560, 110, 360, 18)}
+      {foto("d27", 560, 520, 380, 470, "pink", "50% 30%")}
       <div class="n5-pink"><b>{T.line("n5", "")}</b><br>{T.line("n6", "")}</div>
       <div class="n5-body" style="top:1040px">{BODY2}</div>'''
     quote = f'''
-      {ph("ph-night.jpg", 0, 0, W, 660)}
-      {prop(O.phone("#e8467c"), 560, 120, 380, 500, -16)}
+      {foto("d35", 0, 0, W, 660, "warm", "50% 45%")}
       <div class="n5-q">{T.line("n7", "", pre="“")}<br>{T.line("n8", "")}<br>{T.line("n9", "", post="”")}</div>
-      <div class="n5-sig">— TANTO FAZ, {YEAR}</div>'''
+      <div class="n5-sig">— {CREDIT.upper()}</div>'''
     world = f'''
       {surface("wood.jpg", "2400px 1600px", "filter:brightness(.85)")}
       {paper("n5-f", 0, 0, W, H, -2, "#ebe7dc", front)}
@@ -516,9 +527,8 @@ def f06():
     t0, t1 = span(fid)
     T = Typer(t0, "w6")
     W, H = 640, 920
-    rows = [("m1", "PACIENTE", O.phone("#f2d43a")), ("m2", "FRENTE", O.lipstick("#f2d43a")),
-            ("m3", "GENTE", O.ring()), ("m4", "ENTENDE", O.heart("#f2d43a")),
-            ("m5", "REPENTE", O.rose("#f2d43a", "#3a3a20")), ("m6", "QUENTE", O.perfume("#f2d43a"))]
+    rows = [("m1", "PACIENTE", "d38"), ("m2", "FRENTE", "d16"), ("m3", "GENTE", "d23"),
+            ("m4", "ENTENDE", "d28"), ("m5", "REPENTE", "d09"), ("m6", "QUENTE", "d37")]
 
     def poster(lid, word, obj, live, tone):
         words = LYR[lid]
@@ -533,8 +543,7 @@ def f06():
         size = min(210, int(1150 / max(5, len(word))))
         return (bg, f'''
           <div class="w6-big" style="color:{fg};font-size:{size}px">{big}</div>
-          <div class="w6-ph" style="background:{fg}">{ph("ph-yellow.jpg", 0, 0, 560, 380, "filter:grayscale(1) brightness(1.5) contrast(1.15)")}
-            {prop(obj, 190, 30, 200, 320, 8, "filter:grayscale(1) brightness(1.2) contrast(1.2) drop-shadow(0 20px 20px rgba(0,0,0,.5))")}
+          <div class="w6-ph" style="background:{fg}">{foto(obj, 0, 0, 560, 380, "mono", "50% 30%")}
             <div style="position:absolute;inset:0;background:{bg};mix-blend-mode:multiply;opacity:{.85 if tone == 'y' else .35}"></div></div>
           <div class="w6-strip" style="{'background:#151411;color:#e9d23a' if tone != 'k' else 'background:#e9d23a;color:#151411'}">{strip}</div>
           <div class="w6-sm" style="color:{fg}">TANTO FAZ</div><div class="w6-sm w6-yr" style="color:{fg}">{YEAR}</div>''')
@@ -551,7 +560,7 @@ def f06():
             if live:
                 stops.append((t_of(lid), P(x, 120, 0.86, 7, -1.5 if i % 2 else 1.5)))
             x += W + 16
-    rips = "".join(f'<div class="w6-rip" style="left:{80 + i*537}px;top:{-480 + (i*97) % 900}px;transform:rotate({(i*37)%40-20}deg)"></div>' for i in range(16))
+    rips = "".join(f'<div class="w6-rip" style="left:{80 + i*537}px;top:{(-505 + (i*7) % 30) if i % 2 else (432 + (i*11) % 24)}px;transform:rotate({(i*37)%40-20}deg)"></div>' for i in range(16))
     world = f'''
       {surface("concrete.jpg", "2400px 1600px", w=15400)}
       {"".join(papers)}
@@ -582,13 +591,12 @@ def f07():
     T = Typer(t0, "r7")
     W, H = 980, 1300
     pA = f'''
-      {ph("ph-pink.jpg", 0, 0, W, H)}
-      {prop(O.lipstick(), 600, 520, 200, 600, -14)}
-      {prop(O.rose("#f0e6e8", "#3a2a2e"), 140, 520, 300, 480, 18)}
+      {foto("d26", 0, 0, W, H, "pink", "40% 50%")}
+      <div style="position:absolute;left:0;right:0;top:0;height:400px;background:linear-gradient(rgba(60,0,20,.6),rgba(60,0,20,0))"></div>
       <div class="r7-s" style="top:80px;left:60px;right:60px;color:#fff">{T.line("r1", "")}</div>
-      <div class="r7-fine" style="color:#fbe3ea">TANTO FAZ — {YEAR} · Pág. 22</div>'''
+      <div class="r7-fine" style="color:#fbe3ea">BOMFIM — TANTO FAZ · Pág. 22</div>'''
     pB = f'''
-      {ph("ph-pink.jpg", 0, 0, W, 520, "filter:hue-rotate(-8deg) brightness(.9)")}
+      {foto("d12", 0, 0, W, 520, "pink", "50% 35%")}
       <div class="r7-s" style="top:580px;left:60px;right:60px;color:#1d1d1d;font-size:66px">{T.line("r2", "", pre="…")}</div>
       <div class="r7-body" style="top:860px;right:380px">{BODY}</div>
       {prop(O.lipstick(), 700, 820, 140, 420, 8)}
@@ -598,10 +606,10 @@ def f07():
       <div class="r7-body r7-dark" style="top:470px;left:520px">{BODY2}</div>
       <div class="r7-body r7-dark" style="top:470px;right:500px">{BODY}</div>
       {prop(O.car(), 60, 860, 860, 362, 0, "filter:drop-shadow(0 30px 30px rgba(0,0,0,.8)) saturate(1.1)")}
-      <div class="r7-tag">TANTO FAZ — {YEAR}</div>'''
+      <div class="r7-tag">{CREDIT.upper()}</div>'''
     pD = f'''
-      {ph("ph-night.jpg", 0, 0, W, H, "filter:hue-rotate(-20deg) saturate(1.3)")}
-      {prop(O.rose(), 560, 600, 340, 540, -12)}
+      {foto("d07", 0, 0, W, H, "night", "55% 30%")}
+      <div style="position:absolute;left:0;right:0;top:0;height:640px;background:linear-gradient(rgba(20,0,10,.75),rgba(20,0,10,0))"></div>
       <div class="r7-s" style="top:90px;left:60px;right:60px;color:#fff;font-size:82px">{T.line("r4", "")}</div>
       <div class="r7-s" style="top:480px;left:60px;color:#f2a6bd;font-size:66px"><em>{T.line("r5", "")}</em></div>'''
     world = f'''
@@ -658,27 +666,24 @@ def f08():
     T = Typer(t0, "e8")
     W, H = 1000, 1300
     pA = f'''
-      {ph("ph-pink.jpg", 50, 60, 300, 380)}
-      {ph("ph-teal.jpg", 50, 460, 300, 300)}
-      {prop(O.lipstick(), 140, 120, 110, 300, 12)}
-      {prop(O.cassette(), 70, 540, 260, 170, -8)}
+      {foto("d05", 50, 60, 300, 380, "pink", "50% 40%")}
+      {foto("d35", 50, 460, 300, 300, "teal2", "50% 50%")}
       <div class="e8-t" style="left:390px;top:70px">{T.line("f1", "scat", upper=True)}</div>
-      <div class="e8-t" style="left:390px;top:610px;font-size:46px;color:#e8467c">{T.line("f2", "scat", upper=True)}</div>
+      <div class="e8-t" style="left:390px;top:610px;font-size:38px;color:#e8467c">{T.line("f2", "scat", upper=True)}</div>
       <div class="e8-b" style="left:390px;top:860px">{BODY}</div>'''
     pB = f'''
-      {ph("ph-night.jpg", 0, 0, W, H, "filter:hue-rotate(140deg) saturate(.7)")}
-      {prop(O.ring(), 560, 640, 360, 360, -8)}
-      <div class="e8-t" style="left:60px;right:60px;top:80px;color:#fff;font-size:84px">{T.line("f3", "scat", upper=True)}</div>
+      {foto("d06", 0, 0, W, H, "teal2", "50% 30%")}
+      <div style="position:absolute;left:0;right:0;top:0;height:560px;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,0))"></div>
+      <div class="e8-t" style="left:60px;right:60px;top:80px;color:#fff;font-size:68px">{T.line("f3", "scat", upper=True)}</div>
       <div class="e8-b" style="left:60px;top:1020px;width:440px;color:#ccc">{BODY2}</div>'''
     pC = f'''
       {prop(O.bag("#e8467c"), 520, 520, 380, 500, 6)}
       {prop(O.bag("#3fb5d8", "AMOR"), 300, 640, 300, 400, -10)}
       <div class="e8-t" style="left:60px;right:60px;top:70px">{T.line("f4", "scat", upper=True)}</div>
-      <div class="e8-t" style="left:60px;right:420px;top:420px;font-size:52px;color:#3fb5d8">{T.line("f5", "scat", upper=True)}</div>
+      <div class="e8-t" style="left:60px;right:420px;top:420px;font-size:40px;color:#3fb5d8">{T.line("f5", "scat", upper=True)}</div>
       <div class="e8-b" style="left:60px;top:1060px;width:420px">{BODY2}</div>'''
     pD = f'''
-      {ph("ph-teal.jpg", 0, 0, W, 760)}
-      {prop(O.heart("#d8e8e4"), 330, 160, 340, 300, 0, "filter:grayscale(.6) drop-shadow(0 26px 24px rgba(0,0,0,.6))")}
+      {foto("d33", 0, 0, W, 760, "teal", "50% 20%")}
       <div class="c1-grad" style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,23,24,0) 30%, #0f1718 60%)"></div>
       <div class="e8-s" style="top:600px">{T.line("f6", "", title=True)}<div style="font-style:italic;margin-top:14px">{T.line("f7", "", title=True)}</div></div>
       <div class="e8-b" style="left:70px;right:70px;top:930px;columns:2;column-gap:40px;color:#c9d4d0">{BODY} {BODY2}</div>'''
@@ -694,7 +699,7 @@ def f08():
       {gobo(2400, -1500, 3600, 2600, -18, 0.42, 5)}
     '''
     css = '''
-.e8-t { position:absolute; right:60px; font-family:Michroma; font-size:62px; line-height:1.12; color:#111; letter-spacing:.02em; }
+.e8-t { position:absolute; right:60px; font-family:Michroma; font-size:46px; line-height:1.12; color:#111; letter-spacing:.02em; }
 .scat .ch { display:inline-block; }
 .e8-b { position:absolute; right:60px; font-family:"Archivo"; font-size:16px; line-height:1.42; color:#444; text-align:justify; }
 .e8-s { position:absolute; left:60px; right:60px; text-align:center; font-family:"Source Serif"; font-size:84px; line-height:1.02; color:#eef3ef; }
@@ -718,17 +723,10 @@ def f09():
     T = Typer(t0, "z9")
     W, H = 1000, 1300
     pD = f'''
-      {ph("ph-teal.jpg", 0, 0, W, 760)}
-      {prop(O.phone("#9fd8d0"), 520, 80, 380, 520, -18, "filter:grayscale(.5) drop-shadow(0 26px 24px rgba(0,0,0,.6))")}
+      {foto("d30", 0, 0, W, 760, "teal", "50% 30%")}
       <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,23,24,0) 30%, #0f1718 60%)"></div>
       <div class="z9-s" style="top:560px">Uma Vida É Com Você.</div>
-      <div class="z9-c">
-        <p>{T.text("“Tanto Faz” — letra transcrita automaticamente a partir do áudio; versos sujeitos a correção.", 153.2, "", 0.028)}</p>
-        <p>{T.text("Visual inspirado em editoriais impressos: cartazes, tabloides, jornais e encartes fotografados sobre mesas, muros e jardins.", 156.0, "", 0.026)}</p>
-        <p>{T.text("Tipografia: Source Serif, Archivo, Anton, League Spartan, Bebas Neue, Michroma.", 159.0, "", 0.03)}</p>
-        <p class="z9-u">{T.text("Obrigado por ouvir.", 161.6, "", 0.07)}</p>
-      </div>
-      <div class="z9-sig">TANTO FAZ — {YEAR}</div>'''
+      <div class="z9-cr">{T.text(CREDIT, 153.6, "", 0.07)}</div>'''
     world = f'''
       {surface("wood.jpg", "2400px 1600px", "filter:brightness(.55)")}
       {paper("z9-d", 0, 0, W, H, 1.2, "#0f1718", pD)}
@@ -737,6 +735,7 @@ def f09():
     '''
     css = '''
 .z9-s { position:absolute; left:60px; right:60px; text-align:center; font-family:"Source Serif"; font-size:88px; line-height:1.02; color:#eef3ef; }
+.z9-cr { position:absolute; left:60px; right:60px; top:820px; text-align:center; font-family:"Source Serif"; font-size:40px; letter-spacing:.02em; color:#c9d4d0; }
 .z9-c { position:absolute; left:90px; right:90px; top:760px; columns:2; column-gap:44px; font-family:"Source Serif"; font-size:22px; line-height:1.4; color:#c9d4d0; text-align:justify; }
 .z9-c p { margin:0 0 12px; text-indent:1.2em; }
 .z9-u { text-decoration:underline; }
@@ -746,8 +745,8 @@ def f09():
 '''
     cam = cam_js([
         dict(t=0, x=60, y=-120, s=0.82, rx=10, rz=1.5),
-        dict(t=3.0, x=40, y=280, s=0.95, rx=12, rz=0.5, e="sine.inOut"),
-        dict(t=9.5, x=0, y=340, s=1.0, rx=14, rz=-0.5, e="sine.inOut"),
+        dict(t=3.0, x=40, y=160, s=0.95, rx=12, rz=0.5, e="sine.inOut"),
+        dict(t=9.5, x=0, y=190, s=1.0, rx=14, rz=-0.5, e="sine.inOut"),
         dict(t=round(t1 - t0, 3), x=-200, y=0, s=0.55, rx=20, rz=-4, e="sine.inOut"),
     ])
     fade = f'tl.fromTo(q(".z9-black"), {{ opacity: 0 }}, {{ opacity: 1, duration: 2.6, ease: "power1.in" }}, {round(t1 - t0 - 2.8, 3)});'
