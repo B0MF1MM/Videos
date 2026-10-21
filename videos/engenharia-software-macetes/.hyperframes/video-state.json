@@ -1032,5 +1032,16 @@
       ]
     },
     "unversioned": []
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "12dda062-8689-42c3-8eb3-765f5b32260b",
+      "completedAt": 1792605766218,
+      "output": "/home/user/Videos/videos/engenharia-software-macetes/renders/video.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
