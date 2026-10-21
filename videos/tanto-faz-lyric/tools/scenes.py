@@ -680,8 +680,7 @@ def f08():
       {ph("ph-teal.jpg", 0, 0, W, 760)}
       {prop(O.heart("#d8e8e4"), 330, 160, 340, 300, 0, "filter:grayscale(.6) drop-shadow(0 26px 24px rgba(0,0,0,.6))")}
       <div class="c1-grad" style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,23,24,0) 30%, #0f1718 60%)"></div>
-      <div class="e8-s" style="top:640px">{T.line("f6", "", title=True)}</div>
-      <div class="e8-s" style="top:760px;font-style:italic">{T.line("f7", "", title=True)}</div>
+      <div class="e8-s" style="top:600px">{T.line("f6", "", title=True)}<div style="font-style:italic;margin-top:14px">{T.line("f7", "", title=True)}</div></div>
       <div class="e8-b" style="left:70px;right:70px;top:930px;columns:2;column-gap:40px;color:#c9d4d0">{BODY} {BODY2}</div>'''
     world = f'''
       {surface("wall.jpg", "2000px 1200px", "filter:brightness(.92)")}

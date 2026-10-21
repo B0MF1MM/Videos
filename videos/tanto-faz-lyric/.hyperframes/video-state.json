@@ -642,16 +642,12 @@
     }
   },
   "checks": {
-    "latest": {
-      "revision": "08ed803a-2a40-4cb9-af22-048cab6f2f29",
-      "id": "a29a2979-609b-4a5c-86aa-2e3c077098c7"
-    },
+    "latest": null,
     "revisions": {
       "89dbc6ec-e15e-4748-8e99-89c527607f76": [
         {
           "id": "a5b950d3-2100-482a-911a-a574957b91a6",
           "scope": "project",
-          "report": "/home/user/Videos/videos/tanto-faz-lyric/.hyperframes/artifacts/checks/a5b950d3-2100-482a-911a-a574957b91a6.json",
           "metadata": {
             "ok": false,
             "browserSkipped": false,
@@ -673,12 +669,13 @@
           "revision": "89dbc6ec-e15e-4748-8e99-89c527607f76",
           "inputFingerprint": "825ab5f651e97c76dd364344dcf4d09fb692fcac93e818e794e32a47b3e1aefd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "1f243852-710f-456c-be08-41f2b8d1871b"
         },
         {
           "id": "b2c7ad0e-e1fd-4e43-b583-156a4f70d168",
           "scope": "project",
-          "report": "/home/user/Videos/videos/tanto-faz-lyric/.hyperframes/artifacts/checks/b2c7ad0e-e1fd-4e43-b583-156a4f70d168.json",
           "metadata": {
             "ok": false,
             "browserSkipped": false,
@@ -700,14 +697,15 @@
           "revision": "89dbc6ec-e15e-4748-8e99-89c527607f76",
           "inputFingerprint": "825ab5f651e97c76dd364344dcf4d09fb692fcac93e818e794e32a47b3e1aefd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "1f243852-710f-456c-be08-41f2b8d1871b"
         }
       ],
       "af0c770c-ae52-41de-8dd7-af035e14589a": [
         {
           "id": "8357f52c-17c7-4a79-9a57-6bd3dc000d5b",
           "scope": "project",
-          "report": "/home/user/Videos/videos/tanto-faz-lyric/.hyperframes/artifacts/checks/8357f52c-17c7-4a79-9a57-6bd3dc000d5b.json",
           "metadata": {
             "ok": false,
             "browserSkipped": false,
@@ -729,14 +727,15 @@
           "revision": "af0c770c-ae52-41de-8dd7-af035e14589a",
           "inputFingerprint": "46a5d7ef0aa7aa1142c093768f4697a13400a614abefcf44cdbe523a171cc59d",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "1f243852-710f-456c-be08-41f2b8d1871b"
         }
       ],
       "08ed803a-2a40-4cb9-af22-048cab6f2f29": [
         {
           "id": "a29a2979-609b-4a5c-86aa-2e3c077098c7",
           "scope": "project",
-          "report": "/home/user/Videos/videos/tanto-faz-lyric/.hyperframes/artifacts/checks/a29a2979-609b-4a5c-86aa-2e3c077098c7.json",
           "metadata": {
             "ok": true,
             "browserSkipped": false,
@@ -758,7 +757,9 @@
           "revision": "08ed803a-2a40-4cb9-af22-048cab6f2f29",
           "inputFingerprint": "2b5b3a3589926e574a0af9f2723ea0a9285b962a72036569bad3b6ac47d6cc62",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "1f243852-710f-456c-be08-41f2b8d1871b"
         }
       ]
     },
@@ -1659,5 +1660,18 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "1f243852-710f-456c-be08-41f2b8d1871b",
+      "completedAt": 1792556407382,
+      "output": "/home/user/Videos/videos/tanto-faz-lyric/renders/video.mp4",
+      "status": "completed",
+      "revision": "5b64e410-6e03-49fd-8141-ed78ec6a2af2"
+    },
+    "retainedRevisions": [
+      "5b64e410-6e03-49fd-8141-ed78ec6a2af2"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
