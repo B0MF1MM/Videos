@@ -45,3 +45,27 @@ python3 render.py <pasta_dos_clipes> <musica.mp3> /tmp/teste.mp4 --preview --fro
 
 O modelo MiDaS (66 MB) é baixado automaticamente para `assets/models/` na primeira execução.
 Os clipes e a música originais não estão no repositório.
+
+## Versão "moonlight" (estilo cinematográfico)
+Baseada no vídeo de referência *moonlight - valorant edit*. Usa os mesmos cortes, abates e câmera lenta do `edit.json`; o estilo fica em `moonlight.json`.
+
+- Color grade por cena:
+  - roxo monocromático
+  - teal noturno (sombras teal, luzes quentes)
+  - pastel lavado
+  - frio
+- Pretos levantados, glow difuso (Pro-Mist), bloom e halation. As altas luzes são comprimidas para não estourar.
+- Câmera virtual: push-in lento, ângulo holandês depois dos abates, tremida de mão. O zoom corta parte do HUD.
+- Lens blur com bokeh: abertura em rack focus e profundidade de campo nas bordas.
+- Transições:
+  - mergulho no escuro com raios de luz e volta com flash rosa
+  - smear direcional
+  - flash superexposto
+  - desfoque
+- Faixas de cinema 2.35:1 que entram e saem.
+- A jogada da pausa da música aparece numa tela 3D flutuante, com reflexo e textura de monitor. No abate, a câmera mergulha na tela. Durante esse trecho a música fica abafada e volta cheia no tiro.
+- Sem texto na tela, como na referência.
+
+```
+python3 render_moonlight.py <pasta_dos_clipes> <musica.mp3> renders/valorant-corolla-cross-moonlight.mp4
+```
