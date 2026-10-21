@@ -6,12 +6,12 @@ Provedores:
 
 Uso:
   python3 -I tools/make_voice.py . piper  <dir-do-modelo-piper> [speed] [ids]
-  python3 -I tools/make_voice.py . gemini <voz, ex: Charon>     [modelo] [ids]
+  python3 -I tools/make_voice.py . gemini <voz, ex: Charon>     [modelo, padrão gemini-3.8-flash-tts] [ids]
 
 Depois: python3 -I tools/gen_frames.py .  (re-sincroniza as animações com a nova fala), e o fluxo
 sync-durations → captions → assemble-index → transitions (ver tools/README.md).
 """
-import sys, re, json, os, subprocess, base64, urllib.request
+import sys, re, json, os, io, time, subprocess, base64, urllib.request, urllib.error
 import numpy as np, soundfile as sf
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lines import LINES, SPOKEN
@@ -72,21 +72,33 @@ elif provider == "gemini":
     KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not KEY:
         sys.exit("GEMINI_API_KEY não está definida")
-    voice = arg3 or "Charon"; model = arg4 or "gemini-2.5-flash-preview-tts"
-    STYLE = ("Leia em português do Brasil, com voz natural, calorosa e didática, como um colega explicando "
-             "para a prova de amanhã. Ritmo animado, pausas curtas entre as frases: ")
+    voice = arg3 or "Charon"; model = arg4 or "gemini-3.8-flash-tts"
 
     def synth_line(text):
         spoken = " ".join(SPOKEN.get(w, w) for w in text.split())
-        body = {"contents": [{"parts": [{"text": STYLE + spoken}]}],
+        body = {"contents": [{"parts": [{"text": spoken}]}],
                 "generationConfig": {"responseModalities": ["AUDIO"],
                                      "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}}
-        req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                                     data=json.dumps(body).encode(), headers={"Content-Type": "application/json", "x-goog-api-key": KEY})
-        r = json.load(urllib.request.urlopen(req, timeout=180))
+        # the key goes in the query string: header auth is refused for some key types
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={KEY}"
+        for attempt in range(6):
+            try:
+                req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
+                r = json.load(urllib.request.urlopen(req, timeout=180))
+                if "content" in r["candidates"][0]: break
+                if attempt == 5: raise RuntimeError(f"sem áudio: {r['candidates'][0].get('finishReason')}")
+            except urllib.error.HTTPError as e:
+                # 403/429 show up transiently under the free tier's per-minute limit
+                if e.code not in (403, 429, 500, 503) or attempt == 5: raise
+            time.sleep(20 * (attempt + 1))
         part = r["candidates"][0]["content"]["parts"][0]["inlineData"]
-        sr = int(re.search(r"rate=(\d+)", part.get("mimeType", "rate=24000")).group(1))
-        a = np.frombuffer(base64.b64decode(part["data"]), dtype="<i2").astype(np.float32) / 32768.0
+        raw = base64.b64decode(part["data"])
+        if raw[:4] == b"RIFF":  # 3.8 returns a complete WAV
+            a, sr = sf.read(io.BytesIO(raw), dtype="float32")
+            if a.ndim > 1: a = a.mean(axis=1)
+        else:  # older models: raw 16-bit PCM
+            sr = int(re.search(r"rate=(\d+)", part.get("mimeType", "rate=24000")).group(1))
+            a = np.frombuffer(raw, dtype="<i2").astype(np.float32) / 32768.0
         a = np.concatenate([np.zeros(int(0.08 * sr), dtype=np.float32), trim(a, sr)])
         # sentence boundaries = the longest silences, in order; words spread inside each sentence
         ss = sentences(text); env = np.abs(a); hop = int(0.01 * sr)
@@ -126,6 +138,6 @@ for (lid, slug, title, text) in LINES:
     voices[int(lid)] = {"frame": int(lid), "path": f"assets/voice/{lid}.wav", "duration_s": round(d, 3),
                         "words": [{"id": f"w{i}", **w} for i, w in enumerate(words)]}
     print(lid, round(d, 2), "s", flush=True)
-meta["voices"] = [voices[k] for k in sorted(voices)]
-json.dump(meta, open(meta_path, "w"), ensure_ascii=False, indent=2)
+    meta["voices"] = [voices[k] for k in sorted(voices)]
+    json.dump(meta, open(meta_path, "w"), ensure_ascii=False, indent=2)  # after every line, so a failure can resume
 print("total", round(sum(v["duration_s"] for v in meta["voices"]), 1))
