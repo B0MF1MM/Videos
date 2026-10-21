@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #F0EBDE;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="313.607"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div
+        id="el-01-prova-amanha"
+        class="scene"
+        data-composition-id="01-prova-amanha"
+        data-composition-src="compositions/frames/01-prova-amanha.html"
+        data-start="0"
+        data-duration="10.431"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-01-prova-amanha-voice"
+        src="assets/voice/01.wav"
+        data-start="0"
+        data-duration="9.931"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-02-o-que-e"
+        class="scene"
+        data-composition-id="02-o-que-e"
+        data-composition-src="compositions/frames/02-o-que-e.html"
+        data-start="9.931"
+        data-duration="15.022"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-02-o-que-e-voice"
+        src="assets/voice/02.wav"
+        data-start="9.931"
+        data-duration="14.522"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-03-crise"
+        class="scene"
+        data-composition-id="03-crise"
+        data-composition-src="compositions/frames/03-crise.html"
+        data-start="24.453"
+        data-duration="17.143"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-03-crise-voice"
+        src="assets/voice/03.wav"
+        data-start="24.453"
+        data-duration="16.643"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-04-ciclo-de-vida"
+        class="scene"
+        data-composition-id="04-ciclo-de-vida"
+        data-composition-src="compositions/frames/04-ciclo-de-vida.html"
+        data-start="41.096000000000004"
+        data-duration="14.388"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-04-ciclo-de-vida-voice"
+        src="assets/voice/04.wav"
+        data-start="41.096000000000004"
+        data-duration="13.888"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-05-requisito"
+        class="scene"
+        data-composition-id="05-requisito"
+        data-composition-src="compositions/frames/05-requisito.html"
+        data-start="54.984"
+        data-duration="14.942"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-05-requisito-voice"
+        src="assets/voice/05.wav"
+        data-start="54.984"
+        data-duration="14.442"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-06-fases-requisitos"
+        class="scene"
+        data-composition-id="06-fases-requisitos"
+        data-composition-src="compositions/frames/06-fases-requisitos.html"
+        data-start="69.426"
+        data-duration="16.337"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-06-fases-requisitos-voice"
+        src="assets/voice/06.wav"
+        data-start="69.426"
+        data-duration="15.837"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-07-funcional"
+        class="scene"
+        data-composition-id="07-funcional"
+        data-composition-src="compositions/frames/07-funcional.html"
+        data-start="85.263"
+        data-duration="16.54"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-07-funcional-voice"
+        src="assets/voice/07.wav"
+        data-start="85.263"
+        data-duration="16.04"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-08-biblioteca"
+        class="scene"
+        data-composition-id="08-biblioteca"
+        data-composition-src="compositions/frames/08-biblioteca.html"
+        data-start="101.303"
+        data-duration="17.141"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-08-biblioteca-voice"
+        src="assets/voice/08.wav"
+        data-start="101.303"
+        data-duration="16.641"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-09-processo"
+        class="scene"
+        data-composition-id="09-processo"
+        data-composition-src="compositions/frames/09-processo.html"
+        data-start="117.94399999999999"
+        data-duration="17.855"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-09-processo-voice"
+        src="assets/voice/09.wav"
+        data-start="117.94399999999999"
+        data-duration="17.355"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-10-modelo-processo"
+        class="scene"
+        data-composition-id="10-modelo-processo"
+        data-composition-src="compositions/frames/10-modelo-processo.html"
+        data-start="135.29899999999998"
+        data-duration="18.475"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-10-modelo-processo-voice"
+        src="assets/voice/10.wav"
+        data-start="135.29899999999998"
+        data-duration="17.975"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-11-cascata"
+        class="scene"
+        data-composition-id="11-cascata"
+        data-composition-src="compositions/frames/11-cascata.html"
+        data-start="153.27399999999997"
+        data-duration="16.217"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-11-cascata-voice"
+        src="assets/voice/11.wav"
+        data-start="153.27399999999997"
+        data-duration="15.717"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-12-cascata-vd"
+        class="scene"
+        data-composition-id="12-cascata-vd"
+        data-composition-src="compositions/frames/12-cascata-vd.html"
+        data-start="168.99099999999999"
+        data-duration="16.127"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-12-cascata-vd-voice"
+        src="assets/voice/12.wav"
+        data-start="168.99099999999999"
+        data-duration="15.627"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-13-prototipacao"
+        class="scene"
+        data-composition-id="13-prototipacao"
+        data-composition-src="compositions/frames/13-prototipacao.html"
+        data-start="184.618"
+        data-duration="17.557"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-13-prototipacao-voice"
+        src="assets/voice/13.wav"
+        data-start="184.618"
+        data-duration="17.057"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-14-prototipacao-vd"
+        class="scene"
+        data-composition-id="14-prototipacao-vd"
+        data-composition-src="compositions/frames/14-prototipacao-vd.html"
+        data-start="201.67499999999998"
+        data-duration="17.853"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-14-prototipacao-vd-voice"
+        src="assets/voice/14.wav"
+        data-start="201.67499999999998"
+        data-duration="17.353"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-15-incremental"
+        class="scene"
+        data-composition-id="15-incremental"
+        data-composition-src="compositions/frames/15-incremental.html"
+        data-start="219.028"
+        data-duration="14.291"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-15-incremental-voice"
+        src="assets/voice/15.wav"
+        data-start="219.028"
+        data-duration="13.791"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-16-incremental-vd"
+        class="scene"
+        data-composition-id="16-incremental-vd"
+        data-composition-src="compositions/frames/16-incremental-vd.html"
+        data-start="232.819"
+        data-duration="17.774"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-16-incremental-vd-voice"
+        src="assets/voice/16.wav"
+        data-start="232.819"
+        data-duration="17.274"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-17-espiral"
+        class="scene"
+        data-composition-id="17-espiral"
+        data-composition-src="compositions/frames/17-espiral.html"
+        data-start="250.093"
+        data-duration="18.066"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-17-espiral-voice"
+        src="assets/voice/17.wav"
+        data-start="250.093"
+        data-duration="17.566"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-18-espiral-vd"
+        class="scene"
+        data-composition-id="18-espiral-vd"
+        data-composition-src="compositions/frames/18-espiral-vd.html"
+        data-start="267.659"
+        data-duration="16.427"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-18-espiral-vd-voice"
+        src="assets/voice/18.wav"
+        data-start="267.659"
+        data-duration="15.927"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-19-qual-modelo"
+        class="scene"
+        data-composition-id="19-qual-modelo"
+        data-composition-src="compositions/frames/19-qual-modelo.html"
+        data-start="283.586"
+        data-duration="13.792"
+        data-track-index="0"
+      ></div>
+      <audio
+        id="el-19-qual-modelo-voice"
+        src="assets/voice/19.wav"
+        data-start="283.586"
+        data-duration="13.192"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <div
+        id="el-20-cola"
+        class="scene"
+        data-composition-id="20-cola"
+        data-composition-src="compositions/frames/20-cola.html"
+        data-start="296.778"
+        data-duration="16.829"
+        data-track-index="1"
+      ></div>
+      <audio
+        id="el-20-cola-voice"
+        src="assets/voice/20.wav"
+        data-start="296.778"
+        data-duration="16.829"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+
+      <!-- BGM -->
+      <audio
+        id="el-bgm"
+        src="assets/music/underscore.loop.mp3"
+        data-start="0"
+        data-duration="313.607"
+        data-track-index="11"
+        data-volume="0.12"
+      ></audio>
+
+      <!-- captions -->
+      <div
+        id="el-captions"
+        data-track-kind="captions"
+        class="scene"
+        data-composition-id="captions"
+        data-composition-src="compositions/captions.html"
+        data-start="0"
+        data-duration="313.607"
+        data-track-index="2"
+      ></div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-prova-amanha", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 9.931);
+        tl.fromTo("#el-02-o-que-e", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 9.931);
+        tl.addLabel("hf:transition:01-prova-amanha:02-o-que-e:crossfade", 9.931);
+        tl.to("#el-02-o-que-e", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 24.453);
+        tl.fromTo("#el-03-crise", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 24.453);
+        tl.addLabel("hf:transition:02-o-que-e:03-crise:crossfade", 24.453);
+        tl.to("#el-03-crise", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 41.096);
+        tl.fromTo("#el-04-ciclo-de-vida", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 41.096);
+        tl.addLabel("hf:transition:03-crise:04-ciclo-de-vida:crossfade", 41.096);
+        tl.to("#el-04-ciclo-de-vida", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 54.984);
+        tl.fromTo("#el-05-requisito", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 54.984);
+        tl.addLabel("hf:transition:04-ciclo-de-vida:05-requisito:crossfade", 54.984);
+        tl.to("#el-05-requisito", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 69.426);
+        tl.fromTo("#el-06-fases-requisitos", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 69.426);
+        tl.addLabel("hf:transition:05-requisito:06-fases-requisitos:crossfade", 69.426);
+        tl.to("#el-06-fases-requisitos", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 85.263);
+        tl.fromTo("#el-07-funcional", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 85.263);
+        tl.addLabel("hf:transition:06-fases-requisitos:07-funcional:crossfade", 85.263);
+        tl.to("#el-07-funcional", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 101.303);
+        tl.fromTo("#el-08-biblioteca", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 101.303);
+        tl.addLabel("hf:transition:07-funcional:08-biblioteca:crossfade", 101.303);
+        tl.to("#el-08-biblioteca", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 117.944);
+        tl.fromTo("#el-09-processo", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 117.944);
+        tl.addLabel("hf:transition:08-biblioteca:09-processo:crossfade", 117.944);
+        tl.to("#el-09-processo", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 135.299);
+        tl.fromTo("#el-10-modelo-processo", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 135.299);
+        tl.addLabel("hf:transition:09-processo:10-modelo-processo:crossfade", 135.299);
+        tl.to("#el-10-modelo-processo", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 153.274);
+        tl.fromTo("#el-11-cascata", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 153.274);
+        tl.addLabel("hf:transition:10-modelo-processo:11-cascata:crossfade", 153.274);
+        tl.to("#el-11-cascata", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 168.991);
+        tl.fromTo("#el-12-cascata-vd", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 168.991);
+        tl.addLabel("hf:transition:11-cascata:12-cascata-vd:crossfade", 168.991);
+        tl.to("#el-12-cascata-vd", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 184.618);
+        tl.fromTo("#el-13-prototipacao", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 184.618);
+        tl.addLabel("hf:transition:12-cascata-vd:13-prototipacao:crossfade", 184.618);
+        tl.to("#el-13-prototipacao", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 201.675);
+        tl.fromTo("#el-14-prototipacao-vd", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 201.675);
+        tl.addLabel("hf:transition:13-prototipacao:14-prototipacao-vd:crossfade", 201.675);
+        tl.to("#el-14-prototipacao-vd", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 219.028);
+        tl.fromTo("#el-15-incremental", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 219.028);
+        tl.addLabel("hf:transition:14-prototipacao-vd:15-incremental:crossfade", 219.028);
+        tl.to("#el-15-incremental", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 232.819);
+        tl.fromTo("#el-16-incremental-vd", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 232.819);
+        tl.addLabel("hf:transition:15-incremental:16-incremental-vd:crossfade", 232.819);
+        tl.to("#el-16-incremental-vd", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 250.093);
+        tl.fromTo("#el-17-espiral", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 250.093);
+        tl.addLabel("hf:transition:16-incremental-vd:17-espiral:crossfade", 250.093);
+        tl.to("#el-17-espiral", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 267.659);
+        tl.fromTo("#el-18-espiral-vd", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 267.659);
+        tl.addLabel("hf:transition:17-espiral:18-espiral-vd:crossfade", 267.659);
+        tl.to("#el-18-espiral-vd", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 283.586);
+        tl.fromTo("#el-19-qual-modelo", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 283.586);
+        tl.addLabel("hf:transition:18-espiral-vd:19-qual-modelo:crossfade", 283.586);
+        tl.to("#el-19-qual-modelo", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.6, ease: "power2.inOut" }, 296.778);
+        tl.fromTo("#el-20-cola", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, 296.778);
+        tl.addLabel("hf:transition:19-qual-modelo:20-cola:blur-crossfade", 296.778);
+        tl.to({}, { duration: 313.607 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
+    </script>
+  </body>
+</html>

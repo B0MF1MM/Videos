@@ -1,0 +1,403 @@
+  MODELOS, MÉTODOS E
+TÉCNICAS DA ENGENHARIA
+     DE SOFTWARE
+           Engenharia de Software – Conceitos e Práticas
+
+• É uma disciplina da área de computação cujo
+  o foco está em todos os aspectos da
+  produção de software.
+
+• Atuação desde os estágios iniciais da
+  especificação      do   sistema   até   sua
+  manutenção, quando o sistema já está sendo
+  usado.
+
+• O objetivo sempre é boa relação custo-
+  benefício, aumento de qualidade, reduzindo
+  prazos e custos.
+
+
+                                                           2
+          Por Que Surgiu a Engenharia de Software?
+
+
+➢ Na década de 1960, o desenvolvimento
+  de software era uma prática amadora e
+  desorganizada, sem processos definidos
+  ou metodologias estabelecidas.
+
+
+
+
+                                                     3
+A Crise do Software
+        Em 1968, a Conferência da OTAN na Alemanha
+        cunhou o termo "Crise do Software", reconhecendo
+        oficialmente que o desenvolvimento de software
+        enfrentava   desafios   sistêmicos   que   afetavam
+        organizações em todo o mundo.
+
+
+
+
+                                                      4
+            Ciclo de Vida do Desenvolvimento de Software
+ Realiza correções de erros identificados             Define os objetivos, o escopo, os recursos necessários
+ após a entrega do software.                          e o cronograma do projeto. Estabelece as etapas, os
+ Atualiza o sistema para atender a novas              custos e os prazos para orientar o desenvolvimento
+ necessidades e mudanças tecnológicas.                do software.
+
+
+
+
+  Verifica se as funcionalidades                                Levanta e analisa as necessidades e
+   funcionam corretamente e                                     expectativas dos usuários e clientes. Define
+      atendem aos requisitos                                    os requisitos funcionais e não funcionais que
+          estabelecidos.                                        o sistema deverá atender. Produz uma
+    Integra os componentes e                                    especificação dos requisitos para orientar as
+     identifica erros, falhas e                                 próximas etapas.
+ problemas de compatibilidade.
+
+
+
+
+                                                     Elabora modelos e protótipos para representar o
+Define a arquitetura do software, a estrutura do     funcionamento e a aparência do sistema.
+banco de dados e a interface do usuário.
+Transforma os projetos e as especificações em
+código-fonte utilizando linguagens de programação.                                                    5
+                                           Requisito é
+
+
+   Uma condição ou uma capacidade
+necessária para um usuário (stakeholder)
+  resolver um problema ou atingir um
+                objetivo
+
+
+ Uma condição ou uma capacidade que
+ deve ser provida por um sistema ou um
+ componente do sistema para satisfazer
+     um contrato, uma norma, uma
+especificação ou outro documento formal
+
+
+
+
+                                                         6
+                             Fases de Requisitos
+
+• Os requisitos devem ser levantados, esclarecidos, entendidos e revisados junto ao cliente.
+
+                 FASES:
+                 Elicitação de requisitos
+
+                 Análise e negociação dos requisitos
+
+                 Definição e documentação dos requisitos
+
+                 Validação dos requisitos
+
+                                                                                               7
+Tipos de Requisitos
+
+
+
+
+                      8
+Engenharia de Requisitos
+
+
+
+
+                           9
+            Exemplo 1: Sistema de Biblioteca Online
+Caso de Estudo: Criar um sistema de biblioteca online para uma universidade. O sistema deve
+permitir que os alunos pesquisem, reservem e renovem livros, além de permitir que os
+administradores gerenciem o acervo e os empréstimos.
+
+Requisitos Funcionais:                                 Requisitos Não Funcionais:
+•   Permitir que os usuários pesquisem livros por      •   Deve ter uma interface de usuário intuitiva e fácil
+    título, autor ou categoria.                            de usar.
+•   Possibilitar o registro de novos usuários.         •   Deve suportar múltiplos idiomas para atender a
+•   Permitir que os usuários reservem livros               uma base diversificada de usuários.
+    disponíveis.                                       •   Deve ser capaz de lidar com um grande volume de
+•   Capacidade de os administradores adicionar,            usuários simultaneamente durante períodos de
+    atualizar ou remover livros do acervo.                 alta demanda, como início de semestre.
+•   Notificar os usuários sobre a disponibilidade de   •   O sistema deve estar disponível 24 horas por dia, 7
+    livros reservados.                                     dias por semana, com um tempo de inatividade
+                                                           mínimo para manutenção programada.
+•   Permitir que os usuários renovem empréstimos
+    de livros.
+•   O sistema deve garantir segurança e proteção
+    dos dados dos usuários.                                                                             10
+                                 Processo de Software
+
+                 Definição Fundamental
+Um processo de software é um conjunto estruturado de atividades, métodos, práticas e transformações que as
+pessoas utilizam para desenvolver e manter um sistema de software e produtos associados.
+
+
+                   Pilares Essenciais
+As atividades fundamentais incluem especificação (o que fazer), design e implementação (como fazer), validação
+(verificação da correção) e evolução (adaptação ao longo do tempo).
+
+
+
+
+                                                                                                            11
+                 Modelos de Processos de Software
+
+• Um modelo é uma simplificação e representação da
+  realidade.
+
+• São construídos para permitir um melhor entendimento
+  sobre o sistema que está sendo construído.
+
+• Especifica a estrutura e comportamento, além de servir
+  de guia para a construção do sistema.
+
+• Documentam as decisões tomadas.
+
+
+
+
+                                                           12
+                             Modelo x Processo
+
+• Um modelo é algo teórico, um conjunto de possíveis ações.
+
+• O processo deve determinar ações práticas a serem realizadas pela equipe com prazos e
+  métricas definidos.
+
+
+
+                   Modelo + Planejamento = Processo
+
+
+
+
+                                                                                   13
+               Modelos de Processos de Software
+• Modelo = representação simplificada do processo
+
+• 1. Modelo Cascata
+
+• 2. Prototipação                Modelos Tradicionais
+• 3. Modelo Incremental
+
+• 4. Modelo Espiral
+
+
+
+
+                                                        14
+                                  Modelo Cascata
+
+
+
+
+▪ Primeiro modelo publicado do processo de desenvolvimento de software.
+▪ Retrata um desenvolvimento gradual e possui uma sequência de passos em ordem que devem ser seguidos.
+
+
+
+
+                                                                                                15
+                                   Modelo Cascata
+
+
+
+
+Vantagens:                                           Desvantagens:
+▪ Documentação produzida em cada fase.               ▪ Projetos raramente seguem fluxo sequencial.
+▪ O fluxo das atividades é extremamente              ▪ Dificuldade do cliente estabelecer todos os
+  organizado e muito mais fácil de ser gerenciado.   ▪ requisitos inicialmente.
+                                                     ▪ Pouca flexibilidade para mudanças.
+
+                                                                                                16
+         Prototipação – Modelo de Processo Evolucionário
+
+
+• Produz uma versão cada vez mais completa do software a cada iteração;
+
+• Software evolui ao longo do tempo;
+
+• Requisitos do negócio e do produto mudam;
+
+• Modelo iterativo (progride através de refinamentos).
+
+
+
+
+                                                                          17
+                                             Prototipação
+   Comunicação:
+   • Reunião com os envolvidos;                                               Planejamento rápido:
+   • Definição dos objetivos                                                  • Uma iteração de prototipação é
+     gerais do software;                                                         planejada rapidamente e ocorre
+   • Identificação dos requisitos.                                               a modelagem na forma de um
+                                                                                 projeto rápido.
+                                                           Planejamento
+                                        Comunicação
+                                                               rápido
+
+
+                                                                                      Modelagem projeto rápido:
+Entrega e feedback:                                               Modelagem           • Concentra-se em uma
+• O protótipo é entregue             Entrega e                                          representação dos aspectos
+                                                                   projeto
+   para todos os envolvidos          feedback                                           do software que serão
+                                                                    rápido
+   e avaliados por eles;                                                                visíveis para os usuários.
+• O feedback é usado para
+   refinar ainda mais os
+   requisitos.                                     Construção
+                                                  do protótipo
+
+
+                                           Construção de protótipo:
+                                           • Construção do protótipo propriamente dito.
+                                                                                                              18
+                                             Prototipação
+                      VANTAGENS                                                 DESVANTAGENS
+             Este modelo é flexível em design.                                Este modelo é caro.
+                                                               Possui documentação deficiente devido às constantes
+                   É fácil detectar erros.
+                                                                        mudanças nos requisitos do cliente.
+ Podemos encontrar facilmente a funcionalidade ausente.              Pode haver muita variação nos requisitos.
+Existe um escopo de refinamento, o que significa que novos Os clientes às vezes exigem que o produto real seja entregue
+       requisitos podem ser facilmente acomodados.                       logo após ver um protótipo inicial.
+ Ele pode ser reutilizado pelo desenvolvedor para projetos   Pode haver soluções abaixo do ideal devido à pressa dos
+                mais complicados no futuro.                          desenvolvedores em construir protótipos.
+                                                            Os clientes podem não estar satisfeitos ou interessados no
+Garante um maior nível de satisfação e conforto do cliente.
+                                                                     produto depois de ver o protótipo inicial.
+ Ajuda os desenvolvedores e usuários a entender melhor o
+                                                            Não há certeza na determinação do número de iterações.
+                           sistema.
+                                                               Pode haver uma análise de problema incompleta ou
+Os requisitos de integração são muito bem compreendidos e
+                                                               inadequada, que pode aumentar a complexidade do
+  os canais de implantação são decididos muito no início.
+                                                                                      sistema.
+   Ele pode envolver ativamente os usuários na fase de
+                   desenvolvimento.
+
+
+                                                                                                                 19
+                             Modelo Incremental
+
+• Surge como uma combinação do modelo
+  cascata com o de prototipação.
+
+• Ao invés de especificar e desenvolver tudo de
+  uma só vez, este modelo trabalha com
+  incrementos, ou seja, pequenos pedaços de
+  software entregues de cada vez.
+
+• Quando uma parte do software fica pronta ela
+  é incrementada às partes prontas ou quase
+  prontas.
+
+
+
+                                                  20
+                                   Modelo Incremental
+
+                         VANTAGENS                                              DESVANTAGENS
+Entrega rápida de funcionalidades: O software pode ser Complexidade da arquitetura: A integração dos módulos
+   entregue em partes menores, com funcionalidades            incrementais pode ser complexa, levando a uma
+            básicas funcionando desde o início.                           arquitetura desorganizada.
+                                                         Dificuldade em estimar o tempo total: É difícil estimar o
+    Redução de riscos: Permite identificar e corrigir
+                                                           tempo total do projeto, pois cada módulo pode ter um
+problemas mais cedo, evitando grandes falhas no projeto.
+                                                                    tempo de desenvolvimento diferente.
+   Flexibilidade: Facilita a adaptação a mudanças nos    Custos de integração: Pode haver custos adicionais para
+                   requisitos do cliente.                             integrar os módulos incrementais.
+                                                         Falta de visão geral: O cliente pode ter dificuldade em ter
+ Gerenciamento eficiente: Permite dividir o projeto em
+                                                          uma visão geral do software final, pois ele é entregue em
+  partes menores e gerenciá-lo de forma mais eficiente.
+                                                                                    partes.
+   Melhor controle de qualidade: Permite testar cada
+                                                           Risco de retrabalho: Mudanças nos requisitos podem
+  módulo incrementalmente, garantindo a qualidade do
+                                                              levar a retrabalho em módulos já desenvolvidos.
+                       software final.
+
+
+
+
+                                                                                                             21
+      Modelo Espiral de Boehm
+
+• Criado por Barry Boehm em 1988, professor de Engenharia de Software e
+  diretor fundador do Centro de Engenharia de Sistemas e Software da
+  Universidade do Sul da Califórnia.
+
+• Modelo orientado a riscos que combina a natureza iterativa da prototipagem
+  com os aspectos controlados e sistemáticos do modelo em cascata.
+
+
+
+
+                                                                      22
+                                    Modelo Espiral
+
+• Abordagem realista do desenvolvimento de
+  sistemas e softwares de grande porte
+  usando a prototipagem como mecanismo
+  de redução de riscos.
+
+• É um processo evolucionário, adequado
+  para softwares que precisam passar por
+  inúmeras evoluções na medida que o
+  desenvolvimento acontece.
+
+• O   ciclo   seguinte,   com    definição   de
+  requisitos; o seguinte, com o projeto do
+  sistema, e assim por diante.
+
+                                                     23
+                                       Modelo Espiral
+
+                     VANTAGENS                                                DESVANTAGENS
+                                                         Pode ser difícil convencer os clientes que o processo de
+                                                           evolução é controlável, pois ele exige competência
+               Abordagem bem realista.
+                                                          considerável na avaliação dos riscos e depende dessa
+                                                                  competência para ser bem sucedido;
+Como o modelo exige a consideração dos riscos técnicos
+   em todos os estágios de evolução, se for aplicado    Se um risco importante não for descoberto e gerenciado
+adequadamente, reduzirá os riscos antes que se tornem       corretamente, fatalmente ocorrerão problemas;
+                     problemáticos;
+ As estimativas se tornam mais realistas e o tempo de
+                                                       A avaliação dos riscos exige um analista com experiência;
+              implementação é reduzido;
+                                                          Não deve ser usado em sistemas de pequeno porte.
+    Mais versátil para testar e lidar com mudanças;
+                                                              Aplica-se melhor a sistemas de grande porte;
+
+Não faz distinção entre desenvolvimento e manutenção.     Erros na avaliação de riscos podem impactar o projeto.
+
+
+
+
+                                                                                                           24
+BIBLIOGRAFIA BÁSICA
+▪ RANGEL, Pablo. Sistemas orientados a objetos. Rio de Janeiro: Brasport, 2021.
+  E-book. Disponível em:
+  https://plataforma.bvirtual.com.br/Leitor/Publicacao/197367/epub/0.
+▪ PRESSMAN, Roger; MAXIM, Bruce. Engenharia de Software. Uma abordagem
+  profissional. 8a. Ed. Bookman, 2016. Disponível em:
+  https://integrada.minhabiblioteca.com.br/reader/books/9786558040118/ep
+  ubcfi/6/2[%3Bvnd.vst.idref%3DCapa.xhtml]!/4/2[page_i]/2%4051:1
+▪ ELMASRI, Ramez. Sistemas de banco de dados. 6. ed. São Paulo: Pearson,
+  2011. Disponível em:
+  http://unibh.bv3.digitalpages.com.br/users/publications/9788579360855
+
+
+                                                                           25
+

@@ -1,0 +1,120 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+#root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; color:#1F2BE0; font-family:"Hanken Grotesk", sans-serif; }
+.f09-ground { position:absolute; inset:0; background-color:#F0EBDE;
+  background-image: linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+  background-size:38.4px 38.4px; background-position:-1px -1px; }
+.f09-stage { position:absolute; inset:0; }
+.f09-hair { position:absolute; left:77px; right:77px; height:2px; background:#1F2BE0; }
+.f09-hair-top { top:70px; } .f09-hair-bot { top:892px; }
+.f09-chrome { position:absolute; top:30px; font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.06em; line-height:1; white-space:nowrap; }
+.f09-chrome-tag { left:77px; } .f09-chrome-num { right:77px; }
+.f09-cam { position:absolute; inset:0; transform-origin:50% 48%; }
+.f09-qwrap { position:absolute; left:0; right:0; top:96px; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.f09-qtag { font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.14em; background:#1F2BE0; color:#F0EBDE; padding:4px 14px 2px; }
+.f09-qtext { font-family:"Newsreader", serif; font-size:66px; line-height:1.08; letter-spacing:-0.01em; white-space:nowrap; }
+.f09-plain .f09-qtag { background:transparent; color:#1F2BE0; border:2px solid #1F2BE0; }
+.f09-box { position:absolute; border:4px solid #1F2BE0; background:#F0EBDE; box-sizing:border-box; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+.f09-inv { background:#1F2BE0; color:#F0EBDE; }
+.f09-fill { position:absolute; inset:-1px; background:#1F2BE0; color:#F0EBDE; display:flex; align-items:center; justify-content:center; text-align:center; clip-path:inset(0 100% 0 0); }
+.f09-stack { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.f09-t { display:block; line-height:1.12; padding:0 12px; }
+.f09-lab { font-family:"Hanken Grotesk", sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; }
+.f09-serif { font-family:"Newsreader", serif; font-weight:400; letter-spacing:-0.01em; }
+.f09-mono { font-family:"DM Mono", monospace; letter-spacing:0.06em; }
+.f09-body { font-family:"Hanken Grotesk", sans-serif; font-weight:400; }
+.f09-txt { position:absolute; line-height:1.12; white-space:nowrap; }
+.f09-arrow { position:absolute; background:#1F2BE0; transform-origin:0% 50%; }
+.f09-head { position:absolute; right:-4px; top:50%; margin-top:-13px; width:0; height:0; border-left:24px solid #1F2BE0; border-top:13px solid transparent; border-bottom:13px solid transparent; }
+.f09-stamp { position:absolute; background:#1F2BE0; color:#F0EBDE; font-family:"Newsreader", serif; padding:10px 30px 12px; white-space:nowrap; line-height:1.1; }
+.f09-stag { position:absolute; left:-4px; top:-40px; font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.14em; color:#1F2BE0; background:#F0EBDE; border:2px solid #1F2BE0; padding:2px 10px 0; line-height:1.2; }
+.f09-row { position:absolute; height:92px; display:flex; align-items:center; gap:22px; border-bottom:3px solid rgba(31,43,224,0.35); box-sizing:border-box; }
+.f09-ico { flex:0 0 64px; height:64px; border:4px solid #1F2BE0; box-sizing:border-box; display:flex; align-items:center; justify-content:center; font-family:"Newsreader", serif; font-size:46px; line-height:1; }
+.f09-ico.f09-inv { background:#1F2BE0; color:#F0EBDE; }
+.f09-row-t { font-family:"Hanken Grotesk", sans-serif; font-weight:400; font-size:36px; white-space:nowrap; }
+.f09-colhead { position:absolute; height:76px; display:flex; align-items:center; gap:18px; padding:0 22px; box-sizing:border-box; font-family:"Hanken Grotesk", sans-serif; font-weight:600; font-size:32px; letter-spacing:0.12em; }
+.f09-colhead b { font-family:"Newsreader", serif; font-weight:400; font-size:58px; line-height:1; letter-spacing:0; }
+
+.f09-roof { position:absolute; left:190px; top:470px; width:1540px; height:62px; background:#1F2BE0; color:#F0EBDE; display:flex; align-items:center; justify-content:center; font-family:"DM Mono", monospace; font-size:30px; letter-spacing:0.2em; transform-origin:50% 50%; }
+.f09-pil { position:absolute; top:532px; width:290px; height:300px; border:4px solid #1F2BE0; border-top:none; background:#F0EBDE; box-sizing:border-box; transform-origin:50% 100%;
+  background-image: repeating-linear-gradient(90deg, transparent 0 44px, rgba(31,43,224,0.18) 44px 48px); }
+.f09-pname { position:absolute; left:0; right:0; top:20px; text-align:center; font-family:"Hanken Grotesk", sans-serif; font-weight:600; font-size:27px; letter-spacing:0.06em; line-height:1.15; background:#F0EBDE; padding:6px 0; }
+.f09-pq { position:absolute; left:16px; right:16px; bottom:22px; height:82px; background:#1F2BE0; color:#F0EBDE; display:flex; align-items:center; justify-content:center; font-family:"Newsreader", serif; font-size:38px; font-style:italic; }
+.f09-base { position:absolute; left:190px; top:832px; width:1540px; height:16px; background:#1F2BE0; transform-origin:50% 50%; }
+.f09-chip { position:absolute; top:376px; height:56px; padding:0 22px; border:4px solid #1F2BE0; background:#F0EBDE; display:flex; align-items:center; font-family:"Hanken Grotesk", sans-serif; font-weight:600; font-size:28px; letter-spacing:0.08em; box-sizing:border-box; }
+
+  </style>
+
+  <div id="root" data-composition-id="09-processo" data-width="1920" data-height="1080" data-duration="17.355">
+    <div id="f09-ground" class="f09-ground clip" data-start="0" data-duration="17.355" data-track-index="0"></div>
+
+    <div id="f09-stage" class="f09-stage clip" data-start="0" data-duration="17.355" data-track-index="1">
+      <div class="f09-hair f09-hair-top"></div>
+      <div class="f09-hair f09-hair-bot"></div>
+      <div class="f09-chrome f09-chrome-tag">ENG. SOFTWARE · MACETES</div>
+      <div class="f09-chrome f09-chrome-num">09 / 20</div>
+      <div class="f09-cam" id="f09-cam"><div class="f09-cam" id="f09-shk">
+
+      <div class="f09-qwrap" id="f09-q"><span class="f09-qtag">PERGUNTA</span><span class="f09-qtext">O que é processo de software?</span></div>
+      <div class="f09-box " id="f09-conj" style="left:190px;top:268px;width:640px;height:90px;"><span class="f09-t f09-serif" style="font-size:54px">conjunto estruturado</span><div class="f09-fill" id="f09-conj-f"><span class="f09-t f09-serif" style="font-size:54px">conjunto estruturado</span></div></div>
+      <div class="f09-chip" id="f09-k1" style="left:190px">ATIVIDADES</div>
+      <div class="f09-chip" id="f09-k2" style="left:430px">MÉTODOS</div>
+      <div class="f09-chip" id="f09-k3" style="left:640px">PRÁTICAS</div>
+      <div class="f09-arrow" id="f09-ar" style="left:880px;top:312px;width:120px;height:5px;"><i class="f09-head"></i></div>
+      <div class="f09-box " id="f09-dm" style="left:1040px;top:268px;width:420px;height:130px;"><span class="f09-t f09-lab" style="font-size:34px">DESENVOLVER<br>E MANTER</span><div class="f09-fill" id="f09-dm-f"><span class="f09-t f09-lab" style="font-size:34px">DESENVOLVER<br>E MANTER</span></div></div>
+      <div class="f09-roof" id="f09-roof">4 PILARES</div>
+      <div class="f09-pil" id="f09-p0" style="left:230px"><div class="f09-pname">ESPECIFICAÇÃO</div><div class="f09-pq" id="f09-pq0">o que fazer?</div></div><div class="f09-pil" id="f09-p1" style="left:620px"><div class="f09-pname">DESIGN E<br>IMPLEMENTAÇÃO</div><div class="f09-pq" id="f09-pq1">como fazer?</div></div><div class="f09-pil" id="f09-p2" style="left:1010px"><div class="f09-pname">VALIDAÇÃO</div><div class="f09-pq" id="f09-pq2">está correto?</div></div><div class="f09-pil" id="f09-p3" style="left:1400px"><div class="f09-pname">EVOLUÇÃO</div><div class="f09-pq" id="f09-pq3">adaptar no tempo</div></div>
+      <div class="f09-base" id="f09-base"></div>
+
+      </div></div>
+    </div>
+
+    <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        const D = 17.355;
+        const R = document.querySelector('[data-composition-id="09-processo"]');
+
+          const q = (s) => R.querySelector(s);
+          const qa = (s) => Array.from(R.querySelectorAll(s));
+          const pop = (s, t, o = {}) => tl.fromTo(q(s), { opacity: 0, scale: o.s ?? 0.6, y: o.y ?? 24 }, { opacity: 1, scale: 1, y: 0, duration: o.d ?? 0.5, ease: "back.out(1.7)" }, t);
+          const rise = (s, t, o = {}) => tl.fromTo(q(s), { opacity: 0, y: o.y ?? 36 }, { opacity: 1, y: 0, duration: o.d ?? 0.6, ease: "power3.out" }, t);
+          const slide = (s, t, dx, o = {}) => tl.fromTo(q(s), { opacity: 0, x: dx }, { opacity: 1, x: 0, duration: o.d ?? 0.6, ease: "power3.out" }, t);
+          const fade = (s, t, d = 0.5) => tl.fromTo(q(s), { opacity: 0 }, { opacity: 1, duration: d, ease: "power2.out" }, t);
+          const wipe = (s, t, d = 0.6) => tl.fromTo(q(s), { clipPath: "inset(-30% 100% -30% -4%)" }, { clipPath: "inset(-30% -4% -30% -4%)", duration: d, ease: "power2.inOut" }, t);
+          const lit = (id, t, d = 0.35) => tl.fromTo(q(id + "-f"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: d, ease: "power2.inOut" }, t);
+          const drawX = (s, t, d = 0.7) => tl.fromTo(q(s), { scaleX: 0 }, { scaleX: 1, duration: d, ease: "power3.inOut" }, t);
+          const drawY = (s, t, d = 0.7) => tl.fromTo(q(s), { scaleY: 0 }, { scaleY: 1, duration: d, ease: "power3.inOut" }, t);
+          const shake = (t) => { tl.to(q("#f09-shk"), { x: 7, duration: 0.04, ease: "none" }, t); tl.to(q("#f09-shk"), { x: -6, duration: 0.05, ease: "none" }, t + 0.04); tl.to(q("#f09-shk"), { x: 3, duration: 0.05, ease: "none" }, t + 0.09); tl.to(q("#f09-shk"), { x: 0, duration: 0.08, ease: "power2.out" }, t + 0.14); };
+          const stampIn = (s, t, r = -2) => { tl.fromTo(q(s), { opacity: 0, scale: 1.9, rotation: r * 4 }, { opacity: 1, scale: 1, rotation: r, duration: 0.4, ease: "power4.in" }, t); shake(t + 0.4); };
+          const bump = (s, t, k = 1.08) => { tl.to(q(s), { scale: k, duration: 0.14, ease: "power2.out" }, t); tl.to(q(s), { scale: 1, duration: 0.3, ease: "power2.out" }, t + 0.14); };
+          const rows = (ids, times, dx) => ids.forEach((s, i) => slide(s, times[i], dx));
+
+        tl.fromTo(q("#f09-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
+
+          pop("#f09-q", 0.05, { s: 0.85 });
+          pop("#f09-conj", 1.988); lit("#f09-conj", 2.415);
+          pop("#f09-k1", 3.271); pop("#f09-k2", 4.111); pop("#f09-k3", 4.681);
+          drawX("#f09-ar", 5.394, 0.5); pop("#f09-dm", 6.249);
+          drawX("#f09-base", 8.075, 0.6);
+          tl.fromTo(q("#f09-roof"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 8.475);
+          const pt = [9.162, 11.154, 13.410, 15.347];
+          const qt = [10.527, 12.790, 14.439, 16.042];
+          pt.forEach((t, i) => { tl.fromTo(q("#f09-p" + i), { scaleY: 0 }, { scaleY: 1, duration: 0.55, ease: "back.out(1.4)" }, t); tl.set(q("#f09-pq" + i), { opacity: 0 }, 0); });
+          qt.forEach((t, i) => { tl.fromTo(q("#f09-pq" + i), { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power4.in", immediateRender: false }, t); });
+          shake(16.442);
+
+        tl.to({}, { duration: 0.001 }, D - 0.001);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["09-processo"] = tl;
+      })();
+    </script>
+  </div>
+</template>

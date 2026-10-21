@@ -1,0 +1,116 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+#root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; color:#1F2BE0; font-family:"Hanken Grotesk", sans-serif; }
+.f06-ground { position:absolute; inset:0; background-color:#F0EBDE;
+  background-image: linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+  background-size:38.4px 38.4px; background-position:-1px -1px; }
+.f06-stage { position:absolute; inset:0; }
+.f06-hair { position:absolute; left:77px; right:77px; height:2px; background:#1F2BE0; }
+.f06-hair-top { top:70px; } .f06-hair-bot { top:892px; }
+.f06-chrome { position:absolute; top:30px; font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.06em; line-height:1; white-space:nowrap; }
+.f06-chrome-tag { left:77px; } .f06-chrome-num { right:77px; }
+.f06-cam { position:absolute; inset:0; transform-origin:50% 48%; }
+.f06-qwrap { position:absolute; left:0; right:0; top:96px; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.f06-qtag { font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.14em; background:#1F2BE0; color:#F0EBDE; padding:4px 14px 2px; }
+.f06-qtext { font-family:"Newsreader", serif; font-size:66px; line-height:1.08; letter-spacing:-0.01em; white-space:nowrap; }
+.f06-plain .f06-qtag { background:transparent; color:#1F2BE0; border:2px solid #1F2BE0; }
+.f06-box { position:absolute; border:4px solid #1F2BE0; background:#F0EBDE; box-sizing:border-box; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+.f06-inv { background:#1F2BE0; color:#F0EBDE; }
+.f06-fill { position:absolute; inset:-1px; background:#1F2BE0; color:#F0EBDE; display:flex; align-items:center; justify-content:center; text-align:center; clip-path:inset(0 100% 0 0); }
+.f06-stack { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.f06-t { display:block; line-height:1.12; padding:0 12px; }
+.f06-lab { font-family:"Hanken Grotesk", sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; }
+.f06-serif { font-family:"Newsreader", serif; font-weight:400; letter-spacing:-0.01em; }
+.f06-mono { font-family:"DM Mono", monospace; letter-spacing:0.06em; }
+.f06-body { font-family:"Hanken Grotesk", sans-serif; font-weight:400; }
+.f06-txt { position:absolute; line-height:1.12; white-space:nowrap; }
+.f06-arrow { position:absolute; background:#1F2BE0; transform-origin:0% 50%; }
+.f06-head { position:absolute; right:-4px; top:50%; margin-top:-13px; width:0; height:0; border-left:24px solid #1F2BE0; border-top:13px solid transparent; border-bottom:13px solid transparent; }
+.f06-stamp { position:absolute; background:#1F2BE0; color:#F0EBDE; font-family:"Newsreader", serif; padding:10px 30px 12px; white-space:nowrap; line-height:1.1; }
+.f06-stag { position:absolute; left:-4px; top:-40px; font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.14em; color:#1F2BE0; background:#F0EBDE; border:2px solid #1F2BE0; padding:2px 10px 0; line-height:1.2; }
+.f06-row { position:absolute; height:92px; display:flex; align-items:center; gap:22px; border-bottom:3px solid rgba(31,43,224,0.35); box-sizing:border-box; }
+.f06-ico { flex:0 0 64px; height:64px; border:4px solid #1F2BE0; box-sizing:border-box; display:flex; align-items:center; justify-content:center; font-family:"Newsreader", serif; font-size:46px; line-height:1; }
+.f06-ico.f06-inv { background:#1F2BE0; color:#F0EBDE; }
+.f06-row-t { font-family:"Hanken Grotesk", sans-serif; font-weight:400; font-size:36px; white-space:nowrap; }
+.f06-colhead { position:absolute; height:76px; display:flex; align-items:center; gap:18px; padding:0 22px; box-sizing:border-box; font-family:"Hanken Grotesk", sans-serif; font-weight:600; font-size:32px; letter-spacing:0.12em; }
+.f06-colhead b { font-family:"Newsreader", serif; font-weight:400; font-size:58px; line-height:1; letter-spacing:0; }
+
+.f06-stn { position:absolute; top:300px; width:360px; height:150px; border:4px solid #1F2BE0; background:#F0EBDE; box-sizing:border-box; }
+.f06-snum { position:absolute; left:0; top:0; width:46px; height:46px; background:#1F2BE0; color:#F0EBDE; font-family:"DM Mono", monospace; font-size:28px; display:flex; align-items:center; justify-content:center; }
+.f06-sname { position:absolute; left:0; right:0; top:40px; bottom:0; display:flex; align-items:center; justify-content:center; text-align:center; font-family:"Hanken Grotesk", sans-serif; font-weight:600; font-size:30px; letter-spacing:0.06em; line-height:1.15; }
+.f06-ic { position:absolute; top:636px; width:80px; height:80px; border:4px solid #1F2BE0; box-sizing:border-box; background:#F0EBDE; }
+.f06-ic b { position:absolute; bottom:12px; width:10px; background:#1F2BE0; }
+.f06-ic b:nth-child(1) { left:14px; height:20px; } .f06-ic b:nth-child(2) { left:31px; height:40px; } .f06-ic b:nth-child(3) { left:48px; height:28px; }
+.f06-ic u { position:absolute; top:34px; width:26px; height:6px; background:#1F2BE0; left:8px; } .f06-ic u.r { left:auto; right:8px; }
+.f06-ic s { display:block; margin:12px 12px 0; height:5px; background:#1F2BE0; }
+.f06-ic em { position:absolute; left:16px; top:14px; width:22px; height:38px; border-right:7px solid #1F2BE0; border-bottom:7px solid #1F2BE0; transform:rotate(40deg); }
+.f06-ger { position:absolute; left:560px; top:770px; width:800px; height:90px; border:4px dashed #1F2BE0; box-sizing:border-box; display:flex; align-items:center; justify-content:center; gap:20px; font-family:"Hanken Grotesk", sans-serif; font-weight:600; font-size:30px; letter-spacing:0.08em; background:#F0EBDE; }
+.f06-ger span { font-family:"DM Mono", monospace; font-weight:400; font-size:26px; letter-spacing:0.04em; }
+
+  </style>
+
+  <div id="root" data-composition-id="06-fases-requisitos" data-width="1920" data-height="1080" data-duration="15.837">
+    <div id="f06-ground" class="f06-ground clip" data-start="0" data-duration="15.837" data-track-index="0"></div>
+
+    <div id="f06-stage" class="f06-stage clip" data-start="0" data-duration="15.837" data-track-index="1">
+      <div class="f06-hair f06-hair-top"></div>
+      <div class="f06-hair f06-hair-bot"></div>
+      <div class="f06-chrome f06-chrome-tag">ENG. SOFTWARE · MACETES</div>
+      <div class="f06-chrome f06-chrome-num">06 / 20</div>
+      <div class="f06-cam" id="f06-cam"><div class="f06-cam" id="f06-shk">
+
+      <div class="f06-qwrap f06-plain" id="f06-q"><span class="f06-qtag">JUNTO AO CLIENTE</span><span class="f06-qtext">Fases de requisitos</span></div>
+      <div class="f06-stn" id="f06-s0" style="left:130px"><div class="f06-snum">1</div><div class="f06-sname">ELICITAÇÃO</div></div><div class="f06-box " id="f06-v0" style="left:130px;top:520px;width:360px;height:96px;"><span class="f06-t f06-serif" style="font-size:52px">escuta</span><div class="f06-fill" id="f06-v0-f"><span class="f06-t f06-serif" style="font-size:52px">escuta</span></div></div><div class="f06-ic" id="f06-i0" style="left:270px"><b></b><b></b><b></b></div><div class="f06-arrow" id="f06-a0" style="left:496px;top:370px;width:54px;height:5px;"><i class="f06-head"></i></div><div class="f06-stn" id="f06-s1" style="left:560px"><div class="f06-snum">2</div><div class="f06-sname">ANÁLISE E<br>NEGOCIAÇÃO</div></div><div class="f06-box " id="f06-v1" style="left:560px;top:520px;width:360px;height:96px;"><span class="f06-t f06-serif" style="font-size:52px">acerta</span><div class="f06-fill" id="f06-v1-f"><span class="f06-t f06-serif" style="font-size:52px">acerta</span></div></div><div class="f06-ic" id="f06-i1" style="left:700px"><u></u><u class=r></u></div><div class="f06-arrow" id="f06-a1" style="left:926px;top:370px;width:54px;height:5px;"><i class="f06-head"></i></div><div class="f06-stn" id="f06-s2" style="left:990px"><div class="f06-snum">3</div><div class="f06-sname">DEFINIÇÃO E<br>DOCUMENTAÇÃO</div></div><div class="f06-box " id="f06-v2" style="left:990px;top:520px;width:360px;height:96px;"><span class="f06-t f06-serif" style="font-size:52px">escreve</span><div class="f06-fill" id="f06-v2-f"><span class="f06-t f06-serif" style="font-size:52px">escreve</span></div></div><div class="f06-ic" id="f06-i2" style="left:1130px"><s></s><s></s><s></s></div><div class="f06-arrow" id="f06-a2" style="left:1356px;top:370px;width:54px;height:5px;"><i class="f06-head"></i></div><div class="f06-stn" id="f06-s3" style="left:1420px"><div class="f06-snum">4</div><div class="f06-sname">VALIDAÇÃO</div></div><div class="f06-box " id="f06-v3" style="left:1420px;top:520px;width:360px;height:96px;"><span class="f06-t f06-serif" style="font-size:52px">confere</span><div class="f06-fill" id="f06-v3-f"><span class="f06-t f06-serif" style="font-size:52px">confere</span></div></div><div class="f06-ic" id="f06-i3" style="left:1560px"><em></em></div>
+      <div class="f06-txt f06-mono " id="f06-mtag" style="left:1650px;top:470px;font-size:26px;text-align:left;">MACETE</div>
+      <div class="f06-ger" id="f06-ger">5ª · GERENCIAMENTO <span id="f06-gs">acompanha as mudanças</span></div>
+
+      </div></div>
+    </div>
+
+    <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        const D = 15.837;
+        const R = document.querySelector('[data-composition-id="06-fases-requisitos"]');
+
+          const q = (s) => R.querySelector(s);
+          const qa = (s) => Array.from(R.querySelectorAll(s));
+          const pop = (s, t, o = {}) => tl.fromTo(q(s), { opacity: 0, scale: o.s ?? 0.6, y: o.y ?? 24 }, { opacity: 1, scale: 1, y: 0, duration: o.d ?? 0.5, ease: "back.out(1.7)" }, t);
+          const rise = (s, t, o = {}) => tl.fromTo(q(s), { opacity: 0, y: o.y ?? 36 }, { opacity: 1, y: 0, duration: o.d ?? 0.6, ease: "power3.out" }, t);
+          const slide = (s, t, dx, o = {}) => tl.fromTo(q(s), { opacity: 0, x: dx }, { opacity: 1, x: 0, duration: o.d ?? 0.6, ease: "power3.out" }, t);
+          const fade = (s, t, d = 0.5) => tl.fromTo(q(s), { opacity: 0 }, { opacity: 1, duration: d, ease: "power2.out" }, t);
+          const wipe = (s, t, d = 0.6) => tl.fromTo(q(s), { clipPath: "inset(-30% 100% -30% -4%)" }, { clipPath: "inset(-30% -4% -30% -4%)", duration: d, ease: "power2.inOut" }, t);
+          const lit = (id, t, d = 0.35) => tl.fromTo(q(id + "-f"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: d, ease: "power2.inOut" }, t);
+          const drawX = (s, t, d = 0.7) => tl.fromTo(q(s), { scaleX: 0 }, { scaleX: 1, duration: d, ease: "power3.inOut" }, t);
+          const drawY = (s, t, d = 0.7) => tl.fromTo(q(s), { scaleY: 0 }, { scaleY: 1, duration: d, ease: "power3.inOut" }, t);
+          const shake = (t) => { tl.to(q("#f06-shk"), { x: 7, duration: 0.04, ease: "none" }, t); tl.to(q("#f06-shk"), { x: -6, duration: 0.05, ease: "none" }, t + 0.04); tl.to(q("#f06-shk"), { x: 3, duration: 0.05, ease: "none" }, t + 0.09); tl.to(q("#f06-shk"), { x: 0, duration: 0.08, ease: "power2.out" }, t + 0.14); };
+          const stampIn = (s, t, r = -2) => { tl.fromTo(q(s), { opacity: 0, scale: 1.9, rotation: r * 4 }, { opacity: 1, scale: 1, rotation: r, duration: 0.4, ease: "power4.in" }, t); shake(t + 0.4); };
+          const bump = (s, t, k = 1.08) => { tl.to(q(s), { scale: k, duration: 0.14, ease: "power2.out" }, t); tl.to(q(s), { scale: 1, duration: 0.3, ease: "power2.out" }, t + 0.14); };
+          const rows = (ids, times, dx) => ids.forEach((s, i) => slide(s, times[i], dx));
+
+        tl.fromTo(q("#f06-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
+
+          pop("#f06-q", 0.05, { s: 0.9 });
+          const st = [3.662, 4.483, 5.860, 7.515];
+          st.forEach((t, i) => { pop("#f06-s" + i, t); if (i > 0) drawX("#f06-a" + (i - 1), t - 0.3, 0.3); });
+          fade("#f06-mtag", 8.392);
+          const vt = [9.060, 9.670, 10.279, 10.905];
+          vt.forEach((t, i) => { pop("#f06-v" + i, t); lit("#f06-v" + i, t + 0.2); pop("#f06-i" + i, t + 0.1); bump("#f06-s" + i, t, 1.05); });
+          tl.fromTo(qa("#f06-i0 b"), { scaleY: 0.3 }, { scaleY: 1, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 7, stagger: 0.08, transformOrigin: "50% 100%" }, 9.260);
+          shake(11.305);
+          rise("#f06-ger", 12.835); fade("#f06-gs", 14.789);
+
+        tl.to({}, { duration: 0.001 }, D - 0.001);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["06-fases-requisitos"] = tl;
+      })();
+    </script>
+  </div>
+</template>

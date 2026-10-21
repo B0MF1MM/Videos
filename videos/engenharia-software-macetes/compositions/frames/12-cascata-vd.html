@@ -1,0 +1,106 @@
+<template>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "DM Mono"; src: url("assets/fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+#root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; color:#1F2BE0; font-family:"Hanken Grotesk", sans-serif; }
+.f12-ground { position:absolute; inset:0; background-color:#F0EBDE;
+  background-image: linear-gradient(rgba(31,43,224,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+  background-size:38.4px 38.4px; background-position:-1px -1px; }
+.f12-stage { position:absolute; inset:0; }
+.f12-hair { position:absolute; left:77px; right:77px; height:2px; background:#1F2BE0; }
+.f12-hair-top { top:70px; } .f12-hair-bot { top:892px; }
+.f12-chrome { position:absolute; top:30px; font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.06em; line-height:1; white-space:nowrap; }
+.f12-chrome-tag { left:77px; } .f12-chrome-num { right:77px; }
+.f12-cam { position:absolute; inset:0; transform-origin:50% 48%; }
+.f12-qwrap { position:absolute; left:0; right:0; top:96px; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.f12-qtag { font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.14em; background:#1F2BE0; color:#F0EBDE; padding:4px 14px 2px; }
+.f12-qtext { font-family:"Newsreader", serif; font-size:66px; line-height:1.08; letter-spacing:-0.01em; white-space:nowrap; }
+.f12-plain .f12-qtag { background:transparent; color:#1F2BE0; border:2px solid #1F2BE0; }
+.f12-box { position:absolute; border:4px solid #1F2BE0; background:#F0EBDE; box-sizing:border-box; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+.f12-inv { background:#1F2BE0; color:#F0EBDE; }
+.f12-fill { position:absolute; inset:-1px; background:#1F2BE0; color:#F0EBDE; display:flex; align-items:center; justify-content:center; text-align:center; clip-path:inset(0 100% 0 0); }
+.f12-stack { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.f12-t { display:block; line-height:1.12; padding:0 12px; }
+.f12-lab { font-family:"Hanken Grotesk", sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; }
+.f12-serif { font-family:"Newsreader", serif; font-weight:400; letter-spacing:-0.01em; }
+.f12-mono { font-family:"DM Mono", monospace; letter-spacing:0.06em; }
+.f12-body { font-family:"Hanken Grotesk", sans-serif; font-weight:400; }
+.f12-txt { position:absolute; line-height:1.12; white-space:nowrap; }
+.f12-arrow { position:absolute; background:#1F2BE0; transform-origin:0% 50%; }
+.f12-head { position:absolute; right:-4px; top:50%; margin-top:-13px; width:0; height:0; border-left:24px solid #1F2BE0; border-top:13px solid transparent; border-bottom:13px solid transparent; }
+.f12-stamp { position:absolute; background:#1F2BE0; color:#F0EBDE; font-family:"Newsreader", serif; padding:10px 30px 12px; white-space:nowrap; line-height:1.1; }
+.f12-stag { position:absolute; left:-4px; top:-40px; font-family:"DM Mono", monospace; font-size:26px; letter-spacing:0.14em; color:#1F2BE0; background:#F0EBDE; border:2px solid #1F2BE0; padding:2px 10px 0; line-height:1.2; }
+.f12-row { position:absolute; height:92px; display:flex; align-items:center; gap:22px; border-bottom:3px solid rgba(31,43,224,0.35); box-sizing:border-box; }
+.f12-ico { flex:0 0 64px; height:64px; border:4px solid #1F2BE0; box-sizing:border-box; display:flex; align-items:center; justify-content:center; font-family:"Newsreader", serif; font-size:46px; line-height:1; }
+.f12-ico.f12-inv { background:#1F2BE0; color:#F0EBDE; }
+.f12-row-t { font-family:"Hanken Grotesk", sans-serif; font-weight:400; font-size:36px; white-space:nowrap; }
+.f12-colhead { position:absolute; height:76px; display:flex; align-items:center; gap:18px; padding:0 22px; box-sizing:border-box; font-family:"Hanken Grotesk", sans-serif; font-weight:600; font-size:32px; letter-spacing:0.12em; }
+.f12-colhead b { font-family:"Newsreader", serif; font-weight:400; font-size:58px; line-height:1; letter-spacing:0; }
+
+  </style>
+
+  <div id="root" data-composition-id="12-cascata-vd" data-width="1920" data-height="1080" data-duration="15.627">
+    <div id="f12-ground" class="f12-ground clip" data-start="0" data-duration="15.627" data-track-index="0"></div>
+
+    <div id="f12-stage" class="f12-stage clip" data-start="0" data-duration="15.627" data-track-index="1">
+      <div class="f12-hair f12-hair-top"></div>
+      <div class="f12-hair f12-hair-bot"></div>
+      <div class="f12-chrome f12-chrome-tag">ENG. SOFTWARE · MACETES</div>
+      <div class="f12-chrome f12-chrome-num">12 / 20</div>
+      <div class="f12-cam" id="f12-cam"><div class="f12-cam" id="f12-shk">
+
+      <div class="f12-qwrap f12-plain" id="f12-q"><span class="f12-qtext">Cascata: prós e contras</span></div>
+      <div class="f12-colhead f12-inv" id="f12-hl" style="left:150px;top:234px;width:770px;"><b>+</b>VANTAGENS</div>
+<div class="f12-colhead" id="f12-hr" style="left:1000px;top:234px;width:770px;border:4px solid #1F2BE0;"><b>–</b>DESVANTAGENS</div>
+<div class="f12-row" id="f12-l0" style="left:150px;top:340px;width:770px;"><div class="f12-ico f12-inv">1</div><div class="f12-row-t">Documentação em cada fase</div></div>
+<div class="f12-row" id="f12-l1" style="left:150px;top:450px;width:770px;"><div class="f12-ico f12-inv">#</div><div class="f12-row-t">Organizado e fácil de gerenciar</div></div>
+<div class="f12-row" id="f12-r0" style="left:1000px;top:340px;width:770px;"><div class="f12-ico">~</div><div class="f12-row-t">Projetos raramente são sequenciais</div></div>
+<div class="f12-row" id="f12-r1" style="left:1000px;top:450px;width:770px;"><div class="f12-ico">?</div><div class="f12-row-t">Cliente não sabe tudo no início</div></div>
+<div class="f12-row" id="f12-r2" style="left:1000px;top:560px;width:770px;"><div class="f12-ico">×</div><div class="f12-row-t">Pouca flexibilidade</div></div>
+      <div class="f12-stamp" id="f12-hook" style="left:470px;top:720px;font-size:56px;"><span class="f12-stag">GANCHO</span>organizada, porém rígida</div>
+
+      </div></div>
+    </div>
+
+    <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        const D = 15.627;
+        const R = document.querySelector('[data-composition-id="12-cascata-vd"]');
+
+          const q = (s) => R.querySelector(s);
+          const qa = (s) => Array.from(R.querySelectorAll(s));
+          const pop = (s, t, o = {}) => tl.fromTo(q(s), { opacity: 0, scale: o.s ?? 0.6, y: o.y ?? 24 }, { opacity: 1, scale: 1, y: 0, duration: o.d ?? 0.5, ease: "back.out(1.7)" }, t);
+          const rise = (s, t, o = {}) => tl.fromTo(q(s), { opacity: 0, y: o.y ?? 36 }, { opacity: 1, y: 0, duration: o.d ?? 0.6, ease: "power3.out" }, t);
+          const slide = (s, t, dx, o = {}) => tl.fromTo(q(s), { opacity: 0, x: dx }, { opacity: 1, x: 0, duration: o.d ?? 0.6, ease: "power3.out" }, t);
+          const fade = (s, t, d = 0.5) => tl.fromTo(q(s), { opacity: 0 }, { opacity: 1, duration: d, ease: "power2.out" }, t);
+          const wipe = (s, t, d = 0.6) => tl.fromTo(q(s), { clipPath: "inset(-30% 100% -30% -4%)" }, { clipPath: "inset(-30% -4% -30% -4%)", duration: d, ease: "power2.inOut" }, t);
+          const lit = (id, t, d = 0.35) => tl.fromTo(q(id + "-f"), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: d, ease: "power2.inOut" }, t);
+          const drawX = (s, t, d = 0.7) => tl.fromTo(q(s), { scaleX: 0 }, { scaleX: 1, duration: d, ease: "power3.inOut" }, t);
+          const drawY = (s, t, d = 0.7) => tl.fromTo(q(s), { scaleY: 0 }, { scaleY: 1, duration: d, ease: "power3.inOut" }, t);
+          const shake = (t) => { tl.to(q("#f12-shk"), { x: 7, duration: 0.04, ease: "none" }, t); tl.to(q("#f12-shk"), { x: -6, duration: 0.05, ease: "none" }, t + 0.04); tl.to(q("#f12-shk"), { x: 3, duration: 0.05, ease: "none" }, t + 0.09); tl.to(q("#f12-shk"), { x: 0, duration: 0.08, ease: "power2.out" }, t + 0.14); };
+          const stampIn = (s, t, r = -2) => { tl.fromTo(q(s), { opacity: 0, scale: 1.9, rotation: r * 4 }, { opacity: 1, scale: 1, rotation: r, duration: 0.4, ease: "power4.in" }, t); shake(t + 0.4); };
+          const bump = (s, t, k = 1.08) => { tl.to(q(s), { scale: k, duration: 0.14, ease: "power2.out" }, t); tl.to(q(s), { scale: 1, duration: 0.3, ease: "power2.out" }, t + 0.14); };
+          const rows = (ids, times, dx) => ids.forEach((s, i) => slide(s, times[i], dx));
+
+        tl.fromTo(q("#f12-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
+
+          pop("#f12-q", 0.05, { s: 0.9 });
+          slide("#f12-hl", 0.000, -60); slide("#f12-hr", 6.504, 60);
+
+          slide("#f12-l0", 1.431, -60); slide("#f12-l1", 4.523, -60);
+          slide("#f12-r0", 8.123, 60); slide("#f12-r1", 10.062, 60); slide("#f12-r2", 13.654, 60);
+          stampIn("#f12-hook", 14.856, -2);
+
+        tl.to({}, { duration: 0.001 }, D - 0.001);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["12-cascata-vd"] = tl;
+      })();
+    </script>
+  </div>
+</template>
