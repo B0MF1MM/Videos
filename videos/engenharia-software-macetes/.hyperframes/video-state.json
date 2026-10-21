@@ -729,15 +729,14 @@
   },
   "checks": {
     "latest": {
-      "revision": "aa549c7a-7f3d-440f-ae12-d9bfb6273987",
-      "id": "2666f146-bb00-451a-b7b8-f148b6fef407"
+      "revision": null,
+      "id": "619b78ab-5250-4e10-8cce-ff9ec365e805"
     },
     "revisions": {
       "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf": [
         {
           "id": "f7a8764d-996b-42f7-b0c5-a33e47f568b0",
           "scope": "project",
-          "report": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/checks/f7a8764d-996b-42f7-b0c5-a33e47f568b0.json",
           "metadata": {
             "ok": true,
             "browserSkipped": false,
@@ -759,14 +758,15 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         }
       ],
       "5356da12-a9aa-4e68-9025-455ce95f4dd5": [
         {
           "id": "4a8da3cf-bdf9-4a96-849a-4d233559c831",
           "scope": "project",
-          "report": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/checks/4a8da3cf-bdf9-4a96-849a-4d233559c831.json",
           "metadata": {
             "ok": true,
             "browserSkipped": false,
@@ -788,14 +788,15 @@
           "revision": "5356da12-a9aa-4e68-9025-455ce95f4dd5",
           "inputFingerprint": "7bd71565dd148c92ee9ef1db652fea25d1671106dba8477615aa7f5865038375",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         }
       ],
       "aa549c7a-7f3d-440f-ae12-d9bfb6273987": [
         {
           "id": "2666f146-bb00-451a-b7b8-f148b6fef407",
           "scope": "project",
-          "report": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/checks/2666f146-bb00-451a-b7b8-f148b6fef407.json",
           "metadata": {
             "ok": true,
             "browserSkipped": false,
@@ -817,7 +818,9 @@
           "revision": "aa549c7a-7f3d-440f-ae12-d9bfb6273987",
           "inputFingerprint": "a6663f40a554e6a89a0ca19680058f2eb2026b2f3164a6ebae7445baeea537fb",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         }
       ]
     },
@@ -852,16 +855,12 @@
     ]
   },
   "snapshots": {
-    "latest": {
-      "revision": "5356da12-a9aa-4e68-9025-455ce95f4dd5",
-      "id": "920ca21f-5b07-4a9f-a049-b74cd05ad41b-5"
-    },
+    "latest": null,
     "revisions": {
       "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf": [
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-0",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-00-at-8.87s.png",
           "time": 8.87,
           "metadata": {
             "width": 1920,
@@ -876,12 +875,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-1",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-01-at-22.7s.png",
           "time": 22.7,
           "metadata": {
             "width": 1920,
@@ -896,12 +896,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-2",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-02-at-39.02s.png",
           "time": 39.02,
           "metadata": {
             "width": 1920,
@@ -916,12 +917,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-3",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-03-at-53.33s.png",
           "time": 53.33,
           "metadata": {
             "width": 1920,
@@ -936,12 +938,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-4",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-04-at-67.68s.png",
           "time": 67.68,
           "metadata": {
             "width": 1920,
@@ -956,12 +959,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-5",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-05-at-83.31s.png",
           "time": 83.31,
           "metadata": {
             "width": 1920,
@@ -976,12 +980,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-6",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-06-at-99.32s.png",
           "time": 99.32,
           "metadata": {
             "width": 1920,
@@ -996,12 +1001,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-7",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-07-at-115.87s.png",
           "time": 115.87,
           "metadata": {
             "width": 1920,
@@ -1016,12 +1022,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-8",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-08-at-133.12s.png",
           "time": 133.12,
           "metadata": {
             "width": 1920,
@@ -1036,12 +1043,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-9",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-09-at-151s.png",
           "time": 151,
           "metadata": {
             "width": 1920,
@@ -1056,12 +1064,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-10",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-10-at-167.06s.png",
           "time": 167.06,
           "metadata": {
             "width": 1920,
@@ -1076,12 +1085,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-11",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-11-at-182.7s.png",
           "time": 182.7,
           "metadata": {
             "width": 1920,
@@ -1096,12 +1106,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-12",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-12-at-199.54s.png",
           "time": 199.54,
           "metadata": {
             "width": 1920,
@@ -1116,12 +1127,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-13",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-13-at-216.85s.png",
           "time": 216.85,
           "metadata": {
             "width": 1920,
@@ -1136,12 +1148,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-14",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-14-at-231.18s.png",
           "time": 231.18,
           "metadata": {
             "width": 1920,
@@ -1156,12 +1169,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-15",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-15-at-247.93s.png",
           "time": 247.93,
           "metadata": {
             "width": 1920,
@@ -1176,12 +1190,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-16",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-16-at-265.45s.png",
           "time": 265.45,
           "metadata": {
             "width": 1920,
@@ -1196,12 +1211,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-17",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-17-at-281.62s.png",
           "time": 281.62,
           "metadata": {
             "width": 1920,
@@ -1216,12 +1232,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-18",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-18-at-295.31s.png",
           "time": 295.31,
           "metadata": {
             "width": 1920,
@@ -1236,12 +1253,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-19",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-19-at-311.08s.png",
           "time": 311.08,
           "metadata": {
             "width": 1920,
@@ -1256,12 +1274,13 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "424937d9-f0da-45a9-a031-7c6ab1f14c71-20",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/b3b3f8d7-9983-4c53-9c64-912231d05d4b/frame-20-at-304.199s.png",
           "time": 304.199,
           "metadata": {
             "width": 1920,
@@ -1276,14 +1295,15 @@
           "revision": "c139f7c2-d19d-41b2-aab4-5d3fab1dd4cf",
           "inputFingerprint": "32232df4437afb00480ce3d9b7b9ec7b92e79b78ac23477345b02d1f740a4abd",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         }
       ],
       "5356da12-a9aa-4e68-9025-455ce95f4dd5": [
         {
           "scope": "full",
           "id": "920ca21f-5b07-4a9f-a049-b74cd05ad41b-0",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/27e95880-a2fd-4bd3-9211-2dacad5d91ad/frame-00-at-39.5s.png",
           "time": 39.5,
           "metadata": {
             "width": 1920,
@@ -1298,12 +1318,13 @@
           "revision": "5356da12-a9aa-4e68-9025-455ce95f4dd5",
           "inputFingerprint": "7bd71565dd148c92ee9ef1db652fea25d1671106dba8477615aa7f5865038375",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "920ca21f-5b07-4a9f-a049-b74cd05ad41b-1",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/27e95880-a2fd-4bd3-9211-2dacad5d91ad/frame-01-at-99.5s.png",
           "time": 99.5,
           "metadata": {
             "width": 1920,
@@ -1318,12 +1339,13 @@
           "revision": "5356da12-a9aa-4e68-9025-455ce95f4dd5",
           "inputFingerprint": "7bd71565dd148c92ee9ef1db652fea25d1671106dba8477615aa7f5865038375",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "920ca21f-5b07-4a9f-a049-b74cd05ad41b-2",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/27e95880-a2fd-4bd3-9211-2dacad5d91ad/frame-02-at-190s.png",
           "time": 190,
           "metadata": {
             "width": 1920,
@@ -1338,12 +1360,13 @@
           "revision": "5356da12-a9aa-4e68-9025-455ce95f4dd5",
           "inputFingerprint": "7bd71565dd148c92ee9ef1db652fea25d1671106dba8477615aa7f5865038375",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "920ca21f-5b07-4a9f-a049-b74cd05ad41b-3",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/27e95880-a2fd-4bd3-9211-2dacad5d91ad/frame-03-at-199.54s.png",
           "time": 199.54,
           "metadata": {
             "width": 1920,
@@ -1358,12 +1381,13 @@
           "revision": "5356da12-a9aa-4e68-9025-455ce95f4dd5",
           "inputFingerprint": "7bd71565dd148c92ee9ef1db652fea25d1671106dba8477615aa7f5865038375",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "920ca21f-5b07-4a9f-a049-b74cd05ad41b-4",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/27e95880-a2fd-4bd3-9211-2dacad5d91ad/frame-04-at-265.45s.png",
           "time": 265.45,
           "metadata": {
             "width": 1920,
@@ -1378,12 +1402,13 @@
           "revision": "5356da12-a9aa-4e68-9025-455ce95f4dd5",
           "inputFingerprint": "7bd71565dd148c92ee9ef1db652fea25d1671106dba8477615aa7f5865038375",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         },
         {
           "scope": "full",
           "id": "920ca21f-5b07-4a9f-a049-b74cd05ad41b-5",
-          "image": "/home/user/Videos/videos/engenharia-software-macetes/.hyperframes/artifacts/snapshots/27e95880-a2fd-4bd3-9211-2dacad5d91ad/frame-05-at-304.199s.png",
           "time": 304.199,
           "metadata": {
             "width": 1920,
@@ -1398,7 +1423,9 @@
           "revision": "5356da12-a9aa-4e68-9025-455ce95f4dd5",
           "inputFingerprint": "7bd71565dd148c92ee9ef1db652fea25d1671106dba8477615aa7f5865038375",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0e0cd21e-1c49-4755-920f-8f7c9839283f"
         }
       ]
     },
@@ -1406,13 +1433,15 @@
   },
   "renders": {
     "latest": {
-      "id": "12dda062-8689-42c3-8eb3-765f5b32260b",
-      "completedAt": 1792605766218,
+      "id": "0e0cd21e-1c49-4755-920f-8f7c9839283f",
+      "completedAt": 1792618724913,
       "output": "/home/user/Videos/videos/engenharia-software-macetes/renders/video.mp4",
       "status": "completed",
-      "revision": null
+      "revision": "985ffcbc-004f-4ee9-874d-16a992c7a3da"
     },
-    "retainedRevisions": []
+    "retainedRevisions": [
+      "985ffcbc-004f-4ee9-874d-16a992c7a3da"
+    ]
   },
   "pendingArtifactCleanup": []
 }
