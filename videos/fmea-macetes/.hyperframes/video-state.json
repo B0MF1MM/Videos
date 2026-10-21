@@ -711,5 +711,18 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "3147a698-e16a-437c-908d-50a85d70862d",
+      "completedAt": 1792587640322,
+      "output": "/home/user/Videos/videos/fmea-macetes/renders/video.mp4",
+      "status": "completed",
+      "revision": "3b131784-6545-4f66-a789-d2161ee7cabb"
+    },
+    "retainedRevisions": [
+      "3b131784-6545-4f66-a789-d2161ee7cabb"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
