@@ -2555,13 +2555,14 @@
   },
   "renders": {
     "latest": {
-      "id": "1f243852-710f-456c-be08-41f2b8d1871b",
-      "completedAt": 1792556407382,
-      "output": "/home/user/Videos/videos/tanto-faz-lyric/renders/video.mp4",
+      "id": "7ac595f1-7748-4f3b-a7af-d337453c730f",
+      "completedAt": 1792622260689,
+      "output": "/tmp/claude-0/-home-user-Videos/d0ca085f-dcc5-5b6c-a172-c94bc8351609/scratchpad/master2.mp4",
       "status": "completed",
-      "revision": "5b64e410-6e03-49fd-8141-ed78ec6a2af2"
+      "revision": "2f7decd0-3eb8-48bb-8e65-220fafde2cbb"
     },
     "retainedRevisions": [
+      "2f7decd0-3eb8-48bb-8e65-220fafde2cbb",
       "5b64e410-6e03-49fd-8141-ed78ec6a2af2"
     ]
   },
