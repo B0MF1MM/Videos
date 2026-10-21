@@ -1,0 +1,19 @@
+# .media · 16 assets
+
+id         type   dur    dims   path                 description
+voice_003  voice  8.2s   —      assets/voice/03.wav  Para que serve? Para identificar problemas potenciais antes que causem três estragos: dano ao cliente, parada de produção ou retrabalho.
+voice_006  voice  12.5s  —      assets/voice/06.wav  Veja na bomba centrífuga. Causa: treinamento insuficiente. Modo de falha: a vedação foi mal montada. Efeito: vazamento. Dica de prova: a causa vem antes, o efeito vem depois, e o modo de falha fica no meio.
+voice_007  voice  10.4s  —      assets/voice/07.wav  Depois, cada falha ganha três notas, de um a dez. Severidade: o efeito é sério? Ocorrência: a causa ocorre muito? Detecção: dá para perceber a falha antes que ela chegue ao cliente?
+voice_008  voice  11.3s  —      assets/voice/08.wav  Agora a pegadinha mais cobrada. Na detecção, nota alta é ruim. Nota um: a falha é pega na hora. Nota dez: a falha se esconde e só o cliente descobre. Macete: detecção alta, falha escondida.
+voice_009  voice  8.4s   —      assets/voice/09.wav  As três notas se multiplicam no NPR, o Número de Prioridade de Risco. Macete: multiplica, não soma. Por isso o NPR vai de um a mil.
+voice_010  voice  9.6s   —      assets/voice/10.wav  No exemplo da bomba: severidade oito, ocorrência sete e detecção seis. Oito vezes sete, cinquenta e seis. Vezes seis: o NPR é trezentos e trinta e seis.
+voice_011  voice  8.4s   —      assets/voice/11.wav  Para que serve o número? Para priorizar. A equipe calcula o NPR de cada falha, coloca em ordem, e ataca primeiro as que têm o NPR mais alto.
+voice_012  voice  11.3s  —      assets/voice/12.wav  Com a prioridade definida, vêm as ações. Uma instrução visual reduz a ocorrência. Uma verificação específica melhora a detecção. E a severidade? É teimosa: só muda se a consequência mudar.
+voice_013  voice  13.5s  —      assets/voice/13.wav  Depois, a equipe recalcula o NPR. Se a ocorrência caiu para três e a detecção para dois, o risco despenca de trezentos e trinta e seis para quarenta e oito. E essa análise é feita em equipe: projeto, produção, qualidade e manutenção.
+voice_014  voice  8.6s   —      assets/voice/14.wav  Resumindo o método em cinco verbos: listar as falhas, avaliar com as três notas, priorizar pelo NPR, agir e reavaliar. E o ciclo recomeça.
+voice_015  voice  17.9s  —      assets/voice/15.wav  Na prova, use a fórmula. Importância: identifica falhas antes que causem dano ao cliente, parada ou retrabalho. Definição: modo, efeito e causa, com severidade, ocorrência e detecção. Efeito: o NPR mostra o que atacar primeiro. Fecho: a empresa previne problemas, reduz custos e melhora a qualidade.
+voice_016  voice  13.3s  —      assets/voice/16.wav  Sua cola: corrente causa, modo, efeito; três notas, com detecção alta sendo pior; NPR multiplica, oito vezes sete vezes seis dá trezentos e trinta e seis; e o ciclo: listar, avaliar, priorizar, agir e reavaliar. Boa prova!
+voice_017  voice  6.9s   —      assets/voice/01.wav  E se você pudesse descobrir onde o seu processo vai falhar, antes de ele falhar? É exatamente isso que a efe eme e a faz.
+voice_018  voice  9.5s   —      assets/voice/02.wav  efe eme e a vem do inglês e significa Análise dos Modos de Falha e seus Efeitos. Macete: as quatro letras já contam a história: falha, modo, efeito, análise.
+voice_019  voice  12.4s  —      assets/voice/04.wav  Pense numa viagem de carro. Antes de sair, você confere o pneu, o freio e o óleo, porque sabe o que pode dar errado na estrada. A efe eme e a faz isso com um processo: pensa nas falhas antes de elas acontecerem.
+voice_020  voice  10.6s  —      assets/voice/05.wav  O coração da efe eme e a são três elementos em corrente. A causa responde por quê. O modo de falha responde o quê pode dar errado. E o efeito responde: e daí, qual a consequência?

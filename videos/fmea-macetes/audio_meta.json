@@ -1,0 +1,3056 @@
+{
+  "bgm": {
+    "path": "assets/music/underscore.mp3",
+    "source": "host"
+  },
+  "bgm_pending": false,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 6.891,
+      "words": [
+        {
+          "id": "w0",
+          "text": "E",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "se",
+          "start": 0.16,
+          "end": 0.32
+        },
+        {
+          "id": "w2",
+          "text": "você",
+          "start": 0.32,
+          "end": 0.48
+        },
+        {
+          "id": "w3",
+          "text": "pudesse",
+          "start": 0.48,
+          "end": 0.88
+        },
+        {
+          "id": "w4",
+          "text": "descobrir",
+          "start": 0.96,
+          "end": 1.44
+        },
+        {
+          "id": "w5",
+          "text": "onde",
+          "start": 1.44,
+          "end": 1.68
+        },
+        {
+          "id": "w6",
+          "text": "o",
+          "start": 1.68,
+          "end": 1.76
+        },
+        {
+          "id": "w7",
+          "text": "seu",
+          "start": 1.76,
+          "end": 2
+        },
+        {
+          "id": "w8",
+          "text": "processo",
+          "start": 2,
+          "end": 2.32
+        },
+        {
+          "id": "w9",
+          "text": "vai",
+          "start": 2.32,
+          "end": 2.56
+        },
+        {
+          "id": "w10",
+          "text": "falhar,",
+          "start": 2.56,
+          "end": 3.12
+        },
+        {
+          "id": "w11",
+          "text": "antes",
+          "start": 3.12,
+          "end": 3.36
+        },
+        {
+          "id": "w12",
+          "text": "de",
+          "start": 3.36,
+          "end": 3.52
+        },
+        {
+          "id": "w13",
+          "text": "ele",
+          "start": 3.52,
+          "end": 3.76
+        },
+        {
+          "id": "w14",
+          "text": "falhar?",
+          "start": 3.76,
+          "end": 4.4
+        },
+        {
+          "id": "w15",
+          "text": "É",
+          "start": 4.4,
+          "end": 4.56
+        },
+        {
+          "id": "w16",
+          "text": "exatamente",
+          "start": 4.56,
+          "end": 5.12
+        },
+        {
+          "id": "w17",
+          "text": "isso",
+          "start": 5.12,
+          "end": 5.36
+        },
+        {
+          "id": "w18",
+          "text": "que",
+          "start": 5.36,
+          "end": 5.52
+        },
+        {
+          "id": "w19",
+          "text": "a",
+          "start": 5.52,
+          "end": 5.6
+        },
+        {
+          "text": "FMEA",
+          "start": 5.6,
+          "end": 6.48,
+          "id": "w20"
+        },
+        {
+          "id": "w21",
+          "text": "faz.",
+          "start": 6.48,
+          "end": 6.8
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "path": "assets/voice/02.wav",
+      "duration_s": 9.536,
+      "words": [
+        {
+          "text": "FMEA",
+          "start": 0,
+          "end": 0.594,
+          "id": "w0"
+        },
+        {
+          "text": "vem",
+          "start": 0.594,
+          "end": 1.04,
+          "id": "w1"
+        },
+        {
+          "id": "w2",
+          "text": "do",
+          "start": 1.04,
+          "end": 1.2
+        },
+        {
+          "id": "w3",
+          "text": "inglês",
+          "start": 1.2,
+          "end": 1.52
+        },
+        {
+          "id": "w4",
+          "text": "e",
+          "start": 1.52,
+          "end": 1.6
+        },
+        {
+          "id": "w5",
+          "text": "significa",
+          "start": 1.6,
+          "end": 2
+        },
+        {
+          "id": "w6",
+          "text": "Análise",
+          "start": 2.16,
+          "end": 2.56
+        },
+        {
+          "id": "w7",
+          "text": "dos",
+          "start": 2.56,
+          "end": 2.72
+        },
+        {
+          "id": "w8",
+          "text": "Modos",
+          "start": 2.72,
+          "end": 3.12
+        },
+        {
+          "id": "w9",
+          "text": "de",
+          "start": 3.12,
+          "end": 3.2
+        },
+        {
+          "id": "w10",
+          "text": "Falha",
+          "start": 3.2,
+          "end": 3.6
+        },
+        {
+          "id": "w11",
+          "text": "e",
+          "start": 3.6,
+          "end": 3.76
+        },
+        {
+          "id": "w12",
+          "text": "seus",
+          "start": 3.76,
+          "end": 3.92
+        },
+        {
+          "id": "w13",
+          "text": "Efeitos.",
+          "start": 3.92,
+          "end": 4.64
+        },
+        {
+          "id": "w14",
+          "text": "Macete:",
+          "start": 4.64,
+          "end": 5.36
+        },
+        {
+          "id": "w15",
+          "text": "as",
+          "start": 5.52,
+          "end": 5.68
+        },
+        {
+          "id": "w16",
+          "text": "quatro",
+          "start": 5.68,
+          "end": 5.92
+        },
+        {
+          "id": "w17",
+          "text": "letras",
+          "start": 5.92,
+          "end": 6.32
+        },
+        {
+          "id": "w18",
+          "text": "já",
+          "start": 6.32,
+          "end": 6.48
+        },
+        {
+          "id": "w19",
+          "text": "contam",
+          "start": 6.48,
+          "end": 6.88
+        },
+        {
+          "id": "w20",
+          "text": "a",
+          "start": 6.88,
+          "end": 7.04
+        },
+        {
+          "id": "w21",
+          "text": "história:",
+          "start": 7.04,
+          "end": 7.6
+        },
+        {
+          "text": "falha,",
+          "start": 7.6,
+          "end": 8.16,
+          "id": "w22"
+        },
+        {
+          "id": "w23",
+          "text": "modo,",
+          "start": 8.16,
+          "end": 8.56
+        },
+        {
+          "id": "w24",
+          "text": "efeito,",
+          "start": 8.56,
+          "end": 8.88
+        },
+        {
+          "id": "w25",
+          "text": "análise.",
+          "start": 8.96,
+          "end": 9.52
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "path": "assets/voice/03.wav",
+      "duration_s": 8.171,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Para",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "que",
+          "start": 0.24,
+          "end": 0.48
+        },
+        {
+          "id": "w2",
+          "text": "serve?",
+          "start": 0.48,
+          "end": 0.8
+        },
+        {
+          "id": "w3",
+          "text": "Para",
+          "start": 0.96,
+          "end": 1.2
+        },
+        {
+          "id": "w4",
+          "text": "identificar",
+          "start": 1.2,
+          "end": 1.92
+        },
+        {
+          "id": "w5",
+          "text": "problemas",
+          "start": 1.92,
+          "end": 2.4
+        },
+        {
+          "id": "w6",
+          "text": "potenciais",
+          "start": 2.4,
+          "end": 3.04
+        },
+        {
+          "id": "w7",
+          "text": "antes",
+          "start": 3.04,
+          "end": 3.36
+        },
+        {
+          "id": "w8",
+          "text": "que",
+          "start": 3.36,
+          "end": 3.52
+        },
+        {
+          "id": "w9",
+          "text": "causem",
+          "start": 3.52,
+          "end": 4
+        },
+        {
+          "id": "w10",
+          "text": "três",
+          "start": 4,
+          "end": 4.32
+        },
+        {
+          "id": "w11",
+          "text": "estragos:",
+          "start": 4.32,
+          "end": 5.2
+        },
+        {
+          "id": "w12",
+          "text": "dano",
+          "start": 5.2,
+          "end": 5.52
+        },
+        {
+          "id": "w13",
+          "text": "ao",
+          "start": 5.52,
+          "end": 5.68
+        },
+        {
+          "id": "w14",
+          "text": "cliente,",
+          "start": 5.68,
+          "end": 6.24
+        },
+        {
+          "id": "w15",
+          "text": "parada",
+          "start": 6.24,
+          "end": 6.72
+        },
+        {
+          "id": "w16",
+          "text": "de",
+          "start": 6.72,
+          "end": 6.88
+        },
+        {
+          "id": "w17",
+          "text": "produção",
+          "start": 6.88,
+          "end": 7.28
+        },
+        {
+          "id": "w18",
+          "text": "ou",
+          "start": 7.28,
+          "end": 7.44
+        },
+        {
+          "id": "w19",
+          "text": "retrabalho.",
+          "start": 7.44,
+          "end": 8.16
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "path": "assets/voice/04.wav",
+      "duration_s": 12.352,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Pense",
+          "start": 0,
+          "end": 0.4
+        },
+        {
+          "id": "w1",
+          "text": "numa",
+          "start": 0.4,
+          "end": 0.64
+        },
+        {
+          "id": "w2",
+          "text": "viagem",
+          "start": 0.64,
+          "end": 1.04
+        },
+        {
+          "id": "w3",
+          "text": "de",
+          "start": 1.04,
+          "end": 1.2
+        },
+        {
+          "id": "w4",
+          "text": "carro.",
+          "start": 1.2,
+          "end": 1.76
+        },
+        {
+          "id": "w5",
+          "text": "Antes",
+          "start": 1.76,
+          "end": 2.08
+        },
+        {
+          "id": "w6",
+          "text": "de",
+          "start": 2.08,
+          "end": 2.24
+        },
+        {
+          "id": "w7",
+          "text": "sair,",
+          "start": 2.24,
+          "end": 2.64
+        },
+        {
+          "id": "w8",
+          "text": "você",
+          "start": 2.64,
+          "end": 2.88
+        },
+        {
+          "id": "w9",
+          "text": "confere",
+          "start": 2.88,
+          "end": 3.28
+        },
+        {
+          "id": "w10",
+          "text": "o",
+          "start": 3.28,
+          "end": 3.36
+        },
+        {
+          "id": "w11",
+          "text": "pneu,",
+          "start": 3.36,
+          "end": 3.76
+        },
+        {
+          "id": "w12",
+          "text": "o",
+          "start": 3.76,
+          "end": 3.84
+        },
+        {
+          "id": "w13",
+          "text": "freio",
+          "start": 3.84,
+          "end": 4.24
+        },
+        {
+          "id": "w14",
+          "text": "e",
+          "start": 4.24,
+          "end": 4.32
+        },
+        {
+          "id": "w15",
+          "text": "o",
+          "start": 4.32,
+          "end": 4.4
+        },
+        {
+          "id": "w16",
+          "text": "óleo,",
+          "start": 4.4,
+          "end": 4.88
+        },
+        {
+          "id": "w17",
+          "text": "porque",
+          "start": 4.88,
+          "end": 5.2
+        },
+        {
+          "id": "w18",
+          "text": "sabe",
+          "start": 5.2,
+          "end": 5.44
+        },
+        {
+          "id": "w19",
+          "text": "o",
+          "start": 5.44,
+          "end": 5.52
+        },
+        {
+          "id": "w20",
+          "text": "que",
+          "start": 5.52,
+          "end": 5.68
+        },
+        {
+          "id": "w21",
+          "text": "pode",
+          "start": 5.68,
+          "end": 5.92
+        },
+        {
+          "id": "w22",
+          "text": "dar",
+          "start": 5.92,
+          "end": 6.16
+        },
+        {
+          "id": "w23",
+          "text": "errado",
+          "start": 6.16,
+          "end": 6.56
+        },
+        {
+          "id": "w24",
+          "text": "na",
+          "start": 6.56,
+          "end": 6.72
+        },
+        {
+          "id": "w25",
+          "text": "estrada.",
+          "start": 6.72,
+          "end": 7.36
+        },
+        {
+          "id": "w26",
+          "text": "A",
+          "start": 7.36,
+          "end": 7.6
+        },
+        {
+          "text": "FMEA",
+          "start": 7.6,
+          "end": 8.16,
+          "id": "w27"
+        },
+        {
+          "id": "w28",
+          "text": "faz",
+          "start": 8.4,
+          "end": 8.56
+        },
+        {
+          "id": "w29",
+          "text": "isso",
+          "start": 8.72,
+          "end": 8.88
+        },
+        {
+          "id": "w30",
+          "text": "com",
+          "start": 8.88,
+          "end": 9.04
+        },
+        {
+          "text": "um",
+          "start": 9.04,
+          "end": 9.2,
+          "id": "w31"
+        },
+        {
+          "id": "w32",
+          "text": "processo:",
+          "start": 9.2,
+          "end": 9.84
+        },
+        {
+          "id": "w33",
+          "text": "pensa",
+          "start": 9.84,
+          "end": 10.24
+        },
+        {
+          "id": "w34",
+          "text": "nas",
+          "start": 10.24,
+          "end": 10.4
+        },
+        {
+          "id": "w35",
+          "text": "falhas",
+          "start": 10.4,
+          "end": 10.88
+        },
+        {
+          "id": "w36",
+          "text": "antes",
+          "start": 10.88,
+          "end": 11.12
+        },
+        {
+          "id": "w37",
+          "text": "de",
+          "start": 11.12,
+          "end": 11.28
+        },
+        {
+          "id": "w38",
+          "text": "elas",
+          "start": 11.28,
+          "end": 11.6
+        },
+        {
+          "id": "w39",
+          "text": "acontecerem.",
+          "start": 11.6,
+          "end": 12.32
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "path": "assets/voice/05.wav",
+      "duration_s": 10.56,
+      "words": [
+        {
+          "id": "w0",
+          "text": "O",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "coração",
+          "start": 0.16,
+          "end": 0.48
+        },
+        {
+          "id": "w2",
+          "text": "da",
+          "start": 0.48,
+          "end": 0.64
+        },
+        {
+          "text": "FMEA",
+          "start": 0.64,
+          "end": 1.44,
+          "id": "w3"
+        },
+        {
+          "id": "w4",
+          "text": "são",
+          "start": 1.52,
+          "end": 1.76
+        },
+        {
+          "id": "w5",
+          "text": "três",
+          "start": 1.76,
+          "end": 2
+        },
+        {
+          "id": "w6",
+          "text": "elementos",
+          "start": 2,
+          "end": 2.48
+        },
+        {
+          "id": "w7",
+          "text": "em",
+          "start": 2.48,
+          "end": 2.64
+        },
+        {
+          "id": "w8",
+          "text": "corrente.",
+          "start": 2.64,
+          "end": 3.2
+        },
+        {
+          "id": "w9",
+          "text": "A",
+          "start": 3.36,
+          "end": 3.52
+        },
+        {
+          "id": "w10",
+          "text": "causa",
+          "start": 3.52,
+          "end": 3.92
+        },
+        {
+          "id": "w11",
+          "text": "responde",
+          "start": 3.92,
+          "end": 4.48
+        },
+        {
+          "id": "w12",
+          "text": "por",
+          "start": 4.48,
+          "end": 4.64
+        },
+        {
+          "id": "w13",
+          "text": "quê.",
+          "start": 4.64,
+          "end": 4.88
+        },
+        {
+          "id": "w14",
+          "text": "O",
+          "start": 5.04,
+          "end": 5.12
+        },
+        {
+          "id": "w15",
+          "text": "modo",
+          "start": 5.12,
+          "end": 5.44
+        },
+        {
+          "id": "w16",
+          "text": "de",
+          "start": 5.44,
+          "end": 5.52
+        },
+        {
+          "id": "w17",
+          "text": "falha",
+          "start": 5.52,
+          "end": 5.92
+        },
+        {
+          "id": "w18",
+          "text": "responde",
+          "start": 5.92,
+          "end": 6.32
+        },
+        {
+          "id": "w19",
+          "text": "o",
+          "start": 6.32,
+          "end": 6.4
+        },
+        {
+          "id": "w20",
+          "text": "quê",
+          "start": 6.4,
+          "end": 6.56
+        },
+        {
+          "id": "w21",
+          "text": "pode",
+          "start": 6.56,
+          "end": 6.8
+        },
+        {
+          "id": "w22",
+          "text": "dar",
+          "start": 6.8,
+          "end": 7.04
+        },
+        {
+          "id": "w23",
+          "text": "errado.",
+          "start": 7.04,
+          "end": 7.6
+        },
+        {
+          "id": "w24",
+          "text": "E",
+          "start": 7.6,
+          "end": 7.76
+        },
+        {
+          "id": "w25",
+          "text": "o",
+          "start": 7.76,
+          "end": 7.84
+        },
+        {
+          "id": "w26",
+          "text": "efeito",
+          "start": 7.84,
+          "end": 8.32
+        },
+        {
+          "id": "w27",
+          "text": "responde:",
+          "start": 8.32,
+          "end": 8.88
+        },
+        {
+          "id": "w28",
+          "text": "e",
+          "start": 8.88,
+          "end": 9.04
+        },
+        {
+          "id": "w29",
+          "text": "daí,",
+          "start": 9.04,
+          "end": 9.36
+        },
+        {
+          "id": "w30",
+          "text": "qual",
+          "start": 9.44,
+          "end": 9.68
+        },
+        {
+          "id": "w31",
+          "text": "a",
+          "start": 9.68,
+          "end": 9.76
+        },
+        {
+          "id": "w32",
+          "text": "consequência?",
+          "start": 9.76,
+          "end": 10.4
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "path": "assets/voice/06.wav",
+      "duration_s": 12.48,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Veja",
+          "start": 0,
+          "end": 0.32
+        },
+        {
+          "id": "w1",
+          "text": "na",
+          "start": 0.32,
+          "end": 0.48
+        },
+        {
+          "id": "w2",
+          "text": "bomba",
+          "start": 0.48,
+          "end": 0.8
+        },
+        {
+          "id": "w3",
+          "text": "centrífuga.",
+          "start": 0.8,
+          "end": 1.76
+        },
+        {
+          "id": "w4",
+          "text": "Causa:",
+          "start": 1.76,
+          "end": 2.16
+        },
+        {
+          "id": "w5",
+          "text": "treinamento",
+          "start": 2.24,
+          "end": 2.8
+        },
+        {
+          "id": "w6",
+          "text": "insuficiente.",
+          "start": 2.8,
+          "end": 3.68
+        },
+        {
+          "id": "w7",
+          "text": "Modo",
+          "start": 3.68,
+          "end": 4
+        },
+        {
+          "id": "w8",
+          "text": "de",
+          "start": 4,
+          "end": 4.08
+        },
+        {
+          "id": "w9",
+          "text": "falha:",
+          "start": 4.08,
+          "end": 4.48
+        },
+        {
+          "id": "w10",
+          "text": "a",
+          "start": 4.48,
+          "end": 4.56
+        },
+        {
+          "id": "w11",
+          "text": "vedação",
+          "start": 4.64,
+          "end": 5.2
+        },
+        {
+          "id": "w12",
+          "text": "foi",
+          "start": 5.2,
+          "end": 5.36
+        },
+        {
+          "id": "w13",
+          "text": "mal",
+          "start": 5.36,
+          "end": 5.52
+        },
+        {
+          "id": "w14",
+          "text": "montada.",
+          "start": 5.52,
+          "end": 6
+        },
+        {
+          "id": "w15",
+          "text": "Efeito:",
+          "start": 6.16,
+          "end": 6.72
+        },
+        {
+          "id": "w16",
+          "text": "vazamento.",
+          "start": 6.72,
+          "end": 7.6
+        },
+        {
+          "id": "w17",
+          "text": "Dica",
+          "start": 7.6,
+          "end": 7.92
+        },
+        {
+          "id": "w18",
+          "text": "de",
+          "start": 7.92,
+          "end": 8.08
+        },
+        {
+          "id": "w19",
+          "text": "prova:",
+          "start": 8.08,
+          "end": 8.4
+        },
+        {
+          "id": "w20",
+          "text": "a",
+          "start": 8.48,
+          "end": 8.64
+        },
+        {
+          "id": "w21",
+          "text": "causa",
+          "start": 8.64,
+          "end": 9.04
+        },
+        {
+          "id": "w22",
+          "text": "vem",
+          "start": 9.04,
+          "end": 9.28
+        },
+        {
+          "id": "w23",
+          "text": "antes,",
+          "start": 9.28,
+          "end": 9.68
+        },
+        {
+          "id": "w24",
+          "text": "o",
+          "start": 9.68,
+          "end": 9.76
+        },
+        {
+          "id": "w25",
+          "text": "efeito",
+          "start": 9.76,
+          "end": 10.16
+        },
+        {
+          "id": "w26",
+          "text": "vem",
+          "start": 10.16,
+          "end": 10.4
+        },
+        {
+          "id": "w27",
+          "text": "depois,",
+          "start": 10.4,
+          "end": 10.8
+        },
+        {
+          "id": "w28",
+          "text": "e",
+          "start": 10.8,
+          "end": 10.96
+        },
+        {
+          "id": "w29",
+          "text": "o",
+          "start": 10.96,
+          "end": 11.04
+        },
+        {
+          "id": "w30",
+          "text": "modo",
+          "start": 11.04,
+          "end": 11.28
+        },
+        {
+          "id": "w31",
+          "text": "de",
+          "start": 11.28,
+          "end": 11.36
+        },
+        {
+          "id": "w32",
+          "text": "falha",
+          "start": 11.36,
+          "end": 11.76
+        },
+        {
+          "id": "w33",
+          "text": "fica",
+          "start": 11.76,
+          "end": 12
+        },
+        {
+          "id": "w34",
+          "text": "no",
+          "start": 12,
+          "end": 12.08
+        },
+        {
+          "id": "w35",
+          "text": "meio.",
+          "start": 12.08,
+          "end": 12.4
+        }
+      ]
+    },
+    {
+      "frame": 7,
+      "path": "assets/voice/07.wav",
+      "duration_s": 10.432,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Depois,",
+          "start": 0,
+          "end": 0.48
+        },
+        {
+          "id": "w1",
+          "text": "cada",
+          "start": 0.48,
+          "end": 0.72
+        },
+        {
+          "id": "w2",
+          "text": "falha",
+          "start": 0.72,
+          "end": 1.12
+        },
+        {
+          "id": "w3",
+          "text": "ganha",
+          "start": 1.12,
+          "end": 1.36
+        },
+        {
+          "id": "w4",
+          "text": "três",
+          "start": 1.36,
+          "end": 1.6
+        },
+        {
+          "id": "w5",
+          "text": "notas,",
+          "start": 1.6,
+          "end": 1.84
+        },
+        {
+          "id": "w6",
+          "text": "de",
+          "start": 1.92,
+          "end": 2
+        },
+        {
+          "id": "w7",
+          "text": "1",
+          "start": 2,
+          "end": 2.24
+        },
+        {
+          "id": "w8",
+          "text": "a",
+          "start": 2.24,
+          "end": 2.32
+        },
+        {
+          "id": "w9",
+          "text": "10.",
+          "start": 2.32,
+          "end": 2.96
+        },
+        {
+          "id": "w10",
+          "text": "Severidade:",
+          "start": 2.96,
+          "end": 3.52
+        },
+        {
+          "id": "w11",
+          "text": "o",
+          "start": 3.76,
+          "end": 3.92
+        },
+        {
+          "id": "w12",
+          "text": "efeito",
+          "start": 3.92,
+          "end": 4.24
+        },
+        {
+          "id": "w13",
+          "text": "é",
+          "start": 4.24,
+          "end": 4.4
+        },
+        {
+          "id": "w14",
+          "text": "sério?",
+          "start": 4.4,
+          "end": 4.72
+        },
+        {
+          "id": "w15",
+          "text": "Ocorrência:",
+          "start": 4.88,
+          "end": 5.52
+        },
+        {
+          "id": "w16",
+          "text": "a",
+          "start": 5.68,
+          "end": 5.76
+        },
+        {
+          "id": "w17",
+          "text": "causa",
+          "start": 5.76,
+          "end": 6.16
+        },
+        {
+          "id": "w18",
+          "text": "ocorre",
+          "start": 6.16,
+          "end": 6.56
+        },
+        {
+          "id": "w19",
+          "text": "muito?",
+          "start": 6.56,
+          "end": 6.88
+        },
+        {
+          "id": "w20",
+          "text": "Detecção:",
+          "start": 6.88,
+          "end": 7.68
+        },
+        {
+          "id": "w21",
+          "text": "dá",
+          "start": 7.68,
+          "end": 7.92
+        },
+        {
+          "id": "w22",
+          "text": "para",
+          "start": 7.92,
+          "end": 8.08
+        },
+        {
+          "id": "w23",
+          "text": "perceber",
+          "start": 8.08,
+          "end": 8.48
+        },
+        {
+          "id": "w24",
+          "text": "a",
+          "start": 8.48,
+          "end": 8.56
+        },
+        {
+          "id": "w25",
+          "text": "falha",
+          "start": 8.56,
+          "end": 8.88
+        },
+        {
+          "id": "w26",
+          "text": "antes",
+          "start": 8.88,
+          "end": 9.12
+        },
+        {
+          "id": "w27",
+          "text": "que",
+          "start": 9.12,
+          "end": 9.28
+        },
+        {
+          "id": "w28",
+          "text": "ela",
+          "start": 9.28,
+          "end": 9.44
+        },
+        {
+          "id": "w29",
+          "text": "chegue",
+          "start": 9.44,
+          "end": 9.76
+        },
+        {
+          "id": "w30",
+          "text": "ao",
+          "start": 9.76,
+          "end": 9.92
+        },
+        {
+          "id": "w31",
+          "text": "cliente?",
+          "start": 9.92,
+          "end": 10.4
+        }
+      ]
+    },
+    {
+      "frame": 8,
+      "path": "assets/voice/08.wav",
+      "duration_s": 11.349,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Agora",
+          "start": 0,
+          "end": 0.32
+        },
+        {
+          "id": "w1",
+          "text": "a",
+          "start": 0.32,
+          "end": 0.4
+        },
+        {
+          "id": "w2",
+          "text": "pegadinha",
+          "start": 0.4,
+          "end": 0.88
+        },
+        {
+          "id": "w3",
+          "text": "mais",
+          "start": 0.96,
+          "end": 1.2
+        },
+        {
+          "id": "w4",
+          "text": "cobrada.",
+          "start": 1.2,
+          "end": 1.92
+        },
+        {
+          "id": "w5",
+          "text": "Na",
+          "start": 1.92,
+          "end": 2.16
+        },
+        {
+          "id": "w6",
+          "text": "detecção,",
+          "start": 2.16,
+          "end": 2.56
+        },
+        {
+          "id": "w7",
+          "text": "nota",
+          "start": 2.64,
+          "end": 3.04
+        },
+        {
+          "id": "w8",
+          "text": "alta",
+          "start": 3.04,
+          "end": 3.28
+        },
+        {
+          "id": "w9",
+          "text": "é",
+          "start": 3.28,
+          "end": 3.36
+        },
+        {
+          "id": "w10",
+          "text": "ruim.",
+          "start": 3.44,
+          "end": 3.92
+        },
+        {
+          "id": "w11",
+          "text": "Nota",
+          "start": 3.92,
+          "end": 4.16
+        },
+        {
+          "id": "w12",
+          "text": "1:",
+          "start": 4.24,
+          "end": 4.48
+        },
+        {
+          "id": "w13",
+          "text": "a",
+          "start": 4.48,
+          "end": 4.56
+        },
+        {
+          "id": "w14",
+          "text": "falha",
+          "start": 4.56,
+          "end": 4.88
+        },
+        {
+          "id": "w15",
+          "text": "é",
+          "start": 4.88,
+          "end": 4.96
+        },
+        {
+          "id": "w16",
+          "text": "pega",
+          "start": 4.96,
+          "end": 5.28
+        },
+        {
+          "id": "w17",
+          "text": "na",
+          "start": 5.28,
+          "end": 5.36
+        },
+        {
+          "id": "w18",
+          "text": "hora.",
+          "start": 5.36,
+          "end": 5.76
+        },
+        {
+          "id": "w19",
+          "text": "Nota",
+          "start": 5.76,
+          "end": 6.08
+        },
+        {
+          "id": "w20",
+          "text": "10:",
+          "start": 6.08,
+          "end": 6.4
+        },
+        {
+          "id": "w21",
+          "text": "a",
+          "start": 6.4,
+          "end": 6.48
+        },
+        {
+          "id": "w22",
+          "text": "falha",
+          "start": 6.48,
+          "end": 6.8
+        },
+        {
+          "id": "w23",
+          "text": "se",
+          "start": 6.8,
+          "end": 6.96
+        },
+        {
+          "id": "w24",
+          "text": "esconde",
+          "start": 6.96,
+          "end": 7.28
+        },
+        {
+          "id": "w25",
+          "text": "e",
+          "start": 7.36,
+          "end": 7.44
+        },
+        {
+          "id": "w26",
+          "text": "só",
+          "start": 7.44,
+          "end": 7.6
+        },
+        {
+          "id": "w27",
+          "text": "o",
+          "start": 7.6,
+          "end": 7.68
+        },
+        {
+          "id": "w28",
+          "text": "cliente",
+          "start": 7.68,
+          "end": 8.08
+        },
+        {
+          "id": "w29",
+          "text": "descobre.",
+          "start": 8.08,
+          "end": 8.72
+        },
+        {
+          "id": "w30",
+          "text": "Macete:",
+          "start": 8.72,
+          "end": 9.44
+        },
+        {
+          "id": "w31",
+          "text": "detecção",
+          "start": 9.52,
+          "end": 10
+        },
+        {
+          "id": "w32",
+          "text": "alta,",
+          "start": 10,
+          "end": 10.32
+        },
+        {
+          "id": "w33",
+          "text": "falha",
+          "start": 10.4,
+          "end": 10.72
+        },
+        {
+          "id": "w34",
+          "text": "escondida.",
+          "start": 10.72,
+          "end": 11.28
+        }
+      ]
+    },
+    {
+      "frame": 9,
+      "path": "assets/voice/09.wav",
+      "duration_s": 8.427,
+      "words": [
+        {
+          "id": "w0",
+          "text": "As",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "id": "w1",
+          "text": "três",
+          "start": 0.16,
+          "end": 0.4
+        },
+        {
+          "id": "w2",
+          "text": "notas",
+          "start": 0.4,
+          "end": 0.8
+        },
+        {
+          "id": "w3",
+          "text": "se",
+          "start": 0.8,
+          "end": 0.96
+        },
+        {
+          "id": "w4",
+          "text": "multiplicam",
+          "start": 0.96,
+          "end": 1.52
+        },
+        {
+          "id": "w5",
+          "text": "no",
+          "start": 1.52,
+          "end": 1.68
+        },
+        {
+          "id": "w6",
+          "text": "NPR,",
+          "start": 1.68,
+          "end": 2.16
+        },
+        {
+          "id": "w7",
+          "text": "o",
+          "start": 2.32,
+          "end": 2.48
+        },
+        {
+          "id": "w8",
+          "text": "Número",
+          "start": 2.48,
+          "end": 2.8
+        },
+        {
+          "id": "w9",
+          "text": "de",
+          "start": 2.8,
+          "end": 2.96
+        },
+        {
+          "id": "w10",
+          "text": "Prioridade",
+          "start": 2.96,
+          "end": 3.6
+        },
+        {
+          "id": "w11",
+          "text": "de",
+          "start": 3.6,
+          "end": 3.76
+        },
+        {
+          "id": "w12",
+          "text": "Risco.",
+          "start": 3.76,
+          "end": 4.4
+        },
+        {
+          "text": "Macete:",
+          "start": 4.4,
+          "end": 5.12,
+          "id": "w13"
+        },
+        {
+          "id": "w14",
+          "text": "multiplica,",
+          "start": 5.12,
+          "end": 5.52
+        },
+        {
+          "id": "w15",
+          "text": "não",
+          "start": 5.68,
+          "end": 5.92
+        },
+        {
+          "id": "w16",
+          "text": "soma.",
+          "start": 5.92,
+          "end": 6.56
+        },
+        {
+          "id": "w17",
+          "text": "Por",
+          "start": 6.56,
+          "end": 6.72
+        },
+        {
+          "id": "w18",
+          "text": "isso",
+          "start": 6.72,
+          "end": 6.8
+        },
+        {
+          "id": "w19",
+          "text": "o",
+          "start": 6.88,
+          "end": 6.96
+        },
+        {
+          "id": "w20",
+          "text": "NPR",
+          "start": 6.96,
+          "end": 7.52
+        },
+        {
+          "id": "w21",
+          "text": "vai",
+          "start": 7.52,
+          "end": 7.76
+        },
+        {
+          "id": "w22",
+          "text": "de",
+          "start": 7.76,
+          "end": 7.84
+        },
+        {
+          "id": "w23",
+          "text": "1",
+          "start": 7.84,
+          "end": 8.08
+        },
+        {
+          "id": "w24",
+          "text": "a",
+          "start": 8.08,
+          "end": 8.16
+        },
+        {
+          "id": "w25",
+          "text": "1.000.",
+          "start": 8.16,
+          "end": 8.4
+        }
+      ]
+    },
+    {
+      "frame": 10,
+      "path": "assets/voice/10.wav",
+      "duration_s": 9.6,
+      "words": [
+        {
+          "id": "w0",
+          "text": "No",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "exemplo",
+          "start": 0.24,
+          "end": 0.56
+        },
+        {
+          "id": "w2",
+          "text": "da",
+          "start": 0.56,
+          "end": 0.72
+        },
+        {
+          "id": "w3",
+          "text": "bomba:",
+          "start": 0.72,
+          "end": 1.2
+        },
+        {
+          "id": "w4",
+          "text": "severidade",
+          "start": 1.2,
+          "end": 1.76
+        },
+        {
+          "id": "w5",
+          "text": "8,",
+          "start": 1.92,
+          "end": 2.32
+        },
+        {
+          "id": "w6",
+          "text": "ocorrência",
+          "start": 2.32,
+          "end": 2.96
+        },
+        {
+          "id": "w7",
+          "text": "7",
+          "start": 2.96,
+          "end": 3.28
+        },
+        {
+          "text": "e",
+          "start": 3.28,
+          "end": 3.36,
+          "id": "w8"
+        },
+        {
+          "id": "w9",
+          "text": "detecção",
+          "start": 3.36,
+          "end": 3.92
+        },
+        {
+          "id": "w10",
+          "text": "6.",
+          "start": 3.92,
+          "end": 4.4
+        },
+        {
+          "id": "w11",
+          "text": "8",
+          "start": 4.4,
+          "end": 4.64
+        },
+        {
+          "text": "×",
+          "start": 4.72,
+          "end": 5.04,
+          "id": "w12"
+        },
+        {
+          "id": "w13",
+          "text": "7",
+          "start": 5.04,
+          "end": 5.36
+        },
+        {
+          "text": "=",
+          "start": 5.36,
+          "end": 5.44,
+          "id": "w14"
+        },
+        {
+          "id": "w15",
+          "text": "56.",
+          "start": 5.44,
+          "end": 6.48
+        },
+        {
+          "text": "×",
+          "start": 6.48,
+          "end": 6.88,
+          "id": "w16"
+        },
+        {
+          "id": "w17",
+          "text": "6:",
+          "start": 6.88,
+          "end": 7.28
+        },
+        {
+          "id": "w18",
+          "text": "o",
+          "start": 7.28,
+          "end": 7.44
+        },
+        {
+          "id": "w19",
+          "text": "NPR",
+          "start": 7.44,
+          "end": 8
+        },
+        {
+          "id": "w20",
+          "text": "é",
+          "start": 8,
+          "end": 8.08
+        },
+        {
+          "id": "w21",
+          "text": "336.",
+          "start": 8.24,
+          "end": 9.44
+        }
+      ]
+    },
+    {
+      "frame": 11,
+      "path": "assets/voice/11.wav",
+      "duration_s": 8.448,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Para",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "que",
+          "start": 0.24,
+          "end": 0.4
+        },
+        {
+          "id": "w2",
+          "text": "serve",
+          "start": 0.4,
+          "end": 0.72
+        },
+        {
+          "id": "w3",
+          "text": "o",
+          "start": 0.72,
+          "end": 0.8
+        },
+        {
+          "id": "w4",
+          "text": "número?",
+          "start": 0.8,
+          "end": 1.2
+        },
+        {
+          "id": "w5",
+          "text": "Para",
+          "start": 1.2,
+          "end": 1.36
+        },
+        {
+          "id": "w6",
+          "text": "priorizar.",
+          "start": 1.44,
+          "end": 2.16
+        },
+        {
+          "id": "w7",
+          "text": "A",
+          "start": 2.16,
+          "end": 2.32
+        },
+        {
+          "id": "w8",
+          "text": "equipe",
+          "start": 2.32,
+          "end": 2.72
+        },
+        {
+          "id": "w9",
+          "text": "calcula",
+          "start": 2.72,
+          "end": 3.2
+        },
+        {
+          "id": "w10",
+          "text": "o",
+          "start": 3.2,
+          "end": 3.28
+        },
+        {
+          "id": "w11",
+          "text": "NPR",
+          "start": 3.28,
+          "end": 3.84
+        },
+        {
+          "id": "w12",
+          "text": "de",
+          "start": 3.84,
+          "end": 3.92
+        },
+        {
+          "id": "w13",
+          "text": "cada",
+          "start": 3.92,
+          "end": 4.16
+        },
+        {
+          "id": "w14",
+          "text": "falha,",
+          "start": 4.16,
+          "end": 4.64
+        },
+        {
+          "id": "w15",
+          "text": "coloca",
+          "start": 4.64,
+          "end": 5.04
+        },
+        {
+          "id": "w16",
+          "text": "em",
+          "start": 5.04,
+          "end": 5.2
+        },
+        {
+          "id": "w17",
+          "text": "ordem,",
+          "start": 5.2,
+          "end": 5.68
+        },
+        {
+          "id": "w18",
+          "text": "e",
+          "start": 5.68,
+          "end": 5.84
+        },
+        {
+          "id": "w19",
+          "text": "ataca",
+          "start": 5.84,
+          "end": 6.32
+        },
+        {
+          "id": "w20",
+          "text": "primeiro",
+          "start": 6.32,
+          "end": 6.56
+        },
+        {
+          "id": "w21",
+          "text": "as",
+          "start": 6.64,
+          "end": 6.8
+        },
+        {
+          "id": "w22",
+          "text": "que",
+          "start": 6.8,
+          "end": 6.96
+        },
+        {
+          "id": "w23",
+          "text": "têm",
+          "start": 6.96,
+          "end": 7.2
+        },
+        {
+          "id": "w24",
+          "text": "o",
+          "start": 7.2,
+          "end": 7.28
+        },
+        {
+          "id": "w25",
+          "text": "NPR",
+          "start": 7.28,
+          "end": 7.76
+        },
+        {
+          "id": "w26",
+          "text": "mais",
+          "start": 7.84,
+          "end": 8
+        },
+        {
+          "id": "w27",
+          "text": "alto.",
+          "start": 8,
+          "end": 8.32
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "path": "assets/voice/12.wav",
+      "duration_s": 11.328,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Com",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "a",
+          "start": 0.24,
+          "end": 0.32
+        },
+        {
+          "id": "w2",
+          "text": "prioridade",
+          "start": 0.32,
+          "end": 0.88
+        },
+        {
+          "id": "w3",
+          "text": "definida,",
+          "start": 0.88,
+          "end": 1.36
+        },
+        {
+          "id": "w4",
+          "text": "vêm",
+          "start": 1.44,
+          "end": 1.76
+        },
+        {
+          "id": "w5",
+          "text": "as",
+          "start": 1.84,
+          "end": 2
+        },
+        {
+          "id": "w6",
+          "text": "ações.",
+          "start": 2,
+          "end": 2.64
+        },
+        {
+          "id": "w7",
+          "text": "Uma",
+          "start": 2.64,
+          "end": 2.88
+        },
+        {
+          "id": "w8",
+          "text": "instrução",
+          "start": 2.88,
+          "end": 3.28
+        },
+        {
+          "id": "w9",
+          "text": "visual",
+          "start": 3.28,
+          "end": 3.68
+        },
+        {
+          "id": "w10",
+          "text": "reduz",
+          "start": 3.68,
+          "end": 4.08
+        },
+        {
+          "id": "w11",
+          "text": "a",
+          "start": 4.08,
+          "end": 4.24
+        },
+        {
+          "id": "w12",
+          "text": "ocorrência.",
+          "start": 4.24,
+          "end": 4.96
+        },
+        {
+          "id": "w13",
+          "text": "Uma",
+          "start": 4.96,
+          "end": 5.2
+        },
+        {
+          "id": "w14",
+          "text": "verificação",
+          "start": 5.2,
+          "end": 5.76
+        },
+        {
+          "id": "w15",
+          "text": "específica",
+          "start": 5.76,
+          "end": 6.32
+        },
+        {
+          "id": "w16",
+          "text": "melhora",
+          "start": 6.4,
+          "end": 6.8
+        },
+        {
+          "id": "w17",
+          "text": "a",
+          "start": 6.8,
+          "end": 6.88
+        },
+        {
+          "id": "w18",
+          "text": "detecção.",
+          "start": 6.88,
+          "end": 7.52
+        },
+        {
+          "id": "w19",
+          "text": "E",
+          "start": 7.52,
+          "end": 7.76
+        },
+        {
+          "id": "w20",
+          "text": "a",
+          "start": 7.76,
+          "end": 7.84
+        },
+        {
+          "id": "w21",
+          "text": "severidade?",
+          "start": 7.84,
+          "end": 8.48
+        },
+        {
+          "id": "w22",
+          "text": "É",
+          "start": 8.56,
+          "end": 8.8
+        },
+        {
+          "id": "w23",
+          "text": "teimosa:",
+          "start": 8.8,
+          "end": 9.52
+        },
+        {
+          "id": "w24",
+          "text": "só",
+          "start": 9.52,
+          "end": 9.76
+        },
+        {
+          "id": "w25",
+          "text": "muda",
+          "start": 9.76,
+          "end": 10.08
+        },
+        {
+          "id": "w26",
+          "text": "se",
+          "start": 10.08,
+          "end": 10.24
+        },
+        {
+          "id": "w27",
+          "text": "a",
+          "start": 10.24,
+          "end": 10.32
+        },
+        {
+          "id": "w28",
+          "text": "consequência",
+          "start": 10.32,
+          "end": 10.88
+        },
+        {
+          "id": "w29",
+          "text": "mudar.",
+          "start": 10.88,
+          "end": 11.28
+        }
+      ]
+    },
+    {
+      "frame": 13,
+      "path": "assets/voice/13.wav",
+      "duration_s": 13.547,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Depois,",
+          "start": 0,
+          "end": 0.4
+        },
+        {
+          "id": "w1",
+          "text": "a",
+          "start": 0.4,
+          "end": 0.48
+        },
+        {
+          "id": "w2",
+          "text": "equipe",
+          "start": 0.48,
+          "end": 0.8
+        },
+        {
+          "id": "w3",
+          "text": "recalcula",
+          "start": 0.8,
+          "end": 1.44
+        },
+        {
+          "id": "w4",
+          "text": "o",
+          "start": 1.44,
+          "end": 1.52
+        },
+        {
+          "id": "w5",
+          "text": "NPR.",
+          "start": 1.52,
+          "end": 2.32
+        },
+        {
+          "id": "w6",
+          "text": "Se",
+          "start": 2.32,
+          "end": 2.48
+        },
+        {
+          "id": "w7",
+          "text": "a",
+          "start": 2.48,
+          "end": 2.64
+        },
+        {
+          "id": "w8",
+          "text": "ocorrência",
+          "start": 2.64,
+          "end": 3.2
+        },
+        {
+          "text": "caiu",
+          "start": 3.2,
+          "end": 3.52,
+          "id": "w9"
+        },
+        {
+          "id": "w10",
+          "text": "para",
+          "start": 3.52,
+          "end": 3.68
+        },
+        {
+          "id": "w11",
+          "text": "3",
+          "start": 3.68,
+          "end": 3.92
+        },
+        {
+          "id": "w12",
+          "text": "e",
+          "start": 3.92,
+          "end": 4.08
+        },
+        {
+          "id": "w13",
+          "text": "a",
+          "start": 4.08,
+          "end": 4.16
+        },
+        {
+          "id": "w14",
+          "text": "detecção",
+          "start": 4.16,
+          "end": 4.64
+        },
+        {
+          "id": "w15",
+          "text": "para",
+          "start": 4.64,
+          "end": 4.8
+        },
+        {
+          "id": "w16",
+          "text": "2,",
+          "start": 4.8,
+          "end": 5.2
+        },
+        {
+          "id": "w17",
+          "text": "o",
+          "start": 5.2,
+          "end": 5.28
+        },
+        {
+          "id": "w18",
+          "text": "risco",
+          "start": 5.28,
+          "end": 5.52
+        },
+        {
+          "id": "w19",
+          "text": "despenca",
+          "start": 5.52,
+          "end": 6
+        },
+        {
+          "id": "w20",
+          "text": "de",
+          "start": 6.16,
+          "end": 6.32
+        },
+        {
+          "id": "w21",
+          "text": "336",
+          "start": 6.32,
+          "end": 7.44
+        },
+        {
+          "id": "w22",
+          "text": "para",
+          "start": 7.6,
+          "end": 7.84
+        },
+        {
+          "id": "w23",
+          "text": "48.",
+          "start": 7.84,
+          "end": 8.8
+        },
+        {
+          "id": "w24",
+          "text": "E",
+          "start": 8.8,
+          "end": 9.04
+        },
+        {
+          "id": "w25",
+          "text": "essa",
+          "start": 9.04,
+          "end": 9.28
+        },
+        {
+          "id": "w26",
+          "text": "análise",
+          "start": 9.28,
+          "end": 9.76
+        },
+        {
+          "id": "w27",
+          "text": "é",
+          "start": 9.76,
+          "end": 9.92
+        },
+        {
+          "id": "w28",
+          "text": "feita",
+          "start": 9.92,
+          "end": 10.16
+        },
+        {
+          "id": "w29",
+          "text": "em",
+          "start": 10.16,
+          "end": 10.4
+        },
+        {
+          "id": "w30",
+          "text": "equipe:",
+          "start": 10.4,
+          "end": 11.04
+        },
+        {
+          "id": "w31",
+          "text": "projeto,",
+          "start": 11.04,
+          "end": 11.6
+        },
+        {
+          "id": "w32",
+          "text": "produção,",
+          "start": 11.6,
+          "end": 12.16
+        },
+        {
+          "id": "w33",
+          "text": "qualidade",
+          "start": 12.16,
+          "end": 12.56
+        },
+        {
+          "id": "w34",
+          "text": "e",
+          "start": 12.64,
+          "end": 12.8
+        },
+        {
+          "id": "w35",
+          "text": "manutenção.",
+          "start": 12.8,
+          "end": 13.52
+        }
+      ]
+    },
+    {
+      "frame": 14,
+      "path": "assets/voice/14.wav",
+      "duration_s": 8.555,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Resumindo",
+          "start": 0,
+          "end": 0.48
+        },
+        {
+          "id": "w1",
+          "text": "o",
+          "start": 0.48,
+          "end": 0.56
+        },
+        {
+          "id": "w2",
+          "text": "método",
+          "start": 0.56,
+          "end": 0.88
+        },
+        {
+          "id": "w3",
+          "text": "em",
+          "start": 0.88,
+          "end": 1.04
+        },
+        {
+          "id": "w4",
+          "text": "cinco",
+          "start": 1.04,
+          "end": 1.28
+        },
+        {
+          "id": "w5",
+          "text": "verbos:",
+          "start": 1.36,
+          "end": 1.92
+        },
+        {
+          "id": "w6",
+          "text": "listar",
+          "start": 1.92,
+          "end": 2.4
+        },
+        {
+          "id": "w7",
+          "text": "as",
+          "start": 2.4,
+          "end": 2.48
+        },
+        {
+          "id": "w8",
+          "text": "falhas,",
+          "start": 2.48,
+          "end": 2.96
+        },
+        {
+          "id": "w9",
+          "text": "avaliar",
+          "start": 2.96,
+          "end": 3.44
+        },
+        {
+          "id": "w10",
+          "text": "com",
+          "start": 3.44,
+          "end": 3.6
+        },
+        {
+          "id": "w11",
+          "text": "as",
+          "start": 3.6,
+          "end": 3.68
+        },
+        {
+          "id": "w12",
+          "text": "três",
+          "start": 3.68,
+          "end": 3.92
+        },
+        {
+          "id": "w13",
+          "text": "notas,",
+          "start": 3.92,
+          "end": 4.24
+        },
+        {
+          "id": "w14",
+          "text": "priorizar",
+          "start": 4.32,
+          "end": 4.8
+        },
+        {
+          "id": "w15",
+          "text": "pelo",
+          "start": 4.88,
+          "end": 5.12
+        },
+        {
+          "id": "w16",
+          "text": "NPR,",
+          "start": 5.12,
+          "end": 5.84
+        },
+        {
+          "id": "w17",
+          "text": "agir",
+          "start": 5.84,
+          "end": 6.16
+        },
+        {
+          "id": "w18",
+          "text": "e",
+          "start": 6.16,
+          "end": 6.24
+        },
+        {
+          "id": "w19",
+          "text": "reavaliar.",
+          "start": 6.24,
+          "end": 7.2
+        },
+        {
+          "id": "w20",
+          "text": "E",
+          "start": 7.2,
+          "end": 7.36
+        },
+        {
+          "id": "w21",
+          "text": "o",
+          "start": 7.36,
+          "end": 7.44
+        },
+        {
+          "id": "w22",
+          "text": "ciclo",
+          "start": 7.44,
+          "end": 7.84
+        },
+        {
+          "id": "w23",
+          "text": "recomeça.",
+          "start": 7.84,
+          "end": 8.48
+        }
+      ]
+    },
+    {
+      "frame": 15,
+      "path": "assets/voice/15.wav",
+      "duration_s": 17.877,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Na",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "prova,",
+          "start": 0.24,
+          "end": 0.56
+        },
+        {
+          "id": "w2",
+          "text": "use",
+          "start": 0.56,
+          "end": 0.72
+        },
+        {
+          "id": "w3",
+          "text": "a",
+          "start": 0.88,
+          "end": 0.96
+        },
+        {
+          "id": "w4",
+          "text": "fórmula.",
+          "start": 0.96,
+          "end": 1.6
+        },
+        {
+          "id": "w5",
+          "text": "Importância:",
+          "start": 1.6,
+          "end": 2.08
+        },
+        {
+          "id": "w6",
+          "text": "identifica",
+          "start": 2.32,
+          "end": 2.8
+        },
+        {
+          "id": "w7",
+          "text": "falhas",
+          "start": 2.96,
+          "end": 3.36
+        },
+        {
+          "id": "w8",
+          "text": "antes",
+          "start": 3.36,
+          "end": 3.6
+        },
+        {
+          "id": "w9",
+          "text": "que",
+          "start": 3.6,
+          "end": 3.76
+        },
+        {
+          "id": "w10",
+          "text": "causem",
+          "start": 3.76,
+          "end": 4.16
+        },
+        {
+          "id": "w11",
+          "text": "dano",
+          "start": 4.16,
+          "end": 4.4
+        },
+        {
+          "id": "w12",
+          "text": "ao",
+          "start": 4.4,
+          "end": 4.56
+        },
+        {
+          "id": "w13",
+          "text": "cliente,",
+          "start": 4.56,
+          "end": 5.04
+        },
+        {
+          "id": "w14",
+          "text": "parada",
+          "start": 5.04,
+          "end": 5.44
+        },
+        {
+          "id": "w15",
+          "text": "ou",
+          "start": 5.44,
+          "end": 5.6
+        },
+        {
+          "id": "w16",
+          "text": "retrabalho.",
+          "start": 5.6,
+          "end": 6.48
+        },
+        {
+          "id": "w17",
+          "text": "Definição:",
+          "start": 6.48,
+          "end": 7.2
+        },
+        {
+          "id": "w18",
+          "text": "modo,",
+          "start": 7.2,
+          "end": 7.36
+        },
+        {
+          "id": "w19",
+          "text": "efeito",
+          "start": 7.6,
+          "end": 8
+        },
+        {
+          "id": "w20",
+          "text": "e",
+          "start": 8,
+          "end": 8.08
+        },
+        {
+          "id": "w21",
+          "text": "causa,",
+          "start": 8.08,
+          "end": 8.4
+        },
+        {
+          "id": "w22",
+          "text": "com",
+          "start": 8.48,
+          "end": 8.64
+        },
+        {
+          "id": "w23",
+          "text": "severidade,",
+          "start": 8.64,
+          "end": 9.2
+        },
+        {
+          "id": "w24",
+          "text": "ocorrência",
+          "start": 9.36,
+          "end": 9.92
+        },
+        {
+          "id": "w25",
+          "text": "e",
+          "start": 9.92,
+          "end": 10.08
+        },
+        {
+          "id": "w26",
+          "text": "detecção.",
+          "start": 10.08,
+          "end": 10.8
+        },
+        {
+          "id": "w27",
+          "text": "Efeito:",
+          "start": 10.8,
+          "end": 11.2
+        },
+        {
+          "text": "o",
+          "start": 11.28,
+          "end": 11.44,
+          "id": "w28"
+        },
+        {
+          "id": "w29",
+          "text": "NPR",
+          "start": 11.44,
+          "end": 12
+        },
+        {
+          "id": "w30",
+          "text": "mostra",
+          "start": 12.08,
+          "end": 12.24
+        },
+        {
+          "id": "w31",
+          "text": "o",
+          "start": 12.32,
+          "end": 12.4
+        },
+        {
+          "id": "w32",
+          "text": "que",
+          "start": 12.4,
+          "end": 12.56
+        },
+        {
+          "id": "w33",
+          "text": "atacar",
+          "start": 12.56,
+          "end": 13.04
+        },
+        {
+          "id": "w34",
+          "text": "primeiro.",
+          "start": 13.04,
+          "end": 13.44
+        },
+        {
+          "id": "w35",
+          "text": "Fecho:",
+          "start": 13.68,
+          "end": 14.32
+        },
+        {
+          "id": "w36",
+          "text": "a",
+          "start": 14.32,
+          "end": 14.48
+        },
+        {
+          "text": "empresa",
+          "start": 14.48,
+          "end": 14.92,
+          "id": "w37"
+        },
+        {
+          "text": "previne",
+          "start": 14.92,
+          "end": 15.36,
+          "id": "w38"
+        },
+        {
+          "id": "w39",
+          "text": "problemas,",
+          "start": 15.36,
+          "end": 15.84
+        },
+        {
+          "id": "w40",
+          "text": "reduz",
+          "start": 15.84,
+          "end": 16.32
+        },
+        {
+          "id": "w41",
+          "text": "custos",
+          "start": 16.32,
+          "end": 16.64
+        },
+        {
+          "id": "w42",
+          "text": "e",
+          "start": 16.64,
+          "end": 16.8
+        },
+        {
+          "id": "w43",
+          "text": "melhora",
+          "start": 16.8,
+          "end": 17.2
+        },
+        {
+          "id": "w44",
+          "text": "a",
+          "start": 17.2,
+          "end": 17.28
+        },
+        {
+          "id": "w45",
+          "text": "qualidade.",
+          "start": 17.28,
+          "end": 17.76
+        }
+      ]
+    },
+    {
+      "frame": 16,
+      "path": "assets/voice/16.wav",
+      "duration_s": 14.812,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Sua",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "id": "w1",
+          "text": "cola:",
+          "start": 0.24,
+          "end": 0.56
+        },
+        {
+          "id": "w2",
+          "text": "corrente",
+          "start": 0.56,
+          "end": 0.96
+        },
+        {
+          "id": "w3",
+          "text": "causa,",
+          "start": 1.04,
+          "end": 1.36
+        },
+        {
+          "id": "w4",
+          "text": "modo,",
+          "start": 1.36,
+          "end": 1.52
+        },
+        {
+          "id": "w5",
+          "text": "efeito;",
+          "start": 1.76,
+          "end": 2.24
+        },
+        {
+          "id": "w6",
+          "text": "três",
+          "start": 2.24,
+          "end": 2.48
+        },
+        {
+          "id": "w7",
+          "text": "notas,",
+          "start": 2.48,
+          "end": 2.72
+        },
+        {
+          "id": "w8",
+          "text": "com",
+          "start": 2.8,
+          "end": 3.04
+        },
+        {
+          "id": "w9",
+          "text": "detecção",
+          "start": 3.04,
+          "end": 3.44
+        },
+        {
+          "id": "w10",
+          "text": "alta",
+          "start": 3.44,
+          "end": 3.76
+        },
+        {
+          "id": "w11",
+          "text": "sendo",
+          "start": 3.76,
+          "end": 4
+        },
+        {
+          "id": "w12",
+          "text": "pior;",
+          "start": 4,
+          "end": 4.4
+        },
+        {
+          "id": "w13",
+          "text": "NPR",
+          "start": 4.4,
+          "end": 4.88
+        },
+        {
+          "id": "w14",
+          "text": "multiplica,",
+          "start": 4.96,
+          "end": 5.6
+        },
+        {
+          "id": "w15",
+          "text": "8",
+          "start": 5.6,
+          "end": 5.84
+        },
+        {
+          "text": "×",
+          "start": 5.84,
+          "end": 6.16,
+          "id": "w16"
+        },
+        {
+          "id": "w17",
+          "text": "7",
+          "start": 6.16,
+          "end": 6.32
+        },
+        {
+          "text": "×",
+          "start": 6.4,
+          "end": 6.72,
+          "id": "w18"
+        },
+        {
+          "id": "w19",
+          "text": "6",
+          "start": 6.72,
+          "end": 6.96
+        },
+        {
+          "text": "=",
+          "start": 6.96,
+          "end": 7.2,
+          "id": "w20"
+        },
+        {
+          "id": "w21",
+          "text": "336;",
+          "start": 7.2,
+          "end": 8.56
+        },
+        {
+          "id": "w22",
+          "text": "e",
+          "start": 8.56,
+          "end": 8.72
+        },
+        {
+          "id": "w23",
+          "text": "o",
+          "start": 8.72,
+          "end": 8.88
+        },
+        {
+          "id": "w24",
+          "text": "ciclo:",
+          "start": 8.88,
+          "end": 9.44
+        },
+        {
+          "id": "w25",
+          "text": "listar,",
+          "start": 9.44,
+          "end": 9.92
+        },
+        {
+          "id": "w26",
+          "text": "avaliar,",
+          "start": 9.92,
+          "end": 10.56
+        },
+        {
+          "id": "w27",
+          "text": "priorizar,",
+          "start": 10.56,
+          "end": 11.12
+        },
+        {
+          "id": "w28",
+          "text": "agir",
+          "start": 11.12,
+          "end": 11.44
+        },
+        {
+          "id": "w29",
+          "text": "e",
+          "start": 11.44,
+          "end": 11.52
+        },
+        {
+          "id": "w30",
+          "text": "reavaliar.",
+          "start": 11.52,
+          "end": 12.48
+        },
+        {
+          "id": "w31",
+          "text": "Boa",
+          "start": 12.48,
+          "end": 12.8
+        },
+        {
+          "id": "w32",
+          "text": "prova!",
+          "start": 12.8,
+          "end": 13.28
+        }
+      ]
+    }
+  ],
+  "sfx": []
+}

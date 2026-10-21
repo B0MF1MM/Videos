@@ -1,0 +1,42 @@
+Aulas 4 e 5 — Administração e Integração de Operações e Qualidade
+
+Fonte: roteiro aprovado (o texto extraído do PDF está na máquina da usuária).
+
+1. Agir antes: E se desse para descobrir uma falha antes de ela acontecer… e saber quanto o cliente vai pedir antes de ele pedir?
+   Ideia-chave: FMEA e previsão de demanda são ferramentas para agir antes do problema.
+
+2. O que é FMEA: Na Aula 4, a FMEA: Análise dos Modos de Falha e seus Efeitos. Ela identifica problemas potenciais antes que causem dano ao cliente, parada de produção ou retrabalho.
+   Ideia-chave: FMEA = identificar falhas potenciais antes de causarem prejuízo.
+
+3. Causa, modo, efeito: Separe três coisas. O modo de falha é o que pode dar errado numa etapa. O efeito é a consequência para o produto, o usuário ou a segurança. E a causa é o mecanismo que origina a falha, como treinamento insuficiente ou montagem incorreta.
+   Ideia-chave: Modo = o que falha; efeito = consequência; causa = origem.
+
+4. Severidade, ocorrência, detecção: Depois, três notas. Severidade: quão grave é o efeito. Ocorrência: com que frequência a causa acontece. Detecção: quão difícil é perceber a falha antes de ela chegar ao cliente. Atenção: quanto maior o D, pior a detecção.
+   Ideia-chave: S = gravidade, O = frequência, D = dificuldade de detectar.
+
+5. NPR na prática: As três se multiplicam no NPR, o Número de Prioridade de Risco. Exemplo: uma vedação mal montada numa bomba centrífuga causa vazamento. Severidade oito, ocorrência sete, detecção seis: NPR igual a trezentos e trinta e seis.
+   Ideia-chave: NPR = S × O × D; 8 × 7 × 6 = 336.
+
+6. Agir e reavaliar: Com o risco priorizado, vêm as ações: instrução visual e uma verificação específica reduzem a ocorrência e melhoram a detecção. A severidade continua igual, se a consequência ainda for grave. Então a equipe recalcula o NPR.
+   Ideia-chave: Ações reduzem O e D; S só muda se a consequência mudar; o NPR é recalculado.
+
+7. Por que prever: Agora, a Aula 5: previsão de demanda. Comprar materiais, contratar pessoas, expandir a fábrica: nada disso acontece na hora. Essa demora se chama inércia decisória — e é por isso que precisamos prever.
+   Ideia-chave: Decisões operacionais demoram; a previsão orienta estoque, capacidade e programação.
+
+8. Meta não é previsão: Cuidado: meta não é previsão. Meta é o resultado que a empresa deseja. Previsão é o que se espera que aconteça, com base em evidências. Confundir as duas leva a decisões otimistas demais.
+   Ideia-chave: Meta = desejo; previsão = estimativa fundamentada.
+
+9. Horizontes e métodos qualitativos: A previsão pode ser de curto, médio ou longo prazo, conforme a decisão: operacional, tática ou estratégica. Sem dados suficientes, usam-se métodos qualitativos: o método Delphi com especialistas, a pesquisa de mercado e a força de vendas.
+   Ideia-chave: Horizonte segue o tipo de decisão; sem dados, opiniões estruturadas complementam.
+
+10. Séries temporais: Com dados, entram as séries temporais. Uma série pode ter nível, tendência, sazonalidade e variações aleatórias.
+   Ideia-chave: Nível, tendência, sazonalidade e aleatoriedade.
+
+11. Média móvel: A média móvel simples tira a média dos períodos recentes. Vendas de novecentos, mil e mil e cem: somando e dividindo por três, a previsão do próximo mês é mil unidades. Na média ponderada, os meses mais recentes ganham peso maior.
+   Ideia-chave: (900 + 1.000 + 1.100) ÷ 3 = 1.000.
+
+12. O erro também importa: Mas a demanda real foi de mil e oitenta. Erro: real menos previsto, mais oitenta. O erro médio absoluto mostra o tamanho dos desvios, o erro quadrático pesa mais os grandes, e o sinal de rastreamento revela viés. Uma boa previsão vem sempre com seu erro esperado.
+   Ideia-chave: Erro = real − previsto = +80; previsão completa inclui o erro esperado.
+
+13. Síntese: Resumindo: a FMEA prioriza riscos com severidade, ocorrência e detecção. A previsão estima a demanda e o seu erro. As duas fazem a mesma coisa: agir antes do problema.
+   Ideia-chave: Prevenir e prever: agir antes do problema.
