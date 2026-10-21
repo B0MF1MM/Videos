@@ -1,0 +1,73 @@
+# Letra (transcrição automática + ajuste de ouvido — CORRIGIR AQUI)
+# Formato: [id-da-linha] palavra@tempo palavra@tempo ...
+#  - tempo em segundos da faixa (assets/bgm.mp3); palavra sem @ herda o ritmo da anterior
+#  - *palavra* = destaque (itálico/cor de acento no layout)
+#  - depois de editar: python3 tools/build.py  (regera compositions/frames/*.html)
+
+# ---- Refrão 1 (cortiça, cartazes serifados) ----
+[c1] Fala@13.24 que@13.80 toca,@14.10 e@14.54 tanto@14.96 faz.@15.88
+[c2] Se@16.64 você@17.28 não@17.62 vem,@17.98 *não@18.62 quero@18.74 saber.*@19.06
+[c3] Tanto@19.70 faz,@20.32 vou@21.00 até@21.26 você,@21.56 tanto@22.06 faz.@22.62
+[c4] De@23.50 novo@24.92 me@25.22 entrego@25.60 *com@26.04 prazer,*@26.30 tanto@27.02 faz.@27.38
+
+# ---- Refrão 2 (revista tabloide na mesa de madeira) ----
+[c5] Só@28.06 não@28.74 faz@28.94 eu@29.20 me@29.52 arrepender.@29.76
+[c6] Tanto@30.54 faz.@31.26
+[c7] Se@31.86 você@32.52 não@32.88 vem,@33.20 não@33.82 quero@33.98 saber.@34.30
+[c8] Tanto@34.94 faz.@35.56
+[c9] Vou@36.22 até@36.42 você,@36.72 tanto@37.44 faz.@37.90
+[c10] De@38.60 novo@40.14 me@40.44 entrego@40.80 com@41.28 prazer.@41.56
+[c11] Tanto@42.12 faz.@42.68
+[c12] Só@43.26 não@43.94 faz@44.18 eu@44.48 me@44.78 arrepender.@45.02
+
+# ---- Verso 1 (revista de moda no jardim) ----
+[v1] Me@45.16 arrependo@45.50 às@45.84 vezes,@46.50
+[v2] me@47.08 encontra@47.44 aqui@48.00 de@48.36 novo.@48.52
+[v3] Jogado@49.06 nos@49.98 cantos,@50.36
+[v4] no@51.14 fundo@51.50 do@51.88 poço.@52.24
+[v5] Você@52.96 veio@53.72 do@54.10 nada@54.24
+[v6] e@54.60 me@55.10 tirou@55.20 do@55.72 *sufoco.*@55.92
+[v7] E@56.30 curou@56.94 minhas@57.48 feridas@57.78
+[v8] sem@58.54 nem@58.94 fazer@59.16 *esforço.*@59.54
+
+# ---- Pré-refrão (anúncio de computador retrô) ----
+[p1] Amor,@60.46 eu@61.76 compro@62.06 o@62.52 que@62.84 você@62.98 quiser.@63.40
+[p2] Amor,@63.96 te@65.54 escolhi@65.84 pra@66.34 ser@66.54 minha@66.94 mulher.@67.30
+[p3] Por@67.84 favor,@68.02
+[p4] não@68.80 faça@69.64 eu@70.06 me@70.46 arrepender.@70.88
+[p5] Tu@72.14 me@72.52 escolheu@72.80 e@73.86 eu@74.08 escolhi@74.28 você.@74.88
+
+# ---- Verso 2 (jornal na mesa) ----
+[n1] Amor,@75.30 mesmo@76.66 com@77.38 tanta@77.64 mancada@77.78 contigo,@78.28
+[n2] você@78.78 ainda@79.10 me@79.42 *perdoou.*@79.62
+[n3] Melhorando@80.92 a@81.42 cada@81.54 dia,@81.72
+[n4] fazendo@82.06 sorrir@82.52 quem@83.02 já@83.40 chorou.@83.56
+[n5] Teu@84.62 amor@84.90 me@85.18 *libertou,*@85.34
+[n6] sempre@86.46 faço@86.84 por@87.14 amor.@87.46
+[n7] Tu@88.36 só@88.72 me@88.88 olha@89.02 nos@89.24 olhos@89.48
+[n8] e@89.70 já@89.82 sabe@89.92 o@90.16 que@90.30 eu@90.36 quero,@90.42
+[n9] já@90.66 me@90.82 *decorou.*@91.00
+
+# ---- Verso 3 (muro de cartazes lambe-lambe) ----
+[m1] Você@92.10 me@92.68 fez@93.00 ser@93.28 um@93.56 cara@93.76 paciente.@94.12
+[m2] Minha@96.06 modelo@96.62 é@96.96 gostosa,@97.36 é@97.94 toda@98.18 pra@98.28 frente.@98.68
+[m3] Não@99.52 preciso@100.14 me@100.66 explicar@101.04 pra@101.48 toda@101.82 essa@102.20 gente.@102.58
+[m4] Só@103.32 com@103.98 um@104.38 olhar@104.62 você@104.98 já@105.46 me@105.74 entende.@105.92
+[m5] No@106.50 meu@106.94 quarto@107.12 ela@107.52 muda@108.04 muito@108.56 de@108.94 repente.@109.38
+[m6] Uma@110.06 hora@110.62 tá@111.04 fria,@111.28 outra@112.28 hora@112.50 tá@112.94 quente.@113.18
+
+# ---- Ponte (anúncio rosa + carro) ----
+[r1] Na@113.86 minha@114.52 cama@114.76 ela@115.10 faz@115.66 posições@115.98 diferentes.@116.70
+[r2] Fico@117.36 admirando@118.38 ela@119.58 na@120.04 minha@120.34 frente.@120.70
+[r3] Amor,@121.24 já@122.64 comprei@123.02 o@123.56 que@123.76 você@123.94 escolheu.@124.36
+[r4] Amor,@125.14 te@126.62 escolhi@126.78 pra@127.26 ser@127.54 o@127.96 seu@128.18 *Romeu.*@128.34
+[r5] Por@128.66 favor,@129.04
+
+# ---- Final (encarte de CD / colagem) ----
+[f1] Só@130.15 não@130.58 faça@130.80 eu@131.24 me@131.68 arrepender,@131.94
+[f2] tô@133.12 bolando@133.48 um@134.04 plano:@134.24
+[f3] uma@134.80 vida@135.08 é@135.50 com@135.76 você,@135.86 amor.@136.54
+[f4] Eu@137.84 compro@138.22 o@138.72 que@139.02 você@139.12 escolheu.@139.50
+[f5] Te@141.60 escolhi@141.98 pra@142.44 ser@142.68 o@143.14 seu@143.46 homem.@143.62
+[f6] Só@145.04 não@145.80 faça@146.02 eu@146.40 me@146.90 arrepender.@147.20
+[f7] Uma@149.94 vida@150.32 é@150.68 com@150.96 você.@151.04

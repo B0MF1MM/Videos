@@ -1,0 +1,209 @@
+<template id="00-mesa-template">
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-300-normal.woff2") format("woff2");font-weight:300;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-italic.woff2") format("woff2");font-weight:600;font-style:italic;font-display:block}
+@font-face{font-family:"Anton";src:url("assets/fonts/anton-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo Black";src:url("assets/fonts/archivo-black-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-800-normal.woff2") format("woff2");font-weight:800;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-900-italic.woff2") format("woff2");font-weight:900;font-style:italic;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-900-normal.woff2") format("woff2");font-weight:900;font-style:normal;font-display:block}
+@font-face{font-family:"Bebas Neue";src:url("assets/fonts/bebas-neue-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"DM Mono";src:url("assets/fonts/dm-mono-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Michroma";src:url("assets/fonts/michroma-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Oswald";src:url("assets/fonts/oswald-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+[data-composition-id="00-mesa"] { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#0b0a09; }
+[data-composition-id="00-mesa"] * { box-sizing:border-box; }
+.stage { position:absolute; inset:0; perspective:2400px; perspective-origin:50% 45%; overflow:hidden; }
+.world { position:absolute; left:0; top:0; width:0; height:0; transform-style:preserve-3d; transform-origin:0 0; will-change:transform; }
+.surface { position:absolute; background-size:cover; }
+.obj { position:absolute; transform-origin:50% 50%; }
+.paper { position:absolute; overflow:hidden; transform-origin:50% 50%;
+  box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 28px 50px -10px rgba(0,0,0,.55), 0 60px 120px -30px rgba(0,0,0,.45); }
+.paper > .tex { position:absolute; inset:0; pointer-events:none; background:url("assets/img/paper.jpg") center/700px; mix-blend-mode:multiply; opacity:.55; z-index:50; }
+.paper > .curl { position:absolute; inset:0; pointer-events:none; z-index:51;
+  background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0) 62%, rgba(0,0,0,.16) 100%); }
+.paper > .crease { position:absolute; inset:0; pointer-events:none; z-index:52; background:url("assets/img/crumple.jpg") center/cover; mix-blend-mode:soft-light; opacity:.55; }
+.photo { position:absolute; overflow:hidden; background-size:cover; background-position:center; }
+.prop { position:absolute; transform-origin:50% 50%; filter: drop-shadow(0 26px 24px rgba(0,0,0,.55)) saturate(.82) contrast(1.06); }
+.phfx { position:absolute; pointer-events:none; box-shadow: inset 0 0 140px rgba(0,0,0,.5);
+   background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,0) 45%); }
+.phfx::after { content:""; position:absolute; inset:0; background:url("assets/img/grain.png") 0 0/256px; mix-blend-mode:overlay; opacity:.35; }
+.ly .ch { opacity:0; }
+.ly .wd { white-space:nowrap; }
+.ly em { font-style:italic; }
+.fx { position:absolute; inset:0; pointer-events:none; }
+.fx-dof-t { bottom:auto; height:44%; backdrop-filter: blur(var(--dt, 7px)); -webkit-backdrop-filter: blur(var(--dt, 7px));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%);
+          mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%); }
+.fx-dof-b { top:auto; height:36%; backdrop-filter: blur(var(--db, 5px)); -webkit-backdrop-filter: blur(var(--db, 5px));
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%);
+          mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%); }
+.fx-leak { left:-30%; top:-30%; width:160%; height:160%; inset:auto; mix-blend-mode:screen; opacity:.5;
+  background: radial-gradient(40% 35% at 12% 18%, rgba(255,170,90,.55), rgba(255,120,60,0) 70%),
+              radial-gradient(30% 40% at 92% 90%, rgba(255,210,150,.25), rgba(255,200,150,0) 70%); }
+.fx-vig { background: radial-gradient(120% 95% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.78) 100%); }
+.fx-grade { mix-blend-mode:soft-light; }
+.fx-grain { background:url("assets/img/grain.png"); background-size:512px 512px; mix-blend-mode:overlay; opacity:.22; }
+.gobo { position:absolute; pointer-events:none; mix-blend-mode:multiply; }
+
+
+.m0-mast { position:absolute; left:0; right:0; top:60px; text-align:center; font-family:"League Spartan"; font-weight:900; font-size:150px; letter-spacing:-.04em; line-height:1; }
+.m0-scr { position:absolute; left:320px; top:410px; width:360px; height:220px; padding:26px 30px; transform:rotate(0deg); }
+.m0-mono { font-family:"DM Mono"; font-size:24px; color:#8ff0d8; text-shadow:0 0 8px rgba(120,255,220,.7); }
+.m0-hi { color:#ffd7ea; font-size:30px; text-shadow:0 0 10px rgba(255,120,180,.9); }
+.m0-tag { position:absolute; left:0; right:0; top:1090px; text-align:center; font-family:"Source Serif"; font-size:52px; line-height:1.05; color:#1d1d1d; }
+.m0-tag em { color:#e8467c; }
+.m0-fine { position:absolute; left:0; right:0; bottom:40px; text-align:center; font-family:"Source Serif"; font-size:15px; color:#555; }
+.m0-tmast { position:absolute; left:20px; top:20px; font-family:"Archivo"; font-weight:900; font-style:italic; font-size:150px; line-height:1; color:#e2243c; -webkit-text-stroke:3px #f4e83a; letter-spacing:-.03em; }
+.m0-tq { position:absolute; left:40px; right:200px; top:260px; font-family:"Archivo Black"; font-size:70px; line-height:.95; color:#f4e83a; text-shadow:3px 3px 0 #000; }
+.m0-pw { position:absolute; left:30px; top:30px; font-family:Anton; font-size:250px; line-height:.86; color:#f2d43a; }
+.m0-nm { position:absolute; left:40px; top:30px; font-family:"Source Serif"; font-weight:600; font-size:96px; color:#111; letter-spacing:-.02em; }
+.m0-nl { position:absolute; left:40px; right:40px; top:150px; height:10px; background:#e8467c; }
+.m0-nh { position:absolute; left:40px; top:190px; font-family:"Archivo Black"; font-size:96px; line-height:.95; color:#2a2a2a; }
+.m0-nh i { color:#e8467c; }
+.m0-nb { position:absolute; left:40px; right:40px; top:420px; columns:3; font-family:"Source Serif"; font-size:17px; line-height:1.35; color:#333; text-align:justify; }
+.m0-note { position:absolute; inset:30px; font-family:"Source Serif"; font-style:italic; font-size:34px; color:#2a2a2a; }
+
+  </style>
+  <div id="root" data-composition-id="00-mesa" data-width="1920" data-height="1080" data-duration="13.000" style="background:#0b0a09">
+    <div class="stage" data-layout-allow-overflow>
+      <div class="world" data-layout-allow-overflow>
+
+      <div class="surface" style="left:-2600px;top:-2200px;width:9800px;height:5200px;background-image:url(assets/img/wood.jpg);background-size:2400px 1600px;"></div>
+      <div class="paper " id="m0-news" style="left:-1590.0px;top:-970.0px;width:880px;height:1100px;background:#ece8df;transform:rotate(-11deg);"><div class="m0-nm">O Tanto Faz</div><div class="m0-nl"></div>
+      <div class="m0-nh">Você ainda<br>me <i>perdoou</i></div><div class="m0-nb">“Tanto Faz” é uma carta aberta sobre entrega e medo de errar de novo. A faixa atravessa o refrão como quem repete uma promessa em voz baixa, entre o desejo de ficar e o receio de se arrepender. Nas estrofes, o amor aparece como resgate: alguém que chega do nada, tira do sufoco e cura as feridas sem esforço. O que sobra é a vontade de construir um plano, uma vida inteira, com a pessoa certa ao lado.</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="m0-wall" style="left:770.0px;top:-870.0px;width:700px;height:980px;background:#1a1a16;transform:rotate(9deg);"><div class="m0-pw">PACI<br>ENTE</div><div class="photo" style="left:40px;top:330px;width:620px;height:420px;background-image:url(assets/img/ph-yellow.jpg);filter:grayscale(1) sepia(.6) saturate(2.4) hue-rotate(5deg)"><div class="phfx" style="inset:0"></div></div><div class="tex"></div><div class=crease></div><div class="curl"></div></div>
+      <div class="paper " id="m0-tab" style="left:-1460.0px;top:100.0px;width:760px;height:1040px;background:#111;transform:rotate(7deg);"><div class="m0-tmast">TANTO FAZ</div><div class="photo" style="left:0px;top:170px;width:760px;height:860px;background-image:url(assets/img/ph-pink.jpg);"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:470px;top:380px;width:160px;height:480px;transform:rotate(14deg);"><svg viewBox="0 0 140 420" width="100%" height="100%"><defs>
+<linearGradient id="lp4" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a0010"/><stop offset=".35" stop-color="#c4102c"/><stop offset=".55" stop-color="#ff8c9c"/><stop offset="1" stop-color="#4a000c"/></linearGradient>
+<linearGradient id="lpb5" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a2a08"/><stop offset=".4" stop-color="#f1d27a"/><stop offset=".6" stop-color="#a77d22"/><stop offset="1" stop-color="#2a1d04"/></linearGradient></defs>
+<path d="M40 40 L100 10 L100 150 L40 150 Z" fill="url(#lp4)"/>
+<rect x="32" y="150" width="76" height="70" fill="url(#lpb5)"/>
+<rect x="26" y="220" width="88" height="190" rx="6" fill="#141414"/>
+<rect x="34" y="226" width="14" height="176" fill="#fff" opacity=".12"/>
+</svg></div>
+      <div class="m0-tq">“SÓ NÃO FAZ EU ME ARREPENDER”</div>
+      <div class="obj" style="left:520px;top:860px;width:200px;height:200px"><svg viewBox="0 0 200 200" width="100%" height="100%"><polygon points="100.0,0.0 113.8,39.6 143.4,9.9 138.7,51.5 178.2,37.7 155.9,73.1 197.5,77.7 162.0,100.0 197.5,122.3 155.9,126.9 178.2,162.3 138.7,148.5 143.4,190.1 113.8,160.4 100.0,200.0 86.2,160.4 56.6,190.1 61.3,148.5 21.8,162.3 44.1,126.9 2.5,122.3 38.0,100.0 2.5,77.7 44.1,73.1 21.8,37.7 61.3,51.5 56.6,9.9 86.2,39.6" fill="#f4e83a"/></svg></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="prop" style="left:820px;top:520px;width:430px;height:280px;transform:rotate(-16deg);"><svg viewBox="0 0 400 260" width="100%" height="100%"><defs>
+<linearGradient id="cs6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#333"/><stop offset="1" stop-color="#0c0c0c"/></linearGradient></defs>
+<rect x="0" y="0" width="400" height="260" rx="16" fill="url(#cs6)"/>
+<rect x="30" y="26" width="340" height="130" rx="6" fill="#f2e9d8"/>
+<rect x="30" y="26" width="340" height="30" fill="#e2245c"/>
+<text x="200" y="110" text-anchor="middle" font-family="Archivo Black" font-size="34" fill="#111">TANTO FAZ</text>
+<circle cx="120" cy="190" r="26" fill="#ddd"/><circle cx="280" cy="190" r="26" fill="#ddd"/>
+<rect x="150" y="176" width="100" height="28" fill="#222"/></svg></div>
+      <div class="prop" style="left:1300px;top:420px;width:300px;height:420px;transform:rotate(12deg);"><svg viewBox="0 0 300 420" width="100%" height="100%"><defs>
+<linearGradient id="pf7" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f6f74"/><stop offset=".2" stop-color="#6fd3d6"/><stop offset=".55" stop-color="#c8f4f2"/><stop offset=".8" stop-color="#6fd3d6"/><stop offset="1" stop-color="#1a5a5e"/></linearGradient>
+<linearGradient id="pfc9" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b3b44"/><stop offset=".4" stop-color="#e9e9f0"/><stop offset=".6" stop-color="#9a9aa8"/><stop offset="1" stop-color="#2a2a30"/></linearGradient>
+<linearGradient id="pfh8" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<ellipse cx="150" cy="405" rx="120" ry="12" fill="#000" opacity=".35"/>
+<rect x="118" y="20" width="64" height="80" rx="6" fill="url(#pfc9)"/>
+<rect x="130" y="96" width="40" height="30" fill="#bfc9cc"/>
+<path d="M40 150 Q40 120 80 120 L220 120 Q260 120 260 150 L265 370 Q265 400 230 400 L70 400 Q35 400 35 370 Z" fill="url(#pf7)"/>
+<path d="M60 140 L90 140 L80 380 L58 380 Z" fill="url(#pfh8)"/>
+<rect x="85" y="230" width="130" height="70" fill="#f6efe6"/>
+<rect x="85" y="230" width="130" height="70" fill="none" stroke="#c23" stroke-width="2"/>
+<text x="150" y="262" text-anchor="middle" font-family="Source Serif" font-size="20" font-style="italic" fill="#c23">TANTO FAZ</text>
+<text x="150" y="285" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#333">EAU DE PARFUM</text>
+</svg></div>
+      <div class="paper " id="m0-ad" style="left:-500.0px;top:-680.0px;width:1000px;height:1360px;background:#efece4;transform:rotate(-2.5deg);">
+      <div class="m0-mast" data-layout-allow-overlap><span class="" style="color:#f2c230">T</span><span class="" style="color:#7ec84a">A</span><span class="" style="color:#3fb5d8">N</span><span class="" style="color:#8a5fd0">T</span><span class="" style="color:#e8467c">O</span><span class="" style="color:#f28a30"> </span><span class="" style="color:#3fb5d8">F</span><span class="" style="color:#7ec84a">A</span><span class="" style="color:#e8467c">Z</span></div>
+      <div class="prop" style="left:170px;top:330px;width:660px;height:707px;transform:rotate(0deg);"><svg viewBox="0 0 560 600" width="100%" height="100%"><defs>
+<linearGradient id="cr1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7f2e4"/><stop offset=".6" stop-color="#ddd4bd"/><stop offset="1" stop-color="#a99f86"/></linearGradient>
+<radialGradient id="crs2" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#3fa7a0"/><stop offset=".6" stop-color="#0d2b2e"/><stop offset="1" stop-color="#020807"/></radialGradient>
+<linearGradient id="crk3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9e2cf"/><stop offset="1" stop-color="#b9b098"/></linearGradient></defs>
+<ellipse cx="290" cy="585" rx="260" ry="16" fill="#000" opacity=".35"/>
+<rect x="80" y="20" width="400" height="330" rx="22" fill="url(#cr1)"/>
+<rect x="115" y="50" width="330" height="250" rx="26" fill="#2b2a26"/>
+<rect x="130" y="64" width="300" height="222" rx="30" fill="url(#crs2)"/>
+<rect x="150" y="80" width="120" height="40" rx="20" fill="#fff" opacity=".12"/>
+<rect x="120" y="350" width="320" height="40" fill="#cfc6ad"/>
+<path d="M30 420 L530 420 L555 560 L5 560 Z" fill="url(#crk3)"/>
+<path d="M30 420 L530 420 L536 440 L24 440 Z" fill="#f4efe2"/>
+<rect x="70" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="99" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="128" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="157" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="186" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="215" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="244" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="273" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="302" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="331" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="360" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="389" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="418" y="455" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="78" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="107" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="136" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="165" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="194" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="223" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="252" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="281" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="310" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="339" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="368" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="397" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="426" y="479" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="86" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="115" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="144" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="173" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="202" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="231" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="260" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="289" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="318" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="347" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="376" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="405" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="434" y="503" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="94" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="123" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="152" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="181" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="210" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="239" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="268" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="297" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="326" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="355" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="384" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="413" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/><rect x="442" y="527" width="24" height="18" rx="3" fill="#e6dfcd" stroke="#a89f88"/>
+<rect x="430" y="370" width="18" height="10" fill="#d23"/>
+</svg></div>
+      <div class="m0-scr"><span class="ly m0-mono" id="m0-ly-tx0-1" data-layout-allow-overlap><span class="wd"><span class="ch">&gt;</span></span> <span class="wd"><span class="ch">t</span><span class="ch">o</span><span class="ch">c</span><span class="ch">a</span><span class="ch">n</span><span class="ch">d</span><span class="ch">o</span></span> <span class="wd"><span class="ch">a</span><span class="ch">g</span><span class="ch">o</span><span class="ch">r</span><span class="ch">a</span></span></span><br><span class="ly m0-mono m0-hi" id="m0-ly-tx1-2" data-layout-allow-overlap><span class="wd"><span class="ch">t</span><span class="ch">a</span><span class="ch">n</span><span class="ch">t</span><span class="ch">o</span><span class="ch">_</span><span class="ch">f</span><span class="ch">a</span><span class="ch">z</span><span class="ch">.</span><span class="ch">m</span><span class="ch">p</span><span class="ch">3</span></span></span><br><span class="ly m0-mono" id="m0-ly-tx2-3" data-layout-allow-overlap><span class="wd"><span class="ch">▮</span><span class="ch">▮</span><span class="ch">▮</span><span class="ch">▮</span><span class="ch">▮</span><span class="ch">▮</span><span class="ch">▮</span><span class="ch">▯</span><span class="ch">▯</span><span class="ch">▯</span></span> <span class="wd"><span class="ch">2</span><span class="ch">:</span><span class="ch">4</span><span class="ch">7</span></span></span></div>
+      <div class="m0-tag"><span class="ly " id="m0-ly-tx3-4" data-layout-allow-overlap><span class="wd"><span class="ch">U</span><span class="ch">m</span><span class="ch">a</span></span> <span class="wd"><span class="ch">m</span><span class="ch">ú</span><span class="ch">s</span><span class="ch">i</span><span class="ch">c</span><span class="ch">a</span></span> <span class="wd"><span class="ch">s</span><span class="ch">o</span><span class="ch">b</span><span class="ch">r</span><span class="ch">e</span></span> <span class="wd"><span class="ch">e</span><span class="ch">s</span><span class="ch">c</span><span class="ch">o</span><span class="ch">l</span><span class="ch">h</span><span class="ch">e</span><span class="ch">r</span></span></span><br><em><span class="ly " id="m0-ly-tx4-5" data-layout-allow-overlap><span class="wd"><span class="ch">e</span></span> <span class="wd"><span class="ch">s</span><span class="ch">e</span><span class="ch">r</span></span> <span class="wd"><span class="ch">e</span><span class="ch">s</span><span class="ch">c</span><span class="ch">o</span><span class="ch">l</span><span class="ch">h</span><span class="ch">i</span><span class="ch">d</span><span class="ch">o</span><span class="ch">.</span></span></span></em></div>
+      <div class="m0-fine">Faixa 1 · Lado A · 2026 — Letra transcrita, sujeita a correção.</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="m0-note" style="left:380.0px;top:-890.0px;width:280px;height:260px;background:#f3e27a;transform:rotate(6deg);"><div class="m0-note">faixa nova<br>ouvir alto!</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="prop" style="left:-420px;top:-900px;width:240px;height:380px;transform:rotate(-60deg);"><svg viewBox="0 0 300 480" width="100%" height="100%"><defs>
+<radialGradient id="ro10" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ff7a92"/><stop offset=".45" stop-color="#c8163c"/><stop offset="1" stop-color="#4a0010"/></radialGradient></defs>
+<path d="M150 200 C150 300 140 380 150 470" stroke="#2e5a22" stroke-width="9" fill="none"/><path d="M150 320 C100 300 70 310 50 340 C90 350 120 345 150 320Z" fill="#2e5a22"/><path d="M152 380 C200 360 230 370 250 395 C210 405 180 400 152 380Z" fill="#2e5a22"/><ellipse cx="213.0" cy="140.0" rx="52" ry="41.6" transform="rotate(0 213.0 140.0)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="189.3" cy="178.3" rx="52" ry="41.6" transform="rotate(51 189.3 178.3)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="136.0" cy="187.8" rx="52" ry="41.6" transform="rotate(103 136.0 187.8)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="93.2" cy="161.3" rx="52" ry="41.6" transform="rotate(154 93.2 161.3)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="93.2" cy="118.7" rx="52" ry="41.6" transform="rotate(206 93.2 118.7)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="136.0" cy="92.2" rx="52" ry="41.6" transform="rotate(257 136.0 92.2)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="189.3" cy="101.7" rx="52" ry="41.6" transform="rotate(309 189.3 101.7)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="187.9" cy="156.1" rx="40" ry="32.0" transform="rotate(29 187.9 156.1)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="151.0" cy="173.6" rx="40" ry="32.0" transform="rotate(89 151.0 173.6)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="113.1" cy="157.5" rx="40" ry="32.0" transform="rotate(149 113.1 157.5)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="112.1" cy="123.9" rx="40" ry="32.0" transform="rotate(209 112.1 123.9)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="149.0" cy="106.4" rx="40" ry="32.0" transform="rotate(269 149.0 106.4)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="186.9" cy="122.5" rx="40" ry="32.0" transform="rotate(329 186.9 122.5)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="163.6" cy="156.5" rx="30" ry="24.0" transform="rotate(57 163.6 156.5)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="134.0" cy="155.2" rx="30" ry="24.0" transform="rotate(129 134.0 155.2)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="126.5" cy="132.9" rx="30" ry="24.0" transform="rotate(201 126.5 132.9)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="151.4" cy="120.4" rx="30" ry="24.0" transform="rotate(273 151.4 120.4)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="174.4" cy="135.0" rx="30" ry="24.0" transform="rotate(345 174.4 135.0)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="150.8" cy="148.4" rx="20" ry="16.0" transform="rotate(86 150.8 148.4)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="139.2" cy="140.6" rx="20" ry="16.0" transform="rotate(176 139.2 140.6)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="149.2" cy="131.6" rx="20" ry="16.0" transform="rotate(266 149.2 131.6)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="160.8" cy="139.4" rx="20" ry="16.0" transform="rotate(356 160.8 139.4)" fill="url(#ro10)" stroke="#5c0518" stroke-width="2" opacity=".96"/></svg></div>
+      <div class="gobo" style="left:-1600px;top:-1600px;width:3400px;height:2600px;transform:rotate(-24deg);opacity:0.53;background:url(assets/img/gobo-a.png) center/100% 100% no-repeat;"></div>
+    
+      </div>
+    </div>
+
+    <div class="fx fx-dof-t" style="--dt:8px"></div>
+    <div class="fx fx-dof-b" style="--db:6px"></div>
+    
+    <div class="fx fx-grade" style="background:rgba(60,50,30,.25)"></div>
+    <div class="fx fx-leak" style="opacity:0.6"></div>
+    <div class="fx fx-vig"></div>
+    <div class="fx fx-grain"></div>
+    
+
+    <script>
+      (function () {
+        const R = document.querySelector('[data-composition-id="00-mesa"]');
+        const q = (s) => R.querySelector(s);
+        const qa = (s) => Array.from(R.querySelectorAll(s));
+        const tl = gsap.timeline({ paused: true });
+        const D = 13.000;
+
+        // ---- camera: one state object, one writer ----
+        const world = q(".world");
+        const cam = { x: 0, y: 0, z: 0, rx: 0, rz: 0, s: 1 };
+        function applyCamera() {
+          world.style.transform = `translate3d(960px, 540px, ${cam.z}px) rotateX(${cam.rx}deg) rotateZ(${cam.rz}deg) scale(${cam.s}) translate(${-cam.x}px, ${-cam.y}px)`;
+        }
+        function shot(keys) {
+          Object.assign(cam, keys[0]);
+          delete cam.t; delete cam.e;
+          applyCamera();
+          tl.set(cam, Object.assign({}, strip(keys[0]), { onUpdate: applyCamera }), 0);
+          for (let i = 1; i < keys.length; i++) {
+            const a = keys[i - 1], b = keys[i];
+            tl.to(cam, Object.assign(strip(b), { duration: b.t - a.t, ease: b.e || "sine.inOut", onUpdate: applyCamera }), a.t);
+          }
+        }
+        function strip(k) { const o = Object.assign({}, k); delete o.t; delete o.e; return o; }
+
+        // ---- typing ----
+        function typeOn(TYPE) {
+          TYPE.forEach(([sel, times]) => {
+            const chars = qa(sel + " .ch");
+            chars.forEach((c, i) => {
+              const t = times[Math.min(i, times.length - 1)];
+              tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, Math.max(0, t));
+            });
+          });
+        }
+
+        // ---- film grain: stepped jitter (seek-safe) ----
+        const g = q(".fx-grain");
+        const steps = Math.round(D * 12);
+        tl.fromTo(g, { backgroundPosition: "0px 0px" }, { backgroundPosition: `${steps * 173}px ${steps * 251}px`, duration: D, ease: `steps(${steps})` }, 0);
+        tl.fromTo(q(".fx-leak"), { x: 0, y: 0 }, { x: 120, y: 60, duration: D, ease: "sine.inOut" }, 0);
+
+const TYPE = [["#m0-ly-tx0-1",[2.4,2.54,2.604,2.668,2.732,2.796,2.86,2.924,3.1,3.17,3.24,3.31,3.38]],["#m0-ly-tx1-2",[3.9,3.937,3.974,4.011,4.048,4.085,4.122,4.158,4.195,4.232,4.269,4.306,4.343]],["#m0-ly-tx2-3",[5.6,5.653,5.706,5.758,5.811,5.864,5.917,5.97,6.022,6.075,6.26,6.32,6.38,6.44]],["#m0-ly-tx3-4",[7.6,7.65,7.7,7.8,7.847,7.893,7.94,7.987,8.033,8.15,8.198,8.246,8.294,8.342,8.45,8.5,8.55,8.6,8.65,8.7,8.75,8.8]],["#m0-ly-tx4-5",[9.2,9.32,9.38,9.44,9.56,9.608,9.656,9.704,9.752,9.8,9.848,9.896,9.944,9.992]]];
+        typeOn(TYPE);
+        shot([{"t": 0, "x": 40, "y": -60, "s": 1.55, "rx": 4, "rz": 10}, {"t": 2.0, "x": 20, "y": -80, "s": 1.3, "rx": 5, "rz": 7, "e": "sine.inOut"}, {"t": 6.5, "x": 0, "y": 60, "s": 0.72, "rx": 8, "rz": 1, "e": "power2.inOut"}, {"t": 10.6, "x": -20, "y": 420, "s": 0.82, "rx": 12, "rz": -2, "e": "sine.inOut"}, {"t": 13.0, "x": 600, "y": 300, "s": 0.62, "rx": 16, "rz": -5, "e": "power2.in"}]);
+
+
+        tl.to({}, { duration: 0.001 }, D - 0.001);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["00-mesa"] = tl;
+      })();
+    </script>
+  </div>
+</template>

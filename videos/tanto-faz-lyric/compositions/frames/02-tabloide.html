@@ -1,0 +1,233 @@
+<template id="02-tabloide-template">
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-300-normal.woff2") format("woff2");font-weight:300;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-italic.woff2") format("woff2");font-weight:600;font-style:italic;font-display:block}
+@font-face{font-family:"Anton";src:url("assets/fonts/anton-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo Black";src:url("assets/fonts/archivo-black-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-800-normal.woff2") format("woff2");font-weight:800;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-900-italic.woff2") format("woff2");font-weight:900;font-style:italic;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-900-normal.woff2") format("woff2");font-weight:900;font-style:normal;font-display:block}
+@font-face{font-family:"Bebas Neue";src:url("assets/fonts/bebas-neue-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"DM Mono";src:url("assets/fonts/dm-mono-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Michroma";src:url("assets/fonts/michroma-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Oswald";src:url("assets/fonts/oswald-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+[data-composition-id="02-tabloide"] { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#0b0a09; }
+[data-composition-id="02-tabloide"] * { box-sizing:border-box; }
+.stage { position:absolute; inset:0; perspective:2400px; perspective-origin:50% 45%; overflow:hidden; }
+.world { position:absolute; left:0; top:0; width:0; height:0; transform-style:preserve-3d; transform-origin:0 0; will-change:transform; }
+.surface { position:absolute; background-size:cover; }
+.obj { position:absolute; transform-origin:50% 50%; }
+.paper { position:absolute; overflow:hidden; transform-origin:50% 50%;
+  box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 28px 50px -10px rgba(0,0,0,.55), 0 60px 120px -30px rgba(0,0,0,.45); }
+.paper > .tex { position:absolute; inset:0; pointer-events:none; background:url("assets/img/paper.jpg") center/700px; mix-blend-mode:multiply; opacity:.55; z-index:50; }
+.paper > .curl { position:absolute; inset:0; pointer-events:none; z-index:51;
+  background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0) 62%, rgba(0,0,0,.16) 100%); }
+.paper > .crease { position:absolute; inset:0; pointer-events:none; z-index:52; background:url("assets/img/crumple.jpg") center/cover; mix-blend-mode:soft-light; opacity:.55; }
+.photo { position:absolute; overflow:hidden; background-size:cover; background-position:center; }
+.prop { position:absolute; transform-origin:50% 50%; filter: drop-shadow(0 26px 24px rgba(0,0,0,.55)) saturate(.82) contrast(1.06); }
+.phfx { position:absolute; pointer-events:none; box-shadow: inset 0 0 140px rgba(0,0,0,.5);
+   background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,0) 45%); }
+.phfx::after { content:""; position:absolute; inset:0; background:url("assets/img/grain.png") 0 0/256px; mix-blend-mode:overlay; opacity:.35; }
+.ly .ch { opacity:0; }
+.ly .wd { white-space:nowrap; }
+.ly em { font-style:italic; }
+.fx { position:absolute; inset:0; pointer-events:none; }
+.fx-dof-t { bottom:auto; height:44%; backdrop-filter: blur(var(--dt, 7px)); -webkit-backdrop-filter: blur(var(--dt, 7px));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%);
+          mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%); }
+.fx-dof-b { top:auto; height:36%; backdrop-filter: blur(var(--db, 5px)); -webkit-backdrop-filter: blur(var(--db, 5px));
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%);
+          mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%); }
+.fx-leak { left:-30%; top:-30%; width:160%; height:160%; inset:auto; mix-blend-mode:screen; opacity:.5;
+  background: radial-gradient(40% 35% at 12% 18%, rgba(255,170,90,.55), rgba(255,120,60,0) 70%),
+              radial-gradient(30% 40% at 92% 90%, rgba(255,210,150,.25), rgba(255,200,150,0) 70%); }
+.fx-vig { background: radial-gradient(120% 95% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.78) 100%); }
+.fx-grade { mix-blend-mode:soft-light; }
+.fx-grain { background:url("assets/img/grain.png"); background-size:512px 512px; mix-blend-mode:overlay; opacity:.22; }
+.gobo { position:absolute; pointer-events:none; mix-blend-mode:multiply; }
+
+
+.t2-mast { position:absolute; left:24px; top:18px; font-family:"Archivo"; font-weight:900; font-style:italic; font-size:150px; line-height:1; color:#e2243c; -webkit-text-stroke:4px #f4e83a; letter-spacing:-.035em; }
+.t2-strap { position:absolute; left:0; right:0; top:206px; padding:8px 24px; font-family:"Archivo"; font-weight:800; font-size:22px; background:#f4e83a; color:#111; letter-spacing:.04em; }
+.t2-q { position:absolute; font-family:"Archivo Black"; color:#f4e83a; line-height:.96; text-shadow:4px 4px 0 #000; letter-spacing:-.01em; }
+.t2-q1 { left:50px; right:330px; top:300px; font-size:86px; }
+.t2-q2 { left:50px; top:640px; font-size:120px; color:#fff; }
+.t2-q3 { left:60px; right:60px; top:80px; font-size:96px; }
+.t2-q4 { left:60px; right:60px; top:70px; font-size:84px; color:#111; text-shadow:none; }
+.t2-q4 .ly .ch:nth-child(n) { }
+.t2-q5 { left:520px; right:50px; top:640px; font-size:52px; color:#e2243c; text-shadow:none; }
+.t2-q6 { left:60px; right:60px; top:560px; font-size:118px; color:#111; text-shadow:4px 4px 0 #fff; }
+.t2-burst, .t2-burst2 { position:absolute; width:240px; text-align:center; font-family:"Archivo Black"; font-size:44px; line-height:.9; color:#111; transform:rotate(-10deg); }
+.t2-burst2 { width:300px; color:#fff; font-size:46px; }
+.t2-bar { position:absolute; left:40px; bottom:40px; display:flex; gap:3px; }
+.t2-bar i { display:block; width:6px; height:70px; background:#fff; }
+.t2-bar i:nth-child(2n) { width:3px; }
+.t2-cap { position:absolute; left:60px; bottom:30px; font-family:"Archivo"; font-size:16px; color:#ddd; }
+.t2-body { position:absolute; left:60px; right:60px; top:420px; columns:2; column-gap:36px; font-family:"Archivo"; font-size:19px; line-height:1.35; color:#222; text-align:justify; }
+
+  </style>
+  <div id="root" data-composition-id="02-tabloide" data-width="1920" data-height="1080" data-duration="17.310" style="background:#0b0a09">
+    <div class="stage" data-layout-allow-overflow>
+      <div class="world" data-layout-allow-overflow>
+
+      <div class="surface" style="left:-2600px;top:-2200px;width:9800px;height:5200px;background-image:url(assets/img/wood.jpg);background-size:2400px 1600px;"></div>
+      <div class="paper " id="t2-cover" style="left:-490.0px;top:-650.0px;width:980px;height:1300px;background:#111;transform:rotate(-3deg);">
+      <div class="photo" style="left:0px;top:0px;width:980px;height:1300px;background-image:url(assets/img/ph-pink.jpg);filter:saturate(1.1)"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:600px;top:420px;width:190px;height:560px;transform:rotate(16deg);"><svg viewBox="0 0 140 420" width="100%" height="100%"><defs>
+<linearGradient id="lp22" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a0010"/><stop offset=".35" stop-color="#c4102c"/><stop offset=".55" stop-color="#ff8c9c"/><stop offset="1" stop-color="#4a000c"/></linearGradient>
+<linearGradient id="lpb23" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a2a08"/><stop offset=".4" stop-color="#f1d27a"/><stop offset=".6" stop-color="#a77d22"/><stop offset="1" stop-color="#2a1d04"/></linearGradient></defs>
+<path d="M40 40 L100 10 L100 150 L40 150 Z" fill="url(#lp22)"/>
+<rect x="32" y="150" width="76" height="70" fill="url(#lpb23)"/>
+<rect x="26" y="220" width="88" height="190" rx="6" fill="#141414"/>
+<rect x="34" y="226" width="14" height="176" fill="#fff" opacity=".12"/>
+</svg></div>
+      <div class="prop" style="left:120px;top:760px;width:330px;height:430px;transform:rotate(-8deg);"><svg viewBox="0 0 320 420" width="100%" height="100%"><defs>
+<linearGradient id="bg24" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b88a98"/><stop offset=".45" stop-color="#f2c6d4"/><stop offset="1" stop-color="#9c6b7a"/></linearGradient></defs>
+<ellipse cx="160" cy="408" rx="150" ry="10" fill="#000" opacity=".35"/>
+<path d="M110 120 C110 40 210 40 210 120" stroke="#2a1a1f" stroke-width="10" fill="none"/>
+<path d="M30 110 L290 110 L310 400 L10 400 Z" fill="url(#bg24)"/>
+<text x="160" y="260" text-anchor="middle" font-family="Source Serif" font-size="34" font-style="italic" fill="#2a1a1f">TANTO FAZ</text>
+</svg></div>
+      <div class="t2-mast">TANTO FAZ</div>
+      <div class="t2-strap">EXCLUSIVO · A FAIXA QUE TODO MUNDO ESTÁ CANTANDO · Nº 01</div>
+      <div class="t2-q t2-q1"><span class="ly " id="t2-ly-c5-1" data-layout-allow-overlap><span class="wd"><span class="ch">“</span><span class="ch">S</span><span class="ch">Ó</span></span> <span class="wd"><span class="ch">N</span><span class="ch">Ã</span><span class="ch">O</span></span> <span class="wd"><span class="ch">F</span><span class="ch">A</span><span class="ch">Z</span></span> <span class="wd"><span class="ch">E</span><span class="ch">U</span></span> <span class="wd"><span class="ch">M</span><span class="ch">E</span></span> <span class="wd"><span class="ch">A</span><span class="ch">R</span><span class="ch">R</span><span class="ch">E</span><span class="ch">P</span><span class="ch">E</span><span class="ch">N</span><span class="ch">D</span><span class="ch">E</span><span class="ch">R</span><span class="ch">.</span><span class="ch">”</span></span></span></div>
+      <div class="t2-q t2-q2"><span class="ly " id="t2-ly-c6-2" data-layout-allow-overlap><span class="wd"><span class="ch">T</span><span class="ch">A</span><span class="ch">N</span><span class="ch">T</span><span class="ch">O</span></span> <span class="wd"><span class="ch">F</span><span class="ch">A</span><span class="ch">Z</span><span class="ch">.</span></span></span></div>
+      <div class="obj" style="left:720px;top:1060px;width:220px;height:220px"><svg viewBox="0 0 200 200" width="100%" height="100%"><polygon points="100.0,0.0 113.8,39.6 143.4,9.9 138.7,51.5 178.2,37.7 155.9,73.1 197.5,77.7 162.0,100.0 197.5,122.3 155.9,126.9 178.2,162.3 138.7,148.5 143.4,190.1 113.8,160.4 100.0,200.0 86.2,160.4 56.6,190.1 61.3,148.5 21.8,162.3 44.1,126.9 2.5,122.3 38.0,100.0 2.5,77.7 44.1,73.1 21.8,37.7 61.3,51.5 56.6,9.9 86.2,39.6" fill="#f4e83a"/></svg></div>
+      <div class="t2-burst" style="left:720px;top:1135px">SÓ<br>AQUI!</div>
+      <div class="t2-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="t2-l" style="left:1110.0px;top:-510.0px;width:980px;height:1300px;background:#111;transform:rotate(2deg);">
+      <div class="photo" style="left:0px;top:0px;width:980px;height:1300px;background-image:url(assets/img/ph-night.jpg);"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:520px;top:640px;width:380px;height:520px;transform:rotate(20deg);"><svg viewBox="0 0 520 720" width="100%" height="100%"><defs>
+<linearGradient id="ph25" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd0e2"/><stop offset=".25" stop-color="#e2457f"/><stop offset=".75" stop-color="#8a1240"/><stop offset="1" stop-color="#3b0418"/></linearGradient>
+<radialGradient id="phh26" cx="30%" cy="25%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<ellipse cx="150" cy="300" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 150 300)"/><ellipse cx="163" cy="322" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 163 322)"/><ellipse cx="176" cy="344" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 176 344)"/><ellipse cx="189" cy="366" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 189 366)"/><ellipse cx="202" cy="388" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 202 388)"/><ellipse cx="215" cy="410" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 215 410)"/><ellipse cx="228" cy="432" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 228 432)"/><ellipse cx="241" cy="454" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 241 454)"/><ellipse cx="254" cy="476" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 254 476)"/><ellipse cx="267" cy="498" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 267 498)"/><ellipse cx="280" cy="520" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 280 520)"/><ellipse cx="293" cy="542" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 293 542)"/><ellipse cx="306" cy="564" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 306 564)"/><ellipse cx="319" cy="586" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 319 586)"/><ellipse cx="332" cy="608" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 332 608)"/><ellipse cx="345" cy="630" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 345 630)"/><ellipse cx="358" cy="652" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 358 652)"/><ellipse cx="371" cy="674" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 371 674)"/>
+<path d="M120 40 C60 40 40 90 60 140 L95 210 C110 240 150 235 160 205 L175 160 C182 140 170 120 150 118 L130 116 C120 100 125 80 150 75 L330 60 C360 58 372 78 360 96 L350 112 C338 128 345 150 365 155 L410 168 C440 175 470 150 470 115 C470 60 430 25 360 22 Z" fill="url(#ph25)"/>
+<path d="M120 40 C60 40 40 90 60 140 L95 210 C110 240 150 235 160 205 L175 160 C182 140 170 120 150 118 L130 116 C120 100 125 80 150 75 L330 60 C360 58 372 78 360 96 L350 112 C338 128 345 150 365 155 L410 168 C440 175 470 150 470 115 C470 60 430 25 360 22 Z" fill="url(#phh26)"/>
+</svg></div>
+      <div class="t2-q t2-q3"><span class="ly " id="t2-ly-c7-3" data-layout-allow-overlap><span class="wd"><span class="ch">“</span><span class="ch">S</span><span class="ch">E</span></span> <span class="wd"><span class="ch">V</span><span class="ch">O</span><span class="ch">C</span><span class="ch">Ê</span></span> <span class="wd"><span class="ch">N</span><span class="ch">Ã</span><span class="ch">O</span></span> <span class="wd"><span class="ch">V</span><span class="ch">E</span><span class="ch">M</span><span class="ch">,</span></span> <span class="wd"><span class="ch">N</span><span class="ch">Ã</span><span class="ch">O</span></span> <span class="wd"><span class="ch">Q</span><span class="ch">U</span><span class="ch">E</span><span class="ch">R</span><span class="ch">O</span></span> <span class="wd"><span class="ch">S</span><span class="ch">A</span><span class="ch">B</span><span class="ch">E</span><span class="ch">R</span><span class="ch">.</span><span class="ch">”</span></span></span></div>
+      <div class="obj" style="left:80px;top:900px;width:300px;height:300px"><svg viewBox="0 0 200 200" width="100%" height="100%"><polygon points="100.0,0.0 113.8,39.6 143.4,9.9 138.7,51.5 178.2,37.7 155.9,73.1 197.5,77.7 162.0,100.0 197.5,122.3 155.9,126.9 178.2,162.3 138.7,148.5 143.4,190.1 113.8,160.4 100.0,200.0 86.2,160.4 56.6,190.1 61.3,148.5 21.8,162.3 44.1,126.9 2.5,122.3 38.0,100.0 2.5,77.7 44.1,73.1 21.8,37.7 61.3,51.5 56.6,9.9 86.2,39.6" fill="#e2243c"/></svg></div>
+      <div class="t2-burst2" style="left:80px;top:1000px"><span class="ly " id="t2-ly-c8-4" data-layout-allow-overlap><span class="wd"><span class="ch">T</span><span class="ch">A</span><span class="ch">N</span><span class="ch">T</span><span class="ch">O</span></span> <span class="wd"><span class="ch">F</span><span class="ch">A</span><span class="ch">Z</span><span class="ch">.</span></span></span></div>
+      <div class="t2-cap">Foto: arquivo · Página 4</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="t2-r" style="left:2095.0px;top:-485.0px;width:980px;height:1300px;background:#f1ede4;transform:rotate(2deg);">
+      <div class="t2-q t2-q4"><span class="ly " id="t2-ly-c9-5" data-layout-allow-overlap><span class="wd"><span class="ch">“</span><span class="ch">…</span><span class="ch">V</span><span class="ch">O</span><span class="ch">U</span></span> <span class="wd"><span class="ch">A</span><span class="ch">T</span><span class="ch">É</span></span> <span class="wd"><span class="ch">V</span><span class="ch">O</span><span class="ch">C</span><span class="ch">Ê</span><span class="ch">,</span></span> <span class="wd"><span class="ch">T</span><span class="ch">A</span><span class="ch">N</span><span class="ch">T</span><span class="ch">O</span></span> <span class="wd"><span class="ch">F</span><span class="ch">A</span><span class="ch">Z</span><span class="ch">.</span><span class="ch">”</span></span></span></div>
+      <div class="t2-body">“Tanto Faz” é uma carta aberta sobre entrega e medo de errar de novo. A faixa atravessa o refrão como quem repete uma promessa em voz baixa, entre o desejo de ficar e o receio de se arrepender. Nas estrofes, o amor aparece como resgate: alguém que chega do nada, tira do sufoco e cura as feridas sem esforço. O que sobra é a vontade de construir um plano, uma vida inteira, com a pessoa certa ao lado. Gravada entre madrugadas, a música aposta num grave arrastado e numa voz que conversa mais do que canta. Cada verso parece escrito no verso de um papel qualquer — um bilhete, um recado, uma confissão. É sobre escolher e ser escolhido, e sobre pedir, por favor, que essa escolha não vire arrependimento.</div>
+      <div class="photo" style="left:90px;top:700px;width:400px;height:460px;background-image:url(assets/img/ph-teal.jpg);border:8px solid #e2243c"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:160px;top:760px;width:260px;height:260px;transform:rotate(-6deg);"><svg viewBox="0 0 300 300" width="100%" height="100%"><defs>
+<linearGradient id="rg27" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".3" stop-color="#d7a73c"/><stop offset=".6" stop-color="#7a5310"/><stop offset="1" stop-color="#f3d27a"/></linearGradient>
+<linearGradient id="rgd28" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#bfe8ff"/><stop offset=".7" stop-color="#6aa0c8"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
+<ellipse cx="150" cy="270" rx="100" ry="14" fill="#000" opacity=".35"/>
+<ellipse cx="150" cy="190" rx="95" ry="72" fill="none" stroke="url(#rg27)" stroke-width="18"/>
+<path d="M115 118 L150 70 L185 118 L150 150 Z" fill="url(#rgd28)" stroke="#e8f6ff" stroke-width="2"/>
+<path d="M115 118 L185 118 M150 70 L150 150 M132 95 L168 95" stroke="#fff" stroke-width="1.5" opacity=".8"/>
+</svg></div>
+      <div class="t2-q t2-q5"><span class="ly " id="t2-ly-c10-6" data-layout-allow-overlap><span class="wd"><span class="ch">“</span><span class="ch">D</span><span class="ch">E</span></span> <span class="wd"><span class="ch">N</span><span class="ch">O</span><span class="ch">V</span><span class="ch">O</span></span> <span class="wd"><span class="ch">M</span><span class="ch">E</span></span> <span class="wd"><span class="ch">E</span><span class="ch">N</span><span class="ch">T</span><span class="ch">R</span><span class="ch">E</span><span class="ch">G</span><span class="ch">O</span></span> <span class="wd"><span class="ch">C</span><span class="ch">O</span><span class="ch">M</span></span> <span class="wd"><span class="ch">P</span><span class="ch">R</span><span class="ch">A</span><span class="ch">Z</span><span class="ch">E</span><span class="ch">R</span><span class="ch">.</span><span class="ch">”</span></span></span></div>
+      <div class="obj" style="left:640px;top:1020px;width:240px;height:240px"><svg viewBox="0 0 200 200" width="100%" height="100%"><polygon points="100.0,0.0 113.8,39.6 143.4,9.9 138.7,51.5 178.2,37.7 155.9,73.1 197.5,77.7 162.0,100.0 197.5,122.3 155.9,126.9 178.2,162.3 138.7,148.5 143.4,190.1 113.8,160.4 100.0,200.0 86.2,160.4 56.6,190.1 61.3,148.5 21.8,162.3 44.1,126.9 2.5,122.3 38.0,100.0 2.5,77.7 44.1,73.1 21.8,37.7 61.3,51.5 56.6,9.9 86.2,39.6" fill="#f4e83a"/></svg></div>
+      <div class="t2-burst" style="left:640px;top:1100px;font-size:40px"><span class="ly " id="t2-ly-c11-7" data-layout-allow-overlap><span class="wd"><span class="ch">T</span><span class="ch">A</span><span class="ch">N</span><span class="ch">T</span><span class="ch">O</span></span> <span class="wd"><span class="ch">F</span><span class="ch">A</span><span class="ch">Z</span><span class="ch">.</span></span></span></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="t2-back" style="left:3410.0px;top:-610.0px;width:980px;height:1300px;background:#111;transform:rotate(-2.5deg);">
+      <div class="photo" style="left:0px;top:0px;width:980px;height:1300px;background-image:url(assets/img/ph-yellow.jpg);filter:saturate(1.2)"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:520px;top:160px;width:380px;height:340px;transform:rotate(10deg);"><svg viewBox="0 0 200 180" width="100%" height="100%"><defs>
+<radialGradient id="ht29" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#ff9fb4"/><stop offset=".4" stop-color="#e0244c"/><stop offset="1" stop-color="#5a0014"/></radialGradient></defs>
+<path d="M100 170 C40 120 0 90 0 50 C0 20 25 0 52 0 C75 0 92 14 100 32 C108 14 125 0 148 0 C175 0 200 20 200 50 C200 90 160 120 100 170Z" fill="url(#ht29)"/></svg></div>
+      <div class="t2-q t2-q6"><span class="ly " id="t2-ly-c12-8" data-layout-allow-overlap><span class="wd"><span class="ch">“</span><span class="ch">S</span><span class="ch">Ó</span></span> <span class="wd"><span class="ch">N</span><span class="ch">Ã</span><span class="ch">O</span></span> <span class="wd"><span class="ch">F</span><span class="ch">A</span><span class="ch">Z</span></span> <span class="wd"><span class="ch">E</span><span class="ch">U</span></span> <span class="wd"><span class="ch">M</span><span class="ch">E</span></span> <span class="wd"><span class="ch">A</span><span class="ch">R</span><span class="ch">R</span><span class="ch">E</span><span class="ch">P</span><span class="ch">E</span><span class="ch">N</span><span class="ch">D</span><span class="ch">E</span><span class="ch">R</span><span class="ch">.</span><span class="ch">”</span></span></span></div>
+      <div class="t2-strap" style="top:auto;bottom:40px;background:#111;color:#f4e83a">TANTO FAZ · 2026 · PÁGINA 6</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="prop" style="left:-760px;top:380px;width:300px;height:420px;transform:rotate(-12deg);"><svg viewBox="0 0 300 420" width="100%" height="100%"><defs>
+<linearGradient id="pf30" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f6f74"/><stop offset=".2" stop-color="#6fd3d6"/><stop offset=".55" stop-color="#c8f4f2"/><stop offset=".8" stop-color="#6fd3d6"/><stop offset="1" stop-color="#1a5a5e"/></linearGradient>
+<linearGradient id="pfc32" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b3b44"/><stop offset=".4" stop-color="#e9e9f0"/><stop offset=".6" stop-color="#9a9aa8"/><stop offset="1" stop-color="#2a2a30"/></linearGradient>
+<linearGradient id="pfh31" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<ellipse cx="150" cy="405" rx="120" ry="12" fill="#000" opacity=".35"/>
+<rect x="118" y="20" width="64" height="80" rx="6" fill="url(#pfc32)"/>
+<rect x="130" y="96" width="40" height="30" fill="#bfc9cc"/>
+<path d="M40 150 Q40 120 80 120 L220 120 Q260 120 260 150 L265 370 Q265 400 230 400 L70 400 Q35 400 35 370 Z" fill="url(#pf30)"/>
+<path d="M60 140 L90 140 L80 380 L58 380 Z" fill="url(#pfh31)"/>
+<rect x="85" y="230" width="130" height="70" fill="#f6efe6"/>
+<rect x="85" y="230" width="130" height="70" fill="none" stroke="#c23" stroke-width="2"/>
+<text x="150" y="262" text-anchor="middle" font-family="Source Serif" font-size="20" font-style="italic" fill="#c23">TANTO FAZ</text>
+<text x="150" y="285" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#333">EAU DE PARFUM</text>
+</svg></div>
+      <div class="prop" style="left:3150px;top:-880px;width:420px;height:270px;transform:rotate(18deg);"><svg viewBox="0 0 400 260" width="100%" height="100%"><defs>
+<linearGradient id="cs33" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#333"/><stop offset="1" stop-color="#0c0c0c"/></linearGradient></defs>
+<rect x="0" y="0" width="400" height="260" rx="16" fill="url(#cs33)"/>
+<rect x="30" y="26" width="340" height="130" rx="6" fill="#f2e9d8"/>
+<rect x="30" y="26" width="340" height="30" fill="#e2245c"/>
+<text x="200" y="110" text-anchor="middle" font-family="Archivo Black" font-size="34" fill="#111">TANTO FAZ</text>
+<circle cx="120" cy="190" r="26" fill="#ddd"/><circle cx="280" cy="190" r="26" fill="#ddd"/>
+<rect x="150" y="176" width="100" height="28" fill="#222"/></svg></div>
+      <div class="obj" style="left:1200px;top:-800px;width:520px;height:22px;transform:rotate(24deg);background:linear-gradient(#3a5fd8,#1c2f80);border-radius:12px;box-shadow:0 18px 18px rgba(0,0,0,.4)"></div>
+      <div class="gobo" style="left:-1200px;top:-1500px;width:3200px;height:2400px;transform:rotate(-20deg);opacity:0.62;background:url(assets/img/gobo-a.png) center/100% 100% no-repeat;"></div>
+      <div class="gobo" style="left:2200px;top:-1500px;width:3200px;height:2400px;transform:rotate(-20deg);opacity:0.56;background:url(assets/img/gobo-a.png) center/100% 100% no-repeat;"></div>
+    
+      </div>
+    </div>
+
+    <div class="fx fx-dof-t" style="--dt:10px"></div>
+    <div class="fx fx-dof-b" style="--db:7px"></div>
+    
+    <div class="fx fx-grade" style="background:rgba(90,50,20,.22)"></div>
+    <div class="fx fx-leak" style="opacity:0.65"></div>
+    <div class="fx fx-vig"></div>
+    <div class="fx fx-grain"></div>
+    
+
+    <script>
+      (function () {
+        const R = document.querySelector('[data-composition-id="02-tabloide"]');
+        const q = (s) => R.querySelector(s);
+        const qa = (s) => Array.from(R.querySelectorAll(s));
+        const tl = gsap.timeline({ paused: true });
+        const D = 17.310;
+
+        // ---- camera: one state object, one writer ----
+        const world = q(".world");
+        const cam = { x: 0, y: 0, z: 0, rx: 0, rz: 0, s: 1 };
+        function applyCamera() {
+          world.style.transform = `translate3d(960px, 540px, ${cam.z}px) rotateX(${cam.rx}deg) rotateZ(${cam.rz}deg) scale(${cam.s}) translate(${-cam.x}px, ${-cam.y}px)`;
+        }
+        function shot(keys) {
+          Object.assign(cam, keys[0]);
+          delete cam.t; delete cam.e;
+          applyCamera();
+          tl.set(cam, Object.assign({}, strip(keys[0]), { onUpdate: applyCamera }), 0);
+          for (let i = 1; i < keys.length; i++) {
+            const a = keys[i - 1], b = keys[i];
+            tl.to(cam, Object.assign(strip(b), { duration: b.t - a.t, ease: b.e || "sine.inOut", onUpdate: applyCamera }), a.t);
+          }
+        }
+        function strip(k) { const o = Object.assign({}, k); delete o.t; delete o.e; return o; }
+
+        // ---- typing ----
+        function typeOn(TYPE) {
+          TYPE.forEach(([sel, times]) => {
+            const chars = qa(sel + " .ch");
+            chars.forEach((c, i) => {
+              const t = times[Math.min(i, times.length - 1)];
+              tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, Math.max(0, t));
+            });
+          });
+        }
+
+        // ---- film grain: stepped jitter (seek-safe) ----
+        const g = q(".fx-grain");
+        const steps = Math.round(D * 12);
+        tl.fromTo(g, { backgroundPosition: "0px 0px" }, { backgroundPosition: `${steps * 173}px ${steps * 251}px`, duration: D, ease: `steps(${steps})` }, 0);
+        tl.fromTo(q(".fx-leak"), { x: 0, y: 0 }, { x: 120, y: 60, duration: D, ease: "sine.inOut" }, 0);
+
+const TYPE = [["#t2-ly-c5-1",[0.21,0.265,0.32,0.89,0.943,0.997,1.09,1.145,1.2,1.35,1.405,1.67,1.725,1.91,1.95,1.99,2.03,2.07,2.11,2.15,2.19,2.23,2.27,2.31,2.35]],["#t2-ly-c6-2",[2.69,2.745,2.8,2.855,2.91,3.41,3.465,3.52,3.575]],["#t2-ly-c7-3",[4.01,4.065,4.12,4.67,4.725,4.78,4.835,5.03,5.085,5.14,5.35,5.405,5.46,5.515,5.97,6.013,6.055,6.13,6.181,6.232,6.284,6.335,6.45,6.505,6.56,6.615,6.67,6.725,6.78]],["#t2-ly-c8-4",[7.09,7.145,7.2,7.255,7.31,7.71,7.765,7.82,7.875]],["#t2-ly-c9-5",[8.37,8.402,8.434,8.466,8.498,8.57,8.625,8.68,8.87,8.925,8.98,9.035,9.09,9.59,9.645,9.7,9.755,9.81,10.05,10.105,10.16,10.215,10.27]],["#t2-ly-c10-6",[10.75,10.805,10.86,12.29,12.345,12.4,12.455,12.59,12.645,12.95,13.005,13.06,13.115,13.169,13.224,13.279,13.43,13.485,13.54,13.71,13.765,13.82,13.875,13.93,13.985,14.04,14.095]],["#t2-ly-c11-7",[14.27,14.325,14.38,14.435,14.49,14.83,14.885,14.94,14.995]],["#t2-ly-c12-8",[15.41,15.465,15.52,16.09,16.145,16.2,16.33,16.385,16.44,16.63,16.685,16.93,16.985,17.17,17.21,17.25,17.29,17.33,17.37,17.41,17.45,17.49,17.53,17.57,17.61]]];
+        typeOn(TYPE);
+        shot([{"t": 0, "x": -200, "y": -300, "s": 0.62, "rx": 18, "rz": -8}, {"t": 0.21, "e": "power3.inOut", "x": -40, "y": 100, "s": 0.76, "rx": 12, "rz": -3}, {"t": 3.26, "x": -14.0, "y": 110.0, "s": 0.7866, "rx": 12, "rz": -2.5}, {"t": 4.01, "e": "power3.inOut", "x": 1600, "y": 80, "s": 0.78, "rx": 12, "rz": 2}, {"t": 7.62, "x": 1626.0, "y": 90.0, "s": 0.8073, "rx": 12, "rz": 2.5}, {"t": 8.37, "e": "power3.inOut", "x": 2560, "y": 30, "s": 0.82, "rx": 12, "rz": 2}, {"t": 10.0, "x": 2586.0, "y": 40.0, "s": 0.8487, "rx": 12, "rz": 2.5}, {"t": 10.75, "e": "power3.inOut", "x": 2600, "y": 600, "s": 0.9, "rx": 13, "rz": 1}, {"t": 14.46, "x": 2626.0, "y": 610.0, "s": 0.9315, "rx": 13, "rz": 1.5}, {"t": 15.21, "e": "power3.inOut", "x": 3880, "y": 160, "s": 0.78, "rx": 12, "rz": -2}, {"t": 17.31, "x": 3916.4, "y": 174.0, "s": 0.8182, "rx": 12, "rz": -1.3}]);
+
+
+        tl.to({}, { duration: 0.001 }, D - 0.001);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["02-tabloide"] = tl;
+      })();
+    </script>
+  </div>
+</template>

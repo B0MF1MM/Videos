@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+      .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="167.680" data-width="1920" data-height="1080">
+      <div id="el-00-mesa" class="scene clip" data-composition-id="00-mesa" data-composition-src="compositions/frames/00-mesa.html"
+        data-start="0.000" data-duration="13.500" data-track-index="0"></div>
+      <div id="el-01-cortica" class="scene clip" data-composition-id="01-cortica" data-composition-src="compositions/frames/01-cortica.html"
+        data-start="13.000" data-duration="15.350" data-track-index="1"></div>
+      <div id="el-02-tabloide" class="scene clip" data-composition-id="02-tabloide" data-composition-src="compositions/frames/02-tabloide.html"
+        data-start="27.850" data-duration="17.810" data-track-index="0"></div>
+      <div id="el-03-jardim" class="scene clip" data-composition-id="03-jardim" data-composition-src="compositions/frames/03-jardim.html"
+        data-start="45.160" data-duration="15.640" data-track-index="1"></div>
+      <div id="el-04-computador" class="scene clip" data-composition-id="04-computador" data-composition-src="compositions/frames/04-computador.html"
+        data-start="60.300" data-duration="15.350" data-track-index="0"></div>
+      <div id="el-05-jornal" class="scene clip" data-composition-id="05-jornal" data-composition-src="compositions/frames/05-jornal.html"
+        data-start="75.150" data-duration="17.350" data-track-index="1"></div>
+      <div id="el-06-muro" class="scene clip" data-composition-id="06-muro" data-composition-src="compositions/frames/06-muro.html"
+        data-start="92.000" data-duration="22.200" data-track-index="0"></div>
+      <div id="el-07-rosa" class="scene clip" data-composition-id="07-rosa" data-composition-src="compositions/frames/07-rosa.html"
+        data-start="113.700" data-duration="16.800" data-track-index="1"></div>
+      <div id="el-08-encarte" class="scene clip" data-composition-id="08-encarte" data-composition-src="compositions/frames/08-encarte.html"
+        data-start="130.000" data-duration="22.200" data-track-index="0"></div>
+      <div id="el-09-creditos" class="scene clip" data-composition-id="09-creditos" data-composition-src="compositions/frames/09-creditos.html"
+        data-start="151.700" data-duration="15.980" data-track-index="1"></div>
+      <audio id="bgm" src="assets/bgm.mp3" data-start="0" data-media-start="0.000" data-duration="167.680" data-track-index="11" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+            tl.fromTo("#el-01-cortica", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 13.000);
+      tl.fromTo("#el-02-tabloide", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 27.850);
+      tl.fromTo("#el-03-jardim", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 45.160);
+      tl.fromTo("#el-04-computador", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 60.300);
+      tl.fromTo("#el-05-jornal", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 75.150);
+      tl.fromTo("#el-06-muro", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 92.000);
+      tl.fromTo("#el-07-rosa", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 113.700);
+      tl.fromTo("#el-08-encarte", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 130.000);
+      tl.fromTo("#el-09-creditos", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 151.700);
+      tl.to({}, { duration: 167.680 }, 0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

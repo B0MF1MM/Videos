@@ -1,0 +1,159 @@
+<template id="09-creditos-template">
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-300-normal.woff2") format("woff2");font-weight:300;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-italic.woff2") format("woff2");font-weight:600;font-style:italic;font-display:block}
+@font-face{font-family:"Anton";src:url("assets/fonts/anton-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo Black";src:url("assets/fonts/archivo-black-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-800-normal.woff2") format("woff2");font-weight:800;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-900-italic.woff2") format("woff2");font-weight:900;font-style:italic;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-900-normal.woff2") format("woff2");font-weight:900;font-style:normal;font-display:block}
+@font-face{font-family:"Bebas Neue";src:url("assets/fonts/bebas-neue-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"DM Mono";src:url("assets/fonts/dm-mono-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Michroma";src:url("assets/fonts/michroma-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Oswald";src:url("assets/fonts/oswald-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+[data-composition-id="09-creditos"] { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#0b0a09; }
+[data-composition-id="09-creditos"] * { box-sizing:border-box; }
+.stage { position:absolute; inset:0; perspective:2400px; perspective-origin:50% 45%; overflow:hidden; }
+.world { position:absolute; left:0; top:0; width:0; height:0; transform-style:preserve-3d; transform-origin:0 0; will-change:transform; }
+.surface { position:absolute; background-size:cover; }
+.obj { position:absolute; transform-origin:50% 50%; }
+.paper { position:absolute; overflow:hidden; transform-origin:50% 50%;
+  box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 28px 50px -10px rgba(0,0,0,.55), 0 60px 120px -30px rgba(0,0,0,.45); }
+.paper > .tex { position:absolute; inset:0; pointer-events:none; background:url("assets/img/paper.jpg") center/700px; mix-blend-mode:multiply; opacity:.55; z-index:50; }
+.paper > .curl { position:absolute; inset:0; pointer-events:none; z-index:51;
+  background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0) 62%, rgba(0,0,0,.16) 100%); }
+.paper > .crease { position:absolute; inset:0; pointer-events:none; z-index:52; background:url("assets/img/crumple.jpg") center/cover; mix-blend-mode:soft-light; opacity:.55; }
+.photo { position:absolute; overflow:hidden; background-size:cover; background-position:center; }
+.prop { position:absolute; transform-origin:50% 50%; filter: drop-shadow(0 26px 24px rgba(0,0,0,.55)) saturate(.82) contrast(1.06); }
+.phfx { position:absolute; pointer-events:none; box-shadow: inset 0 0 140px rgba(0,0,0,.5);
+   background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,0) 45%); }
+.phfx::after { content:""; position:absolute; inset:0; background:url("assets/img/grain.png") 0 0/256px; mix-blend-mode:overlay; opacity:.35; }
+.ly .ch { opacity:0; }
+.ly .wd { white-space:nowrap; }
+.ly em { font-style:italic; }
+.fx { position:absolute; inset:0; pointer-events:none; }
+.fx-dof-t { bottom:auto; height:44%; backdrop-filter: blur(var(--dt, 7px)); -webkit-backdrop-filter: blur(var(--dt, 7px));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%);
+          mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%); }
+.fx-dof-b { top:auto; height:36%; backdrop-filter: blur(var(--db, 5px)); -webkit-backdrop-filter: blur(var(--db, 5px));
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%);
+          mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%); }
+.fx-leak { left:-30%; top:-30%; width:160%; height:160%; inset:auto; mix-blend-mode:screen; opacity:.5;
+  background: radial-gradient(40% 35% at 12% 18%, rgba(255,170,90,.55), rgba(255,120,60,0) 70%),
+              radial-gradient(30% 40% at 92% 90%, rgba(255,210,150,.25), rgba(255,200,150,0) 70%); }
+.fx-vig { background: radial-gradient(120% 95% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.78) 100%); }
+.fx-grade { mix-blend-mode:soft-light; }
+.fx-grain { background:url("assets/img/grain.png"); background-size:512px 512px; mix-blend-mode:overlay; opacity:.22; }
+.gobo { position:absolute; pointer-events:none; mix-blend-mode:multiply; }
+
+
+.z9-s { position:absolute; left:60px; right:60px; text-align:center; font-family:"Source Serif"; font-size:88px; line-height:1.02; color:#eef3ef; }
+.z9-c { position:absolute; left:90px; right:90px; top:760px; columns:2; column-gap:44px; font-family:"Source Serif"; font-size:22px; line-height:1.4; color:#c9d4d0; text-align:justify; }
+.z9-c p { margin:0 0 12px; text-indent:1.2em; }
+.z9-u { text-decoration:underline; }
+.z9-sig { position:absolute; left:0; right:0; bottom:60px; text-align:center; font-family:"Source Serif"; font-weight:600; letter-spacing:.08em; font-size:26px; color:#eef3ef; }
+.z9-ghost { position:absolute; inset:60px; font-family:"League Spartan"; font-weight:900; font-size:250px; line-height:.9; color:#e8467c; }
+.z9-black { background:#000; opacity:0; }
+
+  </style>
+  <div id="root" data-composition-id="09-creditos" data-width="1920" data-height="1080" data-duration="15.980" style="background:#0b0a09">
+    <div class="stage" data-layout-allow-overflow>
+      <div class="world" data-layout-allow-overflow>
+
+      <div class="surface" style="left:-2600px;top:-2200px;width:9800px;height:5200px;background-image:url(assets/img/wood.jpg);background-size:2400px 1600px;filter:brightness(.55)"></div>
+      <div class="paper " id="z9-d" style="left:-500.0px;top:-650.0px;width:1000px;height:1300px;background:#0f1718;transform:rotate(1.2deg);">
+      <div class="photo" style="left:0px;top:0px;width:1000px;height:760px;background-image:url(assets/img/ph-teal.jpg);"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:520px;top:80px;width:380px;height:520px;transform:rotate(-18deg);filter:grayscale(.5) drop-shadow(0 26px 24px rgba(0,0,0,.6))"><svg viewBox="0 0 520 720" width="100%" height="100%"><defs>
+<linearGradient id="ph101" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd0e2"/><stop offset=".25" stop-color="#9fd8d0"/><stop offset=".75" stop-color="#8a1240"/><stop offset="1" stop-color="#3b0418"/></linearGradient>
+<radialGradient id="phh102" cx="30%" cy="25%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<ellipse cx="150" cy="300" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 150 300)"/><ellipse cx="163" cy="322" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 163 322)"/><ellipse cx="176" cy="344" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 176 344)"/><ellipse cx="189" cy="366" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 189 366)"/><ellipse cx="202" cy="388" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 202 388)"/><ellipse cx="215" cy="410" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 215 410)"/><ellipse cx="228" cy="432" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 228 432)"/><ellipse cx="241" cy="454" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 241 454)"/><ellipse cx="254" cy="476" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 254 476)"/><ellipse cx="267" cy="498" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 267 498)"/><ellipse cx="280" cy="520" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 280 520)"/><ellipse cx="293" cy="542" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 293 542)"/><ellipse cx="306" cy="564" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 306 564)"/><ellipse cx="319" cy="586" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 319 586)"/><ellipse cx="332" cy="608" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 332 608)"/><ellipse cx="345" cy="630" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 345 630)"/><ellipse cx="358" cy="652" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 358 652)"/><ellipse cx="371" cy="674" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 371 674)"/>
+<path d="M120 40 C60 40 40 90 60 140 L95 210 C110 240 150 235 160 205 L175 160 C182 140 170 120 150 118 L130 116 C120 100 125 80 150 75 L330 60 C360 58 372 78 360 96 L350 112 C338 128 345 150 365 155 L410 168 C440 175 470 150 470 115 C470 60 430 25 360 22 Z" fill="url(#ph101)"/>
+<path d="M120 40 C60 40 40 90 60 140 L95 210 C110 240 150 235 160 205 L175 160 C182 140 170 120 150 118 L130 116 C120 100 125 80 150 75 L330 60 C360 58 372 78 360 96 L350 112 C338 128 345 150 365 155 L410 168 C440 175 470 150 470 115 C470 60 430 25 360 22 Z" fill="url(#phh102)"/>
+</svg></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,23,24,0) 30%, #0f1718 60%)"></div>
+      <div class="z9-s" style="top:560px">Uma Vida É Com Você.</div>
+      <div class="z9-c">
+        <p><span class="ly " id="z9-ly-tx0-1" data-layout-allow-overlap><span class="wd"><span class="ch">“</span><span class="ch">T</span><span class="ch">a</span><span class="ch">n</span><span class="ch">t</span><span class="ch">o</span></span> <span class="wd"><span class="ch">F</span><span class="ch">a</span><span class="ch">z</span><span class="ch">”</span></span> <span class="wd"><span class="ch">—</span></span> <span class="wd"><span class="ch">l</span><span class="ch">e</span><span class="ch">t</span><span class="ch">r</span><span class="ch">a</span></span> <span class="wd"><span class="ch">t</span><span class="ch">r</span><span class="ch">a</span><span class="ch">n</span><span class="ch">s</span><span class="ch">c</span><span class="ch">r</span><span class="ch">i</span><span class="ch">t</span><span class="ch">a</span></span> <span class="wd"><span class="ch">a</span><span class="ch">u</span><span class="ch">t</span><span class="ch">o</span><span class="ch">m</span><span class="ch">a</span><span class="ch">t</span><span class="ch">i</span><span class="ch">c</span><span class="ch">a</span><span class="ch">m</span><span class="ch">e</span><span class="ch">n</span><span class="ch">t</span><span class="ch">e</span></span> <span class="wd"><span class="ch">a</span></span> <span class="wd"><span class="ch">p</span><span class="ch">a</span><span class="ch">r</span><span class="ch">t</span><span class="ch">i</span><span class="ch">r</span></span> <span class="wd"><span class="ch">d</span><span class="ch">o</span></span> <span class="wd"><span class="ch">á</span><span class="ch">u</span><span class="ch">d</span><span class="ch">i</span><span class="ch">o</span><span class="ch">;</span></span> <span class="wd"><span class="ch">v</span><span class="ch">e</span><span class="ch">r</span><span class="ch">s</span><span class="ch">o</span><span class="ch">s</span></span> <span class="wd"><span class="ch">s</span><span class="ch">u</span><span class="ch">j</span><span class="ch">e</span><span class="ch">i</span><span class="ch">t</span><span class="ch">o</span><span class="ch">s</span></span> <span class="wd"><span class="ch">a</span></span> <span class="wd"><span class="ch">c</span><span class="ch">o</span><span class="ch">r</span><span class="ch">r</span><span class="ch">e</span><span class="ch">ç</span><span class="ch">ã</span><span class="ch">o</span><span class="ch">.</span></span></span></p>
+        <p><span class="ly " id="z9-ly-tx1-2" data-layout-allow-overlap><span class="wd"><span class="ch">V</span><span class="ch">i</span><span class="ch">s</span><span class="ch">u</span><span class="ch">a</span><span class="ch">l</span></span> <span class="wd"><span class="ch">i</span><span class="ch">n</span><span class="ch">s</span><span class="ch">p</span><span class="ch">i</span><span class="ch">r</span><span class="ch">a</span><span class="ch">d</span><span class="ch">o</span></span> <span class="wd"><span class="ch">e</span><span class="ch">m</span></span> <span class="wd"><span class="ch">e</span><span class="ch">d</span><span class="ch">i</span><span class="ch">t</span><span class="ch">o</span><span class="ch">r</span><span class="ch">i</span><span class="ch">a</span><span class="ch">i</span><span class="ch">s</span></span> <span class="wd"><span class="ch">i</span><span class="ch">m</span><span class="ch">p</span><span class="ch">r</span><span class="ch">e</span><span class="ch">s</span><span class="ch">s</span><span class="ch">o</span><span class="ch">s</span><span class="ch">:</span></span> <span class="wd"><span class="ch">c</span><span class="ch">a</span><span class="ch">r</span><span class="ch">t</span><span class="ch">a</span><span class="ch">z</span><span class="ch">e</span><span class="ch">s</span><span class="ch">,</span></span> <span class="wd"><span class="ch">t</span><span class="ch">a</span><span class="ch">b</span><span class="ch">l</span><span class="ch">o</span><span class="ch">i</span><span class="ch">d</span><span class="ch">e</span><span class="ch">s</span><span class="ch">,</span></span> <span class="wd"><span class="ch">j</span><span class="ch">o</span><span class="ch">r</span><span class="ch">n</span><span class="ch">a</span><span class="ch">i</span><span class="ch">s</span></span> <span class="wd"><span class="ch">e</span></span> <span class="wd"><span class="ch">e</span><span class="ch">n</span><span class="ch">c</span><span class="ch">a</span><span class="ch">r</span><span class="ch">t</span><span class="ch">e</span><span class="ch">s</span></span> <span class="wd"><span class="ch">f</span><span class="ch">o</span><span class="ch">t</span><span class="ch">o</span><span class="ch">g</span><span class="ch">r</span><span class="ch">a</span><span class="ch">f</span><span class="ch">a</span><span class="ch">d</span><span class="ch">o</span><span class="ch">s</span></span> <span class="wd"><span class="ch">s</span><span class="ch">o</span><span class="ch">b</span><span class="ch">r</span><span class="ch">e</span></span> <span class="wd"><span class="ch">m</span><span class="ch">e</span><span class="ch">s</span><span class="ch">a</span><span class="ch">s</span><span class="ch">,</span></span> <span class="wd"><span class="ch">m</span><span class="ch">u</span><span class="ch">r</span><span class="ch">o</span><span class="ch">s</span></span> <span class="wd"><span class="ch">e</span></span> <span class="wd"><span class="ch">j</span><span class="ch">a</span><span class="ch">r</span><span class="ch">d</span><span class="ch">i</span><span class="ch">n</span><span class="ch">s</span><span class="ch">.</span></span></span></p>
+        <p><span class="ly " id="z9-ly-tx2-3" data-layout-allow-overlap><span class="wd"><span class="ch">T</span><span class="ch">i</span><span class="ch">p</span><span class="ch">o</span><span class="ch">g</span><span class="ch">r</span><span class="ch">a</span><span class="ch">f</span><span class="ch">i</span><span class="ch">a</span><span class="ch">:</span></span> <span class="wd"><span class="ch">S</span><span class="ch">o</span><span class="ch">u</span><span class="ch">r</span><span class="ch">c</span><span class="ch">e</span></span> <span class="wd"><span class="ch">S</span><span class="ch">e</span><span class="ch">r</span><span class="ch">i</span><span class="ch">f</span><span class="ch">,</span></span> <span class="wd"><span class="ch">A</span><span class="ch">r</span><span class="ch">c</span><span class="ch">h</span><span class="ch">i</span><span class="ch">v</span><span class="ch">o</span><span class="ch">,</span></span> <span class="wd"><span class="ch">A</span><span class="ch">n</span><span class="ch">t</span><span class="ch">o</span><span class="ch">n</span><span class="ch">,</span></span> <span class="wd"><span class="ch">L</span><span class="ch">e</span><span class="ch">a</span><span class="ch">g</span><span class="ch">u</span><span class="ch">e</span></span> <span class="wd"><span class="ch">S</span><span class="ch">p</span><span class="ch">a</span><span class="ch">r</span><span class="ch">t</span><span class="ch">a</span><span class="ch">n</span><span class="ch">,</span></span> <span class="wd"><span class="ch">B</span><span class="ch">e</span><span class="ch">b</span><span class="ch">a</span><span class="ch">s</span></span> <span class="wd"><span class="ch">N</span><span class="ch">e</span><span class="ch">u</span><span class="ch">e</span><span class="ch">,</span></span> <span class="wd"><span class="ch">M</span><span class="ch">i</span><span class="ch">c</span><span class="ch">h</span><span class="ch">r</span><span class="ch">o</span><span class="ch">m</span><span class="ch">a</span><span class="ch">.</span></span></span></p>
+        <p class="z9-u"><span class="ly " id="z9-ly-tx3-4" data-layout-allow-overlap><span class="wd"><span class="ch">O</span><span class="ch">b</span><span class="ch">r</span><span class="ch">i</span><span class="ch">g</span><span class="ch">a</span><span class="ch">d</span><span class="ch">o</span></span> <span class="wd"><span class="ch">p</span><span class="ch">o</span><span class="ch">r</span></span> <span class="wd"><span class="ch">o</span><span class="ch">u</span><span class="ch">v</span><span class="ch">i</span><span class="ch">r</span><span class="ch">.</span></span></span></p>
+      </div>
+      <div class="z9-sig">TANTO FAZ — 2026</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="z9-x" style="left:-1650.0px;top:-530.0px;width:1000px;height:1300px;background:#f6f4ef;transform:rotate(-3deg);"><div class="z9-ghost">TANTO<br>FAZ</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="gobo" style="left:-1300px;top:-1500px;width:3600px;height:2600px;transform:rotate(-18deg);opacity:0.62;background:url(assets/img/gobo-a.png) center/100% 100% no-repeat;"></div>
+    
+      </div>
+    </div>
+
+    <div class="fx fx-dof-t" style="--dt:9px"></div>
+    <div class="fx fx-dof-b" style="--db:6px"></div>
+    
+    <div class="fx fx-grade" style="background:rgba(30,80,80,.28)"></div>
+    <div class="fx fx-leak" style="opacity:0.45"></div>
+    <div class="fx fx-vig"></div>
+    <div class="fx fx-grain"></div>
+    <div class="fx z9-black"></div>
+
+    <script>
+      (function () {
+        const R = document.querySelector('[data-composition-id="09-creditos"]');
+        const q = (s) => R.querySelector(s);
+        const qa = (s) => Array.from(R.querySelectorAll(s));
+        const tl = gsap.timeline({ paused: true });
+        const D = 15.980;
+
+        // ---- camera: one state object, one writer ----
+        const world = q(".world");
+        const cam = { x: 0, y: 0, z: 0, rx: 0, rz: 0, s: 1 };
+        function applyCamera() {
+          world.style.transform = `translate3d(960px, 540px, ${cam.z}px) rotateX(${cam.rx}deg) rotateZ(${cam.rz}deg) scale(${cam.s}) translate(${-cam.x}px, ${-cam.y}px)`;
+        }
+        function shot(keys) {
+          Object.assign(cam, keys[0]);
+          delete cam.t; delete cam.e;
+          applyCamera();
+          tl.set(cam, Object.assign({}, strip(keys[0]), { onUpdate: applyCamera }), 0);
+          for (let i = 1; i < keys.length; i++) {
+            const a = keys[i - 1], b = keys[i];
+            tl.to(cam, Object.assign(strip(b), { duration: b.t - a.t, ease: b.e || "sine.inOut", onUpdate: applyCamera }), a.t);
+          }
+        }
+        function strip(k) { const o = Object.assign({}, k); delete o.t; delete o.e; return o; }
+
+        // ---- typing ----
+        function typeOn(TYPE) {
+          TYPE.forEach(([sel, times]) => {
+            const chars = qa(sel + " .ch");
+            chars.forEach((c, i) => {
+              const t = times[Math.min(i, times.length - 1)];
+              tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, Math.max(0, t));
+            });
+          });
+        }
+
+        // ---- film grain: stepped jitter (seek-safe) ----
+        const g = q(".fx-grain");
+        const steps = Math.round(D * 12);
+        tl.fromTo(g, { backgroundPosition: "0px 0px" }, { backgroundPosition: `${steps * 173}px ${steps * 251}px`, duration: D, ease: `steps(${steps})` }, 0);
+        tl.fromTo(q(".fx-leak"), { x: 0, y: 0 }, { x: 120, y: 60, duration: D, ease: "sine.inOut" }, 0);
+
+const TYPE = [["#z9-ly-tx0-1",[1.5,1.526,1.552,1.578,1.605,1.631,1.696,1.724,1.752,1.78,1.836,1.892,1.919,1.946,1.973,2.0,2.06,2.085,2.109,2.134,2.159,2.183,2.208,2.232,2.257,2.282,2.368,2.392,2.416,2.44,2.464,2.487,2.511,2.535,2.559,2.583,2.607,2.631,2.655,2.679,2.703,2.816,2.872,2.898,2.924,2.95,2.977,3.003,3.068,3.096,3.152,3.178,3.204,3.23,3.257,3.283,3.348,3.374,3.4,3.426,3.453,3.479,3.544,3.569,3.594,3.62,3.645,3.67,3.695,3.72,3.796,3.852,3.88,3.908,3.936,3.964,3.992,4.02,4.048,4.076]],["#z9-ly-tx1-2",[4.3,4.324,4.349,4.373,4.397,4.421,4.482,4.505,4.528,4.551,4.574,4.598,4.621,4.644,4.667,4.742,4.768,4.82,4.843,4.866,4.889,4.912,4.934,4.957,4.98,5.003,5.026,5.106,5.129,5.152,5.175,5.198,5.22,5.243,5.266,5.289,5.312,5.392,5.415,5.438,5.461,5.484,5.508,5.531,5.554,5.577,5.652,5.675,5.698,5.721,5.744,5.766,5.789,5.812,5.835,5.858,5.938,5.962,5.986,6.009,6.033,6.057,6.081,6.146,6.198,6.221,6.245,6.268,6.292,6.315,6.338,6.362,6.432,6.455,6.477,6.5,6.522,6.545,6.567,6.59,6.612,6.635,6.657,6.68,6.77,6.795,6.82,6.845,6.87,6.926,6.95,6.975,6.999,7.023,7.047,7.108,7.133,7.158,7.183,7.208,7.264,7.316,7.342,7.368,7.394,7.42,7.446,7.472,7.498]],["#z9-ly-tx2-3",[7.3,7.326,7.352,7.379,7.405,7.431,7.457,7.483,7.509,7.536,7.562,7.66,7.688,7.716,7.744,7.772,7.8,7.87,7.898,7.926,7.954,7.982,8.01,8.08,8.107,8.134,8.161,8.188,8.215,8.242,8.269,8.35,8.378,8.406,8.434,8.462,8.49,8.56,8.588,8.616,8.644,8.672,8.7,8.77,8.797,8.824,8.851,8.878,8.905,8.932,8.959,9.04,9.069,9.098,9.126,9.155,9.22,9.249,9.278,9.306,9.335,9.4,9.43,9.46,9.49,9.52,9.55,9.58,9.61,9.64]],["#z9-ly-tx3-4",[9.9,9.963,10.026,10.089,10.152,10.215,10.278,10.341,10.53,10.6,10.67,10.81,10.88,10.95,11.02,11.09,11.16]]];
+        typeOn(TYPE);
+        shot([{"t": 0, "x": 60, "y": -120, "s": 0.82, "rx": 10, "rz": 1.5}, {"t": 3.0, "x": 40, "y": 280, "s": 0.95, "rx": 12, "rz": 0.5, "e": "sine.inOut"}, {"t": 9.5, "x": 0, "y": 340, "s": 1.0, "rx": 14, "rz": -0.5, "e": "sine.inOut"}, {"t": 15.98, "x": -200, "y": 0, "s": 0.55, "rx": 20, "rz": -4, "e": "sine.inOut"}]);
+tl.fromTo(q(".z9-black"), { opacity: 0 }, { opacity: 1, duration: 2.6, ease: "power1.in" }, 13.18);
+
+        tl.to({}, { duration: 0.001 }, D - 0.001);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["09-creditos"] = tl;
+      })();
+    </script>
+  </div>
+</template>

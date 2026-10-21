@@ -1,0 +1,216 @@
+<template id="03-jardim-template">
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-300-normal.woff2") format("woff2");font-weight:300;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-italic.woff2") format("woff2");font-weight:600;font-style:italic;font-display:block}
+@font-face{font-family:"Anton";src:url("assets/fonts/anton-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo Black";src:url("assets/fonts/archivo-black-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-800-normal.woff2") format("woff2");font-weight:800;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-900-italic.woff2") format("woff2");font-weight:900;font-style:italic;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-900-normal.woff2") format("woff2");font-weight:900;font-style:normal;font-display:block}
+@font-face{font-family:"Bebas Neue";src:url("assets/fonts/bebas-neue-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"DM Mono";src:url("assets/fonts/dm-mono-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Michroma";src:url("assets/fonts/michroma-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Oswald";src:url("assets/fonts/oswald-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+[data-composition-id="03-jardim"] { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#0b0a09; }
+[data-composition-id="03-jardim"] * { box-sizing:border-box; }
+.stage { position:absolute; inset:0; perspective:2400px; perspective-origin:50% 45%; overflow:hidden; }
+.world { position:absolute; left:0; top:0; width:0; height:0; transform-style:preserve-3d; transform-origin:0 0; will-change:transform; }
+.surface { position:absolute; background-size:cover; }
+.obj { position:absolute; transform-origin:50% 50%; }
+.paper { position:absolute; overflow:hidden; transform-origin:50% 50%;
+  box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 28px 50px -10px rgba(0,0,0,.55), 0 60px 120px -30px rgba(0,0,0,.45); }
+.paper > .tex { position:absolute; inset:0; pointer-events:none; background:url("assets/img/paper.jpg") center/700px; mix-blend-mode:multiply; opacity:.55; z-index:50; }
+.paper > .curl { position:absolute; inset:0; pointer-events:none; z-index:51;
+  background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0) 62%, rgba(0,0,0,.16) 100%); }
+.paper > .crease { position:absolute; inset:0; pointer-events:none; z-index:52; background:url("assets/img/crumple.jpg") center/cover; mix-blend-mode:soft-light; opacity:.55; }
+.photo { position:absolute; overflow:hidden; background-size:cover; background-position:center; }
+.prop { position:absolute; transform-origin:50% 50%; filter: drop-shadow(0 26px 24px rgba(0,0,0,.55)) saturate(.82) contrast(1.06); }
+.phfx { position:absolute; pointer-events:none; box-shadow: inset 0 0 140px rgba(0,0,0,.5);
+   background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,0) 45%); }
+.phfx::after { content:""; position:absolute; inset:0; background:url("assets/img/grain.png") 0 0/256px; mix-blend-mode:overlay; opacity:.35; }
+.ly .ch { opacity:0; }
+.ly .wd { white-space:nowrap; }
+.ly em { font-style:italic; }
+.fx { position:absolute; inset:0; pointer-events:none; }
+.fx-dof-t { bottom:auto; height:44%; backdrop-filter: blur(var(--dt, 7px)); -webkit-backdrop-filter: blur(var(--dt, 7px));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%);
+          mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%); }
+.fx-dof-b { top:auto; height:36%; backdrop-filter: blur(var(--db, 5px)); -webkit-backdrop-filter: blur(var(--db, 5px));
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%);
+          mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%); }
+.fx-leak { left:-30%; top:-30%; width:160%; height:160%; inset:auto; mix-blend-mode:screen; opacity:.5;
+  background: radial-gradient(40% 35% at 12% 18%, rgba(255,170,90,.55), rgba(255,120,60,0) 70%),
+              radial-gradient(30% 40% at 92% 90%, rgba(255,210,150,.25), rgba(255,200,150,0) 70%); }
+.fx-vig { background: radial-gradient(120% 95% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.78) 100%); }
+.fx-grade { mix-blend-mode:soft-light; }
+.fx-grain { background:url("assets/img/grain.png"); background-size:512px 512px; mix-blend-mode:overlay; opacity:.22; }
+.gobo { position:absolute; pointer-events:none; mix-blend-mode:multiply; }
+
+
+.g3-ttl { position:absolute; left:60px; right:60px; font-family:"Source Serif"; font-weight:400; font-size:66px; line-height:1.02; color:#1c1c1a; letter-spacing:-.01em; }
+.g3-r { left:450px; right:50px; font-size:58px; }
+.g3-big { font-size:96px; line-height:.95; right:420px; }
+.g3-sub { position:absolute; left:60px; right:60px; font-family:"Source Serif"; font-size:56px; line-height:1.05; color:#1c1c1a; }
+.g3-sub em, .g3-ttl em { font-style:italic; color:#2e6b3a; }
+.g3-body { position:absolute; left:60px; right:60px; columns:2; column-gap:34px; font-family:"Source Serif"; font-size:16px; line-height:1.38; color:#3a3a36; text-align:justify; }
+.g3-fol { position:absolute; left:60px; right:60px; bottom:40px; font-family:"Source Serif"; font-size:14px; letter-spacing:.08em; color:#555; }
+.g3-fol span { float:right; }
+.g3-leaf { opacity:.95; }
+
+  </style>
+  <div id="root" data-composition-id="03-jardim" data-width="1920" data-height="1080" data-duration="15.140" style="background:#0b0a09">
+    <div class="stage" data-layout-allow-overflow>
+      <div class="world" data-layout-allow-overflow>
+
+      <div class="surface" style="left:-2600px;top:-2200px;width:9800px;height:5200px;background-image:url(assets/img/grass.jpg);background-size:1800px 1200px;"></div>
+      <div class="paper " id="g3-a" style="left:-480.0px;top:-630.0px;width:960px;height:1260px;background:#f1ede4;transform:rotate(-3deg);clip-path:polygon(0 0,100% 0,100% 97%,96% 99%,91% 97.5%,86% 99.5%,80% 98%,74% 99.4%,68% 97.6%,61% 99.2%,55% 98%,48% 99.6%,41% 97.8%,35% 99.3%,28% 98%,21% 99.5%,14% 97.7%,8% 99.2%,3% 98%,0 99%)">
+      <div class="g3-ttl" style="top:50px"><span class="ly " id="g3-ly-v1-1" data-layout-allow-overlap><span class="wd"><span class="ch">M</span><span class="ch">e</span></span> <span class="wd"><span class="ch">A</span><span class="ch">r</span><span class="ch">r</span><span class="ch">e</span><span class="ch">p</span><span class="ch">e</span><span class="ch">n</span><span class="ch">d</span><span class="ch">o</span></span> <span class="wd"><span class="ch">À</span><span class="ch">s</span></span> <span class="wd"><span class="ch">V</span><span class="ch">e</span><span class="ch">z</span><span class="ch">e</span><span class="ch">s</span><span class="ch">,</span></span></span><br><span class="ly " id="g3-ly-v2-2" data-layout-allow-overlap><span class="wd"><span class="ch">M</span><span class="ch">e</span></span> <span class="wd"><span class="ch">E</span><span class="ch">n</span><span class="ch">c</span><span class="ch">o</span><span class="ch">n</span><span class="ch">t</span><span class="ch">r</span><span class="ch">a</span></span> <span class="wd"><span class="ch">A</span><span class="ch">q</span><span class="ch">u</span><span class="ch">i</span></span> <span class="wd"><span class="ch">D</span><span class="ch">e</span></span> <span class="wd"><span class="ch">N</span><span class="ch">o</span><span class="ch">v</span><span class="ch">o</span><span class="ch">.</span></span></span></div>
+      <div class="photo" style="left:60px;top:330px;width:840px;height:560px;background-image:url(assets/img/ph-garden.jpg);"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:520px;top:380px;width:300px;height:480px;transform:rotate(24deg);"><svg viewBox="0 0 300 480" width="100%" height="100%"><defs>
+<radialGradient id="ro34" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ff7a92"/><stop offset=".45" stop-color="#c8163c"/><stop offset="1" stop-color="#4a0010"/></radialGradient></defs>
+<path d="M150 200 C150 300 140 380 150 470" stroke="#2e5a22" stroke-width="9" fill="none"/><path d="M150 320 C100 300 70 310 50 340 C90 350 120 345 150 320Z" fill="#2e5a22"/><path d="M152 380 C200 360 230 370 250 395 C210 405 180 400 152 380Z" fill="#2e5a22"/><ellipse cx="213.0" cy="140.0" rx="52" ry="41.6" transform="rotate(0 213.0 140.0)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="189.3" cy="178.3" rx="52" ry="41.6" transform="rotate(51 189.3 178.3)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="136.0" cy="187.8" rx="52" ry="41.6" transform="rotate(103 136.0 187.8)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="93.2" cy="161.3" rx="52" ry="41.6" transform="rotate(154 93.2 161.3)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="93.2" cy="118.7" rx="52" ry="41.6" transform="rotate(206 93.2 118.7)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="136.0" cy="92.2" rx="52" ry="41.6" transform="rotate(257 136.0 92.2)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="189.3" cy="101.7" rx="52" ry="41.6" transform="rotate(309 189.3 101.7)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="187.9" cy="156.1" rx="40" ry="32.0" transform="rotate(29 187.9 156.1)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="151.0" cy="173.6" rx="40" ry="32.0" transform="rotate(89 151.0 173.6)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="113.1" cy="157.5" rx="40" ry="32.0" transform="rotate(149 113.1 157.5)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="112.1" cy="123.9" rx="40" ry="32.0" transform="rotate(209 112.1 123.9)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="149.0" cy="106.4" rx="40" ry="32.0" transform="rotate(269 149.0 106.4)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="186.9" cy="122.5" rx="40" ry="32.0" transform="rotate(329 186.9 122.5)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="163.6" cy="156.5" rx="30" ry="24.0" transform="rotate(57 163.6 156.5)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="134.0" cy="155.2" rx="30" ry="24.0" transform="rotate(129 134.0 155.2)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="126.5" cy="132.9" rx="30" ry="24.0" transform="rotate(201 126.5 132.9)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="151.4" cy="120.4" rx="30" ry="24.0" transform="rotate(273 151.4 120.4)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="174.4" cy="135.0" rx="30" ry="24.0" transform="rotate(345 174.4 135.0)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="150.8" cy="148.4" rx="20" ry="16.0" transform="rotate(86 150.8 148.4)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="139.2" cy="140.6" rx="20" ry="16.0" transform="rotate(176 139.2 140.6)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="149.2" cy="131.6" rx="20" ry="16.0" transform="rotate(266 149.2 131.6)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="160.8" cy="139.4" rx="20" ry="16.0" transform="rotate(356 160.8 139.4)" fill="url(#ro34)" stroke="#5c0518" stroke-width="2" opacity=".96"/></svg></div>
+      <div class="prop" style="left:140px;top:600px;width:220px;height:310px;transform:rotate(-6deg);"><svg viewBox="0 0 300 420" width="100%" height="100%"><defs>
+<linearGradient id="pf35" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f6f74"/><stop offset=".2" stop-color="#6fd3d6"/><stop offset=".55" stop-color="#c8f4f2"/><stop offset=".8" stop-color="#6fd3d6"/><stop offset="1" stop-color="#1a5a5e"/></linearGradient>
+<linearGradient id="pfc37" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b3b44"/><stop offset=".4" stop-color="#e9e9f0"/><stop offset=".6" stop-color="#9a9aa8"/><stop offset="1" stop-color="#2a2a30"/></linearGradient>
+<linearGradient id="pfh36" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<ellipse cx="150" cy="405" rx="120" ry="12" fill="#000" opacity=".35"/>
+<rect x="118" y="20" width="64" height="80" rx="6" fill="url(#pfc37)"/>
+<rect x="130" y="96" width="40" height="30" fill="#bfc9cc"/>
+<path d="M40 150 Q40 120 80 120 L220 120 Q260 120 260 150 L265 370 Q265 400 230 400 L70 400 Q35 400 35 370 Z" fill="url(#pf35)"/>
+<path d="M60 140 L90 140 L80 380 L58 380 Z" fill="url(#pfh36)"/>
+<rect x="85" y="230" width="130" height="70" fill="#f6efe6"/>
+<rect x="85" y="230" width="130" height="70" fill="none" stroke="#c23" stroke-width="2"/>
+<text x="150" y="262" text-anchor="middle" font-family="Source Serif" font-size="20" font-style="italic" fill="#c23">TANTO FAZ</text>
+<text x="150" y="285" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#333">EAU DE PARFUM</text>
+</svg></div>
+      <div class="g3-body" style="top:930px">“Tanto Faz” é uma carta aberta sobre entrega e medo de errar de novo. A faixa atravessa o refrão como quem repete uma promessa em voz baixa, entre o desejo de ficar e o receio de se arrepender. Nas estrofes, o amor aparece como resgate: alguém que chega do nada, tira do sufoco e cura as feridas sem esforço. O que sobra é a vontade de construir um plano, uma vida inteira, com a pessoa certa ao lado.</div>
+      <div class="g3-fol">TANTO FAZ — 2026<span>12</span></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="g3-b" style="left:640.0px;top:-560.0px;width:960px;height:1260px;background:#f1ede4;transform:rotate(2.5deg);clip-path:polygon(0 0,100% 0,100% 97%,96% 99%,91% 97.5%,86% 99.5%,80% 98%,74% 99.4%,68% 97.6%,61% 99.2%,55% 98%,48% 99.6%,41% 97.8%,35% 99.3%,28% 98%,21% 99.5%,14% 97.7%,8% 99.2%,3% 98%,0 99%)">
+      <div class="photo" style="left:60px;top:60px;width:840px;height:500px;background-image:url(assets/img/ph-garden.jpg);filter:hue-rotate(-12deg)"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:90px;top:560px;width:330px;height:470px;transform:rotate(4deg);"><svg viewBox="0 0 300 420" width="100%" height="100%"><defs>
+<linearGradient id="pf38" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f6f74"/><stop offset=".2" stop-color="#7fd8da"/><stop offset=".55" stop-color="#c8f4f2"/><stop offset=".8" stop-color="#7fd8da"/><stop offset="1" stop-color="#1a5a5e"/></linearGradient>
+<linearGradient id="pfc40" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b3b44"/><stop offset=".4" stop-color="#e9e9f0"/><stop offset=".6" stop-color="#9a9aa8"/><stop offset="1" stop-color="#2a2a30"/></linearGradient>
+<linearGradient id="pfh39" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<ellipse cx="150" cy="405" rx="120" ry="12" fill="#000" opacity=".35"/>
+<rect x="118" y="20" width="64" height="80" rx="6" fill="url(#pfc40)"/>
+<rect x="130" y="96" width="40" height="30" fill="#bfc9cc"/>
+<path d="M40 150 Q40 120 80 120 L220 120 Q260 120 260 150 L265 370 Q265 400 230 400 L70 400 Q35 400 35 370 Z" fill="url(#pf38)"/>
+<path d="M60 140 L90 140 L80 380 L58 380 Z" fill="url(#pfh39)"/>
+<rect x="85" y="230" width="130" height="70" fill="#f6efe6"/>
+<rect x="85" y="230" width="130" height="70" fill="none" stroke="#c23" stroke-width="2"/>
+<text x="150" y="262" text-anchor="middle" font-family="Source Serif" font-size="20" font-style="italic" fill="#c23">TANTO FAZ</text>
+<text x="150" y="285" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#333">EAU DE PARFUM</text>
+</svg></div>
+      <div class="g3-ttl g3-r" style="top:600px"><span class="ly " id="g3-ly-v3-3" data-layout-allow-overlap><span class="wd"><span class="ch">J</span><span class="ch">o</span><span class="ch">g</span><span class="ch">a</span><span class="ch">d</span><span class="ch">o</span></span> <span class="wd"><span class="ch">N</span><span class="ch">o</span><span class="ch">s</span></span> <span class="wd"><span class="ch">C</span><span class="ch">a</span><span class="ch">n</span><span class="ch">t</span><span class="ch">o</span><span class="ch">s</span><span class="ch">,</span></span></span><br><span class="ly " id="g3-ly-v4-4" data-layout-allow-overlap><span class="wd"><span class="ch">N</span><span class="ch">o</span></span> <span class="wd"><span class="ch">F</span><span class="ch">u</span><span class="ch">n</span><span class="ch">d</span><span class="ch">o</span></span> <span class="wd"><span class="ch">D</span><span class="ch">o</span></span> <span class="wd"><span class="ch">P</span><span class="ch">o</span><span class="ch">ç</span><span class="ch">o</span><span class="ch">.</span></span></span></div>
+      <div class="g3-body" style="left:470px;top:860px;columns:1">Gravada entre madrugadas, a música aposta num grave arrastado e numa voz que conversa mais do que canta. Cada verso parece escrito no verso de um papel qualquer — um bilhete, um recado, uma confissão. É sobre escolher e ser escolhido, e sobre pedir, por favor, que essa escolha não vire arrependimento.</div>
+      <div class="g3-fol">TANTO FAZ — 2026<span>13</span></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="g3-c" style="left:1780.0px;top:-650.0px;width:960px;height:1260px;background:#f1ede4;transform:rotate(-1.5deg);clip-path:polygon(0 0,100% 0,100% 97%,96% 99%,91% 97.5%,86% 99.5%,80% 98%,74% 99.4%,68% 97.6%,61% 99.2%,55% 98%,48% 99.6%,41% 97.8%,35% 99.3%,28% 98%,21% 99.5%,14% 97.7%,8% 99.2%,3% 98%,0 99%)">
+      <div class="photo" style="left:0px;top:0px;width:960px;height:900px;background-image:url(assets/img/ph-garden.jpg);filter:brightness(1.1) saturate(1.1)"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:420px;top:200px;width:380px;height:600px;transform:rotate(-16deg);"><svg viewBox="0 0 300 480" width="100%" height="100%"><defs>
+<radialGradient id="ro41" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ff7a92"/><stop offset=".45" stop-color="#e8b030"/><stop offset="1" stop-color="#4a0010"/></radialGradient></defs>
+<path d="M150 200 C150 300 140 380 150 470" stroke="#365a26" stroke-width="9" fill="none"/><path d="M150 320 C100 300 70 310 50 340 C90 350 120 345 150 320Z" fill="#365a26"/><path d="M152 380 C200 360 230 370 250 395 C210 405 180 400 152 380Z" fill="#365a26"/><ellipse cx="213.0" cy="140.0" rx="52" ry="41.6" transform="rotate(0 213.0 140.0)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="189.3" cy="178.3" rx="52" ry="41.6" transform="rotate(51 189.3 178.3)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="136.0" cy="187.8" rx="52" ry="41.6" transform="rotate(103 136.0 187.8)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="93.2" cy="161.3" rx="52" ry="41.6" transform="rotate(154 93.2 161.3)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="93.2" cy="118.7" rx="52" ry="41.6" transform="rotate(206 93.2 118.7)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="136.0" cy="92.2" rx="52" ry="41.6" transform="rotate(257 136.0 92.2)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="189.3" cy="101.7" rx="52" ry="41.6" transform="rotate(309 189.3 101.7)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="187.9" cy="156.1" rx="40" ry="32.0" transform="rotate(29 187.9 156.1)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="151.0" cy="173.6" rx="40" ry="32.0" transform="rotate(89 151.0 173.6)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="113.1" cy="157.5" rx="40" ry="32.0" transform="rotate(149 113.1 157.5)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="112.1" cy="123.9" rx="40" ry="32.0" transform="rotate(209 112.1 123.9)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="149.0" cy="106.4" rx="40" ry="32.0" transform="rotate(269 149.0 106.4)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="186.9" cy="122.5" rx="40" ry="32.0" transform="rotate(329 186.9 122.5)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="163.6" cy="156.5" rx="30" ry="24.0" transform="rotate(57 163.6 156.5)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="134.0" cy="155.2" rx="30" ry="24.0" transform="rotate(129 134.0 155.2)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="126.5" cy="132.9" rx="30" ry="24.0" transform="rotate(201 126.5 132.9)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="151.4" cy="120.4" rx="30" ry="24.0" transform="rotate(273 151.4 120.4)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="174.4" cy="135.0" rx="30" ry="24.0" transform="rotate(345 174.4 135.0)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="150.8" cy="148.4" rx="20" ry="16.0" transform="rotate(86 150.8 148.4)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="139.2" cy="140.6" rx="20" ry="16.0" transform="rotate(176 139.2 140.6)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="149.2" cy="131.6" rx="20" ry="16.0" transform="rotate(266 149.2 131.6)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="160.8" cy="139.4" rx="20" ry="16.0" transform="rotate(356 160.8 139.4)" fill="url(#ro41)" stroke="#5c0518" stroke-width="2" opacity=".96"/></svg></div>
+      <div class="g3-ttl g3-big" style="top:60px;left:56px;color:#f5f0e6"><span class="ly " id="g3-ly-v5-5" data-layout-allow-overlap><span class="wd"><span class="ch">V</span><span class="ch">o</span><span class="ch">c</span><span class="ch">ê</span></span> <span class="wd"><span class="ch">V</span><span class="ch">e</span><span class="ch">i</span><span class="ch">o</span></span> <span class="wd"><span class="ch">D</span><span class="ch">o</span></span> <span class="wd"><span class="ch">N</span><span class="ch">a</span><span class="ch">d</span><span class="ch">a</span></span></span></div>
+      <div class="g3-sub" style="top:960px"><span class="ly " id="g3-ly-v6-6" data-layout-allow-overlap><span class="wd"><span class="ch">e</span></span> <span class="wd"><span class="ch">m</span><span class="ch">e</span></span> <span class="wd"><span class="ch">t</span><span class="ch">i</span><span class="ch">r</span><span class="ch">o</span><span class="ch">u</span></span> <span class="wd"><span class="ch">d</span><span class="ch">o</span></span> <em><span class="wd"><span class="ch">s</span><span class="ch">u</span><span class="ch">f</span><span class="ch">o</span><span class="ch">c</span><span class="ch">o</span><span class="ch">.</span></span></em></span></div>
+      <div class="g3-body" style="top:1060px">“Tanto Faz” é uma carta aberta sobre entrega e medo de errar de novo. A faixa atravessa o refrão como quem repete uma promessa em voz baixa, entre o desejo de ficar e o receio de se arrepender. Nas estrofes, o amor aparece como resgate: alguém que chega do nada, tira do sufoco e cura as feridas sem esforço. O que sobra é a vontade de construir um plano, uma vida inteira, com a pessoa certa ao lado.</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="g3-d" style="left:2940.0px;top:-570.0px;width:960px;height:1260px;background:#f1ede4;transform:rotate(2deg);clip-path:polygon(0 0,100% 0,100% 97%,96% 99%,91% 97.5%,86% 99.5%,80% 98%,74% 99.4%,68% 97.6%,61% 99.2%,55% 98%,48% 99.6%,41% 97.8%,35% 99.3%,28% 98%,21% 99.5%,14% 97.7%,8% 99.2%,3% 98%,0 99%)">
+      <div class="photo" style="left:50px;top:50px;width:420px;height:620px;background-image:url(assets/img/ph-garden.jpg);"><div class="phfx" style="inset:0"></div></div>
+      <div class="photo" style="left:490px;top:50px;width:420px;height:620px;background-image:url(assets/img/ph-teal.jpg);"><div class="phfx" style="inset:0"></div></div>
+      <div class="prop" style="left:560px;top:220px;width:280px;height:250px;transform:rotate(12deg);"><svg viewBox="0 0 200 180" width="100%" height="100%"><defs>
+<radialGradient id="ht42" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#ff9fb4"/><stop offset=".4" stop-color="#e8467c"/><stop offset="1" stop-color="#5a0014"/></radialGradient></defs>
+<path d="M100 170 C40 120 0 90 0 50 C0 20 25 0 52 0 C75 0 92 14 100 32 C108 14 125 0 148 0 C175 0 200 20 200 50 C200 90 160 120 100 170Z" fill="url(#ht42)"/></svg></div>
+      <div class="prop" style="left:150px;top:280px;width:220px;height:310px;transform:rotate(-10deg);"><svg viewBox="0 0 300 420" width="100%" height="100%"><defs>
+<linearGradient id="pf43" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f6f74"/><stop offset=".2" stop-color="#6fd3d6"/><stop offset=".55" stop-color="#c8f4f2"/><stop offset=".8" stop-color="#6fd3d6"/><stop offset="1" stop-color="#1a5a5e"/></linearGradient>
+<linearGradient id="pfc45" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b3b44"/><stop offset=".4" stop-color="#e9e9f0"/><stop offset=".6" stop-color="#9a9aa8"/><stop offset="1" stop-color="#2a2a30"/></linearGradient>
+<linearGradient id="pfh44" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<ellipse cx="150" cy="405" rx="120" ry="12" fill="#000" opacity=".35"/>
+<rect x="118" y="20" width="64" height="80" rx="6" fill="url(#pfc45)"/>
+<rect x="130" y="96" width="40" height="30" fill="#bfc9cc"/>
+<path d="M40 150 Q40 120 80 120 L220 120 Q260 120 260 150 L265 370 Q265 400 230 400 L70 400 Q35 400 35 370 Z" fill="url(#pf43)"/>
+<path d="M60 140 L90 140 L80 380 L58 380 Z" fill="url(#pfh44)"/>
+<rect x="85" y="230" width="130" height="70" fill="#f6efe6"/>
+<rect x="85" y="230" width="130" height="70" fill="none" stroke="#c23" stroke-width="2"/>
+<text x="150" y="262" text-anchor="middle" font-family="Source Serif" font-size="20" font-style="italic" fill="#c23">TANTO FAZ</text>
+<text x="150" y="285" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#333">EAU DE PARFUM</text>
+</svg></div>
+      <div class="g3-sub" style="top:730px;left:60px;right:60px;font-size:64px"><span class="ly " id="g3-ly-v7-7" data-layout-allow-overlap><span class="wd"><span class="ch">E</span></span> <span class="wd"><span class="ch">c</span><span class="ch">u</span><span class="ch">r</span><span class="ch">o</span><span class="ch">u</span></span> <span class="wd"><span class="ch">m</span><span class="ch">i</span><span class="ch">n</span><span class="ch">h</span><span class="ch">a</span><span class="ch">s</span></span> <span class="wd"><span class="ch">f</span><span class="ch">e</span><span class="ch">r</span><span class="ch">i</span><span class="ch">d</span><span class="ch">a</span><span class="ch">s</span></span></span><br><span class="ly " id="g3-ly-v8-8" data-layout-allow-overlap><span class="wd"><span class="ch">s</span><span class="ch">e</span><span class="ch">m</span></span> <span class="wd"><span class="ch">n</span><span class="ch">e</span><span class="ch">m</span></span> <span class="wd"><span class="ch">f</span><span class="ch">a</span><span class="ch">z</span><span class="ch">e</span><span class="ch">r</span></span> <em><span class="wd"><span class="ch">e</span><span class="ch">s</span><span class="ch">f</span><span class="ch">o</span><span class="ch">r</span><span class="ch">ç</span><span class="ch">o</span><span class="ch">.</span></span></em></span></div>
+      <div class="g3-body" style="top:1000px">Gravada entre madrugadas, a música aposta num grave arrastado e numa voz que conversa mais do que canta. Cada verso parece escrito no verso de um papel qualquer — um bilhete, um recado, uma confissão. É sobre escolher e ser escolhido, e sobre pedir, por favor, que essa escolha não vire arrependimento.</div>
+      <div class="g3-fol">Foto por — · TANTO FAZ<span>14</span></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="obj g3-leaf" style="left:-700px;top:-500px;width:150px;height:88px;transform:rotate(20deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#8a4b1c"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:-560px;top:560px;width:150px;height:88px;transform:rotate(-40deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#a4651e"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:420px;top:-760px;width:150px;height:88px;transform:rotate(80deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#6b3a14"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:980px;top:700px;width:150px;height:88px;transform:rotate(10deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#b98a2a"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:1500px;top:-700px;width:150px;height:88px;transform:rotate(-30deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#8a4b1c"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:2050px;top:760px;width:150px;height:88px;transform:rotate(60deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#6b3a14"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:2640px;top:-780px;width:150px;height:88px;transform:rotate(15deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#a4651e"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:3100px;top:700px;width:150px;height:88px;transform:rotate(-70deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#8a4b1c"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:3700px;top:-760px;width:150px;height:88px;transform:rotate(35deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#b98a2a"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:4100px;top:640px;width:150px;height:88px;transform:rotate(5deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#6b3a14"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:-300px;top:820px;width:150px;height:88px;transform:rotate(50deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#b98a2a"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div><div class="obj g3-leaf" style="left:580px;top:760px;width:150px;height:88px;transform:rotate(-10deg)"><svg viewBox="0 0 120 70" width="100%" height="100%"><path d="M5 35 C30 0 90 0 115 35 C90 70 30 70 5 35Z" fill="#a4651e"/><path d="M5 35 L115 35" stroke="#3a1c08" stroke-width="2" opacity=".6"/></svg></div>
+      <div class="gobo" style="left:-1400px;top:-1500px;width:3200px;height:2400px;transform:rotate(-30deg);opacity:0.62;background:url(assets/img/gobo-b.png) center/100% 100% no-repeat;"></div>
+      <div class="gobo" style="left:2000px;top:-1500px;width:3200px;height:2400px;transform:rotate(-30deg);opacity:0.62;background:url(assets/img/gobo-b.png) center/100% 100% no-repeat;"></div>
+    
+      </div>
+    </div>
+
+    <div class="fx fx-dof-t" style="--dt:10px"></div>
+    <div class="fx fx-dof-b" style="--db:7px"></div>
+    
+    <div class="fx fx-grade" style="background:rgba(70,100,40,.25)"></div>
+    <div class="fx fx-leak" style="opacity:0.5"></div>
+    <div class="fx fx-vig"></div>
+    <div class="fx fx-grain"></div>
+    
+
+    <script>
+      (function () {
+        const R = document.querySelector('[data-composition-id="03-jardim"]');
+        const q = (s) => R.querySelector(s);
+        const qa = (s) => Array.from(R.querySelectorAll(s));
+        const tl = gsap.timeline({ paused: true });
+        const D = 15.140;
+
+        // ---- camera: one state object, one writer ----
+        const world = q(".world");
+        const cam = { x: 0, y: 0, z: 0, rx: 0, rz: 0, s: 1 };
+        function applyCamera() {
+          world.style.transform = `translate3d(960px, 540px, ${cam.z}px) rotateX(${cam.rx}deg) rotateZ(${cam.rz}deg) scale(${cam.s}) translate(${-cam.x}px, ${-cam.y}px)`;
+        }
+        function shot(keys) {
+          Object.assign(cam, keys[0]);
+          delete cam.t; delete cam.e;
+          applyCamera();
+          tl.set(cam, Object.assign({}, strip(keys[0]), { onUpdate: applyCamera }), 0);
+          for (let i = 1; i < keys.length; i++) {
+            const a = keys[i - 1], b = keys[i];
+            tl.to(cam, Object.assign(strip(b), { duration: b.t - a.t, ease: b.e || "sine.inOut", onUpdate: applyCamera }), a.t);
+          }
+        }
+        function strip(k) { const o = Object.assign({}, k); delete o.t; delete o.e; return o; }
+
+        // ---- typing ----
+        function typeOn(TYPE) {
+          TYPE.forEach(([sel, times]) => {
+            const chars = qa(sel + " .ch");
+            chars.forEach((c, i) => {
+              const t = times[Math.min(i, times.length - 1)];
+              tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, Math.max(0, t));
+            });
+          });
+        }
+
+        // ---- film grain: stepped jitter (seek-safe) ----
+        const g = q(".fx-grain");
+        const steps = Math.round(D * 12);
+        tl.fromTo(g, { backgroundPosition: "0px 0px" }, { backgroundPosition: `${steps * 173}px ${steps * 251}px`, duration: D, ease: `steps(${steps})` }, 0);
+        tl.fromTo(q(".fx-leak"), { x: 0, y: 0 }, { x: 120, y: 60, duration: D, ease: "sine.inOut" }, 0);
+
+const TYPE = [["#g3-ly-v1-1",[0.0,0.055,0.34,0.37,0.4,0.431,0.461,0.491,0.521,0.552,0.582,0.68,0.735,1.34,1.395,1.45,1.505,1.56,1.615]],["#g3-ly-v2-2",[1.92,1.975,2.28,2.335,2.39,2.445,2.5,2.555,2.61,2.665,2.84,2.895,2.95,3.005,3.2,3.255,3.36,3.415,3.47,3.525,3.58]],["#g3-ly-v3-3",[3.9,3.955,4.01,4.065,4.12,4.175,4.82,4.875,4.93,5.2,5.255,5.31,5.365,5.42,5.475,5.53]],["#g3-ly-v4-4",[5.98,6.035,6.34,6.395,6.45,6.505,6.56,6.72,6.775,7.08,7.135,7.19,7.245,7.3]],["#g3-ly-v5-5",[7.8,7.855,7.91,7.965,8.56,8.615,8.67,8.725,8.94,8.995,9.08,9.135,9.19,9.245]],["#g3-ly-v6-6",[9.44,9.94,9.98,10.04,10.095,10.15,10.205,10.26,10.56,10.615,10.76,10.815,10.87,10.925,10.98,11.035,11.09]],["#g3-ly-v7-7",[11.14,11.78,11.835,11.89,11.945,12.0,12.32,12.36,12.4,12.44,12.48,12.52,12.62,12.675,12.73,12.785,12.84,12.895,12.95]],["#g3-ly-v8-8",[13.38,13.435,13.49,13.78,13.835,13.89,14.0,14.055,14.11,14.165,14.22,14.38,14.435,14.49,14.545,14.6,14.655,14.71,14.765]]];
+        typeOn(TYPE);
+        shot([{"t": 0, "x": -140, "y": 80, "s": 0.66, "rx": 16, "rz": -4}, {"t": 0.3, "e": "power3.inOut", "x": 0, "y": 40, "s": 0.74, "rx": 12, "rz": -2}, {"t": 3.2, "x": 26.0, "y": 50.0, "s": 0.7659, "rx": 12, "rz": -1.5}, {"t": 3.9, "e": "power3.inOut", "x": 1120, "y": 80, "s": 0.74, "rx": 12, "rz": 2}, {"t": 7.1, "x": 1146.0, "y": 90.0, "s": 0.7659, "rx": 12, "rz": 2.5}, {"t": 7.8, "e": "power3.inOut", "x": 2240, "y": 0, "s": 0.74, "rx": 12, "rz": -1}, {"t": 8.74, "x": 2266.0, "y": 10.0, "s": 0.7659, "rx": 12, "rz": -0.5}, {"t": 9.44, "e": "power3.inOut", "x": 2260, "y": 300, "s": 0.82, "rx": 12, "rz": -1}, {"t": 10.44, "x": 2286.0, "y": 310.0, "s": 0.8487, "rx": 12, "rz": -0.5}, {"t": 11.14, "e": "power3.inOut", "x": 3420, "y": 160, "s": 0.76, "rx": 12, "rz": 2}, {"t": 15.14, "x": 3456.4, "y": 174.0, "s": 0.7972, "rx": 12, "rz": 2.7}]);
+
+
+        tl.to({}, { duration: 0.001 }, D - 0.001);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["03-jardim"] = tl;
+      })();
+    </script>
+  </div>
+</template>

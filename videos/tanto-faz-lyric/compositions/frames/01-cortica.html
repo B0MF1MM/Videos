@@ -1,0 +1,227 @@
+<template id="01-cortica-template">
+  <script src="assets/vendor/gsap.min.js"></script>
+  <style>
+
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-300-normal.woff2") format("woff2");font-weight:300;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-normal.woff2") format("woff2");font-weight:600;font-style:normal;font-display:block}
+@font-face{font-family:"Source Serif";src:url("assets/fonts/source-serif-4-600-italic.woff2") format("woff2");font-weight:600;font-style:italic;font-display:block}
+@font-face{font-family:"Anton";src:url("assets/fonts/anton-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo Black";src:url("assets/fonts/archivo-black-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-800-normal.woff2") format("woff2");font-weight:800;font-style:normal;font-display:block}
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-900-italic.woff2") format("woff2");font-weight:900;font-style:italic;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:"League Spartan";src:url("assets/fonts/league-spartan-900-normal.woff2") format("woff2");font-weight:900;font-style:normal;font-display:block}
+@font-face{font-family:"Bebas Neue";src:url("assets/fonts/bebas-neue-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"DM Mono";src:url("assets/fonts/dm-mono-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Michroma";src:url("assets/fonts/michroma-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:"Oswald";src:url("assets/fonts/oswald-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:block}
+[data-composition-id="01-cortica"] { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#0b0a09; }
+[data-composition-id="01-cortica"] * { box-sizing:border-box; }
+.stage { position:absolute; inset:0; perspective:2400px; perspective-origin:50% 45%; overflow:hidden; }
+.world { position:absolute; left:0; top:0; width:0; height:0; transform-style:preserve-3d; transform-origin:0 0; will-change:transform; }
+.surface { position:absolute; background-size:cover; }
+.obj { position:absolute; transform-origin:50% 50%; }
+.paper { position:absolute; overflow:hidden; transform-origin:50% 50%;
+  box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 28px 50px -10px rgba(0,0,0,.55), 0 60px 120px -30px rgba(0,0,0,.45); }
+.paper > .tex { position:absolute; inset:0; pointer-events:none; background:url("assets/img/paper.jpg") center/700px; mix-blend-mode:multiply; opacity:.55; z-index:50; }
+.paper > .curl { position:absolute; inset:0; pointer-events:none; z-index:51;
+  background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0) 62%, rgba(0,0,0,.16) 100%); }
+.paper > .crease { position:absolute; inset:0; pointer-events:none; z-index:52; background:url("assets/img/crumple.jpg") center/cover; mix-blend-mode:soft-light; opacity:.55; }
+.photo { position:absolute; overflow:hidden; background-size:cover; background-position:center; }
+.prop { position:absolute; transform-origin:50% 50%; filter: drop-shadow(0 26px 24px rgba(0,0,0,.55)) saturate(.82) contrast(1.06); }
+.phfx { position:absolute; pointer-events:none; box-shadow: inset 0 0 140px rgba(0,0,0,.5);
+   background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,0) 45%); }
+.phfx::after { content:""; position:absolute; inset:0; background:url("assets/img/grain.png") 0 0/256px; mix-blend-mode:overlay; opacity:.35; }
+.ly .ch { opacity:0; }
+.ly .wd { white-space:nowrap; }
+.ly em { font-style:italic; }
+.fx { position:absolute; inset:0; pointer-events:none; }
+.fx-dof-t { bottom:auto; height:44%; backdrop-filter: blur(var(--dt, 7px)); -webkit-backdrop-filter: blur(var(--dt, 7px));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%);
+          mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.6) 41%, transparent 91%); }
+.fx-dof-b { top:auto; height:36%; backdrop-filter: blur(var(--db, 5px)); -webkit-backdrop-filter: blur(var(--db, 5px));
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%);
+          mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.55) 39%, transparent 94%); }
+.fx-leak { left:-30%; top:-30%; width:160%; height:160%; inset:auto; mix-blend-mode:screen; opacity:.5;
+  background: radial-gradient(40% 35% at 12% 18%, rgba(255,170,90,.55), rgba(255,120,60,0) 70%),
+              radial-gradient(30% 40% at 92% 90%, rgba(255,210,150,.25), rgba(255,200,150,0) 70%); }
+.fx-vig { background: radial-gradient(120% 95% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.78) 100%); }
+.fx-grade { mix-blend-mode:soft-light; }
+.fx-grain { background:url("assets/img/grain.png"); background-size:512px 512px; mix-blend-mode:overlay; opacity:.22; }
+.gobo { position:absolute; pointer-events:none; mix-blend-mode:multiply; }
+
+
+.c1-grad { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(15,23,24,0) 32%, rgba(15,23,24,.92) 58%, #0f1718 70%); }
+.c1-head { position:absolute; left:60px; right:60px; text-align:center; color:#eef3ef; font-family:"Source Serif"; font-weight:400; }
+.c1-top { top:690px; } .c1-mid { top:650px; }
+.c1-big { display:block; font-size:82px; line-height:1.02; letter-spacing:-.01em; }
+.c1-big em { font-weight:600; }
+.c1-cols { position:absolute; left:70px; right:70px; top:965px; columns:2; column-gap:40px; color:#c9d4d0; font-family:"Source Serif"; font-size:15.5px; line-height:1.35; text-align:justify; }
+.c1-cols p { margin:0 0 8px; text-indent:1.2em; }
+.c1-sig { position:absolute; left:0; right:0; bottom:58px; text-align:center; color:#eef3ef; font-family:"Source Serif"; font-weight:600; letter-spacing:.06em; font-size:20px; }
+.c1-fine { position:absolute; left:0; right:0; bottom:34px; text-align:center; color:#8ea09b; font-family:"Source Serif"; font-size:11px; }
+.c1-cal { position:absolute; inset:30px; display:grid; grid-template-columns:1fr 1fr; gap:20px 26px; font-family:"Source Serif"; color:#333; }
+.c1-cal .m { display:flex; flex-wrap:wrap; gap:4px; align-content:flex-start; }
+.c1-cal .m b { display:block; width:100%; font-size:22px; font-weight:600; margin-bottom:6px; }
+.c1-cal .m i { width:16px; height:12px; background:#8a8a8a; opacity:.5; }
+.c1-note { position:absolute; inset:28px; font-family:"Source Serif"; font-style:italic; font-size:30px; line-height:1.2; color:#2a2a2a; transform:rotate(-2deg); }
+.c1-fly { position:absolute; inset:30px; font-family:Anton; font-size:120px; line-height:.92; color:#f4e83a; }
+
+  </style>
+  <div id="root" data-composition-id="01-cortica" data-width="1920" data-height="1080" data-duration="14.850" style="background:#0b0a09">
+    <div class="stage" data-layout-allow-overflow>
+      <div class="world" data-layout-allow-overflow>
+
+      <div class="surface" style="left:-2600px;top:-2200px;width:9800px;height:5200px;background-image:url(assets/img/cork.jpg);background-size:2400px 1600px;"></div>
+      <div class="paper " id="c1-cal" style="left:-1030.0px;top:-380.0px;width:420px;height:600px;background:#e9e6df;transform:rotate(4deg);"><div class="c1-cal"><div class="m"><b>Março</b><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="m"><b>Abril</b><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="m"><b>Julho</b><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="m"><b>Agosto</b><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="m"><b>Novembro</b><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="m"><b>Dezembro</b><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="obj" style="left:190px;top:8px;width:40px;height:40px"><svg viewBox="0 0 60 60" width="100%" height="100%"><defs>
+<radialGradient id="pin11" cx="38%" cy="32%" r="65%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".18" stop-color="#e8b04a"/><stop offset="1" stop-color="#3a0508"/></radialGradient></defs>
+<ellipse cx="34" cy="38" rx="20" ry="9" fill="#000" opacity=".35"/>
+<circle cx="28" cy="27" r="17" fill="url(#pin11)"/></svg></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="c1-p1" style="left:-450.0px;top:-635.0px;width:900px;height:1270px;background:#0f1718;transform:rotate(-2.2deg);">
+        <div class="photo" style="left:0px;top:0px;width:900px;height:1270px;background-image:url(assets/img/ph-teal.jpg);filter:saturate(.8) contrast(1.05)"><div class="phfx" style="inset:0"></div></div>
+        <div class="prop" style="left:400px;top:90px;width:420px;height:580px;transform:rotate(-14deg)"><svg viewBox="0 0 520 720" width="100%" height="100%"><defs>
+<linearGradient id="ph12" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd0e2"/><stop offset=".25" stop-color="#e2457f"/><stop offset=".75" stop-color="#8a1240"/><stop offset="1" stop-color="#3b0418"/></linearGradient>
+<radialGradient id="phh13" cx="30%" cy="25%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<ellipse cx="150" cy="300" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 150 300)"/><ellipse cx="163" cy="322" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 163 322)"/><ellipse cx="176" cy="344" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 176 344)"/><ellipse cx="189" cy="366" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 189 366)"/><ellipse cx="202" cy="388" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 202 388)"/><ellipse cx="215" cy="410" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 215 410)"/><ellipse cx="228" cy="432" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 228 432)"/><ellipse cx="241" cy="454" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 241 454)"/><ellipse cx="254" cy="476" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 254 476)"/><ellipse cx="267" cy="498" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 267 498)"/><ellipse cx="280" cy="520" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 280 520)"/><ellipse cx="293" cy="542" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 293 542)"/><ellipse cx="306" cy="564" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 306 564)"/><ellipse cx="319" cy="586" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 319 586)"/><ellipse cx="332" cy="608" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 332 608)"/><ellipse cx="345" cy="630" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 345 630)"/><ellipse cx="358" cy="652" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 358 652)"/><ellipse cx="371" cy="674" rx="26" ry="9" fill="none" stroke="#1d1d1d" stroke-width="5" transform="rotate(-35 371 674)"/>
+<path d="M120 40 C60 40 40 90 60 140 L95 210 C110 240 150 235 160 205 L175 160 C182 140 170 120 150 118 L130 116 C120 100 125 80 150 75 L330 60 C360 58 372 78 360 96 L350 112 C338 128 345 150 365 155 L410 168 C440 175 470 150 470 115 C470 60 430 25 360 22 Z" fill="url(#ph12)"/>
+<path d="M120 40 C60 40 40 90 60 140 L95 210 C110 240 150 235 160 205 L175 160 C182 140 170 120 150 118 L130 116 C120 100 125 80 150 75 L330 60 C360 58 372 78 360 96 L350 112 C338 128 345 150 365 155 L410 168 C440 175 470 150 470 115 C470 60 430 25 360 22 Z" fill="url(#phh13)"/>
+</svg></div>
+        <div class="c1-grad"></div>
+        <div class="c1-head c1-top"><span class="ly c1-big" id="c1-ly-c1-1" data-layout-allow-overlap><span class="wd"><span class="ch">F</span><span class="ch">a</span><span class="ch">l</span><span class="ch">a</span></span> <span class="wd"><span class="ch">Q</span><span class="ch">u</span><span class="ch">e</span></span> <span class="wd"><span class="ch">T</span><span class="ch">o</span><span class="ch">c</span><span class="ch">a</span><span class="ch">,</span></span> <span class="wd"><span class="ch">E</span></span> <span class="wd"><span class="ch">T</span><span class="ch">a</span><span class="ch">n</span><span class="ch">t</span><span class="ch">o</span></span> <span class="wd"><span class="ch">F</span><span class="ch">a</span><span class="ch">z</span><span class="ch">.</span></span></span></div>
+        <div class="c1-cols"><p>“Tanto Faz” é uma carta aberta sobre entrega e medo de errar de novo. A faixa atravessa o refrão como quem repete uma promessa em voz baixa, entre o desejo de ficar e o receio de se arrepender. Nas estrofes, o amor aparece como resgate: alguém que chega do nada, tira do sufoco e cura as feridas sem esforço. O que sobra é a vontade de construir um plano, uma vida inteira, com a pessoa certa ao lado.</p><p>Gravada entre madrugadas, a música aposta num grave arrastado e numa voz que conversa mais do que canta. Cada verso parece escrito no verso de um papel qualquer — um bilhete, um recado, uma confissão. É sobre escolher e ser escolhido, e sobre pedir, por favor, que essa escolha não vire arrependimento.</p></div>
+        <div class="c1-sig">TANTO FAZ — 2026</div>
+        <div class="c1-fine">Letra transcrita, sujeita a correção · Lado A, faixa 1</div>
+        <div class="obj" style="left:428.0px;top:14px;width:44px;height:44px"><svg viewBox="0 0 60 60" width="100%" height="100%"><defs>
+<radialGradient id="pin14" cx="38%" cy="32%" r="65%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".18" stop-color="#d1202f"/><stop offset="1" stop-color="#3a0508"/></radialGradient></defs>
+<ellipse cx="34" cy="38" rx="20" ry="9" fill="#000" opacity=".35"/>
+<circle cx="28" cy="27" r="17" fill="url(#pin14)"/></svg></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="c1-p2" style="left:670.0px;top:-545.0px;width:900px;height:1270px;background:#0f1718;transform:rotate(2.6deg);">
+        <div class="photo" style="left:0px;top:0px;width:900px;height:1270px;background-image:url(assets/img/ph-night.jpg);filter:saturate(.8) contrast(1.05)"><div class="phfx" style="inset:0"></div></div>
+        <div class="prop" style="left:300px;top:70px;width:320px;height:510px;transform:rotate(18deg)"><svg viewBox="0 0 300 480" width="100%" height="100%"><defs>
+<radialGradient id="ro15" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ff7a92"/><stop offset=".45" stop-color="#c8163c"/><stop offset="1" stop-color="#4a0010"/></radialGradient></defs>
+<path d="M150 200 C150 300 140 380 150 470" stroke="#2e5a22" stroke-width="9" fill="none"/><path d="M150 320 C100 300 70 310 50 340 C90 350 120 345 150 320Z" fill="#2e5a22"/><path d="M152 380 C200 360 230 370 250 395 C210 405 180 400 152 380Z" fill="#2e5a22"/><ellipse cx="213.0" cy="140.0" rx="52" ry="41.6" transform="rotate(0 213.0 140.0)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="189.3" cy="178.3" rx="52" ry="41.6" transform="rotate(51 189.3 178.3)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="136.0" cy="187.8" rx="52" ry="41.6" transform="rotate(103 136.0 187.8)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="93.2" cy="161.3" rx="52" ry="41.6" transform="rotate(154 93.2 161.3)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="93.2" cy="118.7" rx="52" ry="41.6" transform="rotate(206 93.2 118.7)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="136.0" cy="92.2" rx="52" ry="41.6" transform="rotate(257 136.0 92.2)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="189.3" cy="101.7" rx="52" ry="41.6" transform="rotate(309 189.3 101.7)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="187.9" cy="156.1" rx="40" ry="32.0" transform="rotate(29 187.9 156.1)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="151.0" cy="173.6" rx="40" ry="32.0" transform="rotate(89 151.0 173.6)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="113.1" cy="157.5" rx="40" ry="32.0" transform="rotate(149 113.1 157.5)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="112.1" cy="123.9" rx="40" ry="32.0" transform="rotate(209 112.1 123.9)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="149.0" cy="106.4" rx="40" ry="32.0" transform="rotate(269 149.0 106.4)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="186.9" cy="122.5" rx="40" ry="32.0" transform="rotate(329 186.9 122.5)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="163.6" cy="156.5" rx="30" ry="24.0" transform="rotate(57 163.6 156.5)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="134.0" cy="155.2" rx="30" ry="24.0" transform="rotate(129 134.0 155.2)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="126.5" cy="132.9" rx="30" ry="24.0" transform="rotate(201 126.5 132.9)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="151.4" cy="120.4" rx="30" ry="24.0" transform="rotate(273 151.4 120.4)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="174.4" cy="135.0" rx="30" ry="24.0" transform="rotate(345 174.4 135.0)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="150.8" cy="148.4" rx="20" ry="16.0" transform="rotate(86 150.8 148.4)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="139.2" cy="140.6" rx="20" ry="16.0" transform="rotate(176 139.2 140.6)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="149.2" cy="131.6" rx="20" ry="16.0" transform="rotate(266 149.2 131.6)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/><ellipse cx="160.8" cy="139.4" rx="20" ry="16.0" transform="rotate(356 160.8 139.4)" fill="url(#ro15)" stroke="#5c0518" stroke-width="2" opacity=".96"/></svg></div>
+        <div class="c1-grad"></div>
+        <div class="c1-head c1-mid"><span class="ly c1-big" id="c1-ly-c2-2" data-layout-allow-overlap><span class="wd"><span class="ch">S</span><span class="ch">e</span></span> <span class="wd"><span class="ch">V</span><span class="ch">o</span><span class="ch">c</span><span class="ch">ê</span></span> <span class="wd"><span class="ch">N</span><span class="ch">ã</span><span class="ch">o</span></span> <span class="wd"><span class="ch">V</span><span class="ch">e</span><span class="ch">m</span><span class="ch">,</span></span> <em><span class="wd"><span class="ch">N</span><span class="ch">ã</span><span class="ch">o</span></span></em> <em><span class="wd"><span class="ch">Q</span><span class="ch">u</span><span class="ch">e</span><span class="ch">r</span><span class="ch">o</span></span></em> <em><span class="wd"><span class="ch">S</span><span class="ch">a</span><span class="ch">b</span><span class="ch">e</span><span class="ch">r</span><span class="ch">.</span></span></em></span></div>
+        <div class="c1-cols"><p>“Tanto Faz” é uma carta aberta sobre entrega e medo de errar de novo. A faixa atravessa o refrão como quem repete uma promessa em voz baixa, entre o desejo de ficar e o receio de se arrepender. Nas estrofes, o amor aparece como resgate: alguém que chega do nada, tira do sufoco e cura as feridas sem esforço. O que sobra é a vontade de construir um plano, uma vida inteira, com a pessoa certa ao lado.</p><p>Gravada entre madrugadas, a música aposta num grave arrastado e numa voz que conversa mais do que canta. Cada verso parece escrito no verso de um papel qualquer — um bilhete, um recado, uma confissão. É sobre escolher e ser escolhido, e sobre pedir, por favor, que essa escolha não vire arrependimento.</p></div>
+        <div class="c1-sig">TANTO FAZ — 2026</div>
+        <div class="c1-fine">Letra transcrita, sujeita a correção · Lado A, faixa 1</div>
+        <div class="obj" style="left:428.0px;top:14px;width:44px;height:44px"><svg viewBox="0 0 60 60" width="100%" height="100%"><defs>
+<radialGradient id="pin16" cx="38%" cy="32%" r="65%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".18" stop-color="#d1202f"/><stop offset="1" stop-color="#3a0508"/></radialGradient></defs>
+<ellipse cx="34" cy="38" rx="20" ry="9" fill="#000" opacity=".35"/>
+<circle cx="28" cy="27" r="17" fill="url(#pin16)"/></svg></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="c1-note" style="left:510.0px;top:-840.0px;width:260px;height:240px;background:#f3e27a;transform:rotate(-6deg);"><div class="c1-note">não esquecer:<br>ligar pra ela</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="c1-note2" style="left:1565.0px;top:755.0px;width:230px;height:210px;background:#f7b3c7;transform:rotate(8deg);"><div class="c1-note">sábado<br>22h</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="c1-p3" style="left:1780.0px;top:-675.0px;width:900px;height:1270px;background:#0f1718;transform:rotate(-1.4deg);">
+        <div class="photo" style="left:0px;top:0px;width:900px;height:1270px;background-image:url(assets/img/ph-teal.jpg);filter:saturate(.8) contrast(1.05)"><div class="phfx" style="inset:0"></div></div>
+        <div class="prop" style="left:200px;top:180px;width:520px;height:340px;transform:rotate(-8deg)"><svg viewBox="0 0 400 260" width="100%" height="100%"><defs>
+<linearGradient id="cs17" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#333"/><stop offset="1" stop-color="#0c0c0c"/></linearGradient></defs>
+<rect x="0" y="0" width="400" height="260" rx="16" fill="url(#cs17)"/>
+<rect x="30" y="26" width="340" height="130" rx="6" fill="#f2e9d8"/>
+<rect x="30" y="26" width="340" height="30" fill="#e2245c"/>
+<text x="200" y="110" text-anchor="middle" font-family="Archivo Black" font-size="34" fill="#111">TANTO FAZ</text>
+<circle cx="120" cy="190" r="26" fill="#ddd"/><circle cx="280" cy="190" r="26" fill="#ddd"/>
+<rect x="150" y="176" width="100" height="28" fill="#222"/></svg></div>
+        <div class="c1-grad"></div>
+        <div class="c1-head c1-top"><span class="ly c1-big" id="c1-ly-c3-3" data-layout-allow-overlap><span class="wd"><span class="ch">T</span><span class="ch">a</span><span class="ch">n</span><span class="ch">t</span><span class="ch">o</span></span> <span class="wd"><span class="ch">F</span><span class="ch">a</span><span class="ch">z</span><span class="ch">,</span></span> <span class="wd"><span class="ch">V</span><span class="ch">o</span><span class="ch">u</span></span> <span class="wd"><span class="ch">A</span><span class="ch">t</span><span class="ch">é</span></span> <span class="wd"><span class="ch">V</span><span class="ch">o</span><span class="ch">c</span><span class="ch">ê</span><span class="ch">,</span></span> <span class="wd"><span class="ch">T</span><span class="ch">a</span><span class="ch">n</span><span class="ch">t</span><span class="ch">o</span></span> <span class="wd"><span class="ch">F</span><span class="ch">a</span><span class="ch">z</span><span class="ch">.</span></span></span></div>
+        <div class="c1-cols"><p>“Tanto Faz” é uma carta aberta sobre entrega e medo de errar de novo. A faixa atravessa o refrão como quem repete uma promessa em voz baixa, entre o desejo de ficar e o receio de se arrepender. Nas estrofes, o amor aparece como resgate: alguém que chega do nada, tira do sufoco e cura as feridas sem esforço. O que sobra é a vontade de construir um plano, uma vida inteira, com a pessoa certa ao lado.</p><p>Gravada entre madrugadas, a música aposta num grave arrastado e numa voz que conversa mais do que canta. Cada verso parece escrito no verso de um papel qualquer — um bilhete, um recado, uma confissão. É sobre escolher e ser escolhido, e sobre pedir, por favor, que essa escolha não vire arrependimento.</p></div>
+        <div class="c1-sig">TANTO FAZ — 2026</div>
+        <div class="c1-fine">Letra transcrita, sujeita a correção · Lado A, faixa 1</div>
+        <div class="obj" style="left:428.0px;top:14px;width:44px;height:44px"><svg viewBox="0 0 60 60" width="100%" height="100%"><defs>
+<radialGradient id="pin18" cx="38%" cy="32%" r="65%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".18" stop-color="#d1202f"/><stop offset="1" stop-color="#3a0508"/></radialGradient></defs>
+<ellipse cx="34" cy="38" rx="20" ry="9" fill="#000" opacity=".35"/>
+<circle cx="28" cy="27" r="17" fill="url(#pin18)"/></svg></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="c1-p4" style="left:2880.0px;top:-575.0px;width:900px;height:1270px;background:#0f1718;transform:rotate(1.8deg);">
+        <div class="photo" style="left:0px;top:0px;width:900px;height:1270px;background-image:url(assets/img/ph-pink.jpg);filter:saturate(.8) contrast(1.05)"><div class="phfx" style="inset:0"></div></div>
+        <div class="prop" style="left:260px;top:110px;width:380px;height:380px;transform:rotate(6deg)"><svg viewBox="0 0 300 300" width="100%" height="100%"><defs>
+<linearGradient id="rg19" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".3" stop-color="#d7a73c"/><stop offset=".6" stop-color="#7a5310"/><stop offset="1" stop-color="#f3d27a"/></linearGradient>
+<linearGradient id="rgd20" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#bfe8ff"/><stop offset=".7" stop-color="#6aa0c8"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
+<ellipse cx="150" cy="270" rx="100" ry="14" fill="#000" opacity=".35"/>
+<ellipse cx="150" cy="190" rx="95" ry="72" fill="none" stroke="url(#rg19)" stroke-width="18"/>
+<path d="M115 118 L150 70 L185 118 L150 150 Z" fill="url(#rgd20)" stroke="#e8f6ff" stroke-width="2"/>
+<path d="M115 118 L185 118 M150 70 L150 150 M132 95 L168 95" stroke="#fff" stroke-width="1.5" opacity=".8"/>
+</svg></div>
+        <div class="c1-grad"></div>
+        <div class="c1-head c1-mid"><span class="ly c1-big" id="c1-ly-c4-4" data-layout-allow-overlap><span class="wd"><span class="ch">D</span><span class="ch">e</span></span> <span class="wd"><span class="ch">N</span><span class="ch">o</span><span class="ch">v</span><span class="ch">o</span></span> <span class="wd"><span class="ch">M</span><span class="ch">e</span></span> <span class="wd"><span class="ch">E</span><span class="ch">n</span><span class="ch">t</span><span class="ch">r</span><span class="ch">e</span><span class="ch">g</span><span class="ch">o</span></span> <em><span class="wd"><span class="ch">C</span><span class="ch">o</span><span class="ch">m</span></span></em> <em><span class="wd"><span class="ch">P</span><span class="ch">r</span><span class="ch">a</span><span class="ch">z</span><span class="ch">e</span><span class="ch">r</span><span class="ch">,</span></span></em> <span class="wd"><span class="ch">T</span><span class="ch">a</span><span class="ch">n</span><span class="ch">t</span><span class="ch">o</span></span> <span class="wd"><span class="ch">F</span><span class="ch">a</span><span class="ch">z</span><span class="ch">.</span></span></span></div>
+        <div class="c1-cols"><p>“Tanto Faz” é uma carta aberta sobre entrega e medo de errar de novo. A faixa atravessa o refrão como quem repete uma promessa em voz baixa, entre o desejo de ficar e o receio de se arrepender. Nas estrofes, o amor aparece como resgate: alguém que chega do nada, tira do sufoco e cura as feridas sem esforço. O que sobra é a vontade de construir um plano, uma vida inteira, com a pessoa certa ao lado.</p><p>Gravada entre madrugadas, a música aposta num grave arrastado e numa voz que conversa mais do que canta. Cada verso parece escrito no verso de um papel qualquer — um bilhete, um recado, uma confissão. É sobre escolher e ser escolhido, e sobre pedir, por favor, que essa escolha não vire arrependimento.</p></div>
+        <div class="c1-sig">TANTO FAZ — 2026</div>
+        <div class="c1-fine">Letra transcrita, sujeita a correção · Lado A, faixa 1</div>
+        <div class="obj" style="left:428.0px;top:14px;width:44px;height:44px"><svg viewBox="0 0 60 60" width="100%" height="100%"><defs>
+<radialGradient id="pin21" cx="38%" cy="32%" r="65%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".18" stop-color="#d1202f"/><stop offset="1" stop-color="#3a0508"/></radialGradient></defs>
+<ellipse cx="34" cy="38" rx="20" ry="9" fill="#000" opacity=".35"/>
+<circle cx="28" cy="27" r="17" fill="url(#pin21)"/></svg></div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="c1-flyer" style="left:2540.0px;top:-1080.0px;width:520px;height:360px;background:#111;transform:rotate(-3deg);"><div class="c1-fly">TANTO<br>FAZ</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="paper " id="c1-flyer2" style="left:4000.0px;top:-980.0px;width:400px;height:560px;background:#e9e6df;transform:rotate(5deg);"><div class="c1-fly" style="color:#e2243c">SÁB<br>22H</div><div class="tex"></div><div class="curl"></div></div>
+      <div class="gobo" style="left:-900px;top:-1400px;width:2600px;height:2000px;transform:rotate(-22deg);opacity:0.62;background:url(assets/img/gobo-a.png) center/100% 100% no-repeat;"></div>
+      <div class="gobo" style="left:2100px;top:-1300px;width:2600px;height:2000px;transform:rotate(-22deg);opacity:0.56;background:url(assets/img/gobo-a.png) center/100% 100% no-repeat;"></div>
+    
+      </div>
+    </div>
+
+    <div class="fx fx-dof-t" style="--dt:9px"></div>
+    <div class="fx fx-dof-b" style="--db:6px"></div>
+    
+    <div class="fx fx-grade" style="background:rgba(30,80,80,.28)"></div>
+    <div class="fx fx-leak" style="opacity:0.55"></div>
+    <div class="fx fx-vig"></div>
+    <div class="fx fx-grain"></div>
+    
+
+    <script>
+      (function () {
+        const R = document.querySelector('[data-composition-id="01-cortica"]');
+        const q = (s) => R.querySelector(s);
+        const qa = (s) => Array.from(R.querySelectorAll(s));
+        const tl = gsap.timeline({ paused: true });
+        const D = 14.850;
+
+        // ---- camera: one state object, one writer ----
+        const world = q(".world");
+        const cam = { x: 0, y: 0, z: 0, rx: 0, rz: 0, s: 1 };
+        function applyCamera() {
+          world.style.transform = `translate3d(960px, 540px, ${cam.z}px) rotateX(${cam.rx}deg) rotateZ(${cam.rz}deg) scale(${cam.s}) translate(${-cam.x}px, ${-cam.y}px)`;
+        }
+        function shot(keys) {
+          Object.assign(cam, keys[0]);
+          delete cam.t; delete cam.e;
+          applyCamera();
+          tl.set(cam, Object.assign({}, strip(keys[0]), { onUpdate: applyCamera }), 0);
+          for (let i = 1; i < keys.length; i++) {
+            const a = keys[i - 1], b = keys[i];
+            tl.to(cam, Object.assign(strip(b), { duration: b.t - a.t, ease: b.e || "sine.inOut", onUpdate: applyCamera }), a.t);
+          }
+        }
+        function strip(k) { const o = Object.assign({}, k); delete o.t; delete o.e; return o; }
+
+        // ---- typing ----
+        function typeOn(TYPE) {
+          TYPE.forEach(([sel, times]) => {
+            const chars = qa(sel + " .ch");
+            chars.forEach((c, i) => {
+              const t = times[Math.min(i, times.length - 1)];
+              tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "none", immediateRender: false }, Math.max(0, t));
+            });
+          });
+        }
+
+        // ---- film grain: stepped jitter (seek-safe) ----
+        const g = q(".fx-grain");
+        const steps = Math.round(D * 12);
+        tl.fromTo(g, { backgroundPosition: "0px 0px" }, { backgroundPosition: `${steps * 173}px ${steps * 251}px`, duration: D, ease: `steps(${steps})` }, 0);
+        tl.fromTo(q(".fx-leak"), { x: 0, y: 0 }, { x: 120, y: 60, duration: D, ease: "sine.inOut" }, 0);
+
+const TYPE = [["#c1-ly-c1-1",[0.24,0.295,0.35,0.405,0.8,0.855,0.91,1.1,1.155,1.21,1.265,1.32,1.54,1.96,2.015,2.07,2.125,2.18,2.88,2.935,2.99,3.045]],["#c1-ly-c2-2",[3.64,3.695,4.28,4.335,4.39,4.445,4.62,4.675,4.73,4.98,5.035,5.09,5.145,5.62,5.652,5.684,5.74,5.791,5.842,5.894,5.945,6.06,6.115,6.17,6.225,6.28,6.335]],["#c1-ly-c3-3",[6.7,6.755,6.81,6.865,6.92,7.32,7.375,7.43,7.485,8.0,8.055,8.11,8.26,8.315,8.37,8.56,8.615,8.67,8.725,8.78,9.06,9.115,9.17,9.225,9.28,9.62,9.675,9.73,9.785]],["#c1-ly-c4-4",[10.5,10.555,11.92,11.975,12.03,12.085,12.22,12.275,12.6,12.65,12.701,12.751,12.801,12.851,12.902,13.04,13.095,13.15,13.3,13.355,13.41,13.465,13.52,13.575,13.63,14.02,14.075,14.13,14.185,14.24,14.38,14.435,14.49,14.545]]];
+        typeOn(TYPE);
+        shot([{"t": 0, "x": -260, "y": -40, "s": 0.5, "rx": 18, "rz": -6}, {"t": 0.24, "e": "power3.inOut", "x": 0, "y": 60, "s": 0.7, "rx": 11, "rz": -2}, {"t": 2.94, "x": 26.0, "y": 70.0, "s": 0.7245, "rx": 11, "rz": -1.5}, {"t": 3.64, "e": "power3.inOut", "x": 1110, "y": 100, "s": 0.72, "rx": 10, "rz": 1.5}, {"t": 6.0, "x": 1136.0, "y": 110.0, "s": 0.7452, "rx": 10, "rz": 2.0}, {"t": 6.7, "e": "power3.inOut", "x": 2220, "y": 40, "s": 0.72, "rx": 11, "rz": -1.2}, {"t": 9.8, "x": 2246.0, "y": 50.0, "s": 0.7452, "rx": 11, "rz": -0.7}, {"t": 10.5, "e": "power3.inOut", "x": 3320, "y": 80, "s": 0.72, "rx": 11, "rz": 1.5}, {"t": 14.85, "x": 3356.4, "y": 94.0, "s": 0.7553, "rx": 11, "rz": 2.2}]);
+
+
+        tl.to({}, { duration: 0.001 }, D - 0.001);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["01-cortica"] = tl;
+      })();
+    </script>
+  </div>
+</template>
