@@ -1,27 +1,47 @@
 # Valorant highlight: Dentro do Corolla Cross
 
-Edit de 23,9 s no estilo do highlight de referência ("UNTOUCHABLE"), com 4 clipes e a música *Dentro do Corolla Cross*.
-Os cortes e os tiros caem na batida (130 BPM; o grave entra em 7,94 s).
+Edit de 23,9 s com 4 clipes e a música *Dentro do Corolla Cross*. Os cortes e os tiros caem na batida (130 BPM; o grave entra em 7,94 s).
 
+## Efeitos (v2)
+- **Câmera lenta com optical flow** (estilo Twixtor): cria quadros intermediários de verdade, sem tremer, logo depois de cada abate.
+- **Motion blur real** (estilo RSMB): o borrão segue o movimento da imagem e fica mais forte quando o vídeo acelera.
+- **Partículas:**
+  - explosão de faíscas e brasas no ponto da mira em cada abate (maior no drop)
+  - poeira azul flutuando antes do drop e brasas rosa subindo depois
+  - o texto "COROLLA CROSS" explode em ~1500 partículas no drop, no tiro após a pausa e no fim
+- **Texto atrás do cenário:** o modelo de profundidade MiDaS (baixado do GitHub do projeto) estima o que está perto da câmera. O texto grande passa por trás do anel da mira e da arma.
+- **Impacto:**
+  - onda de choque com distorção
+  - zoom radial
+  - tremida com rotação
+  - aberração cromática radial
+  - flash
+  - *impact frames* invertidos em preto e branco, com um "boom" grave no áudio
+- **Transições:** chicote, zoom radial e glitch digital, alternando. Também light leaks.
+- **Subida para o drop e pausa:** linhas de velocidade estilo anime, zoom crescente e faixas pretas de cinema.
+- **Acabamento:**
+  - color grade frio antes do drop e rosa/roxo depois, com split toning
+  - bloom e flares anamórficos nos brilhos
+  - granulação de filme e vinheta
+
+## Arquivos
 - `edit.json`: toda a montagem
   - cortes e rampas de velocidade (`anchors` = [tempo na música, tempo no clipe])
-  - momentos dos abates
-  - letra
-  - sons de tiro do jogo
-- `render.py`: aplica tudo:
-  - color grade frio antes do drop e quente/rosa depois
-  - zoom, tremida, flash e RGB split nos abates
-  - pulso nas batidas
-  - transições de chicote nos cortes
-  - letra palavra por palavra
-  - "COROLLA CROSS" em 3D, como o "UNTOUCHABLE" da referência
-  - faixas pretas de cinema na pausa da música
+  - abates
+  - letra (`hook_end` define quando o texto grande se desfaz)
+  - transições
+  - impact frames
+  - sons de tiro
+- `render.py`: aplica os efeitos.
 - `LETRA.md`: letra usada, com as dúvidas marcadas.
 - `renders/valorant-corolla-cross.mp4`: resultado (1920x1080, 30 fps).
 
 ```
-pip install numpy opencv-python-headless pillow
+pip install numpy opencv-python-headless pillow onnxruntime
 python3 render.py <pasta_dos_clipes> <musica.mp3> renders/valorant-corolla-cross.mp4
+# prévia rápida de um trecho:
+python3 render.py <pasta_dos_clipes> <musica.mp3> /tmp/teste.mp4 --preview --from 6 --to 9
 ```
 
+O modelo MiDaS (66 MB) é baixado automaticamente para `assets/models/` na primeira execução.
 Os clipes e a música originais não estão no repositório.

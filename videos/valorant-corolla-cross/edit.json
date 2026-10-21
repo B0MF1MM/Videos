@@ -1,50 +1,383 @@
 {
-  "_comment": "Tempos em segundos. 'music' = tempo na música; 'src' = tempo dentro do clipe. Batida: 130 BPM, drop/grave entra em 7.94s.",
-  "bpm": 130,
-  "drop": 7.94,
-  "clips": {
-    "C1": "Clip_-_07012026_154427.mp4",
-    "C2": "Clip_-_09012026_234750_1.mp4",
-    "C3": "Clip_-_09012026_234750.mp4",
-    "C4": "Clip_-_10012026_021656.mp4"
+ "_comment": "Tempos em segundos. 'music' = tempo na música; 'src' = tempo dentro do clipe. Batida: 130 BPM, drop/grave entra em 7.94s. transitions: tipo de transição em cada corte (whip, zoom, glitch). impact_frames: quadros de impacto invertidos.",
+ "bpm": 130,
+ "drop": 7.94,
+ "clips": {
+  "C1": "Clip_-_07012026_154427.mp4",
+  "C2": "Clip_-_09012026_234750_1.mp4",
+  "C3": "Clip_-_09012026_234750.mp4",
+  "C4": "Clip_-_10012026_021656.mp4"
+ },
+ "segments": [
+  {
+   "clip": "C4",
+   "start": 0.0,
+   "end": 4.25,
+   "anchors": [
+    [
+     0.0,
+     0.66
+    ],
+    [
+     2.41,
+     3.07
+    ],
+    [
+     2.8,
+     3.2
+    ],
+    [
+     4.25,
+     4.75
+    ]
+   ]
   },
-  "segments": [
-    {"clip": "C4", "start": 0.00,  "end": 4.25,  "anchors": [[0.00, 0.66], [2.41, 3.07], [2.80, 3.25], [4.25, 4.75]]},
-    {"clip": "C2", "start": 4.25,  "end": 7.48,  "anchors": [[4.25, 0.335], [6.10, 2.185], [6.48, 2.36], [7.48, 3.30]]},
-    {"clip": "C2", "start": 7.48,  "end": 9.79,  "anchors": [[7.48, 21.53], [7.94, 21.99], [8.17, 22.215], [9.00, 22.60], [9.79, 23.25]]},
-    {"clip": "C3", "start": 9.79,  "end": 11.63, "anchors": [[9.79, 2.99], [10.71, 3.91], [11.08, 4.08], [11.63, 4.62]]},
-    {"clip": "C3", "start": 11.63, "end": 13.48, "anchors": [[11.63, 8.58], [12.56, 9.50], [12.93, 9.67], [13.48, 10.20]]},
-    {"clip": "C3", "start": 13.48, "end": 15.33, "anchors": [[13.48, 12.70], [14.63, 13.88], [15.00, 14.05], [15.33, 14.45]], "letterbox": [13.48, 14.63]},
-    {"clip": "C1", "start": 15.33, "end": 17.17, "anchors": [[15.33, 18.53], [16.25, 19.445], [16.62, 19.61], [17.17, 20.50]]},
-    {"clip": "C3", "start": 17.17, "end": 19.02, "anchors": [[17.17, 21.31], [18.09, 22.23], [18.46, 22.40], [19.02, 22.95]]},
-    {"clip": "C3", "start": 19.02, "end": 23.88, "anchors": [[19.02, 25.28], [19.94, 26.20], [20.40, 26.56], [20.75, 26.72], [22.25, 28.28], [22.71, 28.74], [23.10, 28.92], [23.88, 29.70]]}
-  ],
-  "kills": [2.41, 6.10, 7.94, 8.17, 10.71, 12.56, 14.63, 16.25, 18.09, 19.94, 20.40, 22.71],
-  "lyrics": [
-    {"t": 0.10,  "text": "DIZ QUE ELA COMPRA NADA"},
-    {"t": 2.18,  "text": "MAS NUNCA COBROU DE NÓS"},
-    {"t": 4.02,  "text": "NA FAVELA É SÓ UM CORO"},
-    {"t": 5.87,  "text": "DENTRO DO COROLLA CROSS", "hook": "COROLLA CROSS"},
-    {"t": 7.94,  "text": "TÁ PEDINDO TOMA"},
-    {"t": 9.79,  "text": "BUNDA GRANDONA"},
-    {"t": 11.63, "text": "PEITINHO DE LIMÃO"},
-    {"t": 13.48, "text": "CABE NA MINHA MÃO", "hook": "COROLLA CROSS"},
-    {"t": 15.33, "text": "TÁ PEDINDO TOMA"},
-    {"t": 17.17, "text": "BUNDA GRANDONA"},
-    {"t": 19.02, "text": "PEITINHO DE LIMÃO"},
-    {"t": 20.86, "text": "CABE NA MINHA MÃO"},
-    {"t": 22.71, "text": "", "hook": "COROLLA CROSS"}
-  ],
-  "game_audio": [
-    {"clip": "C4", "src": 3.07,  "at": 2.41},
-    {"clip": "C2", "src": 2.185, "at": 6.10},
-    {"clip": "C2", "src": 21.99, "at": 7.94},
-    {"clip": "C3", "src": 3.91,  "at": 10.71},
-    {"clip": "C3", "src": 9.50,  "at": 12.56},
-    {"clip": "C3", "src": 13.88, "at": 14.63},
-    {"clip": "C1", "src": 19.445,"at": 16.25},
-    {"clip": "C3", "src": 22.23, "at": 18.09},
-    {"clip": "C3", "src": 26.20, "at": 19.94},
-    {"clip": "C3", "src": 28.74, "at": 22.71}
-  ]
+  {
+   "clip": "C2",
+   "start": 4.25,
+   "end": 7.48,
+   "anchors": [
+    [
+     4.25,
+     0.335
+    ],
+    [
+     6.1,
+     2.185
+    ],
+    [
+     6.48,
+     2.31
+    ],
+    [
+     7.48,
+     3.3
+    ]
+   ]
+  },
+  {
+   "clip": "C2",
+   "start": 7.48,
+   "end": 9.79,
+   "anchors": [
+    [
+     7.48,
+     21.53
+    ],
+    [
+     7.94,
+     21.99
+    ],
+    [
+     8.17,
+     22.215
+    ],
+    [
+     9.0,
+     22.6
+    ],
+    [
+     9.79,
+     23.25
+    ]
+   ]
+  },
+  {
+   "clip": "C3",
+   "start": 9.79,
+   "end": 11.63,
+   "anchors": [
+    [
+     9.79,
+     2.99
+    ],
+    [
+     10.71,
+     3.91
+    ],
+    [
+     11.08,
+     4.03
+    ],
+    [
+     11.63,
+     4.62
+    ]
+   ]
+  },
+  {
+   "clip": "C3",
+   "start": 11.63,
+   "end": 13.48,
+   "anchors": [
+    [
+     11.63,
+     8.58
+    ],
+    [
+     12.56,
+     9.5
+    ],
+    [
+     12.93,
+     9.62
+    ],
+    [
+     13.48,
+     10.2
+    ]
+   ]
+  },
+  {
+   "clip": "C3",
+   "start": 13.48,
+   "end": 15.33,
+   "anchors": [
+    [
+     13.48,
+     12.7
+    ],
+    [
+     14.63,
+     13.88
+    ],
+    [
+     15.0,
+     14.0
+    ],
+    [
+     15.33,
+     14.45
+    ]
+   ],
+   "letterbox": [
+    13.48,
+    14.63
+   ]
+  },
+  {
+   "clip": "C1",
+   "start": 15.33,
+   "end": 17.17,
+   "anchors": [
+    [
+     15.33,
+     18.53
+    ],
+    [
+     16.25,
+     19.445
+    ],
+    [
+     16.62,
+     19.56
+    ],
+    [
+     17.17,
+     20.5
+    ]
+   ]
+  },
+  {
+   "clip": "C3",
+   "start": 17.17,
+   "end": 19.02,
+   "anchors": [
+    [
+     17.17,
+     21.31
+    ],
+    [
+     18.09,
+     22.23
+    ],
+    [
+     18.46,
+     22.35
+    ],
+    [
+     19.02,
+     22.95
+    ]
+   ]
+  },
+  {
+   "clip": "C3",
+   "start": 19.02,
+   "end": 23.88,
+   "anchors": [
+    [
+     19.02,
+     25.28
+    ],
+    [
+     19.94,
+     26.2
+    ],
+    [
+     20.4,
+     26.56
+    ],
+    [
+     20.75,
+     26.72
+    ],
+    [
+     22.25,
+     28.28
+    ],
+    [
+     22.71,
+     28.74
+    ],
+    [
+     23.1,
+     28.92
+    ],
+    [
+     23.88,
+     29.7
+    ]
+   ]
+  }
+ ],
+ "kills": [
+  2.41,
+  6.1,
+  7.94,
+  8.17,
+  10.71,
+  12.56,
+  14.63,
+  16.25,
+  18.09,
+  19.94,
+  20.4,
+  22.71
+ ],
+ "lyrics": [
+  {
+   "t": 0.1,
+   "text": "DIZ QUE ELA COMPRA NADA"
+  },
+  {
+   "t": 2.18,
+   "text": "MAS NUNCA COBROU DE NÓS"
+  },
+  {
+   "t": 4.02,
+   "text": "NA FAVELA É SÓ UM CORO"
+  },
+  {
+   "t": 5.87,
+   "text": "DENTRO DO COROLLA CROSS",
+   "hook": "COROLLA CROSS"
+  },
+  {
+   "t": 7.94,
+   "text": "TÁ PEDINDO TOMA"
+  },
+  {
+   "t": 9.79,
+   "text": "BUNDA GRANDONA"
+  },
+  {
+   "t": 11.63,
+   "text": "PEITINHO DE LIMÃO"
+  },
+  {
+   "t": 13.48,
+   "text": "CABE NA MINHA MÃO",
+   "hook": "COROLLA CROSS",
+   "hook_end": 14.91
+  },
+  {
+   "t": 15.33,
+   "text": "TÁ PEDINDO TOMA"
+  },
+  {
+   "t": 17.17,
+   "text": "BUNDA GRANDONA"
+  },
+  {
+   "t": 19.02,
+   "text": "PEITINHO DE LIMÃO"
+  },
+  {
+   "t": 20.86,
+   "text": "CABE NA MINHA MÃO"
+  },
+  {
+   "t": 22.71,
+   "text": "",
+   "hook": "COROLLA CROSS"
+  }
+ ],
+ "game_audio": [
+  {
+   "clip": "C4",
+   "src": 3.07,
+   "at": 2.41
+  },
+  {
+   "clip": "C2",
+   "src": 2.185,
+   "at": 6.1
+  },
+  {
+   "clip": "C2",
+   "src": 21.99,
+   "at": 7.94
+  },
+  {
+   "clip": "C3",
+   "src": 3.91,
+   "at": 10.71
+  },
+  {
+   "clip": "C3",
+   "src": 9.5,
+   "at": 12.56
+  },
+  {
+   "clip": "C3",
+   "src": 13.88,
+   "at": 14.63
+  },
+  {
+   "clip": "C1",
+   "src": 19.445,
+   "at": 16.25
+  },
+  {
+   "clip": "C3",
+   "src": 22.23,
+   "at": 18.09
+  },
+  {
+   "clip": "C3",
+   "src": 26.2,
+   "at": 19.94
+  },
+  {
+   "clip": "C3",
+   "src": 28.74,
+   "at": 22.71
+  }
+ ],
+ "transitions": [
+  "whip",
+  "zoom",
+  "glitch",
+  "whip",
+  "zoom",
+  "glitch",
+  "whip",
+  "zoom"
+ ],
+ "impact_frames": [
+  7.94,
+  14.63,
+  22.71
+ ]
 }
