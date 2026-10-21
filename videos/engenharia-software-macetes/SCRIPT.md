@@ -1,7 +1,7 @@
 # SCRIPT — engenharia-software-macetes
 
-**Voice:** Piper pt_BR faber-medium (local, sherpa-onnx), provisória até Gemini TTS
-**Voice settings:** speed 1.07
+**Voice:** Gemini TTS, voz Charon (gemini-3.8-flash-tts; linhas 19–20 com gemini-3.1-flash-tts-preview por cota)
+**Voice settings:** padrão
 **Voice direction:** Clara, didática e encorajadora, como um colega ajudando a decorar na véspera da prova.
 
 ---

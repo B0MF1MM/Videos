@@ -50,10 +50,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="13-prototipacao" data-width="1920" data-height="1080" data-duration="17.057">
-    <div id="f13-ground" class="f13-ground clip" data-start="0" data-duration="17.057" data-track-index="0"></div>
+  <div id="root" data-composition-id="13-prototipacao" data-width="1920" data-height="1080" data-duration="21.051">
+    <div id="f13-ground" class="f13-ground clip" data-start="0" data-duration="21.051" data-track-index="0"></div>
 
-    <div id="f13-stage" class="f13-stage clip" data-start="0" data-duration="17.057" data-track-index="1">
+    <div id="f13-stage" class="f13-stage clip" data-start="0" data-duration="21.051" data-track-index="1">
       <div class="f13-hair f13-hair-top"></div>
       <div class="f13-hair f13-hair-bot"></div>
       <div class="f13-chrome f13-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -80,7 +80,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 17.057;
+        const D = 20.551;
         const R = document.querySelector('[data-composition-id="13-prototipacao"]');
 
           const q = (s) => R.querySelector(s);
@@ -101,25 +101,25 @@
         tl.fromTo(q("#f13-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f13-q", 0.05, { s: 0.9 });
-          pop("#f13-wire", 1.397, { s: 0.8 });
+          pop("#f13-wire", 1.673, { s: 0.8 });
           ["#f13-w2", "#f13-w3", "#f13-w4", "#f13-w5", "#f13-w6"].forEach((s) => tl.set(q(s), { opacity: 0 }, 0));
           tl.set(qa("#f13-v2, #f13-v3"), { opacity: 0 }, 0);
-          fade("#f13-ver", 3.458);
-          const nt = [7.161, 8.015, 9.302, 10.445, 11.877];
+          fade("#f13-ver", 4.430);
+          const nt = [8.680, 9.910, 11.410, 12.940, 14.869];
           nt.forEach((t, i) => pop("#f13-n" + i, t));
-          fade("#f13-dot", 7.161);
+          fade("#f13-dot", 8.680);
           const P5 = [[1156, 260], [1651, 426], [1462, 694], [850, 694], [661, 426]];
           // dot runs around the ring once per spoken step, then a fast lap at the feedback
           nt.forEach((t, i) => { if (i > 0) tl.to(q("#f13-dot"), { x: P5[i][0] - P5[0][0], y: P5[i][1] - P5[0][1], duration: 0.35, ease: "power2.inOut" }, t - 0.2); lit("#f13-n" + i, t + 0.1, 0.3); });
-          tl.to(q("#f13-dot"), { x: 0, y: 0, duration: 0.35, ease: "power2.inOut" }, 13.020);
+          tl.to(q("#f13-dot"), { x: 0, y: 0, duration: 0.35, ease: "power2.inOut" }, 16.421);
           // the sketch grows each lap
-          tl.to(qa("#f13-w2, #f13-w3"), { opacity: 1, duration: 0.3 }, 4.921);
-          tl.to(q("#f13-v1"), { opacity: 0, duration: 0.2 }, 4.921); tl.to(q("#f13-v2"), { opacity: 1, duration: 0.2 }, 4.921);
-          tl.to(qa("#f13-w4, #f13-w5"), { opacity: 1, duration: 0.3 }, 12.456);
-          tl.to(q("#f13-v2"), { opacity: 0, duration: 0.2 }, 13.020); tl.to(q("#f13-v3"), { opacity: 1, duration: 0.2 }, 13.020);
-          tl.to(q("#f13-w6"), { opacity: 1, duration: 0.3 }, 13.320);
-          bump("#f13-wire", 13.320, 1.06);
-          stampIn("#f13-mac", 15.438, -2);
+          tl.to(qa("#f13-w2, #f13-w3"), { opacity: 1, duration: 0.3 }, 5.867);
+          tl.to(q("#f13-v1"), { opacity: 0, duration: 0.2 }, 5.867); tl.to(q("#f13-v2"), { opacity: 1, duration: 0.2 }, 5.867);
+          tl.to(qa("#f13-w4, #f13-w5"), { opacity: 1, duration: 0.3 }, 15.543);
+          tl.to(q("#f13-v2"), { opacity: 0, duration: 0.2 }, 16.421); tl.to(q("#f13-v3"), { opacity: 1, duration: 0.2 }, 16.421);
+          tl.to(q("#f13-w6"), { opacity: 1, duration: 0.3 }, 16.721);
+          bump("#f13-wire", 16.721, 1.06);
+          stampIn("#f13-mac", 19.280, -2);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

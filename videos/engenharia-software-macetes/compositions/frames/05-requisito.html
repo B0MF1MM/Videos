@@ -56,10 +56,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="05-requisito" data-width="1920" data-height="1080" data-duration="14.442">
-    <div id="f05-ground" class="f05-ground clip" data-start="0" data-duration="14.442" data-track-index="0"></div>
+  <div id="root" data-composition-id="05-requisito" data-width="1920" data-height="1080" data-duration="17.046">
+    <div id="f05-ground" class="f05-ground clip" data-start="0" data-duration="17.046" data-track-index="0"></div>
 
-    <div id="f05-stage" class="f05-stage clip" data-start="0" data-duration="14.442" data-track-index="1">
+    <div id="f05-stage" class="f05-stage clip" data-start="0" data-duration="17.046" data-track-index="1">
       <div class="f05-hair f05-hair-top"></div>
       <div class="f05-hair f05-hair-bot"></div>
       <div class="f05-chrome f05-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -88,7 +88,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 14.442;
+        const D = 16.546;
         const R = document.querySelector('[data-composition-id="05-requisito"]');
 
           const q = (s) => R.querySelector(s);
@@ -109,20 +109,20 @@
         tl.fromTo(q("#f05-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f05-q", 0.05, { s: 0.85 });
-          rise("#f05-hd", 1.656); rise("#f05-bd", 1.756);
-          tl.fromTo(q("#f05-br"), { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.inOut" }, 2.189);
-          pop("#f05-tl", 2.789); pop("#f05-tr", 2.789);
-          rise("#f05-req", 2.389); fade("#f05-cap", 2.689);
-          rise("#f05-usr", 3.120);
-          pop("#f05-bal", 4.517, { s: 0.7 }); tl.set(q("#f05-b2"), { opacity: 0 }, 0);
-          tl.fromTo(q("#f05-b1"), { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.3 }, 4.717);
-          tl.to(q("#f05-b2"), { opacity: 1, duration: 0.3 }, 5.781);
-          slide("#f05-mon", 7.515, 80); fade("#f05-st", 7.515);
-          pop("#f05-d1", 9.025); pop("#f05-d2", 9.768); pop("#f05-d3", 10.398);
-          fade("#f05-mtag", 11.473);
-          pop("#f05-pre", 3.019); lit("#f05-pre", 3.519);
-          pop("#f05-pro", 13.338); lit("#f05-pro", 13.838);
-          shake(14.138);
+          rise("#f05-hd", 2.364); rise("#f05-bd", 2.464);
+          tl.fromTo(q("#f05-br"), { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.inOut" }, 2.917);
+          pop("#f05-tl", 3.517); pop("#f05-tr", 3.517);
+          rise("#f05-req", 3.117); fade("#f05-cap", 3.417);
+          rise("#f05-usr", 3.884);
+          pop("#f05-bal", 5.342, { s: 0.7 }); tl.set(q("#f05-b2"), { opacity: 0 }, 0);
+          tl.fromTo(q("#f05-b1"), { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.3 }, 5.542);
+          tl.to(q("#f05-b2"), { opacity: 1, duration: 0.3 }, 6.647);
+          slide("#f05-mon", 8.805, 80); fade("#f05-st", 8.805);
+          pop("#f05-d1", 10.649); pop("#f05-d2", 11.524); pop("#f05-d3", 12.258);
+          fade("#f05-mtag", 13.760);
+          pop("#f05-pre", 3.799); lit("#f05-pre", 4.299);
+          pop("#f05-pro", 15.699); lit("#f05-pro", 16.199);
+          shake(16.499);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

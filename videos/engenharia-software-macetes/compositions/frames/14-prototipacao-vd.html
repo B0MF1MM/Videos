@@ -44,10 +44,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="14-prototipacao-vd" data-width="1920" data-height="1080" data-duration="17.353">
-    <div id="f14-ground" class="f14-ground clip" data-start="0" data-duration="17.353" data-track-index="0"></div>
+  <div id="root" data-composition-id="14-prototipacao-vd" data-width="1920" data-height="1080" data-duration="18.799">
+    <div id="f14-ground" class="f14-ground clip" data-start="0" data-duration="18.799" data-track-index="0"></div>
 
-    <div id="f14-stage" class="f14-stage clip" data-start="0" data-duration="17.353" data-track-index="1">
+    <div id="f14-stage" class="f14-stage clip" data-start="0" data-duration="18.799" data-track-index="1">
       <div class="f14-hair f14-hair-top"></div>
       <div class="f14-hair f14-hair-bot"></div>
       <div class="f14-chrome f14-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -73,7 +73,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 17.353;
+        const D = 18.299;
         const R = document.querySelector('[data-composition-id="14-prototipacao-vd"]');
 
           const q = (s) => R.querySelector(s);
@@ -94,11 +94,11 @@
         tl.fromTo(q("#f14-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f14-q", 0.05, { s: 0.9 });
-          slide("#f14-hl", 0.000, -60); slide("#f14-hr", 7.822, 60);
+          slide("#f14-hl", 0.020, -60); slide("#f14-hr", 8.490, 60);
 
-          slide("#f14-l0", 1.089, -60); slide("#f14-l1", 2.919, -60); slide("#f14-l2", 5.084, -60); slide("#f14-l3", 6.930, -60);
-          slide("#f14-r0", 9.013, 60); slide("#f14-r1", 10.611, 60); slide("#f14-r2", 12.063, 60); slide("#f14-r3", 15.860, 60);
-          fade("#f14-foot", 16.460);
+          slide("#f14-l0", 1.412, -60); slide("#f14-l1", 3.417, -60); slide("#f14-l2", 5.691, -60); slide("#f14-l3", 7.259, -60);
+          slide("#f14-r0", 9.222, 60); slide("#f14-r1", 10.910, 60); slide("#f14-r2", 12.401, 60); slide("#f14-r3", 16.977, 60);
+          fade("#f14-foot", 17.577);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

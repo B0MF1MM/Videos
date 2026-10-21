@@ -50,10 +50,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="03-crise" data-width="1920" data-height="1080" data-duration="16.643">
-    <div id="f03-ground" class="f03-ground clip" data-start="0" data-duration="16.643" data-track-index="0"></div>
+  <div id="root" data-composition-id="03-crise" data-width="1920" data-height="1080" data-duration="18.124">
+    <div id="f03-ground" class="f03-ground clip" data-start="0" data-duration="18.124" data-track-index="0"></div>
 
-    <div id="f03-stage" class="f03-stage clip" data-start="0" data-duration="16.643" data-track-index="1">
+    <div id="f03-stage" class="f03-stage clip" data-start="0" data-duration="18.124" data-track-index="1">
       <div class="f03-hair f03-hair-top"></div>
       <div class="f03-hair f03-hair-bot"></div>
       <div class="f03-chrome f03-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -79,7 +79,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 16.643;
+        const D = 17.624;
         const R = document.querySelector('[data-composition-id="03-crise"]');
 
           const q = (s) => R.querySelector(s);
@@ -101,22 +101,22 @@
 
           pop("#f03-q", 0.05, { s: 0.9 });
           drawX("#f03-line", 0.3, 1.2);
-          pop("#f03-d1", 1.287); rise("#f03-y60", 1.723);
+          pop("#f03-d1", 1.610); rise("#f03-y60", 2.050);
           for (let i = 0; i < 5; i++) {
-            tl.fromTo(q("#f03-p" + i), { opacity: 0, scale: 0.6, rotation: +q("#f03-p" + i).dataset.r }, { opacity: 1, scale: 1, rotation: +q("#f03-p" + i).dataset.r, duration: 0.5, ease: "back.out(1.7)" }, 2.289+i*0.12);
-            tl.to(q("#f03-p" + i), { y: -6, rotation: "+=6", duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 9 }, 3.016+i*0.05);
+            tl.fromTo(q("#f03-p" + i), { opacity: 0, scale: 0.6, rotation: +q("#f03-p" + i).dataset.r }, { opacity: 1, scale: 1, rotation: +q("#f03-p" + i).dataset.r, duration: 0.5, ease: "back.out(1.7)" }, 2.660+i*0.12);
+            tl.to(q("#f03-p" + i), { y: -6, rotation: "+=6", duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 9 }, 3.370+i*0.05);
           }
-          wipe("#f03-ama", 3.016, 0.8);
-          pop("#f03-d2", 4.927);
-          tl.fromTo(q("#f03-yr"), { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 4.927);
-          wipe("#f03-otan", 7.679, 0.6);
-          stampIn("#f03-crise", 10.190, -3);
-          rise("#f03-mtag", 11.383);
-          pop("#f03-L0", 12.033); pop("#f03-L1", 12.351); pop("#f03-L2", 12.836);
-          lit("#f03-L0", 13.324); rise("#f03-W0", 13.324);
-          lit("#f03-L1", 14.269); rise("#f03-W1", 14.269);
-          lit("#f03-L2", 15.501); rise("#f03-W2", 15.501);
-          shake(15.901);
+          wipe("#f03-ama", 3.370, 0.8);
+          pop("#f03-d2", 5.405);
+          tl.fromTo(q("#f03-yr"), { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.405);
+          wipe("#f03-otan", 8.328, 0.6);
+          stampIn("#f03-crise", 10.643, -3);
+          rise("#f03-mtag", 11.910);
+          pop("#f03-L0", 12.810); pop("#f03-L1", 13.210); pop("#f03-L2", 13.610);
+          lit("#f03-L0", 14.280); rise("#f03-W0", 14.280);
+          lit("#f03-L1", 15.370); rise("#f03-W1", 15.370);
+          lit("#f03-L2", 16.684); rise("#f03-W2", 16.684);
+          shake(17.084);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

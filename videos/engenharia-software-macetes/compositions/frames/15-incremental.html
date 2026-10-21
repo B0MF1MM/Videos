@@ -52,10 +52,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="15-incremental" data-width="1920" data-height="1080" data-duration="13.791">
-    <div id="f15-ground" class="f15-ground clip" data-start="0" data-duration="13.791" data-track-index="0"></div>
+  <div id="root" data-composition-id="15-incremental" data-width="1920" data-height="1080" data-duration="15.536">
+    <div id="f15-ground" class="f15-ground clip" data-start="0" data-duration="15.536" data-track-index="0"></div>
 
-    <div id="f15-stage" class="f15-stage clip" data-start="0" data-duration="13.791" data-track-index="1">
+    <div id="f15-stage" class="f15-stage clip" data-start="0" data-duration="15.536" data-track-index="1">
       <div class="f15-hair f15-hair-top"></div>
       <div class="f15-hair f15-hair-bot"></div>
       <div class="f15-chrome f15-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -89,7 +89,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 13.791;
+        const D = 15.036;
         const R = document.querySelector('[data-composition-id="15-incremental"]');
 
           const q = (s) => R.querySelector(s);
@@ -109,17 +109,17 @@
 
         tl.fromTo(q("#f15-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
-          pop("#f15-eq3", 0.216, { s: 0.8 });
-          pop("#f15-eq1", 1.307); pop("#f15-pl", 1.507);
-          pop("#f15-eq2", 1.989); pop("#f15-eqs", 2.189);
-          drawY("#f15-axy", 2.340, 0.5); drawX("#f15-axx", 2.540, 0.6); fade("#f15-lx", 2.740); fade("#f15-ly", 2.740);
-          pop("#f15-all", 3.887); tl.fromTo(q("#f15-stk"), { scaleX: 0, rotation: -14 }, { scaleX: 1, rotation: -14, duration: 0.3, ease: "power3.out" }, 5.167);
-          drawY("#f15-b1", 6.729, 0.5); rise("#f15-nuc", 7.894);
-          drawY("#f15-b2", 9.764, 0.5); drawY("#f15-b3", 10.164, 0.5);
-          fade("#f15-pz", 10.064);
+          pop("#f15-eq3", 0.252, { s: 0.8 });
+          pop("#f15-eq1", 1.549); pop("#f15-pl", 1.749);
+          pop("#f15-eq2", 2.359); pop("#f15-eqs", 2.559);
+          drawY("#f15-axy", 3.178, 0.5); drawX("#f15-axx", 3.378, 0.6); fade("#f15-lx", 3.578); fade("#f15-ly", 3.578);
+          pop("#f15-all", 4.665); tl.fromTo(q("#f15-stk"), { scaleX: 0, rotation: -14 }, { scaleX: 1, rotation: -14, duration: 0.3, ease: "power3.out" }, 5.963);
+          drawY("#f15-b1", 7.491, 0.5); rise("#f15-nuc", 8.456);
+          drawY("#f15-b2", 10.644, 0.5); drawY("#f15-b3", 11.044, 0.5);
+          fade("#f15-pz", 10.944);
           const sl = [["#f15-z1", -300, -200], ["#f15-z2", 300, -200], ["#f15-z3", -300, 200], ["#f15-z4", 300, 200]];
-          sl.forEach(([s, dx, dy], i) => tl.fromTo(q(s), { opacity: 0, x: dx, y: dy, rotation: 20 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.45, ease: "back.out(1.4)" }, 11.909 + i * 0.42));
-          stampIn("#f15-mac", 12.690, -2);
+          sl.forEach(([s, dx, dy], i) => tl.fromTo(q(s), { opacity: 0, x: dx, y: dy, rotation: 20 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.45, ease: "back.out(1.4)" }, 13.168 + i * 0.42));
+          stampIn("#f15-mac", 14.059, -2);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

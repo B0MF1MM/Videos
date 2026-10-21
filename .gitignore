@@ -5,3 +5,4 @@ node_modules/
 **/.hyperframes/artifacts/
 **/.hyperframes/frame-packets/
 **/renders/work-*/
+**/.hyperframes/voice-tmp/

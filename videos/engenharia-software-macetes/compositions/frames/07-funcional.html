@@ -58,10 +58,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="07-funcional" data-width="1920" data-height="1080" data-duration="16.04">
-    <div id="f07-ground" class="f07-ground clip" data-start="0" data-duration="16.04" data-track-index="0"></div>
+  <div id="root" data-composition-id="07-funcional" data-width="1920" data-height="1080" data-duration="18.684">
+    <div id="f07-ground" class="f07-ground clip" data-start="0" data-duration="18.684" data-track-index="0"></div>
 
-    <div id="f07-stage" class="f07-stage clip" data-start="0" data-duration="16.04" data-track-index="1">
+    <div id="f07-stage" class="f07-stage clip" data-start="0" data-duration="18.684" data-track-index="1">
       <div class="f07-hair f07-hair-top"></div>
       <div class="f07-hair f07-hair-bot"></div>
       <div class="f07-chrome f07-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -94,7 +94,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 16.04;
+        const D = 18.184;
         const R = document.querySelector('[data-composition-id="07-funcional"]');
 
           const q = (s) => R.querySelector(s);
@@ -115,20 +115,20 @@
         tl.fromTo(q("#f07-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f07-q", 0.05, { s: 0.85 });
-          drawY("#f07-div", 1.496, 0.6);
-          rise("#f07-lh", 3.207); fade("#f07-lhs", 4.916);
-          pop("#f07-form", 5.116, { s: 0.9 });
-          drawX("#f07-f1", 5.433, 0.6); drawX("#f07-f2", 6.100, 0.6);
-          bump("#f07-btn", 6.433, 1.12);
-          rise("#f07-rh", 7.253); fade("#f07-rhs", 7.959);
-          pop("#f07-ic1", 9.209); rise("#f07-il1", 9.409);
-          tl.fromTo(q("#f07-nd"), { rotation: -70 }, { rotation: 70, duration: 0.6, ease: "back.out(2)" }, 9.409);
-          pop("#f07-ic2", 9.726); rise("#f07-il2", 9.926);
-          pop("#f07-ic3", 10.509); rise("#f07-il3", 10.709);
-          fade("#f07-mtag", 11.692);
-          pop("#f07-m1", 12.715); lit("#f07-m1", 13.115);
-          pop("#f07-m2", 14.739); lit("#f07-m2", 15.139);
-          shake(15.439);
+          drawY("#f07-div", 1.750, 0.6);
+          rise("#f07-lh", 3.790); fade("#f07-lhs", 5.481);
+          pop("#f07-form", 5.681, { s: 0.9 });
+          drawX("#f07-f1", 6.109, 0.6); drawX("#f07-f2", 6.705, 0.6);
+          bump("#f07-btn", 7.003, 1.12);
+          rise("#f07-rh", 7.860); fade("#f07-rhs", 8.746);
+          pop("#f07-ic1", 10.510); rise("#f07-il1", 10.710);
+          tl.fromTo(q("#f07-nd"), { rotation: -70 }, { rotation: 70, duration: 0.6, ease: "back.out(2)" }, 10.710);
+          pop("#f07-ic2", 11.130); rise("#f07-il2", 11.330);
+          pop("#f07-ic3", 12.110); rise("#f07-il3", 12.310);
+          fade("#f07-mtag", 13.470);
+          pop("#f07-m1", 14.738); lit("#f07-m1", 15.138);
+          pop("#f07-m2", 17.056); lit("#f07-m2", 17.456);
+          shake(17.756);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

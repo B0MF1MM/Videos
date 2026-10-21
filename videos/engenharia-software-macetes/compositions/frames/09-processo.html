@@ -52,10 +52,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="09-processo" data-width="1920" data-height="1080" data-duration="17.355">
-    <div id="f09-ground" class="f09-ground clip" data-start="0" data-duration="17.355" data-track-index="0"></div>
+  <div id="root" data-composition-id="09-processo" data-width="1920" data-height="1080" data-duration="19.849">
+    <div id="f09-ground" class="f09-ground clip" data-start="0" data-duration="19.849" data-track-index="0"></div>
 
-    <div id="f09-stage" class="f09-stage clip" data-start="0" data-duration="17.355" data-track-index="1">
+    <div id="f09-stage" class="f09-stage clip" data-start="0" data-duration="19.849" data-track-index="1">
       <div class="f09-hair f09-hair-top"></div>
       <div class="f09-hair f09-hair-bot"></div>
       <div class="f09-chrome f09-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -79,7 +79,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 17.355;
+        const D = 19.349;
         const R = document.querySelector('[data-composition-id="09-processo"]');
 
           const q = (s) => R.querySelector(s);
@@ -100,16 +100,16 @@
         tl.fromTo(q("#f09-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f09-q", 0.05, { s: 0.85 });
-          pop("#f09-conj", 1.988); lit("#f09-conj", 2.415);
-          pop("#f09-k1", 3.271); pop("#f09-k2", 4.111); pop("#f09-k3", 4.681);
-          drawX("#f09-ar", 5.394, 0.5); pop("#f09-dm", 6.249);
-          drawX("#f09-base", 8.075, 0.6);
-          tl.fromTo(q("#f09-roof"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 8.475);
-          const pt = [9.162, 11.154, 13.410, 15.347];
-          const qt = [10.527, 12.790, 14.439, 16.042];
+          pop("#f09-conj", 2.320); lit("#f09-conj", 2.741);
+          pop("#f09-k1", 3.582); pop("#f09-k2", 4.395); pop("#f09-k3", 4.956);
+          drawX("#f09-ar", 5.657, 0.5); pop("#f09-dm", 6.498);
+          drawX("#f09-base", 8.616, 0.6);
+          tl.fromTo(q("#f09-roof"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, 9.016);
+          const pt = [9.910, 12.200, 15.110, 17.518];
+          const qt = [11.250, 14.165, 16.466, 18.440];
           pt.forEach((t, i) => { tl.fromTo(q("#f09-p" + i), { scaleY: 0 }, { scaleY: 1, duration: 0.55, ease: "back.out(1.4)" }, t); tl.set(q("#f09-pq" + i), { opacity: 0 }, 0); });
           qt.forEach((t, i) => { tl.fromTo(q("#f09-pq" + i), { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power4.in", immediateRender: false }, t); });
-          shake(16.442);
+          shake(18.840);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

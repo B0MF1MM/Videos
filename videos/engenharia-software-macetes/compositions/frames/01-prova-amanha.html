@@ -54,10 +54,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="01-prova-amanha" data-width="1920" data-height="1080" data-duration="9.931">
-    <div id="f01-ground" class="f01-ground clip" data-start="0" data-duration="9.931" data-track-index="0"></div>
+  <div id="root" data-composition-id="01-prova-amanha" data-width="1920" data-height="1080" data-duration="10.954">
+    <div id="f01-ground" class="f01-ground clip" data-start="0" data-duration="10.954" data-track-index="0"></div>
 
-    <div id="f01-stage" class="f01-stage clip" data-start="0" data-duration="9.931" data-track-index="1">
+    <div id="f01-stage" class="f01-stage clip" data-start="0" data-duration="10.954" data-track-index="1">
       <div class="f01-hair f01-hair-top"></div>
       <div class="f01-hair f01-hair-bot"></div>
       <div class="f01-chrome f01-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -85,7 +85,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 9.931;
+        const D = 10.454;
         const R = document.querySelector('[data-composition-id="01-prova-amanha"]');
 
           const q = (s) => R.querySelector(s);
@@ -106,17 +106,17 @@
         tl.fromTo(q("#f01-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           tl.fromTo(q("#f01-cal"), { opacity: 0, y: -260, rotation: -8 }, { opacity: 1, y: 0, rotation: -2, duration: 0.8, ease: "bounce.out" }, 0.05);
-          lit("#f01-amanha", 0.291);
-          bump("#f01-cal", 0.491, 1.05);
-          wipe("#f01-t1", 0.714, 0.7);
-          wipe("#f01-t2", 1.243, 0.7);
-          rise("#f01-br", 1.880);
-          tl.to(q("#f01-bsq"), { scale: 1.35, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.980);
-          pop("#f01-c1", 4.208); drawX("#f01-a1", 5.402, 0.3);
-          pop("#f01-c2", 5.702); drawX("#f01-a2", 7.500, 0.3);
-          pop("#f01-c3", 7.800); lit("#f01-c3", 8.100);
-          shake(8.150);
-          bump("#f01-c1", 8.407, 1.05); bump("#f01-c2", 8.607, 1.05); bump("#f01-c3", 8.807, 1.08);
+          lit("#f01-amanha", 0.321);
+          bump("#f01-cal", 0.521, 1.05);
+          wipe("#f01-t1", 0.784, 0.7);
+          wipe("#f01-t2", 1.363, 0.7);
+          rise("#f01-br", 2.250);
+          tl.to(q("#f01-bsq"), { scale: 1.35, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 2.350);
+          pop("#f01-c1", 4.734); drawX("#f01-a1", 6.200, 0.3);
+          pop("#f01-c2", 6.500); drawX("#f01-a2", 8.389, 0.3);
+          pop("#f01-c3", 8.689); lit("#f01-c3", 8.989);
+          shake(9.039);
+          bump("#f01-c1", 9.203, 1.05); bump("#f01-c2", 9.403, 1.05); bump("#f01-c3", 9.603, 1.08);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

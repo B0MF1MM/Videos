@@ -49,10 +49,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="18-espiral-vd" data-width="1920" data-height="1080" data-duration="15.927">
-    <div id="f18-ground" class="f18-ground clip" data-start="0" data-duration="15.927" data-track-index="0"></div>
+  <div id="root" data-composition-id="18-espiral-vd" data-width="1920" data-height="1080" data-duration="20.298">
+    <div id="f18-ground" class="f18-ground clip" data-start="0" data-duration="20.298" data-track-index="0"></div>
 
-    <div id="f18-stage" class="f18-stage clip" data-start="0" data-duration="15.927" data-track-index="1">
+    <div id="f18-stage" class="f18-stage clip" data-start="0" data-duration="20.298" data-track-index="1">
       <div class="f18-hair f18-hair-top"></div>
       <div class="f18-hair f18-hair-bot"></div>
       <div class="f18-chrome f18-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -79,7 +79,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 15.927;
+        const D = 19.798;
         const R = document.querySelector('[data-composition-id="18-espiral-vd"]');
 
           const q = (s) => R.querySelector(s);
@@ -100,12 +100,12 @@
         tl.fromTo(q("#f18-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f18-q", 0.05, { s: 0.9 });
-          slide("#f18-hl", 0.000, -60); slide("#f18-hr", 8.157, 60);
+          slide("#f18-hl", 0.000, -60); slide("#f18-hr", 10.640, 60);
 
-          slide("#f18-l0", 1.494, -60); slide("#f18-l1", 2.069, -60); slide("#f18-l2", 4.118, -60); slide("#f18-l3", 5.873, -60);
-          slide("#f18-r0", 9.705, 60); slide("#f18-r1", 11.851, 60); slide("#f18-r2", 13.997, 60);
-          pop("#f18-sm", 14.197); tl.fromTo(q("#f18-nox"), { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 14.497);
-          drawY("#f18-big", 14.821, 0.5); stampIn("#f18-gp", 15.021, -2);
+          slide("#f18-l0", 1.991, -60); slide("#f18-l1", 2.830, -60); slide("#f18-l2", 5.400, -60); slide("#f18-l3", 7.743, -60);
+          slide("#f18-r0", 12.700, 60); slide("#f18-r1", 15.630, 60); slide("#f18-r2", 18.223, 60);
+          pop("#f18-sm", 18.423); tl.fromTo(q("#f18-nox"), { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 18.723);
+          drawY("#f18-big", 19.031, 0.5); stampIn("#f18-gp", 19.231, -2);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

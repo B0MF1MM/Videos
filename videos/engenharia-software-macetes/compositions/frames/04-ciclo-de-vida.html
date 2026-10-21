@@ -52,10 +52,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="04-ciclo-de-vida" data-width="1920" data-height="1080" data-duration="13.888">
-    <div id="f04-ground" class="f04-ground clip" data-start="0" data-duration="13.888" data-track-index="0"></div>
+  <div id="root" data-composition-id="04-ciclo-de-vida" data-width="1920" data-height="1080" data-duration="17.873">
+    <div id="f04-ground" class="f04-ground clip" data-start="0" data-duration="17.873" data-track-index="0"></div>
 
-    <div id="f04-stage" class="f04-stage clip" data-start="0" data-duration="13.888" data-track-index="1">
+    <div id="f04-stage" class="f04-stage clip" data-start="0" data-duration="17.873" data-track-index="1">
       <div class="f04-hair f04-hair-top"></div>
       <div class="f04-hair f04-hair-bot"></div>
       <div class="f04-chrome f04-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -75,7 +75,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 13.888;
+        const D = 17.373;
         const R = document.querySelector('[data-composition-id="04-ciclo-de-vida"]');
 
           const q = (s) => R.querySelector(s);
@@ -96,15 +96,15 @@
         tl.fromTo(q("#f04-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f04-sdlc", 0.1, { s: 0.7 }); rise("#f04-sub", 0.4);
-          fade("#f04-ring", 0.227, 0.8);
+          fade("#f04-ring", 0.275, 0.8);
           tl.fromTo(q("#f04-ring"), { rotation: 0 }, { rotation: 40, duration: D, ease: "none" }, 0);
-          for (let i = 0; i < 6; i++) { pop("#f04-ph" + i, 1.697+i*0.18); tl.set(q("#f04-v" + i), { clipPath: "inset(0% 100% 0% 0%)" }, 0); }
-          stampIn("#f04-mac", 3.031, -2);
-          const vt = [5.550, 6.107, 6.807, 7.364, 8.064, 8.493];
+          for (let i = 0; i < 6; i++) { pop("#f04-ph" + i, 2.125+i*0.18); tl.set(q("#f04-v" + i), { clipPath: "inset(0% 100% 0% 0%)" }, 0); }
+          stampIn("#f04-mac", 3.910, -2);
+          const vt = [7.090, 7.338, 7.940, 8.880, 9.840, 10.190];
           vt.forEach((t, i) => { tl.to(q("#f04-v" + i), { clipPath: "inset(0% 0% 0% 0%)", duration: 0.35, ease: "power2.inOut" }, t); bump("#f04-ph" + i, t, 1.06); });
-          tl.to(q("#f04-ring"), { opacity: 1, duration: 0.1 }, 9.627);
-          [0, 1, 2, 3, 4, 5, 0].forEach((k, i) => bump("#f04-ph" + k, 9.827+i*0.32, 1.07));
-          stampIn("#f04-rec", 13.045, 2);
+          tl.to(q("#f04-ring"), { opacity: 1, duration: 0.1 }, 11.728);
+          [0, 1, 2, 3, 4, 5, 0].forEach((k, i) => bump("#f04-ph" + k, 11.928+i*0.32, 1.07));
+          stampIn("#f04-rec", 16.867, 2);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

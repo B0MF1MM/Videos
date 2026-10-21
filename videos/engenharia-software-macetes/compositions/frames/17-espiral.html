@@ -52,10 +52,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="17-espiral" data-width="1920" data-height="1080" data-duration="17.566">
-    <div id="f17-ground" class="f17-ground clip" data-start="0" data-duration="17.566" data-track-index="0"></div>
+  <div id="root" data-composition-id="17-espiral" data-width="1920" data-height="1080" data-duration="17.589">
+    <div id="f17-ground" class="f17-ground clip" data-start="0" data-duration="17.589" data-track-index="0"></div>
 
-    <div id="f17-stage" class="f17-stage clip" data-start="0" data-duration="17.566" data-track-index="1">
+    <div id="f17-stage" class="f17-stage clip" data-start="0" data-duration="17.589" data-track-index="1">
       <div class="f17-hair f17-hair-top"></div>
       <div class="f17-hair f17-hair-bot"></div>
       <div class="f17-chrome f17-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -78,7 +78,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 17.566;
+        const D = 17.089;
         const R = document.querySelector('[data-composition-id="17-espiral"]');
 
           const q = (s) => R.querySelector(s);
@@ -99,17 +99,17 @@
         tl.fromTo(q("#f17-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f17-q", 0.05, { s: 0.9 });
-          pop("#f17-seal", 1.685); tl.fromTo(q("#f17-yr"), { opacity: 0 }, { opacity: 1, duration: 0.4 }, 2.150);
-          stampIn("#f17-risk", 5.200, -3);
-          pop("#f17-it", 6.259); pop("#f17-plus", 7.618); pop("#f17-ct", 7.818);
-          bump("#f17-it", 8.788, 1.06); bump("#f17-ct", 8.888, 1.06);
-          drawX("#f17-axh", 8.988, 0.5); drawY("#f17-axv", 8.988, 0.5);
-          tl.fromTo(q("#f17-sp"), { strokeDashoffset: 2853 }, { strokeDashoffset: 0, duration: D - 9.388, ease: "none" }, 9.388);
-          const ql = [12.050, 12.400, 12.903, 13.232];
+          pop("#f17-seal", 1.348); tl.fromTo(q("#f17-yr"), { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.700);
+          stampIn("#f17-risk", 4.728, -3);
+          pop("#f17-it", 6.032); pop("#f17-plus", 7.372); pop("#f17-ct", 7.572);
+          bump("#f17-it", 8.677, 1.06); bump("#f17-ct", 8.777, 1.06);
+          drawX("#f17-axh", 8.877, 0.5); drawY("#f17-axv", 8.877, 0.5);
+          tl.fromTo(q("#f17-sp"), { strokeDashoffset: 2853 }, { strokeDashoffset: 0, duration: D - 9.277, ease: "none" }, 9.277);
+          const ql = [11.960, 12.310, 12.818, 13.250];
           ql.forEach((t, i) => pop("#f17-q" + i, t, { s: 0.4 }));
-          const lw = [13.726, 14.517, 14.985, 15.793];
+          const lw = [13.860, 14.710, 15.200, 15.843];
           lw.forEach((t, i) => { lit("#f17-q" + i, t); rise("#f17-ql" + i, t); });
-          shake(16.093);
+          shake(16.143);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

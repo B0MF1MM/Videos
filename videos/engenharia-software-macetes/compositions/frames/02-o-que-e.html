@@ -56,10 +56,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="02-o-que-e" data-width="1920" data-height="1080" data-duration="14.522">
-    <div id="f02-ground" class="f02-ground clip" data-start="0" data-duration="14.522" data-track-index="0"></div>
+  <div id="root" data-composition-id="02-o-que-e" data-width="1920" data-height="1080" data-duration="16.108">
+    <div id="f02-ground" class="f02-ground clip" data-start="0" data-duration="16.108" data-track-index="0"></div>
 
-    <div id="f02-stage" class="f02-stage clip" data-start="0" data-duration="14.522" data-track-index="1">
+    <div id="f02-stage" class="f02-stage clip" data-start="0" data-duration="16.108" data-track-index="1">
       <div class="f02-hair f02-hair-top"></div>
       <div class="f02-hair f02-hair-bot"></div>
       <div class="f02-chrome f02-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -83,7 +83,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 14.522;
+        const D = 15.608;
         const R = document.querySelector('[data-composition-id="02-o-que-e"]');
 
           const q = (s) => R.querySelector(s);
@@ -104,26 +104,26 @@
         tl.fromTo(q("#f02-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f02-q", 0.1, { s: 0.85 });
-          rise("#f02-asp", 3.005);
-          pop("#f02-esp", 6.731);
-          drawX("#f02-ruler", 6.931, 1.6);
+          rise("#f02-asp", 4.421);
+          pop("#f02-esp", 8.065);
+          drawX("#f02-ruler", 8.265, 1.6);
           ["#f02-g0", "#f02-g1", "#f02-g2"].forEach((g, i) => {
-            pop(g, 4.156+i*0.2);
-            tl.fromTo(q(g), { rotation: 0 }, { rotation: (i % 2 ? -1 : 1) * 360, duration: D - 4.156, ease: "none" }, 4.156);
+            pop(g, 5.544+i*0.2);
+            tl.fromTo(q(g), { rotation: 0 }, { rotation: (i % 2 ? -1 : 1) * 360, duration: D - 5.544, ease: "none" }, 5.544);
           });
-          pop("#f02-man", 8.026);
-          lit("#f02-esp", 8.426); lit("#f02-man", 8.626);
-          ["0", "1", "2"].forEach((k, i) => { fade("#f02-m" + k, 9.051+i*0.12); fade("#f02-l" + k, 9.051+i*0.12); });
+          pop("#f02-man", 9.370);
+          lit("#f02-esp", 9.770); lit("#f02-man", 9.970);
+          ["0", "1", "2"].forEach((k, i) => { fade("#f02-m" + k, 10.686+i*0.12); fade("#f02-l" + k, 10.686+i*0.12); });
           tl.set(qa("#f02-b0, #f02-b1, #f02-b2"), { scaleY: 0.5 }, 0);
-          pop("#f02-cb", 10.466, { s: 0.8 });
-          tl.to(q("#f02-b0"), { scaleY: 1, duration: 0.8, ease: "back.out(1.6)" }, 11.594);
-          pop("#f02-s0", 11.594);
-          tl.to(q("#f02-b1"), { scaleY: 0.18, duration: 0.8, ease: "power3.out" }, 12.977);
-          pop("#f02-s1", 12.977);
-          tl.to(q("#f02-b2"), { scaleY: 0.18, duration: 0.8, ease: "power3.out" }, 13.852);
-          pop("#f02-s2", 13.852);
-          stampIn("#f02-cbt", 14.152, 0);
-          fade("#f02-cbs", 14.452);
+          pop("#f02-cb", 12.073, { s: 0.8 });
+          tl.to(q("#f02-b0"), { scaleY: 1, duration: 0.8, ease: "back.out(1.6)" }, 13.366);
+          pop("#f02-s0", 13.366);
+          tl.to(q("#f02-b1"), { scaleY: 0.18, duration: 0.8, ease: "power3.out" }, 14.471);
+          pop("#f02-s1", 14.471);
+          tl.to(q("#f02-b2"), { scaleY: 0.18, duration: 0.8, ease: "power3.out" }, 15.156);
+          pop("#f02-s2", 15.156);
+          stampIn("#f02-cbt", 15.456, 0);
+          fade("#f02-cbs", 15.756);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

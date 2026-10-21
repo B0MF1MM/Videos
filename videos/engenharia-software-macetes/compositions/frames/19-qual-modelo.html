@@ -48,10 +48,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="19-qual-modelo" data-width="1920" data-height="1080" data-duration="13.192">
-    <div id="f19-ground" class="f19-ground clip" data-start="0" data-duration="13.192" data-track-index="0"></div>
+  <div id="root" data-composition-id="19-qual-modelo" data-width="1920" data-height="1080" data-duration="18.609">
+    <div id="f19-ground" class="f19-ground clip" data-start="0" data-duration="18.609" data-track-index="0"></div>
 
-    <div id="f19-stage" class="f19-stage clip" data-start="0" data-duration="13.192" data-track-index="1">
+    <div id="f19-stage" class="f19-stage clip" data-start="0" data-duration="18.609" data-track-index="1">
       <div class="f19-hair f19-hair-top"></div>
       <div class="f19-hair f19-hair-bot"></div>
       <div class="f19-chrome f19-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -67,7 +67,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 13.192;
+        const D = 18.009;
         const R = document.querySelector('[data-composition-id="19-qual-modelo"]');
 
           const q = (s) => R.querySelector(s);
@@ -88,11 +88,11 @@
         tl.fromTo(q("#f19-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f19-q", 0.05, { s: 0.85 });
-          const st = [2.952, 5.340, 8.594, 11.179];
-          const mt = [4.108, 6.595, 9.791, 12.400];
+          const st = [3.838, 7.228, 12.147, 15.407];
+          const mt = [5.470, 9.130, 13.665, 17.360];
           st.forEach((t, i) => slide("#f19-s" + i, t - 0.3, -60));
           mt.forEach((t, i) => { drawX("#f19-a" + i, t - 0.35, 0.3); pop("#f19-i" + i, t - 0.1); pop("#f19-m" + i, t); lit("#f19-m" + i, t + 0.15); });
-          shake(12.800);
+          shake(17.760);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

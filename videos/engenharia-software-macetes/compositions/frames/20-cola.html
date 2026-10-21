@@ -49,10 +49,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="20-cola" data-width="1920" data-height="1080" data-duration="16.829">
-    <div id="f20-ground" class="f20-ground clip" data-start="0" data-duration="16.829" data-track-index="0"></div>
+  <div id="root" data-composition-id="20-cola" data-width="1920" data-height="1080" data-duration="24.512">
+    <div id="f20-ground" class="f20-ground clip" data-start="0" data-duration="24.512" data-track-index="0"></div>
 
-    <div id="f20-stage" class="f20-stage clip" data-start="0" data-duration="16.829" data-track-index="1">
+    <div id="f20-stage" class="f20-stage clip" data-start="0" data-duration="24.512" data-track-index="1">
       <div class="f20-hair f20-hair-top"></div>
       <div class="f20-hair f20-hair-bot"></div>
       <div class="f20-chrome f20-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -69,7 +69,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 16.829;
+        const D = 24.512;
         const R = document.querySelector('[data-composition-id="20-cola"]');
 
           const q = (s) => R.querySelector(s);
@@ -90,9 +90,9 @@
         tl.fromTo(q("#f20-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f20-q", 0.05, { s: 0.9 });
-          const kt = [1.164, 4.726, 7.287, 10.353, 11.613, 13.193, 14.613];
+          const kt = [1.800, 6.680, 11.140, 15.630, 17.580, 19.870, 22.073];
           kt.forEach((t, i) => { slide("#f20-k" + i, t - 0.25, i < 3 ? -60 : 60); tl.fromTo(q("#f20-k" + i + "b"), { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power4.in" }, t + 0.25); });
-          tl.fromTo(q("#f20-bye"), { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 15.890);
+          tl.fromTo(q("#f20-bye"), { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 23.890);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

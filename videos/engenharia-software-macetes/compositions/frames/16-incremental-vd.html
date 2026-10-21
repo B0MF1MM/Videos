@@ -44,10 +44,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="16-incremental-vd" data-width="1920" data-height="1080" data-duration="17.274">
-    <div id="f16-ground" class="f16-ground clip" data-start="0" data-duration="17.274" data-track-index="0"></div>
+  <div id="root" data-composition-id="16-incremental-vd" data-width="1920" data-height="1080" data-duration="23.269">
+    <div id="f16-ground" class="f16-ground clip" data-start="0" data-duration="23.269" data-track-index="0"></div>
 
-    <div id="f16-stage" class="f16-stage clip" data-start="0" data-duration="17.274" data-track-index="1">
+    <div id="f16-stage" class="f16-stage clip" data-start="0" data-duration="23.269" data-track-index="1">
       <div class="f16-hair f16-hair-top"></div>
       <div class="f16-hair f16-hair-bot"></div>
       <div class="f16-chrome f16-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -73,7 +73,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 17.274;
+        const D = 22.769;
         const R = document.querySelector('[data-composition-id="16-incremental-vd"]');
 
           const q = (s) => R.querySelector(s);
@@ -94,10 +94,10 @@
         tl.fromTo(q("#f16-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f16-q", 0.05, { s: 0.9 });
-          slide("#f16-hl", 0.000, -60); slide("#f16-hr", 8.593, 60);
+          slide("#f16-hl", 0.000, -60); slide("#f16-hr", 11.510, 60);
 
-          slide("#f16-l0", 1.294, -60); slide("#f16-l1", 3.460, -60); slide("#f16-l2", 3.881, -60); slide("#f16-l3", 4.884, -60); slide("#f16-l4", 6.919, -60);
-          slide("#f16-r0", 9.639, 60); slide("#f16-r1", 12.654, 60); slide("#f16-r2", 14.804, 60); slide("#f16-r3", 16.377, 60);
+          slide("#f16-l0", 1.870, -60); slide("#f16-l1", 4.480, -60); slide("#f16-l2", 5.270, -60); slide("#f16-l3", 6.710, -60); slide("#f16-l4", 9.108, -60);
+          slide("#f16-r0", 12.970, 60); slide("#f16-r1", 17.150, 60); slide("#f16-r2", 19.944, 60); slide("#f16-r3", 22.056, 60);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

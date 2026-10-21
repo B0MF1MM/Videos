@@ -50,10 +50,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="08-biblioteca" data-width="1920" data-height="1080" data-duration="16.641">
-    <div id="f08-ground" class="f08-ground clip" data-start="0" data-duration="16.641" data-track-index="0"></div>
+  <div id="root" data-composition-id="08-biblioteca" data-width="1920" data-height="1080" data-duration="17.882">
+    <div id="f08-ground" class="f08-ground clip" data-start="0" data-duration="17.882" data-track-index="0"></div>
 
-    <div id="f08-stage" class="f08-stage clip" data-start="0" data-duration="16.641" data-track-index="1">
+    <div id="f08-stage" class="f08-stage clip" data-start="0" data-duration="17.882" data-track-index="1">
       <div class="f08-hair f08-hair-top"></div>
       <div class="f08-hair f08-hair-bot"></div>
       <div class="f08-chrome f08-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -77,7 +77,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 16.641;
+        const D = 17.382;
         const R = document.querySelector('[data-composition-id="08-biblioteca"]');
 
           const q = (s) => R.querySelector(s);
@@ -98,22 +98,22 @@
         tl.fromTo(q("#f08-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f08-q", 0.05, { s: 0.9 });
-          drawY("#f08-bin1", 0.549, 0.5); fade("#f08-bl1", 0.749);
-          drawY("#f08-bin2", 0.749, 0.5); fade("#f08-bl2", 0.949);
+          drawY("#f08-bin1", 0.563, 0.5); fade("#f08-bl1", 0.763);
+          drawY("#f08-bin2", 0.763, 0.5); fade("#f08-bl2", 0.963);
           const drop = (id, t) => tl.fromTo(q(id), { opacity: 0, y: -380, rotation: -6 }, { opacity: 1, y: 0, rotation: 0, duration: 0.55, ease: "bounce.out" }, t);
-          drop("#f08-c0", 1.690); drop("#f08-c1", 2.328); drop("#f08-c2", 2.983);
-          bump("#f08-bl1", 3.981, 1.1);
-          drop("#f08-c3", 4.844); drop("#f08-c4", 6.481); drop("#f08-c5", 7.818); drop("#f08-c6", 9.170);
-          bump("#f08-bl2", 10.130, 1.1);
-          stampIn("#f08-peg", 11.232, -3);
+          drop("#f08-c0", 1.900); drop("#f08-c1", 2.509); drop("#f08-c2", 3.149);
+          bump("#f08-bl1", 4.350, 1.1);
+          drop("#f08-c3", 5.290); drop("#f08-c4", 6.883); drop("#f08-c5", 8.182); drop("#f08-c6", 9.510);
+          bump("#f08-bl2", 10.672, 1.1);
+          stampIn("#f08-peg", 12.063, -3);
           // the trap card first flies toward FUNCIONAL...
-          tl.fromTo(q("#f08-seg"), { opacity: 0, x: -760, y: -560 }, { opacity: 1, x: -760, y: -380, duration: 0.5, ease: "power3.out" }, 12.478);
-          tl.to(q("#f08-seg"), { x: -900, y: -30, rotation: -4, duration: 0.6, ease: "power2.inOut" }, 13.500);
-          tl.fromTo(q("#f08-xo"), { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 14.361);
+          tl.fromTo(q("#f08-seg"), { opacity: 0, x: -760, y: -560 }, { opacity: 1, x: -760, y: -380, duration: 0.5, ease: "power3.out" }, 13.510);
+          tl.to(q("#f08-seg"), { x: -900, y: -30, rotation: -4, duration: 0.6, ease: "power2.inOut" }, 14.525);
+          tl.fromTo(q("#f08-xo"), { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 15.550);
           // ...and is redirected into NÃO FUNCIONAL
-          tl.to(q("#f08-seg"), { x: 0, y: 0, rotation: 0, duration: 0.9, ease: "power3.inOut" }, 14.654);
-          fade("#f08-is", 13.500);
-          bump("#f08-bl2", 15.863, 1.14); shake(15.963);
+          tl.to(q("#f08-seg"), { x: 0, y: 0, rotation: 0, duration: 0.9, ease: "power3.inOut" }, 15.797);
+          fade("#f08-is", 14.525);
+          bump("#f08-bl2", 16.868, 1.14); shake(16.968);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

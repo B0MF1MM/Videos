@@ -49,10 +49,10 @@
 
   </style>
 
-  <div id="root" data-composition-id="11-cascata" data-width="1920" data-height="1080" data-duration="15.717">
-    <div id="f11-ground" class="f11-ground clip" data-start="0" data-duration="15.717" data-track-index="0"></div>
+  <div id="root" data-composition-id="11-cascata" data-width="1920" data-height="1080" data-duration="16.187">
+    <div id="f11-ground" class="f11-ground clip" data-start="0" data-duration="16.187" data-track-index="0"></div>
 
-    <div id="f11-stage" class="f11-stage clip" data-start="0" data-duration="15.717" data-track-index="1">
+    <div id="f11-stage" class="f11-stage clip" data-start="0" data-duration="16.187" data-track-index="1">
       <div class="f11-hair f11-hair-top"></div>
       <div class="f11-hair f11-hair-bot"></div>
       <div class="f11-chrome f11-chrome-tag">ENG. SOFTWARE · MACETES</div>
@@ -75,7 +75,7 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        const D = 15.717;
+        const D = 15.687;
         const R = document.querySelector('[data-composition-id="11-cascata"]');
 
           const q = (s) => R.querySelector(s);
@@ -96,22 +96,22 @@
         tl.fromTo(q("#f11-cam"), { scale: 1 }, { scale: 1.03, duration: D, ease: "none" }, 0);
 
           pop("#f11-q", 0.05, { s: 0.9 });
-          for (let i = 0; i < 4; i++) pop("#f11-t" + i, 0.697+i*0.15);
-          lit("#f11-t0", 3.177); bump("#f11-t0", 3.177, 1.08);
-          fade("#f11-pub", 4.279);
-          const stt = [7.277, 8.042, 8.652, 9.573, 10.026, 10.807];
+          for (let i = 0; i < 4; i++) pop("#f11-t" + i, 0.748+i*0.15);
+          lit("#f11-t0", 3.247); bump("#f11-t0", 3.247, 1.08);
+          fade("#f11-pub", 4.542);
+          const stt = [7.690, 8.399, 8.961, 9.830, 10.255, 11.013];
           stt.forEach((t, i) => { slide("#f11-s" + i, t - 0.15, -40, { d: 0.4 }); if (i > 0) drawY("#f11-e" + (i - 1), t - 0.3, 0.25); });
-          fade("#f11-ball", 11.752);
-          stampIn("#f11-mac", 11.952, -2);
+          fade("#f11-ball", 12.190);
+          stampIn("#f11-mac", 12.390, -2);
           // ball hops down every step
           for (let i = 1; i < 6; i++) {
-            const t = 13.401 + (i - 1) * 0.42;
+            const t = 13.840 + (i - 1) * 0.42;
             tl.to(q("#f11-ball"), { x: i * 250, duration: 0.3, ease: "power1.inOut" }, t);
             tl.to(q("#f11-ball"), { y: i * 86, duration: 0.3, ease: "bounce.out" }, t + 0.06);
           }
-          tl.fromTo(q("#f11-up"), { scaleX: 0, rotation: 212 }, { scaleX: 1, rotation: 212, duration: 0.4, ease: "power3.out" }, 14.309);
-          tl.fromTo(q("#f11-upx"), { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 14.809);
-          stampIn("#f11-nv", 15.109, 2);
+          tl.fromTo(q("#f11-up"), { scaleX: 0, rotation: 212 }, { scaleX: 1, rotation: 212, duration: 0.4, ease: "power3.out" }, 14.567);
+          tl.fromTo(q("#f11-upx"), { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power4.in" }, 15.067);
+          stampIn("#f11-nv", 15.367, 2);
 
         tl.to({}, { duration: 0.001 }, D - 0.001);
         window.__timelines = window.__timelines || {};

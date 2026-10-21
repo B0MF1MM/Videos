@@ -7,9 +7,9 @@ destination: youtube
 aspect: 1920x1080
 language: pt-BR
 audience: estudante que faz a prova amanhã e precisa memorizar as respostas da revisão de Modelos, Métodos e Técnicas da Engenharia de Software
-length: 300s
+length: 363s
 angle: how-to
-voice: piper-pt_BR-faber-medium
+voice: gemini-charon
 style_preset: cobalt-grid
 ---
 
