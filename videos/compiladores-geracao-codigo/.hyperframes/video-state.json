@@ -2905,5 +2905,16 @@
       ]
     },
     "unversioned": []
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "dc5472fa-5ba9-4c94-8320-ad534266d173",
+      "completedAt": 1792630676626,
+      "output": "/home/user/Videos/videos/compiladores-geracao-codigo/renders/video.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
