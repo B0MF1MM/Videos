@@ -1,0 +1,55 @@
+<!--sfx: b:pop@0.3*0.25, c:pop@0.3*0.25, e:chime*0.3-->
+<style>
+  .rr-op { position: absolute; font-family: "DM Mono", monospace; font-size: 24px; padding: 6px 12px; border-radius: 8px; border: 2px solid #2A3656; background: #121A2E; white-space: nowrap; }
+  .rr-box { position: absolute; width: 120px; height: 90px; border-radius: 14px; border: 3px solid #4FD6EE; background: #121A2E; font-family: "DM Mono", monospace; font-size: 40px; line-height: 84px; text-align: center; }
+</style>
+<div id="@k" class="k-kicker" style="left:120px;top:120px">dois formatos de instrução</div>
+
+<div id="@ro" class="k-card" style="left:120px;top:170px;width:820px;height:600px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:30px;top:22px;font-size:46px">RO <span class="k-mute" style="font-size:28px">só registradores</span></div>
+  <div class="k-code" style="left:30px;top:100px;font-size:44px">opcode <span class="k-c-cyan">r</span>,<span class="k-c-cyan">s</span>,<span class="k-c-cyan">t</span></div>
+  <div id="@rr" class="rr-box" style="left:60px;top:200px">r</div>
+  <div id="@rs" class="rr-box" style="left:330px;top:200px">s</div>
+  <div id="@rt" class="rr-box" style="left:580px;top:200px">t</div>
+  <div class="k-code k-mute" style="left:200px;top:220px;font-size:40px">=</div>
+  <div class="k-code k-mute" style="left:475px;top:220px;font-size:40px">+</div>
+  <div id="@roex" class="k-code" style="left:30px;top:330px;font-size:32px">ADD: reg[r] = reg[s] + reg[t]</div>
+  <div id="@rol" style="position:absolute;left:30px;top:410px;width:760px;height:160px">
+    <div class="rr-op" style="left:0;top:0">HALT</div><div class="rr-op" style="left:100px;top:0">IN</div><div class="rr-op" style="left:170px;top:0">OUT</div>
+    <div class="rr-op" style="left:0;top:56px">ADD</div><div class="rr-op" style="left:90px;top:56px">SUB</div><div class="rr-op" style="left:180px;top:56px">MUL</div><div class="rr-op" style="left:270px;top:56px">DIV</div>
+    <div class="k-body k-mute" style="left:380px;top:6px;font-size:24px;line-height:1.4">aritmética e<br>entrada/saída</div>
+  </div>
+</div>
+
+<div id="@rm" class="k-card" style="left:980px;top:170px;width:820px;height:600px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:30px;top:22px;font-size:46px">RM <span class="k-mute" style="font-size:28px">registrador + memória</span></div>
+  <div class="k-code" style="left:30px;top:100px;font-size:44px">opcode <span class="k-c-cyan">r</span>,<span class="k-c-yel">d</span><span class="k-c-pink">(</span><span class="k-c-cyan">s</span><span class="k-c-pink">)</span></div>
+  <div id="@addr" class="k-code" style="left:30px;top:180px;font-size:38px">a = <span class="k-c-yel">d</span> + reg[<span class="k-c-cyan">s</span>]</div>
+  <div id="@ex" class="k-anno" style="left:30px;top:250px">ex.: LD 0, 3(5) → a = 3 + reg[5]</div>
+  <div id="@rml" style="position:absolute;left:30px;top:330px;width:760px;height:250px">
+    <div id="@o1" class="rr-op k-c-cyan" style="left:0;top:0">LD  carrega</div>
+    <div id="@o2" class="rr-op k-c-cyan" style="left:200px;top:0">ST  armazena</div>
+    <div id="@o3" class="rr-op k-c-cyan" style="left:0;top:56px">LDA carrega o endereço</div>
+    <div id="@o4" class="rr-op k-c-cyan" style="left:380px;top:56px">LDC constante</div>
+    <div id="@o5" class="rr-op k-c-pink" style="left:0;top:130px">JLT JLE JGE JGT JEQ JNE</div>
+    <div id="@o6" class="k-body k-mute" style="left:0;top:186px;font-size:24px">saltos condicionais: se reg[r] (&lt;,≤,≥,&gt;,=,≠) 0 → PC = a</div>
+  </div>
+</div>
+<div id="@mac" class="k-macete" style="left:330px;top:790px;width:1260px;font-size:36px">RO = <u>três registradores</u>. RM = tem <u>parênteses</u> d(s).</div>
+
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("ro"), C.b);
+K.pop(tl, [$("rr"), $("rs"), $("rt")], C.b + 1.6, { s: 0.2 });
+K.wipe(tl, $("roex"), C.b + 3.0);
+K.pulse(tl, [$("rs"), $("rt")], C.b + 4.2);
+K.pulse(tl, $("rr"), C.b + 4.8, { k: 1.2 });
+K.fade(tl, $("rol"), C.b + 5.2);
+K.rise(tl, $("rm"), C.c);
+K.wipe(tl, $("addr"), C.c + 4.2);
+K.wipe(tl, $("ex"), C.c + 5.6);
+K.pop(tl, [$("o1"), $("o2"), $("o3"), $("o4")], C.d, { s: 0.6 });
+K.pop(tl, $("o5"), C.d + 4.6);
+K.fade(tl, $("o6"), C.d + 5.4);
+K.macete(tl, $("mac"), C.e);
+</script>

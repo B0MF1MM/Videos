@@ -1,0 +1,38 @@
+<!--sfx: b:whoosh-short@2.4*0.2, e:pop@3.2*0.3-->
+<div id="@f0" class="k-card" style="left:120px;top:140px;width:520px;height:120px;border-color:#FF6F9C">
+  <div class="k-h2" style="left:30px;top:32px;font-size:44px">falso = <span class="k-c-pink">0</span></div>
+</div>
+<div id="@f1" class="k-card" style="left:680px;top:140px;width:520px;height:120px;border-color:#7FE39A">
+  <div class="k-h2" style="left:30px;top:32px;font-size:44px">verdadeiro = <span class="k-c-green">1</span></div>
+</div>
+
+<div id="@sc" style="position:absolute;left:120px;top:300px;width:1700px;height:140px">
+  <div class="k-h2 k-c-yel" style="left:0;top:0;font-size:40px">curto-circuito</div>
+  <div class="k-code" style="left:0;top:64px;font-size:46px"><span id="@sa" style="display:inline-block;padding:0 12px;border-radius:8px;background:rgba(255,111,156,0.25)">a</span> and <span id="@sb" style="display:inline-block">b</span></div>
+  <div id="@sal" class="k-anno k-c-pink" style="left:330px;top:66px">a é falso → resultado já é falso</div>
+  <div id="@sbl" class="k-anno k-mute" style="left:900px;top:66px">b nem é avaliado</div>
+</div>
+
+<div id="@e1" class="k-code" style="left:120px;top:480px;font-size:44px">a <span class="k-c-cyan">and</span> b  ≡  <span class="k-c-pink">if</span> a <span class="k-c-pink">then</span> b <span class="k-c-pink">else</span> <span class="k-c-pink">false</span></div>
+<div id="@e2" class="k-code" style="left:120px;top:556px;font-size:44px">a <span class="k-c-cyan">or</span>  b  ≡  <span class="k-c-pink">if</span> a <span class="k-c-pink">then</span> <span class="k-c-green">true</span> <span class="k-c-pink">else</span> b</div>
+
+<div id="@ex" class="k-card" style="left:120px;top:660px;width:1700px;height:200px;border-color:#4FD6EE">
+  <div class="k-code" style="left:36px;top:30px;font-size:40px"><span class="k-c-pink">if</span> ((<span id="@p1">p != NULL</span>) &amp;&amp; (<span id="@p2" style="display:inline-block">p-&gt;val == 0</span>)) …</div>
+  <div id="@pn" class="k-chip k-c-pink" style="left:36px;top:116px;font-size:26px">p = NULL → falso</div>
+  <div id="@skip" class="k-chip k-mute" style="left:620px;top:116px;font-size:26px">não roda → sem acessar memória inválida</div>
+</div>
+
+<script>
+K.pop(tl, $("f0"), C.a + 1.4);
+K.pop(tl, $("f1"), C.a + 2.4);
+K.fade(tl, $("sc"), C.b);
+K.wipe(tl, $("sal"), C.b + 2.2);
+tl.to($("sb"), { opacity: 0.2, duration: 0.4 }, C.b + 3.4);
+K.fade(tl, $("sbl"), C.b + 3.4);
+K.wipe(tl, $("e1"), C.c + 0.2, { d: 1.2 });
+K.wipe(tl, $("e2"), C.d + 0.2, { d: 1.2 });
+K.rise(tl, $("ex"), C.e);
+K.pop(tl, $("pn"), C.e + 3.2);
+tl.to($("p2"), { opacity: 0.2, duration: 0.4 }, C.e + 4.2);
+K.fade(tl, $("skip"), C.e + 4.3);
+</script>

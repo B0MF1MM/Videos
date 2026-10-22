@@ -1,0 +1,51 @@
+<!--sfx: b:click-soft@0.3*0.4, c:click-soft@0.3*0.4, e:pop@0.6*0.3-->
+<div id="@k" class="k-kicker" style="left:120px;top:130px">cada nó carrega dois atributos</div>
+<div id="@node" class="k-node" style="left:300px;top:420px;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:75px;font-size:70px;line-height:142px;border-color:#FFD24A">+</div>
+<svg class="k-svg"><path id="@link" class="edge" d="M 378 420 L 470 420" /></svg>
+<div id="@bag" class="k-card" style="left:470px;top:250px;width:620px;height:340px;border-color:#4FD6EE">
+  <div class="k-code k-c-cyan" style="left:30px;top:24px;font-size:36px">name</div>
+  <div style="position:absolute;left:30px;top:80px;width:560px;height:70px;border:2px dashed #2A3656;border-radius:12px"></div>
+  <div id="@nv" class="k-code" style="left:52px;top:84px;font-size:40px">T1</div>
+  <div class="k-code k-c-green" style="left:30px;top:170px;font-size:36px">tacode</div>
+  <div style="position:absolute;left:30px;top:226px;width:560px;height:80px;border:2px dashed #2A3656;border-radius:12px"></div>
+  <div id="@tv" class="k-code" style="left:52px;top:234px;font-size:40px">T1 = x + 3</div>
+</div>
+<div id="@nl" class="k-anno k-c-cyan" style="left:470px;top:620px">name = ONDE fica o resultado</div>
+<div id="@tlb" class="k-anno k-c-green" style="left:470px;top:690px">tacode = o CÓDIGO que calcula</div>
+
+<div id="@leg" class="k-card" style="left:1180px;top:200px;width:640px;height:660px">
+  <div id="@l1" style="position:absolute;left:30px;top:30px;width:580px;height:190px">
+    <div class="k-code k-c-yel" style="left:0;top:0;font-size:56px">++</div>
+    <div class="k-body" style="left:110px;top:8px;font-size:30px">junta com <b>quebra de linha</b></div>
+    <div class="k-code" style="left:110px;top:66px;font-size:30px;line-height:1.4">"A" ++ "B"  →  A
+              B</div>
+  </div>
+  <div id="@l2" style="position:absolute;left:30px;top:240px;width:580px;height:190px">
+    <div class="k-code k-c-yel" style="left:0;top:0;font-size:56px">||</div>
+    <div class="k-body" style="left:110px;top:8px;font-size:30px">junta com <b>espaço</b></div>
+    <div class="k-code" style="left:110px;top:66px;font-size:30px">x || = || T1 → x = T1</div>
+  </div>
+  <div id="@l3" style="position:absolute;left:30px;top:440px;width:580px;height:190px">
+    <div class="k-code k-c-yel" style="left:0;top:0;font-size:44px">newtemp()</div>
+    <div class="k-body" style="left:0;top:66px;font-size:30px">cria um temporário novo</div>
+    <div id="@nt1" class="k-chip k-c-cyan" style="left:0;top:120px">T1</div>
+    <div id="@nt2" class="k-chip k-c-cyan" style="left:110px;top:120px">T2</div>
+    <div id="@nt3" class="k-chip k-c-cyan" style="left:220px;top:120px">T3</div>
+  </div>
+</div>
+
+<script>
+K.fade(tl, $("k"), C.a);
+K.pop(tl, $("node"), C.a + 0.3);
+K.draw(tl, $("link"), C.a + 0.8, { d: 0.3 });
+K.rise(tl, $("bag"), C.a + 1.0);
+K.pop(tl, $("nv"), C.b + 0.3);
+K.wipe(tl, $("nl"), C.b + 0.6);
+var d = K.type(tl, $("tv"), C.c + 0.3, 14);
+K.wipe(tl, $("tlb"), C.c + 0.8);
+K.rise(tl, $("leg"), C.d - 0.2);
+K.fade(tl, $("l1"), C.d);
+K.fade(tl, $("l2"), C.d + 2.3);
+K.fade(tl, $("l3"), C.e);
+K.pop(tl, [$("nt1"), $("nt2"), $("nt3")], C.e + 0.6, { s: 0.3 });
+</script>

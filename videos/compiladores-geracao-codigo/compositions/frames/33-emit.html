@@ -1,0 +1,71 @@
+<template id="33-emit-template">
+  <div id="root" data-composition-id="33-emit" data-start="0" data-duration="19.274" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .em { position: absolute; height: 150px; border-radius: 18px; border: 2px solid #2A3656; background: #182238; }
+  .em .n { position: absolute; left: 24px; top: 22px; font-family: "DM Mono", monospace; font-size: 34px; }
+  .em .d { position: absolute; left: 24px; top: 84px; font-family: "Hanken Grotesk", sans-serif; font-size: 26px; color: #8C97B5; }
+  .tp { position: absolute; top: 0; width: 120px; height: 70px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 24px; line-height: 66px; text-align: center; }
+</style>
+    <div id="s33-emit-bg" class="clip k-scene k-bg" data-start="0" data-duration="19.274" data-track-index="0"></div>
+    <div id="s33-emit-stage" class="clip k-scene" data-start="0" data-duration="19.274" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s33-emit-cam" class="k-cam">
+<div id="s33-emit-title" class="k-title" style="left:120px;top:110px;font-size:56px"><em>7</em> funções de emissão</div>
+<div id="s33-emit-e1" class="em" style="left:120px;top:200px;width:540px"><div class="n k-c-cyan">emitComment</div><div class="d">escreve um comentário</div></div>
+<div id="s33-emit-e2" class="em" style="left:690px;top:200px;width:540px"><div class="n k-c-cyan">emitRO</div><div class="d">instrução RO</div></div>
+<div id="s33-emit-e3" class="em" style="left:1260px;top:200px;width:540px"><div class="n k-c-cyan">emitRM</div><div class="d">instrução RM</div></div>
+
+<div id="s33-emit-bp" class="k-chip k-c-yel" style="left:120px;top:384px;font-size:24px;background:#2A2410">BACKPATCHING</div>
+<div id="s33-emit-e4" class="em" style="left:120px;top:430px;width:400px;border-color:#FFD24A"><div class="n k-c-yel">emitSkip</div><div class="d">reserva espaço</div></div>
+<div id="s33-emit-e5" class="em" style="left:545px;top:430px;width:400px;border-color:#FFD24A"><div class="n k-c-yel">emitBackup</div><div class="d">volta ao buraco</div></div>
+<div id="s33-emit-e6" class="em" style="left:970px;top:430px;width:400px;border-color:#FFD24A"><div class="n k-c-yel">emitRestore</div><div class="d">retorna à posição</div></div>
+<div id="s33-emit-e7" class="em" style="left:1395px;top:430px;width:405px;border-color:#FFD24A"><div class="n k-c-yel">emitRM_Abs</div><div class="d">absoluto → relativo ao PC</div></div>
+
+<div id="s33-emit-tape" style="position:absolute;left:300px;top:640px;width:1320px;height:200px">
+  <div class="tp" style="left:0">LD</div>
+  <div class="tp" style="left:130px">ST</div>
+  <div id="s33-emit-hole" class="tp" style="left:260px;border:3px dashed #FFD24A;background:none"></div>
+  <div class="tp" style="left:390px">LDC</div>
+  <div class="tp" style="left:520px">ADD</div>
+  <div class="tp" style="left:650px">OUT</div>
+  <div id="s33-emit-jfill" class="tp k-c-yel" style="left:260px;border-color:#FFD24A">JEQ</div>
+  <div id="s33-emit-cur" style="position:absolute;left:0;top:84px;width:120px;height:8px;background:#4FD6EE;border-radius:4px"></div>
+  <div class="k-code k-mute" style="left:800px;top:16px;font-size:24px">cursor de emissão →</div>
+</div>
+      </div>
+    </div>
+    <div id="s33-emit-chrome" class="clip k-scene" data-start="0" data-duration="19.274" data-track-index="2">
+      <div id="s33-emit-tag" class="k-tag">COMPILADORES · <b>GERADOR TINY</b></div>
+      <div id="s33-emit-num" class="k-num">33 / 35</div>
+      <div id="s33-emit-progbar" class="k-prog"><i id="s33-emit-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.514, "c": 8.579}, D = 19.274;
+        var S = K.scene("33-emit", D, 35), tl = S.tl, $ = S.$;
+        var cur = $("cur");
+        K.rise(tl, $("title"), C.a);
+        K.pop(tl, $("e1"), C.b + 0.3);
+        K.pop(tl, $("e2"), C.b + 1.6);
+        K.pop(tl, $("e3"), C.b + 2.6);
+        K.pop(tl, $("bp"), C.c + 1.2);
+        K.fade(tl, $("tape"), C.c + 1.6);
+        tl.set(cur, { x: 130 }, C.c + 1.8);
+        // emitSkip: pula uma casa (deixa o buraco)
+        K.pop(tl, $("e4"), C.c + 2.4);
+        tl.to(cur, { x: 390, duration: 0.4 }, C.c + 2.6);
+        tl.to(cur, { x: 650, duration: 0.6 }, C.c + 3.2);
+        // emitBackup: volta ao buraco e preenche
+        K.pop(tl, $("e5"), C.c + 3.6);
+        tl.to(cur, { x: 260, duration: 0.4, backgroundColor: "#FFD24A" }, C.c + 3.9);
+        K.pop(tl, $("jfill"), C.c + 4.4);
+        // emitRestore: retorna
+        K.pop(tl, $("e6"), C.c + 5.0);
+        tl.to(cur, { x: 780, duration: 0.5, backgroundColor: "#4FD6EE" }, C.c + 5.2);
+        K.pop(tl, $("e7"), C.c + 6.4);
+      })();
+    </script>
+  </div>
+</template>

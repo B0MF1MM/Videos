@@ -1,0 +1,70 @@
+<template id="14-anotada-1-template">
+  <div id="root" data-composition-id="14-anotada-1" data-start="0" data-duration="18.33" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s14-anotada-1-bg" class="clip k-scene k-bg" data-start="0" data-duration="18.33" data-track-index="0"></div>
+    <div id="s14-anotada-1-stage" class="clip k-scene" data-start="0" data-duration="18.33" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s14-anotada-1-cam" class="k-cam">
+<div id="s14-anotada-1-expr" class="k-code" style="left:120px;top:126px;font-size:56px">(x=x+3)+4</div>
+<svg class="k-svg">
+  <line id="s14-anotada-1-e1" class="edge" x1="960" y1="250" x2="620" y2="420" />
+  <line id="s14-anotada-1-e2" class="edge" x1="960" y1="250" x2="1300" y2="420" />
+  <line id="s14-anotada-1-e3" class="edge" x1="620" y1="420" x2="420" y2="600" />
+  <line id="s14-anotada-1-e4" class="edge" x1="620" y1="420" x2="820" y2="600" />
+  <line id="s14-anotada-1-e5" class="edge" x1="820" y1="600" x2="700" y2="760" />
+  <line id="s14-anotada-1-e6" class="edge" x1="820" y1="600" x2="940" y2="760" />
+</svg>
+<div id="s14-anotada-1-nr" class="k-node" style="left:960px;top:250px">+</div>
+<div id="s14-anotada-1-na" class="k-node" style="left:620px;top:420px;border-color:#FF6F9C">=</div>
+<div id="s14-anotada-1-n4" class="k-node k-leaf" style="left:1300px;top:420px">4</div>
+<div id="s14-anotada-1-nx1" class="k-node k-leaf" style="left:420px;top:600px">x</div>
+<div id="s14-anotada-1-np" class="k-node" style="left:820px;top:600px">+</div>
+<div id="s14-anotada-1-nx2" class="k-node k-leaf" style="left:700px;top:760px">x</div>
+<div id="s14-anotada-1-n3" class="k-node k-leaf" style="left:940px;top:760px">3</div>
+
+<div id="s14-anotada-1-ax1" class="k-anno k-c-green" style="left:150px;top:660px">name: x
+tacode: —</div>
+<div id="s14-anotada-1-ax2" class="k-anno k-c-green" style="left:430px;top:810px">name: x
+tacode: —</div>
+<div id="s14-anotada-1-a3" class="k-anno k-c-green" style="left:1010px;top:770px">name: 3
+tacode: —</div>
+<div id="s14-anotada-1-a4" class="k-anno k-c-green" style="left:1370px;top:440px">name: 4
+tacode: —</div>
+<div id="s14-anotada-1-apn" class="k-anno k-c-cyan" style="left:900px;top:470px">name: <b class="k-c-yel">T1</b></div>
+<div id="s14-anotada-1-apc" class="k-anno k-c-cyan" style="left:900px;top:528px">tacode: <b class="k-c-yel">T1 = x + 3</b></div>
+<div id="s14-anotada-1-aan" class="k-anno k-c-pink" style="left:150px;top:300px">name: <b class="k-c-yel">T1</b></div>
+<div id="s14-anotada-1-aac" class="k-anno k-c-pink" style="left:150px;top:358px">tacode: T1 = x + 3
+        <b class="k-c-yel">x = T1</b></div>
+<div id="s14-anotada-1-arn" class="k-anno" style="left:1060px;top:120px">name: <b class="k-c-yel">T2</b></div>
+<div id="s14-anotada-1-arc" class="k-anno" style="left:1060px;top:178px">tacode: T1 = x + 3
+        x = T1
+        <b class="k-c-yel">T2 = T1 + 4</b></div>
+      </div>
+    </div>
+    <div id="s14-anotada-1-chrome" class="clip k-scene" data-start="0" data-duration="18.33" data-track-index="2">
+      <div id="s14-anotada-1-tag" class="k-tag">COMPILADORES · <b>ATRIBUTO SINTETIZADO</b></div>
+      <div id="s14-anotada-1-num" class="k-num">14 / 35</div>
+      <div id="s14-anotada-1-progbar" class="k-prog"><i id="s14-anotada-1-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 6.108, "c": 11.564, "d": 14.639}, D = 18.33;
+        var S = K.scene("14-anotada-1", D, 35), tl = S.tl, $ = S.$;
+        var edges = [$("e1"), $("e2"), $("e3"), $("e4"), $("e5"), $("e6")];
+        var nodes = [$("nr"), $("na"), $("n4"), $("nx1"), $("np"), $("nx2"), $("n3")];
+        var later = [$("aan"), $("aac"), $("arn"), $("arc")];
+        tl.set(later, { opacity: 0 }, 0);
+        K.rise(tl, $("expr"), C.a);
+        K.pop(tl, nodes, C.a + 0.6, { s: 0.25 });
+        K.draw(tl, edges, C.a + 0.8, { d: 0.4, s: 0.25 });
+        K.pulse(tl, [$("nx1"), $("nx2"), $("n3"), $("n4")], C.b + 0.2, { k: 1.15 });
+        K.wipe(tl, [$("ax2"), $("a3"), $("ax1"), $("a4")], C.b + 0.6, { s: 0.35 });
+        K.pulse(tl, $("np"), C.c + 0.4, { k: 1.2 });
+        K.pop(tl, $("apn"), C.c + 1.6);
+        K.wipe(tl, $("apc"), C.d + 0.4, { d: 0.8 });
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,84 @@
+<template id="31-saltos-template">
+  <div id="root" data-composition-id="31-saltos" data-start="0" data-duration="23.551" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .sj-row { position: absolute; left: 0; width: 640px; height: 56px; border-bottom: 1px solid #2A3656; font-family: "DM Mono", monospace; font-size: 28px; line-height: 56px; padding-left: 16px; white-space: pre; }
+</style>
+    <div id="s31-saltos-bg" class="clip k-scene k-bg" data-start="0" data-duration="23.551" data-track-index="0"></div>
+    <div id="s31-saltos-stage" class="clip k-scene" data-start="0" data-duration="23.551" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s31-saltos-cam" class="k-cam">
+<div id="s31-saltos-t1" class="k-title" style="left:120px;top:116px;font-size:56px">salto incondicional?</div>
+<div id="s31-saltos-x" style="position:absolute;left:115px;top:150px;width:540px;height:6px;background:#FF6F9C;transform-origin:0 50%"></div>
+<div id="s31-saltos-t2" class="k-h2 k-c-green" style="left:680px;top:126px;font-size:44px">não existe… mas dá pra imitar</div>
+
+<div id="s31-saltos-b" class="k-card" style="left:120px;top:220px;width:780px;height:330px;border-color:#4FD6EE">
+  <div class="k-code k-c-cyan" style="left:30px;top:22px;font-size:44px">LD 7, 0(1)</div>
+  <div class="k-cell" style="left:30px;top:110px;width:220px">reg[1]: 80</div>
+  <div class="k-cell" style="left:290px;top:110px;width:250px">dMem[80]: 42</div>
+  <div id="s31-saltos-pcb" class="k-cell k-c-yel" style="left:30px;top:220px;width:220px;border-color:#FFD24A">PC = 42</div>
+  <svg width="780" height="330" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="s31-saltos-b1" d="M 252 147 L 296 147 M 284 137 L 296 147 L 284 157" stroke="#4FD6EE" stroke-width="4" fill="none"/>
+    <path id="s31-saltos-b2" d="M 410 186 C 410 250, 330 257, 256 257 M 270 247 L 256 257 L 270 267" stroke="#FFD24A" stroke-width="4" fill="none"/>
+  </svg>
+  <div class="k-body k-mute" style="left:560px;top:120px;font-size:24px;line-height:1.4">carrega no PC<br>um endereço<br>da memória</div>
+</div>
+
+<div id="s31-saltos-c" class="k-card" style="left:960px;top:220px;width:840px;height:560px;border-color:#FF6F9C">
+  <div class="k-code k-c-pink" style="left:30px;top:22px;font-size:44px">JEQ 0, 4(7)</div>
+  <div class="k-body" style="left:400px;top:30px;font-size:26px">se reg[0] == 0 …</div>
+  <div style="position:absolute;left:30px;top:110px;width:640px;height:400px">
+    <div class="sj-row k-c-pink" style="top:0"><span class="k-mute">10:</span> JEQ 0,4(7)</div>
+    <div class="sj-row k-mute" style="top:56px">11: …</div>
+    <div class="sj-row k-mute" style="top:112px">12: …</div>
+    <div class="sj-row k-mute" style="top:168px">13: …</div>
+    <div class="sj-row k-mute" style="top:224px">14: …</div>
+    <div id="s31-saltos-r15" class="sj-row" style="top:280px"><span class="k-mute">15:</span> <span class="k-c-green">← destino</span></div>
+    <div id="s31-saltos-pcm" style="position:absolute;left:0;top:0;width:640px;height:56px;border:3px solid #FFD24A;border-radius:8px;box-sizing:border-box"></div>
+  </div>
+  <div id="s31-saltos-calc" class="k-anno k-c-yel" style="left:420px;top:180px">PC já = 11
+a = 4 + 11 = 15</div>
+  <svg width="840" height="560" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="s31-saltos-jmp" d="M 380 138 C 470 138, 470 418, 380 418 M 392 404 L 380 418 L 394 430" stroke="#7FE39A" stroke-width="5" fill="none"/>
+  </svg>
+  <div id="s31-saltos-five" class="k-chip k-c-green" style="left:480px;top:330px;font-size:30px">+5 instruções</div>
+</div>
+
+<div id="s31-saltos-alert" class="k-macete k-alert" style="left:120px;top:575px;width:780px;font-size:32px">Pegadinha: são <u>5</u>, não 4 — o PC já foi incrementado!</div>
+<div id="s31-saltos-sim" class="k-win" style="left:120px;top:700px;width:780px;height:170px">
+  <div class="k-code" style="left:24px;top:22px;font-size:22px;line-height:1.5"><span class="k-mute">* linha com asterisco = comentário</span>
+<span class="k-c-cyan">0:</span> LDC 0,5(0)   <span class="k-mute">texto após a instrução = comentário</span>
+<span class="k-mute">comando do simulador:</span> <span class="k-c-yel">g</span> = go (executa)   <span class="k-c-yel">h</span> = help</div>
+</div>
+      </div>
+    </div>
+    <div id="s31-saltos-chrome" class="clip k-scene" data-start="0" data-duration="23.551" data-track-index="2">
+      <div id="s31-saltos-tag" class="k-tag">COMPILADORES · <b>MÁQUINA TM</b></div>
+      <div id="s31-saltos-num" class="k-num">31 / 35</div>
+      <div id="s31-saltos-progbar" class="k-prog"><i id="s31-saltos-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.839, "c": 8.379, "d": 14.402, "e": 18.417}, D = 23.551;
+        var S = K.scene("31-saltos", D, 35), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t1"), C.a);
+        tl.fromTo($("x"), { scaleX: 0 }, { scaleX: 1, duration: 0.3 }, C.a + 1.6);
+        K.wipe(tl, $("t2"), C.a + 2.2);
+        K.rise(tl, $("b"), C.b);
+        K.draw(tl, $("b1"), C.b + 2.2, { d: 0.4 });
+        K.draw(tl, $("b2"), C.b + 2.8, { d: 0.5 });
+        K.pop(tl, $("pcb"), C.b + 3.2);
+        K.rise(tl, $("c"), C.c);
+        K.fade(tl, $("pcm"), C.c + 1.0);
+        tl.to($("pcm"), { y: 56, duration: 0.3 }, C.c + 2.6);
+        K.wipe(tl, $("calc"), C.c + 3.0);
+        K.draw(tl, $("jmp"), C.c + 4.4, { d: 0.6 });
+        tl.to($("pcm"), { y: 280, borderColor: "#7FE39A", duration: 0.5, ease: "power2.inOut" }, C.c + 4.6);
+        K.pop(tl, $("five"), C.c + 5.0);
+        K.macete(tl, $("alert"), C.d);
+        K.rise(tl, $("sim"), C.e);
+      })();
+    </script>
+  </div>
+</template>

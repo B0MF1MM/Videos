@@ -1,0 +1,40 @@
+<!--sfx: b:pop@0.3*0.2, c:click-soft@1.6*0.35, d:whoosh-short@0.8*0.2-->
+<div id="@file" class="k-chip k-c-cyan" style="left:120px;top:130px;font-size:30px">cgen.c</div>
+<div id="@entry" class="k-code" style="left:280px;top:126px;font-size:40px"><span class="k-c-yel">codeGen</span>(TreeNode *syntaxTree, char *codefile)</div>
+
+<div id="@steps" style="position:absolute;left:120px;top:230px;width:640px;height:420px">
+  <div id="@s1" class="k-card" style="left:0;top:0;width:620px;height:110px"><div class="k-body" style="left:26px;top:30px;font-size:32px">1 · emite o <b class="k-c-cyan">prólogo</b></div></div>
+  <div id="@s2" class="k-card" style="left:0;top:130px;width:620px;height:110px;border-color:#FFD24A"><div class="k-body" style="left:26px;top:30px;font-size:32px">2 · chama <b class="k-c-yel">cGen</b>(árvore)</div></div>
+  <div id="@s3" class="k-card" style="left:0;top:260px;width:620px;height:110px"><div class="k-body" style="left:26px;top:30px;font-size:32px">3 · termina com <b class="k-c-pink">HALT</b></div></div>
+</div>
+
+<svg class="k-svg">
+  <g class="edge"><line x1="1300" y1="300" x2="1080" y2="460"/><line x1="1300" y1="300" x2="1520" y2="460"/><line id="@sib" x1="1360" y1="300" x2="1620" y2="300" stroke-dasharray="10 10"/></g>
+</svg>
+<div id="@n0" class="k-node" style="left:1300px;top:300px;width:170px;margin-left:-85px;font-size:28px;border-color:#FFD24A">nó</div>
+<div id="@q" class="k-anno k-c-yel" style="left:1180px;top:200px">declaração ou expressão?</div>
+<div id="@st" class="k-card" style="left:900px;top:470px;width:380px;height:190px;border-color:#7FE39A">
+  <div class="k-code k-c-green" style="left:24px;top:20px;font-size:34px">genStmt()</div>
+  <div class="k-body k-mute" style="left:24px;top:80px;font-size:24px;line-height:1.35">declaração: if, repeat,<br>assign, read, write</div>
+</div>
+<div id="@ex" class="k-card" style="left:1340px;top:470px;width:380px;height:190px;border-color:#B49BFF">
+  <div class="k-code k-c-violet" style="left:24px;top:20px;font-size:34px">genExp()</div>
+  <div class="k-body k-mute" style="left:24px;top:80px;font-size:24px;line-height:1.35">expressão: operador,<br>constante, identificador</div>
+</div>
+<div id="@sb" class="k-node" style="left:1680px;top:300px;font-size:24px">irmão</div>
+<div id="@rec" class="k-macete" style="left:900px;top:720px;width:820px;font-size:34px">Depois: cGen nos <u>irmãos</u>. Recursão pura.</div>
+
+<script>
+K.pop(tl, $("file"), C.a);
+K.wipe(tl, $("entry"), C.a + 1.6, { d: 0.8 });
+K.rise(tl, $("s1"), C.b + 0.4);
+K.rise(tl, $("s2"), C.b + 1.6);
+K.rise(tl, $("s3"), C.b + 3.2);
+K.pop(tl, $("n0"), C.c);
+K.wipe(tl, $("q"), C.c + 0.4);
+K.rise(tl, $("st"), C.c + 1.6);
+K.rise(tl, $("ex"), C.c + 3.6);
+K.draw(tl, $("sib"), C.d + 0.4, { d: 0.5 });
+K.pop(tl, $("sb"), C.d + 0.8);
+K.macete(tl, $("rec"), C.d + 1.4);
+</script>

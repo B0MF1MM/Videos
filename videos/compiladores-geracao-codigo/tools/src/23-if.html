@@ -1,0 +1,52 @@
+<!--sfx: d:whoosh-short@2.0*0.2, e:pop*0.3-->
+<style>
+  .ifc .ln { line-height: 64px; }
+</style>
+<div id="@src" class="k-code" style="left:120px;top:130px;font-size:44px"><span class="k-c-pink">if</span> ( <span class="k-c-cyan">E</span> ) <span class="k-c-green">S1</span> <span class="k-c-pink">else</span> <span class="k-c-violet">S2</span></div>
+<div id="@lab" class="k-anno k-c-yel" style="left:860px;top:136px">rótulos = destinos dos saltos: L1, L2…</div>
+<div id="@win" class="k-win" style="left:300px;top:216px;width:900px;height:540px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>padrão do if/else</span></div>
+  <div class="k-code ifc" style="left:10px;top:76px;font-size:38px"><span class="ln" id="@c0"><span class="k-mute">&lt;avalia</span> <span class="k-c-cyan">E</span> <span class="k-mute">em</span> t1<span class="k-mute">&gt;</span></span><span class="ln" id="@c1"><span class="k-c-pink">if_false</span> t1 <span class="k-c-pink">goto</span> <span class="k-c-pink">L1</span></span><span class="ln" id="@c2"><span class="k-mute">&lt;código de</span> <span class="k-c-green">S1</span><span class="k-mute">&gt;</span></span><span class="ln" id="@c3"><span class="k-c-pink">goto</span> <span class="k-c-yel">L2</span></span><span class="ln" id="@c4"><span class="k-c-pink">label L1</span></span><span class="ln" id="@c5"><span class="k-mute">&lt;código de</span> <span class="k-c-violet">S2</span><span class="k-mute">&gt;</span></span><span class="ln" id="@c6"><span class="k-c-yel">label L2</span></span></div>
+</div>
+<svg class="k-svg">
+  <path id="@j1" class="arrow" d="M 900 390 C 1330 390, 1330 582, 760 582 M 782 566 L 760 582 L 782 598" stroke="#FF6F9C" />
+  <path id="@j2" class="arrow" d="M 700 518 C 1500 518, 1500 710, 760 710 M 782 694 L 760 710 L 782 726" stroke="#FFD24A" />
+</svg>
+<div id="@j1l" class="k-anno k-c-pink" style="left:1300px;top:440px">FALSO → pula para L1</div>
+<div id="@j2l" class="k-anno k-c-yel" style="left:1420px;top:620px">pula o else</div>
+
+<div id="@tok" style="position:absolute;left:250px;top:0;width:30px;height:30px;border-radius:15px;background:#7FE39A;box-shadow:0 0 20px #7FE39A"></div>
+<div id="@mac" class="k-macete" style="left:1260px;top:740px;width:560px;font-size:34px">Falso <u>pula</u>. Verdadeiro segue <u>reto</u>.</div>
+
+<script>
+var L = [];
+for (var i = 0; i < 7; i++) L.push($("c" + i));
+var Y = function (i) { return 309 + 64 * i; };
+K.rise(tl, $("src"), C.a);
+K.wipe(tl, $("lab"), C.a + 1.6);
+K.rise(tl, $("win"), C.a + 2.2);
+K.wipe(tl, L[0], C.b + 0.6);
+K.wipe(tl, L[1], C.b + 2.6);
+K.hl(tl, L[1], C.b + 2.6, C.c);
+K.wipe(tl, L[2], C.c + 0.4);
+K.wipe(tl, L[3], C.c + 1.8);
+K.hl(tl, L[3], C.c + 1.8, C.d);
+K.wipe(tl, L[4], C.d + 0.2);
+K.wipe(tl, L[5], C.d + 1.4);
+K.wipe(tl, L[6], C.d + 2.6);
+K.draw(tl, $("j1"), C.d + 0.4, { d: 0.7 });
+K.fade(tl, $("j1l"), C.d + 0.8);
+K.draw(tl, $("j2"), C.d + 2.8, { d: 0.7 });
+K.fade(tl, $("j2l"), C.d + 3.2);
+// token: verdadeiro desce reto (0,1,2,3) e salta para L2
+tl.set($("tok"), { y: Y(0), opacity: 0 }, 0);
+tl.to($("tok"), { opacity: 1, duration: 0.2 }, C.e);
+tl.to($("tok"), { y: Y(3), duration: 1.2, ease: "none" }, C.e + 0.2);
+tl.to($("tok"), { y: Y(6), duration: 0.5, ease: "power2.inOut" }, C.e + 1.5);
+// falso: vermelho, salta de 1 para 4
+tl.set($("tok"), { y: Y(0), background: "#FF6F9C", boxShadow: "0 0 20px #FF6F9C" }, C.e + 2.2);
+tl.to($("tok"), { y: Y(1), duration: 0.4, ease: "none" }, C.e + 2.3);
+tl.to($("tok"), { y: Y(4), duration: 0.5, ease: "power2.inOut" }, C.e + 2.7);
+tl.to($("tok"), { y: Y(6), duration: 0.6, ease: "none" }, C.e + 3.2);
+K.macete(tl, $("mac"), C.e);
+</script>

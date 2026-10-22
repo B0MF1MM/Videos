@@ -1,0 +1,47 @@
+<template id="10-gramatica-template">
+  <div id="root" data-composition-id="10-gramatica" data-start="0" data-duration="16.697" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s10-gramatica-bg" class="clip k-scene k-bg" data-start="0" data-duration="16.697" data-track-index="0"></div>
+    <div id="s10-gramatica-stage" class="clip k-scene" data-start="0" data-duration="16.697" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s10-gramatica-cam" class="k-cam">
+<div id="s10-gramatica-badge" class="k-chip k-c-pink" style="left:120px;top:140px;font-size:26px">★ MAIS COBRADO NA PROVA</div>
+<div id="s10-gramatica-title" class="k-title" style="left:120px;top:200px;font-size:76px">Código como <em>atributo sintetizado</em></div>
+<div id="s10-gramatica-sub" class="k-body k-mute" style="left:120px;top:310px">Gramática mínima: só <b class="k-c-yel">soma (+)</b> e <b class="k-c-yel">atribuição (=)</b></div>
+
+<div id="s10-gramatica-g" class="k-card" style="left:120px;top:400px;width:1100px;height:440px">
+  <div class="k-code" style="left:44px;top:40px;font-size:50px;line-height:1.75"><span class="ln" id="s10-gramatica-r1"><span class="k-c-cyan">exp</span>   → id = <span class="k-c-cyan">exp</span>  | <span class="k-c-green">aexp</span></span><span class="ln" id="s10-gramatica-r2"><span class="k-c-green">aexp</span>  → <span class="k-c-green">aexp</span> + <span class="k-c-violet">fator</span> | <span class="k-c-violet">fator</span></span><span class="ln" id="s10-gramatica-r3"><span class="k-c-violet">fator</span> → ( <span class="k-c-cyan">exp</span> ) | num | id</span></div>
+</div>
+<div id="s10-gramatica-n1" class="k-anno k-c-cyan" style="left:1280px;top:458px">atribuição  (ou desce)</div>
+<div id="s10-gramatica-n2" class="k-anno k-c-green" style="left:1280px;top:546px">soma         (ou desce)</div>
+<div id="s10-gramatica-n3" class="k-anno k-c-violet" style="left:1280px;top:634px">parênteses, número, nome</div>
+      </div>
+    </div>
+    <div id="s10-gramatica-chrome" class="clip k-scene" data-start="0" data-duration="16.697" data-track-index="2">
+      <div id="s10-gramatica-tag" class="k-tag">COMPILADORES · <b>ATRIBUTO SINTETIZADO</b></div>
+      <div id="s10-gramatica-num" class="k-num">10 / 35</div>
+      <div id="s10-gramatica-progbar" class="k-prog"><i id="s10-gramatica-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.637, "c": 7.175, "d": 9.801, "e": 12.537}, D = 16.697;
+        var S = K.scene("10-gramatica", D, 35), tl = S.tl, $ = S.$;
+        K.pop(tl, $("badge"), C.a);
+        K.rise(tl, $("title"), C.a + 0.4);
+        K.wipe(tl, $("sub"), C.b);
+        K.rise(tl, $("g"), C.b + 1.2);
+        K.wipe(tl, $("r1"), C.c);
+        K.hl(tl, $("r1"), C.c + 0.2, C.d);
+        K.slide(tl, $("n1"), C.c + 0.6, { x: 40 });
+        K.wipe(tl, $("r2"), C.d);
+        K.hl(tl, $("r2"), C.d + 0.2, C.e);
+        K.slide(tl, $("n2"), C.d + 0.6, { x: 40 });
+        K.wipe(tl, $("r3"), C.e);
+        K.hl(tl, $("r3"), C.e + 0.2);
+        K.slide(tl, $("n3"), C.e + 0.6, { x: 40 });
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,53 @@
+<!--sfx: b:pop@0.6*0.25, d:click-soft@2.0*0.4-->
+<div id="@win" class="k-win" style="left:120px;top:150px;width:600px;height:380px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>rec.c</span></div>
+  <div class="k-code" style="left:30px;top:72px;font-size:32px;line-height:1.45"><span class="k-c-pink">typedef struct</span> rec {
+  <span class="k-c-violet">int</span>  <span id="@fi">i</span>;
+  <span class="k-c-violet">char</span> <span id="@fc">c</span>;
+  <span class="k-c-violet">int</span>  <span id="@fj">j</span>;
+} Rec;
+Rec x;</div>
+</div>
+
+<div id="@mem" style="position:absolute;left:840px;top:150px;width:900px;height:400px">
+  <div style="position:absolute;left:0;top:0;width:300px;height:50px;background:repeating-linear-gradient(45deg,#182238 0 10px,#121A2E 10px 20px);border:2px solid #2A3656"></div>
+  <div id="@mj" class="k-cell k-c-cyan" style="left:0;top:50px;width:300px;height:90px;line-height:86px">x.j</div>
+  <div id="@mc" class="k-cell k-c-cyan" style="left:0;top:140px;width:300px;height:50px;line-height:46px">x.c</div>
+  <div id="@mi" class="k-cell k-c-cyan" style="left:0;top:190px;width:300px;height:90px;line-height:86px">x.i</div>
+  <div style="position:absolute;left:0;top:280px;width:300px;height:50px;background:repeating-linear-gradient(45deg,#182238 0 10px,#121A2E 10px 20px);border:2px solid #2A3656"></div>
+  <div id="@bl" class="k-anno k-c-green" style="left:420px;top:256px">← endereço base de x  (deslocamento 0)</div>
+  <svg width="900" height="400" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@oc" d="M 330 280 L 330 190 M 318 204 L 330 190 L 342 204" stroke="#FFD24A" stroke-width="4" fill="none"/>
+    <path id="@oj" d="M 380 280 L 380 140 M 368 154 L 380 140 L 392 154" stroke="#FFD24A" stroke-width="4" fill="none"/>
+  </svg>
+  <div id="@lc" class="k-anno k-c-yel" style="left:420px;top:150px">field_offset(x,c)</div>
+  <div id="@lj" class="k-anno k-c-yel" style="left:420px;top:60px">field_offset(x,j)</div>
+</div>
+<div id="@sym" class="k-chip k-c-violet" style="left:1250px;top:505px;font-size:24px">vem da tabela de símbolos</div>
+<div id="@const" class="k-chip k-c-yel" style="left:840px;top:505px;font-size:24px">constante!</div>
+
+<div id="@code" class="k-card" style="left:120px;top:590px;width:1680px;height:270px;border-color:#4FD6EE">
+  <div class="k-code" style="left:36px;top:22px;font-size:38px"><span class="k-c-cyan">x.j = x.i;</span>  →</div>
+  <div class="k-code" style="left:36px;top:84px;font-size:36px;line-height:1.5"><span class="ln" id="@k1">t1 = &amp;x + field_offset(x,j)</span><span class="ln" id="@k2">t2 = &amp;x + field_offset(x,i)</span><span class="ln" id="@k3"><span class="k-c-pink">*</span>t1 = <span class="k-c-pink">*</span>t2</span></div>
+  <div id="@n1" class="k-anno k-c-green" style="left:1050px;top:92px">endereço de x.j</div>
+  <div id="@n2" class="k-anno k-c-green" style="left:1050px;top:146px">endereço de x.i</div>
+  <div id="@n3" class="k-anno k-c-pink" style="left:1050px;top:200px">copia o valor</div>
+</div>
+
+<script>
+K.rise(tl, $("win"), C.a);
+K.fade(tl, $("mem"), C.b);
+K.slide(tl, [$("mi"), $("mc"), $("mj")], C.b + 0.3, { s: 0.5, x: 60 });
+K.wipe(tl, $("bl"), C.b + 2.4);
+K.pulse(tl, $("mi"), C.b + 2.6, { k: 1.06 });
+K.draw(tl, $("oc"), C.c + 0.6, { d: 0.5 });
+K.wipe(tl, $("lc"), C.c + 0.9);
+K.draw(tl, $("oj"), C.c + 1.4, { d: 0.5 });
+K.wipe(tl, $("lj"), C.c + 1.7);
+K.pop(tl, $("const"), C.c + 1.6);
+K.pop(tl, $("sym"), C.c + 3.8);
+K.rise(tl, $("code"), C.d);
+K.wipe(tl, $("k1"), C.d + 2.0); K.fade(tl, $("n1"), C.d + 2.4);
+K.wipe(tl, $("k2"), C.d + 5.0); K.fade(tl, $("n2"), C.d + 5.4);
+K.wipe(tl, $("k3"), C.d + 8.4); K.fade(tl, $("n3"), C.d + 8.8);
+</script>

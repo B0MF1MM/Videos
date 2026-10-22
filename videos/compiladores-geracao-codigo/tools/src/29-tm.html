@@ -1,0 +1,75 @@
+<!--sfx: c:pop@0.4*0.25, e:click-soft@2.6*0.4-->
+<style>
+  .tm-row { position: absolute; left: 0; width: 360px; height: 54px; border-bottom: 1px solid #2A3656; font-family: "DM Mono", monospace; font-size: 26px; line-height: 54px; padding-left: 16px; white-space: pre; }
+  .tm-reg { position: absolute; width: 230px; height: 82px; border: 2px solid #2A3656; border-radius: 12px; background: #182238; font-family: "DM Mono", monospace; font-size: 26px; padding: 8px 14px; }
+  .tm-reg b { display: block; font-weight: 400; font-size: 34px; color: #EEF1F8; }
+</style>
+<div id="@title" class="k-title" style="left:120px;top:110px;font-size:60px">TM: a <em>máquina TINY</em></div>
+
+<div id="@im" class="k-card" style="left:120px;top:210px;width:400px;height:620px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:20px;top:16px;font-size:30px">iMem · instruções</div>
+  <div class="k-body k-mute" style="left:20px;top:58px;font-size:22px">só leitura</div>
+  <div style="position:absolute;left:20px;top:100px;width:360px;height:500px">
+    <div id="@i0" class="tm-row"><span class="k-mute">0:</span> IN  0,0,0</div>
+    <div id="@i1" class="tm-row" style="top:54px"><span class="k-mute">1:</span> ST  0,0(5)</div>
+    <div id="@i2" class="tm-row" style="top:108px"><span class="k-mute">2:</span> LDC 1,1(0)</div>
+    <div id="@i3" class="tm-row" style="top:162px"><span class="k-mute">3:</span> ADD 0,0,1</div>
+    <div id="@i4" class="tm-row" style="top:216px"><span class="k-mute">4:</span> OUT 0,0,0</div>
+    <div id="@i5" class="tm-row k-c-pink" style="top:270px"><span class="k-mute">5:</span> HALT 0,0,0</div>
+    <div id="@hl" style="position:absolute;left:0;top:0;width:360px;height:54px;border:3px solid #FFD24A;border-radius:8px;box-sizing:border-box"></div>
+  </div>
+</div>
+
+<div id="@regs" style="position:absolute;left:600px;top:210px;width:500px;height:620px">
+  <div class="k-h2 k-c-cyan" style="left:0;top:16px;font-size:30px">8 registradores</div>
+  <div class="tm-reg" style="left:0;top:80px"><span class="k-mute">reg[0]</span><b>0</b></div>
+  <div class="tm-reg" style="left:250px;top:80px"><span class="k-mute">reg[1]</span><b>0</b></div>
+  <div class="tm-reg" style="left:0;top:180px"><span class="k-mute">reg[2]</span><b>0</b></div>
+  <div class="tm-reg" style="left:250px;top:180px"><span class="k-mute">reg[3]</span><b>0</b></div>
+  <div class="tm-reg" style="left:0;top:280px"><span class="k-mute">reg[4]</span><b>0</b></div>
+  <div class="tm-reg" style="left:250px;top:280px"><span class="k-mute">reg[5]</span><b>0</b></div>
+  <div class="tm-reg" style="left:0;top:380px"><span class="k-mute">reg[6]</span><b>0</b></div>
+  <div id="@pc" class="tm-reg" style="left:250px;top:380px"><span class="k-mute">reg[7]</span> <span class="k-c-yel">= PC</span><b id="@pcv">0</b></div>
+</div>
+<svg class="k-svg"><path id="@pca" class="arrow" d="M 840 630 C 760 700, 600 640, 530 330" stroke="#FFD24A" /></svg>
+
+<div id="@dm" class="k-card" style="left:1180px;top:210px;width:620px;height:620px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:20px;top:16px;font-size:30px">dMem · dados</div>
+  <div class="k-cell" style="left:20px;top:90px;width:300px">dMem[0]</div>
+  <div id="@d0" class="k-cell k-c-yel" style="left:330px;top:90px;width:260px">0</div>
+  <div class="k-cell k-mute" style="left:20px;top:170px;width:300px">dMem[1]</div><div class="k-cell k-mute" style="left:330px;top:170px;width:260px">0</div>
+  <div class="k-cell k-mute" style="left:20px;top:250px;width:300px">…</div><div class="k-cell k-mute" style="left:330px;top:250px;width:260px">0</div>
+  <div id="@top" class="k-anno k-c-yel" style="left:20px;top:350px">maior endereço válido
+= topo da pilha</div>
+</div>
+
+<div id="@cyc" style="position:absolute;left:600px;top:740px;width:560px;height:100px">
+  <div id="@y1" class="k-chip k-c-cyan" style="left:0;top:20px;font-size:24px">1 busca</div>
+  <div id="@y2" class="k-chip k-c-yel" style="left:160px;top:20px;font-size:24px">2 PC++</div>
+  <div id="@y3" class="k-chip k-c-green" style="left:320px;top:20px;font-size:24px">3 executa</div>
+</div>
+
+<script>
+K.rise(tl, $("title"), C.a);
+K.rise(tl, $("im"), C.b + 0.2);
+K.rise(tl, $("regs"), C.b + 2.4);
+K.rise(tl, $("dm"), C.b + 1.4);
+tl.to($("pc"), { borderColor: "#FFD24A", duration: 0.3 }, C.c + 0.4);
+K.pulse(tl, $("pc"), C.c + 0.4, { k: 1.1 });
+K.fade(tl, $("hl"), C.d);
+K.draw(tl, $("pca"), C.d, { d: 0.5 });
+K.pop(tl, [$("y1"), $("y2"), $("y3")], C.d + 0.4, { s: 0.6 });
+// executa 6 instruções: o destaque desce e o PC conta
+var pcv = $("pcv");
+tl.to({ v: 0 }, { v: 1, duration: 5.0, ease: "none", onUpdate: function () {
+  var k = Math.min(5, Math.floor(this.progress() * 6));
+  pcv.textContent = String(Math.min(6, k + (this.progress() > 0 ? 1 : 0)));
+  $("hl").style.transform = "translateY(" + (k * 54) + "px)";
+} }, C.d + 0.6);
+tl.to($("hl"), { borderColor: "#FF6F9C", duration: 0.2 }, C.d + 5.6);
+K.pulse(tl, $("i5"), C.d + 5.6);
+tl.to($("d0"), { color: "#FFD24A", duration: 0.01 }, C.e);
+tl.to({ v: 0 }, { v: 1, duration: 0.8, ease: "none", onUpdate: function () { $("d0").textContent = this.progress() > 0.5 ? "1023" : "0"; } }, C.e + 2.6);
+K.pulse(tl, $("d0"), C.e + 3.0);
+K.wipe(tl, $("top"), C.e + 3.4);
+</script>

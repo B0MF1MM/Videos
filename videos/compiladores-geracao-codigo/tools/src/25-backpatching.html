@@ -1,0 +1,50 @@
+<!--sfx: d:pop@3.4*0.35, e:chime@2.6*0.3-->
+<style>
+  .bp .ln { line-height: 58px; }
+  .bp i { font-style: normal; color: #8C97B5; }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:150px;width:860px;height:560px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>gerando código…</span></div>
+  <div class="k-code bp" style="left:10px;top:72px;font-size:36px"><span class="ln" id="@c0"><i>10:</i> t1 = x &gt; 0</span><span class="ln" id="@c1"><i>11:</i> if_false t1 goto <span id="@slot" style="display:inline-block;min-width:110px"> </span></span><span class="ln" id="@c2"><i>12:</i> fact = 1</span><span class="ln" id="@c3"><i>13:</i> …</span><span class="ln" id="@c4"><i>14:</i> …</span><span class="ln" id="@c5"><i>15:</i> write fact</span><span class="ln" id="@c6"><i>16:</i> <span class="k-c-yel">label L1</span></span></div>
+</div>
+<div id="@q" class="k-code k-c-pink" style="left:604px;top:278px;font-size:40px">???</div>
+<div id="@blank" style="position:absolute;left:598px;top:285px;width:120px;height:46px;border:3px dashed #FFD24A;border-radius:8px"></div>
+<div id="@fill" class="k-code k-c-yel" style="left:614px;top:280px;font-size:40px">16</div>
+<div id="@think" class="k-anno k-c-pink" style="left:800px;top:236px">pra onde?! L1 ainda não existe</div>
+<div id="@prov" class="k-anno k-c-yel" style="left:800px;top:236px">espaço em branco / salto provisório</div>
+<svg class="k-svg">
+  <path id="@back" class="arrow" d="M 470 599 C 1060 599, 1060 308, 740 308 M 762 292 L 740 308 L 762 324" stroke="#FFD24A" />
+</svg>
+<div id="@name" style="position:absolute;left:1080px;top:380px;width:740px;height:200px">
+  <div class="k-title" style="left:0;top:0;font-size:80px"><em>backpatching</em></div>
+  <div class="k-h2 k-mute" style="left:0;top:100px;font-size:40px">= ajuste retroativo</div>
+</div>
+<div id="@inv" class="k-card" style="left:1080px;top:610px;width:360px;height:220px;border-color:#FFD24A;background:#221F12">
+  <div class="k-h2 k-c-yel" style="left:28px;top:20px;font-size:32px">CONVITE</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:28px">Festa · data:</div>
+  <div style="position:absolute;left:28px;top:150px;width:200px;height:4px;background:#8C97B5"></div>
+  <div id="@date" class="k-code k-c-yel" style="left:30px;top:112px;font-size:34px">sábado</div>
+</div>
+<div id="@mac" class="k-macete" style="left:1470px;top:640px;width:390px;font-size:30px">Deixa em branco, <u>preenche depois</u>.</div>
+
+<script>
+var L = [];
+for (var i = 0; i < 7; i++) L.push($("c" + i));
+K.rise(tl, $("win"), C.a);
+K.wipe(tl, L[0], C.a + 0.6);
+K.wipe(tl, L[1], C.a + 1.6);
+K.pop(tl, $("q"), C.a + 2.2);
+K.wipe(tl, $("think"), C.b + 0.2);
+K.out(tl, [$("q"), $("think")], C.c);
+K.pop(tl, $("blank"), C.c + 0.2);
+K.wipe(tl, $("prov"), C.c + 0.4);
+K.out(tl, $("prov"), C.d - 0.2);
+K.wipe(tl, [L[2], L[3], L[4], L[5], L[6]], C.d, { s: 0.35, d: 0.3 });
+K.draw(tl, $("back"), C.d + 2.2, { d: 0.8 });
+tl.to($("blank"), { borderColor: "#7FE39A", duration: 0.2 }, C.d + 3.0);
+K.pop(tl, $("fill"), C.d + 3.4, { from: 2 });
+K.rise(tl, $("name"), C.d + 3.2);
+K.rise(tl, $("inv"), C.e);
+K.pop(tl, $("date"), C.e + 2.6, { from: 1.8 });
+K.macete(tl, $("mac"), C.e + 0.6);
+</script>

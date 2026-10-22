@@ -1,0 +1,62 @@
+<!--sfx: b:pop@1.0*0.25, c:pop@1.0*0.25, e:pop@1.0*0.25-->
+<style>
+  .rg { position: absolute; left: 0; width: 620px; height: 70px; border: 2px solid #2A3656; border-radius: 12px; background: #182238; font-family: "DM Mono", monospace; font-size: 30px; line-height: 66px; padding-left: 20px; white-space: pre; }
+  .rg b { font-weight: 400; }
+  .mm { position: absolute; left: 0; width: 340px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 32px; text-align: center; }
+</style>
+<div id="@bank" style="position:absolute;left:120px;top:150px;width:620px;height:640px">
+  <div id="@g7" class="rg" style="top:0"><span class="k-mute">reg 7</span>  <b class="k-c-yel">pc</b>   contador de programa</div>
+  <div id="@g6" class="rg" style="top:80px"><span class="k-mute">reg 6</span>  <b class="k-c-cyan">mp</b>   ponteiro de memória</div>
+  <div id="@g5" class="rg" style="top:160px"><span class="k-mute">reg 5</span>  <b class="k-c-green">gp</b>   ponteiro global</div>
+  <div id="@g4" class="rg" style="top:240px"><span class="k-mute">reg 4</span></div>
+  <div id="@g3" class="rg" style="top:320px"><span class="k-mute">reg 3</span></div>
+  <div id="@g2" class="rg" style="top:400px"><span class="k-mute">reg 2</span></div>
+  <div id="@g1" class="rg" style="top:480px"><span class="k-mute">reg 1</span>  <b class="k-c-pink">ac1</b>  acumulador</div>
+  <div id="@g0" class="rg" style="top:560px"><span class="k-mute">reg 0</span>  <b class="k-c-pink">ac</b>   acumulador</div>
+</div>
+<div id="@never" class="k-anno k-mute" style="left:430px;top:405px">nunca usados</div>
+<div id="@res" class="k-anno k-c-pink" style="left:770px;top:720px">← resultado SEMPRE em ac</div>
+
+<div id="@mem" style="position:absolute;left:1180px;top:150px;width:700px;height:680px">
+  <div class="k-code k-mute" style="left:0;top:-4px;width:340px;text-align:center;font-size:22px">DMEM_SIZE-1 (topo)</div>
+  <div id="@mt1" class="mm k-c-cyan" style="top:30px;height:74px;line-height:70px">t1</div>
+  <div id="@mt2" class="mm k-c-cyan" style="top:104px;height:74px;line-height:70px">t2</div>
+  <div class="mm k-mute" style="top:178px;height:250px;line-height:246px;font-family:'Hanken Grotesk',sans-serif;font-size:28px;background:#121A2E">espaço livre</div>
+  <div id="@my" class="mm k-c-green" style="top:428px;height:74px;line-height:70px">y</div>
+  <div id="@mx" class="mm k-c-green" style="top:502px;height:74px;line-height:70px">x</div>
+  <div class="k-code k-mute" style="left:0;top:584px;width:340px;text-align:center;font-size:22px">0 (fundo)</div>
+  <div id="@at1" class="k-anno k-c-cyan" style="left:370px;top:40px">0(mp)</div>
+  <div id="@at2" class="k-anno k-c-cyan" style="left:370px;top:114px">-1(mp)</div>
+  <div id="@ay" class="k-anno k-c-green" style="left:370px;top:438px">1(gp)</div>
+  <div id="@ax" class="k-anno k-c-green" style="left:370px;top:512px">0(gp)</div>
+  <div id="@dn" class="k-code k-c-cyan" style="left:370px;top:196px;font-size:30px">temporários ↓</div>
+  <div id="@up" class="k-code k-c-green" style="left:370px;top:380px;font-size:30px">variáveis ↑</div>
+</div>
+<svg class="k-svg">
+  <path id="@pm" class="arrow" d="M 745 270 C 950 270, 1000 217, 1170 217 M 1152 201 L 1170 217 L 1152 233" stroke="#4FD6EE" />
+  <path id="@pg" class="arrow" d="M 745 350 C 980 350, 1000 689, 1170 689 M 1152 673 L 1170 689 L 1152 705" stroke="#7FE39A" />
+</svg>
+
+<script>
+var G = [$("g7"), $("g6"), $("g5"), $("g4"), $("g3"), $("g2"), $("g1"), $("g0")];
+K.rise(tl, $("bank"), C.a);
+K.dim(tl, G, C.a + 0.6, 0.35);
+K.dim(tl, $("g7"), C.b + 0.2, 1);
+K.pulse(tl, $("g7"), C.b + 0.2, { k: 1.04 });
+K.dim(tl, $("g6"), C.b + 1.0, 1);
+K.fade(tl, $("mem"), C.b + 1.2);
+tl.set([$("mt1"), $("mt2"), $("my"), $("mx"), $("at1"), $("at2"), $("ay"), $("ax"), $("up"), $("dn")], { opacity: 0 }, 0);
+K.draw(tl, $("pm"), C.b + 1.6, { d: 0.6 });
+tl.to([$("mt1"), $("mt2")], { opacity: 1, duration: 0.4, stagger: 0.3 }, C.b + 3.0);
+tl.to($("dn"), { opacity: 1, duration: 0.4 }, C.b + 3.6);
+K.dim(tl, $("g5"), C.c, 1);
+K.draw(tl, $("pg"), C.c + 0.6, { d: 0.6 });
+tl.to([$("mx"), $("my")], { opacity: 1, duration: 0.4, stagger: 0.3 }, C.c + 1.6);
+tl.to($("up"), { opacity: 1, duration: 0.4 }, C.c + 2.2);
+tl.to([$("at1"), $("at2"), $("ax"), $("ay")], { opacity: 1, duration: 0.35, stagger: 1.2 }, C.d + 0.5);
+K.dim(tl, [$("g0"), $("g1")], C.e + 0.2, 1);
+K.pulse(tl, [$("g0"), $("g1")], C.e + 0.3, { k: 1.04 });
+K.wipe(tl, $("res"), C.e + 3.2);
+K.fade(tl, $("never"), C.e + 5.0);
+tl.to([$("g2"), $("g3"), $("g4")], { opacity: 0.15, duration: 0.4 }, C.e + 5.0);
+</script>

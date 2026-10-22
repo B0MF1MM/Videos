@@ -1,0 +1,45 @@
+<!--sfx: b:pop@0.4*0.25, d:click-soft@1.5*0.4, e:pop*0.25-->
+<style>
+  .q-box { position: absolute; top: 330px; width: 280px; height: 130px; border-radius: 18px; border: 3px solid #2A3656; background: #182238;
+    font-family: "DM Mono", monospace; font-size: 54px; line-height: 124px; text-align: center; }
+  .q-h { position: absolute; top: 280px; width: 280px; text-align: center; font-family: "DM Mono", monospace; font-size: 24px; color: #8C97B5; letter-spacing: 0.08em; }
+</style>
+<div id="@txt" class="k-code" style="left:0;top:160px;width:1920px;text-align:center;font-size:64px">fact = 1</div>
+<div id="@txtl" class="k-anno k-c-pink" style="left:1150px;top:172px">não como texto…</div>
+<div id="@title" class="k-title" style="left:0;top:120px;width:1920px;text-align:center;font-size:72px">a <em>quádrupla</em>: 4 campos</div>
+
+<div id="@h0" class="q-h" style="left:340px">OP</div><div id="@h1" class="q-h" style="left:660px">ENDEREÇO 1</div><div id="@h2" class="q-h" style="left:980px">ENDEREÇO 2</div><div id="@h3" class="q-h" style="left:1300px">ENDEREÇO 3</div>
+<div id="@b0" class="q-box" style="left:340px"></div><div id="@b1" class="q-box" style="left:660px"></div><div id="@b2" class="q-box" style="left:980px"></div><div id="@b3" class="q-box" style="left:1300px"></div>
+<div id="@v0" class="q-box k-c-yel" style="left:340px;background:none;border-color:transparent">asn</div>
+<div id="@v1" class="q-box k-c-green" style="left:660px;background:none;border-color:transparent">1</div>
+<div id="@v2" class="q-box k-c-cyan" style="left:980px;background:none;border-color:transparent">fact</div>
+<div id="@v3" class="q-box k-mute" style="left:1300px;background:none;border-color:transparent">_</div>
+<div id="@bopl" class="k-body k-c-yel" style="left:340px;top:480px;width:280px;text-align:center;font-size:30px">operação</div>
+<div id="@baddr" class="k-body k-c-cyan" style="left:660px;top:480px;width:920px;text-align:center;font-size:30px">três endereços</div>
+<div id="@brk" style="position:absolute;left:670px;top:470px;width:900px;height:3px;background:#4FD6EE"></div>
+<div id="@dash" class="k-anno k-c-pink" style="left:1300px;top:540px">campo que sobra = traço</div>
+
+<div id="@list" class="k-code k-mute" style="left:340px;top:600px;font-size:30px;line-height:1.45">(rd,x,_,_)       (gt,x,0,t1)       (if_f,t1,L1,_)
+(lab,L2,_,_)     (mul,fact,x,t2)   (asn,t2,fact,_)
+(eq,x,0,t4)      (if_f,t4,L2,_)    (halt,_,_,_)</div>
+
+<script>
+K.rise(tl, $("txt"), C.a);
+K.wipe(tl, $("txtl"), C.a + 1.5);
+tl.to([$("txt"), $("txtl")], { opacity: 0, y: -30, duration: 0.4 }, C.b);
+K.rise(tl, $("title"), C.b + 0.2);
+K.pop(tl, [$("b0"), $("b1"), $("b2"), $("b3")], C.b + 0.4, { s: 0.15 });
+K.fade(tl, [$("h0"), $("h1"), $("h2"), $("h3")], C.b + 1.0, { s: 0.1 });
+tl.to($("b0"), { borderColor: "#FFD24A", duration: 0.3 }, C.c + 0.2);
+K.fade(tl, $("bopl"), C.c + 0.3);
+tl.to([$("b1"), $("b2"), $("b3")], { borderColor: "#4FD6EE", duration: 0.3, stagger: 0.1 }, C.c + 1.5);
+tl.fromTo($("brk"), { scaleX: 0 }, { scaleX: 1, duration: 0.5 }, C.c + 1.5);
+K.fade(tl, $("baddr"), C.c + 1.7);
+K.pop(tl, $("v0"), C.d + 1.5);
+K.pop(tl, $("v1"), C.d + 1.9);
+K.pop(tl, $("v2"), C.d + 2.2);
+K.pop(tl, $("v3"), C.d + 2.6);
+K.pulse(tl, $("b3"), C.e, { k: 1.08 });
+K.wipe(tl, $("dash"), C.e + 0.2);
+K.fade(tl, $("list"), C.e + 0.9);
+</script>

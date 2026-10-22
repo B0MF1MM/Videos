@@ -1,0 +1,67 @@
+<template id="08-tiny-template">
+  <div id="root" data-composition-id="08-tiny" data-start="0" data-duration="20.479" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .tiny-c { font-size: 29px !important; line-height: 40px !important; }
+  .tiny-c .ln { padding: 0 14px; }
+</style>
+    <div id="s08-tiny-bg" class="clip k-scene k-bg" data-start="0" data-duration="20.479" data-track-index="0"></div>
+    <div id="s08-tiny-stage" class="clip k-scene" data-start="0" data-duration="20.479" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s08-tiny-cam" class="k-cam">
+<div id="s08-tiny-w1" class="k-win" style="left:110px;top:150px;width:680px;height:470px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>fatorial.tny (fonte)</span></div>
+  <div class="k-code tiny-c" style="left:10px;top:76px"><span class="ln" id="s08-tiny-s0"><span class="k-c-pink">read</span> x;</span><span class="ln" id="s08-tiny-s1"><span class="k-c-pink">if</span> 0 &lt; x <span class="k-c-pink">then</span></span><span class="ln" id="s08-tiny-s2">  fact := 1;</span><span class="ln" id="s08-tiny-s3">  <span class="k-c-pink">repeat</span></span><span class="ln" id="s08-tiny-s4">    fact := fact * x;</span><span class="ln" id="s08-tiny-s5">    x := x - 1</span><span class="ln" id="s08-tiny-s6">  <span class="k-c-pink">until</span> x = 0;</span><span class="ln" id="s08-tiny-s7">  <span class="k-c-pink">write</span> fact</span><span class="ln" id="s08-tiny-s8"><span class="k-c-pink">end</span></span></div>
+</div>
+<div id="s08-tiny-w2" class="k-win" style="left:900px;top:150px;width:900px;height:666px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>três endereços</span></div>
+  <div class="k-code tiny-c" style="left:10px;top:76px"><span class="ln" id="s08-tiny-c0">read x</span><span class="ln" id="s08-tiny-c1"><span class="k-c-cyan">t1</span> = x &gt; 0</span><span class="ln" id="s08-tiny-c2"><span class="k-c-pink">if_false</span> <span class="k-c-cyan">t1</span> <span class="k-c-pink">goto</span> <span class="k-c-yel">L1</span></span><span class="ln" id="s08-tiny-c3">fact = 1</span><span class="ln" id="s08-tiny-c4"><span class="k-c-pink">label</span> <span class="k-c-green">L2</span></span><span class="ln" id="s08-tiny-c5"><span class="k-c-cyan">t2</span> = fact * x</span><span class="ln" id="s08-tiny-c6">fact = <span class="k-c-cyan">t2</span></span><span class="ln" id="s08-tiny-c7"><span class="k-c-cyan">t3</span> = x - 1</span><span class="ln" id="s08-tiny-c8">x = <span class="k-c-cyan">t3</span></span><span class="ln" id="s08-tiny-c9"><span class="k-c-cyan">t4</span> = x == 0</span><span class="ln" id="s08-tiny-c10"><span class="k-c-pink">if_false</span> <span class="k-c-cyan">t4</span> <span class="k-c-pink">goto</span> <span class="k-c-green">L2</span></span><span class="ln" id="s08-tiny-c11">write fact</span><span class="ln" id="s08-tiny-c12"><span class="k-c-pink">label</span> <span class="k-c-yel">L1</span></span><span class="ln" id="s08-tiny-c13">halt</span></div>
+</div>
+<svg class="k-svg">
+  <path id="s08-tiny-fwd" class="arrow" d="M 1500 326 C 1780 326, 1780 726, 1440 726 M 1462 710 L 1440 726 L 1462 742" stroke="#FFD24A" />
+  <path id="s08-tiny-back" class="arrow" d="M 1560 646 C 1700 646, 1700 406, 1360 406 M 1382 390 L 1360 406 L 1382 422" stroke="#7FE39A" />
+</svg>
+<div id="s08-tiny-fl" class="k-anno k-c-yel" style="left:1590px;top:500px">pula ↓</div>
+<div id="s08-tiny-bl" class="k-anno k-c-green" style="left:1480px;top:540px">volta ↑</div>
+<div id="s08-tiny-mac" class="k-macete" style="left:110px;top:680px;width:700px;font-size:34px">if pula pra <u>frente</u>; repeat volta pra <u>trás</u>.</div>
+      </div>
+    </div>
+    <div id="s08-tiny-chrome" class="clip k-scene" data-start="0" data-duration="20.479" data-track-index="2">
+      <div id="s08-tiny-tag" class="k-tag">COMPILADORES · <b>TRÊS ENDEREÇOS</b></div>
+      <div id="s08-tiny-num" class="k-num">08 / 35</div>
+      <div id="s08-tiny-progbar" class="k-prog"><i id="s08-tiny-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.603, "c": 8.583, "d": 12.076, "e": 16.173}, D = 20.479;
+        var S = K.scene("08-tiny", D, 35), tl = S.tl, $ = S.$;
+        var S_ = [], T_ = [];
+        for (var i = 0; i < 9; i++) S_.push($("s" + i));
+        for (var j = 0; j < 14; j++) T_.push($("c" + j));
+        K.rise(tl, $("w1"), C.a);
+        K.wipe(tl, S_, C.a + 0.3, { s: 0.1, d: 0.35 });
+        K.rise(tl, $("w2"), C.a + 1.0);
+        K.wipe(tl, T_, C.a + 1.3, { s: 0.12, d: 0.35 });
+        // if
+        K.hl(tl, $("s1"), C.b, C.c);
+        K.hl(tl, $("c1"), C.b + 0.3, C.c);
+        K.hl(tl, $("c2"), C.b + 1.6, C.c);
+        K.draw(tl, $("fwd"), C.b + 2.6, { d: 0.9 });
+        K.hl(tl, $("c12"), C.b + 3.4, C.c);
+        K.fade(tl, $("fl"), C.b + 3.3);
+        // repeat
+        K.hl(tl, $("s3"), C.c, C.d);
+        K.hl(tl, $("c4"), C.c + 0.3, C.d);
+        // until
+        K.hl(tl, $("s6"), C.d, C.e);
+        K.hl(tl, $("c9"), C.d + 0.2, C.e);
+        K.hl(tl, $("c10"), C.d + 0.4, C.e);
+        K.draw(tl, $("back"), C.d + 2.4, { d: 0.9 });
+        K.hl(tl, $("c4"), C.d + 3.2, C.e);
+        K.fade(tl, $("bl"), C.d + 3.1);
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>

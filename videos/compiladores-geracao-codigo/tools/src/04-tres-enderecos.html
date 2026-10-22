@@ -1,0 +1,37 @@
+<!--sfx: c:click-soft@0.2*0.35, d:pop*0.3-->
+<div id="@kick" class="k-kicker" style="left:0;top:150px;width:1920px;text-align:center">a forma mais famosa de IR</div>
+<div id="@title" class="k-title" style="left:0;top:200px;width:1920px;text-align:center;font-size:76px">Código de <em>três endereços</em></div>
+
+<div id="@f" style="position:absolute;left:0;top:340px;width:1920px;height:200px;text-align:center;font-family:'DM Mono',monospace;font-size:140px;line-height:200px">
+  <span id="@x" style="display:inline-block;color:#4FD6EE">x</span>
+  <span id="@eq" style="display:inline-block">=</span>
+  <span id="@y" style="display:inline-block;color:#7FE39A">y</span>
+  <span id="@op" style="display:inline-block;color:#FFD24A">op</span>
+  <span id="@z" style="display:inline-block;color:#7FE39A">z</span>
+</div>
+<div id="@b1" class="k-chip k-c-cyan" style="left:560px;top:300px;font-size:30px">1</div>
+<div id="@b2" class="k-chip k-c-green" style="left:905px;top:300px;font-size:30px">2</div>
+<div id="@b3" class="k-chip k-c-green" style="left:1328px;top:300px;font-size:30px">3</div>
+<div id="@l1" class="k-body k-c-cyan" style="left:460px;top:560px;width:340px;text-align:center">resultado</div>
+<div id="@l2" class="k-body k-c-green" style="left:820px;top:560px;width:640px;text-align:center">dois operandos</div>
+
+<div id="@bad" class="k-code" style="left:200px;top:680px;font-size:44px">a = b + c * d</div>
+<div id="@strike" style="position:absolute;left:190px;top:712px;width:400px;height:6px;background:#FF6F9C;transform-origin:0 50%"></div>
+<div id="@good" class="k-code" style="left:720px;top:650px;font-size:44px;line-height:1.5"><span class="k-c-cyan">t1</span> = c * d
+a  = b + <span class="k-c-cyan">t1</span></div>
+<div id="@mac" class="k-macete" style="left:1180px;top:775px;width:620px;font-size:36px">Máx. <u>1 operador</u> por linha.</div>
+
+<script>
+K.rise(tl, [$("kick"), $("title")], C.a, { s: 0.2 });
+K.pop(tl, [$("x"), $("eq"), $("y"), $("op"), $("z")], C.b, { s: 0.22 });
+K.pop(tl, $("b1"), C.c, {});
+K.pop(tl, $("b2"), C.c + 0.6, {});
+K.pop(tl, $("b3"), C.c + 0.9, {});
+K.fade(tl, $("l1"), C.c + 0.3);
+K.fade(tl, $("l2"), C.c + 0.8);
+K.pulse(tl, $("op"), C.d + 0.6, { k: 1.25 });
+K.rise(tl, $("bad"), C.d + 0.5);
+tl.fromTo($("strike"), { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, C.d + 1.6);
+K.slide(tl, $("good"), C.d + 2.0, { x: -40 });
+K.macete(tl, $("mac"), C.d + 2.6);
+</script>

@@ -1,0 +1,71 @@
+<template id="02-depende-template">
+  <div id="root" data-composition-id="02-depende" data-start="0" data-duration="18.074" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s02-depende-bg" class="clip k-scene k-bg" data-start="0" data-duration="18.074" data-track-index="0"></div>
+    <div id="s02-depende-stage" class="clip k-scene" data-start="0" data-duration="18.074" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s02-depende-cam" class="k-cam">
+<div id="s02-depende-title" class="k-title" style="left:160px;top:130px;font-size:68px">Gerar código <em>depende de</em> três coisas</div>
+<div id="s02-depende-src" class="k-chip k-mute" style="left:1380px;top:156px">+ a linguagem fonte</div>
+
+<div id="s02-depende-c0" class="k-card" style="left:180px;top:300px;width:480px;height:250px">
+  <div style="position:absolute;left:190px;top:40px;width:100px;height:100px;border:4px solid #4FD6EE;border-radius:14px"></div>
+  <div style="position:absolute;left:216px;top:66px;width:48px;height:48px;background:#4FD6EE;border-radius:6px"></div>
+  <div class="k-h2" style="left:0;top:166px;width:480px;text-align:center;font-size:40px">Arquitetura alvo</div>
+</div>
+<div id="s02-depende-c1" class="k-card" style="left:720px;top:300px;width:480px;height:250px">
+  <div style="position:absolute;left:170px;top:42px;width:140px;height:24px;background:#7FE39A;border-radius:6px"></div>
+  <div style="position:absolute;left:170px;top:78px;width:140px;height:24px;background:#7FE39A;opacity:0.7;border-radius:6px"></div>
+  <div style="position:absolute;left:170px;top:114px;width:140px;height:24px;background:#7FE39A;opacity:0.45;border-radius:6px"></div>
+  <div class="k-h2" style="left:0;top:166px;width:480px;text-align:center;font-size:40px">Ambiente de execução</div>
+</div>
+<div id="s02-depende-c2" class="k-card" style="left:1260px;top:300px;width:480px;height:250px">
+  <div style="position:absolute;left:170px;top:40px;width:140px;height:100px;border:4px solid #FF6F9C;border-radius:12px"></div>
+  <div style="position:absolute;left:170px;top:40px;width:140px;height:24px;background:#FF6F9C;border-radius:10px 10px 0 0"></div>
+  <div class="k-h2" style="left:0;top:166px;width:480px;text-align:center;font-size:40px">Sistema operacional</div>
+</div>
+
+<div id="s02-depende-t0" class="k-body k-c-yel" style="left:180px;top:574px;width:480px;text-align:center">língua de destino</div>
+<div id="s02-depende-t1" class="k-body k-c-yel" style="left:720px;top:574px;width:480px;text-align:center">o lugar</div>
+<div id="s02-depende-t2" class="k-body k-c-yel" style="left:1260px;top:574px;width:480px;text-align:center">as regras locais</div>
+<div id="s02-depende-mac" class="k-macete" style="left:430px;top:676px;width:1060px">Pense num <u>tradutor</u>: ele precisa saber tudo isso.</div>
+
+<div id="s02-depende-opt" style="position:absolute;left:330px;top:680px;width:1260px;height:180px">
+  <div class="k-h2 k-c-green" style="left:0;top:0;font-size:40px">E ainda otimiza:</div>
+  <div class="k-body" style="left:0;top:76px">mais rápido</div>
+  <div style="position:absolute;left:260px;top:90px;width:900px;height:22px;background:#2A3656;border-radius:11px"></div>
+  <div id="s02-depende-bar0" style="position:absolute;left:260px;top:90px;width:900px;height:22px;background:#7FE39A;border-radius:11px;transform-origin:0 50%"></div>
+  <div class="k-body" style="left:0;top:130px">menor</div>
+  <div style="position:absolute;left:260px;top:144px;width:900px;height:22px;background:#2A3656;border-radius:11px"></div>
+  <div id="s02-depende-bar1" style="position:absolute;left:260px;top:144px;width:900px;height:22px;background:#4FD6EE;border-radius:11px;transform-origin:100% 50%"></div>
+</div>
+      </div>
+    </div>
+    <div id="s02-depende-chrome" class="clip k-scene" data-start="0" data-duration="18.074" data-track-index="2">
+      <div id="s02-depende-tag" class="k-tag">COMPILADORES · <b>INTRODUÇÃO</b></div>
+      <div id="s02-depende-num" class="k-num">02 / 35</div>
+      <div id="s02-depende-progbar" class="k-prog"><i id="s02-depende-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.147, "c": 7.591, "d": 13.533}, D = 18.074;
+        var S = K.scene("02-depende", D, 35), tl = S.tl, $ = S.$;
+        K.rise(tl, $("title"), C.a);
+        K.pop(tl, $("src"), C.a + 1.4);
+        K.rise(tl, $("c0"), C.b + 0.3, { y: 80 });
+        K.rise(tl, $("c1"), C.b + 1.5, { y: 80 });
+        K.rise(tl, $("c2"), C.b + 2.8, { y: 80 });
+        K.macete(tl, $("mac"), C.c);
+        K.fade(tl, $("t0"), C.c + 2.4);
+        K.fade(tl, $("t1"), C.c + 3.3);
+        K.fade(tl, $("t2"), C.c + 4.0);
+        K.out(tl, $("mac"), C.d - 0.2);
+        K.rise(tl, $("opt"), C.d);
+        tl.fromTo($("bar0"), { scaleX: 0.25 }, { scaleX: 1, duration: 1.2, ease: "power3.out" }, C.d + 1.4);
+        tl.fromTo($("bar1"), { scaleX: 1 }, { scaleX: 0.35, duration: 1.2, ease: "power3.out" }, C.d + 2.3);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,57 @@
+<template id="04-tres-enderecos-template">
+  <div id="root" data-composition-id="04-tres-enderecos" data-start="0" data-duration="15.681" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s04-tres-enderecos-bg" class="clip k-scene k-bg" data-start="0" data-duration="15.681" data-track-index="0"></div>
+    <div id="s04-tres-enderecos-stage" class="clip k-scene" data-start="0" data-duration="15.681" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s04-tres-enderecos-cam" class="k-cam">
+<div id="s04-tres-enderecos-kick" class="k-kicker" style="left:0;top:150px;width:1920px;text-align:center">a forma mais famosa de IR</div>
+<div id="s04-tres-enderecos-title" class="k-title" style="left:0;top:200px;width:1920px;text-align:center;font-size:76px">Código de <em>três endereços</em></div>
+
+<div id="s04-tres-enderecos-f" style="position:absolute;left:0;top:340px;width:1920px;height:200px;text-align:center;font-family:'DM Mono',monospace;font-size:140px;line-height:200px">
+  <span id="s04-tres-enderecos-x" style="display:inline-block;color:#4FD6EE">x</span>
+  <span id="s04-tres-enderecos-eq" style="display:inline-block">=</span>
+  <span id="s04-tres-enderecos-y" style="display:inline-block;color:#7FE39A">y</span>
+  <span id="s04-tres-enderecos-op" style="display:inline-block;color:#FFD24A">op</span>
+  <span id="s04-tres-enderecos-z" style="display:inline-block;color:#7FE39A">z</span>
+</div>
+<div id="s04-tres-enderecos-b1" class="k-chip k-c-cyan" style="left:560px;top:300px;font-size:30px">1</div>
+<div id="s04-tres-enderecos-b2" class="k-chip k-c-green" style="left:905px;top:300px;font-size:30px">2</div>
+<div id="s04-tres-enderecos-b3" class="k-chip k-c-green" style="left:1328px;top:300px;font-size:30px">3</div>
+<div id="s04-tres-enderecos-l1" class="k-body k-c-cyan" style="left:460px;top:560px;width:340px;text-align:center">resultado</div>
+<div id="s04-tres-enderecos-l2" class="k-body k-c-green" style="left:820px;top:560px;width:640px;text-align:center">dois operandos</div>
+
+<div id="s04-tres-enderecos-bad" class="k-code" style="left:200px;top:680px;font-size:44px">a = b + c * d</div>
+<div id="s04-tres-enderecos-strike" style="position:absolute;left:190px;top:712px;width:400px;height:6px;background:#FF6F9C;transform-origin:0 50%"></div>
+<div id="s04-tres-enderecos-good" class="k-code" style="left:720px;top:650px;font-size:44px;line-height:1.5"><span class="k-c-cyan">t1</span> = c * d
+a  = b + <span class="k-c-cyan">t1</span></div>
+<div id="s04-tres-enderecos-mac" class="k-macete" style="left:1180px;top:775px;width:620px;font-size:36px">Máx. <u>1 operador</u> por linha.</div>
+      </div>
+    </div>
+    <div id="s04-tres-enderecos-chrome" class="clip k-scene" data-start="0" data-duration="15.681" data-track-index="2">
+      <div id="s04-tres-enderecos-tag" class="k-tag">COMPILADORES · <b>TRÊS ENDEREÇOS</b></div>
+      <div id="s04-tres-enderecos-num" class="k-num">04 / 35</div>
+      <div id="s04-tres-enderecos-progbar" class="k-prog"><i id="s04-tres-enderecos-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.649, "c": 6.7, "d": 9.761}, D = 15.681;
+        var S = K.scene("04-tres-enderecos", D, 35), tl = S.tl, $ = S.$;
+        K.rise(tl, [$("kick"), $("title")], C.a, { s: 0.2 });
+        K.pop(tl, [$("x"), $("eq"), $("y"), $("op"), $("z")], C.b, { s: 0.22 });
+        K.pop(tl, $("b1"), C.c, {});
+        K.pop(tl, $("b2"), C.c + 0.6, {});
+        K.pop(tl, $("b3"), C.c + 0.9, {});
+        K.fade(tl, $("l1"), C.c + 0.3);
+        K.fade(tl, $("l2"), C.c + 0.8);
+        K.pulse(tl, $("op"), C.d + 0.6, { k: 1.25 });
+        K.rise(tl, $("bad"), C.d + 0.5);
+        tl.fromTo($("strike"), { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, C.d + 1.6);
+        K.slide(tl, $("good"), C.d + 2.0, { x: -40 });
+        K.macete(tl, $("mac"), C.d + 2.6);
+      })();
+    </script>
+  </div>
+</template>

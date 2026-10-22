@@ -1,0 +1,46 @@
+<!--sfx: b:pop@0.6*0.3, c:pop@0.2*0.25, d:pop@0.2*0.25-->
+<div id="@expr" style="position:absolute;left:0;top:120px;width:1920px;text-align:center;font-family:'DM Mono',monospace;font-size:86px;line-height:120px"><span id="@e1" style="display:inline-block">2*a</span><span id="@e2" style="display:inline-block;color:#FFD24A">+</span><span id="@e3" style="display:inline-block">(b-3)</span></div>
+<div id="@k" class="k-kicker" style="left:120px;top:150px">passo 1 · a árvore</div>
+
+<svg class="k-svg">
+  <line id="@ea" class="edge" x1="960" y1="320" x2="700" y2="500" />
+  <line id="@eb" class="edge" x1="960" y1="320" x2="1220" y2="500" />
+  <line id="@ec" class="edge" x1="700" y1="500" x2="580" y2="700" />
+  <line id="@ed" class="edge" x1="700" y1="500" x2="820" y2="700" />
+  <line id="@ee" class="edge" x1="1220" y1="500" x2="1100" y2="700" />
+  <line id="@ef" class="edge" x1="1220" y1="500" x2="1340" y2="700" />
+</svg>
+<div id="@nr" class="k-node" style="left:960px;top:320px;border-color:#FFD24A;color:#FFD24A">+</div>
+<div id="@nm" class="k-node" style="left:700px;top:500px">*</div>
+<div id="@ns" class="k-node" style="left:1220px;top:500px">-</div>
+<div id="@l2" class="k-node k-leaf" style="left:580px;top:700px">2</div>
+<div id="@la" class="k-node k-leaf" style="left:820px;top:700px">a</div>
+<div id="@lb" class="k-node k-leaf" style="left:1100px;top:700px">b</div>
+<div id="@l3" class="k-node k-leaf" style="left:1340px;top:700px">3</div>
+
+<div id="@rootnote" class="k-anno k-c-yel" style="left:1080px;top:270px">raiz = operação feita por ÚLTIMO</div>
+<div id="@leftnote" class="k-anno k-c-cyan" style="left:200px;top:470px">esquerda: 2 * a</div>
+<div id="@rightnote" class="k-anno k-c-cyan" style="left:1330px;top:470px">direita: b - 3</div>
+<div id="@leafnote" class="k-anno k-c-green" style="left:700px;top:800px">folhas = números e variáveis</div>
+
+<script>
+K.rise(tl, $("expr"), C.a, { y: 30 });
+K.fade(tl, $("k"), C.a + 0.6);
+K.pulse(tl, $("e2"), C.b + 1.6, { k: 1.4 });
+K.pop(tl, $("nr"), C.b + 2.0);
+K.wipe(tl, $("rootnote"), C.b + 2.5);
+tl.to($("e1"), { color: "#4FD6EE", duration: 0.3 }, C.c);
+K.draw(tl, $("ea"), C.c + 0.1, { d: 0.4 });
+K.pop(tl, $("nm"), C.c + 0.4);
+K.draw(tl, [$("ec"), $("ed")], C.c + 0.7, { d: 0.4 });
+K.pop(tl, [$("l2"), $("la")], C.c + 1.0, { s: 0.15 });
+K.wipe(tl, $("leftnote"), C.c + 1.2);
+tl.to($("e3"), { color: "#4FD6EE", duration: 0.3 }, C.d);
+K.draw(tl, $("eb"), C.d + 0.1, { d: 0.4 });
+K.pop(tl, $("ns"), C.d + 0.4);
+K.draw(tl, [$("ee"), $("ef")], C.d + 0.7, { d: 0.4 });
+K.pop(tl, [$("lb"), $("l3")], C.d + 1.0, { s: 0.15 });
+K.wipe(tl, $("rightnote"), C.d + 1.2);
+K.pulse(tl, [$("l2"), $("la"), $("lb"), $("l3")], C.e + 0.3, { k: 1.18 });
+K.wipe(tl, $("leafnote"), C.e + 0.5);
+</script>

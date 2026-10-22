@@ -1,0 +1,69 @@
+<template id="19-matriz-formula-template">
+  <div id="root" data-composition-id="19-matriz-formula" data-start="0" data-duration="19.488" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s19-matriz-formula-bg" class="clip k-scene k-bg" data-start="0" data-duration="19.488" data-track-index="0"></div>
+    <div id="s19-matriz-formula-stage" class="clip k-scene" data-start="0" data-duration="19.488" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s19-matriz-formula-cam" class="k-cam">
+<div id="s19-matriz-formula-arr" style="position:absolute;left:330px;top:200px;width:1300px;height:170px"></div>
+<div id="s19-matriz-formula-base" class="k-anno k-c-green" style="left:280px;top:360px">↑ base (&amp;a)</div>
+<div id="s19-matriz-formula-hop" class="k-anno k-c-yel" style="left:700px;top:360px">pula índice × tamanho</div>
+
+<div id="s19-matriz-formula-f" class="k-code" style="left:0;top:450px;width:1920px;text-align:center;font-size:46px">endereço = <span id="s19-matriz-formula-fb" class="k-c-green">base</span> + (<span id="s19-matriz-formula-fi" class="k-c-cyan">índice</span> − <span id="s19-matriz-formula-fl" class="k-c-pink">lim_inf</span>) × <span id="s19-matriz-formula-ft" class="k-c-yel">tamanho</span></div>
+
+<div id="s19-matriz-formula-bit" style="position:absolute;left:0;top:550px;width:1920px;height:130px;text-align:center;font-family:'Newsreader',serif;font-size:100px;line-height:130px">
+  <span id="s19-matriz-formula-B" style="display:inline-block;color:#7FE39A">B</span><span class="k-mute" style="font-size:60px">ase + </span><span id="s19-matriz-formula-I" style="display:inline-block;color:#4FD6EE">I</span><span class="k-mute" style="font-size:60px">ndice × </span><span id="s19-matriz-formula-T" style="display:inline-block;color:#FFD24A">T</span><span class="k-mute" style="font-size:60px">amanho</span>
+</div>
+<div id="s19-matriz-formula-bitm" class="k-chip k-c-yel" style="left:860px;top:690px;background:#2A2410">MACETE: B · I · T</div>
+
+<div id="s19-matriz-formula-ex" class="k-card" style="left:260px;top:700px;width:1400px;height:170px">
+  <div class="k-code" style="left:36px;top:24px;font-size:38px">em C: <span class="k-c-pink">lim_inf = 0</span></div>
+  <div class="k-code" style="left:36px;top:90px;font-size:40px">a[i+1] → <span class="k-c-green">&amp;a</span> + <span class="k-c-cyan">(i+1)</span> * <span class="k-c-yel">sizeof(int)</span></div>
+</div>
+      </div>
+    </div>
+    <div id="s19-matriz-formula-chrome" class="clip k-scene" data-start="0" data-duration="19.488" data-track-index="2">
+      <div id="s19-matriz-formula-tag" class="k-tag">COMPILADORES · <b>MATRIZES</b></div>
+      <div id="s19-matriz-formula-num" class="k-num">19 / 35</div>
+      <div id="s19-matriz-formula-progbar" class="k-prog"><i id="s19-matriz-formula-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.684, "c": 8.16, "d": 12.26}, D = 19.488;
+        var S = K.scene("19-matriz-formula", D, 35), tl = S.tl, $ = S.$;
+        var arr = $("arr"), cells = [];
+        for (var i = 0; i < 8; i++) {
+          var c = document.createElement("div");
+          c.id = "s19-matriz-formula-c" + i; c.className = "k-cell";
+          c.style.left = (i * 160) + "px"; c.style.top = "40px"; c.style.width = "156px"; c.style.height = "96px"; c.style.lineHeight = "92px";
+          c.textContent = "a[" + i + "]";
+          arr.appendChild(c); cells.push(c);
+        }
+        var cur = document.createElement("div");
+        cur.id = "s19-matriz-formula-cur";
+        cur.style.position = "absolute"; cur.style.left = "0px"; cur.style.top = "34px"; cur.style.width = "156px"; cur.style.height = "108px";
+        cur.style.border = "5px solid #FFD24A"; cur.style.borderRadius = "10px"; cur.style.boxSizing = "border-box";
+        arr.appendChild(cur);
+
+        K.fade(tl, cells, C.a, { s: 0.08 });
+        K.wipe(tl, $("base"), C.a + 1.2);
+        K.fade(tl, cur, C.b);
+        tl.to(cur, { x: 3 * 160, duration: 1.4, ease: "steps(3)" }, C.b + 2.6);
+        K.wipe(tl, $("hop"), C.b + 2.6);
+        K.wipe(tl, $("f"), C.b + 0.2, { d: 1.2 });
+        K.pulse(tl, $("fb"), C.b + 0.8);
+        K.pulse(tl, $("fi"), C.b + 1.8);
+        K.pulse(tl, $("fl"), C.b + 2.8);
+        K.pulse(tl, $("ft"), C.b + 4.0);
+        K.fade(tl, $("bit"), C.c);
+        K.pop(tl, [$("B"), $("I"), $("T")], C.c + 1.2, { s: 0.5, from: 2.2 });
+        K.pop(tl, $("bitm"), C.c + 2.6);
+        tl.to([$("bit"), $("bitm")], { y: -40, opacity: 0.0, duration: 0.4 }, C.d - 0.2);
+        K.rise(tl, $("ex"), C.d, { y: 40 });
+        tl.to($("ex"), { y: -150, duration: 0.6, ease: "power3.inOut" }, C.d + 0.6);
+      })();
+    </script>
+  </div>
+</template>

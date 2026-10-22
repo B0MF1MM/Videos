@@ -1,0 +1,235 @@
+# Roteiro — Compiladores 06: Geração de Código
+# Formato: "# id-da-cena" abre uma cena; "chave: texto da legenda || texto falado" (|| opcional,
+# usado quando a pronúncia precisa ser soletrada para a voz). Cada chave vira um "cue" de tempo.
+
+# 01-abertura
+a: Você escreve um programa numa linguagem que você entende.
+b: Mas o processador só entende instruções de máquina.
+c: Quem faz essa ponte é o compilador, e a última etapa dele é a geração de código.
+d: Bora entender passo a passo, com macetes para a prova.
+
+# 02-depende
+a: Gerar código não depende só da linguagem fonte.
+b: Depende da arquitetura alvo, do ambiente de execução e do sistema operacional.
+c: Macete: pense num tradutor. Ele precisa conhecer a língua de destino, o lugar e as regras locais.
+d: E ainda tenta otimizar: deixar o código mais rápido, ou menor.
+
+# 03-ponte
+a: Como é complexo, o compilador quebra essa fase em passos.
+b: A árvore sintática abstrata descreve bem o programa, mas não se parece nada com o código alvo.
+c: Então ele cria uma ponte no meio: o código intermediário, uma representação intermediária parecida com o código alvo.
+d: Bônus: com essa ponte, fica fácil trocar de máquina alvo. É só refazer o último trecho.
+
+# 04-tres-enderecos
+a: A forma mais famosa de código intermediário é o código de três endereços.
+b: x = y op z. || xis igual a ípsilon, op, zê.
+c: Um resultado e dois operandos: três endereços.
+d: Macete: no máximo um operador por linha. Se a conta é grande, ela vira várias linhas.
+
+# 05-arvore
+a: Vamos montar na prática a expressão 2 * a + (b - 3). || Vamos montar na prática a expressão: dois vezes a, mais, b menos três.
+b: Primeiro, a árvore. A raiz é o operador que acontece por último: o mais.
+c: Do lado esquerdo, dois vezes a.
+d: Do lado direito, b menos três.
+e: Os números e as variáveis ficam nas folhas.
+
+# 06-percorrer
+a: Agora percorra a árvore de baixo para cima, da esquerda para a direita.
+b: Cada nó interior ganha um temporário. t1 = 2 * a. || Cada nó interior ganha um temporário. tê um, igual a dois vezes a.
+c: t2 = b - 3. || tê dois, igual a b menos três.
+d: E a raiz junta tudo: t3 = t1 + t2. || E a raiz junta tudo: tê três, igual a tê um mais tê dois.
+e: Macete: folha é nome, nó interior é temporário.
+
+# 07-temporarios
+a: Esses temporários normalmente vão para registradores.
+b: Mas também podem ficar na memória, ou até sumir numa otimização.
+c: E operador de um operando só, como a negação, usa apenas dois endereços: t2 = -t1. || E operador de um operando só, como a negação, usa apenas dois endereços: tê dois, igual a menos tê um.
+
+# 08-tiny
+a: Veja um programa inteiro na linguagem TINY: o fatorial. || Veja um programa inteiro na linguagem táini: o fatorial.
+b: O if vira um teste, t1 = x > 0, e um if_false t1 goto L1. || O if vira um teste, tê um igual a xis maior que zero, e um if fólse, gôu tchú, éle um.
+c: O repeat vira um label L2 no começo do laço. || O ripít vira um lêibol éle dois, no começo do laço.
+d: E no fim, if_false t4 goto L2 volta para o começo. || E no fim, if fólse, gôu tchú, éle dois, volta para o começo.
+e: Macete: o if pula para frente; o repeat volta para trás.
+
+# 09-quadruplas
+a: Na memória, o código de três endereços não fica como texto.
+b: Cada instrução vira um registro com quatro campos: a quádrupla.
+c: Um campo para a operação, e três para os endereços.
+d: fact = 1 vira: asn, 1, fact, vazio. || fact igual a um, vira: asn, um, fact, e vazio.
+e: Campo que sobra fica com um traço.
+
+# 10-gramatica
+a: Agora, o ponto mais cobrado: gerar código como atributo sintetizado.
+b: A gramática tem só soma e atribuição.
+c: exp vai em id = exp, ou em aexp. || exp vai em ai dê igual exp, ou em a-exp.
+d: aexp vai em aexp + fator, ou em fator. || a-exp vai em a-exp mais fator, ou em fator.
+e: E fator é uma expressão entre parênteses, um número, ou um id. || E fator é uma expressão entre parênteses, um número, ou um ai dê.
+
+# 11-atributos
+a: Cada nó da árvore carrega dois atributos.
+b: name: onde fica o resultado. || nêim: onde fica o resultado.
+c: tacode: o código que calcula esse resultado. || tê-a-côude: o código que calcula esse resultado.
+d: Duas mais concatenam com quebra de linha. Duas barras concatenam com espaço.
+e: E newtemp cria um temporário novinho. || E niu-têmp cria um temporário novinho.
+
+# 12-regras-folhas
+a: Vamos ler a tabela de regras semânticas, em linguagem de gente.
+b: Folhas: fator vai em num, ou em id. || Folhas: fator vai em num, ou em ai dê.
+c: O name é o próprio número ou nome, e o tacode é vazio. || O nêim é o próprio número ou nome, e o tê-a-côude é vazio.
+d: Regras de cópia, como exp vai em aexp: só copiam name e tacode do filho. || Regras de cópia, como exp vai em a-exp: só copiam nêim e tê-a-côude do filho.
+
+# 13-regras-soma
+a: A soma é a regra que trabalha.
+b: Primeiro, newtemp cria o temporário. || Primeiro, niu-têmp cria o temporário.
+c: Depois junta o código do filho da esquerda, o código do filho da direita,
+d: e acrescenta a linha: temporário igual a esquerda mais direita.
+e: Na atribuição, o name é o do filho, e a linha nova é: id igual ao name do filho. || Na atribuição, o nêim é o do filho, e a linha nova é: ai dê, igual ao nêim do filho.
+
+# 14-anotada-1
+a: Agora resolvemos (x = x + 3) + 4. || Agora resolvemos: abre parênteses, xis igual a xis mais três, fecha parênteses, mais quatro.
+b: Comece pelas folhas: x, 3 e 4. O name é elas mesmas, e o tacode é vazio. || Comece pelas folhas: xis, três e quatro. O nêim é elas mesmas, e o tê-a-côude é vazio.
+c: Suba um nível: x + 3 ganha o temporário T1. || Suba um nível: xis mais três ganha o temporário tê um.
+d: E o código dele é: T1 = x + 3. || E o código dele é: tê um, igual a xis mais três.
+
+# 15-anotada-2
+a: Mais um nível: a atribuição.
+b: O name continua T1, e o código ganha a linha: x = T1. || O nêim continua tê um, e o código ganha a linha: xis igual a tê um.
+c: Na raiz, a soma com 4 cria T2. || Na raiz, a soma com quatro cria tê dois.
+d: Código final: T1 = x + 3, x = T1, T2 = T1 + 4. || Código final: tê um igual a xis mais três. xis igual a tê um. tê dois igual a tê um mais quatro.
+e: Macete: o código sobe pela árvore como bola de neve. Por isso o atributo é sintetizado.
+
+# 16-limites
+a: Funciona, mas na prática não é usado assim. Três motivos.
+b: Um: copia muitas cadeias e desperdiça memória.
+c: Dois: é melhor emitir pedaços pequenos direto num arquivo, ou numa estrutura de dados.
+d: Três: geração de código depende muito de atributos herdados, e isso complica a gramática.
+
+# 17-alvo
+a: Do código intermediário para o código alvo, ainda falta uma passada.
+b: Ela define onde ficam as variáveis e os temporários, e cuida dos registradores.
+c: Duas técnicas: expansão de macros, que troca cada instrução por uma sequência pronta.
+d: E simulação estática, que simula os efeitos do código e gera o equivalente.
+e: Macete: macro é carimbo. Simulação é pensar antes de escrever.
+
+# 18-enderecos
+a: No código alvo, nomes viram endereços.
+b: Pode ser um registrador, um endereço absoluto, para globais, ou um deslocamento no registro de ativação, para locais.
+c: Para calcular endereços, usamos dois modos do C: o e comercial, endereço de, e o asterisco, indireto.
+d: Guardar 2 no endereço de x mais 10 bytes: t1 = &x + 10, e depois *t1 = 2. || Guardar dois no endereço de xis mais dez bytes: tê um igual a e comercial xis mais dez. E depois, asterisco tê um, igual a dois.
+
+# 19-matriz-formula
+a: Matrizes ficam em sequência na memória.
+b: Endereço do elemento: base, mais índice menos limite inferior, vezes o tamanho do elemento.
+c: Macete: B, I, T. Base, mais Índice, vezes Tamanho.
+d: Em C o limite inferior é zero. Então a[i+1] fica em &a + (i+1) * sizeof(int). || Em C o limite inferior é zero. Então a de i mais um fica em e comercial a, mais i mais um, vezes saiz-óf int.
+
+# 20-matriz-codigo
+a: Traduzindo a[i+1] = a[j*2] + 3. || Traduzindo: a de i mais um, igual a, a de j vezes dois, mais três.
+b: Primeiro o lado direito: calcula o índice, multiplica pelo tamanho e soma à base.
+c: Depois lê o conteúdo com asterisco e soma três.
+d: Agora o lado esquerdo: o mesmo cálculo de endereço, com i + 1. || Agora o lado esquerdo: o mesmo cálculo de endereço, com i mais um.
+e: E por fim, *t8 = t5. || E por fim, asterisco tê oito, igual a tê cinco.
+f: Macete: asterisco à direita lê; asterisco à esquerda escreve. Matriz de várias dimensões? A mesma ideia, aplicada de novo.
+
+# 21-registros
+a: Registros, ou structs, seguem a mesma lógica.
+b: Os campos ficam um depois do outro, e o primeiro tem deslocamento zero.
+c: O deslocamento de cada campo é constante, e quem informa é field_offset, a partir da tabela de símbolos. || O deslocamento de cada campo é constante, e quem informa é fíud ófset, a partir da tabela de símbolos.
+d: Então x.j = x.i vira: t1 = &x + field_offset(x,j), t2 = &x + field_offset(x,i), e *t1 = *t2. || Então xis ponto jota, igual a xis ponto i, vira: tê um, igual ao endereço de xis mais o deslocamento de jota. tê dois, igual ao endereço de xis mais o deslocamento de i. E asterisco tê um, igual a asterisco tê dois.
+
+# 22-ponteiros
+a: Ponteiro é só um nível a mais de indireção.
+b: Na árvore em C, p->lchild = p vira: t1 = p + field_offset(*p, lchild), e *t1 = p. || Na árvore em C, p seta lchild igual a p, vira: tê um igual a p mais o deslocamento de lchild. E asterisco tê um igual a p.
+c: E p = p->rchild vira: t2 = p + field_offset(*p, rchild), e p = *t2. || E p igual a p seta rchild vira: tê dois igual a p mais o deslocamento de rchild. E p igual a asterisco tê dois.
+d: Repare: aqui não tem e comercial. O ponteiro p já é um endereço.
+
+# 23-if
+a: Para controle de fluxo, precisamos de rótulos: os lugares para onde o código salta.
+b: if (E) S1 else S2 vira: avalia E em t1, e if_false t1 goto L1. || if E, S um, else S dois, vira: avalia E em tê um, e if fólse tê um, gôu tchú éle um.
+c: Depois o código de S1, e goto L2 para pular o else. || Depois o código de S um, e gôu tchú éle dois, para pular o else.
+d: label L1, código de S2, e label L2 na saída. || lêibol éle um, código de S dois, e lêibol éle dois na saída.
+e: Macete: falso pula; verdadeiro segue reto.
+
+# 24-while
+a: O while começa com label L1 no topo. || O uáiou começa com lêibol éle um no topo.
+b: Avalia E, e se for falso, goto L2: sai do laço. || Avalia E, e se for falso, gôu tchú éle dois: sai do laço.
+c: Senão executa o corpo e goto L1: volta para o topo. || Senão executa o corpo, e gôu tchú éle um: volta para o topo.
+d: Macete: o while é um if que volta.
+
+# 25-backpatching
+a: Só que às vezes o salto aparece antes do rótulo existir.
+b: O compilador ainda não sabe para onde pular.
+c: Então ele deixa um espaço em branco, ou um salto provisório.
+d: Quando descobre o destino, volta e preenche. Isso é backpatching: ajuste retroativo. || Quando descobre o destino, volta e preenche. Isso é béck pátchin: ajuste retroativo.
+e: Macete: é como mandar um convite com a data em branco e preencher depois.
+
+# 26-logicas
+a: Expressões lógicas viram números: falso é zero, verdadeiro é um.
+b: Em C, and e or são de curto-circuito: o segundo operando só é avaliado se for necessário.
+c: a and b é o mesmo que: if a then b else false. || a and b é o mesmo que: if a, then b, else false.
+d: a or b é o mesmo que: if a then true else b. || a or b é o mesmo que: if a, then true, else b.
+e: Por isso p != NULL && p->val == 0 é seguro: se p for nulo, a segunda parte nem roda. || Por isso, p diferente de nulo, e, p seta val igual a zero, é seguro: se p for nulo, a segunda parte nem roda.
+
+# 27-funcao-def
+a: Funções têm dois momentos: a definição e a ativação.
+b: A definição cria o nome, os parâmetros e o código, mas não executa nada.
+c: Em três endereços: entry marca o início, e return marca o fim. || Em três endereços: êntri marca o início, e ritârn marca o fim.
+d: int f(int x, int y) { return x+y+1; } vira: entry f, t1 = x + y, t2 = t1 + 1, return t2. || A função f, que retorna xis mais ípsilon mais um, vira: êntri f. tê um igual a xis mais ípsilon. tê dois igual a tê um mais um. E ritârn tê dois.
+
+# 28-funcao-call
+a: A ativação usa três instruções.
+b: begin_args avisa que os argumentos vão começar. || bíguin árgs avisa que os argumentos vão começar.
+c: arg entrega cada argumento. || arg entrega cada argumento.
+d: E call salta para a função. || E cól salta para a função.
+e: f(2+3, 4) vira: begin_args, t1 = 2 + 3, arg t1, arg 4, call f. || f de dois mais três, vírgula, quatro, vira: bíguin árgs. tê um igual a dois mais três. arg tê um. arg quatro. E cól f.
+f: Macete: abre, entrega, chama.
+
+# 29-tm
+a: Agora a máquina alvo: a TM, a máquina TINY. || Agora a máquina alvo: a tê éme, a máquina táini.
+b: Ela tem uma memória de instruções, só de leitura, uma memória de dados, e oito registradores.
+c: O registrador sete é o contador de programa, o PC. || O registrador sete é o contador de programa, o pê cê.
+d: O ciclo: busca a instrução apontada pelo PC, incrementa o PC, executa. Até um HALT ou um erro. || O ciclo: busca a instrução apontada pelo pê cê, incrementa o pê cê, executa. Até um rólt, ou um erro.
+e: Ao iniciar, tudo é zerado, e dMem[0] recebe o maior endereço válido: o topo da pilha. || Ao iniciar, tudo é zerado, e dê mém zero recebe o maior endereço válido: o topo da pilha.
+
+# 30-ro-rm
+a: As instruções têm dois formatos.
+b: RO, só registradores: opcode r, s, t. Como ADD: reg[r] recebe reg[s] + reg[t]. || érre ó, só registradores: ópcôud, r, s, t. Como ADD: o registrador r recebe s mais t.
+c: RM, registrador e memória: opcode r, d(s). O endereço é a = d + reg[s]. || érre éme, registrador e memória: ópcôud, r, d, e s entre parênteses. O endereço é a, igual a d mais o registrador s.
+d: LD carrega, ST armazena, LDA carrega o endereço, LDC uma constante. E os saltos: JLT, JEQ, JNE e companhia. || éle dê carrega, ésse tê armazena, éle dê á carrega o endereço, éle dê cê uma constante. E os saltos condicionais, como jota é quê.
+e: Macete: RO tem três registradores; RM tem parênteses. || Macete: érre ó tem três registradores; érre éme tem parênteses.
+
+# 31-saltos
+a: Não existe salto incondicional na TM, mas dá para imitar. || Não existe salto incondicional na tê éme, mas dá para imitar.
+b: LD 7, 0(1) carrega no PC um endereço guardado na memória. || éle dê sete, zero de um, carrega no pê cê um endereço guardado na memória.
+c: E JEQ 0, 4(7) pula cinco instruções para frente, se o registrador zero for zero. || E jota é quê, zero, quatro de sete, pula cinco instruções para frente, se o registrador zero for zero.
+d: Pegadinha: são cinco, não quatro, porque o PC já foi incrementado. || Pegadinha: são cinco, não quatro, porque o pê cê já foi incrementado.
+e: No simulador, linha com asterisco é comentário, e o comando g manda executar. || No simulador, linha com asterisco é comentário, e o comando gê manda executar.
+
+# 32-registradores
+a: No gerador de código TINY, cada registrador tem papel fixo. || No gerador de código táini, cada registrador tem papel fixo.
+b: pc é o sete. mp, o seis, aponta para o topo da memória, onde ficam os temporários. || pê cê é o sete. éme pê, o seis, aponta para o topo da memória, onde ficam os temporários.
+c: gp, o cinco, aponta para o fundo, onde ficam as variáveis. || gê pê, o cinco, aponta para o fundo, onde ficam as variáveis.
+d: Assim t1 está em 0(mp), t2 em -1(mp), x em 0(gp) e y em 1(gp). || Assim tê um está em zero de éme pê, tê dois em menos um de éme pê, xis em zero de gê pê, e ípsilon em um de gê pê.
+e: Zero e um são os acumuladores, ac e ac1, e o resultado vai sempre em ac. Dois, três e quatro nunca são usados. || Zero e um são os acumuladores, a cê e a cê um, e o resultado vai sempre em a cê. Dois, três e quatro nunca são usados.
+
+# 33-emit
+a: Para escrever o código, existem sete funções de emissão.
+b: emitComment escreve comentário; emitRO e emitRM emitem as instruções. || émit comment escreve comentário. émit érre ó e émit érre éme emitem as instruções.
+c: E quatro servem ao backpatching: emitSkip reserva espaço, emitBackup volta, emitRestore retorna, e emitRM_Abs converte um endereço absoluto em relativo ao PC. || E quatro servem ao béck pátchin: émit squíp reserva espaço, émit béquiâp volta, émit ristór retorna, e émit érre éme abs converte um endereço absoluto em relativo ao pê cê.
+
+# 34-cgen
+a: O gerador fica em cgen.c. A entrada é codeGen. || O gerador fica em cê djén ponto cê. A entrada é côud djén.
+b: Ela emite o prólogo, chama cGen com a árvore sintática, e termina com HALT. || Ela emite o prólogo, chama cê djén com a árvore sintática, e termina com rólt.
+c: cGen olha o nó: se for declaração, chama genStmt; se for expressão, chama genExp. || cê djén olha o nó: se for declaração, chama djén stêitment. Se for expressão, chama djén éxp.
+d: Depois chama a si mesma para os irmãos. Recursão pura.
+
+# 35-cola
+a: Revisão relâmpago.
+b: Árvore, código intermediário, código alvo.
+c: Folha é nome; nó interior é temporário.
+d: O código sobe como bola de neve: atributo sintetizado.
+e: Matriz: base mais índice vezes tamanho.
+f: Falso pula; o while é um if que volta.
+g: begin_args, arg, call. RO: três registradores. RM: parênteses. || bíguin árgs, arg, cól. érre ó: três registradores. érre éme: parênteses.
+h: Agora é com você. Boa prova!

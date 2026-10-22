@@ -1,0 +1,68 @@
+<template id="28-funcao-call-template">
+  <div id="root" data-composition-id="28-funcao-call" data-start="0" data-duration="19.408" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s28-funcao-call-bg" class="clip k-scene k-bg" data-start="0" data-duration="19.408" data-track-index="0"></div>
+    <div id="s28-funcao-call-stage" class="clip k-scene" data-start="0" data-duration="19.408" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s28-funcao-call-cam" class="k-cam">
+<div id="s28-funcao-call-k0" class="k-card" style="left:120px;top:140px;width:540px;height:200px;border-color:#4FD6EE">
+  <div class="k-code k-c-cyan" style="left:30px;top:30px;font-size:44px">begin_args</div>
+  <div class="k-body" style="left:30px;top:110px;font-size:28px">“vão começar os argumentos”</div>
+</div>
+<div id="s28-funcao-call-k1" class="k-card" style="left:690px;top:140px;width:540px;height:200px;border-color:#FFD24A">
+  <div class="k-code k-c-yel" style="left:30px;top:30px;font-size:44px">arg x</div>
+  <div class="k-body" style="left:30px;top:110px;font-size:28px">entrega um argumento</div>
+</div>
+<div id="s28-funcao-call-k2" class="k-card" style="left:1260px;top:140px;width:540px;height:200px;border-color:#FF6F9C">
+  <div class="k-code k-c-pink" style="left:30px;top:30px;font-size:44px">call f</div>
+  <div class="k-body" style="left:30px;top:110px;font-size:28px">salta para a função</div>
+</div>
+
+<div id="s28-funcao-call-src" class="k-code" style="left:120px;top:400px;font-size:48px">f(<span class="k-c-cyan">2+3</span>, <span class="k-c-yel">4</span>)</div>
+<div id="s28-funcao-call-win" class="k-win" style="left:120px;top:480px;width:760px;height:380px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>três endereços</span></div>
+  <div class="k-code" style="left:10px;top:64px;font-size:36px;line-height:1.45"><span class="ln" id="s28-funcao-call-c0"><span class="k-c-cyan">begin_args</span></span><span class="ln" id="s28-funcao-call-c1">t1 = 2 + 3</span><span class="ln" id="s28-funcao-call-c2"><span class="k-c-yel">arg</span> t1</span><span class="ln" id="s28-funcao-call-c3"><span class="k-c-yel">arg</span> 4</span><span class="ln" id="s28-funcao-call-c4"><span class="k-c-pink">call</span> f</span></div>
+</div>
+<div id="s28-funcao-call-box" style="position:absolute;left:1000px;top:440px;width:380px;height:300px;border:4px solid #4FD6EE;border-top:none;border-radius:0 0 20px 20px"></div>
+<div id="s28-funcao-call-boxl" class="k-code k-mute" style="left:1000px;top:750px;width:380px;text-align:center;font-size:24px">argumentos</div>
+<div id="s28-funcao-call-v1" class="k-chip k-c-cyan" style="left:1130px;top:660px;font-size:40px;background:#0D1322">5</div>
+<div id="s28-funcao-call-v2" class="k-chip k-c-yel" style="left:1130px;top:580px;font-size:40px;background:#0D1322">4</div>
+<div id="s28-funcao-call-fn" class="k-card" style="left:1520px;top:520px;width:280px;height:180px;border-color:#7FE39A">
+  <div class="k-code k-c-green" style="left:0;top:56px;width:280px;text-align:center;font-size:52px">f</div>
+</div>
+<svg class="k-svg"><path id="s28-funcao-call-go" class="arrow" d="M 1390 600 L 1505 600 M 1487 584 L 1505 600 L 1487 616" stroke="#FF6F9C" /></svg>
+<div id="s28-funcao-call-mac" class="k-macete" style="left:960px;top:790px;width:860px;font-size:34px">Abre, entrega, chama.</div>
+      </div>
+    </div>
+    <div id="s28-funcao-call-chrome" class="clip k-scene" data-start="0" data-duration="19.408" data-track-index="2">
+      <div id="s28-funcao-call-tag" class="k-tag">COMPILADORES · <b>FUNÇÕES</b></div>
+      <div id="s28-funcao-call-num" class="k-num">28 / 35</div>
+      <div id="s28-funcao-call-progbar" class="k-prog"><i id="s28-funcao-call-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.675, "c": 5.707, "d": 7.737, "e": 9.499, "f": 16.447}, D = 19.408;
+        var S = K.scene("28-funcao-call", D, 35), tl = S.tl, $ = S.$;
+        K.pop(tl, $("k0"), C.b);
+        K.pop(tl, $("k1"), C.c);
+        K.pop(tl, $("k2"), C.d);
+        K.rise(tl, $("src"), C.e);
+        K.rise(tl, $("win"), C.e + 1.0);
+        K.wipe(tl, $("c0"), C.e + 2.0);
+        K.fade(tl, [$("box"), $("boxl")], C.e + 2.0);
+        K.wipe(tl, $("c1"), C.e + 2.9);
+        K.wipe(tl, $("c2"), C.e + 3.8);
+        tl.fromTo($("v1"), { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }, C.e + 3.9);
+        K.wipe(tl, $("c3"), C.e + 4.6);
+        tl.fromTo($("v2"), { y: -200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }, C.e + 4.7);
+        K.wipe(tl, $("c4"), C.e + 5.6);
+        K.rise(tl, $("fn"), C.e + 5.4);
+        K.draw(tl, $("go"), C.e + 5.8, { d: 0.4 });
+        K.pulse(tl, $("fn"), C.e + 6.2);
+        K.macete(tl, $("mac"), C.f);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,46 @@
+<!--sfx: e:click-soft@0.6*0.4, f:pop*0.3-->
+<style>
+  .mz .ln { line-height: 58px; }
+  .mz-tag { position: absolute; font-family: "DM Mono", monospace; font-size: 24px; padding: 4px 12px; border-radius: 8px; white-space: nowrap; }
+</style>
+<div id="@src" class="k-code" style="left:120px;top:122px;font-size:52px"><span id="@lhs" style="display:inline-block">a[i+1]</span> = <span id="@rhs" style="display:inline-block">a[j*2] + 3</span>;</div>
+<div id="@ul1" style="position:absolute;left:138px;top:196px;width:190px;height:6px;background:#FF6F9C;transform-origin:0 50%"></div>
+<div id="@ul2" style="position:absolute;left:442px;top:196px;width:320px;height:6px;background:#4FD6EE;transform-origin:0 50%"></div>
+
+<div id="@win" class="k-win" style="left:120px;top:236px;width:900px;height:620px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>três endereços</span></div>
+  <div class="k-code mz" style="left:10px;top:70px;font-size:36px"><span class="ln" id="@c0">t1 = j * 2</span><span class="ln" id="@c1">t2 = t1 * elem_size(a)</span><span class="ln" id="@c2">t3 = &amp;a + t2</span><span class="ln" id="@c3">t4 = <span class="k-c-pink">*</span>t3</span><span class="ln" id="@c4">t5 = t4 + 3</span><span class="ln" id="@c5">t6 = i + 1</span><span class="ln" id="@c6">t7 = t6 * elem_size(a)</span><span class="ln" id="@c7">t8 = &amp;a + t7</span><span class="ln" id="@c8"><span class="k-c-pink">*</span>t8 = t5</span></div>
+</div>
+<div id="@g0" class="mz-tag k-c-cyan" style="left:1040px;top:328px;border:2px solid #4FD6EE">I  índice</div>
+<div id="@g1" class="mz-tag k-c-yel" style="left:1040px;top:386px;border:2px solid #FFD24A">T  × tamanho</div>
+<div id="@g2" class="mz-tag k-c-green" style="left:1040px;top:444px;border:2px solid #7FE39A">B  + base</div>
+<div id="@g3" class="mz-tag k-c-pink" style="left:1040px;top:502px;border:2px solid #FF6F9C">lê o valor</div>
+<div id="@g4" class="mz-tag" style="left:1040px;top:560px;border:2px solid #EEF1F8">+ 3</div>
+<div id="@g5" class="mz-tag k-c-cyan" style="left:1040px;top:618px;border:2px solid #4FD6EE">I  índice</div>
+<div id="@g6" class="mz-tag k-c-yel" style="left:1040px;top:676px;border:2px solid #FFD24A">T  × tamanho</div>
+<div id="@g7" class="mz-tag k-c-green" style="left:1040px;top:734px;border:2px solid #7FE39A">B  + base</div>
+<div id="@g8" class="mz-tag k-c-pink" style="left:1040px;top:792px;border:2px solid #FF6F9C">escreve!</div>
+
+<div id="@mac" class="k-macete" style="left:1300px;top:240px;width:520px;font-size:34px"><span class="k-c-pink" style="color:#22030C">*</span> à direita <u>lê</u>.<br>* à esquerda <u>escreve</u>.</div>
+<div id="@multi" class="k-card" style="left:1300px;top:470px;width:520px;height:200px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:22px;font-size:30px">matriz <b class="k-c-violet">a[15][10]</b>?</div>
+  <div class="k-body k-mute" style="left:28px;top:80px;font-size:28px;line-height:1.35">a[i] já é uma linha →<br>aplica B·I·T de novo</div>
+</div>
+
+<script>
+var L = [], G = [];
+for (var i = 0; i < 9; i++) { L.push($("c" + i)); G.push($("g" + i)); }
+K.rise(tl, $("src"), C.a);
+tl.fromTo($("ul2"), { scaleX: 0 }, { scaleX: 1, duration: 0.4 }, C.a + 1.6);
+tl.fromTo($("ul1"), { scaleX: 0 }, { scaleX: 1, duration: 0.4 }, C.a + 2.4);
+K.rise(tl, $("win"), C.b - 0.4);
+[0, 1, 2].forEach(function (k) { K.wipe(tl, L[k], C.b + 0.4 + k * 1.2); K.slide(tl, G[k], C.b + 0.6 + k * 1.2, { x: -30 }); });
+K.wipe(tl, L[3], C.c + 0.2); K.slide(tl, G[3], C.c + 0.4, { x: -30 });
+K.wipe(tl, L[4], C.c + 1.6); K.slide(tl, G[4], C.c + 1.8, { x: -30 });
+[5, 6, 7].forEach(function (k, j) { K.wipe(tl, L[k], C.d + 0.4 + j * 0.9); K.slide(tl, G[k], C.d + 0.6 + j * 0.9, { x: -30 }); });
+K.wipe(tl, L[8], C.e + 0.4); K.slide(tl, G[8], C.e + 0.6, { x: -30 });
+K.hl(tl, L[8], C.e + 0.6);
+K.hl(tl, L[3], C.f + 0.3);
+K.macete(tl, $("mac"), C.f);
+K.rise(tl, $("multi"), C.f + 4.0);
+</script>

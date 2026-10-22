@@ -1,0 +1,66 @@
+<template id="24-while-template">
+  <div id="root" data-composition-id="24-while" data-start="0" data-duration="13.097" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .wc .ln { line-height: 64px; }
+</style>
+    <div id="s24-while-bg" class="clip k-scene k-bg" data-start="0" data-duration="13.097" data-track-index="0"></div>
+    <div id="s24-while-stage" class="clip k-scene" data-start="0" data-duration="13.097" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s24-while-cam" class="k-cam">
+<div id="s24-while-src" class="k-code" style="left:120px;top:130px;font-size:44px"><span class="k-c-pink">while</span> ( <span class="k-c-cyan">E</span> ) <span class="k-c-green">S</span></div>
+<div id="s24-while-win" class="k-win" style="left:300px;top:216px;width:900px;height:476px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>padrão do while</span></div>
+  <div class="k-code wc" style="left:10px;top:76px;font-size:38px"><span class="ln" id="s24-while-c0"><span class="k-c-green">label L1</span>   <span class="k-mute">← topo</span></span><span class="ln" id="s24-while-c1"><span class="k-mute">&lt;avalia</span> <span class="k-c-cyan">E</span> <span class="k-mute">em</span> t1<span class="k-mute">&gt;</span></span><span class="ln" id="s24-while-c2"><span class="k-c-pink">if_false</span> t1 <span class="k-c-pink">goto L2</span></span><span class="ln" id="s24-while-c3"><span class="k-mute">&lt;código do corpo</span> <span class="k-c-green">S</span><span class="k-mute">&gt;</span></span><span class="ln" id="s24-while-c4"><span class="k-c-green">goto L1</span></span><span class="ln" id="s24-while-c5"><span class="k-c-pink">label L2</span>   <span class="k-mute">← saída</span></span></div>
+</div>
+<svg class="k-svg">
+  <path id="s24-while-jo" class="arrow" d="M 860 452 C 1330 452, 1330 644, 780 644 M 802 628 L 780 644 L 802 660" stroke="#FF6F9C" />
+  <path id="s24-while-jb" class="arrow" d="M 260 580 C 150 580, 150 324, 290 324 M 268 308 L 290 324 L 268 340" stroke="#7FE39A" />
+</svg>
+<div id="s24-while-jol" class="k-anno k-c-pink" style="left:1290px;top:520px">falso → sai</div>
+<div id="s24-while-jbl" class="k-anno k-c-green" style="left:60px;top:705px">volta ao topo ↺</div>
+<div id="s24-while-tok" style="position:absolute;left:230px;top:0;width:30px;height:30px;border-radius:15px;background:#7FE39A;box-shadow:0 0 20px #7FE39A"></div>
+<div id="s24-while-mac" class="k-macete" style="left:1250px;top:700px;width:560px;font-size:36px">while = um <u>if que volta</u> ↺</div>
+      </div>
+    </div>
+    <div id="s24-while-chrome" class="clip k-scene" data-start="0" data-duration="13.097" data-track-index="2">
+      <div id="s24-while-tag" class="k-tag">COMPILADORES · <b>CONTROLE</b></div>
+      <div id="s24-while-num" class="k-num">24 / 35</div>
+      <div id="s24-while-progbar" class="k-prog"><i id="s24-while-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.729, "c": 6.7, "d": 10.298}, D = 13.097;
+        var S = K.scene("24-while", D, 35), tl = S.tl, $ = S.$;
+        var L = [];
+        for (var i = 0; i < 6; i++) L.push($("c" + i));
+        var Y = function (i) { return 309 + 64 * i; };
+        K.rise(tl, $("src"), C.a);
+        K.rise(tl, $("win"), C.a + 0.4);
+        K.wipe(tl, L[0], C.a + 1.0);
+        K.wipe(tl, L[1], C.b + 0.2);
+        K.wipe(tl, L[2], C.b + 1.6);
+        K.wipe(tl, L[5], C.b + 2.4);
+        K.draw(tl, $("jo"), C.b + 2.6, { d: 0.6 });
+        K.fade(tl, $("jol"), C.b + 3.0);
+        K.wipe(tl, L[3], C.c + 0.4);
+        K.wipe(tl, L[4], C.c + 1.4);
+        K.draw(tl, $("jb"), C.c + 1.6, { d: 0.6 });
+        K.fade(tl, $("jbl"), C.c + 2.0);
+        // token dá duas voltas e sai
+        tl.set($("tok"), { y: Y(0), opacity: 0 }, 0);
+        tl.to($("tok"), { opacity: 1, duration: 0.2 }, C.d - 1.2);
+        var t0 = C.d - 1.0;
+        for (var r = 0; r < 2; r++) {
+          tl.to($("tok"), { y: Y(4), duration: 0.6, ease: "none" }, t0);
+          tl.to($("tok"), { y: Y(0), duration: 0.3, ease: "power2.inOut" }, t0 + 0.6);
+          t0 += 0.9;
+        }
+        tl.to($("tok"), { y: Y(2), duration: 0.3, ease: "none" }, t0);
+        tl.to($("tok"), { y: Y(5), duration: 0.35, ease: "power2.inOut", background: "#FF6F9C" }, t0 + 0.3);
+        K.macete(tl, $("mac"), C.d);
+      })();
+    </script>
+  </div>
+</template>

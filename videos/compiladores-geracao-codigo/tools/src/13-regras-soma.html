@@ -1,0 +1,44 @@
+<!--sfx: b:pop@0.6*0.3, d:click-soft@0.4*0.4, e:whoosh-short*0.2-->
+<style>
+  .blk { position: absolute; left: 0; width: 860px; height: 76px; border-radius: 14px; font-family: "DM Mono", monospace; font-size: 30px; line-height: 72px; padding-left: 26px; }
+</style>
+<div id="@rule" class="k-code" style="left:120px;top:126px;font-size:46px">soma: <span class="k-c-cyan">aexp₁</span> → <span class="k-c-green">aexp₂</span> + <span class="k-c-violet">fator</span></div>
+<svg class="k-svg"><g class="edge"><line x1="450" y1="330" x2="290" y2="490"/><line x1="450" y1="330" x2="610" y2="490"/></g></svg>
+<div id="@n0" class="k-node" style="left:450px;top:330px;border-color:#4FD6EE">+</div>
+<div id="@n1" class="k-node" style="left:290px;top:490px;border-color:#7FE39A;font-size:26px">aexp₂</div>
+<div id="@n2" class="k-node" style="left:610px;top:490px;border-color:#B49BFF;font-size:26px">fator</div>
+<div id="@name" class="k-anno k-c-cyan" style="left:520px;top:250px">name = ?</div>
+<div id="@temp" class="k-chip k-c-yel" style="left:240px;top:236px;background:#2A2410">newtemp() → T</div>
+
+<div id="@stack" style="position:absolute;left:900px;top:250px;width:900px;height:360px">
+  <div class="k-body k-mute" style="left:0;top:-4px;font-size:28px">aexp₁.tacode =</div>
+  <div id="@s1" class="blk" style="top:50px;background:rgba(127,227,154,0.14);border:2px solid #7FE39A;color:#7FE39A">código do filho da esquerda (aexp₂.tacode)</div>
+  <div id="@s2" class="blk" style="top:140px;background:rgba(180,155,255,0.14);border:2px solid #B49BFF;color:#B49BFF">código do filho da direita (fator.tacode)</div>
+  <div id="@s3" class="blk" style="top:230px;background:rgba(255,210,74,0.16);border:2px solid #FFD24A;color:#FFD24A">T = <span class="k-c-green">esq.name</span> + <span class="k-c-violet">dir.name</span></div>
+  <div id="@p1" class="k-code k-mute" style="left:870px;top:110px;font-size:30px">++</div>
+  <div id="@p2" class="k-code k-mute" style="left:870px;top:200px;font-size:30px">++</div>
+</div>
+
+<div id="@asg" class="k-card" style="left:120px;top:660px;width:1680px;height:200px;border-color:#FF6F9C">
+  <div class="k-code" style="left:30px;top:20px;font-size:36px">atribuição: <span class="k-c-pink">exp₁</span> → id = <span class="k-c-cyan">exp₂</span></div>
+  <div class="k-code" style="left:30px;top:84px;font-size:30px;line-height:1.5">name   = <span class="k-c-cyan">exp₂.name</span>        <span class="k-mute">(herda o do filho)</span>
+tacode = <span class="k-c-cyan">exp₂.tacode</span> ++ <span class="k-c-yel">id = exp₂.name</span></div>
+</div>
+
+<script>
+K.rise(tl, $("rule"), C.a);
+K.pop(tl, [$("n0"), $("n1"), $("n2")], C.a + 0.5, { s: 0.15 });
+K.wipe(tl, $("name"), C.a + 1.2);
+K.pop(tl, $("temp"), C.b + 0.3);
+K.fly(tl, $("temp"), C.b + 1.0, 290, 14, { scale: 0.9 });
+tl.to($("name"), { opacity: 0, duration: 0.2 }, C.b + 1.2);
+K.slide(tl, $("s1"), C.c + 0.4, { x: 60 });
+K.fade(tl, $("p1"), C.c + 1.6);
+K.slide(tl, $("s2"), C.c + 1.8, { x: 60 });
+K.pulse(tl, $("n1"), C.c + 0.4);
+K.pulse(tl, $("n2"), C.c + 1.8);
+K.fade(tl, $("p2"), C.d);
+K.slide(tl, $("s3"), C.d + 0.2, { x: 60 });
+K.pulse(tl, $("s3"), C.d + 1.4, { k: 1.04 });
+K.rise(tl, $("asg"), C.e, { y: 50 });
+</script>

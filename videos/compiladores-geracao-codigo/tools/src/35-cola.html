@@ -1,0 +1,26 @@
+<!--sfx: b:pop*0.2, c:pop*0.2, d:pop*0.2, e:pop*0.2, f:pop*0.2, g:pop*0.2, h:chime@0.3*0.35-->
+<style>
+  .cl { position: absolute; width: 540px; height: 220px; border-radius: 20px; border: 2px solid #2A3656; background: #182238; }
+  .cl .h { position: absolute; left: 26px; top: 18px; font-family: "DM Mono", monospace; font-size: 22px; letter-spacing: 0.12em; color: #8C97B5; }
+  .cl .b { position: absolute; left: 26px; top: 62px; width: 490px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 34px; line-height: 1.25; }
+</style>
+<div id="@title" class="k-title" style="left:120px;top:100px;font-size:56px">Cola <em>relâmpago</em></div>
+<div id="@t1" class="cl" style="left:120px;top:190px;border-color:#4FD6EE"><div class="h">CAMINHO</div><div class="b">árvore → <span class="k-c-yel">intermediário</span> → alvo</div></div>
+<div id="@t2" class="cl" style="left:690px;top:190px;border-color:#7FE39A"><div class="h">TRÊS ENDEREÇOS</div><div class="b">folha = <span class="k-c-green">nome</span><br>nó interior = <span class="k-c-cyan">temporário</span></div></div>
+<div id="@t3" class="cl" style="left:1260px;top:190px;border-color:#FFD24A"><div class="h">ATRIBUTO</div><div class="b">código sobe como <span class="k-c-yel">bola de neve</span> = sintetizado</div></div>
+<div id="@t4" class="cl" style="left:120px;top:440px;border-color:#B49BFF"><div class="h">MATRIZ</div><div class="b"><span class="k-c-green">B</span>ase + <span class="k-c-cyan">I</span>ndice × <span class="k-c-yel">T</span>amanho</div></div>
+<div id="@t5" class="cl" style="left:690px;top:440px;border-color:#FF6F9C"><div class="h">CONTROLE</div><div class="b">falso <span class="k-c-pink">pula</span><br>while = if que <span class="k-c-green">volta</span></div></div>
+<div id="@t6" class="cl" style="left:1260px;top:440px;border-color:#FF9F5A"><div class="h">FUNÇÕES · TM</div><div class="b" style="font-size:30px">begin_args, arg, call<br>RO: 3 regs · RM: d(s)</div></div>
+<div id="@bye" class="k-title" style="left:0;top:700px;width:1920px;text-align:center;font-size:110px">Boa <em>prova!</em></div>
+
+<script>
+K.rise(tl, $("title"), C.a);
+K.pop(tl, $("t1"), C.b);
+K.pop(tl, $("t2"), C.c);
+K.pop(tl, $("t3"), C.d);
+K.pop(tl, $("t4"), C.e);
+K.pop(tl, $("t5"), C.f);
+K.pop(tl, $("t6"), C.g);
+K.rise(tl, $("bye"), C.h + 0.2, { y: 60 });
+tl.to([$("t1"), $("t2"), $("t3"), $("t4"), $("t5"), $("t6")], { opacity: 0.55, duration: 0.5 }, C.h + 0.2);
+</script>

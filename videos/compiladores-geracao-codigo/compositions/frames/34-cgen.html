@@ -1,0 +1,60 @@
+<template id="34-cgen-template">
+  <div id="root" data-composition-id="34-cgen" data-start="0" data-duration="18.38" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s34-cgen-bg" class="clip k-scene k-bg" data-start="0" data-duration="18.38" data-track-index="0"></div>
+    <div id="s34-cgen-stage" class="clip k-scene" data-start="0" data-duration="18.38" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s34-cgen-cam" class="k-cam">
+<div id="s34-cgen-file" class="k-chip k-c-cyan" style="left:120px;top:130px;font-size:30px">cgen.c</div>
+<div id="s34-cgen-entry" class="k-code" style="left:280px;top:126px;font-size:40px"><span class="k-c-yel">codeGen</span>(TreeNode *syntaxTree, char *codefile)</div>
+
+<div id="s34-cgen-steps" style="position:absolute;left:120px;top:230px;width:640px;height:420px">
+  <div id="s34-cgen-s1" class="k-card" style="left:0;top:0;width:620px;height:110px"><div class="k-body" style="left:26px;top:30px;font-size:32px">1 · emite o <b class="k-c-cyan">prólogo</b></div></div>
+  <div id="s34-cgen-s2" class="k-card" style="left:0;top:130px;width:620px;height:110px;border-color:#FFD24A"><div class="k-body" style="left:26px;top:30px;font-size:32px">2 · chama <b class="k-c-yel">cGen</b>(árvore)</div></div>
+  <div id="s34-cgen-s3" class="k-card" style="left:0;top:260px;width:620px;height:110px"><div class="k-body" style="left:26px;top:30px;font-size:32px">3 · termina com <b class="k-c-pink">HALT</b></div></div>
+</div>
+
+<svg class="k-svg">
+  <g class="edge"><line x1="1300" y1="300" x2="1080" y2="460"/><line x1="1300" y1="300" x2="1520" y2="460"/><line id="s34-cgen-sib" x1="1360" y1="300" x2="1620" y2="300" stroke-dasharray="10 10"/></g>
+</svg>
+<div id="s34-cgen-n0" class="k-node" style="left:1300px;top:300px;width:170px;margin-left:-85px;font-size:28px;border-color:#FFD24A">nó</div>
+<div id="s34-cgen-q" class="k-anno k-c-yel" style="left:1180px;top:200px">declaração ou expressão?</div>
+<div id="s34-cgen-st" class="k-card" style="left:900px;top:470px;width:380px;height:190px;border-color:#7FE39A">
+  <div class="k-code k-c-green" style="left:24px;top:20px;font-size:34px">genStmt()</div>
+  <div class="k-body k-mute" style="left:24px;top:80px;font-size:24px;line-height:1.35">declaração: if, repeat,<br>assign, read, write</div>
+</div>
+<div id="s34-cgen-ex" class="k-card" style="left:1340px;top:470px;width:380px;height:190px;border-color:#B49BFF">
+  <div class="k-code k-c-violet" style="left:24px;top:20px;font-size:34px">genExp()</div>
+  <div class="k-body k-mute" style="left:24px;top:80px;font-size:24px;line-height:1.35">expressão: operador,<br>constante, identificador</div>
+</div>
+<div id="s34-cgen-sb" class="k-node" style="left:1680px;top:300px;font-size:24px">irmão</div>
+<div id="s34-cgen-rec" class="k-macete" style="left:900px;top:720px;width:820px;font-size:34px">Depois: cGen nos <u>irmãos</u>. Recursão pura.</div>
+      </div>
+    </div>
+    <div id="s34-cgen-chrome" class="clip k-scene" data-start="0" data-duration="18.38" data-track-index="2">
+      <div id="s34-cgen-tag" class="k-tag">COMPILADORES · <b>GERADOR TINY</b></div>
+      <div id="s34-cgen-num" class="k-num">34 / 35</div>
+      <div id="s34-cgen-progbar" class="k-prog"><i id="s34-cgen-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.907, "c": 8.484, "d": 14.186}, D = 18.38;
+        var S = K.scene("34-cgen", D, 35), tl = S.tl, $ = S.$;
+        K.pop(tl, $("file"), C.a);
+        K.wipe(tl, $("entry"), C.a + 1.6, { d: 0.8 });
+        K.rise(tl, $("s1"), C.b + 0.4);
+        K.rise(tl, $("s2"), C.b + 1.6);
+        K.rise(tl, $("s3"), C.b + 3.2);
+        K.pop(tl, $("n0"), C.c);
+        K.wipe(tl, $("q"), C.c + 0.4);
+        K.rise(tl, $("st"), C.c + 1.6);
+        K.rise(tl, $("ex"), C.c + 3.6);
+        K.draw(tl, $("sib"), C.d + 0.4, { d: 0.5 });
+        K.pop(tl, $("sb"), C.d + 0.8);
+        K.macete(tl, $("rec"), C.d + 1.4);
+      })();
+    </script>
+  </div>
+</template>

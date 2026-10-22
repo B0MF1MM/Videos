@@ -1,0 +1,66 @@
+<template id="05-arvore-template">
+  <div id="root" data-composition-id="05-arvore" data-start="0" data-duration="17.246" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s05-arvore-bg" class="clip k-scene k-bg" data-start="0" data-duration="17.246" data-track-index="0"></div>
+    <div id="s05-arvore-stage" class="clip k-scene" data-start="0" data-duration="17.246" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s05-arvore-cam" class="k-cam">
+<div id="s05-arvore-expr" style="position:absolute;left:0;top:120px;width:1920px;text-align:center;font-family:'DM Mono',monospace;font-size:86px;line-height:120px"><span id="s05-arvore-e1" style="display:inline-block">2*a</span><span id="s05-arvore-e2" style="display:inline-block;color:#FFD24A">+</span><span id="s05-arvore-e3" style="display:inline-block">(b-3)</span></div>
+<div id="s05-arvore-k" class="k-kicker" style="left:120px;top:150px">passo 1 · a árvore</div>
+
+<svg class="k-svg">
+  <line id="s05-arvore-ea" class="edge" x1="960" y1="320" x2="700" y2="500" />
+  <line id="s05-arvore-eb" class="edge" x1="960" y1="320" x2="1220" y2="500" />
+  <line id="s05-arvore-ec" class="edge" x1="700" y1="500" x2="580" y2="700" />
+  <line id="s05-arvore-ed" class="edge" x1="700" y1="500" x2="820" y2="700" />
+  <line id="s05-arvore-ee" class="edge" x1="1220" y1="500" x2="1100" y2="700" />
+  <line id="s05-arvore-ef" class="edge" x1="1220" y1="500" x2="1340" y2="700" />
+</svg>
+<div id="s05-arvore-nr" class="k-node" style="left:960px;top:320px;border-color:#FFD24A;color:#FFD24A">+</div>
+<div id="s05-arvore-nm" class="k-node" style="left:700px;top:500px">*</div>
+<div id="s05-arvore-ns" class="k-node" style="left:1220px;top:500px">-</div>
+<div id="s05-arvore-l2" class="k-node k-leaf" style="left:580px;top:700px">2</div>
+<div id="s05-arvore-la" class="k-node k-leaf" style="left:820px;top:700px">a</div>
+<div id="s05-arvore-lb" class="k-node k-leaf" style="left:1100px;top:700px">b</div>
+<div id="s05-arvore-l3" class="k-node k-leaf" style="left:1340px;top:700px">3</div>
+
+<div id="s05-arvore-rootnote" class="k-anno k-c-yel" style="left:1080px;top:270px">raiz = operação feita por ÚLTIMO</div>
+<div id="s05-arvore-leftnote" class="k-anno k-c-cyan" style="left:200px;top:470px">esquerda: 2 * a</div>
+<div id="s05-arvore-rightnote" class="k-anno k-c-cyan" style="left:1330px;top:470px">direita: b - 3</div>
+<div id="s05-arvore-leafnote" class="k-anno k-c-green" style="left:700px;top:800px">folhas = números e variáveis</div>
+      </div>
+    </div>
+    <div id="s05-arvore-chrome" class="clip k-scene" data-start="0" data-duration="17.246" data-track-index="2">
+      <div id="s05-arvore-tag" class="k-tag">COMPILADORES · <b>TRÊS ENDEREÇOS</b></div>
+      <div id="s05-arvore-num" class="k-num">05 / 35</div>
+      <div id="s05-arvore-progbar" class="k-prog"><i id="s05-arvore-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.74, "c": 9.268, "d": 11.548, "e": 13.952}, D = 17.246;
+        var S = K.scene("05-arvore", D, 35), tl = S.tl, $ = S.$;
+        K.rise(tl, $("expr"), C.a, { y: 30 });
+        K.fade(tl, $("k"), C.a + 0.6);
+        K.pulse(tl, $("e2"), C.b + 1.6, { k: 1.4 });
+        K.pop(tl, $("nr"), C.b + 2.0);
+        K.wipe(tl, $("rootnote"), C.b + 2.5);
+        tl.to($("e1"), { color: "#4FD6EE", duration: 0.3 }, C.c);
+        K.draw(tl, $("ea"), C.c + 0.1, { d: 0.4 });
+        K.pop(tl, $("nm"), C.c + 0.4);
+        K.draw(tl, [$("ec"), $("ed")], C.c + 0.7, { d: 0.4 });
+        K.pop(tl, [$("l2"), $("la")], C.c + 1.0, { s: 0.15 });
+        K.wipe(tl, $("leftnote"), C.c + 1.2);
+        tl.to($("e3"), { color: "#4FD6EE", duration: 0.3 }, C.d);
+        K.draw(tl, $("eb"), C.d + 0.1, { d: 0.4 });
+        K.pop(tl, $("ns"), C.d + 0.4);
+        K.draw(tl, [$("ee"), $("ef")], C.d + 0.7, { d: 0.4 });
+        K.pop(tl, [$("lb"), $("l3")], C.d + 1.0, { s: 0.15 });
+        K.wipe(tl, $("rightnote"), C.d + 1.2);
+        K.pulse(tl, [$("l2"), $("la"), $("lb"), $("l3")], C.e + 0.3, { k: 1.18 });
+        K.wipe(tl, $("leafnote"), C.e + 0.5);
+      })();
+    </script>
+  </div>
+</template>

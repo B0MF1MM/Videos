@@ -1,0 +1,63 @@
+<template id="07-temporarios-template">
+  <div id="root" data-composition-id="07-temporarios" data-start="0" data-duration="13.666" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s07-temporarios-bg" class="clip k-scene k-bg" data-start="0" data-duration="13.666" data-track-index="0"></div>
+    <div id="s07-temporarios-stage" class="clip k-scene" data-start="0" data-duration="13.666" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s07-temporarios-cam" class="k-cam">
+<div id="s07-temporarios-k" class="k-kicker" style="left:120px;top:130px">para onde vão os temporários?</div>
+<div id="s07-temporarios-reg" class="k-card" style="left:1060px;top:190px;width:680px;height:210px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:20px;font-size:36px">Registradores</div>
+  <div style="position:absolute;left:30px;top:90px;width:140px;height:90px;border:2px dashed #2A3656;border-radius:12px"></div>
+  <div style="position:absolute;left:190px;top:90px;width:140px;height:90px;border:2px dashed #2A3656;border-radius:12px"></div>
+  <div style="position:absolute;left:350px;top:90px;width:140px;height:90px;border:2px dashed #2A3656;border-radius:12px"></div>
+  <div style="position:absolute;left:510px;top:90px;width:140px;height:90px;border:2px dashed #2A3656;border-radius:12px"></div>
+  <div class="k-chip k-c-green" style="left:520px;top:22px;font-size:22px">normalmente</div>
+</div>
+<div id="s07-temporarios-mem" class="k-card" style="left:1060px;top:430px;width:680px;height:170px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:30px;top:20px;font-size:36px">Memória</div>
+  <div style="position:absolute;left:30px;top:84px;width:620px;height:60px;background:repeating-linear-gradient(90deg,#2A3656 0 2px,transparent 2px 62px);border:2px solid #2A3656"></div>
+</div>
+<div id="s07-temporarios-opt" class="k-anno k-c-pink" style="left:430px;top:384px">otimização: sumiu!</div>
+
+<div id="s07-temporarios-t1" class="k-chip k-c-cyan" style="left:300px;top:260px;font-size:44px;background:#0D1322">t1</div>
+<div id="s07-temporarios-t2" class="k-chip k-c-cyan" style="left:300px;top:380px;font-size:44px;background:#0D1322">t2</div>
+<div id="s07-temporarios-t3" class="k-chip k-c-cyan" style="left:300px;top:500px;font-size:44px;background:#0D1322">t3</div>
+
+<div id="s07-temporarios-neg" class="k-card" style="left:300px;top:670px;width:1320px;height:190px">
+  <div class="k-body" style="left:40px;top:28px">Operador <b>unário</b> (negação): só dois endereços</div>
+  <div class="k-code" style="left:40px;top:96px;font-size:56px"><span id="s07-temporarios-n1" class="k-c-cyan">t2</span> = <span class="k-c-pink">-</span><span id="s07-temporarios-n2" class="k-c-cyan">t1</span></div>
+  <div id="s07-temporarios-nb1" class="k-chip k-c-yel" style="left:520px;top:110px">1</div>
+  <div id="s07-temporarios-nb2" class="k-chip k-c-yel" style="left:600px;top:110px">2</div>
+  <div id="s07-temporarios-nb3" class="k-chip k-mute" style="left:720px;top:110px">3 → não precisa</div>
+</div>
+      </div>
+    </div>
+    <div id="s07-temporarios-chrome" class="clip k-scene" data-start="0" data-duration="13.666" data-track-index="2">
+      <div id="s07-temporarios-tag" class="k-tag">COMPILADORES · <b>TRÊS ENDEREÇOS</b></div>
+      <div id="s07-temporarios-num" class="k-num">07 / 35</div>
+      <div id="s07-temporarios-progbar" class="k-prog"><i id="s07-temporarios-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.274, "c": 7.129}, D = 13.666;
+        var S = K.scene("07-temporarios", D, 35), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.pop(tl, [$("t1"), $("t2"), $("t3")], C.a + 0.2, { s: 0.15 });
+        K.rise(tl, $("reg"), C.a + 0.6);
+        K.fly(tl, $("t1"), C.a + 1.4, 790, 20, { scale: 0.8 });
+        K.rise(tl, $("mem"), C.b);
+        K.fly(tl, $("t3"), C.b + 1.0, 820, 10, { scale: 0.8 });
+        // "sumir": um novo t aparece e some
+        tl.to($("t2"), { opacity: 0.25, duration: 0.3 }, C.b + 2.3);
+        K.wipe(tl, $("opt"), C.b + 2.3);
+        tl.to($("t2"), { scale: 0, rotation: 90, duration: 0.5, ease: "back.in(2)" }, C.b + 2.8);
+        K.rise(tl, $("neg"), C.c, { y: 60 });
+        K.pop(tl, [$("nb1"), $("nb2")], C.c + 3.6, { s: 0.3 });
+        K.fade(tl, $("nb3"), C.c + 4.4);
+      })();
+    </script>
+  </div>
+</template>

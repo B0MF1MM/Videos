@@ -1,0 +1,50 @@
+<!--sfx: c:pop@0.5*0.3, d:click-soft@0.5*0.4-->
+<div id="@expr" class="k-code" style="left:120px;top:126px;font-size:56px">(x=x+3)+4</div>
+<svg class="k-svg">
+  <line id="@e1" class="edge" x1="960" y1="250" x2="620" y2="420" />
+  <line id="@e2" class="edge" x1="960" y1="250" x2="1300" y2="420" />
+  <line id="@e3" class="edge" x1="620" y1="420" x2="420" y2="600" />
+  <line id="@e4" class="edge" x1="620" y1="420" x2="820" y2="600" />
+  <line id="@e5" class="edge" x1="820" y1="600" x2="700" y2="760" />
+  <line id="@e6" class="edge" x1="820" y1="600" x2="940" y2="760" />
+</svg>
+<div id="@nr" class="k-node" style="left:960px;top:250px">+</div>
+<div id="@na" class="k-node" style="left:620px;top:420px;border-color:#FF6F9C">=</div>
+<div id="@n4" class="k-node k-leaf" style="left:1300px;top:420px">4</div>
+<div id="@nx1" class="k-node k-leaf" style="left:420px;top:600px">x</div>
+<div id="@np" class="k-node" style="left:820px;top:600px">+</div>
+<div id="@nx2" class="k-node k-leaf" style="left:700px;top:760px">x</div>
+<div id="@n3" class="k-node k-leaf" style="left:940px;top:760px">3</div>
+
+<div id="@ax1" class="k-anno k-c-green" style="left:150px;top:660px">name: x
+tacode: —</div>
+<div id="@ax2" class="k-anno k-c-green" style="left:430px;top:810px">name: x
+tacode: —</div>
+<div id="@a3" class="k-anno k-c-green" style="left:1010px;top:770px">name: 3
+tacode: —</div>
+<div id="@a4" class="k-anno k-c-green" style="left:1370px;top:440px">name: 4
+tacode: —</div>
+<div id="@apn" class="k-anno k-c-cyan" style="left:900px;top:470px">name: <b class="k-c-yel">T1</b></div>
+<div id="@apc" class="k-anno k-c-cyan" style="left:900px;top:528px">tacode: <b class="k-c-yel">T1 = x + 3</b></div>
+<div id="@aan" class="k-anno k-c-pink" style="left:150px;top:300px">name: <b class="k-c-yel">T1</b></div>
+<div id="@aac" class="k-anno k-c-pink" style="left:150px;top:358px">tacode: T1 = x + 3
+        <b class="k-c-yel">x = T1</b></div>
+<div id="@arn" class="k-anno" style="left:1060px;top:120px">name: <b class="k-c-yel">T2</b></div>
+<div id="@arc" class="k-anno" style="left:1060px;top:178px">tacode: T1 = x + 3
+        x = T1
+        <b class="k-c-yel">T2 = T1 + 4</b></div>
+
+<script>
+var edges = [$("e1"), $("e2"), $("e3"), $("e4"), $("e5"), $("e6")];
+var nodes = [$("nr"), $("na"), $("n4"), $("nx1"), $("np"), $("nx2"), $("n3")];
+var later = [$("aan"), $("aac"), $("arn"), $("arc")];
+tl.set(later, { opacity: 0 }, 0);
+K.rise(tl, $("expr"), C.a);
+K.pop(tl, nodes, C.a + 0.6, { s: 0.25 });
+K.draw(tl, edges, C.a + 0.8, { d: 0.4, s: 0.25 });
+K.pulse(tl, [$("nx1"), $("nx2"), $("n3"), $("n4")], C.b + 0.2, { k: 1.15 });
+K.wipe(tl, [$("ax2"), $("a3"), $("ax1"), $("a4")], C.b + 0.6, { s: 0.35 });
+K.pulse(tl, $("np"), C.c + 0.4, { k: 1.2 });
+K.pop(tl, $("apn"), C.c + 1.6);
+K.wipe(tl, $("apc"), C.d + 0.4, { d: 0.8 });
+</script>

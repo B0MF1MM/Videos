@@ -1,0 +1,49 @@
+<!--sfx: c:pop*0.3, d:click-soft@1.0*0.35-->
+<div id="@arr" style="position:absolute;left:330px;top:200px;width:1300px;height:170px"></div>
+<div id="@base" class="k-anno k-c-green" style="left:280px;top:360px">↑ base (&amp;a)</div>
+<div id="@hop" class="k-anno k-c-yel" style="left:700px;top:360px">pula índice × tamanho</div>
+
+<div id="@f" class="k-code" style="left:0;top:450px;width:1920px;text-align:center;font-size:46px">endereço = <span id="@fb" class="k-c-green">base</span> + (<span id="@fi" class="k-c-cyan">índice</span> − <span id="@fl" class="k-c-pink">lim_inf</span>) × <span id="@ft" class="k-c-yel">tamanho</span></div>
+
+<div id="@bit" style="position:absolute;left:0;top:550px;width:1920px;height:130px;text-align:center;font-family:'Newsreader',serif;font-size:100px;line-height:130px">
+  <span id="@B" style="display:inline-block;color:#7FE39A">B</span><span class="k-mute" style="font-size:60px">ase + </span><span id="@I" style="display:inline-block;color:#4FD6EE">I</span><span class="k-mute" style="font-size:60px">ndice × </span><span id="@T" style="display:inline-block;color:#FFD24A">T</span><span class="k-mute" style="font-size:60px">amanho</span>
+</div>
+<div id="@bitm" class="k-chip k-c-yel" style="left:860px;top:690px;background:#2A2410">MACETE: B · I · T</div>
+
+<div id="@ex" class="k-card" style="left:260px;top:700px;width:1400px;height:170px">
+  <div class="k-code" style="left:36px;top:24px;font-size:38px">em C: <span class="k-c-pink">lim_inf = 0</span></div>
+  <div class="k-code" style="left:36px;top:90px;font-size:40px">a[i+1] → <span class="k-c-green">&amp;a</span> + <span class="k-c-cyan">(i+1)</span> * <span class="k-c-yel">sizeof(int)</span></div>
+</div>
+
+<script>
+var arr = $("arr"), cells = [];
+for (var i = 0; i < 8; i++) {
+  var c = document.createElement("div");
+  c.id = "s19-matriz-formula-c" + i; c.className = "k-cell";
+  c.style.left = (i * 160) + "px"; c.style.top = "40px"; c.style.width = "156px"; c.style.height = "96px"; c.style.lineHeight = "92px";
+  c.textContent = "a[" + i + "]";
+  arr.appendChild(c); cells.push(c);
+}
+var cur = document.createElement("div");
+cur.id = "s19-matriz-formula-cur";
+cur.style.position = "absolute"; cur.style.left = "0px"; cur.style.top = "34px"; cur.style.width = "156px"; cur.style.height = "108px";
+cur.style.border = "5px solid #FFD24A"; cur.style.borderRadius = "10px"; cur.style.boxSizing = "border-box";
+arr.appendChild(cur);
+
+K.fade(tl, cells, C.a, { s: 0.08 });
+K.wipe(tl, $("base"), C.a + 1.2);
+K.fade(tl, cur, C.b);
+tl.to(cur, { x: 3 * 160, duration: 1.4, ease: "steps(3)" }, C.b + 2.6);
+K.wipe(tl, $("hop"), C.b + 2.6);
+K.wipe(tl, $("f"), C.b + 0.2, { d: 1.2 });
+K.pulse(tl, $("fb"), C.b + 0.8);
+K.pulse(tl, $("fi"), C.b + 1.8);
+K.pulse(tl, $("fl"), C.b + 2.8);
+K.pulse(tl, $("ft"), C.b + 4.0);
+K.fade(tl, $("bit"), C.c);
+K.pop(tl, [$("B"), $("I"), $("T")], C.c + 1.2, { s: 0.5, from: 2.2 });
+K.pop(tl, $("bitm"), C.c + 2.6);
+tl.to([$("bit"), $("bitm")], { y: -40, opacity: 0.0, duration: 0.4 }, C.d - 0.2);
+K.rise(tl, $("ex"), C.d, { y: 40 });
+tl.to($("ex"), { y: -150, duration: 0.6, ease: "power3.inOut" }, C.d + 0.6);
+</script>

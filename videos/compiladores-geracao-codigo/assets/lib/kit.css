@@ -1,0 +1,83 @@
+/* Kit visual compartilhado — tema "editor de código" (Compiladores · Geração de código) */
+@font-face { font-family: "Newsreader"; src: url("../fonts/Newsreader-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Newsreader"; src: url("../fonts/Newsreader-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "Hanken Grotesk"; src: url("../fonts/Hanken_Grotesk-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Hanken Grotesk"; src: url("../fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "DM Mono"; src: url("../fonts/DM_Mono-400.woff2") format("woff2"); font-weight: 400; }
+
+.k-scene {
+  --bg: #0D1322; --bg2: #121A2E; --panel: #182238; --line: #2A3656;
+  --ink: #EEF1F8; --mute: #8C97B5;
+  --yel: #FFD24A; --cyan: #4FD6EE; --pink: #FF6F9C; --green: #7FE39A; --violet: #B49BFF; --orange: #FF9F5A;
+  position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden;
+  color: var(--ink); font-family: "Hanken Grotesk", sans-serif;
+}
+.k-layer { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.k-bg {
+  background-color: #0D1322;
+  background-image:
+    radial-gradient(circle at 50% 38%, rgba(79,214,238,0.07), transparent 60%),
+    radial-gradient(rgba(140,151,181,0.16) 1.4px, transparent 1.6px);
+  background-size: 1920px 1080px, 40px 40px;
+}
+.k-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 50% 45%; }
+
+/* chrome */
+.k-tag { position: absolute; top: 34px; left: 80px; font-family: "DM Mono", monospace; font-size: 24px; letter-spacing: 0.08em; color: var(--mute); white-space: nowrap; }
+.k-tag b { color: var(--cyan); font-weight: 400; }
+.k-num { position: absolute; top: 34px; right: 80px; font-family: "DM Mono", monospace; font-size: 24px; letter-spacing: 0.08em; color: var(--mute); white-space: nowrap; }
+.k-prog { position: absolute; left: 80px; top: 76px; width: 1760px; height: 3px; background: var(--line); }
+.k-prog i { position: absolute; left: 0; top: 0; height: 3px; background: var(--cyan); }
+
+/* type */
+.k-kicker { position: absolute; font-family: "DM Mono", monospace; font-size: 28px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); white-space: nowrap; }
+.k-title { position: absolute; font-family: "Newsreader", serif; font-size: 84px; line-height: 1.04; letter-spacing: -0.01em; color: var(--ink); }
+.k-title em { font-style: italic; color: var(--yel); }
+.k-h2 { position: absolute; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 46px; line-height: 1.15; color: var(--ink); }
+.k-body { position: absolute; font-family: "Hanken Grotesk", sans-serif; font-size: 36px; line-height: 1.3; color: var(--ink); }
+.k-mute { color: var(--mute); }
+.k-c-yel { color: var(--yel); } .k-c-cyan { color: var(--cyan); } .k-c-pink { color: var(--pink); }
+.k-c-green { color: var(--green); } .k-c-violet { color: var(--violet); } .k-c-orange { color: var(--orange); }
+
+/* code */
+.k-code { position: absolute; font-family: "DM Mono", monospace; font-size: 40px; line-height: 1.5; color: var(--ink); white-space: pre; }
+.k-code .ln { display: block; position: relative; padding: 0 18px; border-radius: 8px; }
+.k-code .ln.hl { background: rgba(255,210,74,0.14); box-shadow: inset 4px 0 0 var(--yel); }
+.k-win { position: absolute; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 30px 60px rgba(0,0,0,0.35); overflow: hidden; }
+.k-win-bar { position: absolute; left: 0; top: 0; right: 0; height: 52px; background: var(--bg2); border-bottom: 1px solid var(--line); }
+.k-win-bar i { position: absolute; top: 19px; width: 14px; height: 14px; border-radius: 7px; }
+.k-win-bar span { position: absolute; left: 100px; top: 12px; font-family: "DM Mono", monospace; font-size: 22px; color: var(--mute); }
+
+/* chips, cards */
+.k-chip { position: absolute; display: inline-block; padding: 10px 22px 8px; border-radius: 999px; font-family: "DM Mono", monospace; font-size: 28px; white-space: nowrap; border: 2px solid currentColor; }
+.k-card { position: absolute; background: var(--panel); border: 2px solid var(--line); border-radius: 22px; }
+.k-macete {
+  position: absolute; background: var(--yel); color: #1A1606; border-radius: 20px; padding: 26px 38px 24px 120px;
+  font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 42px; line-height: 1.2; box-shadow: 0 18px 50px rgba(255,210,74,0.25);
+}
+.k-macete::before {
+  content: "MACETE"; position: absolute; left: 26px; top: 50%; margin-top: -40px; width: 74px; height: 80px;
+  font-family: "DM Mono", monospace; font-size: 15px; letter-spacing: 0.08em; font-weight: 400; line-height: 120px; text-align: center;
+  background: #1A1606; color: var(--yel); border-radius: 12px;
+}
+.k-macete::after { content: "★"; position: absolute; left: 26px; top: 50%; margin-top: -40px; width: 74px; height: 56px; line-height: 56px; text-align: center; color: var(--yel); font-size: 34px; }
+.k-alert { background: var(--pink); color: #22030C; box-shadow: 0 18px 50px rgba(255,111,156,0.25); }
+.k-alert::before { content: "ATENÇÃO"; color: var(--pink); font-size: 13px; }
+.k-alert::after { content: "!"; color: var(--pink); font-family: "Newsreader", serif; font-size: 44px; }
+
+/* tree */
+.k-node { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 55px; background: var(--panel); border: 4px solid var(--cyan);
+  font-family: "DM Mono", monospace; font-size: 48px; line-height: 102px; text-align: center; color: var(--ink); }
+.k-leaf { border-color: var(--green); border-radius: 22px; }
+.k-anno { position: absolute; font-family: "DM Mono", monospace; font-size: 26px; line-height: 1.35; white-space: pre; padding: 10px 16px; border-radius: 12px; background: rgba(13,19,34,0.92); border: 2px solid var(--line); }
+svg.k-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+svg.k-svg .edge { stroke: var(--mute); stroke-width: 4; fill: none; stroke-linecap: round; }
+svg.k-svg .arrow { stroke-width: 5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+/* table */
+.k-table { position: absolute; border-collapse: collapse; font-family: "DM Mono", monospace; font-size: 27px; color: var(--ink); }
+.k-table td { padding: 12px 22px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: pre; }
+.k-table td:first-child { color: var(--cyan); }
+
+/* memory cells */
+.k-cell { position: absolute; width: 340px; height: 74px; border: 2px solid var(--line); background: var(--panel); font-family: "DM Mono", monospace; font-size: 32px; line-height: 70px; text-align: center; }

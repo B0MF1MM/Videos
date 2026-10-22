@@ -1,0 +1,58 @@
+<template id="26-logicas-template">
+  <div id="root" data-composition-id="26-logicas" data-start="0" data-duration="23.356" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s26-logicas-bg" class="clip k-scene k-bg" data-start="0" data-duration="23.356" data-track-index="0"></div>
+    <div id="s26-logicas-stage" class="clip k-scene" data-start="0" data-duration="23.356" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s26-logicas-cam" class="k-cam">
+<div id="s26-logicas-f0" class="k-card" style="left:120px;top:140px;width:520px;height:120px;border-color:#FF6F9C">
+  <div class="k-h2" style="left:30px;top:32px;font-size:44px">falso = <span class="k-c-pink">0</span></div>
+</div>
+<div id="s26-logicas-f1" class="k-card" style="left:680px;top:140px;width:520px;height:120px;border-color:#7FE39A">
+  <div class="k-h2" style="left:30px;top:32px;font-size:44px">verdadeiro = <span class="k-c-green">1</span></div>
+</div>
+
+<div id="s26-logicas-sc" style="position:absolute;left:120px;top:300px;width:1700px;height:140px">
+  <div class="k-h2 k-c-yel" style="left:0;top:0;font-size:40px">curto-circuito</div>
+  <div class="k-code" style="left:0;top:64px;font-size:46px"><span id="s26-logicas-sa" style="display:inline-block;padding:0 12px;border-radius:8px;background:rgba(255,111,156,0.25)">a</span> and <span id="s26-logicas-sb" style="display:inline-block">b</span></div>
+  <div id="s26-logicas-sal" class="k-anno k-c-pink" style="left:330px;top:66px">a é falso → resultado já é falso</div>
+  <div id="s26-logicas-sbl" class="k-anno k-mute" style="left:900px;top:66px">b nem é avaliado</div>
+</div>
+
+<div id="s26-logicas-e1" class="k-code" style="left:120px;top:480px;font-size:44px">a <span class="k-c-cyan">and</span> b  ≡  <span class="k-c-pink">if</span> a <span class="k-c-pink">then</span> b <span class="k-c-pink">else</span> <span class="k-c-pink">false</span></div>
+<div id="s26-logicas-e2" class="k-code" style="left:120px;top:556px;font-size:44px">a <span class="k-c-cyan">or</span>  b  ≡  <span class="k-c-pink">if</span> a <span class="k-c-pink">then</span> <span class="k-c-green">true</span> <span class="k-c-pink">else</span> b</div>
+
+<div id="s26-logicas-ex" class="k-card" style="left:120px;top:660px;width:1700px;height:200px;border-color:#4FD6EE">
+  <div class="k-code" style="left:36px;top:30px;font-size:40px"><span class="k-c-pink">if</span> ((<span id="s26-logicas-p1">p != NULL</span>) &amp;&amp; (<span id="s26-logicas-p2" style="display:inline-block">p-&gt;val == 0</span>)) …</div>
+  <div id="s26-logicas-pn" class="k-chip k-c-pink" style="left:36px;top:116px;font-size:26px">p = NULL → falso</div>
+  <div id="s26-logicas-skip" class="k-chip k-mute" style="left:620px;top:116px;font-size:26px">não roda → sem acessar memória inválida</div>
+</div>
+      </div>
+    </div>
+    <div id="s26-logicas-chrome" class="clip k-scene" data-start="0" data-duration="23.356" data-track-index="2">
+      <div id="s26-logicas-tag" class="k-tag">COMPILADORES · <b>EXPRESSÕES LÓGICAS</b></div>
+      <div id="s26-logicas-num" class="k-num">26 / 35</div>
+      <div id="s26-logicas-progbar" class="k-prog"><i id="s26-logicas-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.05, "c": 9.322, "d": 12.769, "e": 16.042}, D = 23.356;
+        var S = K.scene("26-logicas", D, 35), tl = S.tl, $ = S.$;
+        K.pop(tl, $("f0"), C.a + 1.4);
+        K.pop(tl, $("f1"), C.a + 2.4);
+        K.fade(tl, $("sc"), C.b);
+        K.wipe(tl, $("sal"), C.b + 2.2);
+        tl.to($("sb"), { opacity: 0.2, duration: 0.4 }, C.b + 3.4);
+        K.fade(tl, $("sbl"), C.b + 3.4);
+        K.wipe(tl, $("e1"), C.c + 0.2, { d: 1.2 });
+        K.wipe(tl, $("e2"), C.d + 0.2, { d: 1.2 });
+        K.rise(tl, $("ex"), C.e);
+        K.pop(tl, $("pn"), C.e + 3.2);
+        tl.to($("p2"), { opacity: 0.2, duration: 0.4 }, C.e + 4.2);
+        K.fade(tl, $("skip"), C.e + 4.3);
+      })();
+    </script>
+  </div>
+</template>

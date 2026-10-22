@@ -1,0 +1,71 @@
+<template id="06-percorrer-template">
+  <div id="root" data-composition-id="06-percorrer" data-start="0" data-duration="17.412" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s06-percorrer-bg" class="clip k-scene k-bg" data-start="0" data-duration="17.412" data-track-index="0"></div>
+    <div id="s06-percorrer-stage" class="clip k-scene" data-start="0" data-duration="17.412" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s06-percorrer-cam" class="k-cam">
+<div id="s06-percorrer-k" class="k-kicker" style="left:120px;top:130px">passo 2 · de baixo para cima, esquerda → direita</div>
+<svg class="k-svg">
+  <g class="edge"><line x1="560" y1="320" x2="380" y2="480"/><line x1="560" y1="320" x2="740" y2="480"/><line x1="380" y1="480" x2="300" y2="660"/><line x1="380" y1="480" x2="460" y2="660"/><line x1="740" y1="480" x2="660" y2="660"/><line x1="740" y1="480" x2="820" y2="660"/></g>
+  <path id="s06-percorrer-path" d="M 300 660 L 460 660 L 380 480 L 660 660 L 820 660 L 740 480 L 560 320" stroke="#FFD24A" stroke-width="5" stroke-dasharray="4 14" fill="none" stroke-linecap="round" opacity="0.6"/>
+</svg>
+<div id="s06-percorrer-nr" class="k-node" style="left:560px;top:320px">+</div>
+<div id="s06-percorrer-nm" class="k-node" style="left:380px;top:480px">*</div>
+<div id="s06-percorrer-ns" class="k-node" style="left:740px;top:480px">-</div>
+<div class="k-node k-leaf" style="left:300px;top:660px">2</div>
+<div class="k-node k-leaf" style="left:460px;top:660px">a</div>
+<div class="k-node k-leaf" style="left:660px;top:660px">b</div>
+<div class="k-node k-leaf" style="left:820px;top:660px">3</div>
+<div id="s06-percorrer-dot" style="position:absolute;left:-18px;top:-18px;width:36px;height:36px;border-radius:18px;background:#FFD24A;box-shadow:0 0 24px #FFD24A"></div>
+<div id="s06-percorrer-tm" class="k-chip k-c-cyan" style="left:250px;top:420px;background:#0D1322">t1</div>
+<div id="s06-percorrer-ts" class="k-chip k-c-cyan" style="left:820px;top:420px;background:#0D1322">t2</div>
+<div id="s06-percorrer-tr" class="k-chip k-c-cyan" style="left:640px;top:250px;background:#0D1322">t3</div>
+
+<div id="s06-percorrer-win" class="k-win" style="left:1040px;top:260px;width:780px;height:360px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>três endereços</span></div>
+  <div class="k-code" style="left:24px;top:84px;font-size:50px;line-height:1.5"><span class="ln" id="s06-percorrer-c1"><span class="k-c-cyan">t1</span> = 2 * a</span><span class="ln" id="s06-percorrer-c2"><span class="k-c-cyan">t2</span> = b - 3</span><span class="ln" id="s06-percorrer-c3"><span class="k-c-cyan">t3</span> = <span class="k-c-cyan">t1</span> + <span class="k-c-cyan">t2</span></span></div>
+</div>
+<div id="s06-percorrer-mac" class="k-macete" style="left:1000px;top:690px;width:820px;font-size:38px">Folha é <u>nome</u>. Nó interior é <u>temporário</u>.</div>
+      </div>
+    </div>
+    <div id="s06-percorrer-chrome" class="clip k-scene" data-start="0" data-duration="17.412" data-track-index="2">
+      <div id="s06-percorrer-tag" class="k-tag">COMPILADORES · <b>TRÊS ENDEREÇOS</b></div>
+      <div id="s06-percorrer-num" class="k-num">06 / 35</div>
+      <div id="s06-percorrer-progbar" class="k-prog"><i id="s06-percorrer-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.183, "c": 7.949, "d": 10.191, "e": 13.868}, D = 17.412;
+        var S = K.scene("06-percorrer", D, 35), tl = S.tl, $ = S.$;
+        var path = $("path"), dot = $("dot"), L = path.getTotalLength();
+        // pontos de parada (fração do caminho) de cada nó no percurso pós-ordem
+        function at(p) { var pt = path.getPointAtLength(L * p); dot.style.transform = "translate(" + pt.x.toFixed(1) + "px," + pt.y.toFixed(1) + "px)"; }
+        at(0);
+        K.fade(tl, $("k"), C.a);
+        K.wipe(tl, path, C.a + 0.4, { d: 2.4, ease: "none" });
+        K.fade(tl, dot, C.a + 0.4);
+        var stops = [[C.a + 0.6, 0.0], [C.b + 0.2, 0.277], [C.c + 0.0, 0.689], [C.d + 0.3, 1.0]];
+        var prev = 0;
+        stops.forEach(function (s) {
+          var from = prev;
+          tl.to({ p: 0 }, { p: 1, duration: 0.9, ease: "power2.inOut", onUpdate: function () { at(from + (s[1] - from) * this.progress()); } }, s[0]);
+          prev = s[1];
+        });
+        K.pulse(tl, $("nm"), C.b + 1.0);
+        K.pop(tl, $("tm"), C.b + 1.1);
+        K.rise(tl, $("win"), C.a + 1.5);
+        K.wipe(tl, $("c1"), C.b + 1.4);
+        K.pulse(tl, $("ns"), C.c + 0.9);
+        K.pop(tl, $("ts"), C.c + 1.0);
+        K.wipe(tl, $("c2"), C.c + 1.0);
+        K.pulse(tl, $("nr"), C.d + 1.2);
+        K.pop(tl, $("tr"), C.d + 1.3);
+        K.wipe(tl, $("c3"), C.d + 1.5);
+        K.macete(tl, $("mac"), C.e + 0.1);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,45 @@
+<template id="35-cola-template">
+  <div id="root" data-composition-id="35-cola" data-start="0" data-duration="24.919" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .cl { position: absolute; width: 540px; height: 220px; border-radius: 20px; border: 2px solid #2A3656; background: #182238; }
+  .cl .h { position: absolute; left: 26px; top: 18px; font-family: "DM Mono", monospace; font-size: 22px; letter-spacing: 0.12em; color: #8C97B5; }
+  .cl .b { position: absolute; left: 26px; top: 62px; width: 490px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 34px; line-height: 1.25; }
+</style>
+    <div id="s35-cola-bg" class="clip k-scene k-bg" data-start="0" data-duration="24.919" data-track-index="0"></div>
+    <div id="s35-cola-stage" class="clip k-scene" data-start="0" data-duration="24.919" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s35-cola-cam" class="k-cam">
+<div id="s35-cola-title" class="k-title" style="left:120px;top:100px;font-size:56px">Cola <em>relâmpago</em></div>
+<div id="s35-cola-t1" class="cl" style="left:120px;top:190px;border-color:#4FD6EE"><div class="h">CAMINHO</div><div class="b">árvore → <span class="k-c-yel">intermediário</span> → alvo</div></div>
+<div id="s35-cola-t2" class="cl" style="left:690px;top:190px;border-color:#7FE39A"><div class="h">TRÊS ENDEREÇOS</div><div class="b">folha = <span class="k-c-green">nome</span><br>nó interior = <span class="k-c-cyan">temporário</span></div></div>
+<div id="s35-cola-t3" class="cl" style="left:1260px;top:190px;border-color:#FFD24A"><div class="h">ATRIBUTO</div><div class="b">código sobe como <span class="k-c-yel">bola de neve</span> = sintetizado</div></div>
+<div id="s35-cola-t4" class="cl" style="left:120px;top:440px;border-color:#B49BFF"><div class="h">MATRIZ</div><div class="b"><span class="k-c-green">B</span>ase + <span class="k-c-cyan">I</span>ndice × <span class="k-c-yel">T</span>amanho</div></div>
+<div id="s35-cola-t5" class="cl" style="left:690px;top:440px;border-color:#FF6F9C"><div class="h">CONTROLE</div><div class="b">falso <span class="k-c-pink">pula</span><br>while = if que <span class="k-c-green">volta</span></div></div>
+<div id="s35-cola-t6" class="cl" style="left:1260px;top:440px;border-color:#FF9F5A"><div class="h">FUNÇÕES · TM</div><div class="b" style="font-size:30px">begin_args, arg, call<br>RO: 3 regs · RM: d(s)</div></div>
+<div id="s35-cola-bye" class="k-title" style="left:0;top:700px;width:1920px;text-align:center;font-size:110px">Boa <em>prova!</em></div>
+      </div>
+    </div>
+    <div id="s35-cola-chrome" class="clip k-scene" data-start="0" data-duration="24.919" data-track-index="2">
+      <div id="s35-cola-tag" class="k-tag">COMPILADORES · <b>REVISÃO</b></div>
+      <div id="s35-cola-num" class="k-num">35 / 35</div>
+      <div id="s35-cola-progbar" class="k-prog"><i id="s35-cola-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 1.604, "c": 4.538, "d": 7.084, "e": 10.765, "f": 13.68, "g": 16.097, "h": 20.729}, D = 24.919;
+        var S = K.scene("35-cola", D, 35), tl = S.tl, $ = S.$;
+        K.rise(tl, $("title"), C.a);
+        K.pop(tl, $("t1"), C.b);
+        K.pop(tl, $("t2"), C.c);
+        K.pop(tl, $("t3"), C.d);
+        K.pop(tl, $("t4"), C.e);
+        K.pop(tl, $("t5"), C.f);
+        K.pop(tl, $("t6"), C.g);
+        K.rise(tl, $("bye"), C.h + 0.2, { y: 60 });
+        tl.to([$("t1"), $("t2"), $("t3"), $("t4"), $("t5"), $("t6")], { opacity: 0.55, duration: 0.5 }, C.h + 0.2);
+      })();
+    </script>
+  </div>
+</template>
