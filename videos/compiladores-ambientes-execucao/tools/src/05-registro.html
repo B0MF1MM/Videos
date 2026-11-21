@@ -1,0 +1,35 @@
+<!--sfx: c:click-soft@0.6*0.3, d:pop*0.3, e:pop@0.4*0.25-->
+<style>
+  .ra { position: absolute; left: 0; width: 620px; height: 110px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 34px; line-height: 104px; padding-left: 30px; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:64px">Registro de <em>ativação</em></div>
+<div id="@def" class="k-body" style="left:120px;top:222px;font-size:30px">a memória de <b>uma chamada</b> de procedimento · criado quando ele é ativado</div>
+<div id="@rec" style="position:absolute;left:200px;top:300px;width:620px;height:460px;border:3px solid #FFD24A;border-radius:16px;overflow:hidden">
+  <div id="@s1" class="ra k-c-cyan" style="top:0">argumentos</div>
+  <div id="@s2" class="ra k-c-yel" style="top:115px;font-size:30px">controle · endereço de retorno</div>
+  <div id="@s3" class="ra k-c-green" style="top:230px">dados locais</div>
+  <div id="@s4" class="ra k-c-violet" style="top:345px">temporários</div>
+</div>
+<div id="@b1" class="k-anno k-c-cyan" style="left:880px;top:340px">o que recebeu</div>
+<div id="@b2" class="k-anno k-c-yel" style="left:880px;top:455px">o caminho de volta</div>
+<div id="@b3" class="k-anno k-c-green" style="left:880px;top:570px">as coisas dela</div>
+<div id="@b4" class="k-anno k-c-violet" style="left:880px;top:685px">o rascunho</div>
+<div id="@mac" class="k-macete" style="left:1180px;top:300px;width:620px;font-size:34px">É a <u>mochila</u> da função.</div>
+<div id="@fr" class="k-card" style="left:1180px;top:540px;width:620px;height:200px;border-color:#4FD6EE">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px">registro de ativação na pilha =</div>
+  <div class="k-h2 k-c-cyan" style="left:28px;top:84px;font-size:46px">quadro de pilha</div>
+  <div class="k-code k-mute" style="left:28px;top:150px;font-size:22px">(stack frame)</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("def"), C.b);
+K.fade(tl, $("rec"), C.c);
+K.slide(tl, $("s1"), C.c + 0.6, { x: -60 });
+K.slide(tl, $("s2"), C.c + 1.8, { x: -60 });
+K.slide(tl, $("s3"), C.c + 4.6, { x: -60 });
+K.slide(tl, $("s4"), C.c + 6.0, { x: -60 });
+K.macete(tl, $("mac"), C.d);
+K.wipe(tl, [$("b1"), $("b2"), $("b3"), $("b4")], C.d + 1.6, { s: 1.0 });
+K.rise(tl, $("fr"), C.e);
+</script>

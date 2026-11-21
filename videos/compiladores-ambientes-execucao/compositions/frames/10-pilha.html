@@ -1,0 +1,58 @@
+<template id="10-pilha-template">
+  <div id="root" data-composition-id="10-pilha" data-start="0" data-duration="23.171" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .fr { position: absolute; left: 0; width: 520px; height: 90px; border: 3px solid #4FD6EE; border-radius: 12px; background: #182238; font-family: "DM Mono", monospace; font-size: 30px; line-height: 84px; text-align: center; color: #EEF1F8; }
+</style>
+    <div id="s10-pilha-bg" class="clip k-scene k-bg" data-start="0" data-duration="23.171" data-track-index="0"></div>
+    <div id="s10-pilha-stage" class="clip k-scene" data-start="0" data-duration="23.171" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s10-pilha-cam" class="k-cam">
+<div id="s10-pilha-t" class="k-title" style="left:120px;top:124px;font-size:62px">Ambiente <em>baseado em pilhas</em></div>
+<div id="s10-pilha-why" class="k-card" style="left:120px;top:250px;width:820px;height:200px;border-color:#FF6F9C">
+  <div class="k-body" style="left:28px;top:24px;font-size:30px">recursão → cada chamada precisa de<br><b class="k-c-pink">variáveis locais novas</b></div>
+  <div class="k-body k-c-cyan" style="left:28px;top:124px;font-size:30px">→ registros de ativação vão para uma <b>pilha</b></div>
+</div>
+<div id="s10-pilha-ops" class="k-card" style="left:120px;top:490px;width:820px;height:200px">
+  <div class="k-body" style="left:28px;top:24px;font-size:30px"><b class="k-c-green">chamou</b>: empilha um registro no topo</div>
+  <div class="k-body" style="left:28px;top:84px;font-size:30px"><b class="k-c-pink">retornou</b>: desempilha</div>
+  <div class="k-body k-mute" style="left:28px;top:140px;font-size:26px">pilha de ativação · pilha de execução</div>
+</div>
+<div id="s10-pilha-many" class="k-chip k-c-yel" style="left:120px;top:730px;font-size:28px;background:#2A2410">mesmo procedimento, vários registros ao mesmo tempo</div>
+<div id="s10-pilha-stk" style="position:absolute;left:1180px;top:180px;width:520px;height:640px">
+  <div class="fr" style="top:540px;border-color:#8C97B5">main</div>
+  <div id="s10-pilha-s1" class="fr" style="top:445px">fat(3)</div>
+  <div id="s10-pilha-s2" class="fr" style="top:350px">fat(2)</div>
+  <div id="s10-pilha-s3" class="fr" style="top:255px;border-color:#FFD24A;color:#FFD24A">fat(1)</div>
+  <div id="s10-pilha-topl" class="k-code k-c-yel" style="left:540px;top:280px;font-size:26px">← topo</div>
+</div>
+      </div>
+    </div>
+    <div id="s10-pilha-chrome" class="clip k-scene" data-start="0" data-duration="23.171" data-track-index="2">
+      <div id="s10-pilha-tag" class="k-tag">COMPILADORES · <b>AMBIENTE DE PILHA</b></div>
+      <div id="s10-pilha-num" class="k-num">10 / 28</div>
+      <div id="s10-pilha-progbar" class="k-prog"><i id="s10-pilha-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.975, "c": 8.496, "d": 11.825, "e": 16.873}, D = 23.171;
+        var S = K.scene("10-pilha", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, $("why"), C.a + 1.0);
+        K.fade(tl, $("stk"), C.b);
+        K.rise(tl, $("ops"), C.c - 0.4);
+        K.rise(tl, [$("s1"), $("s2"), $("s3")], C.c + 0.6, { s: 0.6, y: -80 });
+        K.fade(tl, $("topl"), C.c + 2.2);
+        tl.to($("s3"), { y: -80, opacity: 0, duration: 0.4, ease: "power2.in" }, C.d + 0.4);
+        tl.to($("topl"), { y: 95, duration: 0.3 }, C.d + 0.6);
+        tl.to($("s2"), { y: -80, opacity: 0, duration: 0.4, ease: "power2.in" }, C.d + 1.4);
+        tl.to($("topl"), { y: 190, duration: 0.3 }, C.d + 1.6);
+        tl.fromTo([$("s2"), $("s3")], { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.3, immediateRender: false }, C.e);
+        tl.to($("topl"), { y: 0, duration: 0.3 }, C.e + 0.3);
+        K.pop(tl, $("many"), C.e + 0.6);
+        K.pulse(tl, [$("s1"), $("s2"), $("s3")], C.e + 1.4, { k: 1.04 });
+      })();
+    </script>
+  </div>
+</template>

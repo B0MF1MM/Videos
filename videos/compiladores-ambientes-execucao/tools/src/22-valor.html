@@ -1,0 +1,38 @@
+<!--sfx: a:whoosh-short@2.4*0.2, d:click-soft@3.0*0.35, e:pop*0.3-->
+<style>
+  .vb { position: absolute; width: 150px; height: 90px; border: 3px solid #2A3656; border-radius: 12px; background: #182238; font-family: "DM Mono", monospace; font-size: 40px; line-height: 84px; text-align: center; color: #EEF1F8; }
+  .lb { position: absolute; width: 150px; text-align: center; font-family: "DM Mono", monospace; font-size: 26px; color: #8C97B5; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Passagem <em>por valor</em></div>
+<div id="@def" class="k-body" style="left:120px;top:220px;font-size:28px">avalia o argumento e <b class="k-c-cyan">copia o valor</b> para o parâmetro</div>
+<div id="@lang" class="k-card" style="left:120px;top:290px;width:760px;height:250px">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.5">• único mecanismo de <b>C</b>; básico em Pascal e Ada<br>• C/Pascal: parâmetro = variável local com valor inicial<br>• mudar o parâmetro <b class="k-c-pink">não muda</b> o argumento<br>• Ada: nem dá para atribuir ao parâmetro</div>
+</div>
+<div id="@code" class="k-code" style="left:120px;top:580px;font-size:28px;line-height:1.45"><span class="k-c-violet">void</span> troca(<span class="k-c-violet">int</span> a, <span class="k-c-violet">int</span> b) {
+  <span class="k-c-violet">int</span> t = a; a = b; b = t;
+}
+troca(x, y);</div>
+<div id="@mem" style="position:absolute;left:1000px;top:300px;width:820px;height:480px">
+  <div class="k-body k-c-green" style="left:0;top:0;font-size:26px">quem chama</div>
+  <div class="vb" style="left:0;top:50px;border-color:#7FE39A">1</div><div class="lb" style="left:0;top:146px">x</div>
+  <div class="vb" style="left:180px;top:50px;border-color:#7FE39A">2</div><div class="lb" style="left:180px;top:146px">y</div>
+  <div class="k-body k-c-cyan" style="left:0;top:220px;font-size:26px">troca (cópias)</div>
+  <div class="vb" style="left:0;top:270px;border-color:#4FD6EE"><span id="@a1">1</span><span id="@a2" style="position:absolute;left:0;width:150px">2</span></div><div class="lb" style="left:0;top:366px">a</div>
+  <div class="vb" style="left:180px;top:270px;border-color:#4FD6EE"><span id="@b1">2</span><span id="@b2" style="position:absolute;left:0;width:150px">1</span></div><div class="lb" style="left:180px;top:366px">b</div>
+  <div id="@cp1" class="k-code k-c-cyan" style="left:60px;top:186px;font-size:30px">↓ cópia</div>
+  <div id="@res" class="k-anno k-c-pink" style="left:400px;top:80px">x e y NÃO trocaram</div>
+</div>
+<div id="@mac" class="k-macete" style="left:1000px;top:780px;width:820px;font-size:32px">Por valor = <u>fotocópia</u>. Rabiscar a cópia não muda o original.</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("def"), C.a + 0.6);
+K.fade(tl, $("mem"), C.a + 1.8);
+tl.set([$("a2"), $("b2"), $("res")], { opacity: 0 }, 0);
+K.rise(tl, $("lang"), C.b);
+K.fade(tl, $("code"), C.d);
+tl.to([$("a1"), $("b1")], { opacity: 0, duration: 0.3 }, C.d + 3.0);
+tl.to([$("a2"), $("b2")], { opacity: 1, duration: 0.3 }, C.d + 3.2);
+tl.to($("res"), { opacity: 1, duration: 0.3 }, C.d + 4.0);
+K.macete(tl, $("mac"), C.e);
+</script>

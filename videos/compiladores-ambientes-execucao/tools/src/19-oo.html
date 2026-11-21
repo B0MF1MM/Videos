@@ -1,0 +1,32 @@
+<!--sfx: c:pop@0.6*0.2, d:whoosh-short@2.4*0.2-->
+<style>
+  .bx { position: absolute; border-radius: 14px; border: 3px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 24px; color: #EEF1F8; padding: 12px 18px; line-height: 1.5; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Objetos na <em>memória</em></div>
+<div id="@o1" class="bx" style="left:120px;top:300px;width:360px;height:180px;border-color:#4FD6EE"><span class="k-c-cyan">objeto c1</span><br>classe → <br>x = 3<br>y = 7</div>
+<div id="@o2" class="bx" style="left:120px;top:540px;width:360px;height:180px;border-color:#4FD6EE"><span class="k-c-cyan">objeto c2</span><br>classe → <br>x = 1<br>y = 0</div>
+<div id="@cl" class="bx" style="left:760px;top:360px;width:420px;height:260px;border-color:#FFD24A"><span class="k-c-yel">classe Circulo</span><br>super → <br>area() → código<br>mover() → código</div>
+<div id="@sc" class="bx" style="left:1420px;top:240px;width:400px;height:200px;border-color:#B49BFF"><span class="k-c-violet">classe Forma</span><br>super → nil<br>desenhar() → código</div>
+<svg class="k-svg">
+  <path id="@a1" class="arrow" d="M 330 352 C 560 352, 600 420, 750 430 M 730 418 L 750 430 L 732 444" stroke="#FFD24A" />
+  <path id="@a2" class="arrow" d="M 330 592 C 560 592, 600 470, 750 450 M 732 440 L 750 450 L 734 466" stroke="#FFD24A" />
+  <path id="@a3" class="arrow" d="M 970 420 C 1100 420, 1250 330, 1410 320 M 1392 308 L 1410 320 L 1392 334" stroke="#B49BFF" />
+</svg>
+<div id="@n1" class="k-anno k-c-cyan" style="left:120px;top:760px">campos = variáveis de instância</div>
+<div id="@n2" class="k-anno k-c-yel" style="left:760px;top:650px">métodos guardados UMA vez (não copiados)</div>
+<div id="@n3" class="k-anno k-c-violet" style="left:1200px;top:470px">método não está aqui?
+sobe para a superclasse</div>
+<div id="@n4" class="k-chip k-c-green" style="left:1300px;top:580px;font-size:24px;background:#13241A">= herança + vinculação dinâmica</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.pop(tl, [$("o1"), $("o2")], C.a + 1.2, { s: 0.4 });
+K.wipe(tl, $("n1"), C.a + 2.6);
+K.rise(tl, $("cl"), C.b);
+K.draw(tl, [$("a1"), $("a2")], C.c + 0.4, { d: 0.6, s: 0.3 });
+K.wipe(tl, $("n2"), C.c + 2.0);
+K.rise(tl, $("sc"), C.d);
+K.draw(tl, $("a3"), C.d + 0.8, { d: 0.6 });
+K.wipe(tl, $("n3"), C.d + 2.4);
+K.pop(tl, $("n4"), C.d + 4.4);
+</script>

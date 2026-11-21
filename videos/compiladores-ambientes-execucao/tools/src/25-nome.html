@@ -1,0 +1,26 @@
+<!--sfx: c:click-soft@2.0*0.35, e:pop*0.3-->
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Passagem <em>por nome</em></div>
+<div id="@def" class="k-chip k-c-violet" style="left:120px;top:220px;font-size:28px">= avaliação atrasada</div>
+<div id="@how" class="k-card" style="left:120px;top:300px;width:820px;height:200px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px;line-height:1.5">o argumento <b>não</b> é avaliado na chamada<br>o <b class="k-c-violet">texto</b> do argumento substitui o parâmetro<br>e só é avaliado quando é usado</div>
+</div>
+<div id="@code" class="k-code" style="left:1040px;top:300px;font-size:36px;line-height:1.5"><span class="k-c-violet">void</span> proc(<span class="k-c-violet">int</span> <span id="@px" style="display:inline-block" class="k-c-cyan">x</span>) {
+  ++<span id="@bx" style="display:inline-block" class="k-c-cyan">x</span>;
+}
+proc(<span class="k-c-yel">a[i]</span>);</div>
+<div id="@sub" class="k-code" style="left:1040px;top:560px;font-size:40px">efeito:  ++<span class="k-c-yel">(a[i])</span></div>
+<div id="@late" class="k-card" style="left:120px;top:540px;width:820px;height:160px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px;line-height:1.45">se <b>i</b> mudar antes do uso,<br>o elemento afetado muda junto</div>
+</div>
+<div id="@mac" class="k-macete" style="left:120px;top:740px;width:1700px;font-size:34px">Por nome = mandar a <u>receita</u>, não o prato pronto. Cozinha na hora.</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.pop(tl, $("def"), C.a + 1.0);
+K.rise(tl, $("how"), C.b);
+K.fade(tl, $("code"), C.c);
+K.pulse(tl, $("bx"), C.c + 2.0, { k: 1.5 });
+K.wipe(tl, $("sub"), C.c + 3.0);
+K.rise(tl, $("late"), C.d);
+K.macete(tl, $("mac"), C.e);
+</script>

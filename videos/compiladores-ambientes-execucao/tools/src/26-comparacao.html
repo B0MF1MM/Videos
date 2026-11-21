@@ -1,0 +1,22 @@
+<!--sfx: b:click-soft*0.3, c:click-soft*0.3, d:click-soft*0.3, e:click-soft*0.3-->
+<style>
+  .cr { position: absolute; left: 0; width: 1680px; height: 120px; border-radius: 18px; border: 2px solid #2A3656; background: #182238; }
+  .cr .m { position: absolute; left: 30px; top: 30px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 38px; }
+  .cr .r { position: absolute; left: 560px; top: 30px; font-family: "DM Mono", monospace; font-size: 38px; color: #EEF1F8; }
+  .cr .w { position: absolute; left: 980px; top: 38px; font-family: "Hanken Grotesk", sans-serif; font-size: 28px; color: #8C97B5; }
+</style>
+<div id="@q" class="k-code" style="left:120px;top:126px;font-size:40px">x = 1;  <span class="k-c-violet">p</span>(x);   <span class="k-mute">// p soma 1 ao parâmetro</span></div>
+<div id="@rows" style="position:absolute;left:120px;top:230px;width:1680px;height:600px">
+  <div id="@r1" class="cr" style="top:0;border-color:#4FD6EE"><div class="m k-c-cyan">por valor</div><div class="r">x = 1</div><div class="w">fotocópia: o original não muda</div></div>
+  <div id="@r2" class="cr" style="top:150px;border-color:#FF6F9C"><div class="m k-c-pink">por referência</div><div class="r">x = <span class="k-c-yel">2</span></div><div class="w">chave da casa: muda na hora</div></div>
+  <div id="@r3" class="cr" style="top:300px;border-color:#FFD24A"><div class="m k-c-yel">por valor-resultado</div><div class="r">x = <span class="k-c-yel">2</span></div><div class="w">empréstimo: só quando p termina</div></div>
+  <div id="@r4" class="cr" style="top:450px;border-color:#B49BFF"><div class="m k-c-violet">por nome</div><div class="r">x = <span class="k-c-yel">2</span></div><div class="w">receita: o próprio x é avaliado em p</div></div>
+</div>
+
+<script>
+K.rise(tl, $("q"), C.a);
+K.slide(tl, $("r1"), C.b);
+K.slide(tl, $("r2"), C.c);
+K.slide(tl, $("r3"), C.d);
+K.slide(tl, $("r4"), C.e);
+</script>

@@ -1,0 +1,66 @@
+<template id="18-dinamico-template">
+  <div id="root" data-composition-id="18-dinamico" data-start="0" data-duration="31.076" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ml { position: absolute; left: 0; width: 420px; height: 70px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 24px; line-height: 66px; text-align: center; color: #EEF1F8; }
+</style>
+    <div id="s18-dinamico-bg" class="clip k-scene k-bg" data-start="0" data-duration="31.076" data-track-index="0"></div>
+    <div id="s18-dinamico-stage" class="clip k-scene" data-start="0" data-duration="31.076" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s18-dinamico-cam" class="k-cam">
+<div id="s18-dinamico-t" class="k-body" style="left:120px;top:126px;font-size:32px">pilha: o mais comum (C, Pascal, Ada)… <b class="k-c-pink">mas tem limites</b></div>
+<div id="s18-dinamico-code" class="k-win" style="left:120px;top:200px;width:640px;height:300px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>proc.c</span></div>
+  <div class="k-code" style="left:16px;top:66px;font-size:30px;line-height:1.45"><span class="k-c-violet">int</span> *proc(<span class="k-c-violet">void</span>) {
+  <span class="k-c-violet">int</span> x;
+  <span class="k-c-pink">return</span> <span class="k-c-yel">&amp;x</span>;
+}
+addr = proc();</div>
+</div>
+<div id="s18-dinamico-stk" style="position:absolute;left:900px;top:200px;width:900px;height:360px">
+  <div class="ml" style="top:0">main · addr</div>
+  <div id="s18-dinamico-rp" class="ml k-c-cyan" style="top:70px;border-color:#4FD6EE">proc · x</div>
+  <div id="s18-dinamico-ghost" class="ml k-mute" style="top:70px;background:#0F1628;border-style:dashed">(liberado)</div>
+  <svg width="900" height="360" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="s18-dinamico-ptr" d="M 430 35 C 520 40, 520 100, 430 105 M 446 92 L 430 105 L 448 114" stroke="#FFD24A" stroke-width="4" fill="none"/>
+  </svg>
+  <div id="s18-dinamico-dang" class="k-anno k-c-pink" style="left:520px;top:60px">addr aponta para lixo!</div>
+</div>
+<div id="s18-dinamico-c" class="k-chip k-c-pink" style="left:900px;top:400px;font-size:26px;background:#2A0E17">em C: erro, mas no máximo um aviso</div>
+<div id="s18-dinamico-lisp" class="k-card" style="left:120px;top:560px;width:820px;height:280px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:36px">ambiente totalmente dinâmico</div>
+  <div class="k-body" style="left:28px;top:86px;font-size:28px">LISP e ML permitem isso</div>
+  <div class="k-body" style="left:28px;top:146px;font-size:26px;line-height:1.4">registro só é liberado quando <b>ninguém</b><br>mais aponta para ele</div>
+</div>
+<div id="s18-dinamico-gc" class="k-card" style="left:980px;top:560px;width:820px;height:280px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:22px;font-size:36px">coleta de lixo</div>
+  <div class="k-body" style="left:28px;top:86px;font-size:26px;line-height:1.4">acompanha as referências durante a execução<br>e libera a memória inacessível</div>
+  <div class="k-body k-mute" style="left:28px;top:196px;font-size:24px">bem mais complicado que a pilha</div>
+</div>
+      </div>
+    </div>
+    <div id="s18-dinamico-chrome" class="clip k-scene" data-start="0" data-duration="31.076" data-track-index="2">
+      <div id="s18-dinamico-tag" class="k-tag">COMPILADORES · <b>AMBIENTE DINÂMICO</b></div>
+      <div id="s18-dinamico-num" class="k-num">18 / 28</div>
+      <div id="s18-dinamico-progbar" class="k-prog"><i id="s18-dinamico-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.832, "c": 9.011, "d": 14.07, "e": 17.997, "f": 23.582}, D = 31.076;
+        var S = K.scene("18-dinamico", D, 28), tl = S.tl, $ = S.$;
+        K.wipe(tl, $("t"), C.a);
+        K.rise(tl, $("code"), C.b - 0.4);
+        K.fade(tl, $("stk"), C.b);
+        tl.set([$("ghost"), $("ptr"), $("dang")], { opacity: 0 }, 0);
+        K.draw(tl, $("ptr"), C.b + 2.0, { d: 0.5 });
+        tl.to($("rp"), { opacity: 0, x: 40, duration: 0.4 }, C.c + 1.0);
+        tl.to($("ghost"), { opacity: 1, duration: 0.3 }, C.c + 1.2);
+        tl.to($("dang"), { opacity: 1, duration: 0.3 }, C.c + 1.6);
+        K.pop(tl, $("c"), C.d + 0.4);
+        K.rise(tl, $("lisp"), C.e);
+        K.rise(tl, $("gc"), C.f);
+      })();
+    </script>
+  </div>
+</template>

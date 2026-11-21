@@ -1,0 +1,200 @@
+# Roteiro — Compiladores: Ambientes de Execução
+# "# id-da-cena | SEÇÃO" abre uma cena; "chave: legenda || fala" (|| opcional, para a pronúncia).
+
+# 01-abertura | INTRODUÇÃO
+a: Quando o seu programa chama uma função, onde ficam as variáveis dela?
+b: E quando a função chama ela mesma, cem vezes, como a memória dá conta?
+c: Quem responde é o ambiente de execução: como a memória é organizada enquanto o programa roda.
+d: Bora entender, com desenhos de memória e macetes para a prova.
+
+# 02-intro | INTRODUÇÃO
+a: As análises léxica, sintática e semântica dependem da linguagem fonte.
+b: Já a geração de código depende da máquina alvo. E para gerar código, o compilador precisa saber como a memória vai estar organizada.
+c: Quase toda linguagem usa um de três ambientes: totalmente estático, baseado em pilhas, ou totalmente dinâmico.
+d: Também dá para misturar: são os ambientes híbridos.
+e: Macete: estático, pilha, dinâmico. Do mais simples para o mais flexível.
+
+# 03-memoria | ORGANIZAÇÃO DA MEMÓRIA
+a: A memória de um computador típico tem duas partes: os registradores, rápidos, e a RAM, mais lenta.
+b: A RAM se divide em área de código e área de dados.
+c: O código é fixado antes da execução. Então o endereço de entrada de cada procedimento já é conhecido na compilação.
+d: Dados globais e estáticos também ganham endereços fixos.
+e: Constantes pequenas, como zero e um, vão direto dentro do código. Números grandes e textos ficam numa área estática.
+
+# 04-layout | ORGANIZAÇÃO DA MEMÓRIA
+a: Uma organização típica fica assim.
+b: Em cima, a área de código. Depois, a área global e estática.
+c: Então vem a pilha, para dados que entram e saem em ordem LIFO: o último a entrar é o primeiro a sair. || Então vem a pilha, para dados que entram e saem em ordem lífo: o último a entrar é o primeiro a sair.
+d: E lá embaixo, o heap, para alocação dinâmica, sem ordem fixa. || E lá embaixo, o rip, para alocação dinâmica, sem ordem fixa.
+e: Os dois crescem um em direção ao outro, dividindo o espaço livre.
+f: Macete: pilha é uma pilha de pratos. Heap é um estacionamento: cada carro sai quando quiser. || Macete: pilha é uma pilha de pratos. Rip é um estacionamento: cada carro sai quando quiser.
+
+# 05-registro | ORGANIZAÇÃO DA MEMÓRIA
+a: A peça mais importante é o registro de ativação.
+b: É a memória de uma chamada de procedimento: criada quando ele é ativado.
+c: No mínimo, ele tem quatro partes: os argumentos, as informações de controle, como o endereço de retorno, os dados locais e os temporários.
+d: Macete: é a mochila da função. Leva o que recebeu, o caminho de volta, as coisas dela e um rascunho.
+e: E quando os registros ficam na pilha, eles se chamam quadros de pilha.
+
+# 06-registradores | ORGANIZAÇÃO DA MEMÓRIA
+a: Alguns registradores ajudam a acompanhar a execução.
+b: O pc, contador de programa, aponta para a próxima instrução. || O pê cê, contador de programa, aponta para a próxima instrução.
+c: O sp, ponteiro de pilha, aponta para o topo da pilha. || O ésse pê, ponteiro de pilha, aponta para o topo da pilha.
+d: O fp, ponteiro de quadro, aponta para o registro de ativação atual. || O éfe pê, ponteiro de quadro, aponta para o registro de ativação atual.
+e: E o ap, ponteiro de argumentos, aponta para a área dos argumentos. || E o á pê, ponteiro de argumentos, aponta para a área dos argumentos.
+
+# 07-sequencia | ORGANIZAÇÃO DA MEMÓRIA
+a: Toda chamada segue um roteiro: a sequência de ativação.
+b: Na ida: aloca o registro de ativação, calcula e guarda os argumentos, e ajusta os registradores.
+c: Na volta, a sequência de retorno: coloca o valor de retorno onde quem chamou consegue ler.
+d: Reajusta os registradores e libera a memória do registro.
+e: Macete: na ida, monta a mochila. Na volta, entrega o resultado e esvazia a mochila.
+
+# 08-estatico | AMBIENTE ESTÁTICO
+a: Primeiro ambiente: o totalmente estático. O mais simples.
+b: Todos os dados são estáticos: ficam no mesmo lugar do começo ao fim.
+c: O exemplo clássico é FORTRAN77. || O exemplo clássico é fórtran setenta e sete.
+d: Até as variáveis locais são alocadas antes da execução. Cada procedimento tem um único registro de ativação.
+e: A memória fica assim: o código de cada procedimento, os dados globais, e um registro de ativação fixo para cada um.
+
+# 09-estatico-chamada | AMBIENTE ESTÁTICO
+a: Na chamada, cada argumento é calculado e guardado no espaço do parâmetro, no registro do procedimento chamado.
+b: O endereço de retorno é gravado, e o programa salta para o código do procedimento.
+c: No retorno, um salto simples de volta.
+d: Pegadinha: esse ambiente não permite recursão.
+e: Macete: é um hotel com um quarto só por pessoa. Se o mesmo hóspede chegar de novo, não tem onde ficar: a nova chamada atropelaria a anterior.
+
+# 10-pilha | AMBIENTE DE PILHA
+a: Com recursão, cada chamada precisa de variáveis locais novas.
+b: Então os registros de ativação não podem ser estáticos: eles vão para uma pilha.
+c: A cada chamada, um novo registro é empilhado no topo.
+d: No retorno, ele é desempilhado. A pilha de ativação cresce e diminui com as chamadas.
+e: E o mesmo procedimento pode ter vários registros na pilha ao mesmo tempo, um para cada ativação.
+
+# 11-pilha-req | AMBIENTE DE PILHA
+a: Em linguagens como C, onde todos os procedimentos são globais, a pilha precisa de duas coisas.
+b: Primeiro, um ponteiro para o registro atual, para acessar as variáveis locais: o ponteiro de quadro, fp. || Primeiro, um ponteiro para o registro atual, para acessar as variáveis locais: o ponteiro de quadro, éfe pê.
+c: Segundo, um jeito de voltar para o registro anterior: a vinculação de controle, ou vinculação dinâmica. Também chamada de fp velho. || Segundo, um jeito de voltar para o registro anterior: a vinculação de controle, ou vinculação dinâmica. Também chamada de éfe pê velho.
+d: E pode haver o sp, apontando para o topo da pilha. || E pode haver o ésse pê, apontando para o topo da pilha.
+e: Macete: a vinculação de controle é a migalha de pão para voltar a quem chamou.
+
+# 12-gcd | AMBIENTE DE PILHA
+a: Exemplo: o máximo divisor comum, recursivo, com entradas 15 e 10. || Exemplo: o máximo divisor comum, recursivo, com entradas quinze e dez.
+b: Na área global: x vale 15 e y vale 10. Em cima, o registro do main. || Na área global: xis vale quinze e ípsilon vale dez. Em cima, o registro do main.
+c: main chama gcd de 15 e 10. Empilha um registro, com u, v, a vinculação de controle e o endereço de retorno. || main chama gcd de quinze e dez. Empilha um registro, com u, v, a vinculação de controle e o endereço de retorno.
+d: Como v não é zero, chama gcd de 10 e 5. Mais um registro. Depois gcd de 5 e 0. || Como v não é zero, chama gcd de dez e cinco. Mais um registro. Depois gcd de cinco e zero.
+e: Agora v é zero: retorna 5, e a pilha vai sendo desempilhada, registro por registro. || Agora v é zero: retorna cinco, e a pilha vai sendo desempilhada, registro por registro.
+
+# 13-arvore | AMBIENTE DE PILHA
+a: Para analisar chamadas complicadas, usamos a árvore de ativação.
+b: Cada ativação vira um nó, e os filhos são as chamadas feitas durante ela.
+c: No gcd, é uma linha reta: main, gcd de 15 e 10, gcd de 10 e 5, gcd de 5 e 0. || No gcd, é uma linha reta: main, gcd de quinze e dez, gcd de dez e cinco, gcd de cinco e zero.
+d: No segundo exemplo, main chama g de 2. g de 2 chama f de 1, que chama g de 1. E depois g de 2 chama g de 1 de novo. || No segundo exemplo, main chama g de dois. g de dois chama f de um, que chama g de um. E depois g de dois chama g de um de novo.
+e: Dica: a pilha, num instante qualquer, é exatamente o caminho da raiz até o nó que está executando.
+
+# 14-deslocamento | AMBIENTE DE PILHA
+a: Todo registro de ativação de um mesmo procedimento tem o mesmo formato.
+b: Na função g, o parâmetro m e a variável y estão sempre na mesma posição relativa.
+c: Então m fica num deslocamento fixo a partir do fp, e y em outro. || Então m fica num deslocamento fixo a partir do éfe pê, e y em outro.
+d: Por isso o compilador acessa variáveis locais assim: deslocamento mais fp. Sem precisar saber onde a pilha está. || Por isso o compilador acessa variáveis locais assim: deslocamento mais éfe pê. Sem precisar saber onde a pilha está.
+
+# 15-offsets | AMBIENTE DE PILHA
+a: Vamos calcular os deslocamentos de f, com parâmetros x e c, um vetor a de 10 inteiros e um double y. || Vamos calcular os deslocamentos de f, com parâmetros xis e cê, um vetor a de dez inteiros e um double ípsilon.
+b: Suponha: inteiro com 2 bytes, endereço com 4, caractere com 1, e ponto flutuante com 8. || Suponha: inteiro com dois bytes, endereço com quatro, caractere com um, e ponto flutuante com oito.
+c: Os parâmetros ficam acima do fp: x em mais 5, c em mais 4. || Os parâmetros ficam acima do éfe pê: xis em mais cinco, cê em mais quatro.
+d: Os locais ficam abaixo: a em menos 24 e y em menos 32. || Os locais ficam abaixo: a em menos vinte e quatro, e ípsilon em menos trinta e dois.
+e: E a de i fica em menos 24 mais 2 vezes i, a partir do fp. O 2 é o fator de escala, o tamanho do inteiro. || E a de i fica em menos vinte e quatro, mais dois vezes i, a partir do éfe pê. O dois é o fator de escala, o tamanho do inteiro.
+
+# 16-seq-pilha | AMBIENTE DE PILHA
+a: A sequência de ativação na pilha, passo a passo.
+b: Calcula os argumentos e guarda no novo registro. Empilha o fp atual como vinculação de controle. || Calcula os argumentos e guarda no novo registro. Empilha o éfe pê atual como vinculação de controle.
+c: Faz o fp apontar para o novo registro, guarda o endereço de retorno e salta para o procedimento. || Faz o éfe pê apontar para o novo registro, guarda o endereço de retorno e salta para o procedimento.
+d: No retorno: copia o fp no sp, carrega a vinculação de controle de volta no fp, salta para o endereço de retorno e tira os argumentos da pilha. || No retorno: copia o éfe pê no ésse pê, carrega a vinculação de controle de volta no éfe pê, salta para o endereço de retorno e tira os argumentos da pilha.
+e: A ordem exata depende da convenção de chamada da arquitetura.
+
+# 17-locais | PROCEDIMENTOS LOCAIS
+a: E quando um procedimento é declarado dentro de outro, como em Pascal?
+b: Aqui, q está dentro de p, e usa a variável n, que é de p. Não é local nem global.
+c: p chama r, que chama q. Pela regra de escopo estático, o n de q é o n de p, e não o n de r.
+d: A vinculação de controle aponta para quem chamou: r. Isso levaria ao n errado.
+e: A solução é a vinculação de acesso, ou vinculação estática: ela aponta para o registro do ambiente onde q foi definido, que é p.
+f: Macete: controle é quem me chamou. Acesso é onde eu nasci.
+
+# 18-dinamico | AMBIENTE DINÂMICO
+a: A pilha é o ambiente mais comum, em C, Pascal e Ada. Mas tem limites.
+b: Veja: a função proc devolve o endereço da sua variável local x. || Veja: a função proc devolve o endereço da sua variável local xis.
+c: Quando proc retorna, o registro dela sai da pilha. O endereço devolvido aponta para lixo.
+d: Em C isso é um erro, mas os compiladores no máximo dão um aviso.
+e: Linguagens como LISP e ML permitem isso. Elas precisam de um ambiente totalmente dinâmico. || Linguagens como lisp e ême éle permitem isso. Elas precisam de um ambiente totalmente dinâmico.
+f: Lá, um registro só é liberado quando ninguém mais aponta para ele. E quem encontra a memória inacessível é a coleta de lixo.
+
+# 19-oo | AMBIENTE DINÂMICO
+a: Em orientação a objetos, um objeto é parecido com um registro: os campos são as variáveis de instância.
+b: A estrutura de cada classe fica guardada na memória, com os ponteiros para os métodos.
+c: Cada objeto guarda só um ponteiro para a sua classe. Os métodos não são copiados em cada objeto.
+d: E cada classe aponta para a superclasse. Para achar um método, a busca sobe pela hierarquia. Isso implementa a herança e a vinculação dinâmica.
+
+# 20-heap | AMBIENTE DINÂMICO
+a: Mesmo num ambiente de pilha, ponteiros precisam de memória dinâmica: o heap. || Mesmo num ambiente de pilha, ponteiros precisam de memória dinâmica: o rip.
+b: Ele tem duas operações.
+c: Alocar: recebe um tamanho e devolve um ponteiro para um bloco livre.
+d: Liberar: recebe o ponteiro e marca o bloco como livre de novo.
+e: Em Pascal, new e dispose. Em C++, new e delete. Em C, malloc e free. || Em Pascal, niu e dispouse. Em cê mais mais, niu e delit. Em C, malóc e frí.
+
+# 21-parametros | PASSAGEM DE PARÂMETROS
+a: Os parâmetros são espaços no registro de ativação, preenchidos por quem chama antes do salto.
+b: Ligar parâmetros e argumentos também é uma amarração.
+c: Existem quatro mecanismos: por valor, por referência, por valor-resultado e por nome.
+d: E cuidado com a ordem de avaliação: em C, f de mais mais x vírgula x pode dar resultados diferentes, dependendo de qual argumento é avaliado primeiro.
+
+# 22-valor | PASSAGEM DE PARÂMETROS
+a: Passagem por valor: o argumento é avaliado, e o valor é copiado para o parâmetro.
+b: É o único mecanismo de C, e o básico em Pascal e Ada.
+c: Em C e Pascal, o parâmetro vira uma variável local com valor inicial. Mudar o parâmetro não muda o argumento. Em Ada, nem dá para atribuir a ele.
+d: Exemplo: uma troca de a e b por valor não troca nada lá fora. E é fácil de implementar.
+e: Macete: por valor é uma fotocópia. Rabiscar a cópia não muda o original.
+
+# 23-referencia | PASSAGEM DE PARÂMETROS
+a: Passagem por referência: passa a localização da variável. O parâmetro vira outro nome para o argumento.
+b: Qualquer mudança no parâmetro acontece também no argumento.
+c: É o único mecanismo do FORTRAN77. Em Pascal usa a palavra var, e em C++ o e comercial. || É o único mecanismo do fórtran setenta e sete. Em Pascal usa a palavra var, e em cê mais mais o e comercial.
+d: O compilador calcula o endereço do argumento, guarda no registro de ativação, e transforma cada acesso ao parâmetro num acesso indireto.
+e: Macete: por referência é dar a chave da casa. Mexeu lá dentro, mudou de verdade.
+
+# 24-valor-resultado | PASSAGEM DE PARÂMETROS
+a: Passagem por valor-resultado: parece a referência, mas sem criar outro nome.
+b: Na entrada, o valor é copiado. O procedimento trabalha na cópia.
+c: Na saída, o valor final é copiado de volta para o argumento.
+d: Por isso, o registro de ativação não pode ser liberado por quem foi chamado: quem chamou ainda precisa ler os valores.
+e: Macete: é pegar emprestado e devolver no fim.
+
+# 25-nome | PASSAGEM DE PARÂMETROS
+a: Passagem por nome, também chamada de avaliação atrasada.
+b: O argumento não é avaliado na chamada. O texto do argumento substitui o parâmetro, e só é avaliado quando é usado.
+c: Exemplo: proc faz mais mais x. Chamando proc de a de i, o efeito é mais mais a de i.
+d: E se o i mudar antes do uso, o elemento afetado muda junto.
+e: Macete: por nome é mandar a receita, não o prato pronto. Cozinha na hora.
+
+# 26-comparacao | PASSAGEM DE PARÂMETROS
+a: Resumo dos quatro, com x valendo 1 e a chamada p de x, onde p soma 1 ao parâmetro. || Resumo dos quatro, com xis valendo um e a chamada p de xis, onde p soma um ao parâmetro.
+b: Por valor, x continua 1. || Por valor, xis continua um.
+c: Por referência, x vira 2 na hora. || Por referência, xis vira dois na hora.
+d: Por valor-resultado, x vira 2, mas só quando p termina. || Por valor-resultado, xis vira dois, mas só quando p termina.
+e: E por nome, x vira 2, porque o próprio x é avaliado dentro de p. || E por nome, xis vira dois, porque o próprio xis é avaliado dentro de p.
+
+# 27-tiny | TINY
+a: Para fechar, o ambiente da linguagem TINY. É extremamente simples. || Para fechar, o ambiente da linguagem táini. É extremamente simples.
+b: TINY não tem procedimentos, e todas as variáveis são globais. Então não precisa de pilha de registros de ativação. || Táini não tem procedimentos, e todas as variáveis são globais. Então não precisa de pilha de registros de ativação.
+c: As variáveis ficam em endereços absolutos no fim da memória: x, y, z e w, de 0 a 3. || As variáveis ficam em endereços absolutos no fim da memória: xis, ípsilon, zê e dáblio, de zero a três.
+d: E os temporários ficam numa pilha no início da memória.
+e: Registradores apontam para o início e o fim, e os endereços das variáveis viram deslocamentos. A tabela de símbolos guarda esses endereços, com st_insert e st_lookup. || Registradores apontam para o início e o fim, e os endereços das variáveis viram deslocamentos. A tabela de símbolos guarda esses endereços, com és tê insert e és tê lukáp.
+
+# 28-cola | REVISÃO
+a: Revisão relâmpago.
+b: Três ambientes: estático, pilha e dinâmico.
+c: Memória: código, globais, pilha para baixo, heap para cima. || Memória: código, globais, pilha para baixo, rip para cima.
+d: Registro de ativação: argumentos, controle, locais e temporários.
+e: Estático não tem recursão. Pilha usa fp e a vinculação de controle. || Estático não tem recursão. Pilha usa éfe pê e a vinculação de controle.
+f: Controle é quem me chamou. Acesso é onde eu nasci.
+g: Valor é fotocópia, referência é a chave, valor-resultado é empréstimo e nome é a receita.
+h: Agora é com você. Boa prova!

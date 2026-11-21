@@ -1,0 +1,57 @@
+<!--sfx: c:click-soft@0.6*0.3, d:click-soft@0.6*0.3, e:chime@3.0*0.3-->
+<style>
+  .ml { position: absolute; left: 0; width: 360px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 24px; text-align: center; color: #EEF1F8; }
+</style>
+<div id="@code" class="k-code" style="left:120px;top:140px;font-size:36px;line-height:1.4"><span class="k-c-violet">void</span> f(<span class="k-c-violet">int</span> <span class="k-c-cyan">x</span>, <span class="k-c-violet">char</span> <span class="k-c-cyan">c</span>) {
+  <span class="k-c-violet">int</span> <span class="k-c-green">a</span>[10];
+  <span class="k-c-violet">double</span> <span class="k-c-green">y</span>;
+}</div>
+<div id="@sz" class="k-card" style="left:120px;top:370px;width:600px;height:220px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:20px;font-size:28px;line-height:1.55">int: <b>2</b> bytes · endereço: <b>4</b><br>char: <b>1</b> byte · double: <b>8</b></div>
+  <div class="k-body k-mute" style="left:28px;top:130px;font-size:24px">(suposição dos slides)</div>
+</div>
+<table id="@tab" class="k-table" style="left:120px;top:620px;width:600px;font-size:30px">
+  <tr><td style="color:#8C97B5">NOME</td><td style="color:#8C97B5">DESLOCAMENTO</td></tr>
+  <tr id="@tx"><td>x</td><td class="k-c-cyan">+5</td></tr>
+  <tr id="@tc"><td>c</td><td class="k-c-cyan">+4</td></tr>
+  <tr id="@ta"><td>a</td><td class="k-c-green">−24</td></tr>
+  <tr id="@ty"><td>y</td><td class="k-c-green">−32</td></tr>
+</table>
+<div id="@rec" style="position:absolute;left:880px;top:140px;width:520px;height:740px">
+  <div class="ml k-c-cyan" style="top:0;height:56px;line-height:52px">x (2)</div>
+  <div class="ml k-c-cyan" style="top:56px;height:40px;line-height:36px">c (1)</div>
+  <div class="ml" style="top:96px;height:60px;line-height:56px;border-color:#FFD24A">controle (4)</div>
+  <div class="ml" style="top:156px;height:60px;line-height:56px">retorno (4)</div>
+  <div class="ml k-c-green" style="top:216px;height:44px;line-height:40px">a[9]</div>
+  <div class="ml k-mute" style="top:260px;height:44px;line-height:40px">…</div>
+  <div id="@a1" class="ml k-c-green" style="top:304px;height:44px;line-height:40px">a[1]</div>
+  <div class="ml k-c-green" style="top:348px;height:44px;line-height:40px">a[0]</div>
+  <div class="ml k-c-green" style="top:392px;height:80px;line-height:76px">y (8)</div>
+  <div id="@fp" class="k-code k-c-yel" style="left:-110px;top:146px;font-size:28px">fp →</div>
+</div>
+<div id="@up" class="k-anno k-c-cyan" style="left:1270px;top:160px">parâmetros: acima do fp (+)</div>
+<div id="@dn" class="k-anno k-c-green" style="left:1270px;top:600px">locais: abaixo do fp (−)</div>
+<div id="@frm" class="k-card" style="left:1270px;top:240px;width:560px;height:330px;border-color:#FFD24A">
+  <div class="k-body" style="left:24px;top:20px;font-size:28px">endereço de a[i]:</div>
+  <div class="k-code k-c-yel" style="left:24px;top:70px;font-size:42px">(−24 + 2*i)(fp)</div>
+  <div class="k-body" style="left:24px;top:140px;font-size:24px">2 = fator de escala (tamanho do int)</div>
+  <div id="@ex" class="k-code" style="left:24px;top:200px;font-size:30px">a[1] → (−24 + 2)(fp)<br>     = −22(fp)</div>
+</div>
+
+<script>
+var rows = [$("tx"), $("tc"), $("ta"), $("ty")];
+K.rise(tl, $("code"), C.a);
+K.fade(tl, $("rec"), C.a + 2.0);
+K.rise(tl, $("sz"), C.b);
+K.fade(tl, $("tab"), C.c);
+tl.set(rows, { opacity: 0 }, 0);
+tl.to(rows[0], { opacity: 1, duration: 0.3 }, C.c + 2.0);
+tl.to(rows[1], { opacity: 1, duration: 0.3 }, C.c + 3.0);
+K.wipe(tl, $("up"), C.c + 0.4);
+tl.to(rows[2], { opacity: 1, duration: 0.3 }, C.d + 1.6);
+tl.to(rows[3], { opacity: 1, duration: 0.3 }, C.d + 3.4);
+K.wipe(tl, $("dn"), C.d + 0.4);
+K.rise(tl, $("frm"), C.e);
+K.fade(tl, $("ex"), C.e + 5.4);
+K.pulse(tl, $("a1"), C.e + 5.6, { k: 1.08 });
+</script>

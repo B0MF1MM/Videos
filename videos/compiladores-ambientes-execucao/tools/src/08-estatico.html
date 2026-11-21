@@ -1,0 +1,36 @@
+<!--sfx: c:pop@0.3*0.25, e:click-soft@1.0*0.3-->
+<style>
+  .ml { position: absolute; left: 0; width: 560px; height: 62px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 24px; line-height: 58px; text-align: center; color: #EEF1F8; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:62px">Ambiente <em>totalmente estático</em></div>
+<div id="@p1" class="k-card" style="left:120px;top:250px;width:760px;height:120px;border-color:#7FE39A">
+  <div class="k-body" style="left:28px;top:36px;font-size:30px">todos os dados <b class="k-c-green">fixos</b> do começo ao fim</div>
+</div>
+<div id="@f77" class="k-chip k-c-violet" style="left:120px;top:400px;font-size:34px;padding:14px 30px 12px">FORTRAN77</div>
+<div id="@p2" class="k-card" style="left:120px;top:490px;width:760px;height:200px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:26px;font-size:28px;line-height:1.5">até as <b>locais</b> são alocadas antes de rodar<br>cada procedimento tem <b class="k-c-yel">UM único</b><br>registro de ativação</div>
+</div>
+<div id="@mem" style="position:absolute;left:1060px;top:180px;width:760px;height:700px">
+  <div class="ml k-c-violet" style="top:0">código do main</div>
+  <div class="ml k-c-violet" style="top:62px">código do proc 1</div>
+  <div class="ml k-mute" style="top:124px">…</div>
+  <div class="ml k-c-violet" style="top:186px">código do proc n</div>
+  <div class="ml k-c-green" style="top:262px">dados globais</div>
+  <div id="@ra0" class="ml k-c-yel" style="top:324px">registro de ativação · main</div>
+  <div id="@ra1" class="ml k-c-yel" style="top:386px">registro de ativação · proc 1</div>
+  <div class="ml k-mute" style="top:448px">…</div>
+  <div id="@ran" class="ml k-c-yel" style="top:510px">registro de ativação · proc n</div>
+  <div class="k-code k-c-violet" style="left:580px;top:96px;font-size:24px">área de<br>código</div>
+  <div class="k-code k-c-yel" style="left:580px;top:400px;font-size:24px">área de<br>dados</div>
+  <div class="k-chip k-c-yel" style="left:150px;top:600px;font-size:24px">tudo com endereço fixo</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("p1"), C.b);
+K.pop(tl, $("f77"), C.c + 0.2);
+K.rise(tl, $("p2"), C.d);
+var ml = Array.prototype.slice.call($("mem").children);
+K.fade(tl, ml, C.e, { s: 0.15 });
+K.pulse(tl, [$("ra0"), $("ra1"), $("ran")], C.e + 3.0, { k: 1.04 });
+</script>

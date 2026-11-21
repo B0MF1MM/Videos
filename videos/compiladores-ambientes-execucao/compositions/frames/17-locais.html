@@ -1,0 +1,60 @@
+<template id="17-locais-template">
+  <div id="root" data-composition-id="17-locais" data-start="0" data-duration="32.449" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ml { position: absolute; left: 0; width: 440px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 22px; color: #EEF1F8; padding: 6px 14px; line-height: 1.4; }
+</style>
+    <div id="s17-locais-bg" class="clip k-scene k-bg" data-start="0" data-duration="32.449" data-track-index="0"></div>
+    <div id="s17-locais-stage" class="clip k-scene" data-start="0" data-duration="32.449" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s17-locais-cam" class="k-cam">
+<div id="s17-locais-code" class="k-win" style="left:100px;top:130px;width:620px;height:600px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>nonLocalRef.pas</span></div>
+  <div class="k-code" style="left:12px;top:62px;font-size:25px;line-height:1.38"><span class="ln"><span class="k-c-pink">procedure</span> <span class="k-c-yel">p</span>;</span><span class="ln" id="s17-locais-vn">  <span class="k-c-pink">var</span> <span class="k-c-green">n</span>: integer;</span><span class="ln">  <span class="k-c-pink">procedure</span> <span class="k-c-cyan">q</span>;</span><span class="ln" id="s17-locais-use">  <span class="k-c-pink">begin</span> (* usa <span class="k-c-green">n</span> *) <span class="k-c-pink">end</span>;</span><span class="ln">  <span class="k-c-pink">procedure</span> <span class="k-c-violet">r</span>(n: integer);</span><span class="ln">  <span class="k-c-pink">begin</span> q; <span class="k-c-pink">end</span>;</span><span class="ln"><span class="k-c-pink">begin</span></span><span class="ln">  n := 1;  r(2);</span><span class="ln"><span class="k-c-pink">end</span>;</span><span class="ln"><span class="k-c-pink">begin</span> p; <span class="k-c-pink">end</span>.</span></div>
+</div>
+<div id="s17-locais-nest" style="position:absolute;left:112px;top:256px;width:590px;height:148px;border:3px dashed #FFD24A;border-radius:14px"></div>
+<div id="s17-locais-nl" class="k-anno k-c-green" style="left:100px;top:760px">n de q: não é local nem global</div>
+<div id="s17-locais-stk" style="position:absolute;left:960px;top:160px;width:860px;height:640px">
+  <div class="ml k-mute" style="top:0;height:60px">programa principal</div>
+  <div id="s17-locais-rp" class="ml" style="top:60px;height:110px;border-color:#FFD24A">registro de <b class="k-c-yel">p</b><br>n: <b class="k-c-green">1</b></div>
+  <div id="s17-locais-rr" class="ml" style="top:170px;height:110px;border-color:#B49BFF">registro de <b class="k-c-violet">r</b><br>n: 2</div>
+  <div id="s17-locais-rq" class="ml" style="top:280px;height:110px;border-color:#4FD6EE">registro de <b class="k-c-cyan">q</b><br>controle · acesso</div>
+  <svg width="860" height="640" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="s17-locais-ctl" d="M 444 350 C 520 330, 520 250, 444 230" stroke="#FF6F9C" stroke-width="5" fill="none"/>
+    <path id="s17-locais-acc" d="M 444 370 C 640 330, 640 150, 444 110" stroke="#7FE39A" stroke-width="5" fill="none"/>
+  </svg>
+  <div id="s17-locais-lc" class="k-anno k-c-pink" style="left:540px;top:250px">controle → r (n = 2 ✗)</div>
+  <div id="s17-locais-la" class="k-anno k-c-green" style="left:520px;top:96px">acesso → p (n = 1 ✓)</div>
+</div>
+<div id="s17-locais-mac" class="k-macete" style="left:960px;top:620px;width:860px;font-size:32px">Controle = <u>quem me chamou</u>. Acesso = <u>onde eu nasci</u>.</div>
+      </div>
+    </div>
+    <div id="s17-locais-chrome" class="clip k-scene" data-start="0" data-duration="32.449" data-track-index="2">
+      <div id="s17-locais-tag" class="k-tag">COMPILADORES · <b>PROCEDIMENTOS LOCAIS</b></div>
+      <div id="s17-locais-num" class="k-num">17 / 28</div>
+      <div id="s17-locais-progbar" class="k-prog"><i id="s17-locais-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.014, "c": 9.411, "d": 15.802, "e": 20.861, "f": 28.064}, D = 32.449;
+        var S = K.scene("17-locais", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("code"), C.a);
+        K.fade(tl, $("nest"), C.a + 2.0);
+        K.hl(tl, $("use"), C.b + 0.4, C.c);
+        K.hl(tl, $("vn"), C.b + 1.6, C.c);
+        K.wipe(tl, $("nl"), C.b + 2.6);
+        K.fade(tl, $("stk"), C.c);
+        tl.set([$("rp"), $("rr"), $("rq")], { opacity: 0 }, 0);
+        tl.to($("rp"), { opacity: 1, duration: 0.3 }, C.c + 0.4);
+        tl.to($("rr"), { opacity: 1, duration: 0.3 }, C.c + 1.0);
+        tl.to($("rq"), { opacity: 1, duration: 0.3 }, C.c + 1.8);
+        K.draw(tl, $("ctl"), C.d + 0.4, { d: 0.6 });
+        K.wipe(tl, $("lc"), C.d + 1.0);
+        K.draw(tl, $("acc"), C.e + 2.0, { d: 0.8 });
+        K.wipe(tl, $("la"), C.e + 2.8);
+        K.macete(tl, $("mac"), C.f);
+      })();
+    </script>
+  </div>
+</template>

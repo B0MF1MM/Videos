@@ -1,0 +1,60 @@
+<template id="06-registradores-template">
+  <div id="root" data-composition-id="06-registradores" data-start="0" data-duration="19.865" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .rg { position: absolute; left: 0; width: 520px; height: 110px; border-radius: 16px; border: 3px solid #2A3656; background: #182238; }
+  .rg b { position: absolute; left: 24px; top: 18px; font-family: "DM Mono", monospace; font-weight: 400; font-size: 46px; }
+  .rg span { position: absolute; left: 130px; top: 16px; font-family: "Hanken Grotesk", sans-serif; font-size: 26px; color: #EEF1F8; line-height: 1.35; }
+  .ml { position: absolute; left: 0; width: 460px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 24px; text-align: center; color: #8C97B5; }
+</style>
+    <div id="s06-registradores-bg" class="clip k-scene k-bg" data-start="0" data-duration="19.865" data-track-index="0"></div>
+    <div id="s06-registradores-stage" class="clip k-scene" data-start="0" data-duration="19.865" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s06-registradores-cam" class="k-cam">
+<div id="s06-registradores-t" class="k-title" style="left:120px;top:124px;font-size:60px">Registradores de <em>controle</em></div>
+<div id="s06-registradores-r1" class="rg" style="left:120px;top:240px;border-color:#B49BFF"><b class="k-c-violet">pc</b><span>contador de programa<br>→ próxima instrução</span></div>
+<div id="s06-registradores-r2" class="rg" style="left:120px;top:370px;border-color:#4FD6EE"><b class="k-c-cyan">sp</b><span>ponteiro de pilha<br>→ topo da pilha</span></div>
+<div id="s06-registradores-r3" class="rg" style="left:120px;top:500px;border-color:#FFD24A"><b class="k-c-yel">fp</b><span>ponteiro de quadro<br>→ registro de ativação atual</span></div>
+<div id="s06-registradores-r4" class="rg" style="left:120px;top:630px;border-color:#7FE39A"><b class="k-c-green">ap</b><span>ponteiro de argumentos<br>→ área dos argumentos</span></div>
+<div id="s06-registradores-mem" style="position:absolute;left:1120px;top:230px;width:700px;height:620px">
+  <div class="ml" style="top:0;height:80px;line-height:76px">main</div>
+  <div class="ml" style="top:80px;height:80px;line-height:76px">f</div>
+  <div class="ml" style="top:160px;height:280px;border-color:#FFD24A"></div>
+  <div class="ml k-c-green" style="top:170px;height:70px;line-height:66px;left:20px;width:420px;border-color:#7FE39A">argumentos</div>
+  <div class="ml" style="top:250px;height:70px;line-height:66px;left:20px;width:420px">controle</div>
+  <div class="ml" style="top:330px;height:100px;line-height:96px;left:20px;width:420px">locais</div>
+  <div class="ml" style="top:440px;height:160px;line-height:156px;background:#0F1628">livre</div>
+  <div id="s06-registradores-psp" class="k-code k-c-cyan" style="left:480px;top:420px;font-size:28px">← sp</div>
+  <div id="s06-registradores-pfp" class="k-code k-c-yel" style="left:480px;top:240px;font-size:28px">← fp</div>
+  <div id="s06-registradores-pap" class="k-code k-c-green" style="left:480px;top:180px;font-size:28px">← ap</div>
+</div>
+<div id="s06-registradores-code" class="k-code" style="left:700px;top:260px;font-size:26px;line-height:1.6"><span class="ln">LD …</span><span class="ln" id="s06-registradores-cur">ADD …</span><span class="ln">ST …</span></div>
+<div id="s06-registradores-ppc" class="k-code k-c-violet" style="left:900px;top:302px;font-size:28px">← pc</div>
+      </div>
+    </div>
+    <div id="s06-registradores-chrome" class="clip k-scene" data-start="0" data-duration="19.865" data-track-index="2">
+      <div id="s06-registradores-tag" class="k-tag">COMPILADORES · <b>ORGANIZAÇÃO DA MEMÓRIA</b></div>
+      <div id="s06-registradores-num" class="k-num">06 / 28</div>
+      <div id="s06-registradores-progbar" class="k-prog"><i id="s06-registradores-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.407, "c": 7.265, "d": 10.876, "e": 15.178}, D = 19.865;
+        var S = K.scene("06-registradores", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.fade(tl, $("mem"), C.a + 1.2);
+        tl.set([$("psp"), $("pfp"), $("pap")], { opacity: 0 }, 0);
+        K.slide(tl, $("r1"), C.b);
+        K.fade(tl, [$("code"), $("ppc")], C.b + 0.6);
+        K.hl(tl, $("cur"), C.b + 0.6);
+        K.slide(tl, $("r2"), C.c);
+        tl.to($("psp"), { opacity: 1, duration: 0.3 }, C.c + 0.6);
+        K.slide(tl, $("r3"), C.d);
+        tl.to($("pfp"), { opacity: 1, duration: 0.3 }, C.d + 0.6);
+        K.slide(tl, $("r4"), C.e);
+        tl.to($("pap"), { opacity: 1, duration: 0.3 }, C.e + 0.6);
+      })();
+    </script>
+  </div>
+</template>

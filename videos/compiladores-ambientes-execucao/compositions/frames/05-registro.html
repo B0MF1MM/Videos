@@ -1,0 +1,54 @@
+<template id="05-registro-template">
+  <div id="root" data-composition-id="05-registro" data-start="0" data-duration="25.409" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ra { position: absolute; left: 0; width: 620px; height: 110px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 34px; line-height: 104px; padding-left: 30px; }
+</style>
+    <div id="s05-registro-bg" class="clip k-scene k-bg" data-start="0" data-duration="25.409" data-track-index="0"></div>
+    <div id="s05-registro-stage" class="clip k-scene" data-start="0" data-duration="25.409" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s05-registro-cam" class="k-cam">
+<div id="s05-registro-t" class="k-title" style="left:120px;top:124px;font-size:64px">Registro de <em>ativação</em></div>
+<div id="s05-registro-def" class="k-body" style="left:120px;top:222px;font-size:30px">a memória de <b>uma chamada</b> de procedimento · criado quando ele é ativado</div>
+<div id="s05-registro-rec" style="position:absolute;left:200px;top:300px;width:620px;height:460px;border:3px solid #FFD24A;border-radius:16px;overflow:hidden">
+  <div id="s05-registro-s1" class="ra k-c-cyan" style="top:0">argumentos</div>
+  <div id="s05-registro-s2" class="ra k-c-yel" style="top:115px;font-size:30px">controle · endereço de retorno</div>
+  <div id="s05-registro-s3" class="ra k-c-green" style="top:230px">dados locais</div>
+  <div id="s05-registro-s4" class="ra k-c-violet" style="top:345px">temporários</div>
+</div>
+<div id="s05-registro-b1" class="k-anno k-c-cyan" style="left:880px;top:340px">o que recebeu</div>
+<div id="s05-registro-b2" class="k-anno k-c-yel" style="left:880px;top:455px">o caminho de volta</div>
+<div id="s05-registro-b3" class="k-anno k-c-green" style="left:880px;top:570px">as coisas dela</div>
+<div id="s05-registro-b4" class="k-anno k-c-violet" style="left:880px;top:685px">o rascunho</div>
+<div id="s05-registro-mac" class="k-macete" style="left:1180px;top:300px;width:620px;font-size:34px">É a <u>mochila</u> da função.</div>
+<div id="s05-registro-fr" class="k-card" style="left:1180px;top:540px;width:620px;height:200px;border-color:#4FD6EE">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px">registro de ativação na pilha =</div>
+  <div class="k-h2 k-c-cyan" style="left:28px;top:84px;font-size:46px">quadro de pilha</div>
+  <div class="k-code k-mute" style="left:28px;top:150px;font-size:22px">(stack frame)</div>
+</div>
+      </div>
+    </div>
+    <div id="s05-registro-chrome" class="clip k-scene" data-start="0" data-duration="25.409" data-track-index="2">
+      <div id="s05-registro-tag" class="k-tag">COMPILADORES · <b>ORGANIZAÇÃO DA MEMÓRIA</b></div>
+      <div id="s05-registro-num" class="k-num">05 / 28</div>
+      <div id="s05-registro-progbar" class="k-prog"><i id="s05-registro-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.275, "c": 7.235, "d": 15.22, "e": 21.09}, D = 25.409;
+        var S = K.scene("05-registro", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.wipe(tl, $("def"), C.b);
+        K.fade(tl, $("rec"), C.c);
+        K.slide(tl, $("s1"), C.c + 0.6, { x: -60 });
+        K.slide(tl, $("s2"), C.c + 1.8, { x: -60 });
+        K.slide(tl, $("s3"), C.c + 4.6, { x: -60 });
+        K.slide(tl, $("s4"), C.c + 6.0, { x: -60 });
+        K.macete(tl, $("mac"), C.d);
+        K.wipe(tl, [$("b1"), $("b2"), $("b3"), $("b4")], C.d + 1.6, { s: 1.0 });
+        K.rise(tl, $("fr"), C.e);
+      })();
+    </script>
+  </div>
+</template>

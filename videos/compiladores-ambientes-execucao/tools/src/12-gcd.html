@@ -1,0 +1,53 @@
+<!--sfx: c:pop@1.0*0.2, d:pop@1.0*0.2, e:chime@0.6*0.3-->
+<style>
+  .ml { position: absolute; left: 0; width: 520px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 22px; color: #EEF1F8; padding: 6px 16px; line-height: 1.35; }
+</style>
+<div id="@code" class="k-win" style="left:120px;top:150px;width:700px;height:470px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>gcd.c</span></div>
+  <div class="k-code" style="left:16px;top:64px;font-size:26px;line-height:1.45"><span class="k-c-violet">int</span> x, y;
+<span class="k-c-violet">int</span> gcd(<span class="k-c-violet">int</span> u, <span class="k-c-violet">int</span> v) {
+  <span class="k-c-pink">if</span> (v == 0) <span class="k-c-pink">return</span> u;
+  <span class="k-c-pink">else return</span> <span class="k-c-yel">gcd(v, u % v)</span>;
+}
+main() {
+  scanf(<span class="k-c-green">"%d%d"</span>, &amp;x, &amp;y);
+  printf(<span class="k-c-green">"%d\n"</span>, gcd(x, y));
+}</div>
+</div>
+<div id="@in" class="k-chip k-c-cyan" style="left:120px;top:650px;font-size:30px;background:#0D1322">entrada: 15 e 10</div>
+<div id="@res" class="k-chip k-c-yel" style="left:480px;top:650px;font-size:36px;background:#2A2410">resultado: 5</div>
+<div id="@stk" style="position:absolute;left:1100px;top:150px;width:720px;height:740px">
+  <div id="@g" class="ml k-c-green" style="top:0;height:70px">x: 15<br>y: 10</div>
+  <div id="@m" class="ml" style="top:70px;height:50px">registro de main</div>
+  <div id="@r1" class="ml" style="top:120px;height:130px;border-color:#4FD6EE">u: 15  v: 10<br><span class="k-c-pink">controle</span><br>end. de retorno</div>
+  <div id="@r2" class="ml" style="top:250px;height:130px;border-color:#4FD6EE">u: 10  v: 5<br><span class="k-c-pink">controle</span><br>end. de retorno</div>
+  <div id="@r3" class="ml" style="top:380px;height:130px;border-color:#FFD24A">u: 5  v: <b class="k-c-yel">0</b><br><span class="k-c-pink">controle</span><br>end. de retorno</div>
+  <div class="ml k-mute" style="top:510px;height:90px;background:#0F1628">espaço livre ↓</div>
+  <div id="@l1" class="k-code k-mute" style="left:540px;top:160px;font-size:22px">gcd(15,10)</div>
+  <div id="@l2" class="k-code k-mute" style="left:540px;top:290px;font-size:22px">gcd(10,5)</div>
+  <div id="@l3" class="k-code k-c-yel" style="left:540px;top:420px;font-size:22px">gcd(5,0)</div>
+  <div id="@fp" class="k-code k-c-yel" style="left:540px;top:470px;font-size:22px">← fp</div>
+  <div id="@ret" class="k-code k-c-yel" style="left:540px;top:380px;font-size:26px">return 5 ↑</div>
+</div>
+
+<script>
+var R = [$("r1"), $("r2"), $("r3")], L = [$("l1"), $("l2"), $("l3")];
+K.rise(tl, $("code"), C.a);
+K.pop(tl, $("in"), C.a + 2.4);
+K.fade(tl, $("stk"), C.b);
+tl.set(R.concat(L).concat([$("fp"), $("ret")]), { opacity: 0 }, 0);
+tl.to([R[0], L[0]], { opacity: 1, duration: 0.4 }, C.c + 1.0);
+tl.fromTo(R[0], { y: -40 }, { y: 0, duration: 0.4, immediateRender: false }, C.c + 1.0);
+tl.to([R[1], L[1]], { opacity: 1, duration: 0.4 }, C.d + 1.0);
+tl.fromTo(R[1], { y: -40 }, { y: 0, duration: 0.4, immediateRender: false }, C.d + 1.0);
+tl.to([R[2], L[2], $("fp")], { opacity: 1, duration: 0.4 }, C.d + 4.0);
+tl.fromTo(R[2], { y: -40 }, { y: 0, duration: 0.4, immediateRender: false }, C.d + 4.0);
+tl.to($("ret"), { opacity: 1, duration: 0.3 }, C.e + 1.0);
+tl.to([R[2], L[2], $("fp")], { opacity: 0, x: 40, duration: 0.4 }, C.e + 2.2);
+tl.to($("ret"), { y: -130, duration: 0.4 }, C.e + 2.4);
+tl.to([R[1], L[1]], { opacity: 0, x: 40, duration: 0.4 }, C.e + 3.0);
+tl.to($("ret"), { y: -260, duration: 0.4 }, C.e + 3.2);
+tl.to([R[0], L[0]], { opacity: 0, x: 40, duration: 0.4 }, C.e + 3.8);
+tl.to($("ret"), { opacity: 0, duration: 0.3 }, C.e + 4.0);
+K.pop(tl, $("res"), C.e + 4.2);
+</script>

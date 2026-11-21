@@ -1,0 +1,66 @@
+<template id="14-deslocamento-template">
+  <div id="root" data-composition-id="14-deslocamento" data-start="0" data-duration="21.488" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ml { position: absolute; left: 0; width: 460px; height: 76px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 28px; line-height: 72px; text-align: center; color: #EEF1F8; }
+</style>
+    <div id="s14-deslocamento-bg" class="clip k-scene k-bg" data-start="0" data-duration="21.488" data-track-index="0"></div>
+    <div id="s14-deslocamento-stage" class="clip k-scene" data-start="0" data-duration="21.488" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s14-deslocamento-cam" class="k-cam">
+<div id="s14-deslocamento-code" class="k-win" style="left:120px;top:150px;width:620px;height:360px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>g</span></div>
+  <div class="k-code" style="left:16px;top:66px;font-size:28px;line-height:1.45"><span class="k-c-violet">void</span> g(<span class="k-c-violet">int</span> <span class="k-c-cyan">m</span>) {
+  <span class="k-c-violet">int</span> <span class="k-c-green">y</span> = m - 1;
+  <span class="k-c-pink">if</span> (y &gt; 0) {
+    f(y); x--; g(y);
+  }
+}</div>
+</div>
+<div id="s14-deslocamento-same" class="k-card" style="left:120px;top:550px;width:620px;height:140px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:22px;font-size:28px;line-height:1.4">todo registro de g tem<br><b class="k-c-yel">o mesmo formato</b></div>
+</div>
+<div id="s14-deslocamento-rec" style="position:absolute;left:1000px;top:200px;width:820px;height:400px">
+  <div class="ml k-c-cyan" style="top:0">m</div>
+  <div class="ml" style="top:76px">vinculação de controle</div>
+  <div class="ml" style="top:152px">endereço de retorno</div>
+  <div class="ml k-c-green" style="top:228px">y</div>
+  <div id="s14-deslocamento-fp" class="k-code k-c-yel" style="left:-120px;top:96px;font-size:30px">fp →</div>
+  <svg width="820" height="400" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="s14-deslocamento-om" d="M 500 76 L 500 18 M 488 32 L 500 18 L 512 32" stroke="#4FD6EE" stroke-width="4" fill="none"/>
+    <path id="s14-deslocamento-oy" d="M 600 76 L 600 262 M 588 248 L 600 262 L 612 248" stroke="#7FE39A" stroke-width="4" fill="none"/>
+  </svg>
+  <div id="s14-deslocamento-lm" class="k-anno k-c-cyan" style="left:520px;top:4px">mDeslocamento</div>
+  <div id="s14-deslocamento-ly" class="k-anno k-c-green" style="left:620px;top:200px">yDeslocamento</div>
+</div>
+<div id="s14-deslocamento-acc" class="k-card" style="left:1000px;top:640px;width:820px;height:200px;border-color:#7FE39A">
+  <div class="k-code" style="left:28px;top:28px;font-size:34px"><span class="k-c-cyan">m</span> = mDeslocamento(fp)</div>
+  <div class="k-code" style="left:28px;top:86px;font-size:34px"><span class="k-c-green">y</span> = yDeslocamento(fp)</div>
+  <div class="k-body k-mute" style="left:28px;top:146px;font-size:24px">não importa onde a pilha esteja</div>
+</div>
+      </div>
+    </div>
+    <div id="s14-deslocamento-chrome" class="clip k-scene" data-start="0" data-duration="21.488" data-track-index="2">
+      <div id="s14-deslocamento-tag" class="k-tag">COMPILADORES · <b>AMBIENTE DE PILHA</b></div>
+      <div id="s14-deslocamento-num" class="k-num">14 / 28</div>
+      <div id="s14-deslocamento-progbar" class="k-prog"><i id="s14-deslocamento-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.344, "c": 9.86, "d": 14.355}, D = 21.488;
+        var S = K.scene("14-deslocamento", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("code"), C.a);
+        K.rise(tl, $("same"), C.a + 1.6);
+        K.fade(tl, $("rec"), C.b);
+        tl.set([$("om"), $("oy"), $("lm"), $("ly"), $("fp")], { opacity: 0 }, 0);
+        tl.to($("fp"), { opacity: 1, duration: 0.3 }, C.c);
+        K.draw(tl, $("om"), C.c + 1.0, { d: 0.4 });
+        tl.to($("lm"), { opacity: 1, duration: 0.3 }, C.c + 1.2);
+        K.draw(tl, $("oy"), C.c + 2.6, { d: 0.5 });
+        tl.to($("ly"), { opacity: 1, duration: 0.3 }, C.c + 2.9);
+        K.rise(tl, $("acc"), C.d);
+      })();
+    </script>
+  </div>
+</template>

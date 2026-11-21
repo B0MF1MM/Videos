@@ -1,0 +1,67 @@
+<template id="23-referencia-template">
+  <div id="root" data-composition-id="23-referencia" data-start="0" data-duration="29.488" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .vb { position: absolute; width: 150px; height: 90px; border: 3px solid #2A3656; border-radius: 12px; background: #182238; font-family: "DM Mono", monospace; font-size: 40px; line-height: 84px; text-align: center; color: #EEF1F8; }
+  .lb { position: absolute; width: 150px; text-align: center; font-family: "DM Mono", monospace; font-size: 26px; color: #8C97B5; }
+</style>
+    <div id="s23-referencia-bg" class="clip k-scene k-bg" data-start="0" data-duration="29.488" data-track-index="0"></div>
+    <div id="s23-referencia-stage" class="clip k-scene" data-start="0" data-duration="29.488" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s23-referencia-cam" class="k-cam">
+<div id="s23-referencia-t" class="k-title" style="left:120px;top:124px;font-size:60px">Passagem <em>por referência</em></div>
+<div id="s23-referencia-def" class="k-body" style="left:120px;top:220px;font-size:28px">passa a <b class="k-c-pink">localização</b>: o parâmetro vira outro nome para o argumento</div>
+<div id="s23-referencia-code" class="k-code" style="left:120px;top:300px;font-size:28px;line-height:1.45"><span class="k-c-violet">void</span> troca(<span class="k-c-violet">int</span> <span class="k-c-pink">&amp;</span>a, <span class="k-c-violet">int</span> <span class="k-c-pink">&amp;</span>b) {
+  <span class="k-c-violet">int</span> t = a; a = b; b = t;
+}
+troca(x, y);   <span class="k-mute">// C++</span></div>
+<div id="s23-referencia-lang" style="position:absolute;left:120px;top:500px;width:820px;height:80px">
+  <div class="k-chip k-c-violet" style="left:0;top:0;font-size:26px">FORTRAN77: o único</div>
+  <div class="k-chip k-c-cyan" style="left:330px;top:0;font-size:26px">Pascal: var</div>
+  <div class="k-chip k-c-pink" style="left:560px;top:0;font-size:26px">C++: &amp;</div>
+</div>
+<div id="s23-referencia-comp" class="k-card" style="left:120px;top:600px;width:820px;height:180px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:20px;font-size:26px;line-height:1.5">o compilador:<br>1. calcula o endereço do argumento e guarda no registro<br>2. transforma cada uso do parâmetro em <b class="k-c-yel">acesso indireto</b></div>
+</div>
+<div id="s23-referencia-mem" style="position:absolute;left:1100px;top:280px;width:720px;height:440px">
+  <div class="k-body k-c-green" style="left:0;top:0;font-size:26px">quem chama</div>
+  <div class="vb" style="left:0;top:50px;border-color:#7FE39A"><span id="s23-referencia-x1">1</span><span id="s23-referencia-x2" style="position:absolute;left:0;width:150px">2</span></div><div class="lb" style="left:0;top:146px">x</div>
+  <div class="vb" style="left:200px;top:50px;border-color:#7FE39A"><span id="s23-referencia-y1">2</span><span id="s23-referencia-y2" style="position:absolute;left:0;width:150px">1</span></div><div class="lb" style="left:200px;top:146px">y</div>
+  <div class="k-body k-c-pink" style="left:0;top:230px;font-size:26px">troca guarda endereços</div>
+  <div class="vb" style="left:0;top:280px;border-color:#FF6F9C;font-size:28px">&amp;x</div><div class="lb" style="left:0;top:376px">a</div>
+  <div class="vb" style="left:200px;top:280px;border-color:#FF6F9C;font-size:28px">&amp;y</div><div class="lb" style="left:200px;top:376px">b</div>
+  <svg width="720" height="440" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="s23-referencia-pa" d="M 75 278 L 75 146 M 63 160 L 75 146 L 87 160" stroke="#FF6F9C" stroke-width="4" fill="none"/>
+    <path id="s23-referencia-pb" d="M 275 278 L 275 146 M 263 160 L 275 146 L 287 160" stroke="#FF6F9C" stroke-width="4" fill="none"/>
+  </svg>
+  <div id="s23-referencia-res" class="k-anno k-c-green" style="left:400px;top:80px">trocou de verdade ✓</div>
+</div>
+<div id="s23-referencia-mac" class="k-macete" style="left:1000px;top:780px;width:820px;font-size:32px">Por referência = dar a <u>chave da casa</u>.</div>
+      </div>
+    </div>
+    <div id="s23-referencia-chrome" class="clip k-scene" data-start="0" data-duration="29.488" data-track-index="2">
+      <div id="s23-referencia-tag" class="k-tag">COMPILADORES · <b>PASSAGEM DE PARÂMETROS</b></div>
+      <div id="s23-referencia-num" class="k-num">23 / 28</div>
+      <div id="s23-referencia-progbar" class="k-prog"><i id="s23-referencia-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 6.08, "c": 9.607, "d": 16.014, "e": 23.823}, D = 29.488;
+        var S = K.scene("23-referencia", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.wipe(tl, $("def"), C.a + 0.6);
+        K.fade(tl, $("code"), C.a + 2.0);
+        K.fade(tl, $("mem"), C.a + 2.4);
+        tl.set([$("x2"), $("y2"), $("res")], { opacity: 0 }, 0);
+        K.draw(tl, [$("pa"), $("pb")], C.a + 3.2, { d: 0.4, s: 0.3 });
+        tl.to([$("x1"), $("y1")], { opacity: 0, duration: 0.3 }, C.b + 1.0);
+        tl.to([$("x2"), $("y2")], { opacity: 1, duration: 0.3 }, C.b + 1.2);
+        tl.to($("res"), { opacity: 1, duration: 0.3 }, C.b + 1.6);
+        K.fade(tl, $("lang"), C.c);
+        K.rise(tl, $("comp"), C.d);
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>

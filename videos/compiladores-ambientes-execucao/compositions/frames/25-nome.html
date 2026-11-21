@@ -1,0 +1,46 @@
+<template id="25-nome-template">
+  <div id="root" data-composition-id="25-nome" data-start="0" data-duration="24.535" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s25-nome-bg" class="clip k-scene k-bg" data-start="0" data-duration="24.535" data-track-index="0"></div>
+    <div id="s25-nome-stage" class="clip k-scene" data-start="0" data-duration="24.535" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s25-nome-cam" class="k-cam">
+<div id="s25-nome-t" class="k-title" style="left:120px;top:124px;font-size:60px">Passagem <em>por nome</em></div>
+<div id="s25-nome-def" class="k-chip k-c-violet" style="left:120px;top:220px;font-size:28px">= avaliação atrasada</div>
+<div id="s25-nome-how" class="k-card" style="left:120px;top:300px;width:820px;height:200px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px;line-height:1.5">o argumento <b>não</b> é avaliado na chamada<br>o <b class="k-c-violet">texto</b> do argumento substitui o parâmetro<br>e só é avaliado quando é usado</div>
+</div>
+<div id="s25-nome-code" class="k-code" style="left:1040px;top:300px;font-size:36px;line-height:1.5"><span class="k-c-violet">void</span> proc(<span class="k-c-violet">int</span> <span id="s25-nome-px" style="display:inline-block" class="k-c-cyan">x</span>) {
+  ++<span id="s25-nome-bx" style="display:inline-block" class="k-c-cyan">x</span>;
+}
+proc(<span class="k-c-yel">a[i]</span>);</div>
+<div id="s25-nome-sub" class="k-code" style="left:1040px;top:560px;font-size:40px">efeito:  ++<span class="k-c-yel">(a[i])</span></div>
+<div id="s25-nome-late" class="k-card" style="left:120px;top:540px;width:820px;height:160px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px;line-height:1.45">se <b>i</b> mudar antes do uso,<br>o elemento afetado muda junto</div>
+</div>
+<div id="s25-nome-mac" class="k-macete" style="left:120px;top:740px;width:1700px;font-size:34px">Por nome = mandar a <u>receita</u>, não o prato pronto. Cozinha na hora.</div>
+      </div>
+    </div>
+    <div id="s25-nome-chrome" class="clip k-scene" data-start="0" data-duration="24.535" data-track-index="2">
+      <div id="s25-nome-tag" class="k-tag">COMPILADORES · <b>PASSAGEM DE PARÂMETROS</b></div>
+      <div id="s25-nome-num" class="k-num">25 / 28</div>
+      <div id="s25-nome-progbar" class="k-prog"><i id="s25-nome-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.562, "c": 10.401, "d": 15.679, "e": 19.43}, D = 24.535;
+        var S = K.scene("25-nome", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.pop(tl, $("def"), C.a + 1.0);
+        K.rise(tl, $("how"), C.b);
+        K.fade(tl, $("code"), C.c);
+        K.pulse(tl, $("bx"), C.c + 2.0, { k: 1.5 });
+        K.wipe(tl, $("sub"), C.c + 3.0);
+        K.rise(tl, $("late"), C.d);
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>

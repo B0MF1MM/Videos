@@ -1,0 +1,53 @@
+<!--sfx: a:whoosh-short@2.6*0.2, b:whoosh-short@2.4*0.2, d:pop*0.3, e:pop@3.0*0.3-->
+<style>
+  .ml { position: absolute; left: 0; width: 520px; height: 70px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 26px; line-height: 66px; padding-left: 20px; color: #EEF1F8; }
+</style>
+<div id="@main" class="k-win" style="left:120px;top:150px;width:620px;height:300px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>main</span></div>
+  <div class="k-code" style="left:10px;top:64px;font-size:28px;line-height:1.5"><span class="ln">11: a = 3</span><span class="ln" id="@call">12: CALL P(a + 1)</span><span class="ln" id="@ret">13: print …</span></div>
+</div>
+<div id="@pcode" class="k-win" style="left:120px;top:490px;width:620px;height:200px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>código de P</span></div>
+  <div class="k-code" style="left:10px;top:64px;font-size:28px;line-height:1.5"><span class="ln" id="@p1">… corpo de P …</span><span class="ln" id="@p2">RETURN</span></div>
+</div>
+<div id="@ra" style="position:absolute;left:1000px;top:200px;width:520px;height:300px">
+  <div class="k-body k-c-yel" style="left:0;top:-50px;font-size:28px">registro de ativação de P (fixo)</div>
+  <div class="ml" style="top:0">parâmetro x: <span id="@xv" class="k-c-cyan">4</span></div>
+  <div class="ml" style="top:70px">retorno: <span id="@rv" class="k-c-yel">→ 13</span></div>
+  <div class="ml k-mute" style="top:140px">locais …</div>
+</div>
+<div id="@tok" class="k-chip k-c-cyan" style="left:560px;top:268px;font-size:30px;background:#0D1322">4</div>
+<svg class="k-svg">
+  <path id="@j1" class="arrow" d="M 620 290 C 820 340, 820 520, 640 560 M 660 546 L 640 560 L 662 572" stroke="#7FE39A" />
+  <path id="@j2" class="arrow" d="M 380 640 C 60 600, 60 380, 330 340 M 310 334 L 330 340 L 314 356" stroke="#FF6F9C" />
+</svg>
+<div id="@alert" class="k-macete k-alert" style="left:1000px;top:540px;width:820px;font-size:34px">Ambiente estático <u>não permite recursão</u>!</div>
+<div id="@hotel" style="position:absolute;left:1000px;top:680px;width:820px;height:180px">
+  <div style="position:absolute;left:0;top:0;width:200px;height:150px;border:3px solid #FFD24A;border-radius:12px;background:#221F12"></div>
+  <div class="k-code k-c-yel" style="left:0;top:50px;width:200px;text-align:center;font-size:32px">quarto P</div>
+  <div class="k-chip k-c-cyan" style="left:40px;top:96px;font-size:22px;background:#0D1322">P (1ª)</div>
+  <div id="@second" class="k-chip k-c-pink" style="left:300px;top:50px;font-size:26px;background:#2A0E17">P (2ª chamada) ✗</div>
+  <div class="k-body" style="left:300px;top:110px;font-size:24px">atropelaria a primeira</div>
+</div>
+
+<script>
+K.rise(tl, $("main"), C.a);
+K.rise(tl, $("pcode"), C.a + 0.6);
+K.fade(tl, $("ra"), C.a + 1.0);
+K.hl(tl, $("call"), C.a + 1.6, C.c);
+tl.set([$("xv"), $("rv")], { opacity: 0 }, 0);
+K.pop(tl, $("tok"), C.a + 2.2);
+K.fly(tl, $("tok"), C.a + 2.8, 640, -40, { d: 0.8 });
+tl.to($("tok"), { opacity: 0, duration: 0.2 }, C.a + 3.6);
+tl.to($("xv"), { opacity: 1, duration: 0.2 }, C.a + 3.6);
+tl.to($("rv"), { opacity: 1, duration: 0.3 }, C.b + 0.8);
+K.draw(tl, $("j1"), C.b + 2.4, { d: 0.6 });
+K.hl(tl, $("p1"), C.b + 3.0, C.c);
+K.hl(tl, $("p2"), C.c, C.d);
+K.draw(tl, $("j2"), C.c + 0.4, { d: 0.6 });
+K.hl(tl, $("ret"), C.c + 1.0);
+K.macete(tl, $("alert"), C.d);
+K.fade(tl, $("hotel"), C.e);
+tl.fromTo($("second"), { x: 200, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }, C.e + 2.8);
+tl.to($("second"), { x: 14, duration: 0.07, yoyo: true, repeat: 5 }, C.e + 3.4);
+</script>

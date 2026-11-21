@@ -1,0 +1,45 @@
+<template id="07-sequencia-template">
+  <div id="root" data-composition-id="07-sequencia" data-start="0" data-duration="23.961" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s07-sequencia-bg" class="clip k-scene k-bg" data-start="0" data-duration="23.961" data-track-index="0"></div>
+    <div id="s07-sequencia-stage" class="clip k-scene" data-start="0" data-duration="23.961" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s07-sequencia-cam" class="k-cam">
+<div id="s07-sequencia-t" class="k-title" style="left:120px;top:124px;font-size:60px">Sequência de <em>ativação</em></div>
+<div id="s07-sequencia-go" class="k-card" style="left:120px;top:240px;width:820px;height:440px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:24px;font-size:38px">na IDA (ativação) →</div>
+  <div id="s07-sequencia-g1" class="k-body" style="left:30px;top:110px;font-size:30px">1. aloca o registro de ativação</div>
+  <div id="s07-sequencia-g2" class="k-body" style="left:30px;top:190px;font-size:30px">2. calcula e guarda os argumentos</div>
+  <div id="s07-sequencia-g3" class="k-body" style="left:30px;top:270px;font-size:30px">3. ajusta os registradores</div>
+</div>
+<div id="s07-sequencia-bk" class="k-card" style="left:980px;top:240px;width:820px;height:440px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:30px;top:24px;font-size:38px">← na VOLTA (retorno)</div>
+  <div id="s07-sequencia-k1" class="k-body" style="left:30px;top:110px;font-size:30px">1. põe o valor de retorno onde<br>   quem chamou consegue ler</div>
+  <div id="s07-sequencia-k2" class="k-body" style="left:30px;top:230px;font-size:30px">2. reajusta os registradores</div>
+  <div id="s07-sequencia-k3" class="k-body" style="left:30px;top:310px;font-size:30px">3. libera o registro de ativação</div>
+</div>
+<div id="s07-sequencia-mac" class="k-macete" style="left:330px;top:720px;width:1260px;font-size:34px">Na ida, <u>monta a mochila</u>. Na volta, <u>entrega o resultado</u> e esvazia a mochila.</div>
+      </div>
+    </div>
+    <div id="s07-sequencia-chrome" class="clip k-scene" data-start="0" data-duration="23.961" data-track-index="2">
+      <div id="s07-sequencia-tag" class="k-tag">COMPILADORES · <b>ORGANIZAÇÃO DA MEMÓRIA</b></div>
+      <div id="s07-sequencia-num" class="k-num">07 / 28</div>
+      <div id="s07-sequencia-progbar" class="k-prog"><i id="s07-sequencia-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.269, "c": 9.104, "d": 14.534, "e": 17.87}, D = 23.961;
+        var S = K.scene("07-sequencia", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, $("go"), C.b - 0.4);
+        K.slide(tl, [$("g1"), $("g2"), $("g3")], C.b + 0.4, { s: 1.6 });
+        K.rise(tl, $("bk"), C.c - 0.2);
+        K.slide(tl, $("k1"), C.c + 0.6, { x: 40 });
+        K.slide(tl, [$("k2"), $("k3")], C.d, { s: 1.6, x: 40 });
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>

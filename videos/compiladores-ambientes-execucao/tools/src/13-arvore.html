@@ -1,0 +1,49 @@
+<!--sfx: c:pop@0.6*0.2, d:pop@0.6*0.2, e:chime@1.0*0.25-->
+<style>
+  .tn { position: absolute; width: 200px; height: 54px; margin: -27px 0 0 -100px; border-radius: 12px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 26px; line-height: 48px; text-align: center; color: #EEF1F8; }
+  .tg { border-color: #B49BFF; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Árvore de <em>ativação</em></div>
+<div id="@def" class="k-body" style="left:120px;top:220px;font-size:28px">cada ativação = um nó · filhos = as chamadas feitas durante ela</div>
+<div id="@k1" class="k-kicker" style="left:280px;top:290px">gcd(15, 10)</div>
+<svg class="k-svg"><g id="@e1" class="edge"><line x1="400" y1="360" x2="400" y2="460"/><line x1="400" y1="460" x2="400" y2="560"/><line x1="400" y1="560" x2="400" y2="660"/></g>
+  <g id="@e2" class="edge"><line x1="1300" y1="360" x2="1300" y2="460"/><line x1="1300" y1="460" x2="1150" y2="560"/><line x1="1300" y1="460" x2="1450" y2="560"/><line x1="1150" y1="560" x2="1150" y2="660"/></g>
+  <path id="@path" d="M 1300 360 L 1300 460 L 1150 560 L 1150 660" stroke="#FFD24A" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.8"/></svg>
+<div id="@a0" class="tn" style="left:400px;top:360px">main</div>
+<div id="@a1" class="tn" style="left:400px;top:460px">gcd(15,10)</div>
+<div id="@a2" class="tn" style="left:400px;top:560px">gcd(10,5)</div>
+<div id="@a3" class="tn" style="left:400px;top:660px">gcd(5,0)</div>
+<div id="@line" class="k-anno k-c-cyan" style="left:540px;top:540px">uma linha reta</div>
+<div id="@k2" class="k-kicker" style="left:1160px;top:290px">exemplo 2 · f e g</div>
+<div id="@b0" class="tn tg" style="left:1300px;top:360px">main</div>
+<div id="@b1" class="tn tg" style="left:1300px;top:460px">g(2)</div>
+<div id="@b2" class="tn tg" style="left:1150px;top:560px">f(1)</div>
+<div id="@b3" class="tn tg" style="left:1450px;top:560px">g(1)</div>
+<div id="@b4" class="tn tg" style="left:1150px;top:660px">g(1)</div>
+<div id="@mini" style="position:absolute;left:1560px;top:620px;width:260px;height:220px">
+  <div class="k-body k-c-yel" style="left:0;top:0;font-size:22px">pilha agora:</div>
+  <div class="k-cell" style="left:0;top:160px;width:200px;height:44px;line-height:40px;font-size:22px">main</div>
+  <div class="k-cell" style="left:0;top:116px;width:200px;height:44px;line-height:40px;font-size:22px">g(2)</div>
+  <div class="k-cell" style="left:0;top:72px;width:200px;height:44px;line-height:40px;font-size:22px">f(1)</div>
+  <div class="k-cell k-c-yel" style="left:0;top:28px;width:200px;height:44px;line-height:40px;font-size:22px;border-color:#FFD24A">g(1)</div>
+</div>
+<div id="@mac" class="k-macete" style="left:120px;top:770px;width:1380px;font-size:32px">A pilha, num instante, = o <u>caminho da raiz</u> até o nó que está executando.</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("def"), C.b);
+K.fade(tl, $("k1"), C.c);
+K.fade(tl, $("e1"), C.c + 0.4);
+K.pop(tl, [$("a0"), $("a1"), $("a2"), $("a3")], C.c + 0.6, { s: 0.9 });
+K.wipe(tl, $("line"), C.c + 4.0);
+K.fade(tl, $("k2"), C.d);
+K.fade(tl, $("e2"), C.d + 0.4);
+K.pop(tl, $("b0"), C.d + 0.4);
+K.pop(tl, $("b1"), C.d + 1.4);
+K.pop(tl, $("b2"), C.d + 2.6);
+K.pop(tl, $("b4"), C.d + 3.8);
+K.pop(tl, $("b3"), C.d + 5.4);
+K.draw(tl, $("path"), C.e + 0.8, { d: 1.0 });
+K.fade(tl, $("mini"), C.e + 1.6);
+K.macete(tl, $("mac"), C.e + 0.4);
+</script>

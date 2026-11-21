@@ -1,0 +1,46 @@
+<template id="21-parametros-template">
+  <div id="root" data-composition-id="21-parametros" data-start="0" data-duration="23.387" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s21-parametros-bg" class="clip k-scene k-bg" data-start="0" data-duration="23.387" data-track-index="0"></div>
+    <div id="s21-parametros-stage" class="clip k-scene" data-start="0" data-duration="23.387" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s21-parametros-cam" class="k-cam">
+<div id="s21-parametros-t" class="k-title" style="left:120px;top:124px;font-size:60px">Passagem de <em>parâmetros</em></div>
+<div id="s21-parametros-rec" style="position:absolute;left:120px;top:240px;width:820px;height:300px">
+  <div class="k-code" style="left:0;top:0;font-size:34px">f(<span class="k-c-cyan">3+4</span>, <span class="k-c-green">y</span>)</div>
+  <div class="k-cell" style="left:0;top:90px;width:360px;height:70px;line-height:66px;border-color:#FFD24A">parâmetro a: <span id="s21-parametros-va" class="k-c-cyan">7</span></div>
+  <div class="k-cell" style="left:0;top:160px;width:360px;height:70px;line-height:66px;border-color:#FFD24A">parâmetro b: <span id="s21-parametros-vb" class="k-c-green">…</span></div>
+  <div class="k-body" style="left:400px;top:110px;font-size:26px;line-height:1.4">espaços no registro de ativação,<br>preenchidos por <b>quem chama</b><br>antes do salto</div>
+</div>
+<div id="s21-parametros-amr" class="k-chip k-c-yel" style="left:120px;top:560px;font-size:28px;background:#2A2410">ligar parâmetros e argumentos = amarração</div>
+<div id="s21-parametros-four" style="position:absolute;left:1000px;top:240px;width:820px;height:400px">
+  <div id="s21-parametros-m1" class="k-chip k-c-cyan" style="left:0;top:0;font-size:34px;padding:16px 30px 14px">1 · por valor</div>
+  <div id="s21-parametros-m2" class="k-chip k-c-pink" style="left:0;top:96px;font-size:34px;padding:16px 30px 14px">2 · por referência</div>
+  <div id="s21-parametros-m3" class="k-chip k-c-yel" style="left:0;top:192px;font-size:34px;padding:16px 30px 14px">3 · por valor-resultado</div>
+  <div id="s21-parametros-m4" class="k-chip k-c-violet" style="left:0;top:288px;font-size:34px;padding:16px 30px 14px">4 · por nome</div>
+</div>
+<div id="s21-parametros-ord" class="k-macete k-alert" style="left:120px;top:690px;width:1700px;font-size:32px">Ordem de avaliação: em C, <span style="font-family:'DM Mono',monospace">f(++x, x)</span> pode dar resultados diferentes!</div>
+      </div>
+    </div>
+    <div id="s21-parametros-chrome" class="clip k-scene" data-start="0" data-duration="23.387" data-track-index="2">
+      <div id="s21-parametros-tag" class="k-tag">COMPILADORES · <b>PASSAGEM DE PARÂMETROS</b></div>
+      <div id="s21-parametros-num" class="k-num">21 / 28</div>
+      <div id="s21-parametros-progbar" class="k-prog"><i id="s21-parametros-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.446, "c": 8.713, "d": 13.734}, D = 23.387;
+        var S = K.scene("21-parametros", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.fade(tl, $("rec"), C.a + 0.8);
+        tl.set([$("va"), $("vb")], { opacity: 0 }, 0);
+        tl.to([$("va"), $("vb")], { opacity: 1, duration: 0.3, stagger: 0.6 }, C.a + 3.0);
+        K.pop(tl, $("amr"), C.b);
+        K.slide(tl, [$("m1"), $("m2"), $("m3"), $("m4")], C.c, { s: 0.9, x: 60 });
+        K.macete(tl, $("ord"), C.d + 2.0);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,58 @@
+<!--sfx: c:whoosh-short@1.6*0.2, d:whoosh-short@2.6*0.2-->
+<style>
+  .ml { position: absolute; left: 0; width: 420px; height: 64px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 24px; line-height: 60px; text-align: center; color: #EEF1F8; }
+  .st { position: absolute; left: 28px; font-family: "Hanken Grotesk", sans-serif; font-size: 26px; color: #EEF1F8; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:120px;font-size:56px">A chamada na pilha, <em>passo a passo</em></div>
+<div id="@call" class="k-card" style="left:120px;top:220px;width:700px;height:330px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:16px;font-size:32px">ativação</div>
+  <div id="@c1" class="st" style="top:76px">1. argumentos → novo registro</div>
+  <div id="@c2" class="st" style="top:126px">2. empilha o fp (vinculação de controle)</div>
+  <div id="@c3" class="st" style="top:176px">3. fp → início do novo registro</div>
+  <div id="@c4" class="st" style="top:226px">4. guarda o endereço de retorno</div>
+  <div id="@c5" class="st" style="top:276px">5. salta para o procedimento</div>
+</div>
+<div id="@ret" class="k-card" style="left:120px;top:580px;width:700px;height:280px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:16px;font-size:32px">retorno</div>
+  <div id="@r1" class="st" style="top:76px">1. sp ← fp</div>
+  <div id="@r2" class="st" style="top:122px">2. fp ← vinculação de controle</div>
+  <div id="@r3" class="st" style="top:168px">3. salta para o endereço de retorno</div>
+  <div id="@r4" class="st" style="top:214px">4. sp retira os argumentos</div>
+</div>
+<div id="@stk" style="position:absolute;left:1260px;top:220px;width:560px;height:640px">
+  <div class="ml" style="top:0;height:120px;line-height:116px;border-color:#8C97B5">registro de quem chamou</div>
+  <div id="@n1" class="ml k-c-green" style="top:120px">argumentos</div>
+  <div id="@n2" class="ml k-c-pink" style="top:184px">controle (fp velho)</div>
+  <div id="@n3" class="ml k-c-yel" style="top:248px">endereço de retorno</div>
+  <div id="@n4" class="ml k-mute" style="top:312px;height:120px;line-height:116px">locais…</div>
+  <div id="@fp" class="k-code k-c-yel" style="left:-120px;top:40px;font-size:30px">fp →</div>
+</div>
+<div id="@conv" class="k-chip k-c-violet" style="left:900px;top:780px;font-size:26px">a ordem exata depende da convenção de chamada</div>
+
+<script>
+var Cs = [$("c1"), $("c2"), $("c3"), $("c4"), $("c5")], Rs = [$("r1"), $("r2"), $("r3"), $("r4")];
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("call"), C.a + 0.8);
+K.fade(tl, $("stk"), C.a + 1.2);
+tl.set([$("n1"), $("n2"), $("n3"), $("n4")], { opacity: 0 }, 0);
+tl.set(Cs.concat(Rs), { opacity: 0.25 }, 0);
+tl.to(Cs[0], { opacity: 1, duration: 0.3 }, C.b);
+tl.to($("n1"), { opacity: 1, duration: 0.3 }, C.b + 0.4);
+tl.to(Cs[1], { opacity: 1, duration: 0.3 }, C.b + 3.0);
+tl.to($("n2"), { opacity: 1, duration: 0.3 }, C.b + 3.4);
+tl.to(Cs[2], { opacity: 1, duration: 0.3 }, C.c);
+tl.to($("fp"), { y: 154, duration: 0.5, ease: "power2.inOut" }, C.c + 0.4);
+tl.to(Cs[3], { opacity: 1, duration: 0.3 }, C.c + 2.2);
+tl.to([$("n3"), $("n4")], { opacity: 1, duration: 0.3 }, C.c + 2.4);
+tl.to(Cs[4], { opacity: 1, duration: 0.3 }, C.c + 3.8);
+K.rise(tl, $("ret"), C.d - 0.4);
+tl.to(Rs[0], { opacity: 1, duration: 0.3 }, C.d + 0.6);
+tl.to($("n4"), { opacity: 0, duration: 0.3 }, C.d + 1.0);
+tl.to(Rs[1], { opacity: 1, duration: 0.3 }, C.d + 2.2);
+tl.to($("fp"), { y: 0, duration: 0.5, ease: "power2.inOut" }, C.d + 2.6);
+tl.to(Rs[2], { opacity: 1, duration: 0.3 }, C.d + 4.6);
+tl.to([$("n2"), $("n3")], { opacity: 0, duration: 0.3 }, C.d + 5.0);
+tl.to(Rs[3], { opacity: 1, duration: 0.3 }, C.d + 6.4);
+tl.to($("n1"), { opacity: 0, duration: 0.3 }, C.d + 6.8);
+K.pop(tl, $("conv"), C.e);
+</script>

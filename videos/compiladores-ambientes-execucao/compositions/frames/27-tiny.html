@@ -1,0 +1,57 @@
+<template id="27-tiny-template">
+  <div id="root" data-composition-id="27-tiny" data-start="0" data-duration="30.436" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ml { position: absolute; left: 0; width: 340px; height: 62px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 26px; line-height: 58px; text-align: center; color: #EEF1F8; }
+  .ad { position: absolute; left: 360px; font-family: "DM Mono", monospace; font-size: 24px; color: #8C97B5; }
+</style>
+    <div id="s27-tiny-bg" class="clip k-scene k-bg" data-start="0" data-duration="30.436" data-track-index="0"></div>
+    <div id="s27-tiny-stage" class="clip k-scene" data-start="0" data-duration="30.436" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s27-tiny-cam" class="k-cam">
+<div id="s27-tiny-t" class="k-title" style="left:120px;top:120px;font-size:58px">Ambiente do <em>TINY</em></div>
+<div id="s27-tiny-simp" class="k-card" style="left:120px;top:230px;width:840px;height:220px;border-color:#4FD6EE">
+  <div class="k-body" style="left:28px;top:22px;font-size:28px;line-height:1.5">• extremamente simples<br>• <b>sem procedimentos</b>, todas as variáveis globais<br>• <b class="k-c-cyan">sem pilha</b> de registros de ativação<br>• só guarda os <b>temporários</b> das expressões</div>
+</div>
+<div id="s27-tiny-regs" class="k-card" style="left:120px;top:480px;width:840px;height:300px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.5">• registradores apontam para o início e o fim<br>• endereços das variáveis = <b class="k-c-yel">deslocamentos</b><br>• a tabela de símbolos guarda esses endereços:</div>
+  <div class="k-code k-c-green" style="left:28px;top:170px;font-size:24px;line-height:1.5">st_insert(name, lineno, loc)
+st_lookup(name)</div>
+</div>
+<div id="s27-tiny-mem" style="position:absolute;left:1200px;top:150px;width:620px;height:740px">
+  <div class="k-body k-mute" style="left:0;top:0;width:340px;text-align:center;font-size:22px">início da memória</div>
+  <div id="s27-tiny-t1" class="ml k-c-violet" style="top:36px">temp1</div>
+  <div id="s27-tiny-t2" class="ml k-c-violet" style="top:98px">temp2</div>
+  <div id="s27-tiny-t3" class="ml k-c-violet" style="top:160px">temp3</div>
+  <div id="s27-tiny-tl" class="ad k-c-violet" style="top:176px">← pilha temporária</div>
+  <div class="ml k-mute" style="top:222px;height:200px;line-height:196px;background:#0F1628">livre</div>
+  <div id="s27-tiny-w" class="ml k-c-green" style="top:422px">w</div><div class="ad" style="top:438px">3</div>
+  <div id="s27-tiny-z" class="ml k-c-green" style="top:484px">z</div><div class="ad" style="top:500px">2</div>
+  <div id="s27-tiny-y" class="ml k-c-green" style="top:546px">y</div><div class="ad" style="top:562px">1</div>
+  <div id="s27-tiny-x" class="ml k-c-green" style="top:608px">x</div><div class="ad" style="top:624px">0</div>
+  <div class="k-body k-mute" style="left:0;top:676px;width:340px;text-align:center;font-size:22px">fim da memória</div>
+</div>
+      </div>
+    </div>
+    <div id="s27-tiny-chrome" class="clip k-scene" data-start="0" data-duration="30.436" data-track-index="2">
+      <div id="s27-tiny-tag" class="k-tag">COMPILADORES · <b>TINY</b></div>
+      <div id="s27-tiny-num" class="k-num">27 / 28</div>
+      <div id="s27-tiny-progbar" class="k-prog"><i id="s27-tiny-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.207, "c": 11.191, "d": 17.303, "e": 20.461}, D = 30.436;
+        var S = K.scene("27-tiny", D, 28), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, $("simp"), C.a + 1.0);
+        K.fade(tl, $("mem"), C.c - 0.4);
+        tl.set([$("t1"), $("t2"), $("t3"), $("tl"), $("x"), $("y"), $("z"), $("w")], { opacity: 0 }, 0);
+        tl.to([$("x"), $("y"), $("z"), $("w")], { opacity: 1, duration: 0.3, stagger: 0.5 }, C.c + 1.0);
+        tl.to([$("t1"), $("t2"), $("t3")], { opacity: 1, duration: 0.3, stagger: 0.5 }, C.d + 0.4);
+        tl.to($("tl"), { opacity: 1, duration: 0.3 }, C.d + 1.6);
+        K.rise(tl, $("regs"), C.e);
+      })();
+    </script>
+  </div>
+</template>
