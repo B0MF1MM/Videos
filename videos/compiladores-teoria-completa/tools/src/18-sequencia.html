@@ -1,0 +1,22 @@
+<!--sfx: b:pop@0.4*0.2, c:pop@0.4*0.2-->
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Sequência de <em>ativação</em> e de <em>retorno</em></div>
+<div id="@go" class="k-card" style="left:120px;top:260px;width:820px;height:480px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:24px;font-size:38px">ativação →</div>
+  <div id="@g1" class="k-body" style="left:30px;top:120px;font-size:30px">1. aloca o registro de ativação</div>
+  <div id="@g2" class="k-body" style="left:30px;top:210px;font-size:30px">2. calcula e armazena os argumentos</div>
+  <div id="@g3" class="k-body" style="left:30px;top:300px;font-size:30px">3. ajusta os registradores</div>
+</div>
+<div id="@bk" class="k-card" style="left:980px;top:260px;width:820px;height:480px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:30px;top:24px;font-size:38px">← retorno</div>
+  <div id="@k1" class="k-body" style="left:30px;top:120px;font-size:30px;line-height:1.35">1. disponibiliza o valor de retorno<br>   para o chamador</div>
+  <div id="@k2" class="k-body" style="left:30px;top:250px;font-size:30px">2. reajusta os registradores</div>
+  <div id="@k3" class="k-body" style="left:30px;top:340px;font-size:30px">3. libera o registro de ativação</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("go"), C.b - 0.6);
+K.slide(tl, [$("g1"), $("g2"), $("g3")], C.b + 0.4, { s: 1.4 });
+K.rise(tl, $("bk"), C.c - 0.4);
+K.slide(tl, [$("k1"), $("k2"), $("k3")], C.c + 0.4, { s: 1.8, x: 40 });
+</script>

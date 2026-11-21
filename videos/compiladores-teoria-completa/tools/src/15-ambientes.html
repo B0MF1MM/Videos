@@ -1,0 +1,34 @@
+<!--sfx: a:chime@0.2*0.25, c:pop@0.6*0.2, d:pop@0.4*0.2-->
+<div id="@band" class="k-kicker" style="left:120px;top:124px;font-size:26px;color:#FFD24A">PARTE 2</div>
+<div id="@t" class="k-title" style="left:120px;top:160px;font-size:76px">Ambientes de <em>execução</em></div>
+<div id="@dep" style="position:absolute;left:120px;top:300px;width:1680px;height:110px">
+  <div class="k-chip k-c-cyan" style="left:0;top:20px;font-size:26px">análises → dependem da linguagem fonte</div>
+  <div class="k-chip k-c-green" style="left:720px;top:20px;font-size:26px">geração de código → depende da máquina alvo</div>
+</div>
+<div id="@def" class="k-card" style="left:120px;top:420px;width:1680px;height:110px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:32px;font-size:30px">ambiente de execução = como a <b class="k-c-yel">memória</b> é organizada durante a execução</div>
+</div>
+<div id="@e1" class="k-card" style="left:120px;top:560px;width:540px;height:200px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:24px;font-size:36px">totalmente estático</div>
+  <div class="k-body" style="left:28px;top:90px;font-size:24px">tudo alocado antes da execução</div>
+</div>
+<div id="@e2" class="k-card" style="left:690px;top:560px;width:540px;height:200px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:24px;font-size:36px">baseado em pilhas</div>
+  <div class="k-body" style="left:28px;top:90px;font-size:24px">registros empilhados a cada chamada</div>
+</div>
+<div id="@e3" class="k-card" style="left:1260px;top:560px;width:540px;height:200px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:24px;font-size:36px">totalmente dinâmico</div>
+  <div class="k-body" style="left:28px;top:90px;font-size:24px">liberação quando não há referências</div>
+</div>
+<div id="@hy" class="k-chip k-c-violet" style="left:760px;top:790px;font-size:28px">+ ambientes híbridos</div>
+
+<script>
+K.fade(tl, $("band"), C.a);
+K.rise(tl, $("t"), C.a + 0.3);
+var dp = Array.prototype.slice.call($("dep").children);
+K.fade(tl, dp[0], C.a + 1.2);
+K.fade(tl, dp[1], C.a + 3.0);
+K.rise(tl, $("def"), C.b);
+K.rise(tl, [$("e1"), $("e2"), $("e3")], C.c + 1.6, { s: 1.4 });
+K.pop(tl, $("hy"), C.d + 0.4);
+</script>

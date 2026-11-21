@@ -1,0 +1,52 @@
+<!--sfx: d:whoosh-short@1.4*0.2, e:pop@0.6*0.3-->
+<style>
+  .ml { position: absolute; left: 0; width: 500px; height: 58px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; line-height: 54px; text-align: center; color: #EEF1F8; }
+  .bx { position: absolute; height: 90px; border-radius: 14px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 26px; line-height: 84px; text-align: center; color: #EEF1F8; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Ambiente <em>totalmente estático</em></div>
+<div id="@p1" class="k-card" style="left:120px;top:240px;width:1000px;height:120px;border-color:#7FE39A">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45">o mais simples · todos os dados <b class="k-c-green">fixos</b> durante toda a execução<br>até as variáveis locais são estáticas · exemplo: <b>FORTRAN77</b></div>
+</div>
+<div id="@p2" class="k-card" style="left:120px;top:390px;width:1000px;height:90px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:26px;font-size:26px">cada procedimento tem <b class="k-c-yel">um único</b> registro de ativação, alocado antes da execução</div>
+</div>
+<div id="@mem" style="position:absolute;left:1260px;top:230px;width:560px;height:560px">
+  <div class="ml k-c-violet" style="top:0">código do principal</div>
+  <div class="ml k-c-violet" style="top:58px">código do procedimento 1 … n</div>
+  <div class="ml k-c-green" style="top:130px">dados globais</div>
+  <div class="ml k-c-yel" style="top:188px">registro do principal</div>
+  <div class="ml k-c-yel" style="top:246px">registro do procedimento 1</div>
+  <div class="ml k-mute" style="top:304px">…</div>
+  <div class="ml k-c-yel" style="top:362px">registro do procedimento n</div>
+</div>
+<div id="@flow" style="position:absolute;left:120px;top:520px;width:1100px;height:200px">
+  <div class="bx" style="left:0;top:40px;width:260px;border-color:#4FD6EE">chamador</div>
+  <div class="bx" style="left:400px;top:40px;width:300px;border-color:#FFD24A">registro fixo de P</div>
+  <div class="bx" style="left:840px;top:40px;width:240px;border-color:#7FE39A">código de P</div>
+  <svg width="1100" height="200" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@f1" d="M 264 70 L 392 70 M 376 60 L 392 70 L 376 80" stroke="#4FD6EE" stroke-width="4" fill="none"/>
+    <path id="@f2" d="M 704 70 L 832 70 M 816 60 L 832 70 L 816 80" stroke="#7FE39A" stroke-width="4" fill="none"/>
+    <path id="@f3" d="M 960 134 C 900 200, 200 200, 130 134 M 120 154 L 130 134 L 146 150" stroke="#FF6F9C" stroke-width="4" fill="none"/>
+  </svg>
+  <div id="@l1" class="k-anno k-c-cyan" style="left:240px;top:0">argumentos + retorno</div>
+  <div id="@l2" class="k-anno k-c-green" style="left:690px;top:0">salto</div>
+  <div id="@l3" class="k-anno k-c-pink" style="left:440px;top:160px">retorno: salto simples</div>
+</div>
+<div id="@no" class="k-macete k-alert" style="left:120px;top:760px;width:1000px;font-size:32px">Um registro por procedimento → <u>sem recursão</u>.</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("p1"), C.a + 0.8);
+var ml = Array.prototype.slice.call($("mem").children);
+K.fade(tl, ml, C.b, { s: 0.2 });
+K.rise(tl, $("p2"), C.c);
+K.fade(tl, $("flow"), C.d);
+tl.set([$("f1"), $("f2"), $("f3"), $("l1"), $("l2"), $("l3")], { opacity: 0 }, 0);
+K.draw(tl, $("f1"), C.d + 1.0, { d: 0.4 });
+tl.to($("l1"), { opacity: 1, duration: 0.3 }, C.d + 1.2);
+K.draw(tl, $("f2"), C.d + 3.4, { d: 0.4 });
+tl.to($("l2"), { opacity: 1, duration: 0.3 }, C.d + 3.6);
+K.draw(tl, $("f3"), C.d + 6.0, { d: 0.6 });
+tl.to($("l3"), { opacity: 1, duration: 0.3 }, C.d + 6.4);
+K.macete(tl, $("no"), C.e);
+</script>

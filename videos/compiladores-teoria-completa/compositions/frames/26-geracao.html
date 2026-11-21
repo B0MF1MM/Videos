@@ -1,0 +1,62 @@
+<template id="26-geracao-template">
+  <div id="root" data-composition-id="26-geracao" data-start="0" data-duration="32.913" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .st { position: absolute; top: 0; height: 120px; border-radius: 16px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; line-height: 114px; text-align: center; color: #EEF1F8; }
+</style>
+    <div id="s26-geracao-bg" class="clip k-scene k-bg" data-start="0" data-duration="32.913" data-track-index="0"></div>
+    <div id="s26-geracao-stage" class="clip k-scene" data-start="0" data-duration="32.913" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s26-geracao-cam" class="k-cam">
+<div id="s26-geracao-band" class="k-kicker" style="left:120px;top:124px;font-size:26px;color:#7FE39A">PARTE 3</div>
+<div id="s26-geracao-t" class="k-title" style="left:120px;top:160px;font-size:76px">Geração de <em>código</em></div>
+<div id="s26-geracao-dep" style="position:absolute;left:120px;top:300px;width:1680px;height:80px">
+  <div class="k-body k-mute" style="left:0;top:14px;font-size:26px">depende de:</div>
+  <div class="k-chip k-c-cyan" style="left:170px;top:6px;font-size:26px">linguagem fonte</div>
+  <div class="k-chip k-c-violet" style="left:440px;top:6px;font-size:26px">arquitetura alvo</div>
+  <div class="k-chip k-c-yel" style="left:720px;top:6px;font-size:26px">ambiente de execução</div>
+  <div class="k-chip k-c-pink" style="left:1070px;top:6px;font-size:26px">sistema operacional</div>
+</div>
+<div id="s26-geracao-opt" class="k-chip k-c-green" style="left:120px;top:400px;font-size:26px;background:#13241A">busca otimizar velocidade e/ou tamanho</div>
+<div id="s26-geracao-steps" class="k-body" style="left:120px;top:480px;font-size:28px">complexa → dividida em <b>passos</b>, com estruturas de dados intermediárias</div>
+<div id="s26-geracao-flow" style="position:absolute;left:120px;top:560px;width:1680px;height:140px">
+  <div class="st" style="left:0;width:440px;border-color:#4FD6EE">árvore sintática</div>
+  <div id="s26-geracao-ir" class="st" style="left:620px;width:440px;border-color:#FFD24A;color:#FFD24A">código intermediário</div>
+  <div class="st" style="left:1240px;width:440px;border-color:#B49BFF">código alvo</div>
+  <svg width="1680" height="140" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="s26-geracao-f1" d="M 446 60 L 610 60 M 592 48 L 610 60 L 592 72" stroke="#FFD24A" stroke-width="4" fill="none"/>
+    <path id="s26-geracao-f2" d="M 1066 60 L 1230 60 M 1212 48 L 1230 60 L 1212 72" stroke="#FFD24A" stroke-width="4" fill="none"/>
+  </svg>
+</div>
+<div id="s26-geracao-n1" class="k-anno k-mute" style="left:120px;top:720px">representação intermediária (IR)… mas não parece com o alvo</div>
+<div id="s26-geracao-n2" class="k-anno k-c-yel" style="left:740px;top:780px">parecido com o alvo</div>
+<div id="s26-geracao-n3" class="k-chip k-c-violet" style="left:1240px;top:780px;font-size:24px">facilita trocar de máquina alvo</div>
+      </div>
+    </div>
+    <div id="s26-geracao-chrome" class="clip k-scene" data-start="0" data-duration="32.913" data-track-index="2">
+      <div id="s26-geracao-tag" class="k-tag">COMPILADORES · <b>GERAÇÃO DE CÓDIGO</b></div>
+      <div id="s26-geracao-num" class="k-num">26 / 37</div>
+      <div id="s26-geracao-progbar" class="k-prog"><i id="s26-geracao-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 6.856, "c": 10.933, "d": 15.695, "e": 24.416}, D = 32.913;
+        var S = K.scene("26-geracao", D, 37), tl = S.tl, $ = S.$;
+        K.fade(tl, $("band"), C.a);
+        K.rise(tl, $("t"), C.a + 0.3);
+        var dp = Array.prototype.slice.call($("dep").children);
+        K.fade(tl, dp, C.a + 1.6, { s: 0.7 });
+        K.pop(tl, $("opt"), C.b + 0.4);
+        K.wipe(tl, $("steps"), C.c);
+        K.fade(tl, $("flow"), C.d);
+        tl.set([$("ir"), $("f1"), $("f2")], { opacity: 0 }, 0);
+        K.wipe(tl, $("n1"), C.d + 2.4);
+        tl.to($("ir"), { opacity: 1, duration: 0.4 }, C.e + 0.6);
+        K.draw(tl, [$("f1"), $("f2")], C.e + 0.8, { d: 0.4, s: 0.4 });
+        K.wipe(tl, $("n2"), C.e + 1.4);
+        K.pop(tl, $("n3"), C.e + 4.2);
+      })();
+    </script>
+  </div>
+</template>

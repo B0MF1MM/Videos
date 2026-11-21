@@ -1,0 +1,23 @@
+<!--sfx: b:pop@0.4*0.25, c:pop@0.4*0.25, d:chime@0.4*0.25-->
+<div id="@q" class="k-title" style="left:120px;top:124px;font-size:56px">Sintetizados + herdados: <em>quantas passadas?</em></div>
+<div id="@one" class="k-card" style="left:120px;top:250px;width:820px;height:300px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:38px">uma passada</div>
+  <div class="k-body" style="left:28px;top:90px;font-size:27px;line-height:1.5">sintetizados dependem dos herdados,<br>mas herdados <b>não</b> dependem dos sintetizados</div>
+  <div class="k-body k-mute" style="left:28px;top:200px;font-size:24px">herdados descem e sintetizados sobem<br>na mesma visita</div>
+</div>
+<div id="@two" class="k-card" style="left:980px;top:250px;width:820px;height:300px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:22px;font-size:38px">mais passadas</div>
+  <div class="k-body" style="left:28px;top:90px;font-size:27px;line-height:1.5">herdados dependem dos sintetizados</div>
+  <div class="k-body k-mute" style="left:28px;top:160px;font-size:24px">primeiro calcula-se o que sobe,<br>depois o que desce</div>
+</div>
+<div id="@th" class="k-card" style="left:120px;top:590px;width:1680px;height:240px;border-color:#FFD24A;background:#221F12">
+  <div class="k-chip k-c-yel" style="left:28px;top:24px;font-size:24px">TEOREMA</div>
+  <div class="k-body" style="left:28px;top:90px;font-size:32px;line-height:1.45">todo atributo <b class="k-c-pink">herdado</b> pode ser transformado em <b class="k-c-green">sintetizado</b><br>reescrevendo a gramática, <b>sem mudar a linguagem</b></div>
+</div>
+
+<script>
+K.rise(tl, $("q"), C.a);
+K.rise(tl, $("one"), C.b);
+K.rise(tl, $("two"), C.c);
+K.rise(tl, $("th"), C.d);
+</script>

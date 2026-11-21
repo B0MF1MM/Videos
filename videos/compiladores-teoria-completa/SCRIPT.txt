@@ -1,0 +1,243 @@
+# Roteiro — Compiladores: Teoria (Análise Semântica, Ambientes de Execução e Geração de Código)
+# "# id-da-cena | SEÇÃO" abre uma cena; "chave: legenda || fala" (|| opcional, para a pronúncia).
+
+# 01-abertura | VISÃO GERAL
+a: Um compilador traduz um programa de uma linguagem fonte para uma linguagem alvo.
+b: Primeiro vêm as análises: a léxica, a sintática e a semântica.
+c: Depois, o compilador precisa saber como o programa vai usar a memória ao executar: é o ambiente de execução.
+d: E por fim vem a síntese: a geração de código.
+e: Neste vídeo, a teoria desses três temas: análise semântica, ambientes de execução e geração de código.
+
+# 02-semantica | ANÁLISE SEMÂNTICA
+a: A análise semântica começa quando a estrutura sintática do programa já é conhecida.
+b: Ela calcula informações adicionais, ligadas ao significado do programa traduzido.
+c: Numa linguagem com tipagem estática, ela usa informações sobre identificadores, declarações e tipos.
+d: Com isso, resolve nomes, verifica tipos, verifica declarações e confere a compatibilidade das operações.
+e: E, para isso, ela constrói uma estrutura central: a tabela de símbolos.
+
+# 03-atributos | ANÁLISE SEMÂNTICA
+a: O conceito básico é o atributo: qualquer propriedade de uma construção da linguagem.
+b: Exemplos: o tipo de uma expressão ou de um identificador, o valor de uma constante, a localização na memória, o escopo e o tamanho de um tipo.
+c: Calcular um atributo e associá-lo à construção se chama amarração. O momento em que isso acontece é o tempo de amarração.
+d: Atributos que podem ser determinados antes da execução são estáticos. Os que só podem ser determinados durante a execução são dinâmicos.
+
+# 04-gramatica | ANÁLISE SEMÂNTICA
+a: Uma gramática de atributos associa, a cada regra gramatical, um conjunto de regras semânticas.
+b: Cada regra semântica é uma equação: um atributo de um símbolo é função dos atributos dos outros símbolos da mesma regra.
+c: É o princípio da semântica dirigida pela sintaxe. Quando um símbolo se repete na regra, as ocorrências são diferenciadas por índices.
+d: O conjunto de expressões permitidas nas equações se chama metalinguagem.
+e: A especificação pode ser simplificada: como o parser já resolveu a estrutura, pode-se usar uma gramática ambígua, ou a árvore sintática abstrata.
+
+# 05-dependencias | ANÁLISE SEMÂNTICA
+a: Para calcular os atributos, cada equação vira uma regra de cálculo. E todos os valores usados precisam existir antes.
+b: Essas restrições de ordem aparecem no grafo de dependências.
+c: Ele tem um nó para cada atributo, e um arco de cada atributo usado para o atributo que depende dele.
+d: O grafo de uma cadeia é a união dos grafos das regras usadas em cada nó da árvore sintática.
+
+# 06-ordem | ANÁLISE SEMÂNTICA
+a: Uma ordem de cálculo que respeita todas as dependências é uma ordenação topológica.
+b: Ela existe se, e somente se, o grafo for acíclico: um grafo direcionado acíclico, ou DAG. || Ela existe se, e somente se, o grafo for acíclico: um grafo direcionado acíclico, ou dág.
+c: Os nós sem predecessores são as raízes: seus valores dependem só de informação já disponível.
+d: No método da árvore de análise sintática, o grafo é montado durante a compilação. É geral, mas caro, e exige testar a ausência de ciclos.
+e: Por isso, quase todos os compiladores usam o método baseado em regras: o projetista fixa a ordem de avaliação ao construir o compilador.
+
+# 07-sintetizados | ANÁLISE SEMÂNTICA
+a: Para fixar essa ordem, os atributos são classificados pelo tipo de dependência.
+b: Um atributo é sintetizado quando todas as suas dependências vão dos filhos para o pai na árvore.
+c: Uma gramática em que todos os atributos são sintetizados é chamada de S-atribuída. || Uma gramática em que todos os atributos são sintetizados é chamada de ésse atribuída.
+d: Seus atributos podem ser calculados num único percurso em pós-ordem: primeiro os filhos, depois o pai.
+
+# 08-herdados | ANÁLISE SEMÂNTICA
+a: Um atributo que não é sintetizado é herdado.
+b: Suas dependências vão do pai para os filhos, ou entre irmãos.
+c: Ele é calculado em pré-ordem, ou numa combinação de pré-ordem e in-ordem.
+d: E a ordem em que os filhos são visitados precisa respeitar as dependências entre eles.
+
+# 09-passadas | ANÁLISE SEMÂNTICA
+a: Quando os dois tipos aparecem juntos, a questão é quantas passadas são necessárias.
+b: Se os sintetizados dependem dos herdados, mas os herdados não dependem dos sintetizados, uma única passada basta.
+c: Se os herdados dependem dos sintetizados, são necessárias mais passadas.
+d: E existe um teorema: todo atributo herdado pode ser transformado em sintetizado, reescrevendo a gramática, sem mudar a linguagem.
+
+# 10-tabela | ANÁLISE SEMÂNTICA
+a: A tabela de símbolos fornece informações de contexto para as etapas da análise semântica. É a principal estrutura de dados depois da árvore sintática.
+b: Ela tem três operações: inserir, verificar e remover.
+c: Inserir guarda a informação das declarações. Verificar recupera a informação quando um nome é usado. Remover descarta uma declaração que deixou de valer.
+d: Ela normalmente guarda o tipo de dado, o escopo e a localização na memória.
+e: Pode ser implementada com listas lineares, árvores de busca ou tabelas de hashing. As listas servem para protótipos; as árvores são pouco usadas; e o hashing é o mais comum.
+
+# 11-hashing | ANÁLISE SEMÂNTICA
+a: Uma tabela de hashing é um vetor de repositórios, indexado por inteiros.
+b: A função de hashing transforma o nome em um índice, em três passos: cada caractere vira um inteiro, os inteiros são combinados, e o resultado é ajustado ao tamanho da tabela.
+c: Quando dois nomes caem no mesmo índice, ocorre uma colisão.
+d: No endereçamento aberto, o item vai para o próximo repositório livre. O desempenho degrada quando a tabela enche, e remover é difícil.
+e: No encadeamento separado, cada repositório é uma lista. É o melhor esquema para compiladores. E costuma-se usar um tamanho primo para a tabela.
+
+# 12-escopo | ANÁLISE SEMÂNTICA
+a: Há quatro tipos básicos de declaração: de variáveis, de procedimentos e funções, de constantes e de tipos.
+b: A regra de declarar antes de usar permite montar a tabela durante a análise sintática, e compilar em uma passada.
+c: Na estrutura de blocos, vale a regra do aninhamento mais próximo: a declaração que se aplica é a do bloco mais interno.
+d: Para isso, inserir não sobrescreve a declaração anterior: apenas a oculta. E remover elimina só a declaração mais recente.
+e: Uma alternativa é ter uma tabela por escopo, encadeadas. A busca continua na tabela externa, e sair do escopo é só mover um ponteiro.
+
+# 13-tipos | ANÁLISE SEMÂNTICA
+a: Um tipo de dado é um conjunto de valores com operações sobre esses valores.
+b: Com informação estática de tipos, o compilador sabe a memória de cada variável e como acessá-la.
+c: Os tipos simples não têm estrutura interna, como inteiros, reais, caracteres e booleanos, além de intervalos e enumerados.
+d: Construtores de tipos criam tipos estruturados. A matriz ocupa memória contígua. O registro aloca os campos em sequência. A união sobrepõe os campos. E o ponteiro guarda um endereço, acessado por derreferenciação.
+e: Declarações de tipo dão nome a expressões de tipo. E os tipos recursivos, que usam o próprio nome, permitem listas e árvores.
+
+# 14-verificacao | ANÁLISE SEMÂNTICA
+a: O verificador de tipos é descrito por ações semânticas, com uma representação de tipos e uma operação de igualdade de tipos.
+b: Declarações inserem o tipo de cada identificador na tabela. Constantes têm tipos implícitos, e variáveis têm o tipo consultado na tabela.
+c: A condição de um comando condicional deve ser booleana. Na atribuição, o tipo da expressão deve ser compatível com o do destino. E cada operador exige operandos do tipo certo.
+d: Sobrecarga é usar o mesmo operador para operações diferentes.
+e: Em expressões de tipos misturados, a conversão pode ser explícita, escrita pelo programador, ou automática, feita pelo compilador. A conversão automática se chama coação.
+
+# 15-ambientes | AMBIENTES DE EXECUÇÃO
+a: As análises dependem da linguagem fonte. Já a geração de código depende da máquina alvo.
+b: Para gerar código, o compilador precisa conhecer o ambiente de execução: a forma como a memória é organizada durante a execução.
+c: Quase todas as linguagens usam um de três ambientes: totalmente estático, baseado em pilhas ou totalmente dinâmico.
+d: Também existem ambientes híbridos, que combinam características desses três.
+
+# 16-memoria | AMBIENTES DE EXECUÇÃO
+a: A memória se divide em registradores e na RAM, que por sua vez tem uma área de código e uma área de dados.
+b: A área de código é fixada antes da execução, então os endereços de código são conhecidos na compilação. Dados globais e estáticos também recebem endereços fixos.
+c: Constantes pequenas costumam ficar dentro do próprio código. Valores grandes e textos ficam em áreas estáticas.
+d: A área de dados ainda tem a pilha, para dados alocados em ordem LIFO, e o heap, para alocação dinâmica sem essa ordem. || A área de dados ainda tem a pilha, para dados alocados em ordem lífo, e o rip, para alocação dinâmica sem essa ordem.
+e: Os dois costumam crescer um em direção ao outro, dividindo o espaço livre.
+
+# 17-registro | AMBIENTES DE EXECUÇÃO
+a: A unidade principal de alocação é o registro de ativação: a memória dos dados locais de um procedimento quando ele é ativado.
+b: No mínimo, ele contém espaço para os argumentos, para informações de controle, como o endereço de retorno, para os dados locais e para os temporários.
+c: Quando os registros ficam na pilha, eles são chamados de quadros de pilha.
+d: Alguns registradores acompanham a execução: o contador de programa, o ponteiro de pilha, o ponteiro de quadro, que aponta para o registro atual, e o ponteiro de argumentos.
+
+# 18-sequencia | AMBIENTES DE EXECUÇÃO
+a: Toda ativação segue uma sequência de operações.
+b: A sequência de ativação aloca o registro, calcula e armazena os argumentos, e ajusta os registradores.
+c: A sequência de retorno coloca o valor de retorno onde o chamador pode acessá-lo, reajusta os registradores e libera o registro de ativação.
+
+# 19-estatico | AMBIENTES DE EXECUÇÃO
+a: O ambiente totalmente estático é o mais simples. Todos os dados permanecem fixos na memória durante toda a execução.
+b: Não só as globais: até as variáveis locais são alocadas estaticamente. O exemplo clássico é FORTRAN77. || Não só as globais: até as variáveis locais são alocadas estaticamente. O exemplo clássico é fórtran setenta e sete.
+c: Cada procedimento tem um único registro de ativação, alocado antes da execução.
+d: Na chamada, os argumentos são guardados nos espaços dos parâmetros, o endereço de retorno é gravado e há um salto. No retorno, um salto simples de volta.
+e: Como cada procedimento tem um só registro, esse ambiente não permite recursão.
+
+# 20-pilha | AMBIENTES DE EXECUÇÃO
+a: Com recursão, cada ativação precisa de novas posições para as variáveis locais. Os registros de ativação passam a ser alocados numa pilha.
+b: A cada ativação, um novo registro é colocado no topo. No retorno, ele é retirado. Um mesmo procedimento pode ter vários registros ao mesmo tempo.
+c: Quando todos os procedimentos são globais, como em C, o ambiente precisa de um ponteiro para o registro atual, o ponteiro de quadro.
+d: E de uma ligação para o registro anterior: a vinculação de controle, ou vinculação dinâmica. Também pode haver o ponteiro de pilha, apontando para o topo.
+e: Para analisar as ativações, usa-se a árvore de ativação: cada ativação é um nó, e seus filhos são as ativações feitas durante ela.
+
+# 21-deslocamento | AMBIENTES DE EXECUÇÃO
+a: Todos os registros de ativação de um mesmo procedimento têm o mesmo formato.
+b: Por isso, cada parâmetro e cada variável local fica num deslocamento fixo em relação ao ponteiro de quadro.
+c: Parâmetros e variáveis locais são acessados somando esse deslocamento ao ponteiro de quadro.
+d: Em vetores, o deslocamento do elemento ainda é multiplicado pelo tamanho do elemento: o fator de escala.
+
+# 22-locais | AMBIENTES DE EXECUÇÃO
+a: Em linguagens com procedimentos declarados dentro de outros, como Pascal, surge um problema.
+b: Um procedimento interno pode usar uma variável do procedimento que o contém: uma variável que não é local nem global.
+c: Pela regra de escopo estático, essa variável vem do ambiente onde o procedimento foi definido, e não de quem o chamou.
+d: A solução é a vinculação de acesso, ou vinculação estática.
+e: A vinculação de controle aponta para o registro de quem chamou. A vinculação de acesso aponta para o registro do ambiente de definição.
+
+# 23-dinamico | AMBIENTES DE EXECUÇÃO
+a: O ambiente de pilha é o mais comum em linguagens imperativas, mas tem um limite.
+b: Se um procedimento devolve uma referência a uma variável local, essa referência fica inválida quando o registro sai da pilha.
+c: Linguagens como LISP e ML permitem esse tipo de uso, e precisam de um ambiente totalmente dinâmico. || Linguagens como lisp e ême éle permitem esse tipo de uso, e precisam de um ambiente totalmente dinâmico.
+d: Nele, um registro só é liberado quando não há mais referências a ele. Isso exige acompanhar as referências e liberar a memória inacessível: a coleta de lixo.
+
+# 24-heap | AMBIENTES DE EXECUÇÃO
+a: Em orientação a objetos, um objeto é como um registro cujos campos são as variáveis de instância.
+b: A estrutura das classes fica na memória, com os ponteiros para os métodos e para a superclasse. Cada objeto guarda só um ponteiro para sua classe.
+c: Os métodos são encontrados buscando pela hierarquia de classes, o que implementa a herança e a vinculação dinâmica.
+d: Mesmo num ambiente de pilha, ponteiros precisam de memória dinâmica: o heap, com duas operações, alocar e liberar. || Mesmo num ambiente de pilha, ponteiros precisam de memória dinâmica: o rip, com duas operações, alocar e liberar.
+
+# 25-parametros | AMBIENTES DE EXECUÇÃO
+a: Parâmetros são espaços no registro de ativação, preenchidos pelo chamador. Ligar parâmetros e argumentos também é uma amarração.
+b: Na passagem por valor, o argumento é avaliado e seu valor é copiado. Mudanças no parâmetro não afetam o argumento.
+c: Na passagem por referência, passa-se a localização: o parâmetro vira um nome substituto do argumento, e o compilador usa acessos indiretos.
+d: Na passagem por valor-resultado, o valor é copiado na entrada e copiado de volta na saída, sem criar um nome substituto.
+e: Na passagem por nome, ou avaliação atrasada, o argumento só é avaliado quando é usado. E a ordem de avaliação dos argumentos pode alterar o resultado quando há efeitos colaterais.
+
+# 26-geracao | GERAÇÃO DE CÓDIGO
+a: A geração de código depende da linguagem fonte, da arquitetura alvo, do ambiente de execução e do sistema operacional.
+b: Ela também procura otimizar a velocidade ou o tamanho do código gerado.
+c: Por ser complexa, é dividida em passos, com estruturas de dados intermediárias.
+d: Uma estrutura que representa o programa durante a tradução é uma representação intermediária. A árvore sintática serve, mas não se parece com o código alvo.
+e: Por isso, gera-se um código intermediário, parecido com o código alvo. E ele também facilita redirecionar o compilador para outras máquinas.
+
+# 27-tres-enderecos | GERAÇÃO DE CÓDIGO
+a: A forma mais comum de código intermediário é o código de três endereços.
+b: Cada instrução aplica um operador a dois operandos e guarda o resultado: um resultado e dois operandos, três endereços.
+c: Os valores intermediários ficam em temporários, que correspondem aos nós interiores da árvore sintática.
+d: Os temporários podem ir para registradores, para a memória, ou ser eliminados por otimização. E operadores unários usam só dois endereços.
+
+# 28-quadruplas | GERAÇÃO DE CÓDIGO
+a: O código de três endereços normalmente não é guardado como texto.
+b: Cada instrução é um registro com campos, e a sequência fica num vetor ou numa lista ligada.
+c: A forma clássica é a quádrupla: um campo para a operação e três para os endereços.
+d: Os endereços podem ser vazios, constantes ou nomes. E podem ser estendidos com modos de endereçamento.
+
+# 29-sintetizado | GERAÇÃO DE CÓDIGO
+a: A geração de código intermediário pode ser vista como o cálculo de um atributo sintetizado.
+b: Cada nó recebe o nome do lugar onde fica seu resultado, e o código que calcula esse resultado.
+c: O código de um nó é a concatenação do código dos filhos com a nova instrução do próprio nó. Assim, o código sobe pela árvore até a raiz.
+d: Mas isso não é prático: gera muitas cópias de cadeias, é melhor emitir pequenos trechos direto num arquivo, e a geração depende muito de atributos herdados.
+
+# 30-alvo | GERAÇÃO DE CÓDIGO
+a: Do código intermediário para o código alvo, há mais uma passada.
+b: Ela define as localizações das variáveis e dos temporários, gera o código que mantém o ambiente de execução, e aloca os registradores.
+c: Duas técnicas são usadas. Na expansão de macros, cada instrução intermediária é substituída por uma sequência fixa de instruções alvo.
+d: Na simulação estática, o gerador simula os efeitos do código intermediário e gera o código alvo equivalente.
+
+# 31-enderecos | GERAÇÃO DE CÓDIGO
+a: No código alvo, os nomes viram endereços: registradores, endereços absolutos para globais, ou deslocamentos no registro de ativação para locais.
+b: Alguns acessos exigem cálculo de endereço, usando dois modos: o endereço de uma variável, e o acesso indireto pelo conteúdo de um endereço.
+c: Numa matriz, o endereço do elemento é a base, mais o índice ajustado pelo limite inferior, multiplicado pelo tamanho do elemento. Matrizes de várias dimensões aplicam isso recursivamente.
+d: Num registro, o endereço do campo é a base mais o deslocamento do campo, uma constante fornecida pela tabela de símbolos.
+e: E um ponteiro acrescenta um nível de indireção.
+
+# 32-controle | GERAÇÃO DE CÓDIGO
+a: Comandos de controle exigem rótulos: os destinos dos saltos no código.
+b: No comando condicional, a condição é avaliada; se for falsa, salta para a parte do senão. Ao fim da parte verdadeira, um salto pula o senão.
+c: No laço de repetição, um rótulo marca o início. Se a condição for falsa, salta para a saída. Ao fim do corpo, salta de volta para o início.
+d: Às vezes o salto é gerado antes de o rótulo existir. Deixa-se um espaço, ou um salto provisório, e ele é preenchido depois: é o ajuste retroativo, o backpatching. || Às vezes o salto é gerado antes de o rótulo existir. Deixa-se um espaço, ou um salto provisório, e ele é preenchido depois: é o ajuste retroativo, o béck pátchin.
+
+# 33-logicas | GERAÇÃO DE CÓDIGO
+a: Valores booleanos geralmente são representados como números: falso é zero, e verdadeiro é um.
+b: Em operações de curto-circuito, o segundo operando só é avaliado se for necessário.
+c: O e lógico equivale a: se o primeiro for verdadeiro, o resultado é o segundo; senão, falso.
+d: O ou lógico equivale a: se o primeiro for verdadeiro, o resultado é verdadeiro; senão, o segundo. Por isso, o código usa saltos, como nos condicionais.
+
+# 34-procedimentos | GERAÇÃO DE CÓDIGO
+a: Procedimentos envolvem dois mecanismos: a definição e a ativação.
+b: A definição cria o nome, os parâmetros e o código, mas não executa nada.
+c: No código intermediário, ela tem uma instrução de entrada, que marca o início, e uma instrução de retorno, que marca o fim e informa o valor devolvido.
+d: A ativação tem uma instrução que indica o início dos argumentos, uma instrução para cada argumento, e a instrução de chamada, que salta para o procedimento.
+e: Representar isso de forma geral é difícil, porque as máquinas e os ambientes de execução usam mecanismos de ativação muito diferentes.
+
+# 35-tm | GERAÇÃO DE CÓDIGO
+a: A máquina alvo do compilador TINY é a TM. || A máquina alvo do compilador táini é a tê éme.
+b: Ela tem uma memória de instruções só de leitura, uma memória de dados e oito registradores. O registrador sete é o contador de programa.
+c: Ela repete o ciclo: busca a instrução, incrementa o contador, executa. Até uma parada ou um erro.
+d: As instruções têm dois formatos: só com registradores, ou com registrador e memória, cujo endereço é um deslocamento mais um registrador.
+e: Os saltos condicionais podem ser relativos ao contador de programa, que já foi incrementado.
+
+# 36-gerador | GERAÇÃO DE CÓDIGO
+a: No gerador de código TINY, cada registrador tem um papel. || No gerador de código táini, cada registrador tem um papel.
+b: O sete é o contador de programa. O seis aponta para o topo da memória, onde ficam os temporários. O cinco aponta para o início, onde ficam as variáveis. E o zero e o um são os acumuladores.
+c: Funções de emissão escrevem comentários e instruções, e outras dão suporte ao ajuste retroativo.
+d: O gerador emite um prólogo, percorre a árvore sintática e termina com uma instrução de parada.
+e: Em cada nó, gera o código de uma declaração ou de uma expressão, e continua pelos irmãos.
+
+# 37-encerramento | RESUMO
+a: Resumindo o caminho.
+b: A análise semântica garante que o programa tem significado: atributos, tabela de símbolos, escopo e tipos.
+c: O ambiente de execução define como a memória é usada: estático, de pilha ou dinâmico, com registros de ativação e passagem de parâmetros.
+d: E a geração de código traduz tudo isso: código intermediário, endereços, controle, procedimentos e a máquina alvo.
+e: São três etapas ligadas: o significado, a memória e o código.

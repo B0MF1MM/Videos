@@ -1,0 +1,40 @@
+<!--sfx: b:pop@0.6*0.2, c:click-soft@0.6*0.3-->
+<style>
+  .sl { position: absolute; top: 0; height: 120px; border-radius: 16px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; line-height: 114px; text-align: center; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Código de <em>três endereços</em></div>
+<div id="@form" style="position:absolute;left:120px;top:260px;width:1680px;height:200px">
+  <div class="sl k-c-cyan" style="left:0;width:320px;border-color:#4FD6EE">resultado</div>
+  <div class="k-code k-mute" style="left:340px;top:30px;font-size:48px">←</div>
+  <div class="sl k-c-green" style="left:420px;width:320px;border-color:#7FE39A">operando 1</div>
+  <div class="sl k-c-yel" style="left:760px;width:240px;border-color:#FFD24A">operador</div>
+  <div class="sl k-c-green" style="left:1020px;width:320px;border-color:#7FE39A">operando 2</div>
+  <div class="k-body k-mute" style="left:0;top:140px;font-size:26px">um operador por instrução · três endereços</div>
+</div>
+<div id="@tmp" style="position:absolute;left:120px;top:480px;width:820px;height:360px">
+  <div class="k-h2" style="left:0;top:0;font-size:32px">temporários</div>
+  <div class="k-body" style="left:0;top:56px;font-size:25px">guardam os valores intermediários</div>
+  <svg width="820" height="300" style="position:absolute;left:0;top:90px">
+    <g stroke="#8C97B5" stroke-width="3"><line x1="400" y1="40" x2="260" y2="140"/><line x1="400" y1="40" x2="540" y2="140"/><line x1="260" y1="140" x2="200" y2="230"/><line x1="260" y1="140" x2="320" y2="230"/><line x1="540" y1="140" x2="480" y2="230"/><line x1="540" y1="140" x2="600" y2="230"/></g>
+    <g fill="#182238" stroke="#FFD24A" stroke-width="4"><circle cx="400" cy="40" r="26"/><circle cx="260" cy="140" r="26"/><circle cx="540" cy="140" r="26"/></g>
+    <g fill="#182238" stroke="#7FE39A" stroke-width="3"><rect x="180" y="215" width="40" height="34" rx="6"/><rect x="300" y="215" width="40" height="34" rx="6"/><rect x="460" y="215" width="40" height="34" rx="6"/><rect x="580" y="215" width="40" height="34" rx="6"/></g>
+    <g font-family="DM Mono" font-size="20" fill="#FFD24A" text-anchor="middle"><text x="400" y="47">t3</text><text x="260" y="147">t1</text><text x="540" y="147">t2</text></g>
+  </svg>
+  <div class="k-anno k-c-yel" style="left:620px;top:150px">nós interiores</div>
+  <div class="k-anno k-c-green" style="left:620px;top:310px">folhas</div>
+</div>
+<div id="@where" class="k-card" style="left:980px;top:480px;width:820px;height:200px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:24px;font-size:26px;line-height:1.5">temporários podem ir para <b>registradores</b>,<br>para a <b>memória</b>, ou ser <b>eliminados</b><br>por otimização</div>
+</div>
+<div id="@un" class="k-card" style="left:980px;top:710px;width:820px;height:120px;border-color:#FF6F9C">
+  <div class="k-body" style="left:28px;top:36px;font-size:26px">operadores <b class="k-c-pink">unários</b>: só dois endereços</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+var fm = Array.prototype.slice.call($("form").children);
+K.fade(tl, fm, C.b, { s: 0.6 });
+K.fade(tl, $("tmp"), C.c);
+K.rise(tl, $("where"), C.d);
+K.rise(tl, $("un"), C.d + 5.0);
+</script>

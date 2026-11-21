@@ -1,0 +1,54 @@
+<!--sfx: c:pop@0.4*0.2, d:click-soft@1.0*0.3, e:whoosh-short@1.6*0.2-->
+<style>
+  .it { position: absolute; height: 50px; padding: 0 16px; border-radius: 10px; border: 2px solid #4FD6EE; background: #0D1322; font-family: "DM Mono", monospace; font-size: 24px; line-height: 46px; color: #4FD6EE; white-space: nowrap; }
+  .sc { position: absolute; width: 260px; height: 150px; border-radius: 14px; border: 3px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; padding: 12px 16px; }
+</style>
+<div id="@decl" style="position:absolute;left:120px;top:130px;width:1680px;height:80px">
+  <div class="k-chip k-c-cyan" style="left:0;top:0;font-size:26px">variáveis</div>
+  <div class="k-chip k-c-green" style="left:200px;top:0;font-size:26px">procedimentos e funções</div>
+  <div class="k-chip k-c-yel" style="left:630px;top:0;font-size:26px">constantes</div>
+  <div class="k-chip k-c-violet" style="left:850px;top:0;font-size:26px">tipos</div>
+  <div class="k-body k-mute" style="left:1000px;top:10px;font-size:24px">← 4 tipos de declaração</div>
+</div>
+<div id="@dbu" class="k-card" style="left:120px;top:230px;width:820px;height:130px;border-color:#FF9F5A">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45"><b class="k-c-orange">declarar antes de usar</b> → tabela montada durante<br>a análise sintática · compilação em uma passada</div>
+</div>
+<div id="@blocks" style="position:absolute;left:120px;top:400px;width:820px;height:440px">
+  <div style="position:absolute;left:0;top:0;width:800px;height:430px;border:3px dashed #4FD6EE;border-radius:18px"></div>
+  <div class="k-code k-c-cyan" style="left:24px;top:14px;font-size:24px">bloco externo · x</div>
+  <div style="position:absolute;left:40px;top:70px;width:720px;height:330px;border:3px dashed #FFD24A;border-radius:18px"></div>
+  <div class="k-code k-c-yel" style="left:64px;top:84px;font-size:24px">bloco interno · x</div>
+  <div id="@ref" class="k-chip k-c-yel" style="left:240px;top:200px;font-size:28px;background:#2A2410">uso de x → x do bloco interno</div>
+  <div class="k-body" style="left:64px;top:290px;font-size:24px">regra do <b class="k-c-yel">aninhamento mais próximo</b></div>
+</div>
+<div id="@ops" style="position:absolute;left:1000px;top:230px;width:820px;height:300px">
+  <div class="k-body k-mute" style="left:0;top:0;font-size:24px">tabela · nome "x"</div>
+  <div id="@x2" class="it" style="left:0;top:44px;border-color:#FFD24A;color:#FFD24A">x (bloco interno)</div>
+  <div id="@ar" class="k-code k-mute" style="left:270px;top:46px;font-size:30px">→</div>
+  <div id="@x1" class="it" style="left:320px;top:44px">x (bloco externo)</div>
+  <div class="k-body" style="left:0;top:130px;font-size:26px;line-height:1.5"><b class="k-c-green">inserir</b>: oculta a anterior, sem sobrescrever<br><b class="k-c-pink">remover</b>: elimina só a mais recente</div>
+</div>
+<div id="@alt" style="position:absolute;left:1000px;top:560px;width:820px;height:280px">
+  <div class="k-body k-mute" style="left:0;top:0;font-size:24px">alternativa: uma tabela por escopo</div>
+  <div class="sc" style="left:0;top:50px;border-color:#4FD6EE">escopo global</div>
+  <div class="sc" style="left:280px;top:50px;border-color:#FFD24A">escopo f</div>
+  <div class="sc" style="left:560px;top:50px;border-color:#7FE39A">bloco</div>
+  <svg width="820" height="280" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@l1" d="M 556 125 L 544 125 M 548 115 L 536 125 L 548 135" stroke="#8C97B5" stroke-width="3" fill="none"/>
+    <path id="@l2" d="M 276 125 L 264 125 M 268 115 L 256 125 L 268 135" stroke="#8C97B5" stroke-width="3" fill="none"/>
+  </svg>
+  <div class="k-body" style="left:0;top:220px;font-size:24px">busca continua na tabela externa · sair = mover o ponteiro</div>
+</div>
+
+<script>
+var dc = Array.prototype.slice.call($("decl").children);
+K.fade(tl, dc, C.a, { s: 0.8 });
+K.rise(tl, $("dbu"), C.b);
+K.fade(tl, $("blocks"), C.c);
+K.pop(tl, $("ref"), C.c + 2.2);
+K.fade(tl, $("ops"), C.d);
+tl.set([$("x2"), $("ar")], { opacity: 0 }, 0);
+tl.to([$("x2"), $("ar")], { opacity: 1, duration: 0.3 }, C.d + 1.0);
+tl.to($("x1"), { opacity: 0.35, duration: 0.3 }, C.d + 1.4);
+K.fade(tl, $("alt"), C.e);
+</script>

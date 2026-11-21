@@ -1,0 +1,30 @@
+<!--sfx: c:click-soft@1.0*0.3, d:pop@0.4*0.25, e:pop@1.0*0.25-->
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Verificação de <em>tipos</em></div>
+<div id="@base" class="k-card" style="left:120px;top:230px;width:1680px;height:110px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:20px;font-size:26px;line-height:1.45">descrita por <b class="k-c-violet">ações semânticas</b>, com uma <b>representação de tipos</b><br>e uma operação de <b>igualdade de tipos</b></div>
+</div>
+<div id="@r1" class="k-card" style="left:120px;top:370px;width:820px;height:190px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:20px;font-size:30px">origem dos tipos</div>
+  <div class="k-body" style="left:28px;top:70px;font-size:24px;line-height:1.5">declarações → inserem o tipo na tabela<br>constantes → tipo implícito<br>variáveis → tipo consultado na tabela</div>
+</div>
+<div id="@r2" class="k-card" style="left:980px;top:370px;width:820px;height:190px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:20px;font-size:30px">regras</div>
+  <div class="k-body" style="left:28px;top:70px;font-size:24px;line-height:1.5">condição de um condicional → booleana<br>atribuição → tipo compatível com o destino<br>operador → operandos do tipo certo</div>
+</div>
+<div id="@ov" class="k-card" style="left:120px;top:590px;width:820px;height:250px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:20px;font-size:32px">sobrecarga</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:24px;line-height:1.5">o mesmo operador para operações diferentes<br><span class="k-mute">ex.: soma de inteiros e soma de reais</span></div>
+</div>
+<div id="@co" class="k-card" style="left:980px;top:590px;width:820px;height:250px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:20px;font-size:32px">tipos misturados</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:24px;line-height:1.5">precisam de um tipo comum<br>conversão <b>explícita</b>: escrita pelo programador<br>conversão <b class="k-c-pink">automática</b> = <b class="k-c-pink">coação</b></div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("base"), C.a + 1.0);
+K.rise(tl, $("r1"), C.b);
+K.rise(tl, $("r2"), C.c);
+K.rise(tl, $("ov"), C.d);
+K.rise(tl, $("co"), C.e);
+</script>

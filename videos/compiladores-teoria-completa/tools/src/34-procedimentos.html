@@ -1,0 +1,35 @@
+<!--sfx: b:pop@0.4*0.2, c:pop@1.0*0.2, d:pop@1.0*0.2-->
+<style>
+  .ib { position: absolute; left: 28px; width: 700px; height: 60px; border-radius: 10px; border: 2px solid #2A3656; background: #0F1628; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; line-height: 56px; padding-left: 20px; color: #EEF1F8; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:58px">Procedimentos e <em>funções</em></div>
+<div id="@def" class="k-card" style="left:120px;top:240px;width:820px;height:560px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:36px">definição</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:24px">cria nome, parâmetros e código · <b>não executa</b></div>
+  <div id="@d1" class="ib" style="top:170px;border-color:#7FE39A;color:#7FE39A">instrução de entrada · marca o início</div>
+  <div id="@d2" class="ib" style="top:240px;height:120px;line-height:116px;border-style:dashed;color:#8C97B5">corpo do procedimento</div>
+  <div id="@d3" class="ib" style="top:370px;border-color:#FF6F9C;color:#FF6F9C">instrução de retorno · fim + valor</div>
+</div>
+<div id="@act" class="k-card" style="left:980px;top:240px;width:820px;height:560px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:22px;font-size:36px">ativação</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:24px">cria os argumentos e salta para o código</div>
+  <div id="@a1" class="ib" style="top:170px;border-color:#4FD6EE;color:#4FD6EE">início da computação dos argumentos</div>
+  <div id="@a2" class="ib" style="top:240px;border-color:#FFD24A;color:#FFD24A">um argumento</div>
+  <div id="@a3" class="ib" style="top:310px;border-color:#FFD24A;color:#FFD24A">outro argumento</div>
+  <div id="@a4" class="ib" style="top:380px;border-color:#FF6F9C;color:#FF6F9C">chamada · salta para o procedimento</div>
+</div>
+<div id="@hard" class="k-chip k-c-orange" style="left:120px;top:820px;font-size:24px">difícil generalizar: máquinas e ambientes usam mecanismos de ativação diferentes</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("def"), C.b - 0.4);
+tl.set([$("d1"), $("d2"), $("d3"), $("a1"), $("a2"), $("a3"), $("a4")], { opacity: 0 }, 0);
+tl.to($("d1"), { opacity: 1, duration: 0.3 }, C.c + 1.6);
+tl.to($("d2"), { opacity: 1, duration: 0.3 }, C.c + 2.6);
+tl.to($("d3"), { opacity: 1, duration: 0.3 }, C.c + 4.0);
+K.rise(tl, $("act"), C.d - 0.4);
+tl.to($("a1"), { opacity: 1, duration: 0.3 }, C.d + 1.0);
+tl.to([$("a2"), $("a3")], { opacity: 1, duration: 0.3, stagger: 0.6 }, C.d + 3.4);
+tl.to($("a4"), { opacity: 1, duration: 0.3 }, C.d + 5.6);
+K.pop(tl, $("hard"), C.e + 0.6);
+</script>

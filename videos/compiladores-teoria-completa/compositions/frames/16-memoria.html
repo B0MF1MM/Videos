@@ -1,0 +1,59 @@
+<template id="16-memoria-template">
+  <div id="root" data-composition-id="16-memoria" data-start="0" data-duration="33.878" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ml { position: absolute; left: 0; width: 480px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; text-align: center; }
+</style>
+    <div id="s16-memoria-bg" class="clip k-scene k-bg" data-start="0" data-duration="33.878" data-track-index="0"></div>
+    <div id="s16-memoria-stage" class="clip k-scene" data-start="0" data-duration="33.878" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s16-memoria-cam" class="k-cam">
+<div id="s16-memoria-t" class="k-title" style="left:120px;top:124px;font-size:60px">Organização da <em>memória</em></div>
+<div id="s16-memoria-c1" class="k-card" style="left:120px;top:240px;width:880px;height:130px">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45"><b class="k-c-yel">registradores</b> + <b class="k-c-cyan">RAM</b><br>RAM = área de <b>código</b> + área de <b>dados</b></div>
+</div>
+<div id="s16-memoria-c2" class="k-card" style="left:120px;top:395px;width:880px;height:150px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45">código fixado antes da execução →<br>endereços de código conhecidos na compilação<br>globais e estáticos → endereços fixos</div>
+</div>
+<div id="s16-memoria-c3" class="k-card" style="left:120px;top:570px;width:880px;height:120px;border-color:#FF9F5A">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45">constantes pequenas → dentro do código<br>valores grandes e textos → áreas estáticas</div>
+</div>
+<div id="s16-memoria-c4" class="k-card" style="left:120px;top:715px;width:880px;height:130px;border-color:#4FD6EE">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45"><b class="k-c-cyan">pilha</b>: alocação LIFO<br><b class="k-c-pink">heap</b>: alocação dinâmica, sem ordem LIFO</div>
+</div>
+<div id="s16-memoria-mem" style="position:absolute;left:1220px;top:170px;width:600px;height:700px">
+  <div id="s16-memoria-m0" class="ml k-c-yel" style="top:0;height:70px;line-height:66px;border-color:#FFD24A;border-radius:12px">registradores</div>
+  <div id="s16-memoria-m1" class="ml k-c-violet" style="top:100px;height:100px;line-height:96px;border-color:#B49BFF">área de código</div>
+  <div id="s16-memoria-m2" class="ml k-c-green" style="top:200px;height:90px;line-height:86px;border-color:#7FE39A">global / estática</div>
+  <div id="s16-memoria-m3" class="ml k-c-cyan" style="top:290px;height:100px;line-height:96px;border-color:#4FD6EE">pilha ↓</div>
+  <div id="s16-memoria-m4" class="ml k-mute" style="top:390px;height:180px;line-height:176px;background:#0F1628">espaço livre</div>
+  <div id="s16-memoria-m5" class="ml k-c-pink" style="top:570px;height:100px;line-height:96px;border-color:#FF6F9C">heap ↑</div>
+  <div id="s16-memoria-sg" style="position:absolute;left:0;top:390px;width:480px;height:70px;background:rgba(79,214,238,0.3);transform-origin:50% 0%"></div>
+  <div id="s16-memoria-hg" style="position:absolute;left:0;top:510px;width:480px;height:60px;background:rgba(255,111,156,0.3);transform-origin:50% 100%"></div>
+</div>
+      </div>
+    </div>
+    <div id="s16-memoria-chrome" class="clip k-scene" data-start="0" data-duration="33.878" data-track-index="2">
+      <div id="s16-memoria-tag" class="k-tag">COMPILADORES · <b>AMBIENTES DE EXECUÇÃO</b></div>
+      <div id="s16-memoria-num" class="k-num">16 / 37</div>
+      <div id="s16-memoria-progbar" class="k-prog"><i id="s16-memoria-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 6.106, "c": 15.656, "d": 22.32, "e": 29.082}, D = 33.878;
+        var S = K.scene("16-memoria", D, 37), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, $("c1"), C.a + 0.8);
+        K.slide(tl, [$("m0"), $("m1"), $("m2")], C.a + 2.0, { s: 0.8, x: 40 });
+        K.rise(tl, $("c2"), C.b);
+        K.pulse(tl, [$("m1"), $("m2")], C.b + 1.0, { k: 1.04 });
+        K.rise(tl, $("c3"), C.c);
+        K.rise(tl, $("c4"), C.d);
+        K.slide(tl, [$("m3"), $("m4"), $("m5")], C.d + 0.4, { s: 0.8, x: 40 });
+        tl.fromTo($("sg"), { scaleY: 0 }, { scaleY: 1, duration: 1.4, ease: "power2.inOut" }, C.e + 0.4);
+        tl.fromTo($("hg"), { scaleY: 0 }, { scaleY: 1, duration: 1.4, ease: "power2.inOut" }, C.e + 0.4);
+      })();
+    </script>
+  </div>
+</template>

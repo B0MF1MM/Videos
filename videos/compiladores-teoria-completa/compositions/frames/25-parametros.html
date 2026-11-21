@@ -1,0 +1,42 @@
+<template id="25-parametros-template">
+  <div id="root" data-composition-id="25-parametros" data-start="0" data-duration="40.188" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .pm { position: absolute; width: 820px; height: 200px; border-radius: 18px; border: 2px solid #2A3656; background: #182238; }
+  .pm .h { position: absolute; left: 28px; top: 20px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 32px; }
+  .pm .b { position: absolute; left: 28px; top: 74px; width: 760px; font-family: "Hanken Grotesk", sans-serif; font-size: 23px; line-height: 1.45; color: #EEF1F8; }
+</style>
+    <div id="s25-parametros-bg" class="clip k-scene k-bg" data-start="0" data-duration="40.188" data-track-index="0"></div>
+    <div id="s25-parametros-stage" class="clip k-scene" data-start="0" data-duration="40.188" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s25-parametros-cam" class="k-cam">
+<div id="s25-parametros-t" class="k-title" style="left:120px;top:124px;font-size:56px">Passagem de <em>parâmetros</em></div>
+<div id="s25-parametros-def" class="k-body" style="left:120px;top:210px;font-size:26px">parâmetros = espaços no registro de ativação, preenchidos pelo chamador · ligar parâmetro e argumento = amarração</div>
+<div id="s25-parametros-m1" class="pm" style="left:120px;top:270px;border-color:#4FD6EE"><div class="h k-c-cyan">por valor</div><div class="b">o argumento é avaliado e o valor é copiado<br>mudar o parâmetro não afeta o argumento</div></div>
+<div id="s25-parametros-m2" class="pm" style="left:980px;top:270px;border-color:#FF6F9C"><div class="h k-c-pink">por referência</div><div class="b">passa a localização: o parâmetro é um nome<br>substituto do argumento · acesso indireto</div></div>
+<div id="s25-parametros-m3" class="pm" style="left:120px;top:500px;border-color:#FFD24A"><div class="h k-c-yel">por valor-resultado</div><div class="b">copia na entrada e copia de volta na saída<br>sem nome substituto</div></div>
+<div id="s25-parametros-m4" class="pm" style="left:980px;top:500px;border-color:#B49BFF"><div class="h k-c-violet">por nome</div><div class="b">avaliação atrasada: o argumento só é<br>avaliado quando é usado</div></div>
+<div id="s25-parametros-ord" class="k-chip k-c-orange" style="left:120px;top:740px;font-size:26px">ordem de avaliação dos argumentos: importa quando há efeitos colaterais</div>
+      </div>
+    </div>
+    <div id="s25-parametros-chrome" class="clip k-scene" data-start="0" data-duration="40.188" data-track-index="2">
+      <div id="s25-parametros-tag" class="k-tag">COMPILADORES · <b>AMBIENTES DE EXECUÇÃO</b></div>
+      <div id="s25-parametros-num" class="k-num">25 / 37</div>
+      <div id="s25-parametros-progbar" class="k-prog"><i id="s25-parametros-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 7.498, "c": 14.384, "d": 22.551, "e": 29.59}, D = 40.188;
+        var S = K.scene("25-parametros", D, 37), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.wipe(tl, $("def"), C.a + 1.0);
+        K.rise(tl, $("m1"), C.b);
+        K.rise(tl, $("m2"), C.c);
+        K.rise(tl, $("m3"), C.d);
+        K.rise(tl, $("m4"), C.e);
+        K.pop(tl, $("ord"), C.e + 5.0);
+      })();
+    </script>
+  </div>
+</template>

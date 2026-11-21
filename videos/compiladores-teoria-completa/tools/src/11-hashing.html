@@ -1,0 +1,51 @@
+<!--sfx: c:pop@0.4*0.25, d:pop@0.4*0.2, e:pop@0.4*0.2-->
+<style>
+  .bk { position: absolute; left: 0; width: 90px; height: 54px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 22px; line-height: 50px; text-align: center; color: #8C97B5; }
+  .it { position: absolute; height: 44px; padding: 0 14px; border-radius: 10px; border: 2px solid #4FD6EE; background: #0D1322; font-family: "DM Mono", monospace; font-size: 22px; line-height: 40px; color: #4FD6EE; white-space: nowrap; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Tabela de <em>hashing</em></div>
+<div id="@def" class="k-body" style="left:120px;top:216px;font-size:28px">vetor de <b>repositórios</b>, indexado por inteiros</div>
+<div id="@steps" style="position:absolute;left:120px;top:290px;width:1680px;height:120px">
+  <div class="k-chip k-c-cyan" style="left:0;top:20px;font-size:26px">nome</div>
+  <div class="k-code k-mute" style="left:115px;top:24px;font-size:30px">→</div>
+  <div class="k-chip" style="left:165px;top:20px;font-size:22px">1 · caractere → inteiro</div>
+  <div class="k-code k-mute" style="left:555px;top:24px;font-size:30px">→</div>
+  <div class="k-chip" style="left:605px;top:20px;font-size:22px">2 · combina os inteiros</div>
+  <div class="k-code k-mute" style="left:995px;top:24px;font-size:30px">→</div>
+  <div class="k-chip" style="left:1045px;top:20px;font-size:22px">3 · ajusta ao tamanho</div>
+  <div class="k-code k-mute" style="left:1420px;top:24px;font-size:30px">→</div>
+  <div class="k-chip k-c-yel" style="left:1470px;top:20px;font-size:26px">índice</div>
+</div>
+<div id="@col" class="k-card" style="left:120px;top:440px;width:520px;height:390px;border-color:#FF9F5A">
+  <div class="k-h2 k-c-orange" style="left:28px;top:22px;font-size:34px">colisão</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:24px">dois nomes → mesmo índice</div>
+  <div class="it" style="left:28px;top:150px">nome A</div><div class="it" style="left:28px;top:210px">nome B</div>
+  <div class="k-code k-c-orange" style="left:200px;top:178px;font-size:34px">→ 2</div>
+  <div class="k-body k-mute" style="left:28px;top:290px;font-size:22px">degrada o desempenho</div>
+</div>
+<div id="@oa" class="k-card" style="left:680px;top:440px;width:550px;height:390px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:22px;font-size:30px">endereçamento aberto</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:22px;line-height:1.4">vai para o próximo repositório livre<br>✗ degrada quando a tabela enche<br>✗ remover é difícil</div>
+  <div style="position:absolute;left:28px;top:200px;width:300px;height:170px">
+    <div class="bk" style="top:0">1</div><div class="bk" style="top:54px">2</div><div class="bk" style="top:108px">3</div>
+    <div class="it" style="left:110px;top:59px">A</div><div class="it" style="left:110px;top:113px;border-color:#FF6F9C;color:#FF6F9C">B ↓</div>
+  </div>
+</div>
+<div id="@es" class="k-card" style="left:1270px;top:440px;width:550px;height:390px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:30px">encadeamento separado</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:22px;line-height:1.4">cada repositório é uma lista<br>★ o melhor para compiladores<br>tamanho da tabela: de preferência primo</div>
+  <div style="position:absolute;left:28px;top:200px;width:480px;height:170px">
+    <div class="bk" style="top:0">1</div><div class="bk" style="top:54px">2</div><div class="bk" style="top:108px">3</div>
+    <div class="it" style="left:110px;top:59px">A</div><div class="k-code k-c-green" style="left:170px;top:58px;font-size:28px">→</div><div class="it" style="left:210px;top:59px;border-color:#7FE39A;color:#7FE39A">B</div>
+  </div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("def"), C.a + 0.8);
+var st = Array.prototype.slice.call($("steps").children);
+K.fade(tl, st, C.b + 0.4, { s: 0.9 });
+K.rise(tl, $("col"), C.c);
+K.rise(tl, $("oa"), C.d);
+K.rise(tl, $("es"), C.e);
+</script>

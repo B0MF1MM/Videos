@@ -1,0 +1,32 @@
+<!--sfx: b:pop@0.6*0.2, d:click-soft@0.6*0.3, e:pop@1.0*0.2-->
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Tabela de <em>símbolos</em></div>
+<div id="@def" class="k-body" style="left:120px;top:216px;font-size:28px">informação de contexto para a análise semântica · principal estrutura depois da árvore</div>
+<div id="@ops" style="position:absolute;left:120px;top:290px;width:1680px;height:200px">
+  <div id="@o1" class="k-card" style="left:0;top:0;width:540px;height:190px;border-color:#7FE39A"><div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:38px">inserir</div><div id="@d1" class="k-body" style="left:28px;top:90px;font-size:24px;line-height:1.4">guarda a informação<br>das declarações</div></div>
+  <div id="@o2" class="k-card" style="left:570px;top:0;width:540px;height:190px;border-color:#4FD6EE"><div class="k-h2 k-c-cyan" style="left:28px;top:22px;font-size:38px">verificar</div><div id="@d2" class="k-body" style="left:28px;top:90px;font-size:24px;line-height:1.4">recupera a informação<br>quando o nome é usado</div></div>
+  <div id="@o3" class="k-card" style="left:1140px;top:0;width:540px;height:190px;border-color:#FF6F9C"><div class="k-h2 k-c-pink" style="left:28px;top:22px;font-size:38px">remover</div><div id="@d3" class="k-body" style="left:28px;top:90px;font-size:24px;line-height:1.4">descarta a declaração<br>que deixou de valer</div></div>
+</div>
+<div id="@cols" style="position:absolute;left:120px;top:520px;width:1680px;height:80px">
+  <div class="k-chip" style="left:0;top:0;font-size:28px">nome</div>
+  <div class="k-chip k-c-cyan" style="left:150px;top:0;font-size:28px">tipo de dado</div>
+  <div class="k-chip k-c-yel" style="left:390px;top:0;font-size:28px">escopo</div>
+  <div class="k-chip k-c-violet" style="left:560px;top:0;font-size:28px">localização na memória</div>
+</div>
+<div id="@impl" style="position:absolute;left:120px;top:620px;width:1680px;height:220px">
+  <div id="@i1" class="k-card" style="left:0;top:0;width:540px;height:200px"><div class="k-h2" style="left:24px;top:20px;font-size:32px">listas lineares</div><div class="k-body k-c-green" style="left:24px;top:80px;font-size:24px;line-height:1.4">simples<br>protótipos e programas pequenos</div></div>
+  <div id="@i2" class="k-card" style="left:570px;top:0;width:540px;height:200px"><div class="k-h2" style="left:24px;top:20px;font-size:32px">árvores de busca</div><div class="k-body k-c-pink" style="left:24px;top:80px;font-size:24px;line-height:1.4">pior caso ruim<br>remoção complexa</div></div>
+  <div id="@i3" class="k-card" style="left:1140px;top:0;width:540px;height:200px;border-color:#FFD24A;background:#221F12"><div class="k-h2 k-c-yel" style="left:24px;top:20px;font-size:32px">tabelas de hashing</div><div class="k-body" style="left:24px;top:80px;font-size:24px;line-height:1.4">custo médio quase constante<br><b class="k-c-yel">a mais usada</b></div></div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("def"), C.a + 1.0);
+tl.set([$("d1"), $("d2"), $("d3")], { opacity: 0 }, 0);
+K.rise(tl, [$("o1"), $("o2"), $("o3")], C.b, { s: 0.8 });
+tl.to($("d1"), { opacity: 1, duration: 0.3 }, C.c + 0.3);
+tl.to($("d2"), { opacity: 1, duration: 0.3 }, C.c + 3.0);
+tl.to($("d3"), { opacity: 1, duration: 0.3 }, C.c + 6.0);
+var cl = Array.prototype.slice.call($("cols").children);
+K.pop(tl, cl, C.d + 0.4, { s: 0.6 });
+K.rise(tl, [$("i1"), $("i2"), $("i3")], C.e + 1.0, { s: 2.0 });
+</script>

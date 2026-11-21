@@ -1,0 +1,70 @@
+<template id="31-enderecos-template">
+  <div id="root" data-composition-id="31-enderecos" data-start="0" data-duration="38.186" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .cb { position: absolute; width: 86px; height: 60px; border: 2px solid #4FD6EE; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-size: 20px; line-height: 56px; text-align: center; color: #4FD6EE; }
+</style>
+    <div id="s31-enderecos-bg" class="clip k-scene k-bg" data-start="0" data-duration="38.186" data-track-index="0"></div>
+    <div id="s31-enderecos-stage" class="clip k-scene" data-start="0" data-duration="38.186" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s31-enderecos-cam" class="k-cam">
+<div id="s31-enderecos-t" class="k-title" style="left:120px;top:124px;font-size:58px">Nomes viram <em>endereços</em></div>
+<div id="s31-enderecos-kinds" style="position:absolute;left:120px;top:230px;width:1680px;height:80px">
+  <div class="k-chip k-c-green" style="left:0;top:0;font-size:26px">registradores</div>
+  <div class="k-chip k-c-cyan" style="left:260px;top:0;font-size:26px">endereço absoluto · globais</div>
+  <div class="k-chip k-c-violet" style="left:720px;top:0;font-size:26px">deslocamento no registro de ativação · locais</div>
+</div>
+<div id="s31-enderecos-modes" class="k-card" style="left:120px;top:320px;width:1680px;height:100px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:28px;font-size:26px">modos de endereçamento: <b class="k-c-cyan">endereço de</b> uma variável · <b class="k-c-pink">indireto</b> (conteúdo de um endereço)</div>
+</div>
+<div id="s31-enderecos-mat" class="k-card" style="left:120px;top:450px;width:1100px;height:250px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:18px;font-size:30px">matriz</div>
+  <div class="k-body" style="left:28px;top:66px;font-size:24px">base + (índice − limite inferior) × tamanho do elemento</div>
+  <div id="s31-enderecos-cells" style="position:absolute;left:28px;top:120px;width:800px;height:80px"></div>
+  <div id="s31-enderecos-cur" style="position:absolute;left:24px;top:116px;width:94px;height:68px;border:4px solid #FFD24A;border-radius:8px"></div>
+  <div class="k-body k-mute" style="left:28px;top:205px;font-size:20px">várias dimensões: aplica recursivamente</div>
+</div>
+<div id="s31-enderecos-reg" class="k-card" style="left:1260px;top:450px;width:540px;height:250px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:18px;font-size:30px">registro</div>
+  <div class="k-body" style="left:28px;top:66px;font-size:23px;line-height:1.45">base + deslocamento do campo<br>(constante, da tabela de símbolos)</div>
+  <div class="cb" style="left:28px;top:160px;width:140px;border-color:#7FE39A;color:#7FE39A">campo 1</div>
+  <div class="cb" style="left:168px;top:160px;width:120px;border-color:#7FE39A;color:#7FE39A">campo 2</div>
+  <div class="cb" style="left:288px;top:160px;width:140px;border-color:#FFD24A;color:#FFD24A">campo 3</div>
+</div>
+<div id="s31-enderecos-ptr" class="k-card" style="left:120px;top:730px;width:1680px;height:110px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:34px;font-size:26px"><b class="k-c-violet">ponteiro</b>: acrescenta um nível de indireção (o endereço leva a outro endereço)</div>
+</div>
+      </div>
+    </div>
+    <div id="s31-enderecos-chrome" class="clip k-scene" data-start="0" data-duration="38.186" data-track-index="2">
+      <div id="s31-enderecos-tag" class="k-tag">COMPILADORES · <b>GERAÇÃO DE CÓDIGO</b></div>
+      <div id="s31-enderecos-num" class="k-num">31 / 37</div>
+      <div id="s31-enderecos-progbar" class="k-prog"><i id="s31-enderecos-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 8.845, "c": 16.642, "d": 27.697, "e": 34.843}, D = 38.186;
+        var S = K.scene("31-enderecos", D, 37), tl = S.tl, $ = S.$;
+        var cells = $("cells"), cs = [];
+        for (var i = 0; i < 8; i++) {
+          var c = document.createElement("div");
+          c.id = "s31-enderecos-c" + i; c.className = "cb";
+          c.style.left = (i * 90) + "px"; c.style.top = "0px";
+          c.textContent = i === 0 ? "base" : "";
+          cells.appendChild(c); cs.push(c);
+        }
+        var kd = Array.prototype.slice.call($("kinds").children);
+        K.rise(tl, $("t"), C.a);
+        K.fade(tl, kd, C.a + 1.6, { s: 1.4 });
+        K.rise(tl, $("modes"), C.b);
+        K.rise(tl, $("mat"), C.c);
+        K.fade(tl, cs, C.c + 0.6, { s: 0.05 });
+        K.fade(tl, $("cur"), C.c + 2.0);
+        tl.to($("cur"), { x: 4 * 90, duration: 1.6, ease: "steps(4)" }, C.c + 3.6);
+        K.rise(tl, $("reg"), C.d);
+        K.rise(tl, $("ptr"), C.e);
+      })();
+    </script>
+  </div>
+</template>

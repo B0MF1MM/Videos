@@ -1,0 +1,23 @@
+<!--sfx: b:pop@0.4*0.2, c:pop@0.4*0.2, d:pop@0.4*0.2, e:pop@0.4*0.2-->
+<style>
+  .pm { position: absolute; width: 820px; height: 200px; border-radius: 18px; border: 2px solid #2A3656; background: #182238; }
+  .pm .h { position: absolute; left: 28px; top: 20px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 32px; }
+  .pm .b { position: absolute; left: 28px; top: 74px; width: 760px; font-family: "Hanken Grotesk", sans-serif; font-size: 23px; line-height: 1.45; color: #EEF1F8; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:56px">Passagem de <em>parâmetros</em></div>
+<div id="@def" class="k-body" style="left:120px;top:210px;font-size:26px">parâmetros = espaços no registro de ativação, preenchidos pelo chamador · ligar parâmetro e argumento = amarração</div>
+<div id="@m1" class="pm" style="left:120px;top:270px;border-color:#4FD6EE"><div class="h k-c-cyan">por valor</div><div class="b">o argumento é avaliado e o valor é copiado<br>mudar o parâmetro não afeta o argumento</div></div>
+<div id="@m2" class="pm" style="left:980px;top:270px;border-color:#FF6F9C"><div class="h k-c-pink">por referência</div><div class="b">passa a localização: o parâmetro é um nome<br>substituto do argumento · acesso indireto</div></div>
+<div id="@m3" class="pm" style="left:120px;top:500px;border-color:#FFD24A"><div class="h k-c-yel">por valor-resultado</div><div class="b">copia na entrada e copia de volta na saída<br>sem nome substituto</div></div>
+<div id="@m4" class="pm" style="left:980px;top:500px;border-color:#B49BFF"><div class="h k-c-violet">por nome</div><div class="b">avaliação atrasada: o argumento só é<br>avaliado quando é usado</div></div>
+<div id="@ord" class="k-chip k-c-orange" style="left:120px;top:740px;font-size:26px">ordem de avaliação dos argumentos: importa quando há efeitos colaterais</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("def"), C.a + 1.0);
+K.rise(tl, $("m1"), C.b);
+K.rise(tl, $("m2"), C.c);
+K.rise(tl, $("m3"), C.d);
+K.rise(tl, $("m4"), C.e);
+K.pop(tl, $("ord"), C.e + 5.0);
+</script>

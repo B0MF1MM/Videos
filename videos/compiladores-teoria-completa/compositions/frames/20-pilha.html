@@ -1,0 +1,63 @@
+<template id="20-pilha-template">
+  <div id="root" data-composition-id="20-pilha" data-start="0" data-duration="41.005" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .fr { position: absolute; left: 0; width: 400px; height: 110px; border: 3px solid #4FD6EE; border-radius: 10px; background: #182238; font-family: "DM Mono", monospace; font-size: 22px; color: #EEF1F8; padding: 10px 16px; line-height: 1.45; }
+  .tn { position: absolute; width: 150px; height: 50px; margin: -25px 0 0 -75px; border-radius: 12px; background: #182238; border: 3px solid #B49BFF; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; line-height: 44px; text-align: center; color: #EEF1F8; }
+</style>
+    <div id="s20-pilha-bg" class="clip k-scene k-bg" data-start="0" data-duration="41.005" data-track-index="0"></div>
+    <div id="s20-pilha-stage" class="clip k-scene" data-start="0" data-duration="41.005" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s20-pilha-cam" class="k-cam">
+<div id="s20-pilha-t" class="k-title" style="left:120px;top:124px;font-size:60px">Ambiente <em>baseado em pilhas</em></div>
+<div id="s20-pilha-p1" class="k-card" style="left:120px;top:230px;width:900px;height:130px;border-color:#FF6F9C">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45">recursão → cada ativação precisa de novas posições<br>→ registros de ativação alocados numa <b class="k-c-cyan">pilha</b></div>
+</div>
+<div id="s20-pilha-p2" class="k-card" style="left:120px;top:380px;width:900px;height:120px">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45">ativação: empilha no topo · retorno: desempilha<br>um procedimento pode ter vários registros ao mesmo tempo</div>
+</div>
+<div id="s20-pilha-p3" class="k-card" style="left:120px;top:520px;width:900px;height:170px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:20px;font-size:25px;line-height:1.5">procedimentos globais (ex.: C):<br><b class="k-c-yel">fp</b> → registro atual · <b class="k-c-pink">vinculação de controle</b> (dinâmica) → anterior<br><b class="k-c-cyan">sp</b> → topo da pilha</div>
+</div>
+<div id="s20-pilha-stk" style="position:absolute;left:1180px;top:230px;width:640px;height:480px">
+  <div class="fr" style="top:330px;border-color:#8C97B5">principal</div>
+  <div id="s20-pilha-r1" class="fr" style="top:220px">A<br><span class="k-c-pink">controle → principal</span></div>
+  <div id="s20-pilha-r2" class="fr" style="top:110px;border-color:#FFD24A">A (de novo)<br><span class="k-c-pink">controle → A</span></div>
+  <div id="s20-pilha-fp" class="k-code k-c-yel" style="left:420px;top:140px;font-size:26px">← fp</div>
+  <div id="s20-pilha-sp" class="k-code k-c-cyan" style="left:420px;top:96px;font-size:26px">← sp</div>
+</div>
+<div id="s20-pilha-tree" style="position:absolute;left:120px;top:710px;width:1700px;height:160px">
+  <div class="k-body k-c-violet" style="left:0;top:10px;font-size:26px;line-height:1.4">árvore de ativação:<br><span class="k-mute" style="font-size:22px">cada ativação é um nó; os filhos são as ativações feitas durante ela</span></div>
+  <svg width="1700" height="160" style="position:absolute;left:0;top:0;overflow:visible"><g stroke="#8C97B5" stroke-width="3"><line x1="1260" y1="25" x2="1160" y2="90"/><line x1="1260" y1="25" x2="1360" y2="90"/><line x1="1160" y1="90" x2="1160" y2="150"/></g></svg>
+  <div class="tn" style="left:1260px;top:25px">principal</div>
+  <div class="tn" style="left:1160px;top:90px">A</div>
+  <div class="tn" style="left:1360px;top:90px">B</div>
+  <div class="tn" style="left:1160px;top:158px">A</div>
+</div>
+      </div>
+    </div>
+    <div id="s20-pilha-chrome" class="clip k-scene" data-start="0" data-duration="41.005" data-track-index="2">
+      <div id="s20-pilha-tag" class="k-tag">COMPILADORES · <b>AMBIENTES DE EXECUÇÃO</b></div>
+      <div id="s20-pilha-num" class="k-num">20 / 37</div>
+      <div id="s20-pilha-progbar" class="k-prog"><i id="s20-pilha-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 8.263, "c": 17.148, "d": 24.309, "e": 32.946}, D = 41.005;
+        var S = K.scene("20-pilha", D, 37), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, $("p1"), C.a + 0.8);
+        K.fade(tl, $("stk"), C.a + 2.0);
+        tl.set([$("r1"), $("r2"), $("fp"), $("sp")], { opacity: 0 }, 0);
+        K.rise(tl, $("p2"), C.b);
+        tl.fromTo($("r1"), { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, immediateRender: false }, C.b + 0.6);
+        tl.fromTo($("r2"), { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, immediateRender: false }, C.b + 2.0);
+        K.rise(tl, $("p3"), C.c);
+        tl.to($("fp"), { opacity: 1, duration: 0.3 }, C.c + 3.0);
+        tl.to($("sp"), { opacity: 1, duration: 0.3 }, C.d + 4.6);
+        K.fade(tl, $("tree"), C.e);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,70 @@
+<template id="36-gerador-template">
+  <div id="root" data-composition-id="36-gerador" data-start="0" data-duration="31.453" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ml { position: absolute; left: 0; width: 320px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; text-align: center; color: #EEF1F8; }
+  .rr { position: absolute; left: 0; width: 600px; height: 54px; border-radius: 10px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; line-height: 50px; padding-left: 18px; color: #EEF1F8; }
+  .tn { position: absolute; width: 170px; height: 54px; margin: -27px 0 0 -85px; border-radius: 12px; background: #182238; border: 3px solid #FFD24A; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; line-height: 48px; text-align: center; color: #EEF1F8; }
+</style>
+    <div id="s36-gerador-bg" class="clip k-scene k-bg" data-start="0" data-duration="31.453" data-track-index="0"></div>
+    <div id="s36-gerador-stage" class="clip k-scene" data-start="0" data-duration="31.453" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s36-gerador-cam" class="k-cam">
+<div id="s36-gerador-t" class="k-title" style="left:120px;top:124px;font-size:58px">O gerador de código <em>TINY</em></div>
+<div id="s36-gerador-regs" style="position:absolute;left:120px;top:240px;width:620px;height:320px">
+  <div class="rr" style="top:0"><b class="k-c-yel">7</b> · contador de programa</div>
+  <div class="rr" style="top:62px"><b class="k-c-cyan">6</b> · topo da memória · temporários</div>
+  <div class="rr" style="top:124px"><b class="k-c-green">5</b> · início da memória · variáveis</div>
+  <div class="rr" style="top:186px"><b class="k-c-pink">0 e 1</b> · acumuladores</div>
+</div>
+<div id="s36-gerador-mem" style="position:absolute;left:820px;top:240px;width:400px;height:340px">
+  <div class="ml k-c-cyan" style="top:0;height:56px;line-height:52px">temporários</div>
+  <div class="ml k-mute" style="top:56px;height:150px;line-height:146px;background:#0F1628">livre</div>
+  <div class="ml k-c-green" style="top:206px;height:56px;line-height:52px">variáveis</div>
+  <div class="k-code k-c-cyan" style="left:340px;top:12px;font-size:22px">← 6</div>
+  <div class="k-code k-c-green" style="left:340px;top:220px;font-size:22px">← 5</div>
+</div>
+<div id="s36-gerador-emit" class="k-card" style="left:1280px;top:240px;width:540px;height:270px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:24px;top:20px;font-size:30px">funções de emissão</div>
+  <div class="k-body" style="left:24px;top:76px;font-size:23px;line-height:1.5">escrevem comentários<br>e instruções<br>+ apoio ao <b class="k-c-yel">ajuste retroativo</b></div>
+</div>
+<div id="s36-gerador-flow" style="position:absolute;left:120px;top:600px;width:820px;height:80px">
+  <div class="k-chip k-c-cyan" style="left:0;top:0;font-size:24px">prólogo</div>
+  <div class="k-code k-mute" style="left:160px;top:6px;font-size:28px">→</div>
+  <div class="k-chip k-c-yel" style="left:210px;top:0;font-size:24px">percorre a árvore</div>
+  <div class="k-code k-mute" style="left:530px;top:6px;font-size:28px">→</div>
+  <div class="k-chip k-c-pink" style="left:580px;top:0;font-size:24px">parada</div>
+</div>
+<div id="s36-gerador-tree" style="position:absolute;left:980px;top:560px;width:840px;height:300px">
+  <svg width="840" height="300" style="position:absolute;left:0;top:0;overflow:visible"><g stroke="#8C97B5" stroke-width="3"><line x1="300" y1="60" x2="160" y2="200"/><line x1="300" y1="60" x2="440" y2="200"/></g>
+    <path id="s36-gerador-sib" d="M 390 60 L 590 60 M 572 48 L 590 60 L 572 72" stroke="#FFD24A" stroke-width="4" fill="none" stroke-dasharray="8 8"/></svg>
+  <div class="tn" style="left:300px;top:60px">nó</div>
+  <div class="tn" style="left:680px;top:60px;border-color:#8C97B5">irmão</div>
+  <div class="tn" style="left:160px;top:200px;border-color:#7FE39A;color:#7FE39A">declaração</div>
+  <div class="tn" style="left:440px;top:200px;border-color:#B49BFF;color:#B49BFF">expressão</div>
+</div>
+      </div>
+    </div>
+    <div id="s36-gerador-chrome" class="clip k-scene" data-start="0" data-duration="31.453" data-track-index="2">
+      <div id="s36-gerador-tag" class="k-tag">COMPILADORES · <b>GERAÇÃO DE CÓDIGO</b></div>
+      <div id="s36-gerador-num" class="k-num">36 / 37</div>
+      <div id="s36-gerador-progbar" class="k-prog"><i id="s36-gerador-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.781, "c": 14.635, "d": 20.337, "e": 25.637}, D = 31.453;
+        var S = K.scene("36-gerador", D, 37), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        var rr = Array.prototype.slice.call($("regs").children);
+        K.slide(tl, rr, C.b - 0.4, { s: 2.2 });
+        K.fade(tl, $("mem"), C.b + 2.4);
+        K.rise(tl, $("emit"), C.c);
+        var fl = Array.prototype.slice.call($("flow").children);
+        K.fade(tl, fl, C.d, { s: 0.6 });
+        K.fade(tl, $("tree"), C.e);
+        K.draw(tl, $("sib"), C.e + 3.0, { d: 0.5 });
+      })();
+    </script>
+  </div>
+</template>

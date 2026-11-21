@@ -1,0 +1,70 @@
+<template id="11-hashing-template">
+  <div id="root" data-composition-id="11-hashing" data-start="0" data-duration="33.275" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .bk { position: absolute; left: 0; width: 90px; height: 54px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 22px; line-height: 50px; text-align: center; color: #8C97B5; }
+  .it { position: absolute; height: 44px; padding: 0 14px; border-radius: 10px; border: 2px solid #4FD6EE; background: #0D1322; font-family: "DM Mono", monospace; font-size: 22px; line-height: 40px; color: #4FD6EE; white-space: nowrap; }
+</style>
+    <div id="s11-hashing-bg" class="clip k-scene k-bg" data-start="0" data-duration="33.275" data-track-index="0"></div>
+    <div id="s11-hashing-stage" class="clip k-scene" data-start="0" data-duration="33.275" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s11-hashing-cam" class="k-cam">
+<div id="s11-hashing-t" class="k-title" style="left:120px;top:124px;font-size:60px">Tabela de <em>hashing</em></div>
+<div id="s11-hashing-def" class="k-body" style="left:120px;top:216px;font-size:28px">vetor de <b>repositórios</b>, indexado por inteiros</div>
+<div id="s11-hashing-steps" style="position:absolute;left:120px;top:290px;width:1680px;height:120px">
+  <div class="k-chip k-c-cyan" style="left:0;top:20px;font-size:26px">nome</div>
+  <div class="k-code k-mute" style="left:115px;top:24px;font-size:30px">→</div>
+  <div class="k-chip" style="left:165px;top:20px;font-size:22px">1 · caractere → inteiro</div>
+  <div class="k-code k-mute" style="left:555px;top:24px;font-size:30px">→</div>
+  <div class="k-chip" style="left:605px;top:20px;font-size:22px">2 · combina os inteiros</div>
+  <div class="k-code k-mute" style="left:995px;top:24px;font-size:30px">→</div>
+  <div class="k-chip" style="left:1045px;top:20px;font-size:22px">3 · ajusta ao tamanho</div>
+  <div class="k-code k-mute" style="left:1420px;top:24px;font-size:30px">→</div>
+  <div class="k-chip k-c-yel" style="left:1470px;top:20px;font-size:26px">índice</div>
+</div>
+<div id="s11-hashing-col" class="k-card" style="left:120px;top:440px;width:520px;height:390px;border-color:#FF9F5A">
+  <div class="k-h2 k-c-orange" style="left:28px;top:22px;font-size:34px">colisão</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:24px">dois nomes → mesmo índice</div>
+  <div class="it" style="left:28px;top:150px">nome A</div><div class="it" style="left:28px;top:210px">nome B</div>
+  <div class="k-code k-c-orange" style="left:200px;top:178px;font-size:34px">→ 2</div>
+  <div class="k-body k-mute" style="left:28px;top:290px;font-size:22px">degrada o desempenho</div>
+</div>
+<div id="s11-hashing-oa" class="k-card" style="left:680px;top:440px;width:550px;height:390px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:22px;font-size:30px">endereçamento aberto</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:22px;line-height:1.4">vai para o próximo repositório livre<br>✗ degrada quando a tabela enche<br>✗ remover é difícil</div>
+  <div style="position:absolute;left:28px;top:200px;width:300px;height:170px">
+    <div class="bk" style="top:0">1</div><div class="bk" style="top:54px">2</div><div class="bk" style="top:108px">3</div>
+    <div class="it" style="left:110px;top:59px">A</div><div class="it" style="left:110px;top:113px;border-color:#FF6F9C;color:#FF6F9C">B ↓</div>
+  </div>
+</div>
+<div id="s11-hashing-es" class="k-card" style="left:1270px;top:440px;width:550px;height:390px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:30px">encadeamento separado</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:22px;line-height:1.4">cada repositório é uma lista<br>★ o melhor para compiladores<br>tamanho da tabela: de preferência primo</div>
+  <div style="position:absolute;left:28px;top:200px;width:480px;height:170px">
+    <div class="bk" style="top:0">1</div><div class="bk" style="top:54px">2</div><div class="bk" style="top:108px">3</div>
+    <div class="it" style="left:110px;top:59px">A</div><div class="k-code k-c-green" style="left:170px;top:58px;font-size:28px">→</div><div class="it" style="left:210px;top:59px;border-color:#7FE39A;color:#7FE39A">B</div>
+  </div>
+</div>
+      </div>
+    </div>
+    <div id="s11-hashing-chrome" class="clip k-scene" data-start="0" data-duration="33.275" data-track-index="2">
+      <div id="s11-hashing-tag" class="k-tag">COMPILADORES · <b>ANÁLISE SEMÂNTICA</b></div>
+      <div id="s11-hashing-num" class="k-num">11 / 37</div>
+      <div id="s11-hashing-progbar" class="k-prog"><i id="s11-hashing-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.56, "c": 14.028, "d": 17.494, "e": 24.67}, D = 33.275;
+        var S = K.scene("11-hashing", D, 37), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.wipe(tl, $("def"), C.a + 0.8);
+        var st = Array.prototype.slice.call($("steps").children);
+        K.fade(tl, st, C.b + 0.4, { s: 0.9 });
+        K.rise(tl, $("col"), C.c);
+        K.rise(tl, $("oa"), C.d);
+        K.rise(tl, $("es"), C.e);
+      })();
+    </script>
+  </div>
+</template>

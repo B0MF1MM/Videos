@@ -1,0 +1,54 @@
+<template id="03-atributos-template">
+  <div id="root" data-composition-id="03-atributos" data-start="0" data-duration="27.971" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s03-atributos-bg" class="clip k-scene k-bg" data-start="0" data-duration="27.971" data-track-index="0"></div>
+    <div id="s03-atributos-stage" class="clip k-scene" data-start="0" data-duration="27.971" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s03-atributos-cam" class="k-cam">
+<div id="s03-atributos-t" class="k-title" style="left:120px;top:124px;font-size:64px"><em>Atributo</em></div>
+<div id="s03-atributos-def" class="k-body" style="left:120px;top:220px;font-size:32px">qualquer <b class="k-c-yel">propriedade</b> de uma construção da linguagem</div>
+<div id="s03-atributos-node" class="k-node" style="left:420px;top:480px;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:75px;border-color:#FFD24A"></div>
+<div id="s03-atributos-ex" style="position:absolute;left:640px;top:300px;width:1180px;height:330px">
+  <div class="k-chip k-c-cyan" style="left:0;top:0;font-size:28px">tipo de uma expressão</div>
+  <div class="k-chip k-c-cyan" style="left:450px;top:0;font-size:28px">tipo de um identificador</div>
+  <div class="k-chip k-c-green" style="left:0;top:80px;font-size:28px">valor de uma constante</div>
+  <div class="k-chip k-c-violet" style="left:450px;top:80px;font-size:28px">localização / deslocamento</div>
+  <div class="k-chip k-c-pink" style="left:0;top:160px;font-size:28px">escopo</div>
+  <div class="k-chip k-c-orange" style="left:150px;top:160px;font-size:28px">tamanho de um tipo</div>
+  <div class="k-chip k-c-yel" style="left:540px;top:160px;font-size:28px">declaração correspondente</div>
+</div>
+<div id="s03-atributos-am" class="k-card" style="left:120px;top:640px;width:820px;height:200px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:22px;font-size:36px">amarração</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:26px;line-height:1.4">calcular o atributo e associá-lo à construção<br><span class="k-mute">quando acontece = tempo de amarração</span></div>
+</div>
+<div id="s03-atributos-sd" class="k-card" style="left:980px;top:640px;width:820px;height:200px">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:34px">estático</div>
+  <div class="k-body" style="left:28px;top:72px;font-size:24px">determinado antes da execução</div>
+  <div class="k-h2 k-c-pink" style="left:420px;top:22px;font-size:34px">dinâmico</div>
+  <div class="k-body" style="left:420px;top:72px;font-size:24px">só durante a execução</div>
+  <div style="position:absolute;left:400px;top:24px;width:2px;height:150px;background:#2A3656"></div>
+</div>
+      </div>
+    </div>
+    <div id="s03-atributos-chrome" class="clip k-scene" data-start="0" data-duration="27.971" data-track-index="2">
+      <div id="s03-atributos-tag" class="k-tag">COMPILADORES · <b>ANÁLISE SEMÂNTICA</b></div>
+      <div id="s03-atributos-num" class="k-num">03 / 37</div>
+      <div id="s03-atributos-progbar" class="k-prog"><i id="s03-atributos-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.781, "c": 12.575, "d": 19.255}, D = 27.971;
+        var S = K.scene("03-atributos", D, 37), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.wipe(tl, $("def"), C.a + 0.8);
+        K.pop(tl, $("node"), C.a + 2.4);
+        var ex = Array.prototype.slice.call($("ex").children);
+        K.pop(tl, ex, C.b + 0.4, { s: 0.9 });
+        K.rise(tl, $("am"), C.c);
+        K.rise(tl, $("sd"), C.d);
+      })();
+    </script>
+  </div>
+</template>

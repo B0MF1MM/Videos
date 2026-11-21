@@ -1,0 +1,30 @@
+<!--sfx: c:pop@0.4*0.25-->
+<style>
+  .q { position: absolute; top: 0; width: 280px; height: 130px; border-radius: 18px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; line-height: 124px; text-align: center; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Implementação: <em>quádruplas</em></div>
+<div id="@p1" class="k-body" style="left:120px;top:230px;font-size:28px">não é guardado como texto</div>
+<div id="@p2" class="k-body" style="left:120px;top:290px;font-size:28px">cada instrução = um <b>registro</b> com campos · a sequência = <b>vetor</b> ou <b>lista ligada</b></div>
+<div id="@quad" style="position:absolute;left:300px;top:400px;width:1320px;height:200px">
+  <div class="q k-c-yel" style="left:0;border-color:#FFD24A">operação</div>
+  <div class="q k-c-cyan" style="left:340px;border-color:#4FD6EE">endereço 1</div>
+  <div class="q k-c-cyan" style="left:680px;border-color:#4FD6EE">endereço 2</div>
+  <div class="q k-c-cyan" style="left:1020px;border-color:#4FD6EE">endereço 3</div>
+</div>
+<div id="@kinds" style="position:absolute;left:300px;top:640px;width:1320px;height:120px">
+  <div class="k-body k-mute" style="left:0;top:10px;font-size:26px">cada endereço pode ser:</div>
+  <div class="k-chip" style="left:320px;top:0;font-size:26px">vazio</div>
+  <div class="k-chip k-c-green" style="left:470px;top:0;font-size:26px">constante</div>
+  <div class="k-chip k-c-cyan" style="left:690px;top:0;font-size:26px">nome</div>
+  <div class="k-chip k-c-violet" style="left:840px;top:0;font-size:26px">+ modo de endereçamento</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("p1"), C.a + 1.0);
+K.wipe(tl, $("p2"), C.b);
+var q = Array.prototype.slice.call($("quad").children);
+K.pop(tl, q, C.c, { s: 0.5 });
+var kd = Array.prototype.slice.call($("kinds").children);
+K.fade(tl, kd, C.d, { s: 0.6 });
+</script>

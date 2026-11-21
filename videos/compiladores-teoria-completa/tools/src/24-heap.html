@@ -1,0 +1,38 @@
+<!--sfx: b:whoosh-short@2.0*0.2, d:pop@0.6*0.25-->
+<style>
+  .bx { position: absolute; border-radius: 14px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; color: #EEF1F8; padding: 12px 18px; line-height: 1.5; }
+  .hb { position: absolute; top: 0; height: 80px; border: 2px solid #2A3656; background: #0F1628; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; line-height: 76px; text-align: center; color: #8C97B5; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Objetos e <em>heap</em></div>
+<div id="@o1" class="bx" style="left:120px;top:250px;width:300px;height:140px;border-color:#4FD6EE"><span class="k-c-cyan">objeto</span><br>→ classe<br>variáveis de instância</div>
+<div id="@o2" class="bx" style="left:120px;top:420px;width:300px;height:140px;border-color:#4FD6EE"><span class="k-c-cyan">objeto</span><br>→ classe<br>variáveis de instância</div>
+<div id="@cl" class="bx" style="left:620px;top:300px;width:360px;height:180px;border-color:#FFD24A"><span class="k-c-yel">classe</span><br>→ superclasse<br>ponteiros dos métodos</div>
+<div id="@sc" class="bx" style="left:1180px;top:240px;width:360px;height:150px;border-color:#B49BFF"><span class="k-c-violet">superclasse</span><br>ponteiros dos métodos</div>
+<svg class="k-svg">
+  <path id="@a1" class="arrow" d="M 424 310 C 520 310, 540 370, 612 380 M 594 368 L 612 380 L 596 392" stroke="#FFD24A" />
+  <path id="@a2" class="arrow" d="M 424 480 C 520 480, 540 410, 612 400 M 596 388 L 612 400 L 598 414" stroke="#FFD24A" />
+  <path id="@a3" class="arrow" d="M 984 360 C 1060 360, 1100 320, 1172 316 M 1154 304 L 1172 316 L 1156 330" stroke="#B49BFF" />
+</svg>
+<div id="@inh" class="k-anno k-c-violet" style="left:1020px;top:430px">busca pela hierarquia = herança + vinculação dinâmica</div>
+<div id="@heap" style="position:absolute;left:120px;top:620px;width:1680px;height:220px">
+  <div class="k-h2 k-c-pink" style="left:0;top:0;font-size:32px">heap</div>
+  <div class="hb" style="left:0;top:60px;width:360px">livre</div>
+  <div id="@blk" class="hb" style="left:360px;top:60px;width:340px;border-color:#4FD6EE;color:#4FD6EE;background:#0E2530">bloco alocado</div>
+  <div class="hb" style="left:700px;top:60px;width:360px;background:#182238;color:#EEF1F8">em uso</div>
+  <div class="hb" style="left:1060px;top:60px;width:620px">livre</div>
+  <div class="k-body" style="left:0;top:160px;font-size:24px"><b class="k-c-green">alocar</b>(tamanho) → ponteiro para um bloco · <b class="k-c-pink">liberar</b>(ponteiro) → bloco volta a ser livre</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.pop(tl, [$("o1"), $("o2")], C.a + 1.0, { s: 0.4 });
+K.rise(tl, $("cl"), C.b);
+K.rise(tl, $("sc"), C.b + 1.0);
+K.draw(tl, $("a3"), C.b + 2.0, { d: 0.5 });
+K.draw(tl, [$("a1"), $("a2")], C.b + 4.0, { d: 0.5, s: 0.3 });
+K.wipe(tl, $("inh"), C.c + 0.6);
+K.fade(tl, $("heap"), C.d);
+tl.set($("blk"), { opacity: 0 }, 0);
+tl.to($("blk"), { opacity: 1, duration: 0.3 }, C.d + 3.4);
+tl.to($("blk"), { opacity: 0.25, duration: 0.3 }, C.d + 5.0);
+</script>

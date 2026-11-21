@@ -1,0 +1,47 @@
+<!--sfx: b:click-soft@1.0*0.3, d:pop@0.6*0.25-->
+<style>
+  .ml { position: absolute; left: 0; width: 440px; height: 76px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-size: 26px; line-height: 72px; text-align: center; color: #EEF1F8; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Acesso por <em>deslocamento</em></div>
+<div id="@p1" class="k-card" style="left:120px;top:240px;width:880px;height:110px">
+  <div class="k-body" style="left:28px;top:32px;font-size:28px">registros de um mesmo procedimento: <b class="k-c-yel">mesmo formato</b></div>
+</div>
+<div id="@p2" class="k-card" style="left:120px;top:380px;width:880px;height:140px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:24px;font-size:27px;line-height:1.45">cada parâmetro e cada local fica num<br><b class="k-c-yel">deslocamento fixo</b> em relação ao fp</div>
+</div>
+<div id="@p3" class="k-card" style="left:120px;top:550px;width:880px;height:110px;border-color:#7FE39A">
+  <div class="k-body" style="left:28px;top:32px;font-size:28px">endereço = <b class="k-c-green">fp + deslocamento</b></div>
+</div>
+<div id="@p4" class="k-card" style="left:120px;top:690px;width:880px;height:140px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:24px;font-size:27px;line-height:1.45">vetores: índice × <b class="k-c-violet">tamanho do elemento</b><br>(o fator de escala)</div>
+</div>
+<div id="@rec" style="position:absolute;left:1220px;top:240px;width:600px;height:500px">
+  <div class="ml k-c-cyan" style="top:0">parâmetro</div>
+  <div class="ml" style="top:76px;border-color:#FFD24A">controle</div>
+  <div class="ml" style="top:152px">endereço de retorno</div>
+  <div class="ml k-c-green" style="top:228px">variável local</div>
+  <div class="ml k-c-violet" style="top:304px;height:120px;line-height:116px">vetor local</div>
+  <div id="@fp" class="k-code k-c-yel" style="left:-120px;top:130px;font-size:28px">fp →</div>
+  <svg width="600" height="500" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@up" d="M 470 150 L 470 30 M 458 44 L 470 30 L 482 44" stroke="#4FD6EE" stroke-width="4" fill="none"/>
+    <path id="@dn" d="M 520 150 L 520 260 M 508 246 L 520 260 L 532 246" stroke="#7FE39A" stroke-width="4" fill="none"/>
+  </svg>
+  <div id="@lu" class="k-anno k-c-cyan" style="left:350px;top:-50px">+ deslocamento</div>
+  <div id="@ld" class="k-anno k-c-green" style="left:460px;top:270px">− desl.</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("p1"), C.a + 0.8);
+var rc = Array.prototype.slice.call($("rec").querySelectorAll(".ml"));
+K.fade(tl, rc, C.a + 1.6, { s: 0.15 });
+tl.set([$("fp"), $("up"), $("dn"), $("lu"), $("ld")], { opacity: 0 }, 0);
+K.rise(tl, $("p2"), C.b);
+tl.to($("fp"), { opacity: 1, duration: 0.3 }, C.b + 0.6);
+K.draw(tl, $("up"), C.b + 1.6, { d: 0.4 });
+tl.to($("lu"), { opacity: 1, duration: 0.3 }, C.b + 1.8);
+K.draw(tl, $("dn"), C.b + 2.6, { d: 0.4 });
+tl.to($("ld"), { opacity: 1, duration: 0.3 }, C.b + 2.8);
+K.rise(tl, $("p3"), C.c);
+K.rise(tl, $("p4"), C.d);
+</script>

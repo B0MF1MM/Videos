@@ -1,0 +1,39 @@
+<!--sfx: c:whoosh-short@1.0*0.2, d:pop@0.6*0.2-->
+<style>
+  .an { position: absolute; padding: 10px 20px; border-radius: 12px; border: 2px solid #4FD6EE; background: #0D1322; font-family: "DM Mono", monospace; font-size: 28px; color: #4FD6EE; white-space: nowrap; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Grafo de <em>dependências</em></div>
+<div id="@r1" class="k-card" style="left:120px;top:240px;width:760px;height:220px">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px;line-height:1.5">cada equação vira uma <b>regra de cálculo</b><br>os valores usados precisam <b class="k-c-pink">existir antes</b><br>→ restrições de ordem</div>
+</div>
+<div id="@r2" class="k-card" style="left:120px;top:500px;width:760px;height:180px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px;line-height:1.5">um <b class="k-c-yel">nó</b> por atributo<br>um <b class="k-c-yel">arco</b> do atributo usado → atributo dependente</div>
+</div>
+<div id="@r3" class="k-card" style="left:120px;top:710px;width:760px;height:130px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:24px;font-size:26px;line-height:1.4">grafo da cadeia = <b class="k-c-violet">união</b> dos grafos<br>das regras de cada nó da árvore</div>
+</div>
+<div id="@g" style="position:absolute;left:980px;top:260px;width:840px;height:560px">
+  <div id="@a" class="an" style="left:40px;top:40px">A.a</div>
+  <div id="@b" class="an" style="left:40px;top:220px">B.b</div>
+  <div id="@c" class="an" style="left:40px;top:400px">C.c</div>
+  <div id="@d" class="an" style="left:380px;top:130px;border-color:#FFD24A;color:#FFD24A">D.d</div>
+  <div id="@e" class="an" style="left:640px;top:300px;border-color:#7FE39A;color:#7FE39A">E.e</div>
+  <svg width="840" height="560" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@ad" d="M 150 70 L 370 150 M 352 138 L 370 150 L 350 162" stroke="#FFD24A" stroke-width="4" fill="none"/>
+    <path id="@bd" d="M 150 245 L 370 170 M 350 164 L 370 170 L 356 186" stroke="#FFD24A" stroke-width="4" fill="none"/>
+    <path id="@de" d="M 470 175 L 630 310 M 612 306 L 630 310 L 624 292" stroke="#7FE39A" stroke-width="4" fill="none"/>
+    <path id="@ce" d="M 150 425 L 630 335 M 610 328 L 630 335 L 614 348" stroke="#7FE39A" stroke-width="4" fill="none"/>
+  </svg>
+  <div id="@lab" class="k-anno k-mute" style="left:20px;top:480px">D depende de A e B · E depende de D e C</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("r1"), C.a + 0.8);
+K.fade(tl, $("g"), C.b);
+tl.set([$("ad"), $("bd"), $("de"), $("ce"), $("lab")], { opacity: 0 }, 0);
+K.rise(tl, $("r2"), C.c);
+K.draw(tl, [$("ad"), $("bd"), $("de"), $("ce")], C.c + 1.0, { d: 0.4, s: 0.5 });
+tl.to($("lab"), { opacity: 1, duration: 0.3 }, C.c + 3.2);
+K.rise(tl, $("r3"), C.d);
+</script>

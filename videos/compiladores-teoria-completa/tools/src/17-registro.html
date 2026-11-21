@@ -1,0 +1,32 @@
+<!--sfx: b:click-soft@0.6*0.3, c:pop@0.4*0.25, d:click-soft@0.6*0.3-->
+<style>
+  .ra { position: absolute; left: 0; width: 560px; height: 92px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px; line-height: 86px; padding-left: 28px; }
+  .rg { position: absolute; width: 400px; height: 96px; border-radius: 14px; border: 3px solid #2A3656; background: #182238; }
+  .rg b { position: absolute; left: 20px; top: 20px; font-family: "DM Mono", monospace; font-weight: 400; font-size: 40px; }
+  .rg span { position: absolute; left: 110px; top: 16px; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; color: #EEF1F8; line-height: 1.35; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Registro de <em>ativação</em></div>
+<div id="@def" class="k-body" style="left:120px;top:216px;font-size:28px">memória dos dados locais de um procedimento quando ele é ativado</div>
+<div id="@rec" style="position:absolute;left:120px;top:290px;width:560px;height:380px;border:3px solid #FFD24A;border-radius:14px;overflow:hidden">
+  <div id="@s1" class="ra k-c-cyan" style="top:0">argumentos</div>
+  <div id="@s2" class="ra k-c-yel" style="top:94px;font-size:26px">controle · endereço de retorno</div>
+  <div id="@s3" class="ra k-c-green" style="top:188px">dados locais</div>
+  <div id="@s4" class="ra k-c-violet" style="top:282px">temporários</div>
+</div>
+<div id="@fr" class="k-chip k-c-cyan" style="left:120px;top:700px;font-size:28px;background:#0D1322">na pilha = quadro de pilha</div>
+<div id="@regs" style="position:absolute;left:820px;top:290px;width:1000px;height:400px">
+  <div class="rg" style="left:0;top:0;border-color:#B49BFF"><b class="k-c-violet">pc</b><span>contador de<br>programa</span></div>
+  <div class="rg" style="left:440px;top:0;border-color:#4FD6EE"><b class="k-c-cyan">sp</b><span>ponteiro de<br>pilha</span></div>
+  <div class="rg" style="left:0;top:130px;border-color:#FFD24A"><b class="k-c-yel">fp</b><span>ponteiro de quadro<br>→ registro atual</span></div>
+  <div class="rg" style="left:440px;top:130px;border-color:#7FE39A"><b class="k-c-green">ap</b><span>ponteiro de<br>argumentos</span></div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("def"), C.a + 1.0);
+K.fade(tl, $("rec"), C.b);
+K.slide(tl, [$("s1"), $("s2"), $("s3"), $("s4")], C.b + 0.4, { s: 1.4, x: -60 });
+K.pop(tl, $("fr"), C.c + 0.4);
+var rg = Array.prototype.slice.call($("regs").children);
+K.rise(tl, rg, C.d + 0.6, { s: 1.4 });
+</script>

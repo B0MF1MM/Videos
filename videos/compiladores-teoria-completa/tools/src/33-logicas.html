@@ -1,0 +1,34 @@
+<!--sfx: b:whoosh-short@2.0*0.2, c:pop@0.6*0.2, d:pop@0.6*0.2-->
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:58px">Expressões <em>lógicas</em></div>
+<div id="@bin" style="position:absolute;left:120px;top:240px;width:1680px;height:130px">
+  <div class="k-card" style="left:0;top:0;width:500px;height:120px;border-color:#FF6F9C"><div class="k-h2" style="left:28px;top:34px;font-size:40px">falso = <span class="k-c-pink">0</span></div></div>
+  <div class="k-card" style="left:540px;top:0;width:560px;height:120px;border-color:#7FE39A"><div class="k-h2" style="left:28px;top:34px;font-size:40px">verdadeiro = <span class="k-c-green">1</span></div></div>
+</div>
+<div id="@sc" class="k-card" style="left:120px;top:400px;width:1680px;height:170px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:20px;font-size:32px">curto-circuito</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:26px">o segundo operando só é avaliado se for necessário</div>
+  <div id="@op1" class="k-chip k-c-cyan" style="left:1100px;top:60px;font-size:28px">1º operando</div>
+  <div id="@op2" class="k-chip k-mute" style="left:1360px;top:60px;font-size:28px">2º operando</div>
+</div>
+<div id="@and" class="k-card" style="left:120px;top:600px;width:820px;height:220px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:20px;font-size:34px">E lógico</div>
+  <div class="k-body" style="left:28px;top:84px;font-size:26px;line-height:1.5">se o 1º for verdadeiro → resultado é o 2º<br>senão → <b class="k-c-pink">falso</b></div>
+</div>
+<div id="@or" class="k-card" style="left:980px;top:600px;width:820px;height:220px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:28px;top:20px;font-size:34px">OU lógico</div>
+  <div class="k-body" style="left:28px;top:84px;font-size:26px;line-height:1.5">se o 1º for verdadeiro → <b class="k-c-green">verdadeiro</b><br>senão → resultado é o 2º</div>
+  <div id="@jmp" class="k-body k-mute" style="left:28px;top:170px;font-size:22px">→ código com saltos, como nos condicionais</div>
+</div>
+
+<script>
+var bn = Array.prototype.slice.call($("bin").children);
+K.rise(tl, $("t"), C.a);
+K.pop(tl, bn, C.a + 1.6, { s: 0.8 });
+K.rise(tl, $("sc"), C.b);
+K.pop(tl, $("op1"), C.b + 2.0);
+K.pop(tl, $("op2"), C.b + 2.6);
+tl.to($("op2"), { opacity: 0.3, duration: 0.4 }, C.b + 3.6);
+K.rise(tl, $("and"), C.c);
+K.rise(tl, $("or"), C.d);
+K.fade(tl, $("jmp"), C.d + 5.2);
+</script>

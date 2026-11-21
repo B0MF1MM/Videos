@@ -1,0 +1,55 @@
+<template id="23-dinamico-template">
+  <div id="root" data-composition-id="23-dinamico" data-start="0" data-duration="26.521" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ml { position: absolute; left: 0; width: 420px; height: 80px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-size: 24px; line-height: 76px; text-align: center; color: #EEF1F8; }
+</style>
+    <div id="s23-dinamico-bg" class="clip k-scene k-bg" data-start="0" data-duration="26.521" data-track-index="0"></div>
+    <div id="s23-dinamico-stage" class="clip k-scene" data-start="0" data-duration="26.521" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s23-dinamico-cam" class="k-cam">
+<div id="s23-dinamico-t" class="k-title" style="left:120px;top:124px;font-size:60px">Ambiente <em>totalmente dinâmico</em></div>
+<div id="s23-dinamico-lim" class="k-body" style="left:120px;top:216px;font-size:28px">a pilha é o mais comum nas linguagens imperativas… mas tem um limite</div>
+<div id="s23-dinamico-stk" style="position:absolute;left:120px;top:300px;width:900px;height:280px">
+  <div class="ml" style="top:0">chamador · guarda a referência</div>
+  <div id="s23-dinamico-rp" class="ml k-c-cyan" style="top:80px;border-color:#4FD6EE">procedimento · variável local</div>
+  <div id="s23-dinamico-gh" class="ml k-mute" style="top:80px;background:#0F1628;border-style:dashed">registro já retirado</div>
+  <svg width="900" height="280" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="s23-dinamico-ptr" d="M 424 40 C 520 50, 520 110, 424 120 M 440 106 L 424 120 L 442 130" stroke="#FFD24A" stroke-width="4" fill="none"/>
+  </svg>
+  <div id="s23-dinamico-inv" class="k-anno k-c-pink" style="left:520px;top:90px">referência inválida</div>
+</div>
+<div id="s23-dinamico-ling" class="k-card" style="left:120px;top:600px;width:820px;height:230px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:32px">LISP, ML…</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:25px;line-height:1.5">permitem esse uso → ambiente totalmente dinâmico<br>registro liberado só quando <b>não há mais referências</b></div>
+</div>
+<div id="s23-dinamico-gc" class="k-card" style="left:980px;top:600px;width:820px;height:230px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:22px;font-size:32px">coleta de lixo</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:25px;line-height:1.5">acompanha as referências durante a execução<br>e libera a memória inacessível<br><span class="k-mute">bem mais complexo que a pilha</span></div>
+</div>
+      </div>
+    </div>
+    <div id="s23-dinamico-chrome" class="clip k-scene" data-start="0" data-duration="26.521" data-track-index="2">
+      <div id="s23-dinamico-tag" class="k-tag">COMPILADORES · <b>AMBIENTES DE EXECUÇÃO</b></div>
+      <div id="s23-dinamico-num" class="k-num">23 / 37</div>
+      <div id="s23-dinamico-progbar" class="k-prog"><i id="s23-dinamico-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.749, "c": 11.212, "d": 17.286}, D = 26.521;
+        var S = K.scene("23-dinamico", D, 37), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.wipe(tl, $("lim"), C.a + 1.0);
+        K.fade(tl, $("stk"), C.b);
+        tl.set([$("gh"), $("ptr"), $("inv")], { opacity: 0 }, 0);
+        K.draw(tl, $("ptr"), C.b + 1.0, { d: 0.5 });
+        tl.to($("rp"), { opacity: 0, x: 40, duration: 0.4 }, C.b + 3.6);
+        tl.to($("gh"), { opacity: 1, duration: 0.3 }, C.b + 3.8);
+        tl.to($("inv"), { opacity: 1, duration: 0.3 }, C.b + 4.2);
+        K.rise(tl, $("ling"), C.c);
+        K.rise(tl, $("gc"), C.d);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,42 @@
+<!--sfx: c:pop@0.4*0.2, d:pop@0.6*0.2, e:pop@0.6*0.2-->
+<style>
+  .mb { position: absolute; height: 54px; border-radius: 8px; font-family: "DM Mono", monospace; font-size: 20px; line-height: 50px; text-align: center; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Tipos de <em>dados</em></div>
+<div id="@def" class="k-card" style="left:120px;top:230px;width:820px;height:130px;border-color:#4FD6EE">
+  <div class="k-body" style="left:28px;top:22px;font-size:28px;line-height:1.45">tipo = <b class="k-c-cyan">conjunto de valores</b><br>+ <b class="k-c-yel">operações</b> sobre esses valores</div>
+</div>
+<div id="@st" class="k-card" style="left:980px;top:230px;width:820px;height:130px;border-color:#7FE39A">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45">informação estática de tipos → o compilador sabe<br>a memória de cada variável e como acessá-la</div>
+</div>
+<div id="@simp" style="position:absolute;left:120px;top:390px;width:1680px;height:70px">
+  <div class="k-body k-mute" style="left:0;top:16px;font-size:24px">simples:</div>
+  <div class="k-chip k-c-cyan" style="left:120px;top:6px;font-size:24px">inteiro</div><div class="k-chip k-c-cyan" style="left:270px;top:6px;font-size:24px">real</div><div class="k-chip k-c-cyan" style="left:390px;top:6px;font-size:24px">caractere</div><div class="k-chip k-c-cyan" style="left:570px;top:6px;font-size:24px">booleano</div>
+  <div class="k-chip k-c-violet" style="left:750px;top:6px;font-size:24px">intervalo</div><div class="k-chip k-c-violet" style="left:930px;top:6px;font-size:24px">enumerado</div>
+</div>
+<div id="@cons" style="position:absolute;left:120px;top:490px;width:1680px;height:220px">
+  <div id="@c1" class="k-card" style="left:0;top:0;width:400px;height:210px;border-color:#4FD6EE"><div class="k-h2 k-c-cyan" style="left:22px;top:18px;font-size:30px">matriz</div><div class="k-body" style="left:22px;top:66px;font-size:22px">memória contígua</div>
+    <div class="mb" style="left:22px;top:120px;width:70px;border:2px solid #4FD6EE;color:#4FD6EE">0</div><div class="mb" style="left:96px;top:120px;width:70px;border:2px solid #4FD6EE;color:#4FD6EE">1</div><div class="mb" style="left:170px;top:120px;width:70px;border:2px solid #4FD6EE;color:#4FD6EE">2</div><div class="mb" style="left:244px;top:120px;width:70px;border:2px solid #4FD6EE;color:#4FD6EE">3</div></div>
+  <div id="@c2" class="k-card" style="left:426px;top:0;width:400px;height:210px;border-color:#7FE39A"><div class="k-h2 k-c-green" style="left:22px;top:18px;font-size:30px">registro</div><div class="k-body" style="left:22px;top:66px;font-size:22px">campos em sequência</div>
+    <div class="mb" style="left:22px;top:120px;width:200px;border:2px solid #7FE39A;color:#7FE39A">campo 1</div><div class="mb" style="left:226px;top:120px;width:140px;border:2px solid #4FD6EE;color:#4FD6EE">campo 2</div></div>
+  <div id="@c3" class="k-card" style="left:852px;top:0;width:400px;height:210px;border-color:#FF6F9C"><div class="k-h2 k-c-pink" style="left:22px;top:18px;font-size:30px">união</div><div class="k-body" style="left:22px;top:66px;font-size:22px">campos sobrepostos</div>
+    <div class="mb" style="left:22px;top:120px;width:240px;border:2px solid #FF6F9C;color:#FF6F9C;background:rgba(255,111,156,0.15)"></div><div class="mb" style="left:22px;top:120px;width:140px;border:2px solid #4FD6EE;color:#4FD6EE;background:rgba(79,214,238,0.25)">sobrepõe</div></div>
+  <div id="@c4" class="k-card" style="left:1278px;top:0;width:402px;height:210px;border-color:#B49BFF"><div class="k-h2 k-c-violet" style="left:22px;top:18px;font-size:30px">ponteiro</div><div class="k-body" style="left:22px;top:66px;font-size:22px;line-height:1.4">guarda um endereço<br>acesso = derreferenciação</div>
+    <div class="mb" style="left:22px;top:140px;width:120px;border:2px solid #B49BFF;color:#B49BFF">end.</div><div class="k-code k-c-violet" style="left:156px;top:146px;font-size:26px">→</div><div class="mb" style="left:200px;top:140px;width:120px;border:2px solid #2A3656;color:#EEF1F8">valor</div></div>
+</div>
+<div id="@td" class="k-card" style="left:120px;top:740px;width:1680px;height:110px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:20px;font-size:26px;line-height:1.45"><b class="k-c-yel">declarações de tipo</b>: dão nome a expressões de tipo · <b class="k-c-yel">tipos recursivos</b>: usam o próprio nome<br>e permitem estruturas como listas e árvores</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("def"), C.a + 0.8);
+K.rise(tl, $("st"), C.b);
+var sp = Array.prototype.slice.call($("simp").children);
+K.fade(tl, sp, C.c + 0.4, { s: 0.35 });
+K.rise(tl, $("c1"), C.d + 1.6);
+K.rise(tl, $("c2"), C.d + 3.6);
+K.rise(tl, $("c3"), C.d + 5.6);
+K.rise(tl, $("c4"), C.d + 7.6);
+K.rise(tl, $("td"), C.e);
+</script>

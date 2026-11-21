@@ -1,0 +1,58 @@
+<template id="35-tm-template">
+  <div id="root" data-composition-id="35-tm" data-start="0" data-duration="30.032" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .rg { position: absolute; width: 110px; height: 70px; border-radius: 10px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 22px; line-height: 66px; text-align: center; color: #8C97B5; }
+  .cy { position: absolute; padding: 12px 22px; border-radius: 999px; border: 2px solid currentColor; font-family: "Hanken Grotesk", sans-serif; font-size: 24px; white-space: nowrap; }
+</style>
+    <div id="s35-tm-bg" class="clip k-scene k-bg" data-start="0" data-duration="30.032" data-track-index="0"></div>
+    <div id="s35-tm-stage" class="clip k-scene" data-start="0" data-duration="30.032" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s35-tm-cam" class="k-cam">
+<div id="s35-tm-t" class="k-title" style="left:120px;top:124px;font-size:58px">A máquina <em>TM</em></div>
+<div id="s35-tm-mems" style="position:absolute;left:120px;top:240px;width:1680px;height:260px">
+  <div class="k-card" style="left:0;top:0;width:440px;height:240px;border-color:#B49BFF"><div class="k-h2 k-c-violet" style="left:24px;top:20px;font-size:30px">memória de instruções</div><div class="k-body" style="left:24px;top:80px;font-size:24px">somente leitura</div></div>
+  <div class="k-card" style="left:470px;top:0;width:440px;height:240px;border-color:#7FE39A"><div class="k-h2 k-c-green" style="left:24px;top:20px;font-size:30px">memória de dados</div></div>
+  <div class="k-card" style="left:940px;top:0;width:740px;height:240px;border-color:#4FD6EE"><div class="k-h2 k-c-cyan" style="left:24px;top:20px;font-size:30px">8 registradores</div>
+    <div class="rg" style="left:24px;top:80px">0</div><div class="rg" style="left:144px;top:80px">1</div><div class="rg" style="left:264px;top:80px">2</div><div class="rg" style="left:384px;top:80px">3</div>
+    <div class="rg" style="left:24px;top:156px">4</div><div class="rg" style="left:144px;top:156px">5</div><div class="rg" style="left:264px;top:156px">6</div><div id="s35-tm-pc" class="rg" style="left:384px;top:156px;border-color:#FFD24A;color:#FFD24A">7 · PC</div>
+  </div>
+</div>
+<div id="s35-tm-cyc" style="position:absolute;left:120px;top:530px;width:1680px;height:80px">
+  <div class="cy k-c-cyan" style="left:0;top:0">busca a instrução</div>
+  <div class="cy k-c-yel" style="left:300px;top:0">incrementa o PC</div>
+  <div class="cy k-c-green" style="left:570px;top:0">executa</div>
+  <div class="cy k-c-pink" style="left:760px;top:0">… até parada ou erro</div>
+</div>
+<div id="s35-tm-ro" class="k-card" style="left:120px;top:630px;width:820px;height:210px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:20px;font-size:30px">formato RO</div>
+  <div class="k-body" style="left:28px;top:74px;font-size:24px;line-height:1.45">só registradores<br>(aritmética, entrada e saída)</div>
+</div>
+<div id="s35-tm-rm" class="k-card" style="left:980px;top:630px;width:820px;height:210px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:20px;font-size:30px">formato RM</div>
+  <div class="k-body" style="left:28px;top:74px;font-size:24px;line-height:1.45">registrador + memória<br>endereço = deslocamento + registrador<br><span class="k-c-yel">saltos relativos ao PC (já incrementado)</span></div>
+</div>
+      </div>
+    </div>
+    <div id="s35-tm-chrome" class="clip k-scene" data-start="0" data-duration="30.032" data-track-index="2">
+      <div id="s35-tm-tag" class="k-tag">COMPILADORES · <b>GERAÇÃO DE CÓDIGO</b></div>
+      <div id="s35-tm-num" class="k-num">35 / 37</div>
+      <div id="s35-tm-progbar" class="k-prog"><i id="s35-tm-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.167, "c": 10.738, "d": 16.639, "e": 24.325}, D = 30.032;
+        var S = K.scene("35-tm", D, 37), tl = S.tl, $ = S.$;
+        var ms = Array.prototype.slice.call($("mems").children);
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, ms, C.b, { s: 1.4 });
+        K.pulse(tl, $("pc"), C.b + 5.6, { k: 1.15 });
+        var cy = Array.prototype.slice.call($("cyc").children);
+        K.slide(tl, cy, C.c, { s: 1.0 });
+        K.rise(tl, $("ro"), C.d);
+        K.rise(tl, $("rm"), C.d + 2.8);
+      })();
+    </script>
+  </div>
+</template>

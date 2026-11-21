@@ -1,0 +1,43 @@
+<!--sfx: a:chime@0.2*0.25, d:pop@0.6*0.2, e:pop@1.0*0.25-->
+<style>
+  .st { position: absolute; top: 0; height: 120px; border-radius: 16px; border: 3px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; line-height: 114px; text-align: center; color: #EEF1F8; }
+</style>
+<div id="@band" class="k-kicker" style="left:120px;top:124px;font-size:26px;color:#7FE39A">PARTE 3</div>
+<div id="@t" class="k-title" style="left:120px;top:160px;font-size:76px">Geração de <em>código</em></div>
+<div id="@dep" style="position:absolute;left:120px;top:300px;width:1680px;height:80px">
+  <div class="k-body k-mute" style="left:0;top:14px;font-size:26px">depende de:</div>
+  <div class="k-chip k-c-cyan" style="left:170px;top:6px;font-size:26px">linguagem fonte</div>
+  <div class="k-chip k-c-violet" style="left:440px;top:6px;font-size:26px">arquitetura alvo</div>
+  <div class="k-chip k-c-yel" style="left:720px;top:6px;font-size:26px">ambiente de execução</div>
+  <div class="k-chip k-c-pink" style="left:1070px;top:6px;font-size:26px">sistema operacional</div>
+</div>
+<div id="@opt" class="k-chip k-c-green" style="left:120px;top:400px;font-size:26px;background:#13241A">busca otimizar velocidade e/ou tamanho</div>
+<div id="@steps" class="k-body" style="left:120px;top:480px;font-size:28px">complexa → dividida em <b>passos</b>, com estruturas de dados intermediárias</div>
+<div id="@flow" style="position:absolute;left:120px;top:560px;width:1680px;height:140px">
+  <div class="st" style="left:0;width:440px;border-color:#4FD6EE">árvore sintática</div>
+  <div id="@ir" class="st" style="left:620px;width:440px;border-color:#FFD24A;color:#FFD24A">código intermediário</div>
+  <div class="st" style="left:1240px;width:440px;border-color:#B49BFF">código alvo</div>
+  <svg width="1680" height="140" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@f1" d="M 446 60 L 610 60 M 592 48 L 610 60 L 592 72" stroke="#FFD24A" stroke-width="4" fill="none"/>
+    <path id="@f2" d="M 1066 60 L 1230 60 M 1212 48 L 1230 60 L 1212 72" stroke="#FFD24A" stroke-width="4" fill="none"/>
+  </svg>
+</div>
+<div id="@n1" class="k-anno k-mute" style="left:120px;top:720px">representação intermediária (IR)… mas não parece com o alvo</div>
+<div id="@n2" class="k-anno k-c-yel" style="left:740px;top:780px">parecido com o alvo</div>
+<div id="@n3" class="k-chip k-c-violet" style="left:1240px;top:780px;font-size:24px">facilita trocar de máquina alvo</div>
+
+<script>
+K.fade(tl, $("band"), C.a);
+K.rise(tl, $("t"), C.a + 0.3);
+var dp = Array.prototype.slice.call($("dep").children);
+K.fade(tl, dp, C.a + 1.6, { s: 0.7 });
+K.pop(tl, $("opt"), C.b + 0.4);
+K.wipe(tl, $("steps"), C.c);
+K.fade(tl, $("flow"), C.d);
+tl.set([$("ir"), $("f1"), $("f2")], { opacity: 0 }, 0);
+K.wipe(tl, $("n1"), C.d + 2.4);
+tl.to($("ir"), { opacity: 1, duration: 0.4 }, C.e + 0.6);
+K.draw(tl, [$("f1"), $("f2")], C.e + 0.8, { d: 0.4, s: 0.4 });
+K.wipe(tl, $("n2"), C.e + 1.4);
+K.pop(tl, $("n3"), C.e + 4.2);
+</script>
