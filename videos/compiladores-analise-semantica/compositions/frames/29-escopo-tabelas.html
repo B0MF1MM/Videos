@@ -1,0 +1,52 @@
+<template id="29-escopo-tabelas-template">
+  <div id="root" data-composition-id="29-escopo-tabelas" data-start="0" data-duration="21.337" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .tb { position: absolute; width: 420px; height: 240px; border-radius: 18px; background: #182238; border: 3px solid #2A3656; }
+  .tb .h { position: absolute; left: 22px; top: 16px; font-family: "DM Mono", monospace; font-size: 24px; color: #8C97B5; }
+  .tb .r { position: absolute; left: 22px; font-family: "DM Mono", monospace; font-size: 28px; color: #EEF1F8; }
+</style>
+    <div id="s29-escopo-tabelas-bg" class="clip k-scene k-bg" data-start="0" data-duration="21.337" data-track-index="0"></div>
+    <div id="s29-escopo-tabelas-stage" class="clip k-scene" data-start="0" data-duration="21.337" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s29-escopo-tabelas-cam" class="k-cam">
+<div id="s29-escopo-tabelas-t" class="k-title" style="left:120px;top:124px;font-size:60px">Uma tabela <em>por escopo</em></div>
+<div id="s29-escopo-tabelas-g" class="tb" style="left:120px;top:300px"><div class="h">global</div><div class="r" style="top:70px">i : int</div><div class="r" style="top:116px">j : int</div><div class="r" style="top:162px">f : função</div></div>
+<div id="s29-escopo-tabelas-f" class="tb" style="left:720px;top:300px;border-color:#FFD24A"><div class="h">f</div><div class="r" style="top:70px">tamanho : int</div><div class="r" style="top:116px">i : char</div><div class="r" style="top:162px">temp : char</div></div>
+<div id="s29-escopo-tabelas-b" class="tb" style="left:1320px;top:300px;border-color:#7FE39A"><div class="h">bloco interno</div><div class="r" style="top:70px">j : double</div></div>
+<svg class="k-svg">
+  <path id="s29-escopo-tabelas-l1" class="arrow" d="M 1316 420 L 1150 420 M 1168 406 L 1150 420 L 1168 434" stroke="#8C97B5" />
+  <path id="s29-escopo-tabelas-l2" class="arrow" d="M 716 420 L 550 420 M 568 406 L 550 420 L 568 434" stroke="#8C97B5" />
+</svg>
+<div id="s29-escopo-tabelas-q" class="k-chip k-c-cyan" style="left:1340px;top:590px;font-size:30px;background:#0D1322">procura "j"? acha aqui</div>
+<div id="s29-escopo-tabelas-q2" class="k-chip k-c-cyan" style="left:1060px;top:650px;font-size:30px;background:#0D1322">procura "i"? não está → sobe para f ✓</div>
+<div id="s29-escopo-tabelas-ptr" class="k-chip k-c-green" style="left:120px;top:590px;font-size:28px;background:#13241A">sair do escopo = mover o ponteiro (sem remover nada)</div>
+<div id="s29-escopo-tabelas-mac" class="k-macete" style="left:120px;top:730px;width:1680px;font-size:32px">Como procurar algo em casa: <u>seu quarto</u> → <u>a sala</u> → <u>a casa toda</u>.</div>
+      </div>
+    </div>
+    <div id="s29-escopo-tabelas-chrome" class="clip k-scene" data-start="0" data-duration="21.337" data-track-index="2">
+      <div id="s29-escopo-tabelas-tag" class="k-tag">COMPILADORES · <b>ESCOPO</b></div>
+      <div id="s29-escopo-tabelas-num" class="k-num">29 / 36</div>
+      <div id="s29-escopo-tabelas-progbar" class="k-prog"><i id="s29-escopo-tabelas-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.062, "c": 9.368, "d": 14.798}, D = 21.337;
+        var S = K.scene("29-escopo-tabelas", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, [$("g"), $("f"), $("b")], C.a + 1.0, { s: 0.5 });
+        K.draw(tl, [$("l1"), $("l2")], C.a + 2.8, { d: 0.4, s: 0.3 });
+        K.pop(tl, $("q"), C.b);
+        K.pop(tl, $("q2"), C.b + 1.8);
+        tl.to($("l1"), { stroke: "#4FD6EE", duration: 0.2 }, C.b + 1.8);
+        K.pulse(tl, $("f"), C.b + 2.4, { k: 1.04 });
+        K.out(tl, [$("q"), $("q2")], C.c);
+        tl.to($("b"), { opacity: 0.2, duration: 0.4 }, C.c + 1.6);
+        tl.to($("l1"), { opacity: 0.2, duration: 0.4 }, C.c + 1.6);
+        K.pop(tl, $("ptr"), C.c + 1.0);
+        K.macete(tl, $("mac"), C.d);
+      })();
+    </script>
+  </div>
+</template>

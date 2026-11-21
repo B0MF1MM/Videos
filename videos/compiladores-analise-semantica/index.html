@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0D1322; }
+      .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="815.072" data-width="1920" data-height="1080">
+      <div id="el-01-abertura" class="scene clip" data-composition-id="01-abertura" data-composition-src="compositions/frames/01-abertura.html" data-start="0.0" data-duration="14.433" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-02-onde" class="scene clip" data-composition-id="02-onde" data-composition-src="compositions/frames/02-onde.html" data-start="13.933" data-duration="20.201" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-03-tarefas" class="scene clip" data-composition-id="03-tarefas" data-composition-src="compositions/frames/03-tarefas.html" data-start="33.634" data-duration="20.124" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-04-atributos" class="scene clip" data-composition-id="04-atributos" data-composition-src="compositions/frames/04-atributos.html" data-start="53.258" data-duration="16.578" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-05-amarracao" class="scene clip" data-composition-id="05-amarracao" data-composition-src="compositions/frames/05-amarracao.html" data-start="69.336" data-duration="20.554" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-06-notacao" class="scene clip" data-composition-id="06-notacao" data-composition-src="compositions/frames/06-notacao.html" data-start="89.39" data-duration="26.222" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-07-numero-regras" class="scene clip" data-composition-id="07-numero-regras" data-composition-src="compositions/frames/07-numero-regras.html" data-start="115.112" data-duration="27.505" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-08-numero-arvore" class="scene clip" data-composition-id="08-numero-arvore" data-composition-src="compositions/frames/08-numero-arvore.html" data-start="142.117" data-duration="22.134" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-09-exp-regras" class="scene clip" data-composition-id="09-exp-regras" data-composition-src="compositions/frames/09-exp-regras.html" data-start="163.751" data-duration="23.16" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-10-exp-arvore" class="scene clip" data-composition-id="10-exp-arvore" data-composition-src="compositions/frames/10-exp-arvore.html" data-start="186.411" data-duration="22.453" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-11-decl-regras" class="scene clip" data-composition-id="11-decl-regras" data-composition-src="compositions/frames/11-decl-regras.html" data-start="208.364" data-duration="22.016" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-12-decl-arvore" class="scene clip" data-composition-id="12-decl-arvore" data-composition-src="compositions/frames/12-decl-arvore.html" data-start="229.88" data-duration="18.404" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-13-octal" class="scene clip" data-composition-id="13-octal" data-composition-src="compositions/frames/13-octal.html" data-start="247.784" data-duration="27.561" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-14-simplifica" class="scene clip" data-composition-id="14-simplifica" data-composition-src="compositions/frames/14-simplifica.html" data-start="274.845" data-duration="21.882" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-15-grafo" class="scene clip" data-composition-id="15-grafo" data-composition-src="compositions/frames/15-grafo.html" data-start="296.227" data-duration="22.147" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-16-grafo-decl" class="scene clip" data-composition-id="16-grafo-decl" data-composition-src="compositions/frames/16-grafo-decl.html" data-start="317.874" data-duration="16.425" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-17-topologica" class="scene clip" data-composition-id="17-topologica" data-composition-src="compositions/frames/17-topologica.html" data-start="333.799" data-duration="27.8" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-18-metodos" class="scene clip" data-composition-id="18-metodos" data-composition-src="compositions/frames/18-metodos.html" data-start="361.099" data-duration="19.979" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-19-sintetizado" class="scene clip" data-composition-id="19-sintetizado" data-composition-src="compositions/frames/19-sintetizado.html" data-start="380.578" data-duration="22.054" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-20-herdado" class="scene clip" data-composition-id="20-herdado" data-composition-src="compositions/frames/20-herdado.html" data-start="402.132" data-duration="19.983" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-21-avaltipo" class="scene clip" data-composition-id="21-avaltipo" data-composition-src="compositions/frames/21-avaltipo.html" data-start="421.615" data-duration="20.569" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-22-passadas" class="scene clip" data-composition-id="22-passadas" data-composition-src="compositions/frames/22-passadas.html" data-start="441.684" data-duration="38.074" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-23-teorema" class="scene clip" data-composition-id="23-teorema" data-composition-src="compositions/frames/23-teorema.html" data-start="479.258" data-duration="19.291" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-24-tabela" class="scene clip" data-composition-id="24-tabela" data-composition-src="compositions/frames/24-tabela.html" data-start="498.049" data-duration="20.454" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-25-estruturas" class="scene clip" data-composition-id="25-estruturas" data-composition-src="compositions/frames/25-estruturas.html" data-start="518.003" data-duration="32.345" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-26-hash" class="scene clip" data-composition-id="26-hash" data-composition-src="compositions/frames/26-hash.html" data-start="549.848" data-duration="20.429" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-27-declaracoes" class="scene clip" data-composition-id="27-declaracoes" data-composition-src="compositions/frames/27-declaracoes.html" data-start="569.777" data-duration="22.829" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-28-escopo" class="scene clip" data-composition-id="28-escopo" data-composition-src="compositions/frames/28-escopo.html" data-start="592.106" data-duration="27.272" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-29-escopo-tabelas" class="scene clip" data-composition-id="29-escopo-tabelas" data-composition-src="compositions/frames/29-escopo-tabelas.html" data-start="618.878" data-duration="21.337" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-30-tipos" class="scene clip" data-composition-id="30-tipos" data-composition-src="compositions/frames/30-tipos.html" data-start="639.715" data-duration="24.793" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-31-construtores" class="scene clip" data-composition-id="31-construtores" data-composition-src="compositions/frames/31-construtores.html" data-start="664.008" data-duration="29.555" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-32-typedef" class="scene clip" data-composition-id="32-typedef" data-composition-src="compositions/frames/32-typedef.html" data-start="693.063" data-duration="16.73" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-33-verificador" class="scene clip" data-composition-id="33-verificador" data-composition-src="compositions/frames/33-verificador.html" data-start="709.293" data-duration="28.523" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-34-coacao" class="scene clip" data-composition-id="34-coacao" data-composition-src="compositions/frames/34-coacao.html" data-start="737.316" data-duration="19.507" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-35-tiny" class="scene clip" data-composition-id="35-tiny" data-composition-src="compositions/frames/35-tiny.html" data-start="756.323" data-duration="29.162" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-36-cola" class="scene clip" data-composition-id="36-cola" data-composition-src="compositions/frames/36-cola.html" data-start="784.985" data-duration="30.087" data-track-index="1" data-track-kind="graphics"></div>
+      <audio id="el-01-abertura-voice" src="assets/voice/01.wav" data-start="0.0" data-duration="13.583" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-01-abertura-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="2.717" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-01-abertura-sfx-d-chime" src="assets/sfx/chime.mp3" data-start="9.581" data-duration="2.53" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-01-abertura-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="13.833" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-02-onde-voice" src="assets/voice/02.wav" data-start="13.933" data-duration="19.351" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-02-onde-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="25.912" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-02-onde-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="29.27" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-02-onde-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="33.534" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-03-tarefas-voice" src="assets/voice/03.wav" data-start="33.634" data-duration="19.274" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-03-tarefas-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="43.375" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-03-tarefas-sfx-d-chime" src="assets/sfx/chime.mp3" data-start="49.583" data-duration="2.53" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-03-tarefas-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="53.158" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-04-atributos-voice" src="assets/voice/04.wav" data-start="53.258" data-duration="15.728" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-04-atributos-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="59.477" data-duration="0.36" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-04-atributos-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="65.808" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-04-atributos-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="69.236" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-05-amarracao-voice" src="assets/voice/05.wav" data-start="69.336" data-duration="19.704" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-05-amarracao-sfx-a-click-soft" src="assets/sfx/click-soft.mp3" data-start="71.086" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-05-amarracao-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="77.211" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-05-amarracao-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="83.916" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-05-amarracao-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="89.29" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-06-notacao-voice" src="assets/voice/06.wav" data-start="89.39" data-duration="25.372" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-06-notacao-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="94.972" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-06-notacao-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="106.515" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-06-notacao-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="115.012" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-07-numero-regras-voice" src="assets/voice/07.wav" data-start="115.112" data-duration="26.655" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-07-numero-regras-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="130.516" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-07-numero-regras-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="135.779" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-07-numero-regras-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="142.017" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-08-numero-arvore-voice" src="assets/voice/08.wav" data-start="142.117" data-duration="21.284" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-08-numero-arvore-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="146.419" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-08-numero-arvore-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="151.44" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-08-numero-arvore-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="153.905" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-08-numero-arvore-sfx-e-chime" src="assets/sfx/chime.mp3" data-start="158.506" data-duration="2.53" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-08-numero-arvore-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="163.651" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-09-exp-regras-voice" src="assets/voice/09.wav" data-start="163.751" data-duration="22.31" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-09-exp-regras-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="177.993" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-09-exp-regras-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="186.311" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-10-exp-arvore-voice" src="assets/voice/10.wav" data-start="186.411" data-duration="21.603" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-10-exp-arvore-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="197.123" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-10-exp-arvore-sfx-d-chime" src="assets/sfx/chime.mp3" data-start="204.302" data-duration="2.53" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-10-exp-arvore-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="208.264" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-11-decl-regras-voice" src="assets/voice/11.wav" data-start="208.364" data-duration="21.166" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-11-decl-regras-sfx-a-chime" src="assets/sfx/chime.mp3" data-start="209.514" data-duration="2.53" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-11-decl-regras-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="229.78" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-12-decl-arvore-voice" src="assets/voice/12.wav" data-start="229.88" data-duration="17.554" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-12-decl-arvore-sfx-c-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="235.481" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-12-decl-arvore-sfx-d-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="238.194" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-12-decl-arvore-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="241.885" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-12-decl-arvore-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="247.684" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-13-octal-voice" src="assets/voice/13.wav" data-start="247.784" data-duration="26.711" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-13-octal-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="254.214" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-13-octal-sfx-e-click-soft" src="assets/sfx/click-soft.mp3" data-start="271.526" data-duration="0.36" data-track-index="12" data-volume="0.4"></audio>
+      <audio id="el-13-octal-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="274.745" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-14-simplifica-voice" src="assets/voice/14.wav" data-start="274.845" data-duration="21.032" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-14-simplifica-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="281.368" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-14-simplifica-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="292.647" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-14-simplifica-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="296.127" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-15-grafo-voice" src="assets/voice/15.wav" data-start="296.227" data-duration="21.297" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-15-grafo-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="304.608" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-15-grafo-sfx-d-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="309.133" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-15-grafo-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="317.774" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-16-grafo-decl-voice" src="assets/voice/16.wav" data-start="317.874" data-duration="15.575" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-16-grafo-decl-sfx-b-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="321.435" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-16-grafo-decl-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="331.339" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-16-grafo-decl-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="333.699" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-17-topologica-voice" src="assets/voice/17.wav" data-start="333.799" data-duration="26.95" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-17-topologica-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="339.854" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-17-topologica-sfx-e-chime" src="assets/sfx/chime.mp3" data-start="355.333" data-duration="2.53" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-17-topologica-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="360.999" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-18-metodos-voice" src="assets/voice/18.wav" data-start="361.099" data-duration="19.129" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-18-metodos-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="377.327" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-18-metodos-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="380.478" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-19-sintetizado-voice" src="assets/voice/19.wav" data-start="380.578" data-duration="21.204" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-19-sintetizado-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="388.995" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-19-sintetizado-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="393.89" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-19-sintetizado-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="402.032" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-20-herdado-voice" src="assets/voice/20.wav" data-start="402.132" data-duration="19.133" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-20-herdado-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="409.0" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-20-herdado-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="415.813" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-20-herdado-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="421.515" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-21-avaltipo-voice" src="assets/voice/21.wav" data-start="421.615" data-duration="19.719" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-21-avaltipo-sfx-b-click-soft" src="assets/sfx/click-soft.mp3" data-start="427.653" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-21-avaltipo-sfx-c-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="430.474" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-21-avaltipo-sfx-d-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="434.749" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-21-avaltipo-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="441.584" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-22-passadas-voice" src="assets/voice/22.wav" data-start="441.684" data-duration="37.224" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-22-passadas-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="444.374" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-22-passadas-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="459.623" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-22-passadas-sfx-e-click-soft" src="assets/sfx/click-soft.mp3" data-start="469.669" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-22-passadas-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="479.158" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-23-teorema-voice" src="assets/voice/23.wav" data-start="479.258" data-duration="18.441" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-23-teorema-sfx-a-chime" src="assets/sfx/chime.mp3" data-start="479.808" data-duration="2.53" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-23-teorema-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="493.671" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-23-teorema-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="497.949" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-24-tabela-voice" src="assets/voice/24.wav" data-start="498.049" data-duration="19.604" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-24-tabela-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="505.346" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-24-tabela-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="508.241" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-24-tabela-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="511.699" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-24-tabela-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="517.903" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-25-estruturas-voice" src="assets/voice/25.wav" data-start="518.003" data-duration="31.495" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-25-estruturas-sfx-c-chime" src="assets/sfx/chime.mp3" data-start="529.26" data-duration="2.53" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-25-estruturas-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="537.585" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-25-estruturas-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="545.084" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-25-estruturas-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="549.748" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-26-hash-voice" src="assets/voice/26.wav" data-start="549.848" data-duration="19.579" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-26-hash-sfx-b-click-soft" src="assets/sfx/click-soft.mp3" data-start="552.958" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-26-hash-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="555.374" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-26-hash-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="559.748" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-26-hash-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="563.526" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-26-hash-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="569.677" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-27-declaracoes-voice" src="assets/voice/27.wav" data-start="569.777" data-duration="21.979" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-27-declaracoes-sfx-a-pop" src="assets/sfx/pop.mp3" data-start="570.927" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-27-declaracoes-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="584.731" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-27-declaracoes-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="592.006" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-28-escopo-voice" src="assets/voice/28.wav" data-start="592.106" data-duration="26.422" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-28-escopo-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="604.76" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-28-escopo-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="609.96" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-28-escopo-sfx-e-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="616.039" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-28-escopo-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="618.778" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-29-escopo-tabelas-voice" src="assets/voice/29.wav" data-start="618.878" data-duration="20.487" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-29-escopo-tabelas-sfx-b-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="625.14" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-29-escopo-tabelas-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="633.676" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-29-escopo-tabelas-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="639.615" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-30-tipos-voice" src="assets/voice/30.wav" data-start="639.715" data-duration="23.943" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-30-tipos-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="655.881" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-30-tipos-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="659.249" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-30-tipos-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="663.908" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-31-construtores-voice" src="assets/voice/31.wav" data-start="664.008" data-duration="28.705" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-31-construtores-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="678.509" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-31-construtores-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="683.578" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-31-construtores-sfx-e-chime" src="assets/sfx/chime.mp3" data-start="685.835" data-duration="2.53" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-31-construtores-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="692.963" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-32-typedef-voice" src="assets/voice/32.wav" data-start="693.063" data-duration="15.88" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-32-typedef-sfx-c-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="705.954" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-32-typedef-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="709.193" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-33-verificador-voice" src="assets/voice/33.wav" data-start="709.293" data-duration="27.673" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-33-verificador-sfx-b-click-soft" src="assets/sfx/click-soft.mp3" data-start="712.921" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-33-verificador-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="718.893" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-33-verificador-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="725.039" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-33-verificador-sfx-e-click-soft" src="assets/sfx/click-soft.mp3" data-start="731.353" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-33-verificador-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="737.216" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-34-coacao-voice" src="assets/voice/34.wav" data-start="737.316" data-duration="18.657" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-34-coacao-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="752.232" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-34-coacao-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="756.223" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-35-tiny-voice" src="assets/voice/35.wav" data-start="756.323" data-duration="28.312" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-35-tiny-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="774.838" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-35-tiny-sfx-e-click-soft" src="assets/sfx/click-soft.mp3" data-start="780.761" data-duration="0.36" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-35-tiny-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="784.885" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-36-cola-voice" src="assets/voice/36.wav" data-start="784.985" data-duration="27.937" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-36-cola-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="786.544" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-36-cola-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="789.773" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-36-cola-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="793.895" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-36-cola-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="798.485" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-36-cola-sfx-f-pop" src="assets/sfx/pop.mp3" data-start="802.103" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-36-cola-sfx-g-pop" src="assets/sfx/pop.mp3" data-start="806.751" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-36-cola-sfx-h-chime" src="assets/sfx/chime.mp3" data-start="811.17" data-duration="2.53" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-bgm-0" src="assets/music/underscore.mp3" data-start="0.0" data-duration="235.0" data-track-index="11" data-volume="0.09"></audio>
+      <audio id="el-bgm-1" src="assets/music/underscore.mp3" data-start="234.5" data-duration="235.0" data-track-index="14" data-volume="0.09"></audio>
+      <audio id="el-bgm-2" src="assets/music/underscore.mp3" data-start="469.0" data-duration="235.0" data-track-index="11" data-volume="0.09"></audio>
+      <audio id="el-bgm-3" src="assets/music/underscore.mp3" data-start="703.5" data-duration="111.572" data-track-index="14" data-volume="0.09"></audio>
+      <div id="el-captions" class="scene clip" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="815.072" data-track-index="2" data-track-kind="captions"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        tl.to("#el-01-abertura", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 13.933);
+        tl.fromTo("#el-02-onde", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 13.933);
+        tl.to("#el-02-onde", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 33.634);
+        tl.fromTo("#el-03-tarefas", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 33.634);
+        tl.to("#el-03-tarefas", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 53.258);
+        tl.fromTo("#el-04-atributos", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 53.258);
+        tl.to("#el-04-atributos", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 69.336);
+        tl.fromTo("#el-05-amarracao", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 69.336);
+        tl.to("#el-05-amarracao", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 89.39);
+        tl.fromTo("#el-06-notacao", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 89.39);
+        tl.to("#el-06-notacao", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 115.112);
+        tl.fromTo("#el-07-numero-regras", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 115.112);
+        tl.to("#el-07-numero-regras", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 142.117);
+        tl.fromTo("#el-08-numero-arvore", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 142.117);
+        tl.to("#el-08-numero-arvore", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 163.751);
+        tl.fromTo("#el-09-exp-regras", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 163.751);
+        tl.to("#el-09-exp-regras", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 186.411);
+        tl.fromTo("#el-10-exp-arvore", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 186.411);
+        tl.to("#el-10-exp-arvore", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 208.364);
+        tl.fromTo("#el-11-decl-regras", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 208.364);
+        tl.to("#el-11-decl-regras", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 229.88);
+        tl.fromTo("#el-12-decl-arvore", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 229.88);
+        tl.to("#el-12-decl-arvore", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 247.784);
+        tl.fromTo("#el-13-octal", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 247.784);
+        tl.to("#el-13-octal", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 274.845);
+        tl.fromTo("#el-14-simplifica", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 274.845);
+        tl.to("#el-14-simplifica", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 296.227);
+        tl.fromTo("#el-15-grafo", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 296.227);
+        tl.to("#el-15-grafo", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 317.874);
+        tl.fromTo("#el-16-grafo-decl", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 317.874);
+        tl.to("#el-16-grafo-decl", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 333.799);
+        tl.fromTo("#el-17-topologica", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 333.799);
+        tl.to("#el-17-topologica", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 361.099);
+        tl.fromTo("#el-18-metodos", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 361.099);
+        tl.to("#el-18-metodos", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 380.578);
+        tl.fromTo("#el-19-sintetizado", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 380.578);
+        tl.to("#el-19-sintetizado", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 402.132);
+        tl.fromTo("#el-20-herdado", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 402.132);
+        tl.to("#el-20-herdado", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 421.615);
+        tl.fromTo("#el-21-avaltipo", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 421.615);
+        tl.to("#el-21-avaltipo", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 441.684);
+        tl.fromTo("#el-22-passadas", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 441.684);
+        tl.to("#el-22-passadas", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 479.258);
+        tl.fromTo("#el-23-teorema", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 479.258);
+        tl.to("#el-23-teorema", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 498.049);
+        tl.fromTo("#el-24-tabela", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 498.049);
+        tl.to("#el-24-tabela", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 518.003);
+        tl.fromTo("#el-25-estruturas", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 518.003);
+        tl.to("#el-25-estruturas", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 549.848);
+        tl.fromTo("#el-26-hash", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 549.848);
+        tl.to("#el-26-hash", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 569.777);
+        tl.fromTo("#el-27-declaracoes", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 569.777);
+        tl.to("#el-27-declaracoes", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 592.106);
+        tl.fromTo("#el-28-escopo", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 592.106);
+        tl.to("#el-28-escopo", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 618.878);
+        tl.fromTo("#el-29-escopo-tabelas", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 618.878);
+        tl.to("#el-29-escopo-tabelas", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 639.715);
+        tl.fromTo("#el-30-tipos", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 639.715);
+        tl.to("#el-30-tipos", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 664.008);
+        tl.fromTo("#el-31-construtores", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 664.008);
+        tl.to("#el-31-construtores", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 693.063);
+        tl.fromTo("#el-32-typedef", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 693.063);
+        tl.to("#el-32-typedef", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 709.293);
+        tl.fromTo("#el-33-verificador", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 709.293);
+        tl.to("#el-33-verificador", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 737.316);
+        tl.fromTo("#el-34-coacao", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 737.316);
+        tl.to("#el-34-coacao", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 756.323);
+        tl.fromTo("#el-35-tiny", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 756.323);
+        tl.to("#el-35-tiny", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 784.985);
+        tl.fromTo("#el-36-cola", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 784.985);
+        tl.to({}, { duration: 815.072 }, 0);
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>

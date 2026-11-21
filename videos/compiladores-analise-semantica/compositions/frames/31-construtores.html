@@ -1,0 +1,75 @@
+<template id="31-construtores-template">
+  <div id="root" data-composition-id="31-construtores" data-start="0" data-duration="29.555" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .mb { position: absolute; height: 70px; border-radius: 10px; font-family: "DM Mono", monospace; font-size: 26px; line-height: 66px; text-align: center; }
+</style>
+    <div id="s31-construtores-bg" class="clip k-scene k-bg" data-start="0" data-duration="29.555" data-track-index="0"></div>
+    <div id="s31-construtores-stage" class="clip k-scene" data-start="0" data-duration="29.555" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s31-construtores-cam" class="k-cam">
+<div id="s31-construtores-simp" style="position:absolute;left:120px;top:130px;width:1680px;height:90px">
+  <div class="k-body k-mute" style="left:0;top:22px;font-size:28px">simples:</div>
+  <div class="k-chip k-c-cyan" style="left:130px;top:14px;font-size:28px">int</div><div class="k-chip k-c-cyan" style="left:230px;top:14px;font-size:28px">double</div><div class="k-chip k-c-cyan" style="left:380px;top:14px;font-size:28px">char</div><div class="k-chip k-c-cyan" style="left:500px;top:14px;font-size:28px">bool</div>
+  <div class="k-chip k-c-violet" style="left:640px;top:14px;font-size:26px">intervalo 0..9</div><div class="k-chip k-c-violet" style="left:920px;top:14px;font-size:26px">enum {vermelho, verde, azul}</div>
+</div>
+<div id="s31-construtores-arr" class="k-card" style="left:120px;top:250px;width:1680px;height:130px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:18px;font-size:32px">matriz</div>
+  <div class="k-body" style="left:28px;top:70px;font-size:26px">contígua · memória = n × tamanho do componente</div>
+  <div id="s31-construtores-cells" style="position:absolute;left:880px;top:30px;width:760px;height:70px"></div>
+</div>
+<div id="s31-construtores-st" class="k-card" style="left:120px;top:410px;width:820px;height:300px;border-color:#7FE39A">
+  <div class="k-code k-c-green" style="left:28px;top:20px;font-size:30px">struct { double r; int i; }</div>
+  <div id="s31-construtores-sr" class="mb" style="left:28px;top:90px;width:480px;background:rgba(127,227,154,0.2);border:2px solid #7FE39A;color:#7FE39A">r · double · 8 B</div>
+  <div id="s31-construtores-si" class="mb" style="left:508px;top:90px;width:240px;background:rgba(79,214,238,0.2);border:2px solid #4FD6EE;color:#4FD6EE">i · int · 4 B</div>
+  <div id="s31-construtores-sl" class="k-h2" style="left:28px;top:190px;font-size:40px">8 + 4 = <span class="k-c-green">12 bytes</span></div>
+  <div class="k-body k-mute" style="left:340px;top:200px;font-size:24px">em sequência</div>
+</div>
+<div id="s31-construtores-un" class="k-card" style="left:980px;top:410px;width:820px;height:300px;border-color:#FF6F9C">
+  <div class="k-code k-c-pink" style="left:28px;top:20px;font-size:30px">union { double r; int i; }</div>
+  <div id="s31-construtores-ur" class="mb" style="left:28px;top:90px;width:480px;background:rgba(255,111,156,0.18);border:2px solid #FF6F9C;color:#FF6F9C">r · 8 B</div>
+  <div id="s31-construtores-ui" class="mb" style="left:28px;top:90px;width:240px;background:rgba(79,214,238,0.35);border:2px solid #4FD6EE;color:#4FD6EE">i · 4 B</div>
+  <div id="s31-construtores-ul" class="k-h2" style="left:28px;top:190px;font-size:40px">só o maior = <span class="k-c-pink">8 bytes</span></div>
+  <div class="k-body k-mute" style="left:520px;top:200px;font-size:24px">sobrepostos</div>
+</div>
+<div id="s31-construtores-mac" class="k-macete" style="left:120px;top:740px;width:820px;font-size:34px">struct <u>soma</u>, union pega o <u>maior</u>.</div>
+<div id="s31-construtores-ptr" class="k-card" style="left:980px;top:740px;width:820px;height:120px;border-color:#B49BFF">
+  <div class="k-body" style="left:28px;top:16px;font-size:26px"><b class="k-c-violet">ponteiro</b>: guarda um endereço (^integer, int *)</div>
+  <div class="k-body" style="left:28px;top:64px;font-size:26px">acessar o valor apontado = <b>derreferenciação</b></div>
+</div>
+      </div>
+    </div>
+    <div id="s31-construtores-chrome" class="clip k-scene" data-start="0" data-duration="29.555" data-track-index="2">
+      <div id="s31-construtores-tag" class="k-tag">COMPILADORES · <b>TIPOS</b></div>
+      <div id="s31-construtores-num" class="k-num">31 / 36</div>
+      <div id="s31-construtores-progbar" class="k-prog"><i id="s31-construtores-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 7.296, "c": 12.901, "d": 17.97, "e": 21.827}, D = 29.555;
+        var S = K.scene("31-construtores", D, 36), tl = S.tl, $ = S.$;
+        var cells = $("cells"), cs = [];
+        for (var i = 0; i < 6; i++) {
+          var c = document.createElement("div");
+          c.id = "s31-construtores-c" + i; c.className = "mb";
+          c.style.left = (i * 122) + "px"; c.style.top = "0px"; c.style.width = "116px";
+          c.style.border = "2px solid #4FD6EE"; c.style.color = "#4FD6EE"; c.textContent = "a[" + i + "]";
+          cells.appendChild(c); cs.push(c);
+        }
+        K.fade(tl, $("simp"), C.a);
+        K.rise(tl, $("arr"), C.b);
+        K.fade(tl, cs, C.b + 1.6, { s: 0.1 });
+        K.rise(tl, $("st"), C.c);
+        K.slide(tl, $("sr"), C.c + 1.6, { x: -40 });
+        K.slide(tl, $("si"), C.c + 2.4, { x: 40 });
+        K.pop(tl, $("sl"), C.c + 3.2);
+        K.rise(tl, $("un"), C.d);
+        K.fade(tl, [$("ur"), $("ui")], C.d + 1.6, { s: 0.6 });
+        K.pop(tl, $("ul"), C.d + 2.8);
+        K.macete(tl, $("mac"), C.e);
+        K.rise(tl, $("ptr"), C.e + 3.0);
+      })();
+    </script>
+  </div>
+</template>

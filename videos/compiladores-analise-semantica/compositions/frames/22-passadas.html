@@ -1,0 +1,60 @@
+<template id="22-passadas-template">
+  <div id="root" data-composition-id="22-passadas" data-start="0" data-duration="38.074" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s22-passadas-bg" class="clip k-scene k-bg" data-start="0" data-duration="38.074" data-track-index="0"></div>
+    <div id="s22-passadas-stage" class="clip k-scene" data-start="0" data-duration="38.074" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s22-passadas-cam" class="k-cam">
+<div id="s22-passadas-q" class="k-title" style="left:120px;top:124px;font-size:60px">Os dois juntos: <em>uma</em> ou <em>duas</em> passadas?</div>
+<div id="s22-passadas-one" class="k-card" style="left:120px;top:240px;width:820px;height:600px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:24px;font-size:40px">UMA passada</div>
+  <div class="k-body" style="left:30px;top:86px;font-size:27px;line-height:1.4">sintetizado depende do herdado,<br>mas o herdado <b>não</b> depende do sintetizado</div>
+  <div id="s22-passadas-oct" style="position:absolute;left:30px;top:220px;width:760px;height:360px">
+    <div class="k-code" style="left:0;top:0;font-size:56px">3 4 5 <span class="k-c-pink">o</span></div>
+    <svg width="760" height="360" style="position:absolute;left:0;top:0;overflow:visible">
+      <path id="s22-passadas-rl" d="M 250 90 C 200 140, 80 140, 30 90 M 48 100 L 30 90 L 40 72" stroke="#FF6F9C" stroke-width="5" fill="none"/>
+    </svg>
+    <div class="k-anno k-c-pink" style="left:300px;top:14px">visita da direita → esquerda</div>
+    <div class="k-body" style="left:0;top:180px;font-size:28px;line-height:1.5"><span class="k-c-pink">base ↓</span> em pré-ordem<br><span class="k-c-yel">val ↑</span> em pós-ordem<br>na <b>mesma</b> visita (AvalComBase)</div>
+  </div>
+</div>
+<div id="s22-passadas-two" class="k-card" style="left:980px;top:240px;width:820px;height:600px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:30px;top:24px;font-size:40px">DUAS passadas</div>
+  <div class="k-body" style="left:30px;top:86px;font-size:27px">o herdado depende do sintetizado</div>
+  <div id="s22-passadas-e1" class="k-code" style="left:30px;top:160px;font-size:40px">5/2/2.0 = <span class="k-c-green">1,25</span></div>
+  <div id="s22-passadas-e2" class="k-code" style="left:30px;top:220px;font-size:40px">5/2/2   = <span class="k-c-yel">1</span></div>
+  <div id="s22-passadas-pa" class="k-card" style="left:30px;top:310px;width:760px;height:120px;border-color:#4FD6EE">
+    <div class="k-body" style="left:22px;top:18px;font-size:26px"><b class="k-c-cyan">1ª passada</b> · pós-ordem</div>
+    <div class="k-body" style="left:22px;top:60px;font-size:26px">éFlut ↑: tem algum float aqui?</div>
+  </div>
+  <div id="s22-passadas-pb" class="k-card" style="left:30px;top:450px;width:760px;height:120px;border-color:#FFD24A">
+    <div class="k-body" style="left:22px;top:18px;font-size:26px"><b class="k-c-yel">2ª passada</b> · pré + pós-ordem</div>
+    <div class="k-body" style="left:22px;top:60px;font-size:26px">etipo ↓ (int ou float) e val ↑</div>
+  </div>
+</div>
+      </div>
+    </div>
+    <div id="s22-passadas-chrome" class="clip k-scene" data-start="0" data-duration="38.074" data-track-index="2">
+      <div id="s22-passadas-tag" class="k-tag">COMPILADORES · <b>SINTETIZADOS E HERDADOS</b></div>
+      <div id="s22-passadas-num" class="k-num">22 / 36</div>
+      <div id="s22-passadas-progbar" class="k-prog"><i id="s22-passadas-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.29, "c": 8.046, "d": 17.539, "e": 21.985}, D = 38.074;
+        var S = K.scene("22-passadas", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("q"), C.a);
+        K.rise(tl, $("one"), C.b);
+        K.fade(tl, $("oct"), C.c);
+        K.draw(tl, $("rl"), C.c + 6.5, { d: 0.6 });
+        K.rise(tl, $("two"), C.d);
+        K.pop(tl, $("e1"), C.e + 0.6);
+        K.pop(tl, $("e2"), C.e + 4.0);
+        K.rise(tl, $("pa"), C.e + 6.8);
+        K.rise(tl, $("pb"), C.e + 10.4);
+      })();
+    </script>
+  </div>
+</template>

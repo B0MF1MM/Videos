@@ -1,0 +1,32 @@
+<!--sfx: d:click-soft@3.0*0.35, e:pop@0.6*0.3-->
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:64px">Tipos de <em>dados</em></div>
+<div id="@def" class="k-card" style="left:120px;top:240px;width:820px;height:200px;border-color:#4FD6EE">
+  <div class="k-body" style="left:28px;top:24px;font-size:30px">tipo = <b class="k-c-cyan">conjunto de valores</b></div>
+  <div class="k-body" style="left:28px;top:84px;font-size:30px">+ <b class="k-c-yel">operações</b> sobre eles</div>
+  <div class="k-code k-mute" style="left:28px;top:140px;font-size:24px">int: …,-1,0,1,…  com + - * /</div>
+</div>
+<div id="@st" class="k-card" style="left:980px;top:240px;width:820px;height:200px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:20px;font-size:32px">tipos estáticos</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:26px;line-height:1.45">✓ sabe quanta memória cada variável ocupa<br>✓ sabe como acessá-la<br>✓ ambiente de execução mais simples</div>
+</div>
+<div id="@ex" class="k-card" style="left:120px;top:480px;width:1680px;height:360px;border-color:#FFD24A">
+  <div class="k-code" style="left:30px;top:26px;font-size:30px;line-height:1.5"><span class="k-c-violet">a</span> : array [1..10] of real
+<span class="k-c-violet">i</span> : integer</div>
+  <div class="k-code" style="left:30px;top:150px;font-size:56px">a[i]</div>
+  <div id="@lk" class="k-anno k-c-cyan" style="left:240px;top:150px">tipos de a e i vêm da tabela de símbolos</div>
+  <div id="@ok" class="k-chip k-c-green" style="left:240px;top:210px;font-size:30px;background:#13241A">✓ tipo de a[i] = real</div>
+  <div id="@rg" class="k-card" style="left:900px;top:130px;width:740px;height:200px;border-color:#FF6F9C">
+    <div class="k-h2 k-c-pink" style="left:24px;top:18px;font-size:30px">1 ≤ i ≤ 10 ?</div>
+    <div class="k-body" style="left:24px;top:70px;font-size:26px;line-height:1.4">verificação de intervalo:<br>não dá pra saber antes de executar</div>
+  </div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("def"), C.b);
+K.rise(tl, $("st"), C.c);
+K.rise(tl, $("ex"), C.d);
+K.wipe(tl, $("lk"), C.d + 2.2);
+K.pop(tl, $("ok"), C.d + 4.4);
+K.rise(tl, $("rg"), C.e);
+</script>

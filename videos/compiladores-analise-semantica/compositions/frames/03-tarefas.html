@@ -1,0 +1,49 @@
+<template id="03-tarefas-template">
+  <div id="root" data-composition-id="03-tarefas" data-start="0" data-duration="20.124" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s03-tarefas-bg" class="clip k-scene k-bg" data-start="0" data-duration="20.124" data-track-index="0"></div>
+    <div id="s03-tarefas-stage" class="clip k-scene" data-start="0" data-duration="20.124" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s03-tarefas-cam" class="k-cam">
+<div id="s03-tarefas-t" class="k-title" style="left:120px;top:130px;font-size:62px">Estrutura conhecida → <em>informações extras</em></div>
+<div id="s03-tarefas-tree" style="position:absolute;left:120px;top:270px;width:420px;height:300px">
+  <svg width="420" height="300" style="position:absolute;left:0;top:0">
+    <g stroke="#8C97B5" stroke-width="3"><line x1="210" y1="50" x2="110" y2="150"/><line x1="210" y1="50" x2="310" y2="150"/><line x1="110" y1="150" x2="60" y2="240"/><line x1="110" y1="150" x2="160" y2="240"/></g>
+    <g fill="#182238" stroke="#4FD6EE" stroke-width="3"><circle cx="210" cy="50" r="26"/><circle cx="110" cy="150" r="26"/><circle cx="310" cy="150" r="26"/><circle cx="60" cy="240" r="22"/><circle cx="160" cy="240" r="22"/></g>
+  </svg>
+  <div class="k-body k-mute" style="left:0;top:270px;width:420px;text-align:center;font-size:24px">árvore sintática pronta</div>
+</div>
+<div id="s03-tarefas-cl" class="k-chip k-c-violet" style="left:620px;top:280px;font-size:28px">tipagem estática (ex.: C)</div>
+<div id="s03-tarefas-j1" class="k-card" style="left:620px;top:350px;width:560px;height:120px;border-color:#4FD6EE"><div class="k-h2" style="left:28px;top:34px;font-size:38px">1 · resolução de nomes</div></div>
+<div id="s03-tarefas-j2" class="k-card" style="left:1220px;top:350px;width:560px;height:120px;border-color:#7FE39A"><div class="k-h2" style="left:28px;top:34px;font-size:38px">2 · verificação de tipos</div></div>
+<div id="s03-tarefas-j3" class="k-card" style="left:620px;top:500px;width:560px;height:120px;border-color:#B49BFF"><div class="k-h2" style="left:28px;top:34px;font-size:38px">3 · verificação de declarações</div></div>
+<div id="s03-tarefas-j4" class="k-card" style="left:1220px;top:500px;width:560px;height:120px;border-color:#FF9F5A"><div class="k-h2" style="left:28px;top:34px;font-size:36px">4 · compatibilidade de operações</div></div>
+<div id="s03-tarefas-sym" class="k-card" style="left:620px;top:680px;width:1160px;height:150px;border-color:#FFD24A;background:#221F12">
+  <div class="k-code k-c-yel" style="left:36px;top:36px;font-size:46px">tabela de símbolos</div>
+  <div class="k-body" style="left:620px;top:46px;font-size:30px">a ferramenta de tudo isso</div>
+</div>
+      </div>
+    </div>
+    <div id="s03-tarefas-chrome" class="clip k-scene" data-start="0" data-duration="20.124" data-track-index="2">
+      <div id="s03-tarefas-tag" class="k-tag">COMPILADORES · <b>INTRODUÇÃO</b></div>
+      <div id="s03-tarefas-num" class="k-num">03 / 36</div>
+      <div id="s03-tarefas-progbar" class="k-prog"><i id="s03-tarefas-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.408, "c": 9.741, "d": 15.549}, D = 20.124;
+        var S = K.scene("03-tarefas", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.fade(tl, $("tree"), C.a + 1.0);
+        K.pop(tl, $("cl"), C.b + 0.6);
+        K.rise(tl, $("j1"), C.c + 0.1);
+        K.rise(tl, $("j2"), C.c + 1.2);
+        K.rise(tl, $("j3"), C.c + 2.3);
+        K.rise(tl, $("j4"), C.c + 3.6);
+        K.pop(tl, $("sym"), C.d + 2.0, { from: 0.7 });
+      })();
+    </script>
+  </div>
+</template>

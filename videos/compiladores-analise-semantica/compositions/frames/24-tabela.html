@@ -1,0 +1,61 @@
+<template id="24-tabela-template">
+  <div id="root" data-composition-id="24-tabela" data-start="0" data-duration="20.454" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s24-tabela-bg" class="clip k-scene k-bg" data-start="0" data-duration="20.454" data-track-index="0"></div>
+    <div id="s24-tabela-stage" class="clip k-scene" data-start="0" data-duration="20.454" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s24-tabela-cam" class="k-cam">
+<div id="s24-tabela-t" class="k-title" style="left:120px;top:124px;font-size:68px">Tabela de <em>símbolos</em></div>
+<div id="s24-tabela-sub" class="k-body k-mute" style="left:120px;top:220px;font-size:30px">a principal estrutura de dados depois da árvore sintática</div>
+<div id="s24-tabela-tab" class="k-win" style="left:120px;top:300px;width:900px;height:440px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>tabela</span></div>
+  <table class="k-table" style="left:20px;top:70px;width:860px;font-size:30px">
+    <tr><td style="color:#8C97B5">NOME</td><td style="color:#8C97B5">TIPO</td><td style="color:#8C97B5">ESCOPO</td><td style="color:#8C97B5">MEMÓRIA</td></tr>
+    <tr id="s24-tabela-row1"><td>x</td><td>int</td><td>global</td><td>0(gp)</td></tr>
+    <tr id="s24-tabela-row2"><td>soma</td><td>função</td><td>global</td><td>…</td></tr>
+    <tr id="s24-tabela-row3"><td>i</td><td>char</td><td>f</td><td>-8(fp)</td></tr>
+  </table>
+</div>
+<div id="s24-tabela-o1" class="k-card" style="left:1080px;top:300px;width:720px;height:130px;border-color:#7FE39A">
+  <div class="k-code k-c-green" style="left:28px;top:22px;font-size:40px">inserir</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:26px">guarda o que a declaração informa</div>
+</div>
+<div id="s24-tabela-o2" class="k-card" style="left:1080px;top:455px;width:720px;height:130px;border-color:#4FD6EE">
+  <div class="k-code k-c-cyan" style="left:28px;top:22px;font-size:40px">verificar</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:26px">busca a informação quando o nome é usado</div>
+</div>
+<div id="s24-tabela-o3" class="k-card" style="left:1080px;top:610px;width:720px;height:130px;border-color:#FF6F9C">
+  <div class="k-code k-c-pink" style="left:28px;top:22px;font-size:40px">remover</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:26px">apaga a declaração que deixou de valer</div>
+</div>
+<div id="s24-tabela-scan" style="position:absolute;left:140px;top:415px;width:860px;height:50px;border:3px solid #4FD6EE;border-radius:10px"></div>
+      </div>
+    </div>
+    <div id="s24-tabela-chrome" class="clip k-scene" data-start="0" data-duration="20.454" data-track-index="2">
+      <div id="s24-tabela-tag" class="k-tag">COMPILADORES · <b>TABELA DE SÍMBOLOS</b></div>
+      <div id="s24-tabela-num" class="k-num">24 / 36</div>
+      <div id="s24-tabela-progbar" class="k-prog"><i id="s24-tabela-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.328, "c": 7.097, "d": 9.992, "e": 13.45}, D = 20.454;
+        var S = K.scene("24-tabela", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.wipe(tl, $("sub"), C.a + 1.0);
+        K.rise(tl, $("tab"), C.b);
+        tl.set([$("row1"), $("row2"), $("row3")], { opacity: 0 }, 0);
+        K.rise(tl, $("o1"), C.c);
+        tl.to([$("row1"), $("row2"), $("row3")], { opacity: 1, duration: 0.3, stagger: 0.4 }, C.c + 0.6);
+        K.rise(tl, $("o2"), C.d);
+        K.fade(tl, $("scan"), C.d + 0.4);
+        tl.to($("scan"), { y: 116, duration: 0.8, ease: "power2.inOut" }, C.d + 0.9);
+        K.rise(tl, $("o3"), C.e);
+        tl.to($("row3"), { opacity: 0.15, duration: 0.4 }, C.e + 0.8);
+        K.out(tl, $("scan"), C.e + 0.8);
+        tl.to([$("row1"), $("row2")], { color: "#FFD24A", duration: 0.3 }, C.e + 2.8);
+      })();
+    </script>
+  </div>
+</template>

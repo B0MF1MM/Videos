@@ -1,0 +1,242 @@
+# Roteiro — Compiladores: Análise Semântica
+# "# id-da-cena | SEÇÃO" abre uma cena; "chave: legenda || fala" (|| opcional, para a pronúncia).
+
+# 01-abertura | INTRODUÇÃO
+a: Olha essa palavra: planta.
+b: Pra uma pessoa, é uma fábrica. Pra outra, é um vegetal.
+c: A frase está escrita certinho. O que muda é o significado.
+d: E é exatamente disso que trata a análise semântica: o significado do programa.
+
+# 02-onde | INTRODUÇÃO
+a: No compilador, ela vem depois da análise léxica e da sintática.
+b: A sintática pergunta: está bem escrito? A semântica pergunta: faz sentido?
+c: Por exemplo, x = "olá" * 3 está bem escrito, mas não faz sentido: multiplicar texto por número. || Por exemplo, xis igual a olá vezes três, está bem escrito, mas não faz sentido: multiplicar texto por número.
+d: Macete: a sintática olha a forma; a semântica olha o significado.
+
+# 03-tarefas | INTRODUÇÃO
+a: A análise semântica calcula informações extras quando a estrutura do programa já é conhecida.
+b: Numa linguagem com tipagem estática, como C, ela faz quatro trabalhos.
+c: Resolve nomes, verifica tipos, verifica declarações e checa se as operações são compatíveis.
+d: E para tudo isso ela precisa de uma ferramenta: a tabela de símbolos.
+
+# 04-atributos | ATRIBUTOS
+a: O conceito central é o atributo.
+b: Atributo é qualquer propriedade de uma construção da linguagem.
+c: Por exemplo: o tipo de uma expressão, o valor de uma constante, a localização na memória, o escopo, o tamanho de um tipo.
+d: Macete: atributo é uma etiqueta grudada no nó da árvore.
+
+# 05-amarracao | ATRIBUTOS
+a: Calcular um atributo e associar o valor à construção se chama amarração.
+b: O momento em que isso acontece é o tempo de amarração.
+c: Se o atributo é conhecido antes da execução, ele é estático. Por exemplo, o tipo declarado de uma variável em C.
+d: Se só dá pra saber durante a execução, ele é dinâmico. Por exemplo, o valor que o usuário vai digitar.
+
+# 06-notacao | GRAMÁTICA DE ATRIBUTOS
+a: Uma gramática de atributos junta cada regra gramatical com as suas regras semânticas.
+b: A notação é X.a: o atributo a do símbolo X. || A notação é xis ponto a: o atributo a do símbolo xis.
+c: Cada regra semântica é uma equação: um atributo é igual a uma função dos atributos dos outros símbolos da mesma regra.
+d: Se o mesmo símbolo aparece duas vezes, a gente numera: número um, número dois.
+e: E tudo é organizado numa tabela: regra gramatical de um lado, regras semânticas do outro.
+
+# 07-numero-regras | GRAMÁTICA DE ATRIBUTOS
+a: Primeiro exemplo: números sem sinal, com o atributo val, o valor. || Primeiro exemplo: números sem sinal, com o atributo vál, o valor.
+b: Regra mais fácil: dígito vai em zero. Então dígito.val = 0. E assim até nove. || Regra mais fácil: dígito vai em zero. Então dígito ponto vál igual a zero. E assim até nove.
+c: Se o número tem um dígito só: número.val = dígito.val. || Se o número tem um dígito só: número ponto vál, igual a dígito ponto vál.
+d: E se tem vários: número1.val = número2.val * 10 + dígito.val. || E se tem vários: número um ponto vál, igual a número dois ponto vál, vezes dez, mais dígito ponto vál.
+e: Macete: vezes dez empurra o que já existe uma casa para a esquerda, e o novo dígito entra no lugar das unidades.
+
+# 08-numero-arvore | GRAMÁTICA DE ATRIBUTOS
+a: Agora monte a árvore do número 345. || Agora monte a árvore do número trezentos e quarenta e cinco.
+b: Comece pelas folhas: os dígitos 3, 4 e 5 ganham val igual a eles mesmos. || Comece pelas folhas: os dígitos três, quatro e cinco ganham vál igual a eles mesmos.
+c: O número mais embaixo vale 3. || O número mais embaixo vale três.
+d: Subindo: 3 vezes 10 mais 4 dá 34. || Subindo: três vezes dez, mais quatro, dá trinta e quatro.
+e: E na raiz: 34 vezes 10 mais 5 dá 345. O valor sobe pela árvore. || E na raiz: trinta e quatro vezes dez, mais cinco, dá trezentos e quarenta e cinco. O valor sobe pela árvore.
+
+# 09-exp-regras | GRAMÁTICA DE ATRIBUTOS
+a: Segundo exemplo: expressões aritméticas com soma, subtração e multiplicação.
+b: Na soma: exp1.val = exp2.val + termo.val. || Na soma: exp um ponto vál, igual a exp dois ponto vál, mais termo ponto vál.
+c: Na subtração e na multiplicação, a mesma ideia, trocando o operador.
+d: Nas regras de um filho só, o valor é só copiado: exp.val = termo.val. || Nas regras de um filho só, o valor é só copiado: exp ponto vál, igual a termo ponto vál.
+e: E no fim, fator.val = número.val. || E no fim, fator ponto vál, igual a número ponto vál.
+
+# 10-exp-arvore | GRAMÁTICA DE ATRIBUTOS
+a: Aplicando em (34 - 3) * 42. || Aplicando em: abre parênteses, trinta e quatro menos três, fecha parênteses, vezes quarenta e dois.
+b: Nas folhas, os números: 34, 3 e 42. || Nas folhas, os números: trinta e quatro, três e quarenta e dois.
+c: Os valores sobem pelas cópias até a subtração: 34 menos 3 dá 31. || Os valores sobem pelas cópias até a subtração: trinta e quatro menos três dá trinta e um.
+d: Depois os parênteses repassam o 31, e a multiplicação faz 31 vezes 42: 1302. || Depois os parênteses repassam o trinta e um, e a multiplicação faz trinta e um vezes quarenta e dois: mil trezentos e dois.
+
+# 11-decl-regras | GRAMÁTICA DE ATRIBUTOS
+a: Terceiro exemplo, o mais importante: declaração de variáveis, como float x, y. || Terceiro exemplo, o mais importante: declaração de variáveis, como flôut xis, ípsilon.
+b: O atributo agora é dtipo, o tipo de dado. || O atributo agora é dê tipo, o tipo de dado.
+c: tipo vai em int dá dtipo inteiro; tipo vai em float dá dtipo real. || tipo vai em int dá dê tipo inteiro; tipo vai em flôut dá dê tipo real.
+d: decl vai em tipo var-lista: var-lista.dtipo = tipo.dtipo. || decl vai em tipo var-lista: var-lista ponto dê tipo, igual a tipo ponto dê tipo.
+e: E na lista, cada id e o resto da lista recebem o dtipo da lista. || E na lista, cada ai dê e o resto da lista recebem o dê tipo da lista.
+
+# 12-decl-arvore | GRAMÁTICA DE ATRIBUTOS
+a: Veja na árvore de float x, y. || Veja na árvore de flôut xis, ípsilon.
+b: O tipo float define dtipo real. || O tipo flôut define dê tipo real.
+c: Esse real passa para o irmão, a var-lista.
+d: Desce para o x, e desce para a lista de baixo, até o y. || Desce para o xis, e desce para a lista de baixo, até o ípsilon.
+e: Repare: aqui o atributo não sobe. Ele vai para o lado e desce. Guarde isso: daqui a pouco ele ganha um nome.
+
+# 13-octal | GRAMÁTICA DE ATRIBUTOS
+a: Quarto exemplo: números decimais ou octais, como 345o. A letra no fim diz a base. || Quarto exemplo: números decimais ou octais, como três quatro cinco ó. A letra no fim diz a base.
+b: o é base 8; d é base 10. || ó é base oito; dê é base dez.
+c: Agora são dois atributos: base, que desce, e val, que sobe. || Agora são dois atributos: base, que desce, e vál, que sobe.
+d: Em 345o: 3, depois 3 vezes 8 mais 4 dá 28, depois 28 vezes 8 mais 5 dá 229. || Em três quatro cinco ó: três, depois três vezes oito mais quatro dá vinte e oito, depois vinte e oito vezes oito mais cinco dá duzentos e vinte e nove.
+e: Pegadinha: 189o está certo na sintaxe, mas 8 e 9 não existem em octal. O val vira erro. || Pegadinha: um oito nove ó está certo na sintaxe, mas oito e nove não existem em octal. O vál vira erro.
+
+# 14-simplifica | GRAMÁTICA DE ATRIBUTOS
+a: As equações podem usar if then else. O conjunto de expressões permitidas se chama metalinguagem. || As equações podem usar if, then, else. O conjunto de expressões permitidas se chama metalinguagem.
+b: E dá para simplificar: como o parser já resolveu a estrutura, a semântica pode usar uma gramática ambígua.
+c: Em vez de exp, termo e fator, basta: exp vai em exp mais exp, exp menos exp, exp vezes exp.
+d: Ou usar direto a árvore sintática abstrata, sem os nós de cópia.
+
+# 15-grafo | GRAFO DE DEPENDÊNCIAS
+a: Agora, em que ordem calcular os atributos?
+b: Cada equação vira uma regra de cálculo, e tudo do lado direito precisa existir antes.
+c: Para enxergar isso, usamos o grafo de dependências: um nó para cada atributo.
+d: Se um atributo depende de outro, existe uma seta do que é usado para o que é calculado.
+e: E o grafo da cadeia inteira é a união dos grafos de cada regra usada na árvore.
+
+# 16-grafo-decl | GRAFO DE DEPENDÊNCIAS
+a: O grafo de float x, y fica assim. || O grafo de flôut xis, ípsilon fica assim.
+b: O dtipo do tipo aponta para o dtipo da var-lista. || O dê tipo do tipo aponta para o dê tipo da var-lista.
+c: Da var-lista, sai uma seta para o dtipo do x, e outra para a lista de baixo. || Da var-lista, sai uma seta para o dê tipo do xis, e outra para a lista de baixo.
+d: E de lá, para o dtipo do y. Repare: dá para seguir as setas sem nunca voltar. || E de lá, para o dê tipo do ípsilon. Repare: dá para seguir as setas sem nunca voltar.
+
+# 17-topologica | GRAFO DE DEPENDÊNCIAS
+a: Calcular cada atributo depois de todos de que ele depende é uma ordenação topológica.
+b: Ela só existe se o grafo não tiver ciclo: um grafo direcionado acíclico, o DAG. || Ela só existe se o grafo não tiver ciclo: um grafo direcionado acíclico, o dág.
+c: Os nós sem predecessores são as raízes do grafo: o valor deles sai direto, sem depender de ninguém.
+d: E pode haver mais de uma ordem válida. Para 345o, os slides mostram duas. || E pode haver mais de uma ordem válida. Para três quatro cinco ó, os slides mostram duas.
+e: Macete: é como vestir a roupa. A meia vem antes do sapato, mas a camisa pode ir antes ou depois.
+
+# 18-metodos | GRAFO DE DEPENDÊNCIAS
+a: Existem dois jeitos de achar essa ordem.
+b: O método da árvore de análise sintática monta o grafo durante a compilação. É geral, mas caro, e precisa testar se há ciclos.
+c: O método baseado em regras: o projetista analisa a gramática e fixa a ordem ao construir o compilador.
+d: É o método usado em praticamente todos os compiladores.
+
+# 19-sintetizado | SINTETIZADOS E HERDADOS
+a: Para fixar a ordem, classificamos os atributos.
+b: Um atributo é sintetizado quando todas as dependências vão do filho para o pai.
+c: Se todos os atributos são sintetizados, a gramática é S-atribuída. || Se todos os atributos são sintetizados, a gramática é ésse atribuída.
+d: E basta uma passada em pós-ordem: visita os filhos e depois calcula o pai.
+e: Foi o que aconteceu no 345 e no 1302: o valor subiu. || Foi o que aconteceu no trezentos e quarenta e cinco e no mil trezentos e dois: o valor subiu.
+
+# 20-herdado | SINTETIZADOS E HERDADOS
+a: Todo atributo que não é sintetizado é herdado.
+b: Ele vem do pai para o filho, ou de um irmão para o outro.
+c: Calcula-se em pré-ordem: primeiro o atributo do filho, depois visita o filho.
+d: E a ordem em que os filhos são visitados importa.
+e: Macete: sintetizado sobe, como fumaça. Herdado desce, como herança de pai para filho.
+
+# 21-avaltipo | SINTETIZADOS E HERDADOS
+a: O dtipo do float x, y é herdado. O procedimento AvalTipo calcula assim. || O dê tipo do flôut xis, ípsilon é herdado. O procedimento aval tipo calcula assim.
+b: Em decl, primeiro avalia o tipo, que vira real.
+c: Depois entrega esse dtipo para a var-lista, e só então desce nela. || Depois entrega esse dê tipo para a var-lista, e só então desce nela.
+d: Na var-lista, entrega o dtipo ao id e, se houver resto, ao resto da lista, e continua. || Na var-lista, entrega o dê tipo ao ai dê e, se houver resto, ao resto da lista, e continua.
+e: É uma mistura de pré-ordem e in-ordem.
+
+# 22-passadas | SINTETIZADOS E HERDADOS
+a: E quando há os dois tipos juntos?
+b: Se o sintetizado depende do herdado, mas o herdado não depende do sintetizado, uma passada basta.
+c: É o caso do octal: a base desce em pré-ordem e o val sobe em pós-ordem, na mesma visita. Só que os filhos são visitados da direita para a esquerda, porque a base está no fim. || É o caso do octal: a base desce em pré-ordem e o vál sobe em pós-ordem, na mesma visita. Só que os filhos são visitados da direita para a esquerda, porque a base está no fim.
+d: Se o herdado depende do sintetizado, são necessárias duas passadas.
+e: Exemplo: 5/2/2.0 vale 1,25, mas 5/2/2 vale 1. Primeiro, uma passada descobre se há algum float, o éFlut. Depois, outra passada desce o etipo e calcula o val. || Exemplo: cinco dividido por dois dividido por dois ponto zero vale um vírgula vinte e cinco. Mas cinco dividido por dois dividido por dois vale um. Primeiro, uma passada descobre se há algum flôut, o é flut. Depois, outra passada desce o ê tipo e calcula o vál.
+
+# 23-teorema | SINTETIZADOS E HERDADOS
+a: Um teorema importante: todo atributo herdado pode virar sintetizado, só reescrevendo a gramática.
+b: E a linguagem aceita continua a mesma.
+c: Exemplo: decl vai em var-lista id; var-lista vai em var-lista id vírgula, ou em tipo.
+d: Agora o tipo fica embaixo, no fundo da árvore, e o dtipo sobe. Virou sintetizado. || Agora o tipo fica embaixo, no fundo da árvore, e o dê tipo sobe. Virou sintetizado.
+
+# 24-tabela | TABELA DE SÍMBOLOS
+a: Agora a tabela de símbolos: a principal estrutura de dados depois da árvore sintática.
+b: Ela tem três operações.
+c: Inserir: guarda o que a declaração informa.
+d: Verificar: busca a informação de um nome quando ele é usado.
+e: Remover: apaga uma declaração que deixou de valer. E ela guarda o tipo, o escopo e a localização na memória.
+
+# 25-estruturas | TABELA DE SÍMBOLOS
+a: Como implementar? Listas lineares são simples, boas para protótipos e programas pequenos.
+b: Árvores de busca são pouco usadas: o pior caso é ruim e remover é complicado.
+c: A campeã é a tabela de hashing: busca e inserção com custo médio quase constante.
+d: A função de hashing transforma o nome num índice. Quando dois nomes caem no mesmo índice, é uma colisão.
+e: Endereçamento aberto joga o item na próxima casa livre, mas degrada e dificulta remover. O encadeamento separado põe uma lista em cada casa. É o melhor para compiladores.
+
+# 26-hash | TABELA DE SÍMBOLOS
+a: A função de hashing tem três passos.
+b: Cada caractere vira um número inteiro.
+c: Os números são combinados num só: a cada caractere, desloca e soma.
+d: E o resultado é ajustado para caber no tamanho da tabela, com o resto da divisão.
+e: Dica: use um tamanho primo. Para 200 casas, use 211, o menor primo maior que 200. || Dica: use um tamanho primo. Para duzentas casas, use duzentos e onze, o menor primo maior que duzentos.
+
+# 27-declaracoes | ESCOPO
+a: Existem quatro tipos básicos de declaração: de variáveis, de funções, de constantes e de tipos.
+b: Constantes ligam nomes a valores. Tipos ligam nomes a tipos. Variáveis ligam nomes a tipos, e também a escopo, memória e tempo de vida.
+c: Regra comum: declarar antes de usar.
+d: Ela permite montar a tabela durante a análise sintática e compilar em uma passada só.
+
+# 28-escopo | ESCOPO
+a: Outra regra: estrutura de blocos. Bloco é qualquer construção que contém declarações, como as chaves em C.
+b: E vale a regra do aninhamento mais próximo: a declaração que vale é a do bloco mais interno.
+c: Veja: i é int fora, mas dentro de f, i é char. Dentro de f, quem vale é o char. || Veja: i é int fora, mas dentro de f, i é char. Dentro de f, quem vale é o char.
+d: Por isso, inserir não sobrescreve: esconde a declaração anterior. E remover apaga só a mais recente.
+e: Ao sair do bloco, a declaração antiga reaparece.
+
+# 29-escopo-tabelas | ESCOPO
+a: Uma alternativa: uma tabela de símbolos para cada escopo, ligadas em cadeia.
+b: Se o nome não está na tabela atual, a busca continua na tabela de fora.
+c: E para sair do escopo, nem precisa remover nada: basta mover o ponteiro para a tabela de fora.
+d: Macete: é como procurar algo em casa. Primeiro no seu quarto, depois na sala, depois na casa toda.
+
+# 30-tipos | TIPOS
+a: Uma das principais tarefas é cuidar dos tipos de dados.
+b: Tipo de dado é um conjunto de valores, com as operações sobre eles.
+c: Com tipos estáticos, o compilador já sabe quanta memória cada variável ocupa e como acessá-la.
+d: Exemplo: a[i], com a do tipo array de 1 a 10 de real, e i inteiro. O tipo de a[i] é real. || Exemplo: a de i, com a do tipo array de um a dez de real, e i inteiro. O tipo de a de i é real.
+e: Mas se i está entre 1 e 10 é verificação de intervalo, e isso não dá pra saber antes de executar. || Mas se i está entre um e dez é verificação de intervalo, e isso não dá pra saber antes de executar.
+
+# 31-construtores | TIPOS
+a: Tipos simples, como int, double, char e bool, não têm estrutura interna. Também dá pra criar intervalos e enumerados.
+b: Construtores criam tipos estruturados. A matriz ocupa n vezes o tamanho do componente.
+c: O struct guarda os campos em sequência: double de 8 mais int de 4 dá 12 bytes. || O strâct guarda os campos em sequência: double de oito mais int de quatro dá doze bytes.
+d: A union sobrepõe os campos: ocupa só o maior, 8 bytes. || A iúnion sobrepõe os campos: ocupa só o maior, oito bytes.
+e: Macete: struct soma, union pega o maior. E o ponteiro guarda um endereço; acessar o valor apontado é a derreferenciação. || Macete: strâct soma, iúnion pega o maior. E o ponteiro guarda um endereço; acessar o valor apontado é a derreferenciação.
+
+# 32-typedef | TIPOS
+a: Declarações de tipo dão nome a uma expressão de tipo, como typedef em C, e esses nomes vão para a tabela de símbolos. || Declarações de tipo dão nome a uma expressão de tipo, como táip def em C, e esses nomes vão para a tabela de símbolos.
+b: E um tipo pode usar o próprio nome: é o tipo recursivo.
+c: Como struct no, que tem um ponteiro para outro struct no. É assim que se montam listas e árvores. || Como strâct nó, que tem um ponteiro para outro strâct nó. É assim que se montam listas e árvores.
+
+# 33-verificador | TIPOS
+a: Agora o verificador de tipos, regra por regra.
+b: Declaração: var-decl vai em id dois pontos tipo. A ação é inserir o nome e o tipo na tabela. || Declaração: var-decl vai em ai dê dois pontos tipo. A ação é inserir o nome e o tipo na tabela.
+c: No if, a condição tem que ser booleana. Na atribuição, o tipo da expressão tem que ser igual ao da variável.
+d: Na soma, os dois lados têm que ser inteiros, e o resultado é inteiro. No or, os dois têm que ser booleanos.
+e: E no índice de matriz: se a base é matriz e o índice é inteiro, o tipo é o do elemento. Senão, erro de tipo.
+
+# 34-coacao | TIPOS
+a: Sobrecarga: o mesmo operador para operações diferentes, como o mais para inteiros e para reais.
+b: E com tipos misturados, como 2.1 + 3, é preciso um tipo comum. || E com tipos misturados, como dois ponto um mais três, é preciso um tipo comum.
+c: Ou o programador converte na mão, como em 2.1 + FLOAT(3). || Ou o programador converte na mão, como em dois ponto um mais flôut de três.
+d: Ou o compilador converte sozinho. Essa conversão automática é a coação.
+
+# 35-tiny | TINY
+a: Para fechar, o analisador semântico da linguagem TINY. || Para fechar, o analisador semântico da linguagem táini.
+b: TINY não tem declarações: as variáveis surgem quando são usadas, e todas são inteiras. Os booleanos só aparecem no teste do if ou do repeat. || Táini não tem declarações: as variáveis surgem quando são usadas, e todas são inteiras. Os booleanos só aparecem no teste do if ou do ripít.
+c: A tabela de símbolos é um hashing encadeado, e guarda a posição na memória e as linhas onde cada variável aparece.
+d: buildSymtab percorre a árvore em pré-ordem e insere as variáveis, porque a tabela é um atributo herdado. || bild sim tab percorre a árvore em pré-ordem e insere as variáveis, porque a tabela é um atributo herdado.
+e: typeCheck percorre em pós-ordem e calcula os tipos, porque o tipo é sintetizado. || táip tchéque percorre em pós-ordem e calcula os tipos, porque o tipo é sintetizado.
+
+# 36-cola | REVISÃO
+a: Revisão relâmpago.
+b: Semântica é significado: a sintática olha a forma.
+c: Gramática de atributos: regra gramatical mais regras semânticas.
+d: Sintetizado sobe, em pós-ordem. Herdado desce, em pré-ordem.
+e: Grafo de dependências sem ciclo permite ordem topológica.
+f: Tabela de símbolos: inserir, verificar, remover, com hashing e encadeamento.
+g: Vale o aninhamento mais próximo. Struct soma, union pega o maior. || Vale o aninhamento mais próximo. Strâct soma, iúnion pega o maior.
+h: Agora é com você. Boa prova!

@@ -1,0 +1,32 @@
+<!--sfx: c:pop@0.4*0.2, d:whoosh-short@0.6*0.2-->
+<div id="@q" class="k-title" style="left:120px;top:126px;font-size:68px">Em que <em>ordem</em> calcular?</div>
+<div id="@rule" class="k-card" style="left:120px;top:250px;width:1680px;height:130px">
+  <div class="k-code" style="left:30px;top:22px;font-size:36px"><span class="k-c-yel">Xi.aj</span> := f( … )</div>
+  <div class="k-body" style="left:30px;top:76px;font-size:28px">tudo do lado direito <b class="k-c-pink">já precisa existir</b></div>
+</div>
+<div id="@g" style="position:absolute;left:120px;top:420px;width:1100px;height:420px">
+  <div class="k-kicker" style="left:0;top:0">grafo de dependências</div>
+  <div id="@n1" class="k-chip k-c-green" style="left:40px;top:80px;font-size:30px;background:#0D1322">número₂.val</div>
+  <div id="@n2" class="k-chip k-c-green" style="left:40px;top:250px;font-size:30px;background:#0D1322">dígito.val</div>
+  <div id="@n3" class="k-chip k-c-yel" style="left:620px;top:165px;font-size:30px;background:#2A2410">número₁.val</div>
+  <svg width="1100" height="420" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@e1" d="M 300 105 C 450 110, 500 170, 610 185 M 590 172 L 610 185 L 588 196" stroke="#FFD24A" stroke-width="5" fill="none"/>
+    <path id="@e2" d="M 270 270 C 450 270, 500 210, 610 195 M 590 186 L 610 195 L 592 210" stroke="#FFD24A" stroke-width="5" fill="none"/>
+  </svg>
+  <div id="@lab" class="k-anno" style="left:40px;top:340px">número₁.val = número₂.val * 10 + dígito.val</div>
+</div>
+<div id="@leg" class="k-card" style="left:1260px;top:430px;width:540px;height:300px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:24px;font-size:28px;line-height:1.4">● um <b>nó</b> por atributo<br><br>→ seta do que é <b class="k-c-green">usado</b><br>   para o que é <b class="k-c-yel">calculado</b></div>
+</div>
+<div id="@uni" class="k-chip k-c-violet" style="left:1000px;top:770px;font-size:26px">grafo da cadeia = união dos grafos das regras</div>
+
+<script>
+K.rise(tl, $("q"), C.a);
+K.rise(tl, $("rule"), C.b);
+K.fade(tl, $("g"), C.c);
+K.pop(tl, [$("n1"), $("n2"), $("n3")], C.c + 0.6, { s: 0.3 });
+K.rise(tl, $("leg"), C.c + 1.2);
+K.draw(tl, [$("e1"), $("e2")], C.d + 0.6, { d: 0.6, s: 0.4 });
+K.wipe(tl, $("lab"), C.d + 1.6);
+K.pop(tl, $("uni"), C.e + 0.6);
+</script>

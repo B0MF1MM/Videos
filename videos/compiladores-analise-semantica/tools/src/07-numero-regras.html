@@ -1,0 +1,33 @@
+<!--sfx: d:click-soft@1.0*0.35, e:pop*0.3-->
+<style>
+  .nr td { padding: 14px 26px !important; }
+</style>
+<div id="@g" class="k-code" style="left:120px;top:124px;font-size:42px"><span class="k-c-cyan">número</span> → <span class="k-c-cyan">número</span> <span class="k-c-green">dígito</span> | <span class="k-c-green">dígito</span>      <span class="k-c-green">dígito</span> → 0|1|…|9</div>
+<div id="@attr" class="k-chip k-c-yel" style="left:120px;top:200px;font-size:28px;background:#2A2410">atributo: val (o valor)</div>
+<table id="@tab" class="k-table nr" style="left:120px;top:280px;width:1680px;font-size:36px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA GRAMATICAL</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA SEMÂNTICA</td></tr>
+  <tr id="@r1"><td>dígito → 0 … 9</td><td>dígito.val = <span class="k-c-green">0 … 9</span></td></tr>
+  <tr id="@r2"><td>número → dígito</td><td>número.val = dígito.val</td></tr>
+  <tr id="@r3"><td>número₁ → número₂ dígito</td><td>número₁.val = <span class="k-c-yel">número₂.val * 10</span> + dígito.val</td></tr>
+</table>
+<div id="@demo" style="position:absolute;left:220px;top:660px;width:900px;height:120px;font-family:'DM Mono',monospace;font-size:72px;line-height:120px">
+  <span id="@d3" style="display:inline-block" class="k-c-cyan">3</span><span id="@d4" style="display:inline-block" class="k-c-cyan">4</span><span id="@d0" style="display:inline-block;color:#FFD24A">0</span><span id="@pl" class="k-mute" style="display:inline-block;font-size:44px">  + </span><span id="@d5" style="display:inline-block" class="k-c-green">5</span>
+</div>
+<div id="@mac" class="k-macete" style="left:900px;top:660px;width:920px;font-size:32px">×10 empurra tudo <u>uma casa à esquerda</u>; o dígito novo entra nas unidades.</div>
+
+<script>
+K.rise(tl, $("g"), C.a);
+K.pop(tl, $("attr"), C.a + 1.4);
+K.fade(tl, $("tab"), C.b - 0.3);
+K.fade(tl, $("r1"), C.b + 0.2);
+K.fade(tl, $("r2"), C.c + 0.2);
+K.fade(tl, $("r3"), C.d + 0.2);
+K.fade(tl, $("demo"), C.e);
+tl.set($("d0"), { opacity: 0 }, 0);
+tl.fromTo([$("d3"), $("d4")], { x: 44 }, { x: 0, duration: 0.5, ease: "power3.out" }, C.e + 1.0);
+tl.to($("d0"), { opacity: 1, duration: 0.3 }, C.e + 1.2);
+K.pop(tl, $("d5"), C.e + 2.6);
+tl.to([$("d0"), $("pl")], { opacity: 0, duration: 0.2 }, C.e + 3.4);
+tl.to($("d5"), { x: -124, duration: 0.5, ease: "power3.inOut" }, C.e + 3.4);
+K.macete(tl, $("mac"), C.e + 0.4);
+</script>

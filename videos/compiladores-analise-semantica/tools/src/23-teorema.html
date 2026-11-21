@@ -1,0 +1,41 @@
+<!--sfx: a:chime@0.4*0.25, d:pop@1.0*0.3-->
+<style>
+  .tn { position: absolute; width: 170px; height: 50px; margin: -25px 0 0 -85px; border-radius: 12px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 24px; line-height: 44px; text-align: center; color: #EEF1F8; }
+  .lf { border-color: #7FE39A; color: #7FE39A; }
+</style>
+<div id="@k" class="k-chip k-c-yel" style="left:120px;top:126px;font-size:26px;background:#2A2410">TEOREMA</div>
+<div id="@t" class="k-body" style="left:300px;top:126px;font-size:34px">todo herdado pode virar <b class="k-c-green">sintetizado</b> reescrevendo a gramática</div>
+<div id="@same" class="k-anno k-c-cyan" style="left:300px;top:186px">mesma linguagem aceita</div>
+<div id="@g1" class="k-card" style="left:120px;top:260px;width:820px;height:180px;border-color:#FF6F9C">
+  <div class="k-kicker" style="left:28px;top:18px;color:#FF6F9C">ANTES · dtipo herdado</div>
+  <div class="k-code" style="left:28px;top:64px;font-size:28px;line-height:1.45">decl → tipo var-lista
+var-lista → id , var-lista | id</div>
+</div>
+<div id="@g2" class="k-card" style="left:980px;top:260px;width:820px;height:180px;border-color:#7FE39A">
+  <div class="k-kicker" style="left:28px;top:18px;color:#7FE39A">DEPOIS · dtipo sintetizado</div>
+  <div class="k-code" style="left:28px;top:64px;font-size:28px;line-height:1.45">decl → var-lista id
+var-lista → var-lista id , | <span class="k-c-yel">tipo</span></div>
+</div>
+<div id="@tr" style="position:absolute;left:980px;top:460px;width:820px;height:400px">
+  <svg width="820" height="400" style="position:absolute;left:0;top:0;overflow:visible"><g stroke="#8C97B5" stroke-width="3">
+    <line x1="420" y1="40" x2="300" y2="130"/><line x1="420" y1="40" x2="560" y2="130"/><line x1="300" y1="130" x2="200" y2="220"/><line x1="300" y1="130" x2="340" y2="220"/><line x1="300" y1="130" x2="440" y2="220"/><line x1="200" y1="220" x2="200" y2="310"/><line x1="200" y1="310" x2="200" y2="380"/></g>
+    <path id="@up" d="M 140 360 L 140 250 M 126 266 L 140 250 L 154 266 M 240 200 L 380 80 M 360 84 L 380 80 L 376 100" stroke="#FFD24A" stroke-width="5" fill="none"/></svg>
+  <div class="tn" style="left:420px;top:40px">decl</div>
+  <div class="tn" style="left:300px;top:130px">var-lista</div><div class="tn lf" style="left:560px;top:130px;width:90px;margin-left:-45px">y</div>
+  <div class="tn" style="left:200px;top:220px">var-lista</div><div class="tn lf" style="left:340px;top:220px;width:70px;margin-left:-35px">x</div><div class="tn lf" style="left:440px;top:220px;width:60px;margin-left:-30px">,</div>
+  <div class="tn" style="left:200px;top:310px;border-color:#FFD24A">tipo</div>
+  <div class="tn lf" style="left:200px;top:380px">float</div>
+</div>
+<div id="@note" class="k-macete" style="left:120px;top:520px;width:800px;font-size:32px">O tipo foi para o <u>fundo</u> da árvore: agora o dtipo <u>sobe</u>.</div>
+
+<script>
+K.pop(tl, $("k"), C.a);
+K.wipe(tl, $("t"), C.a + 0.4);
+K.wipe(tl, $("same"), C.b);
+K.rise(tl, $("g1"), C.c - 0.4);
+K.rise(tl, $("g2"), C.c + 0.6);
+var tr = Array.prototype.slice.call($("tr").querySelectorAll(".tn, line"));
+K.fade(tl, tr, C.d, { s: 0.06 });
+K.draw(tl, $("up"), C.d + 1.4, { d: 0.8 });
+K.macete(tl, $("note"), C.d + 1.6);
+</script>

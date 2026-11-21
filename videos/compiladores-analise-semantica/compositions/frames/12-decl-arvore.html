@@ -1,0 +1,67 @@
+<template id="12-decl-arvore-template">
+  <div id="root" data-composition-id="12-decl-arvore" data-start="0" data-duration="18.404" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .tn { position: absolute; width: 190px; height: 56px; margin: -28px 0 0 -95px; border-radius: 12px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 28px; line-height: 50px; text-align: center; color: #EEF1F8; }
+  .lf { border-color: #7FE39A; color: #7FE39A; }
+  .tv { position: absolute; font-family: "DM Mono", monospace; font-size: 26px; padding: 5px 12px; border-radius: 10px; background: #2A2410; border: 2px solid #FFD24A; color: #FFD24A; white-space: nowrap; }
+</style>
+    <div id="s12-decl-arvore-bg" class="clip k-scene k-bg" data-start="0" data-duration="18.404" data-track-index="0"></div>
+    <div id="s12-decl-arvore-stage" class="clip k-scene" data-start="0" data-duration="18.404" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s12-decl-arvore-cam" class="k-cam">
+<div id="s12-decl-arvore-src" class="k-code k-c-yel" style="left:120px;top:126px;font-size:54px">float x, y</div>
+<svg class="k-svg"><g class="edge">
+  <line x1="960" y1="190" x2="620" y2="320"/><line x1="960" y1="190" x2="1300" y2="320"/><line x1="620" y1="320" x2="620" y2="450"/>
+  <line x1="1300" y1="320" x2="1060" y2="450"/><line x1="1300" y1="320" x2="1300" y2="450"/><line x1="1300" y1="320" x2="1540" y2="450"/><line x1="1540" y1="450" x2="1540" y2="590"/></g>
+  <path id="s12-decl-arvore-f1" class="arrow" d="M 720 300 C 900 240, 1100 240, 1200 300 M 1178 296 L 1200 300 L 1190 280" stroke="#FFD24A" />
+  <path id="s12-decl-arvore-f2" class="arrow" d="M 1250 350 C 1180 380, 1120 400, 1080 420 M 1100 420 L 1080 420 L 1088 402" stroke="#FFD24A" />
+  <path id="s12-decl-arvore-f3" class="arrow" d="M 1360 350 C 1420 380, 1480 400, 1520 420 M 1500 420 L 1520 420 L 1514 402" stroke="#FFD24A" />
+  <path id="s12-decl-arvore-f4" class="arrow" d="M 1580 480 L 1580 560 M 1566 542 L 1580 560 L 1594 542" stroke="#FFD24A" />
+</svg>
+<div class="tn" style="left:960px;top:190px">decl</div>
+<div class="tn" style="left:620px;top:320px">tipo</div>
+<div class="tn" style="left:1300px;top:320px">var-lista</div>
+<div class="tn lf" style="left:620px;top:450px">float</div>
+<div class="tn lf" style="left:1060px;top:450px">id (x)</div>
+<div class="tn lf" style="left:1300px;top:450px;width:70px;margin-left:-35px">,</div>
+<div class="tn" style="left:1540px;top:450px">var-lista</div>
+<div class="tn lf" style="left:1540px;top:590px">id (y)</div>
+<div id="s12-decl-arvore-v0" class="tv" style="left:330px;top:300px">dtipo = real</div>
+<div id="s12-decl-arvore-v1" class="tv" style="left:1180px;top:240px">dtipo = real</div>
+<div id="s12-decl-arvore-v2" class="tv" style="left:960px;top:500px">dtipo = real</div>
+<div id="s12-decl-arvore-v3" class="tv" style="left:1645px;top:432px">real</div>
+<div id="s12-decl-arvore-v4" class="tv" style="left:1440px;top:640px">dtipo = real</div>
+<div id="s12-decl-arvore-note" class="k-card" style="left:120px;top:640px;width:980px;height:170px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:30px;top:24px;font-size:40px">não sobe: vai para o LADO e DESCE</div>
+  <div class="k-body" style="left:30px;top:92px;font-size:30px">guarde isso… já já ele ganha um nome</div>
+</div>
+      </div>
+    </div>
+    <div id="s12-decl-arvore-chrome" class="clip k-scene" data-start="0" data-duration="18.404" data-track-index="2">
+      <div id="s12-decl-arvore-tag" class="k-tag">COMPILADORES · <b>GRAMÁTICA DE ATRIBUTOS</b></div>
+      <div id="s12-decl-arvore-num" class="k-num">12 / 36</div>
+      <div id="s12-decl-arvore-progbar" class="k-prog"><i id="s12-decl-arvore-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.8, "c": 5.401, "d": 7.914, "e": 11.605}, D = 18.404;
+        var S = K.scene("12-decl-arvore", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("src"), C.a);
+        var tn = Array.prototype.slice.call($("cam").querySelectorAll(".tn, line"));
+        K.fade(tl, tn, C.a + 0.6, { s: 0.06 });
+        K.pop(tl, $("v0"), C.b + 0.6);
+        K.draw(tl, $("f1"), C.c + 0.2, { d: 0.7 });
+        K.pop(tl, $("v1"), C.c + 0.8);
+        K.draw(tl, $("f2"), C.d + 0.4, { d: 0.5 });
+        K.pop(tl, $("v2"), C.d + 0.8);
+        K.draw(tl, $("f3"), C.d + 1.6, { d: 0.5 });
+        K.pop(tl, $("v3"), C.d + 2.0);
+        K.draw(tl, $("f4"), C.d + 2.4, { d: 0.4 });
+        K.pop(tl, $("v4"), C.d + 2.8);
+        K.rise(tl, $("note"), C.e + 0.4);
+      })();
+    </script>
+  </div>
+</template>

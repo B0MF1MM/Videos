@@ -1,0 +1,53 @@
+<!--sfx: b:click-soft@0.6*0.35, c:whoosh-short@0.6*0.2, d:whoosh-short@1.0*0.2-->
+<style>
+  .tn { position: absolute; width: 170px; height: 52px; margin: -26px 0 0 -85px; border-radius: 12px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 26px; line-height: 46px; text-align: center; color: #EEF1F8; }
+  .lf { border-color: #7FE39A; color: #7FE39A; }
+  .tv { position: absolute; font-family: "DM Mono", monospace; font-size: 24px; padding: 4px 10px; border-radius: 10px; background: #2A2410; border: 2px solid #FFD24A; color: #FFD24A; white-space: nowrap; }
+</style>
+<div id="@win" class="k-win" style="left:100px;top:130px;width:880px;height:700px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>AvalTipo(T)</span></div>
+  <div class="k-code" style="left:8px;top:64px;font-size:25px;line-height:1.42"><span class="ln" id="@c0"><span class="k-c-pink">case</span> tipo-nó de T <span class="k-c-pink">of</span></span><span class="ln" id="@c1"><span class="k-c-cyan">decl</span>:</span><span class="ln" id="@c2">  AvalTipo(filho tipo)</span><span class="ln" id="@c3">  var-lista.dtipo := tipo.dtipo</span><span class="ln" id="@c4">  AvalTipo(filho var-lista)</span><span class="ln" id="@c5"><span class="k-c-cyan">tipo</span>:</span><span class="ln" id="@c6">  <span class="k-c-pink">if</span> filho = int <span class="k-c-pink">then</span> dtipo := inteiro</span><span class="ln" id="@c7">  <span class="k-c-pink">else</span> dtipo := real</span><span class="ln" id="@c8"><span class="k-c-cyan">var-lista</span>:</span><span class="ln" id="@c9">  1º filho (id).dtipo := T.dtipo</span><span class="ln" id="@c10">  <span class="k-c-pink">if</span> há 3º filho (resto) <span class="k-c-pink">then</span></span><span class="ln" id="@c11">    resto.dtipo := T.dtipo</span><span class="ln" id="@c12">    AvalTipo(resto)</span></div>
+</div>
+<svg class="k-svg"><g class="edge">
+  <line x1="1400" y1="200" x2="1150" y2="320"/><line x1="1400" y1="200" x2="1600" y2="320"/><line x1="1150" y1="320" x2="1150" y2="430"/>
+  <line x1="1600" y1="320" x2="1440" y2="440"/><line x1="1600" y1="320" x2="1740" y2="440"/><line x1="1740" y1="440" x2="1740" y2="570"/></g></svg>
+<div class="tn" style="left:1400px;top:200px">decl</div>
+<div class="tn" style="left:1150px;top:320px">tipo</div>
+<div class="tn" style="left:1600px;top:320px">var-lista</div>
+<div class="tn lf" style="left:1150px;top:430px">float</div>
+<div class="tn lf" style="left:1440px;top:440px">id (x)</div>
+<div class="tn" style="left:1740px;top:440px;width:150px;margin-left:-75px">var-lista</div>
+<div class="tn lf" style="left:1740px;top:570px;width:150px;margin-left:-75px">id (y)</div>
+<div id="@cur" style="position:absolute;left:0;top:0;width:200px;height:66px;margin:-33px 0 0 -100px;border:4px solid #FFD24A;border-radius:16px"></div>
+<div id="@v1" class="tv" style="left:1020px;top:250px">real</div>
+<div id="@v2" class="tv" style="left:1520px;top:252px">real</div>
+<div id="@v3" class="tv" style="left:1390px;top:490px">real</div>
+<div id="@v4" class="tv" style="left:1780px;top:380px">real</div>
+<div id="@v5" class="tv" style="left:1690px;top:620px">real</div>
+<div id="@mix" class="k-chip k-c-violet" style="left:1060px;top:730px;font-size:28px">mistura de pré-ordem e in-ordem</div>
+
+<script>
+var cur = $("cur");
+K.rise(tl, $("win"), C.a);
+var tree = Array.prototype.slice.call($("cam").querySelectorAll(".tn, line"));
+K.fade(tl, tree, C.a + 0.8, { s: 0.05 });
+tl.set(cur, { x: 1400, y: 200, opacity: 0 }, 0);
+tl.to(cur, { opacity: 1, duration: 0.2 }, C.b);
+K.hl(tl, $("c1"), C.b, C.b + 0.8);
+K.hl(tl, $("c2"), C.b + 0.8, C.c);
+tl.to(cur, { x: 1150, y: 320, duration: 0.4 }, C.b + 0.8);
+K.hl(tl, $("c7"), C.b + 1.6, C.c);
+K.pop(tl, $("v1"), C.b + 1.8);
+K.hl(tl, $("c3"), C.c, C.c + 1.6);
+K.pop(tl, $("v2"), C.c + 0.6);
+K.hl(tl, $("c4"), C.c + 1.6, C.d);
+tl.to(cur, { x: 1600, y: 320, duration: 0.4 }, C.c + 1.8);
+K.hl(tl, $("c9"), C.d, C.d + 1.4);
+K.pop(tl, $("v3"), C.d + 0.4);
+K.hl(tl, $("c11"), C.d + 1.4, C.d + 2.6);
+K.pop(tl, $("v4"), C.d + 1.6);
+K.hl(tl, $("c12"), C.d + 2.6, C.e);
+tl.to(cur, { x: 1740, y: 440, duration: 0.4 }, C.d + 2.6);
+K.pop(tl, $("v5"), C.d + 3.2);
+K.pop(tl, $("mix"), C.e + 0.3);
+</script>

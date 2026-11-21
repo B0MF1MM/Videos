@@ -1,0 +1,42 @@
+<template id="18-metodos-template">
+  <div id="root" data-composition-id="18-metodos" data-start="0" data-duration="19.979" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s18-metodos-bg" class="clip k-scene k-bg" data-start="0" data-duration="19.979" data-track-index="0"></div>
+    <div id="s18-metodos-stage" class="clip k-scene" data-start="0" data-duration="19.979" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s18-metodos-cam" class="k-cam">
+<div id="s18-metodos-t" class="k-title" style="left:120px;top:124px;font-size:64px">Dois jeitos de achar a <em>ordem</em></div>
+<div id="s18-metodos-m1" class="k-card" style="left:120px;top:260px;width:820px;height:440px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:30px;top:26px;font-size:38px">método da árvore</div>
+  <div class="k-h2 k-c-pink" style="left:30px;top:72px;font-size:38px">de análise sintática</div>
+  <div class="k-body" style="left:30px;top:150px;font-size:28px;line-height:1.45">monta o grafo <b>durante a compilação</b><br>✓ geral<br>✗ caro (complexidade alta)<br>✗ precisa testar se há ciclos</div>
+</div>
+<div id="s18-metodos-m2" class="k-card" style="left:980px;top:260px;width:820px;height:440px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:26px;font-size:38px">método baseado</div>
+  <div class="k-h2 k-c-green" style="left:30px;top:72px;font-size:38px">em regras</div>
+  <div class="k-body" style="left:30px;top:150px;font-size:28px;line-height:1.45">o <b>projetista</b> analisa a gramática<br>e fixa a ordem ao <b>construir</b><br>o compilador</div>
+</div>
+<div id="s18-metodos-win" class="k-chip k-c-green" style="left:1120px;top:730px;font-size:30px;background:#13241A">★ usado em praticamente todos</div>
+      </div>
+    </div>
+    <div id="s18-metodos-chrome" class="clip k-scene" data-start="0" data-duration="19.979" data-track-index="2">
+      <div id="s18-metodos-tag" class="k-tag">COMPILADORES · <b>GRAFO DE DEPENDÊNCIAS</b></div>
+      <div id="s18-metodos-num" class="k-num">18 / 36</div>
+      <div id="s18-metodos-progbar" class="k-prog"><i id="s18-metodos-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.728, "c": 10.061, "d": 15.928}, D = 19.979;
+        var S = K.scene("18-metodos", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, $("m1"), C.b, { y: 60 });
+        K.rise(tl, $("m2"), C.c, { y: 60 });
+        K.dim(tl, $("m1"), C.d, 0.4);
+        K.pop(tl, $("win"), C.d + 0.3);
+        K.pulse(tl, $("m2"), C.d + 0.4, { k: 1.03 });
+      })();
+    </script>
+  </div>
+</template>

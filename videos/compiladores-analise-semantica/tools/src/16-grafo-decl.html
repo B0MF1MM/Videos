@@ -1,0 +1,41 @@
+<!--sfx: b:whoosh-short@0.6*0.2, d:pop@2.6*0.3-->
+<style>
+  .gn { position: absolute; font-family: "DM Mono", monospace; font-size: 30px; padding: 8px 16px; border-radius: 12px; background: #0D1322; border: 2px solid #2A3656; color: #8C97B5; white-space: nowrap; }
+  .ga { position: absolute; font-family: "DM Mono", monospace; font-size: 30px; padding: 8px 16px; border-radius: 12px; background: #2A2410; border: 2px solid #FFD24A; color: #FFD24A; white-space: nowrap; }
+</style>
+<div id="@src" class="k-code k-c-yel" style="left:120px;top:126px;font-size:50px">float x, y</div>
+<div class="k-kicker" style="left:600px;top:140px">grafo de dependências</div>
+<svg class="k-svg"><g stroke="#2A3656" stroke-width="3" stroke-dasharray="10 10" fill="none">
+  <line x1="900" y1="230" x2="520" y2="330"/><line x1="900" y1="230" x2="1260" y2="330"/>
+  <line x1="460" y1="370" x2="460" y2="470"/><line x1="1260" y1="370" x2="900" y2="470"/><line x1="1260" y1="370" x2="1260" y2="470"/><line x1="1260" y1="370" x2="1560" y2="470"/>
+  <line x1="1560" y1="510" x2="1560" y2="640"/></g>
+  <path id="@a1" class="arrow" d="M 600 350 L 1080 350 M 1060 336 L 1080 350 L 1060 364" stroke="#FFD24A" />
+  <path id="@a2" class="arrow" d="M 1180 380 L 970 470 M 990 470 L 970 470 L 980 452" stroke="#FFD24A" />
+  <path id="@a3" class="arrow" d="M 1280 380 L 1490 470 M 1470 472 L 1490 470 L 1482 452" stroke="#FFD24A" />
+  <path id="@a4" class="arrow" d="M 1500 520 L 1500 630 M 1486 612 L 1500 630 L 1514 612" stroke="#FFD24A" />
+</svg>
+<div class="gn" style="left:840px;top:200px">decl</div>
+<div class="gn" style="left:380px;top:328px">tipo</div><div id="@t" class="ga" style="left:470px;top:328px">dtipo</div>
+<div id="@vl" class="ga" style="left:1090px;top:328px">dtipo</div><div class="gn" style="left:1200px;top:328px">var-lista</div>
+<div class="gn" style="left:400px;top:470px">float</div>
+<div id="@x" class="ga" style="left:840px;top:470px">dtipo</div><div class="gn" style="left:960px;top:470px">id (x)</div>
+<div class="gn" style="left:1240px;top:470px">,</div>
+<div id="@vl2" class="ga" style="left:1440px;top:470px">dtipo</div><div class="gn" style="left:1560px;top:470px">var-lista</div>
+<div id="@y" class="ga" style="left:1440px;top:640px">dtipo</div><div class="gn" style="left:1560px;top:640px">id (y)</div>
+<div id="@mac" class="k-macete" style="left:120px;top:640px;width:1000px;font-size:34px">Dá pra seguir as setas <u>sem nunca voltar</u>: sem ciclo.</div>
+
+<script>
+K.rise(tl, $("src"), C.a);
+var gn = Array.prototype.slice.call($("cam").querySelectorAll(".gn, .ga, line"));
+K.fade(tl, gn, C.a + 0.6, { s: 0.05 });
+K.pulse(tl, $("t"), C.b + 0.2);
+K.draw(tl, $("a1"), C.b + 0.6, { d: 0.6 });
+K.pulse(tl, $("vl"), C.b + 1.2);
+K.draw(tl, $("a2"), C.c + 1.0, { d: 0.5 });
+K.pulse(tl, $("x"), C.c + 1.5);
+K.draw(tl, $("a3"), C.c + 2.6, { d: 0.5 });
+K.pulse(tl, $("vl2"), C.c + 3.1);
+K.draw(tl, $("a4"), C.d + 0.4, { d: 0.5 });
+K.pulse(tl, $("y"), C.d + 0.9);
+K.macete(tl, $("mac"), C.d + 2.6);
+</script>

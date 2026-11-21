@@ -1,0 +1,31 @@
+<!--sfx: c:pop@3.0*0.3, d:pop*0.3-->
+<div id="@pipe" style="position:absolute;left:150px;top:140px;width:1620px;height:90px">
+  <div id="@p0" class="k-chip k-mute" style="left:0;top:14px">análise léxica</div>
+  <div id="@p1" class="k-chip k-mute" style="left:330px;top:14px">análise sintática</div>
+  <div id="@p2" class="k-chip k-c-yel" style="left:690px;top:0;font-size:40px;padding:14px 34px 12px;background:#2A2410">análise semântica</div>
+  <div id="@p3" class="k-chip k-mute" style="left:1200px;top:14px">geração de código</div>
+</div>
+<div id="@c1" class="k-card" style="left:200px;top:290px;width:700px;height:200px;border-color:#4FD6EE">
+  <div class="k-kicker" style="left:34px;top:28px">SINTÁTICA</div>
+  <div class="k-h2" style="left:34px;top:84px;font-size:48px">está bem <span class="k-c-cyan">escrito</span>?</div>
+</div>
+<div id="@c2" class="k-card" style="left:1020px;top:290px;width:700px;height:200px;border-color:#FFD24A">
+  <div class="k-kicker" style="left:34px;top:28px;color:#FFD24A">SEMÂNTICA</div>
+  <div class="k-h2" style="left:34px;top:84px;font-size:48px">faz <span class="k-c-yel">sentido</span>?</div>
+</div>
+<div id="@code" class="k-code" style="left:0;top:560px;width:1920px;text-align:center;font-size:64px">x = <span class="k-c-green">"olá"</span> * <span class="k-c-cyan">3</span>;</div>
+<div id="@v1" class="k-chip k-c-cyan" style="left:420px;top:680px;font-size:32px;background:#0E2530">✓ sintaxe ok</div>
+<div id="@v2" class="k-chip k-c-pink" style="left:1100px;top:680px;font-size:32px;background:#2A0E17">✗ texto × número?</div>
+<div id="@mac" class="k-macete" style="left:430px;top:780px;width:1060px;font-size:36px">Sintática olha a <u>forma</u>. Semântica olha o <u>significado</u>.</div>
+
+<script>
+K.rise(tl, [$("p0"), $("p1"), $("p2"), $("p3")], C.a, { s: 0.3 });
+K.pulse(tl, $("p2"), C.a + 2.2, { k: 1.12 });
+K.rise(tl, $("c1"), C.b + 0.2);
+K.rise(tl, $("c2"), C.b + 2.0);
+K.rise(tl, $("code"), C.c);
+K.pop(tl, $("v1"), C.c + 2.6);
+K.pop(tl, $("v2"), C.c + 3.6);
+tl.to($("code"), { x: 8, duration: 0.06, yoyo: true, repeat: 5 }, C.c + 3.7);
+K.macete(tl, $("mac"), C.d);
+</script>

@@ -1,0 +1,49 @@
+<template id="06-notacao-template">
+  <div id="root" data-composition-id="06-notacao" data-start="0" data-duration="26.222" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s06-notacao-bg" class="clip k-scene k-bg" data-start="0" data-duration="26.222" data-track-index="0"></div>
+    <div id="s06-notacao-stage" class="clip k-scene" data-start="0" data-duration="26.222" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s06-notacao-cam" class="k-cam">
+<div id="s06-notacao-t" class="k-title" style="left:120px;top:124px;font-size:56px">Gramática de atributos = <em>regra gramatical</em> + <em>regras semânticas</em></div>
+<div id="s06-notacao-xa" style="position:absolute;left:150px;top:250px;width:600px;height:220px">
+  <div class="k-code" style="left:0;top:0;font-size:130px"><span class="k-c-cyan">X</span>.<span class="k-c-yel">a</span></div>
+  <div class="k-anno k-c-cyan" style="left:0;top:160px">símbolo</div>
+  <div class="k-anno k-c-yel" style="left:200px;top:160px">atributo</div>
+</div>
+<div id="s06-notacao-eq" class="k-card" style="left:820px;top:260px;width:980px;height:200px">
+  <div class="k-body k-mute" style="left:30px;top:20px;font-size:26px">regra semântica = equação</div>
+  <div class="k-code" style="left:30px;top:80px;font-size:40px"><span class="k-c-yel">Xi.aj</span> = f( atributos dos outros símbolos )</div>
+  <div class="k-body k-mute" style="left:30px;top:142px;font-size:24px">só da mesma regra gramatical</div>
+</div>
+<div id="s06-notacao-idx" class="k-code" style="left:150px;top:530px;font-size:52px">número<span id="s06-notacao-i1" style="display:inline-block" class="k-c-pink">₁</span> → número<span id="s06-notacao-i2" style="display:inline-block" class="k-c-pink">₂</span> dígito</div>
+<div id="s06-notacao-idxl" class="k-anno k-c-pink" style="left:1050px;top:540px">mesmo símbolo 2×? numera!</div>
+<table id="s06-notacao-tab" class="k-table" style="left:150px;top:650px;width:1620px;font-size:32px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA GRAMATICAL</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRAS SEMÂNTICAS</td></tr>
+  <tr id="s06-notacao-row"><td>número₁ → número₂ dígito</td><td>número₁.val = número₂.val * 10 + dígito.val</td></tr>
+</table>
+      </div>
+    </div>
+    <div id="s06-notacao-chrome" class="clip k-scene" data-start="0" data-duration="26.222" data-track-index="2">
+      <div id="s06-notacao-tag" class="k-tag">COMPILADORES · <b>GRAMÁTICA DE ATRIBUTOS</b></div>
+      <div id="s06-notacao-num" class="k-num">06 / 36</div>
+      <div id="s06-notacao-progbar" class="k-prog"><i id="s06-notacao-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.182, "c": 8.827, "d": 15.525, "e": 20.453}, D = 26.222;
+        var S = K.scene("06-notacao", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.fade(tl, $("xa"), C.b);
+        K.rise(tl, $("eq"), C.c);
+        K.rise(tl, $("idx"), C.d);
+        K.pulse(tl, [$("i1"), $("i2")], C.d + 2.2, { k: 1.6 });
+        K.wipe(tl, $("idxl"), C.d + 2.4);
+        K.fade(tl, $("tab"), C.e);
+        K.fade(tl, $("row"), C.e + 1.6);
+      })();
+    </script>
+  </div>
+</template>

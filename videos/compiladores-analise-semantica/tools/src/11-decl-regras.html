@@ -1,0 +1,29 @@
+<!--sfx: a:chime@1.0*0.25-->
+<div id="@badge" class="k-chip k-c-pink" style="left:120px;top:116px;font-size:24px">★ O MAIS IMPORTANTE</div>
+<div id="@g" class="k-code" style="left:120px;top:170px;font-size:34px;line-height:1.45"><span class="k-c-cyan">decl</span>     → tipo var-lista
+<span class="k-c-green">tipo</span>     → int | float
+<span class="k-c-violet">var-lista</span> → id , var-lista | id</div>
+<div id="@src" class="k-code k-c-yel" style="left:1300px;top:200px;font-size:60px">float x, y</div>
+<div id="@at" class="k-chip k-c-yel" style="left:1300px;top:290px;font-size:28px;background:#2A2410">atributo: dtipo</div>
+<table id="@tab" class="k-table" style="left:120px;top:380px;width:1680px;font-size:32px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA GRAMATICAL</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRAS SEMÂNTICAS</td></tr>
+  <tr id="@r1"><td>tipo → int</td><td>tipo.dtipo = <span class="k-c-yel">inteiro</span></td></tr>
+  <tr id="@r2"><td>tipo → float</td><td>tipo.dtipo = <span class="k-c-yel">real</span></td></tr>
+  <tr id="@r3"><td>decl → tipo var-lista</td><td>var-lista.dtipo = tipo.dtipo</td></tr>
+  <tr id="@r4"><td>var-lista₁ → id , var-lista₂</td><td>id.dtipo = var-lista₁.dtipo
+var-lista₂.dtipo = var-lista₁.dtipo</td></tr>
+  <tr id="@r5"><td>var-lista → id</td><td>id.dtipo = var-lista.dtipo</td></tr>
+</table>
+
+<script>
+var R = [$("r1"), $("r2"), $("r3"), $("r4"), $("r5")];
+K.pop(tl, $("badge"), C.a);
+K.rise(tl, $("g"), C.a + 0.5);
+K.pop(tl, $("src"), C.a + 2.4);
+K.pop(tl, $("at"), C.b + 0.4);
+K.fade(tl, $("tab"), C.c - 0.3);
+tl.set(R, { opacity: 0 }, 0);
+tl.to([R[0], R[1]], { opacity: 1, duration: 0.4, stagger: 1.4 }, C.c + 0.2);
+tl.to(R[2], { opacity: 1, duration: 0.4 }, C.d + 0.2);
+tl.to([R[3], R[4]], { opacity: 1, duration: 0.4, stagger: 0.9 }, C.e + 0.2);
+</script>

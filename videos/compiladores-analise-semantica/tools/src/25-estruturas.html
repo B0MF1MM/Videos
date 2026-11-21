@@ -1,0 +1,59 @@
+<!--sfx: c:chime@0.6*0.25, d:pop@4.0*0.25, e:pop@5.4*0.3-->
+<style>
+  .bk { position: absolute; width: 90px; height: 56px; border: 2px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 22px; line-height: 52px; text-align: center; color: #8C97B5; }
+  .it { position: absolute; height: 46px; padding: 0 14px; border-radius: 10px; border: 2px solid #4FD6EE; background: #0D1322; font-family: "DM Mono", monospace; font-size: 24px; line-height: 42px; color: #4FD6EE; white-space: nowrap; }
+</style>
+<div id="@s1" class="k-card" style="left:120px;top:130px;width:540px;height:150px">
+  <div class="k-h2" style="left:24px;top:18px;font-size:32px">listas lineares</div>
+  <div class="k-body k-c-green" style="left:24px;top:70px;font-size:24px">simples · protótipos e programas pequenos</div>
+</div>
+<div id="@s2" class="k-card" style="left:690px;top:130px;width:540px;height:150px">
+  <div class="k-h2" style="left:24px;top:18px;font-size:32px">árvores de busca</div>
+  <div class="k-body k-c-pink" style="left:24px;top:70px;font-size:24px">pior caso ruim · remover é complicado</div>
+</div>
+<div id="@s3" class="k-card" style="left:1260px;top:130px;width:540px;height:150px;border-color:#FFD24A;background:#221F12">
+  <div class="k-h2 k-c-yel" style="left:24px;top:18px;font-size:32px">★ tabela de hashing</div>
+  <div class="k-body" style="left:24px;top:70px;font-size:24px">busca e inserção ≈ custo constante</div>
+</div>
+
+<div id="@h" style="position:absolute;left:120px;top:320px;width:1700px;height:540px">
+  <div id="@n1" class="it" style="left:0;top:40px">"x"</div>
+  <div id="@n2" class="it" style="left:0;top:200px">"temp"</div>
+  <div id="@hf" class="k-card" style="left:180px;top:90px;width:220px;height:110px;border-color:#B49BFF"><div class="k-code k-c-violet" style="left:0;top:30px;width:220px;text-align:center;font-size:30px">hash( )</div></div>
+  <svg width="1700" height="540" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@p1" d="M 90 62 C 140 62, 150 120, 180 130" stroke="#8C97B5" stroke-width="3" fill="none"/>
+    <path id="@p2" d="M 130 222 C 150 222, 160 180, 180 170" stroke="#8C97B5" stroke-width="3" fill="none"/>
+    <path id="@p3" d="M 400 145 C 460 145, 470 206, 520 206" stroke="#FFD24A" stroke-width="4" fill="none"/>
+  </svg>
+  <div class="bk" style="left:520px;top:60px">0</div><div class="bk" style="left:520px;top:120px">1</div><div id="@b2" class="bk" style="left:520px;top:180px">2</div><div class="bk" style="left:520px;top:240px">3</div><div class="bk" style="left:520px;top:300px">4</div>
+  <div id="@col" class="k-anno k-c-pink" style="left:630px;top:0">colisão: "x" e "temp" → índice 2</div>
+  <div id="@oa" class="k-card" style="left:640px;top:70px;width:500px;height:360px;border-color:#FF6F9C">
+    <div class="k-h2 k-c-pink" style="left:24px;top:18px;font-size:30px">endereçamento aberto</div>
+    <div class="k-body" style="left:24px;top:70px;font-size:24px;line-height:1.4">vai para a próxima casa livre<br>✗ degrada quando enche<br>✗ difícil remover</div>
+    <div class="it" style="left:24px;top:200px">2: "x"</div><div class="it" style="left:24px;top:260px;border-color:#FF6F9C;color:#FF6F9C">3: "temp" ↓</div>
+  </div>
+  <div id="@es" class="k-card" style="left:1170px;top:70px;width:530px;height:360px;border-color:#7FE39A">
+    <div class="k-h2 k-c-green" style="left:24px;top:18px;font-size:30px">encadeamento separado</div>
+    <div class="k-body" style="left:24px;top:70px;font-size:24px;line-height:1.4">cada casa é uma lista<br>★ o melhor para compiladores</div>
+    <div class="it" style="left:24px;top:200px">2: "x"</div><div class="k-code k-c-green" style="left:150px;top:200px;font-size:30px">→</div><div class="it" style="left:200px;top:200px;border-color:#7FE39A;color:#7FE39A">"temp"</div>
+  </div>
+</div>
+
+<script>
+K.rise(tl, $("s1"), C.a + 0.4);
+K.rise(tl, $("s2"), C.b);
+K.rise(tl, $("s3"), C.c);
+K.pulse(tl, $("s3"), C.c + 1.2, { k: 1.05 });
+K.dim(tl, [$("s1"), $("s2")], C.c + 1.0, 0.45);
+var bk = Array.prototype.slice.call($("h").querySelectorAll(".bk"));
+K.fade(tl, [$("n1"), $("hf")], C.d, { s: 0.3 });
+K.fade(tl, bk, C.d + 0.4, { s: 0.05 });
+K.draw(tl, [$("p1"), $("p3")], C.d + 1.0, { d: 0.4, s: 0.4 });
+tl.to($("b2"), { borderColor: "#FFD24A", color: "#FFD24A", duration: 0.3 }, C.d + 1.8);
+K.fade(tl, $("n2"), C.d + 3.2);
+K.draw(tl, $("p2"), C.d + 3.4, { d: 0.4 });
+tl.to($("b2"), { borderColor: "#FF6F9C", color: "#FF6F9C", duration: 0.2 }, C.d + 4.0);
+K.wipe(tl, $("col"), C.d + 4.0);
+K.rise(tl, $("oa"), C.e);
+K.rise(tl, $("es"), C.e + 5.4);
+</script>

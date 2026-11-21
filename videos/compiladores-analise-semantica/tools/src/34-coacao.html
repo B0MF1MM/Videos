@@ -1,0 +1,28 @@
+<!--sfx: d:pop@0.4*0.3-->
+<div id="@ov" class="k-card" style="left:120px;top:140px;width:1680px;height:200px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:30px;top:22px;font-size:38px">sobrecarga</div>
+  <div class="k-body" style="left:30px;top:84px;font-size:28px">o mesmo operador para operações diferentes</div>
+  <div class="k-code" style="left:900px;top:40px;font-size:34px;line-height:1.6">2 <span class="k-c-yel">+</span> 3       → soma de inteiros
+2.5 <span class="k-c-yel">+</span> 1.5   → soma de reais</div>
+</div>
+<div id="@mix" class="k-code" style="left:0;top:380px;width:1920px;text-align:center;font-size:72px"><span class="k-c-green">2.1</span> + <span class="k-c-cyan">3</span></div>
+<div id="@q" class="k-anno k-c-yel" style="left:1210px;top:400px">tipo comum?</div>
+<div id="@m1" class="k-card" style="left:120px;top:520px;width:820px;height:300px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:22px;font-size:36px">conversão explícita</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:26px">o programador escreve</div>
+  <div class="k-code" style="left:28px;top:150px;font-size:44px">2.1 + <span class="k-c-cyan">FLOAT(3)</span></div>
+</div>
+<div id="@m2" class="k-card" style="left:980px;top:520px;width:820px;height:300px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:22px;font-size:36px">coação</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:26px">o compilador converte <b>sozinho</b></div>
+  <div class="k-code" style="left:28px;top:150px;font-size:44px">2.1 + 3 → 2.1 + <span class="k-c-yel">3.0</span></div>
+</div>
+
+<script>
+K.rise(tl, $("ov"), C.a);
+K.pop(tl, $("mix"), C.b);
+K.wipe(tl, $("q"), C.b + 2.2);
+K.rise(tl, $("m1"), C.c);
+K.rise(tl, $("m2"), C.d);
+K.pulse(tl, $("m2"), C.d + 2.0, { k: 1.03 });
+</script>

@@ -1,0 +1,67 @@
+<template id="28-escopo-template">
+  <div id="root" data-composition-id="28-escopo" data-start="0" data-duration="27.272" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .it { position: absolute; height: 52px; padding: 0 16px; border-radius: 10px; border: 2px solid #4FD6EE; background: #0D1322; font-family: "DM Mono", monospace; font-size: 28px; line-height: 48px; color: #4FD6EE; white-space: nowrap; }
+</style>
+    <div id="s28-escopo-bg" class="clip k-scene k-bg" data-start="0" data-duration="27.272" data-track-index="0"></div>
+    <div id="s28-escopo-stage" class="clip k-scene" data-start="0" data-duration="27.272" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s28-escopo-cam" class="k-cam">
+<div id="s28-escopo-code" class="k-code" style="left:150px;top:150px;font-size:34px;line-height:1.5"><span class="ln"><span class="k-c-violet">int</span> i, j;</span><span class="ln"><span class="k-c-violet">int</span> f(<span class="k-c-violet">int</span> tamanho)</span><span class="ln">{ <span class="k-c-violet">char</span> i, temp;</span><span class="ln" id="s28-escopo-use">    … i …</span><span class="ln">  { <span class="k-c-violet">double</span> j; … }</span><span class="ln">    …</span><span class="ln">  { <span class="k-c-violet">char</span> *j; … }</span><span class="ln">}</span></div>
+<div id="s28-escopo-blk1" style="position:absolute;left:130px;top:140px;width:640px;height:440px;border:3px dashed #4FD6EE;border-radius:18px"></div>
+<div id="s28-escopo-blk2" style="position:absolute;left:140px;top:250px;width:600px;height:320px;border:3px dashed #FFD24A;border-radius:18px"></div>
+<div id="s28-escopo-blk3" style="position:absolute;left:170px;top:352px;width:420px;height:52px;border:3px dashed #7FE39A;border-radius:12px"></div>
+<div id="s28-escopo-blk4" style="position:absolute;left:170px;top:454px;width:420px;height:52px;border:3px dashed #7FE39A;border-radius:12px"></div>
+<div id="s28-escopo-def" class="k-anno k-c-yel" style="left:800px;top:150px">bloco = construção com declarações · ex.: { }</div>
+<div id="s28-escopo-rule" class="k-card" style="left:800px;top:220px;width:1000px;height:120px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:18px;font-size:34px">aninhamento mais próximo</div>
+  <div class="k-body" style="left:28px;top:70px;font-size:26px">vale a declaração do bloco mais interno</div>
+</div>
+<div id="s28-escopo-bucket" style="position:absolute;left:800px;top:380px;width:1000px;height:200px">
+  <div class="k-body k-mute" style="left:0;top:0;font-size:26px">tabela de símbolos · nome "i"</div>
+  <div id="s28-escopo-i2" class="it" style="left:0;top:50px;border-color:#FFD24A;color:#FFD24A">i (char) · f</div>
+  <div id="s28-escopo-arr" class="k-code k-mute" style="left:250px;top:52px;font-size:34px">→</div>
+  <div id="s28-escopo-i1" class="it" style="left:310px;top:50px">i (int) · global</div>
+  <div id="s28-escopo-hid" class="k-anno k-mute" style="left:310px;top:120px">oculta, não apagada</div>
+</div>
+<div id="s28-escopo-ops" class="k-card" style="left:800px;top:600px;width:1000px;height:150px">
+  <div class="k-body" style="left:28px;top:22px;font-size:28px"><b class="k-c-green">inserir</b> não sobrescreve: <b>esconde</b> a anterior</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:28px"><b class="k-c-pink">remover</b> apaga só a <b>mais recente</b></div>
+</div>
+<div id="s28-escopo-exit" class="k-chip k-c-green" style="left:150px;top:620px;font-size:28px;background:#13241A">saiu de f → i (int) volta a valer</div>
+      </div>
+    </div>
+    <div id="s28-escopo-chrome" class="clip k-scene" data-start="0" data-duration="27.272" data-track-index="2">
+      <div id="s28-escopo-tag" class="k-tag">COMPILADORES · <b>ESCOPO</b></div>
+      <div id="s28-escopo-num" class="k-num">28 / 36</div>
+      <div id="s28-escopo-progbar" class="k-prog"><i id="s28-escopo-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 6.469, "c": 11.654, "d": 17.454, "e": 23.533}, D = 27.272;
+        var S = K.scene("28-escopo", D, 36), tl = S.tl, $ = S.$;
+        K.fade(tl, $("code"), C.a);
+        K.fade(tl, $("blk1"), C.a + 2.6);
+        K.fade(tl, $("blk2"), C.a + 3.2);
+        K.fade(tl, [$("blk3"), $("blk4")], C.a + 3.8);
+        K.wipe(tl, $("def"), C.a + 3.0);
+        K.rise(tl, $("rule"), C.b);
+        K.pulse(tl, $("blk2"), C.b + 2.4, { k: 1.02 });
+        K.fade(tl, $("bucket"), C.c);
+        tl.set([$("i2"), $("arr")], { opacity: 0 }, 0);
+        K.pop(tl, $("i1"), C.c + 0.3);
+        K.hl(tl, $("use"), C.c + 1.0, C.d);
+        tl.to([$("i2"), $("arr")], { opacity: 1, duration: 0.3 }, C.c + 2.6);
+        tl.to($("i1"), { opacity: 0.3, duration: 0.3 }, C.c + 3.0);
+        K.fade(tl, $("hid"), C.c + 3.2);
+        K.rise(tl, $("ops"), C.d);
+        tl.to([$("i2"), $("arr")], { opacity: 0, x: -30, duration: 0.4 }, C.e + 0.4);
+        tl.to($("i1"), { opacity: 1, x: -310, duration: 0.5 }, C.e + 0.6);
+        K.out(tl, $("hid"), C.e + 0.4);
+        K.pop(tl, $("exit"), C.e + 1.0);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,46 @@
+<!--sfx: c:click-soft@0.6*0.35, e:pop*0.3-->
+<style>
+  .on { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 35px; background: #182238; border: 4px solid #FF6F9C; font-family: "DM Mono", monospace; font-size: 30px; line-height: 62px; text-align: center; color: #182238; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:150px;font-size:72px">Atributo <em>herdado</em></div>
+<svg class="k-svg"><g class="edge"><line x1="420" y1="340" x2="280" y2="480"/><line x1="420" y1="340" x2="560" y2="480"/><line x1="280" y1="480" x2="200" y2="630"/><line x1="280" y1="480" x2="360" y2="630"/></g>
+  <g id="@downs" stroke="#FF6F9C" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M 372 400 L 330 450 M 332 430 L 330 450 L 350 446"/><path d="M 468 400 L 510 450 M 490 446 L 510 450 L 508 430"/>
+    <path d="M 245 540 L 220 590 M 218 570 L 220 590 L 238 582"/></g>
+  <path id="@side" d="M 238 680 C 260 720, 300 720, 322 680 M 306 690 L 322 680 L 320 698" stroke="#FFD24A" stroke-width="5" fill="none"/></svg>
+<div id="@o1" class="on" style="left:420px;top:340px">1</div>
+<div id="@o2" class="on" style="left:280px;top:480px">2</div>
+<div id="@o5" class="on" style="left:560px;top:480px">5</div>
+<div id="@o3" class="on" style="left:200px;top:630px">3</div>
+<div id="@o4" class="on" style="left:360px;top:630px">4</div>
+<div id="@dl" class="k-anno k-c-pink" style="left:470px;top:570px">pai → filho (desce)</div>
+<div id="@sl" class="k-anno k-c-yel" style="left:400px;top:700px">ou irmão → irmão</div>
+<div id="@def" class="k-card" style="left:860px;top:270px;width:940px;height:120px;border-color:#FF6F9C">
+  <div class="k-body" style="left:30px;top:36px;font-size:32px">não é sintetizado? então é <b class="k-c-pink">herdado</b></div>
+</div>
+<div id="@code" class="k-win" style="left:860px;top:420px;width:940px;height:230px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>pré-ordem</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:30px;line-height:1.45"><span class="ln" id="@p1"><span class="k-c-pink">for</span> cada filho C de T:</span><span class="ln" id="@p2">  calcula os herdados de C</span><span class="ln" id="@p3">  Pré-Eval(C)</span></div>
+</div>
+<div id="@ord" class="k-chip k-c-yel" style="left:860px;top:680px;font-size:28px;background:#2A2410">a ordem de visita dos filhos importa!</div>
+<div id="@mac" class="k-macete" style="left:860px;top:760px;width:960px;font-size:32px">Sintetizado <u>sobe</u> como fumaça. Herdado <u>desce</u> como herança.</div>
+
+<script>
+var O = [$("o1"), $("o2"), $("o3"), $("o4"), $("o5")];
+K.rise(tl, $("t"), C.a);
+var tree = Array.prototype.slice.call($("cam").querySelectorAll(".on, line"));
+K.fade(tl, tree, C.a + 0.6, { s: 0.05 });
+K.rise(tl, $("def"), C.a + 1.0);
+K.fade(tl, $("downs"), C.b);
+K.wipe(tl, $("dl"), C.b + 0.2);
+K.draw(tl, $("side"), C.b + 1.6, { d: 0.5 });
+K.wipe(tl, $("sl"), C.b + 1.8);
+K.rise(tl, $("code"), C.c);
+K.hl(tl, $("p2"), C.c + 1.6, C.c + 3.2);
+K.hl(tl, $("p3"), C.c + 3.2, C.d);
+O.forEach(function (o, i) {
+  tl.to(o, { backgroundColor: "#FF6F9C", color: "#0D1322", duration: 0.2 }, C.c + 1.6 + i * 0.5);
+});
+K.pop(tl, $("ord"), C.d + 0.4);
+K.macete(tl, $("mac"), C.e);
+</script>

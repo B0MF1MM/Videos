@@ -1,0 +1,55 @@
+<template id="33-verificador-template">
+  <div id="root" data-composition-id="33-verificador" data-start="0" data-duration="28.523" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .vt td { padding: 9px 18px !important; line-height: 1.32; }
+</style>
+    <div id="s33-verificador-bg" class="clip k-scene k-bg" data-start="0" data-duration="28.523" data-track-index="0"></div>
+    <div id="s33-verificador-stage" class="clip k-scene" data-start="0" data-duration="28.523" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s33-verificador-cam" class="k-cam">
+<div id="s33-verificador-k" class="k-kicker" style="left:120px;top:118px">verificador de tipos · regra por regra</div>
+<table id="s33-verificador-tab" class="k-table vt" style="left:120px;top:160px;width:1680px;font-size:24px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA GRAMATICAL</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRAS SEMÂNTICAS</td></tr>
+  <tr id="s33-verificador-r1"><td>var-decl → id : tipo-exp</td><td><span class="k-c-green">inserir</span>(id.nome, tipo-exp.tipo)</td></tr>
+  <tr id="s33-verificador-r2"><td>tipo-exp → int | bool</td><td>tipo-exp.tipo := inteiro | booleano</td></tr>
+  <tr id="s33-verificador-r3"><td>tipo-exp₁ → array [num] of tipo-exp₂</td><td>tipo-exp₁.tipo := criaTipoNó(matriz, num.tamanho, tipo-exp₂.tipo)</td></tr>
+  <tr id="s33-verificador-r4"><td>decl → if exp then decl</td><td>if not tipoIgual(exp.tipo, <span class="k-c-yel">booleano</span>) then tipo-erro(decl)</td></tr>
+  <tr id="s33-verificador-r5"><td>decl → id := exp</td><td>if not tipoIgual(<span class="k-c-cyan">verificar</span>(id.nome), exp.tipo) then tipo-erro(decl)</td></tr>
+  <tr id="s33-verificador-r6"><td>exp₁ → exp₂ + exp₃</td><td>exp₂ e exp₃ <span class="k-c-yel">inteiro</span>? senão tipo-erro · exp₁.tipo := inteiro</td></tr>
+  <tr id="s33-verificador-r7"><td>exp₁ → exp₂ or exp₃</td><td>exp₂ e exp₃ <span class="k-c-yel">booleano</span>? senão tipo-erro · exp₁.tipo := booleano</td></tr>
+  <tr id="s33-verificador-r8"><td>exp₁ → exp₂ [ exp₃ ]</td><td>if éTipoMatriz(exp₂.tipo) and tipoIgual(exp₃.tipo, inteiro)
+then exp₁.tipo := exp₂.tipo.filho1  else tipo-erro(exp₁)</td></tr>
+  <tr id="s33-verificador-r9"><td>exp → num | true | false | id</td><td>inteiro | booleano | booleano | verificar(id.nome)</td></tr>
+</table>
+      </div>
+    </div>
+    <div id="s33-verificador-chrome" class="clip k-scene" data-start="0" data-duration="28.523" data-track-index="2">
+      <div id="s33-verificador-tag" class="k-tag">COMPILADORES · <b>TIPOS</b></div>
+      <div id="s33-verificador-num" class="k-num">33 / 36</div>
+      <div id="s33-verificador-progbar" class="k-prog"><i id="s33-verificador-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.228, "c": 9.2, "d": 15.346, "e": 21.66}, D = 28.523;
+        var S = K.scene("33-verificador", D, 36), tl = S.tl, $ = S.$;
+        var R = [];
+        for (var i = 1; i <= 9; i++) R.push($("r" + i));
+        K.fade(tl, $("k"), C.a);
+        K.fade(tl, $("tab"), C.a + 0.4);
+        K.fade(tl, R, C.a + 0.8, { s: 0.15 });
+        K.dim(tl, R, C.b - 0.2, 0.25);
+        K.dim(tl, [R[0], R[1], R[2]], C.b, 1);
+        K.dim(tl, [R[0], R[1], R[2]], C.c - 0.2, 0.25);
+        K.dim(tl, R[3], C.c, 1);
+        K.dim(tl, R[4], C.c + 2.8, 1);
+        K.dim(tl, [R[3], R[4]], C.d - 0.2, 0.25);
+        K.dim(tl, R[5], C.d, 1);
+        K.dim(tl, R[6], C.d + 3.2, 1);
+        K.dim(tl, [R[5], R[6]], C.e - 0.2, 0.25);
+        K.dim(tl, R[7], C.e, 1);
+      })();
+    </script>
+  </div>
+</template>

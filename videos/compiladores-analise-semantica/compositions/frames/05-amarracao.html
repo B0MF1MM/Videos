@@ -1,0 +1,53 @@
+<template id="05-amarracao-template">
+  <div id="root" data-composition-id="05-amarracao" data-start="0" data-duration="20.554" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s05-amarracao-bg" class="clip k-scene k-bg" data-start="0" data-duration="20.554" data-track-index="0"></div>
+    <div id="s05-amarracao-stage" class="clip k-scene" data-start="0" data-duration="20.554" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s05-amarracao-cam" class="k-cam">
+<div id="s05-amarracao-t" class="k-title" style="left:120px;top:130px;font-size:72px"><em>Amarração</em></div>
+<div id="s05-amarracao-def" class="k-body" style="left:120px;top:236px;font-size:34px">calcular o atributo e <b>associar</b> o valor à construção</div>
+<div id="s05-amarracao-tie" style="position:absolute;left:300px;top:320px;width:1320px;height:140px">
+  <div class="k-chip k-c-cyan" style="left:0;top:40px;font-size:38px;background:#0D1322">x</div>
+  <div id="s05-amarracao-rope" style="position:absolute;left:90px;top:68px;width:380px;height:6px;background:#FFD24A;transform-origin:0 50%"></div>
+  <div class="k-chip k-c-yel" style="left:480px;top:40px;font-size:38px;background:#2A2410">tipo = int</div>
+</div>
+<div id="s05-amarracao-tline" style="position:absolute;left:200px;top:560px;width:1520px;height:260px">
+  <div style="position:absolute;left:0;top:100px;width:1520px;height:6px;background:#2A3656"></div>
+  <div class="k-chip k-mute" style="left:620px;top:20px;font-size:26px">tempo de amarração ↓</div>
+  <div id="s05-amarracao-mid" style="position:absolute;left:756px;top:80px;width:8px;height:46px;background:#EEF1F8"></div>
+  <div class="k-body k-mute" style="left:600px;top:140px;width:320px;text-align:center;font-size:26px">execução começa</div>
+  <div id="s05-amarracao-st" class="k-card" style="left:0;top:150px;width:560px;height:110px;border-color:#7FE39A">
+    <div class="k-h2 k-c-green" style="left:24px;top:16px;font-size:36px">ESTÁTICO</div>
+    <div class="k-body" style="left:24px;top:64px;font-size:24px">antes de executar · ex.: tipo declarado em C</div>
+  </div>
+  <div id="s05-amarracao-dy" class="k-card" style="left:960px;top:150px;width:560px;height:110px;border-color:#FF6F9C">
+    <div class="k-h2 k-c-pink" style="left:24px;top:16px;font-size:36px">DINÂMICO</div>
+    <div class="k-body" style="left:24px;top:64px;font-size:24px">só ao executar · ex.: valor digitado</div>
+  </div>
+</div>
+      </div>
+    </div>
+    <div id="s05-amarracao-chrome" class="clip k-scene" data-start="0" data-duration="20.554" data-track-index="2">
+      <div id="s05-amarracao-tag" class="k-tag">COMPILADORES · <b>ATRIBUTOS</b></div>
+      <div id="s05-amarracao-num" class="k-num">05 / 36</div>
+      <div id="s05-amarracao-progbar" class="k-prog"><i id="s05-amarracao-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.377, "c": 7.475, "d": 14.18}, D = 20.554;
+        var S = K.scene("05-amarracao", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.wipe(tl, $("def"), C.a + 0.8);
+        K.fade(tl, $("tie"), C.a + 1.2);
+        tl.fromTo($("rope"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, C.a + 1.6);
+        K.fade(tl, $("tline"), C.b);
+        K.pop(tl, $("mid"), C.b + 0.6);
+        K.rise(tl, $("st"), C.c);
+        K.rise(tl, $("dy"), C.d);
+      })();
+    </script>
+  </div>
+</template>

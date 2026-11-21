@@ -1,0 +1,29 @@
+<!--sfx: b:pop@0.4*0.25, d:click-soft@1.6*0.35-->
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:56px">Gramática de atributos = <em>regra gramatical</em> + <em>regras semânticas</em></div>
+<div id="@xa" style="position:absolute;left:150px;top:250px;width:600px;height:220px">
+  <div class="k-code" style="left:0;top:0;font-size:130px"><span class="k-c-cyan">X</span>.<span class="k-c-yel">a</span></div>
+  <div class="k-anno k-c-cyan" style="left:0;top:160px">símbolo</div>
+  <div class="k-anno k-c-yel" style="left:200px;top:160px">atributo</div>
+</div>
+<div id="@eq" class="k-card" style="left:820px;top:260px;width:980px;height:200px">
+  <div class="k-body k-mute" style="left:30px;top:20px;font-size:26px">regra semântica = equação</div>
+  <div class="k-code" style="left:30px;top:80px;font-size:40px"><span class="k-c-yel">Xi.aj</span> = f( atributos dos outros símbolos )</div>
+  <div class="k-body k-mute" style="left:30px;top:142px;font-size:24px">só da mesma regra gramatical</div>
+</div>
+<div id="@idx" class="k-code" style="left:150px;top:530px;font-size:52px">número<span id="@i1" style="display:inline-block" class="k-c-pink">₁</span> → número<span id="@i2" style="display:inline-block" class="k-c-pink">₂</span> dígito</div>
+<div id="@idxl" class="k-anno k-c-pink" style="left:1050px;top:540px">mesmo símbolo 2×? numera!</div>
+<table id="@tab" class="k-table" style="left:150px;top:650px;width:1620px;font-size:32px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA GRAMATICAL</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRAS SEMÂNTICAS</td></tr>
+  <tr id="@row"><td>número₁ → número₂ dígito</td><td>número₁.val = número₂.val * 10 + dígito.val</td></tr>
+</table>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.fade(tl, $("xa"), C.b);
+K.rise(tl, $("eq"), C.c);
+K.rise(tl, $("idx"), C.d);
+K.pulse(tl, [$("i1"), $("i2")], C.d + 2.2, { k: 1.6 });
+K.wipe(tl, $("idxl"), C.d + 2.4);
+K.fade(tl, $("tab"), C.e);
+K.fade(tl, $("row"), C.e + 1.6);
+</script>

@@ -1,0 +1,26 @@
+<!--sfx: c:click-soft@0.4*0.3, d:pop*0.3-->
+<div id="@t" class="k-title" style="left:120px;top:130px;font-size:72px">O <em>atributo</em></div>
+<div id="@def" class="k-body" style="left:120px;top:240px;font-size:38px">= qualquer <b class="k-c-yel">propriedade</b> de uma construção da linguagem</div>
+<div id="@node" class="k-node" style="left:960px;top:560px;width:180px;height:180px;margin:-90px 0 0 -90px;border-radius:90px;font-size:56px;line-height:172px;border-color:#FFD24A">x</div>
+<svg class="k-svg"><g id="@strings" stroke="#2A3656" stroke-width="3">
+  <line x1="960" y1="560" x2="560" y2="380"/><line x1="960" y1="560" x2="1360" y2="380"/><line x1="960" y1="560" x2="500" y2="620"/><line x1="960" y1="560" x2="1420" y2="620"/><line x1="960" y1="560" x2="960" y2="790"/></g></svg>
+<div id="@a1" class="k-chip k-c-cyan" style="left:430px;top:350px;font-size:30px;background:#0D1322">tipo: int</div>
+<div id="@a2" class="k-chip k-c-green" style="left:1270px;top:350px;font-size:30px;background:#0D1322">valor: 42</div>
+<div id="@a3" class="k-chip k-c-violet" style="left:300px;top:595px;font-size:30px;background:#0D1322">local: 0(gp)</div>
+<div id="@a4" class="k-chip k-c-pink" style="left:1350px;top:595px;font-size:30px;background:#0D1322">escopo: global</div>
+<div id="@a5" class="k-chip k-c-orange" style="left:840px;top:770px;font-size:30px;background:#0D1322">tamanho: 4 bytes</div>
+<div id="@mac" class="k-macete" style="left:1180px;top:130px;width:640px;font-size:34px">Atributo = <u>etiqueta</u> grudada no nó da árvore.</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("def"), C.b);
+K.pop(tl, $("node"), C.b + 1.2);
+K.fade(tl, $("strings"), C.c);
+K.pop(tl, $("a1"), C.c + 0.4);
+K.pop(tl, $("a2"), C.c + 1.6);
+K.pop(tl, $("a3"), C.c + 2.8);
+K.pop(tl, $("a4"), C.c + 4.0);
+K.pop(tl, $("a5"), C.c + 5.0);
+K.macete(tl, $("mac"), C.d);
+K.pulse(tl, $("node"), C.d + 0.6, { k: 1.1 });
+</script>

@@ -1,0 +1,56 @@
+<template id="09-exp-regras-template">
+  <div id="root" data-composition-id="09-exp-regras" data-start="0" data-duration="23.16" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s09-exp-regras-bg" class="clip k-scene k-bg" data-start="0" data-duration="23.16" data-track-index="0"></div>
+    <div id="s09-exp-regras-stage" class="clip k-scene" data-start="0" data-duration="23.16" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s09-exp-regras-cam" class="k-cam">
+<div id="s09-exp-regras-g" class="k-code" style="left:120px;top:120px;font-size:34px;line-height:1.45"><span class="k-c-cyan">exp</span>   → exp + termo | exp - termo | termo
+<span class="k-c-green">termo</span> → termo * fator | fator
+<span class="k-c-violet">fator</span> → ( exp ) | número</div>
+<table id="s09-exp-regras-tab" class="k-table" style="left:120px;top:300px;width:1250px;font-size:32px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA GRAMATICAL</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA SEMÂNTICA</td></tr>
+  <tr id="s09-exp-regras-r1"><td>exp₁ → exp₂ + termo</td><td>exp₁.val = exp₂.val <span class="k-c-yel">+</span> termo.val</td></tr>
+  <tr id="s09-exp-regras-r2"><td>exp₁ → exp₂ - termo</td><td>exp₁.val = exp₂.val <span class="k-c-yel">-</span> termo.val</td></tr>
+  <tr id="s09-exp-regras-r3"><td>exp → termo</td><td>exp.val = termo.val</td></tr>
+  <tr id="s09-exp-regras-r4"><td>termo₁ → termo₂ * fator</td><td>termo₁.val = termo₂.val <span class="k-c-yel">*</span> fator.val</td></tr>
+  <tr id="s09-exp-regras-r5"><td>termo → fator</td><td>termo.val = fator.val</td></tr>
+  <tr id="s09-exp-regras-r6"><td>fator → ( exp )</td><td>fator.val = exp.val</td></tr>
+  <tr id="s09-exp-regras-r7"><td>fator → número</td><td>fator.val = número.val</td></tr>
+</table>
+<div id="s09-exp-regras-op" class="k-card" style="left:1420px;top:330px;width:400px;height:170px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:26px;top:20px;font-size:32px">OPERADOR</div>
+  <div class="k-body" style="left:26px;top:72px;font-size:26px">o pai faz a conta<br>com os filhos</div>
+</div>
+<div id="s09-exp-regras-cp" class="k-card" style="left:1420px;top:540px;width:400px;height:170px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:26px;top:20px;font-size:32px">CÓPIA</div>
+  <div class="k-body" style="left:26px;top:72px;font-size:26px">um filho só:<br>repassa o valor ↑</div>
+</div>
+      </div>
+    </div>
+    <div id="s09-exp-regras-chrome" class="clip k-scene" data-start="0" data-duration="23.16" data-track-index="2">
+      <div id="s09-exp-regras-tag" class="k-tag">COMPILADORES · <b>GRAMÁTICA DE ATRIBUTOS</b></div>
+      <div id="s09-exp-regras-num" class="k-num">09 / 36</div>
+      <div id="s09-exp-regras-progbar" class="k-prog"><i id="s09-exp-regras-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.866, "c": 9.727, "d": 13.842, "e": 19.226}, D = 23.16;
+        var S = K.scene("09-exp-regras", D, 36), tl = S.tl, $ = S.$;
+        var R = [];
+        for (var i = 1; i <= 7; i++) R.push($("r" + i));
+        K.rise(tl, $("g"), C.a);
+        K.fade(tl, $("tab"), C.b - 0.4);
+        tl.set(R, { opacity: 0 }, 0);
+        tl.to(R[0], { opacity: 1, duration: 0.4 }, C.b);
+        K.rise(tl, $("op"), C.b + 1.0);
+        tl.to([R[1], R[3]], { opacity: 1, duration: 0.4, stagger: 0.8 }, C.c);
+        tl.to([R[2], R[4], R[5]], { opacity: 1, duration: 0.4, stagger: 0.5 }, C.d);
+        K.rise(tl, $("cp"), C.d + 0.4);
+        tl.to(R[6], { opacity: 1, duration: 0.4 }, C.e);
+      })();
+    </script>
+  </div>
+</template>

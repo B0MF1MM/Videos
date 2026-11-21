@@ -1,0 +1,61 @@
+<!--sfx: b:pop@0.3*0.25, e:click-soft@3.0*0.4-->
+<style>
+  .tn { position: absolute; width: 170px; height: 52px; margin: -26px 0 0 -85px; border-radius: 12px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 26px; line-height: 46px; text-align: center; color: #EEF1F8; }
+  .lf { border-color: #7FE39A; color: #7FE39A; }
+  .tv { position: absolute; font-family: "DM Mono", monospace; font-size: 24px; padding: 4px 10px; border-radius: 10px; background: #2A2410; border: 2px solid #FFD24A; color: #FFD24A; white-space: nowrap; }
+  .tb { position: absolute; font-family: "DM Mono", monospace; font-size: 24px; padding: 4px 10px; border-radius: 10px; background: #2A0E17; border: 2px solid #FF6F9C; color: #FF6F9C; white-space: nowrap; }
+</style>
+<div id="@src" class="k-code" style="left:120px;top:122px;font-size:58px">345<span id="@o" style="display:inline-block" class="k-c-pink">o</span></div>
+<div id="@bk" style="position:absolute;left:400px;top:130px;width:700px;height:60px">
+  <div class="k-chip k-c-pink" style="left:0;top:0;font-size:28px">o = base 8</div>
+  <div class="k-chip k-mute" style="left:240px;top:0;font-size:28px">d = base 10</div>
+</div>
+<div id="@two" style="position:absolute;left:1180px;top:126px;width:640px;height:70px">
+  <div class="tb" style="left:0;top:8px;font-size:28px">base ↓ herdado</div>
+  <div class="tv" style="left:270px;top:8px;font-size:28px">val ↑ sintetizado</div>
+</div>
+<svg class="k-svg"><g class="edge">
+  <line x1="960" y1="250" x2="760" y2="340"/><line x1="960" y1="250" x2="1320" y2="340"/><line x1="1320" y1="340" x2="1320" y2="420"/>
+  <line x1="760" y1="340" x2="560" y2="430"/><line x1="760" y1="340" x2="960" y2="430"/><line x1="960" y1="430" x2="960" y2="510"/>
+  <line x1="560" y1="430" x2="420" y2="520"/><line x1="560" y1="430" x2="700" y2="520"/><line x1="700" y1="520" x2="700" y2="600"/>
+  <line x1="420" y1="520" x2="420" y2="610"/><line x1="420" y1="610" x2="420" y2="690"/></g>
+  <path id="@bf" class="arrow" d="M 1236 330 C 1100 300, 920 300, 852 326 M 872 314 L 852 326 L 874 338" stroke="#FF6F9C" />
+</svg>
+<div class="tn" style="left:960px;top:250px">base-num</div>
+<div class="tn" style="left:760px;top:340px">num</div>
+<div class="tn" style="left:1320px;top:340px">basecar</div>
+<div class="tn lf" style="left:1320px;top:425px;width:60px;margin-left:-30px">o</div>
+<div class="tn" style="left:560px;top:430px">num</div>
+<div class="tn" style="left:960px;top:430px">dígito</div>
+<div class="tn lf" style="left:960px;top:515px;width:60px;margin-left:-30px">5</div>
+<div class="tn" style="left:420px;top:520px">num</div>
+<div class="tn" style="left:700px;top:520px">dígito</div>
+<div class="tn lf" style="left:700px;top:605px;width:60px;margin-left:-30px">4</div>
+<div class="tn" style="left:420px;top:610px">dígito</div>
+<div class="tn lf" style="left:420px;top:695px;width:60px;margin-left:-30px">3</div>
+<div id="@bb" class="tb" style="left:1410px;top:322px">base = 8</div>
+<div id="@nb" class="tb" style="left:560px;top:280px">base = 8 (desce)</div>
+<div id="@v3" class="tv" style="left:150px;top:504px">val = 3</div>
+<div id="@v28" class="tv" style="left:180px;top:414px">val = 3·8 + 4 = 28</div>
+<div id="@v229" class="tv" style="left:1060px;top:216px;font-size:30px">val = 28·8 + 5 = 229</div>
+<div id="@err" class="k-card" style="left:1260px;top:660px;width:560px;height:200px;border-color:#FF6F9C">
+  <div class="k-code" style="left:26px;top:20px;font-size:44px">189<span class="k-c-pink">o</span></div>
+  <div class="k-body" style="left:26px;top:86px;font-size:24px">sintaxe ✓ · 8 e 9 não existem em octal</div>
+  <div class="k-code k-c-pink" style="left:26px;top:130px;font-size:32px">val = erro</div>
+</div>
+
+<script>
+K.rise(tl, $("src"), C.a);
+var tn = Array.prototype.slice.call($("cam").querySelectorAll(".tn, line"));
+K.fade(tl, tn, C.a + 1.6, { s: 0.05 });
+K.pulse(tl, $("o"), C.a + 3.6, { k: 1.4 });
+K.fade(tl, $("bk"), C.b);
+K.fade(tl, $("two"), C.c);
+K.pop(tl, $("bb"), C.c + 1.0);
+K.draw(tl, $("bf"), C.c + 1.6, { d: 0.6 });
+K.pop(tl, $("nb"), C.c + 2.2);
+K.pop(tl, $("v3"), C.d + 1.0);
+K.pop(tl, $("v28"), C.d + 2.8);
+K.pop(tl, $("v229"), C.d + 5.4);
+K.rise(tl, $("err"), C.e);
+</script>

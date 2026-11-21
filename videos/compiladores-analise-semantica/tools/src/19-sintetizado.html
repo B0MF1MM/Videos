@@ -1,0 +1,46 @@
+<!--sfx: c:pop@0.6*0.25, d:click-soft@1.0*0.35-->
+<style>
+  .on { position: absolute; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 35px; background: #182238; border: 4px solid #7FE39A; font-family: "DM Mono", monospace; font-size: 30px; line-height: 62px; text-align: center; color: #7FE39A; }
+</style>
+<div id="@k" class="k-kicker" style="left:120px;top:126px">classificando os atributos</div>
+<div id="@t" class="k-title" style="left:120px;top:170px;font-size:72px">Atributo <em>sintetizado</em></div>
+<svg class="k-svg"><g class="edge"><line x1="420" y1="360" x2="280" y2="500"/><line x1="420" y1="360" x2="560" y2="500"/><line x1="280" y1="500" x2="200" y2="650"/><line x1="280" y1="500" x2="360" y2="650"/></g>
+  <g id="@ups" stroke="#7FE39A" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M 230 600 L 262 540 M 244 548 L 262 540 L 266 560"/><path d="M 330 600 L 298 540 M 296 560 L 298 540 L 316 548"/>
+    <path d="M 330 450 L 372 400 M 352 404 L 372 400 L 372 420"/><path d="M 510 450 L 468 400 M 468 420 L 468 400 L 488 404"/></g></svg>
+<div id="@o5" class="on" style="color:#182238;left:420px;top:360px">5</div>
+<div id="@o3" class="on" style="color:#182238;left:280px;top:500px">3</div>
+<div id="@o4" class="on" style="color:#182238;left:560px;top:500px">4</div>
+<div id="@o1" class="on" style="color:#182238;left:200px;top:650px">1</div>
+<div id="@o2" class="on" style="color:#182238;left:360px;top:650px">2</div>
+<div id="@upl" class="k-anno k-c-green" style="left:470px;top:570px">filho → pai (sobe)</div>
+<div id="@def" class="k-card" style="left:820px;top:300px;width:980px;height:150px;border-color:#7FE39A">
+  <div class="k-body" style="left:30px;top:24px;font-size:30px">todas as dependências vão do <b class="k-c-green">filho para o pai</b></div>
+  <div class="k-code" style="left:30px;top:82px;font-size:30px">A.a = f( X1.a1, …, Xn.ak )</div>
+</div>
+<div id="@sa" class="k-chip k-c-yel" style="left:820px;top:480px;font-size:30px;background:#2A2410">todos sintetizados → gramática S-atribuída</div>
+<div id="@code" class="k-win" style="left:820px;top:560px;width:980px;height:270px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>uma passada em pós-ordem</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:30px;line-height:1.45"><span class="ln" id="@p1"><span class="k-c-pink">procedure</span> Pós-Eval(T)</span><span class="ln" id="@p2">  <span class="k-c-pink">for</span> cada filho C de T: Pós-Eval(C)</span><span class="ln" id="@p3">  calcula os sintetizados de T</span></div>
+</div>
+<div id="@ex" class="k-chip k-c-green" style="left:120px;top:760px;font-size:28px;background:#13241A">foi assim no 345 e no 1302</div>
+
+<script>
+var O = [$("o1"), $("o2"), $("o3"), $("o4"), $("o5")];
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("t"), C.a + 0.4);
+var tree = Array.prototype.slice.call($("cam").querySelectorAll(".on, line"));
+K.fade(tl, tree, C.b, { s: 0.05 });
+K.rise(tl, $("def"), C.b + 0.4);
+K.fade(tl, $("ups"), C.b + 1.6);
+K.wipe(tl, $("upl"), C.b + 1.8);
+K.pop(tl, $("sa"), C.c + 0.6);
+K.rise(tl, $("code"), C.d);
+K.hl(tl, $("p2"), C.d + 1.4, C.d + 3.4);
+// numeração pós-ordem
+O.forEach(function (o, i) {
+  tl.to(o, { backgroundColor: "#7FE39A", color: "#0D1322", duration: 0.2 }, C.d + 1.4 + i * 0.5);
+});
+K.hl(tl, $("p3"), C.d + 3.4);
+K.pop(tl, $("ex"), C.e + 0.4);
+</script>

@@ -1,0 +1,63 @@
+<template id="10-exp-arvore-template">
+  <div id="root" data-composition-id="10-exp-arvore" data-start="0" data-duration="22.453" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .tn { position: absolute; width: 150px; height: 52px; margin: -26px 0 0 -75px; border-radius: 12px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 26px; line-height: 46px; text-align: center; color: #EEF1F8; }
+  .tk { position: absolute; width: 60px; margin: -24px 0 0 -30px; font-family: "DM Mono", monospace; font-size: 40px; text-align: center; color: #FF6F9C; }
+  .tv { position: absolute; font-family: "DM Mono", monospace; font-size: 26px; padding: 5px 12px; border-radius: 10px; background: #2A2410; border: 2px solid #FFD24A; color: #FFD24A; white-space: nowrap; }
+  .lf { color: #7FE39A; border-color: #7FE39A; }
+</style>
+    <div id="s10-exp-arvore-bg" class="clip k-scene k-bg" data-start="0" data-duration="22.453" data-track-index="0"></div>
+    <div id="s10-exp-arvore-stage" class="clip k-scene" data-start="0" data-duration="22.453" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s10-exp-arvore-cam" class="k-cam">
+<div id="s10-exp-arvore-ex" class="k-code" style="left:120px;top:126px;font-size:54px">(34 - 3) * 42</div>
+<svg class="k-svg"><g class="edge">
+  <line x1="960" y1="170" x2="960" y2="260"/><line x1="960" y1="260" x2="700" y2="350"/><line x1="960" y1="260" x2="960" y2="350"/><line x1="960" y1="260" x2="1220" y2="350"/>
+  <line x1="1220" y1="350" x2="1220" y2="440"/><line x1="700" y1="350" x2="700" y2="440"/><line x1="700" y1="440" x2="600" y2="530"/><line x1="700" y1="440" x2="700" y2="530"/><line x1="700" y1="440" x2="800" y2="530"/>
+  <line x1="700" y1="530" x2="520" y2="620"/><line x1="700" y1="530" x2="700" y2="620"/><line x1="700" y1="530" x2="880" y2="620"/><line x1="520" y1="620" x2="520" y2="710"/><line x1="880" y1="620" x2="880" y2="710"/></g></svg>
+<div class="tn" style="left:960px;top:170px">exp</div>
+<div class="tn" style="left:960px;top:260px">termo</div>
+<div class="tn" style="left:700px;top:350px">termo</div><div class="tk" style="left:960px;top:350px">*</div><div class="tn" style="left:1220px;top:350px">fator</div>
+<div class="tn lf" style="left:1220px;top:440px">42</div>
+<div class="tn" style="left:700px;top:440px">fator</div>
+<div class="tk" style="left:600px;top:530px">(</div><div class="tn" style="left:700px;top:530px">exp</div><div class="tk" style="left:800px;top:530px">)</div>
+<div class="tn" style="left:520px;top:620px">exp</div><div class="tk" style="left:700px;top:620px">-</div><div class="tn" style="left:880px;top:620px">termo</div>
+<div class="tn lf" style="left:520px;top:710px">34</div><div class="tn lf" style="left:880px;top:710px">3</div>
+<div id="s10-exp-arvore-b34" class="tv lf" style="left:300px;top:694px">val = 34</div>
+<div id="s10-exp-arvore-b3" class="tv lf" style="left:965px;top:694px">val = 3</div>
+<div id="s10-exp-arvore-b42" class="tv lf" style="left:1305px;top:424px">val = 42</div>
+<div id="s10-exp-arvore-c34" class="tv" style="left:300px;top:604px">val = 34</div>
+<div id="s10-exp-arvore-c3" class="tv" style="left:965px;top:604px">val = 3</div>
+<div id="s10-exp-arvore-c31" class="tv" style="left:820px;top:500px;font-size:30px">val = 34 - 3 = 31</div>
+<div id="s10-exp-arvore-p31" class="tv" style="left:420px;top:424px">val = 31</div>
+<div id="s10-exp-arvore-q31" class="tv" style="left:420px;top:334px">val = 31</div>
+<div id="s10-exp-arvore-r42" class="tv" style="left:1305px;top:334px">val = 42</div>
+<div id="s10-exp-arvore-tt" class="tv" style="left:1045px;top:244px;font-size:30px">val = 31 * 42 = 1302</div>
+<div id="s10-exp-arvore-root" class="tv" style="left:1045px;top:150px;font-size:34px">val = 1302</div>
+      </div>
+    </div>
+    <div id="s10-exp-arvore-chrome" class="clip k-scene" data-start="0" data-duration="22.453" data-track-index="2">
+      <div id="s10-exp-arvore-tag" class="k-tag">COMPILADORES · <b>GRAMÁTICA DE ATRIBUTOS</b></div>
+      <div id="s10-exp-arvore-num" class="k-num">10 / 36</div>
+      <div id="s10-exp-arvore-progbar" class="k-prog"><i id="s10-exp-arvore-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 6.059, "c": 9.912, "d": 14.891}, D = 22.453;
+        var S = K.scene("10-exp-arvore", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("ex"), C.a);
+        var tn = Array.prototype.slice.call($("cam").querySelectorAll(".tn, .tk, line"));
+        K.fade(tl, tn, C.a + 1.0, { s: 0.06 });
+        K.pop(tl, [$("b34"), $("b3"), $("b42")], C.b + 0.6, { s: 0.6 });
+        K.pop(tl, [$("c34"), $("c3")], C.c + 0.8, { s: 0.3 });
+        K.pop(tl, $("c31"), C.c + 2.4);
+        K.pop(tl, $("p31"), C.d + 0.4);
+        K.pop(tl, [$("q31"), $("r42")], C.d + 1.2, { s: 0.3 });
+        K.pop(tl, $("tt"), C.d + 2.6);
+        K.pop(tl, $("root"), C.d + 4.4);
+      })();
+    </script>
+  </div>
+</template>

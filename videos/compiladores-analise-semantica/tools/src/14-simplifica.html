@@ -1,0 +1,38 @@
+<!--sfx: b:pop@0.4*0.25, d:pop@0.4*0.25-->
+<div id="@meta" class="k-card" style="left:120px;top:140px;width:1680px;height:150px;border-color:#B49BFF">
+  <div class="k-code" style="left:30px;top:30px;font-size:34px"><span class="k-c-pink">if</span> … <span class="k-c-pink">then</span> … <span class="k-c-pink">else</span> …</div>
+  <div class="k-body" style="left:30px;top:88px;font-size:28px">expressões permitidas nas equações = <b class="k-c-violet">metalinguagem</b></div>
+</div>
+<div id="@why" class="k-anno k-c-yel" style="left:120px;top:330px">o parser já resolveu a estrutura → a semântica pode simplificar</div>
+<div id="@before" class="k-card" style="left:120px;top:400px;width:780px;height:260px">
+  <div class="k-kicker" style="left:30px;top:22px;color:#8C97B5">ANTES</div>
+  <div class="k-code" style="left:30px;top:76px;font-size:30px;line-height:1.5">exp   → exp + termo | exp - termo | termo
+termo → termo * fator | fator
+fator → ( exp ) | número</div>
+</div>
+<div id="@after" class="k-card" style="left:1020px;top:400px;width:780px;height:260px;border-color:#7FE39A">
+  <div class="k-kicker" style="left:30px;top:22px;color:#7FE39A">DEPOIS (ambígua, mas serve)</div>
+  <div class="k-code" style="left:30px;top:76px;font-size:30px;line-height:1.5">exp → exp + exp | exp - exp
+    | exp * exp | ( exp )
+    | número</div>
+</div>
+<svg class="k-svg"><path id="@ar" class="arrow" d="M 910 530 L 1005 530 M 987 514 L 1005 530 L 987 546" stroke="#7FE39A" /></svg>
+<div id="@ast" class="k-card" style="left:120px;top:690px;width:1680px;height:170px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:30px;top:24px;font-size:34px">ou: árvore sintática abstrata</div>
+  <svg width="420" height="150" style="position:absolute;left:1180px;top:10px">
+    <g stroke="#8C97B5" stroke-width="3"><line x1="210" y1="30" x2="120" y2="110"/><line x1="210" y1="30" x2="300" y2="110"/></g>
+    <g font-family="DM Mono" font-size="26" text-anchor="middle"><circle cx="210" cy="30" r="24" fill="#182238" stroke="#4FD6EE" stroke-width="3"/><text x="210" y="39" fill="#EEF1F8">*</text>
+    <circle cx="120" cy="110" r="24" fill="#182238" stroke="#4FD6EE" stroke-width="3"/><text x="120" y="119" fill="#EEF1F8">-</text>
+    <text x="300" y="120" fill="#7FE39A">42</text></g>
+  </svg>
+  <div class="k-body" style="left:30px;top:86px;font-size:28px">sem nós de cópia: (34-3)*42 vira só *, - e os números</div>
+</div>
+
+<script>
+K.rise(tl, $("meta"), C.a);
+K.wipe(tl, $("why"), C.b);
+K.rise(tl, $("before"), C.b + 1.6);
+K.draw(tl, $("ar"), C.c, { d: 0.4 });
+K.rise(tl, $("after"), C.c + 0.3);
+K.rise(tl, $("ast"), C.d);
+</script>

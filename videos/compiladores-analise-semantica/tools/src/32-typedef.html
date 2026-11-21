@@ -1,0 +1,40 @@
+<!--sfx: c:whoosh-short@2.4*0.2-->
+<div id="@td" class="k-card" style="left:120px;top:140px;width:820px;height:300px;border-color:#B49BFF">
+  <div class="k-kicker" style="left:28px;top:20px;color:#B49BFF">declaração de tipo</div>
+  <div class="k-code" style="left:28px;top:70px;font-size:32px;line-height:1.45"><span class="k-c-pink">typedef struct</span> {
+  <span class="k-c-violet">double</span> r;
+  <span class="k-c-violet">int</span> i;
+} <span class="k-c-yel">RealIntRec</span>;</div>
+</div>
+<div id="@sym" class="k-card" style="left:980px;top:140px;width:820px;height:300px;border-color:#FFD24A">
+  <div class="k-kicker" style="left:28px;top:20px;color:#FFD24A">tabela de símbolos</div>
+  <div class="k-code" style="left:28px;top:90px;font-size:32px"><span class="k-c-yel">RealIntRec</span> → struct {double, int}</div>
+</div>
+<svg class="k-svg"><path id="@go" class="arrow" d="M 760 380 C 860 380, 880 300, 970 300 M 950 286 L 970 300 L 950 314" stroke="#FFD24A" /></svg>
+<div id="@rec" class="k-card" style="left:120px;top:480px;width:820px;height:360px;border-color:#7FE39A">
+  <div class="k-kicker" style="left:28px;top:20px;color:#7FE39A">tipo recursivo</div>
+  <div class="k-code" style="left:28px;top:70px;font-size:32px;line-height:1.45"><span class="k-c-pink">struct</span> <span class="k-c-green">no</span> {
+  <span class="k-c-violet">int</span> valor;
+  <span class="k-c-pink">struct</span> <span class="k-c-green">no</span> *proximo;
+};</div>
+</div>
+<div id="@list" style="position:absolute;left:980px;top:560px;width:820px;height:200px">
+  <div id="@n1" class="k-chip k-c-green" style="left:0;top:40px;font-size:32px;background:#13241A">7 | •</div>
+  <div id="@n2" class="k-chip k-c-green" style="left:280px;top:40px;font-size:32px;background:#13241A">3 | •</div>
+  <div id="@n3" class="k-chip k-c-green" style="left:560px;top:40px;font-size:32px;background:#13241A">9 | ∅</div>
+  <svg width="820" height="200" style="position:absolute;left:0;top:0;overflow:visible">
+    <path id="@a1" d="M 140 66 L 270 66 M 254 54 L 270 66 L 254 78" stroke="#7FE39A" stroke-width="4" fill="none"/>
+    <path id="@a2" d="M 420 66 L 550 66 M 534 54 L 550 66 L 534 78" stroke="#7FE39A" stroke-width="4" fill="none"/>
+  </svg>
+  <div class="k-body k-mute" style="left:0;top:130px;font-size:26px">listas, árvores…</div>
+</div>
+
+<script>
+K.rise(tl, $("td"), C.a);
+K.draw(tl, $("go"), C.a + 4.0, { d: 0.5 });
+K.rise(tl, $("sym"), C.a + 4.4);
+K.rise(tl, $("rec"), C.b);
+K.fade(tl, $("list"), C.c);
+K.pop(tl, [$("n1"), $("n2"), $("n3")], C.c + 0.8, { s: 0.6 });
+K.draw(tl, [$("a1"), $("a2")], C.c + 1.2, { d: 0.3, s: 0.6 });
+</script>

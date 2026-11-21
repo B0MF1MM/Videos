@@ -1,0 +1,59 @@
+<template id="27-declaracoes-template">
+  <div id="root" data-composition-id="27-declaracoes" data-start="0" data-duration="22.829" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+
+    <div id="s27-declaracoes-bg" class="clip k-scene k-bg" data-start="0" data-duration="22.829" data-track-index="0"></div>
+    <div id="s27-declaracoes-stage" class="clip k-scene" data-start="0" data-duration="22.829" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s27-declaracoes-cam" class="k-cam">
+<div id="s27-declaracoes-t" class="k-title" style="left:120px;top:124px;font-size:64px">4 tipos de <em>declaração</em></div>
+<div id="s27-declaracoes-d1" class="k-card" style="left:120px;top:240px;width:400px;height:260px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:24px;top:20px;font-size:32px">variável</div>
+  <div class="k-code" style="left:24px;top:76px;font-size:26px">int x;</div>
+  <div id="s27-declaracoes-b1" class="k-body" style="left:24px;top:130px;font-size:22px;line-height:1.4">nome → tipo<br>+ escopo, memória,<br>tempo de vida</div>
+</div>
+<div id="s27-declaracoes-d2" class="k-card" style="left:545px;top:240px;width:400px;height:260px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:24px;top:20px;font-size:32px">função</div>
+  <div class="k-code" style="left:24px;top:76px;font-size:26px">int f(int a);</div>
+  <div id="s27-declaracoes-b2" class="k-body" style="left:24px;top:130px;font-size:22px">nome → parâmetros, retorno</div>
+</div>
+<div id="s27-declaracoes-d3" class="k-card" style="left:970px;top:240px;width:400px;height:260px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:24px;top:20px;font-size:32px">constante</div>
+  <div class="k-code" style="left:24px;top:76px;font-size:26px">const N = 10;</div>
+  <div id="s27-declaracoes-b3" class="k-body" style="left:24px;top:130px;font-size:22px">nome → valor</div>
+</div>
+<div id="s27-declaracoes-d4" class="k-card" style="left:1395px;top:240px;width:405px;height:260px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:24px;top:20px;font-size:32px">tipo</div>
+  <div class="k-code" style="left:24px;top:76px;font-size:26px">typedef … Rec;</div>
+  <div id="s27-declaracoes-b4" class="k-body" style="left:24px;top:130px;font-size:22px">nome → tipo novo</div>
+</div>
+<div id="s27-declaracoes-rule" class="k-card" style="left:120px;top:540px;width:1680px;height:300px;border-color:#FF9F5A">
+  <div class="k-h2 k-c-orange" style="left:30px;top:24px;font-size:40px">declarar antes de usar</div>
+  <div class="k-code" style="left:30px;top:96px;font-size:30px;line-height:1.5"><span class="k-c-green">int x;</span>     ← declara
+x = 5;      ← usa: já está na tabela ✓</div>
+  <div id="s27-declaracoes-one" class="k-body" style="left:880px;top:100px;font-size:30px;line-height:1.5">tabela montada durante<br>a análise sintática<br>→ compila em <b class="k-c-yel">uma passada</b></div>
+</div>
+      </div>
+    </div>
+    <div id="s27-declaracoes-chrome" class="clip k-scene" data-start="0" data-duration="22.829" data-track-index="2">
+      <div id="s27-declaracoes-tag" class="k-tag">COMPILADORES · <b>ESCOPO</b></div>
+      <div id="s27-declaracoes-num" class="k-num">27 / 36</div>
+      <div id="s27-declaracoes-progbar" class="k-prog"><i id="s27-declaracoes-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 6.418, "c": 14.754, "d": 17.349}, D = 22.829;
+        var S = K.scene("27-declaracoes", D, 36), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, [$("d1"), $("d2"), $("d3"), $("d4")], C.a + 1.0, { s: 0.7 });
+        tl.set([$("b1"), $("b2"), $("b3"), $("b4")], { opacity: 0 }, 0);
+        tl.to($("b3"), { opacity: 1, duration: 0.3 }, C.b + 0.2);
+        tl.to($("b4"), { opacity: 1, duration: 0.3 }, C.b + 1.8);
+        tl.to([$("b1"), $("b2")], { opacity: 1, duration: 0.3, stagger: 0.6 }, C.b + 3.2);
+        K.rise(tl, $("rule"), C.c);
+        K.fade(tl, $("one"), C.d);
+      })();
+    </script>
+  </div>
+</template>
