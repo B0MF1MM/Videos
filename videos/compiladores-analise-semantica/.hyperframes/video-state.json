@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "7df3e5fb-89b6-45ab-b362-1f002f7e9623",
-  "currentRevision": "8a18da8d-0356-4786-b82d-3f11cf21e20a",
+  "currentRevision": "1e8c17ac-59d0-44bd-9d02-96763471a367",
   "pendingChanges": false,
   "files": {
     "AGENTS.md": {
@@ -555,6 +555,14 @@
     "capture/slides-A2.pptx": {
       "hash": "ab644a40076d52995576f07506d0c139e7691c72e16daec63d04997c2837f7c6",
       "content": "/root/.cache/hyperframes/history/7df3e5fb-89b6-45ab-b362-1f002f7e9623/blobs/ab/ab644a40076d52995576f07506d0c139e7691c72e16daec63d04997c2837f7c6"
+    },
+    "BRIEF.md": {
+      "hash": "1a7a0e3db3901e671169b53b13ce8cf8b12db3be479bf649592237d9278ba67d",
+      "content": "/root/.cache/hyperframes/history/7df3e5fb-89b6-45ab-b362-1f002f7e9623/blobs/1a/1a7a0e3db3901e671169b53b13ce8cf8b12db3be479bf649592237d9278ba67d"
+    },
+    "REVIEW.md": {
+      "hash": "ca02abb383073d7bf738bfaccc505c449b90fc36a3cad15889fc08913f427f3c",
+      "content": "/root/.cache/hyperframes/history/7df3e5fb-89b6-45ab-b362-1f002f7e9623/blobs/ca/ca02abb383073d7bf738bfaccc505c449b90fc36a3cad15889fc08913f427f3c"
     }
   },
   "revisions": {
@@ -675,19 +683,37 @@
           "after": "/root/.cache/hyperframes/history/7df3e5fb-89b6-45ab-b362-1f002f7e9623/blobs/74/74df317ee33c886006f64845a60847ba78a3b208909f74da95808bf4a22ed5f7"
         }
       }
+    },
+    "1e8c17ac-59d0-44bd-9d02-96763471a367": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1795269060735,
+      "endedAt": 1795269060745,
+      "files": {
+        "BRIEF.md": {
+          "before": null,
+          "after": "/root/.cache/hyperframes/history/7df3e5fb-89b6-45ab-b362-1f002f7e9623/blobs/1a/1a7a0e3db3901e671169b53b13ce8cf8b12db3be479bf649592237d9278ba67d"
+        },
+        "REVIEW.md": {
+          "before": null,
+          "after": "/root/.cache/hyperframes/history/7df3e5fb-89b6-45ab-b362-1f002f7e9623/blobs/ca/ca02abb383073d7bf738bfaccc505c449b90fc36a3cad15889fc08913f427f3c"
+        }
+      }
     }
   },
   "checks": {
     "latest": {
-      "revision": "8a18da8d-0356-4786-b82d-3f11cf21e20a",
-      "id": "81851dd1-23f1-4db7-a30b-83fb26c67468"
+      "revision": null,
+      "id": "0cbac025-ced6-46f7-9eac-c8c409ff3385"
     },
     "revisions": {
       "00c01ddc-b9fb-4079-90c4-5aadb14387da": [
         {
           "id": "5eb7dbf3-deec-4d0a-8f7a-6c40b22e8a6d",
           "scope": "project",
-          "report": "/home/user/Videos/videos/compiladores-analise-semantica/.hyperframes/artifacts/checks/5eb7dbf3-deec-4d0a-8f7a-6c40b22e8a6d.json",
           "metadata": {
             "ok": true,
             "browserSkipped": false,
@@ -709,14 +735,15 @@
           "revision": "00c01ddc-b9fb-4079-90c4-5aadb14387da",
           "inputFingerprint": "9ac234ad460bf8f9141016d0a0a74f12537c76a169c6f014748025dd6b26a561",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "345cfcc0-8030-45eb-b465-e95f8f0148f3"
         }
       ],
       "8a18da8d-0356-4786-b82d-3f11cf21e20a": [
         {
           "id": "81851dd1-23f1-4db7-a30b-83fb26c67468",
           "scope": "project",
-          "report": "/home/user/Videos/videos/compiladores-analise-semantica/.hyperframes/artifacts/checks/81851dd1-23f1-4db7-a30b-83fb26c67468.json",
           "metadata": {
             "ok": true,
             "browserSkipped": false,
@@ -738,7 +765,9 @@
           "revision": "8a18da8d-0356-4786-b82d-3f11cf21e20a",
           "inputFingerprint": "4f7c327a98bd6ff8fabb2e9bac527902b29dde931093d129cbe8e0d70e124a1f",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "345cfcc0-8030-45eb-b465-e95f8f0148f3"
         }
       ]
     },
@@ -2222,5 +2251,18 @@
       ]
     },
     "unversioned": []
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "345cfcc0-8030-45eb-b465-e95f8f0148f3",
+      "completedAt": 1795270135592,
+      "output": "/home/user/Videos/videos/compiladores-analise-semantica/renders/video.mp4",
+      "status": "completed",
+      "revision": "1e8c17ac-59d0-44bd-9d02-96763471a367"
+    },
+    "retainedRevisions": [
+      "1e8c17ac-59d0-44bd-9d02-96763471a367"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
