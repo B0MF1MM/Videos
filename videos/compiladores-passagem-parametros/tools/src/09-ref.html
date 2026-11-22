@@ -1,0 +1,25 @@
+<!--sfx: b:pop@0.3*0.25, c:pop@0.3*0.25, d:pop@0.3*0.25, e:click-soft*0.3-->
+<style>
+  .st { position: absolute; left: 120px; width: 1100px; height: 120px; }
+  .st .nn { position: absolute; left: 28px; top: 26px; width: 64px; height: 64px; border-radius: 32px; background: #2E1420; border: 2px solid #FF6F9C; font-family: "DM Mono", monospace; font-size: 32px; line-height: 60px; text-align: center; color: #FF6F9C; }
+  .st .k-body { left: 120px; top: 36px; width: 940px; font-size: 30px; }
+  .key { position: absolute; left: 1420px; top: 300px; width: 300px; height: 300px; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:120px;font-size:76px">Passagem por <em>referência</em></div>
+<div id="@s1" class="k-card st" style="top:260px"><div class="nn">1</div><div class="k-body">vai a <b class="k-c-pink">localização</b> da variável: o endereço dela</div></div>
+<div id="@s2" class="k-card st" style="top:400px"><div class="nn">2</div><div class="k-body">o parâmetro vira um <b>nome substituto</b> (apelido) do argumento</div></div>
+<div id="@s3" class="k-card st" style="top:540px"><div class="nn">3</div><div class="k-body">mudou o parâmetro? <b class="k-c-yel">o argumento muda junto</b></div></div>
+<svg id="@ky" class="key" viewBox="0 0 300 300"><circle cx="90" cy="150" r="60" fill="none" stroke="#FF6F9C" stroke-width="16"/><path d="M 150 150 L 270 150 M 240 150 L 240 195 M 205 150 L 205 185" stroke="#FF6F9C" stroke-width="16" fill="none" stroke-linecap="round"/></svg>
+<div id="@e1" class="k-chip k-c-pink" style="left:120px;top:720px;font-size:26px;background:#2E1420">Pascal: procedure inc(<b>var</b> x: integer)</div>
+<div id="@e2" class="k-chip k-c-pink" style="left:780px;top:720px;font-size:26px;background:#2E1420">C++: void inc(int <b>&amp;</b>x)</div>
+<div id="@e3" class="k-chip k-c-violet" style="left:1220px;top:720px;font-size:26px">FORTRAN 77: o único mecanismo</div>
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("s1"), C.b);
+K.pop(tl, $("ky"), C.b + 1.0);
+K.rise(tl, $("s2"), C.c);
+K.rise(tl, $("s3"), C.d);
+K.pop(tl, $("e1"), C.e + 0.2);
+K.pop(tl, $("e2"), C.e + 3.4);
+K.pop(tl, $("e3"), C.e + 5.4);
+</script>

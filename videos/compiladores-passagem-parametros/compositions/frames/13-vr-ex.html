@@ -1,0 +1,83 @@
+<template id="13-vr-ex-template">
+  <div id="root" data-composition-id="13-vr-ex" data-start="0" data-duration="30.207" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .cc .ln { line-height: 44px; }
+  .pn { position: absolute; top: 190px; width: 480px; height: 470px; }
+  .bx { position: absolute; width: 160px; height: 70px; border: 3px solid #2A3656; border-radius: 12px; background: #0D1322; font-family: "DM Mono", monospace; font-size: 34px; line-height: 64px; text-align: center; color: #EEF1F8; }
+  .bl { position: absolute; width: 160px; text-align: center; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+  .sw { position: absolute; left: 0; top: 0; width: 100%; }
+  .nt { position: absolute; left: 24px; font-family: "DM Mono", monospace; font-size: 21px; white-space: pre; }
+</style>
+    <div id="s13-vr-ex-bg" class="clip k-scene k-bg" data-start="0" data-duration="30.207" data-track-index="0"></div>
+    <div id="s13-vr-ex-stage" class="clip k-scene" data-start="0" data-duration="30.207" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s13-vr-ex-cam" class="k-cam">
+<div id="s13-vr-ex-hd" class="k-chip k-c-yel" style="left:120px;top:120px;font-size:26px;background:#2A2410">VALOR-RESULTADO × REFERÊNCIA · o caso p(a, a)</div>
+<div id="s13-vr-ex-win" class="k-win" style="left:120px;top:190px;width:640px;height:400px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>p.c</span></div>
+  <div class="k-code cc" style="left:10px;top:66px;font-size:28px"><span class="ln" id="s13-vr-ex-c0"><span class="k-c-violet">void</span> p(<span class="k-c-violet">int</span> x, <span class="k-c-violet">int</span> y) {</span><span class="ln" id="s13-vr-ex-c1">  x = x + 1;</span><span class="ln" id="s13-vr-ex-c2">  y = y + 1;</span><span class="ln">}</span><span class="ln"><span class="k-c-violet">int</span> main() {</span><span class="ln" id="s13-vr-ex-c5">  <span class="k-c-violet">int</span> a = 1;</span><span class="ln" id="s13-vr-ex-c6">  p(a, a);</span><span class="ln">}</span></div>
+</div>
+<div id="s13-vr-ex-pr" class="k-card pn" style="left:820px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:24px;top:18px;font-size:30px">por referência</div>
+  <div class="bx" style="left:160px;top:80px;border-color:#8C97B5"><span id="s13-vr-ex-ra0">1</span><span id="s13-vr-ex-ra1" class="sw k-c-yel">2</span><span id="s13-vr-ex-ra2" class="sw k-c-yel">3</span></div><div class="bl" style="left:160px;top:154px">a</div>
+  <div class="bx" style="left:40px;top:250px;border-color:#FF6F9C;font-size:28px">&amp;a</div><div class="bl" style="left:40px;top:324px">x</div>
+  <div class="bx" style="left:280px;top:250px;border-color:#FF6F9C;font-size:28px">&amp;a</div><div class="bl" style="left:280px;top:324px">y</div>
+  <svg width="480" height="470" style="position:absolute;left:0;top:0"><path id="s13-vr-ex-rx" d="M 120 246 L 200 156 M 186 162 L 200 156 L 198 172" stroke="#FF6F9C" stroke-width="4" fill="none"/><path id="s13-vr-ex-ry" d="M 360 246 L 280 156 M 282 172 L 280 156 L 294 162" stroke="#FF6F9C" stroke-width="4" fill="none"/></svg>
+  <div id="s13-vr-ex-rn" class="nt k-c-pink" style="top:366px">x e y = apelidos do mesmo a
+x+1 → a = 2 · y+1 → a = 3</div>
+</div>
+<div id="s13-vr-ex-pv" class="k-card pn" style="left:1320px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:24px;top:18px;font-size:30px">por valor-resultado</div>
+  <div class="bx" style="left:160px;top:80px;border-color:#8C97B5"><span id="s13-vr-ex-va0">1</span><span id="s13-vr-ex-va1" class="sw k-c-yel">2</span></div><div class="bl" style="left:160px;top:154px">a</div>
+  <div class="bx" style="left:40px;top:250px;border-color:#FFD24A"><span id="s13-vr-ex-vx0">1</span><span id="s13-vr-ex-vx1" class="sw k-c-yel">2</span></div><div class="bl" style="left:40px;top:324px">x</div>
+  <div class="bx" style="left:280px;top:250px;border-color:#FFD24A"><span id="s13-vr-ex-vy0">1</span><span id="s13-vr-ex-vy1" class="sw k-c-yel">2</span></div><div class="bl" style="left:280px;top:324px">y</div>
+  <svg width="480" height="470" style="position:absolute;left:0;top:0"><path id="s13-vr-ex-vd" d="M 200 156 L 120 246 M 122 230 L 120 246 L 134 240 M 280 156 L 360 246 M 346 240 L 360 246 L 358 230" stroke="#4FD6EE" stroke-width="4" fill="none"/><path id="s13-vr-ex-vu" d="M 120 246 L 200 156 M 186 162 L 200 156 L 198 172 M 360 246 L 280 156 M 282 172 L 280 156 L 294 162" stroke="#FFD24A" stroke-width="4" fill="none"/></svg>
+  <div id="s13-vr-ex-vn" class="nt k-c-yel" style="top:366px">cópias: x = 1, y = 1 → viram 2
+no fim: a ← 2 e a ← 2</div>
+</div>
+<div id="s13-vr-ex-r1" class="k-chip k-c-pink" style="left:820px;top:690px;font-size:32px;background:#2E1420">a = 3</div>
+<div id="s13-vr-ex-r2" class="k-chip k-c-yel" style="left:1320px;top:690px;font-size:32px;background:#2A2410">a = 2</div>
+<div id="s13-vr-ex-al" class="k-macete k-alert" style="left:120px;top:640px;width:640px;font-size:28px">Apelido × cópia: resultados <b>diferentes</b>!</div>
+      </div>
+    </div>
+    <div id="s13-vr-ex-chrome" class="clip k-scene" data-start="0" data-duration="30.207" data-track-index="2">
+      <div id="s13-vr-ex-tag" class="k-tag">COMPILADORES · <b>POR VALOR-RESULTADO</b></div>
+      <div id="s13-vr-ex-num" class="k-num">13 / 19</div>
+      <div id="s13-vr-ex-progbar" class="k-prog"><i id="s13-vr-ex-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.94, "c": 11.398, "d": 17.556, "e": 22.922}, D = 30.207;
+        var S = K.scene("13-vr-ex", D, 19), tl = S.tl, $ = S.$;
+        K.fade(tl, $("hd"), C.a);
+        K.rise(tl, $("win"), C.a + 0.4);
+        K.hl(tl, $("c1"), C.b + 0.6, C.b + 2.4);
+        K.hl(tl, $("c2"), C.b + 1.4, C.b + 2.4);
+        K.hl(tl, $("c5"), C.b + 2.6, C.c);
+        K.hl(tl, $("c6"), C.b + 3.6, C.c);
+        tl.set([$("ra1"), $("ra2"), $("va1"), $("vx1"), $("vy1"), $("vu"), $("rn"), $("vn")], { opacity: 0 }, 0);
+        K.rise(tl, $("pr"), C.c);
+        K.draw(tl, [$("rx"), $("ry")], C.c + 1.0, { d: 0.5 });
+        tl.to($("ra0"), { opacity: 0, duration: 0.2 }, C.c + 2.8);
+        tl.to($("ra1"), { opacity: 1, duration: 0.2 }, C.c + 2.8);
+        tl.to($("ra1"), { opacity: 0, duration: 0.2 }, C.c + 3.8);
+        tl.to($("ra2"), { opacity: 1, duration: 0.2 }, C.c + 3.8);
+        tl.to($("rn"), { opacity: 1, duration: 0.3 }, C.c + 1.6);
+        K.pop(tl, $("r1"), C.c + 4.4);
+        K.rise(tl, $("pv"), C.d);
+        K.draw(tl, $("vd"), C.d + 1.0, { d: 0.5 });
+        tl.to([$("vx0"), $("vy0")], { opacity: 0, duration: 0.2 }, C.d + 3.2);
+        tl.to([$("vx1"), $("vy1")], { opacity: 1, duration: 0.2 }, C.d + 3.2);
+        tl.to($("vn"), { opacity: 1, duration: 0.3 }, C.d + 1.6);
+        tl.to($("vd"), { opacity: 0, duration: 0.3 }, C.e);
+        tl.to($("vu"), { opacity: 1, duration: 0.3 }, C.e + 0.2);
+        tl.to($("va0"), { opacity: 0, duration: 0.2 }, C.e + 1.2);
+        tl.to($("va1"), { opacity: 1, duration: 0.2 }, C.e + 1.2);
+        K.pop(tl, $("r2"), C.e + 2.4);
+        K.macete(tl, $("al"), C.e + 4.0);
+      })();
+    </script>
+  </div>
+</template>

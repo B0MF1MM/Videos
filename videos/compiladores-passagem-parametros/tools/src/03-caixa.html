@@ -1,0 +1,37 @@
+<!--sfx: b:whoosh-short@0.6*0.2, d:pop@1.0*0.25, e:chime@0.4*0.25-->
+<style>
+  .cc .ln { line-height: 44px; }
+  .mc { position: absolute; left: 1000px; width: 420px; height: 70px; border: 3px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 30px; line-height: 64px; text-align: center; color: #EEF1F8; }
+  .ml { position: absolute; left: 880px; width: 100px; height: 70px; font-family: "DM Mono", monospace; font-size: 30px; line-height: 70px; text-align: right; }
+  .rl { position: absolute; left: 1460px; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:150px;width:700px;height:400px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>exemplo.c</span></div>
+  <div class="k-code cc" style="left:10px;top:66px;font-size:30px"><span class="ln" id="@c0"><span class="k-c-violet">void</span> inc(<span class="k-c-violet">int</span> x) {</span><span class="ln">  x++;</span><span class="ln">}</span><span class="ln"><span class="k-c-violet">int</span> main() {</span><span class="ln">  <span class="k-c-violet">int</span> a = 5;</span><span class="ln" id="@c5">  inc(a);</span><span class="ln">}</span></div>
+</div>
+<div id="@ra" class="mc" style="top:180px;border-color:#8C97B5">5</div><div id="@la" class="ml k-mute" style="top:180px">a</div>
+<div id="@rx" class="mc" style="top:290px;border-color:#FFD24A;font-size:44px"><span id="@q" class="k-c-yel">?</span></div><div id="@lx" class="ml k-c-yel" style="top:290px">x</div>
+<div id="@rv" class="mc" style="top:360px;font-size:24px">vinculação de controle</div>
+<div id="@rr" class="mc" style="top:430px;font-size:24px">endereço de retorno</div>
+<div id="@g1" class="rl" style="top:202px">registro de main</div>
+<div id="@g2" class="rl" style="top:380px">registro de inc</div>
+<div id="@nb" class="k-anno k-c-cyan" style="left:120px;top:600px">quem chama (main) preenche a caixa
+antes de saltar para inc</div>
+<div id="@nc" class="k-anno k-c-yel" style="left:120px;top:720px">dentro de inc, x = "a caixa em fp + d"</div>
+<div id="@w1" class="k-chip k-c-cyan" style="left:1000px;top:560px;font-size:28px">um valor?</div>
+<div id="@w2" class="k-chip k-c-pink" style="left:1220px;top:560px;font-size:28px">um endereço?</div>
+<div id="@w3" class="k-chip k-c-violet" style="left:1490px;top:560px;font-size:28px">um texto?</div>
+<div id="@ans" class="k-macete" style="left:1000px;top:680px;width:800px;font-size:32px">Depende do <u>mecanismo de passagem</u>.</div>
+<script>
+K.rise(tl, $("win"), C.a);
+K.fade(tl, [$("ra"), $("la"), $("g1")], C.a + 0.6);
+K.fade(tl, [$("rx"), $("lx"), $("rv"), $("rr"), $("g2")], C.a + 1.6, { s: 0.15 });
+K.pulse(tl, $("rx"), C.a + 2.6, { k: 1.1 });
+K.hl(tl, $("c5"), C.b, C.c);
+K.wipe(tl, $("nb"), C.b + 0.6);
+K.hl(tl, $("c0"), C.c, C.d);
+K.wipe(tl, $("nc"), C.c + 0.6);
+K.pulse(tl, $("q"), C.d, { k: 1.6 });
+K.pop(tl, [$("w1"), $("w2"), $("w3")], C.d + 1.0, { s: 0.6 });
+K.macete(tl, $("ans"), C.e + 0.2);
+</script>

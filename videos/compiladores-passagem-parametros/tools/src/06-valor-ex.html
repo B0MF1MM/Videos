@@ -1,0 +1,52 @@
+<!--sfx: b:whoosh-short@1.0*0.2, c:pop@1.2*0.3, d:whoosh-short@0.4*0.2, e:chime@0.6*0.3-->
+<style>
+  .cc .ln { line-height: 46px; }
+  .mc { position: absolute; left: 1100px; width: 360px; height: 70px; border: 3px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 34px; line-height: 64px; text-align: center; color: #EEF1F8; }
+  .ml { position: absolute; left: 990px; width: 90px; height: 70px; font-family: "DM Mono", monospace; font-size: 32px; line-height: 70px; text-align: right; }
+  .rl { position: absolute; left: 1100px; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+  .sw { position: absolute; left: 0; top: 0; width: 100%; }
+</style>
+<div id="@hd" class="k-chip k-c-cyan" style="left:120px;top:120px;font-size:26px">POR VALOR · na memória</div>
+<div id="@win" class="k-win" style="left:120px;top:200px;width:780px;height:450px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>valor.c</span></div>
+  <div class="k-code cc" style="left:10px;top:66px;font-size:30px"><span class="ln" id="@c0"><span class="k-c-violet">void</span> inc(<span class="k-c-violet">int</span> x) {</span><span class="ln" id="@c1">  x++;</span><span class="ln" id="@c2">}</span><span class="ln"><span class="k-c-violet">int</span> main() {</span><span class="ln" id="@c4">  <span class="k-c-violet">int</span> a = 5;</span><span class="ln" id="@c5">  inc(a);</span><span class="ln" id="@c6">  print(a);  <span class="k-c-green">// 5</span></span><span class="ln">}</span></div>
+</div>
+<div id="@g1" class="rl" style="top:214px">registro de main</div>
+<div id="@ma" class="mc" style="top:250px;border-color:#8C97B5"><span id="@av0">5</span></div><div id="@la" class="ml k-mute" style="top:250px">a</div>
+<div id="@inc">
+  <div class="rl" style="top:340px">registro de inc</div>
+  <div class="mc" style="top:370px;border-color:#4FD6EE"><span id="@xv0">5</span><span id="@xv1" class="sw k-c-yel">6</span></div><div class="ml" style="top:370px;color:#4FD6EE">x</div>
+  <div class="mc" style="top:440px;font-size:24px">vinculação de controle</div>
+  <div class="mc" style="top:510px;font-size:24px">endereço de retorno</div>
+</div>
+<div id="@sp" class="ml k-c-cyan" style="top:580px">sp</div>
+<div id="@spl" style="position:absolute;left:1100px;top:580px;width:360px;height:70px;border:3px dashed #4FD6EE"></div>
+<svg class="k-svg"><path id="@ar" class="arrow" d="M 1466 285 C 1540 285, 1540 405, 1466 405 M 1482 393 L 1466 405 L 1482 417" stroke="#4FD6EE" /></svg>
+<div id="@arl" class="k-anno" style="left:1560px;top:310px;color:#4FD6EE;font-size:24px">copia 5</div>
+<div id="@pop" class="k-anno k-mute" style="left:1100px;top:680px">registro de inc desempilhado</div>
+<div id="@fin" class="k-chip k-c-green" style="left:120px;top:700px;font-size:34px;background:#13241A">no main: a = 5</div>
+<script>
+K.fade(tl, $("hd"), C.a);
+K.rise(tl, $("win"), C.a);
+K.hl(tl, $("c4"), C.a + 0.4, C.b);
+K.fade(tl, [$("g1"), $("ma"), $("la")], C.a + 0.6);
+K.hl(tl, $("c5"), C.b, C.c);
+tl.set([$("inc"), $("arl"), $("pop")], { opacity: 0 }, 0);
+tl.set([$("sp"), $("spl")], { y: -250 }, 0);
+K.fade(tl, [$("sp"), $("spl")], C.a + 0.8);
+tl.to($("inc"), { opacity: 1, duration: 0.4 }, C.b + 0.6);
+tl.to([$("sp"), $("spl")], { y: 0, duration: 0.5, ease: "power2.inOut" }, C.b + 0.6);
+K.draw(tl, $("ar"), C.b + 1.2, { d: 0.6 });
+tl.to($("arl"), { opacity: 1, duration: 0.3 }, C.b + 1.6);
+K.hl(tl, $("c1"), C.c, C.d);
+tl.set($("xv1"), { opacity: 0 }, 0);
+tl.to($("xv0"), { opacity: 0, duration: 0.25 }, C.c + 1.2);
+tl.to($("xv1"), { opacity: 1, duration: 0.25 }, C.c + 1.2);
+K.hl(tl, $("c2"), C.d, C.e);
+tl.to([$("inc"), $("ar"), $("arl")], { opacity: 0.12, duration: 0.5 }, C.d + 0.4);
+tl.to([$("sp"), $("spl")], { y: -250, duration: 0.5, ease: "power2.inOut" }, C.d + 0.4);
+tl.to($("pop"), { opacity: 1, duration: 0.3 }, C.d + 0.8);
+K.hl(tl, $("c6"), C.e, C.e + 3.0);
+K.pulse(tl, $("ma"), C.e + 0.4, { k: 1.15 });
+K.pop(tl, $("fin"), C.e + 0.6);
+</script>

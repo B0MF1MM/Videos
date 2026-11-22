@@ -1,0 +1,57 @@
+<template id="03-caixa-template">
+  <div id="root" data-composition-id="03-caixa" data-start="0" data-duration="23.259" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .cc .ln { line-height: 44px; }
+  .mc { position: absolute; left: 1000px; width: 420px; height: 70px; border: 3px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 30px; line-height: 64px; text-align: center; color: #EEF1F8; }
+  .ml { position: absolute; left: 880px; width: 100px; height: 70px; font-family: "DM Mono", monospace; font-size: 30px; line-height: 70px; text-align: right; }
+  .rl { position: absolute; left: 1460px; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+</style>
+    <div id="s03-caixa-bg" class="clip k-scene k-bg" data-start="0" data-duration="23.259" data-track-index="0"></div>
+    <div id="s03-caixa-stage" class="clip k-scene" data-start="0" data-duration="23.259" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s03-caixa-cam" class="k-cam">
+<div id="s03-caixa-win" class="k-win" style="left:120px;top:150px;width:700px;height:400px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>exemplo.c</span></div>
+  <div class="k-code cc" style="left:10px;top:66px;font-size:30px"><span class="ln" id="s03-caixa-c0"><span class="k-c-violet">void</span> inc(<span class="k-c-violet">int</span> x) {</span><span class="ln">  x++;</span><span class="ln">}</span><span class="ln"><span class="k-c-violet">int</span> main() {</span><span class="ln">  <span class="k-c-violet">int</span> a = 5;</span><span class="ln" id="s03-caixa-c5">  inc(a);</span><span class="ln">}</span></div>
+</div>
+<div id="s03-caixa-ra" class="mc" style="top:180px;border-color:#8C97B5">5</div><div id="s03-caixa-la" class="ml k-mute" style="top:180px">a</div>
+<div id="s03-caixa-rx" class="mc" style="top:290px;border-color:#FFD24A;font-size:44px"><span id="s03-caixa-q" class="k-c-yel">?</span></div><div id="s03-caixa-lx" class="ml k-c-yel" style="top:290px">x</div>
+<div id="s03-caixa-rv" class="mc" style="top:360px;font-size:24px">vinculação de controle</div>
+<div id="s03-caixa-rr" class="mc" style="top:430px;font-size:24px">endereço de retorno</div>
+<div id="s03-caixa-g1" class="rl" style="top:202px">registro de main</div>
+<div id="s03-caixa-g2" class="rl" style="top:380px">registro de inc</div>
+<div id="s03-caixa-nb" class="k-anno k-c-cyan" style="left:120px;top:600px">quem chama (main) preenche a caixa
+antes de saltar para inc</div>
+<div id="s03-caixa-nc" class="k-anno k-c-yel" style="left:120px;top:720px">dentro de inc, x = "a caixa em fp + d"</div>
+<div id="s03-caixa-w1" class="k-chip k-c-cyan" style="left:1000px;top:560px;font-size:28px">um valor?</div>
+<div id="s03-caixa-w2" class="k-chip k-c-pink" style="left:1220px;top:560px;font-size:28px">um endereço?</div>
+<div id="s03-caixa-w3" class="k-chip k-c-violet" style="left:1490px;top:560px;font-size:28px">um texto?</div>
+<div id="s03-caixa-ans" class="k-macete" style="left:1000px;top:680px;width:800px;font-size:32px">Depende do <u>mecanismo de passagem</u>.</div>
+      </div>
+    </div>
+    <div id="s03-caixa-chrome" class="clip k-scene" data-start="0" data-duration="23.259" data-track-index="2">
+      <div id="s03-caixa-tag" class="k-tag">COMPILADORES · <b>CONCEITOS</b></div>
+      <div id="s03-caixa-num" class="k-num">03 / 19</div>
+      <div id="s03-caixa-progbar" class="k-prog"><i id="s03-caixa-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.047, "c": 9.005, "d": 14.418, "e": 19.813}, D = 23.259;
+        var S = K.scene("03-caixa", D, 19), tl = S.tl, $ = S.$;
+        K.rise(tl, $("win"), C.a);
+        K.fade(tl, [$("ra"), $("la"), $("g1")], C.a + 0.6);
+        K.fade(tl, [$("rx"), $("lx"), $("rv"), $("rr"), $("g2")], C.a + 1.6, { s: 0.15 });
+        K.pulse(tl, $("rx"), C.a + 2.6, { k: 1.1 });
+        K.hl(tl, $("c5"), C.b, C.c);
+        K.wipe(tl, $("nb"), C.b + 0.6);
+        K.hl(tl, $("c0"), C.c, C.d);
+        K.wipe(tl, $("nc"), C.c + 0.6);
+        K.pulse(tl, $("q"), C.d, { k: 1.6 });
+        K.pop(tl, [$("w1"), $("w2"), $("w3")], C.d + 1.0, { s: 0.6 });
+        K.macete(tl, $("ans"), C.e + 0.2);
+      })();
+    </script>
+  </div>
+</template>

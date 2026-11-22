@@ -1,0 +1,59 @@
+<!--sfx: b:pop@1.0*0.2, c:pop@4.0*0.25, d:pop@5.0*0.3, e:pop*0.3-->
+<style>
+  .cc .ln { line-height: 44px; }
+  .pn { position: absolute; top: 190px; width: 480px; height: 470px; }
+  .bx { position: absolute; left: 180px; width: 160px; height: 64px; border: 3px solid #2A3656; border-radius: 12px; background: #0D1322; font-family: "DM Mono", monospace; font-size: 32px; line-height: 58px; text-align: center; color: #EEF1F8; }
+  .bl { position: absolute; left: 40px; width: 120px; text-align: right; font-family: "DM Mono", monospace; font-size: 28px; line-height: 64px; color: #8C97B5; }
+  .sw { position: absolute; left: 0; top: 0; width: 100%; }
+  .nt { position: absolute; left: 24px; font-family: "DM Mono", monospace; font-size: 21px; white-space: pre; }
+</style>
+<div id="@hd" class="k-chip k-c-violet" style="left:120px;top:120px;font-size:26px">POR NOME × POR REFERÊNCIA · quando algo muda no meio</div>
+<div id="@win" class="k-win" style="left:120px;top:190px;width:640px;height:420px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>nome.c</span></div>
+  <div class="k-code cc" style="left:10px;top:66px;font-size:28px"><span class="ln" id="@c0"><span class="k-c-violet">int</span> i = 1;</span><span class="ln" id="@c1"><span class="k-c-violet">int</span> a[3];  <span class="k-mute">// a[1]=10 a[2]=20</span></span><span class="ln"><span class="k-c-violet">void</span> p(<span class="k-c-violet">int</span> x) {</span><span class="ln" id="@c3">  i = i + 1;</span><span class="ln" id="@c4">  x = x + 1;</span><span class="ln">}</span><span class="ln" id="@c6">p(a[i]);</span></div>
+</div>
+<div id="@pr" class="k-card pn" style="left:820px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:24px;top:18px;font-size:30px">por referência</div>
+  <div class="bl" style="top:80px">i</div><div class="bx" style="top:80px"><span id="@ri0">1</span><span id="@ri1" class="sw k-c-yel">2</span></div>
+  <div class="bl" style="top:156px">a[1]</div><div id="@rb1" class="bx" style="top:156px"><span id="@r10">10</span><span id="@r11" class="sw k-c-yel">11</span></div>
+  <div class="bl" style="top:232px">a[2]</div><div class="bx" style="top:232px">20</div>
+  <div id="@rn" class="nt k-c-pink" style="top:330px">x = &amp;a[1], calculado na chamada
+i muda depois, x não</div>
+</div>
+<div id="@pn" class="k-card pn" style="left:1320px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:24px;top:18px;font-size:30px">por nome</div>
+  <div class="bl" style="top:80px">i</div><div class="bx" style="top:80px"><span id="@ni0">1</span><span id="@ni1" class="sw k-c-yel">2</span></div>
+  <div class="bl" style="top:156px">a[1]</div><div class="bx" style="top:156px">10</div>
+  <div class="bl" style="top:232px">a[2]</div><div id="@nb2" class="bx" style="top:232px"><span id="@n20">20</span><span id="@n21" class="sw k-c-yel">21</span></div>
+  <div id="@nn" class="nt k-c-violet" style="top:330px">x = o texto "a[i]"
+na hora do uso, i já é 2 → a[2]</div>
+</div>
+<div id="@r1" class="k-chip k-c-pink" style="left:820px;top:690px;font-size:30px;background:#2E1420">a[1] = 11</div>
+<div id="@r2" class="k-chip k-c-violet" style="left:1320px;top:690px;font-size:30px">a[2] = 21</div>
+<div id="@mac" class="k-macete" style="left:120px;top:640px;width:640px;font-size:28px">Por nome = copiar e colar o <u>texto</u>, calcular só na hora.</div>
+<script>
+K.fade(tl, $("hd"), C.a);
+K.rise(tl, $("win"), C.a + 0.4);
+K.hl(tl, $("c0"), C.b + 2.6, C.c);
+K.hl(tl, $("c1"), C.b + 3.6, C.c);
+K.hl(tl, $("c3"), C.b + 0.6, C.b + 2.4);
+K.hl(tl, $("c4"), C.b + 1.4, C.b + 2.4);
+tl.set([$("ri1"), $("r11"), $("ni1"), $("n21"), $("rn"), $("nn")], { opacity: 0 }, 0);
+K.rise(tl, $("pr"), C.c);
+tl.to($("rn"), { opacity: 1, duration: 0.3 }, C.c + 1.0);
+tl.to($("ri0"), { opacity: 0, duration: 0.2 }, C.c + 3.0);
+tl.to($("ri1"), { opacity: 1, duration: 0.2 }, C.c + 3.0);
+tl.to($("r10"), { opacity: 0, duration: 0.2 }, C.c + 4.0);
+tl.to($("r11"), { opacity: 1, duration: 0.2 }, C.c + 4.0);
+K.pulse(tl, $("rb1"), C.c + 4.1, { k: 1.12 });
+K.pop(tl, $("r1"), C.c + 4.6);
+K.rise(tl, $("pn"), C.d);
+tl.to($("nn"), { opacity: 1, duration: 0.3 }, C.d + 1.0);
+tl.to($("ni0"), { opacity: 0, duration: 0.2 }, C.d + 3.0);
+tl.to($("ni1"), { opacity: 1, duration: 0.2 }, C.d + 3.0);
+tl.to($("n20"), { opacity: 0, duration: 0.2 }, C.d + 5.0);
+tl.to($("n21"), { opacity: 1, duration: 0.2 }, C.d + 5.0);
+K.pulse(tl, $("nb2"), C.d + 5.1, { k: 1.12 });
+K.pop(tl, $("r2"), C.d + 5.6);
+K.macete(tl, $("mac"), C.e);
+</script>

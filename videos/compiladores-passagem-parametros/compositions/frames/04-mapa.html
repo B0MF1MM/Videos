@@ -1,0 +1,57 @@
+<template id="04-mapa-template">
+  <div id="root" data-composition-id="04-mapa" data-start="0" data-duration="19.175" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .cd { position: absolute; width: 820px; height: 330px; }
+  .cd .k-h2 { left: 32px; top: 24px; font-size: 38px; }
+  .cd .k-body { left: 32px; top: 80px; font-size: 26px; }
+  .bx { position: absolute; width: 130px; height: 80px; border: 3px solid #4FD6EE; border-radius: 12px; background: #0D1322; font-family: "DM Mono", monospace; font-size: 34px; line-height: 74px; text-align: center; color: #EEF1F8; }
+  .bl { position: absolute; width: 130px; text-align: center; font-family: "DM Mono", monospace; font-size: 20px; color: #8C97B5; }
+  .ar { position: absolute; font-family: "DM Mono", monospace; font-size: 40px; color: #8C97B5; }
+</style>
+    <div id="s04-mapa-bg" class="clip k-scene k-bg" data-start="0" data-duration="19.175" data-track-index="0"></div>
+    <div id="s04-mapa-stage" class="clip k-scene" data-start="0" data-duration="19.175" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s04-mapa-cam" class="k-cam">
+<div id="s04-mapa-v" class="k-card cd" style="left:120px;top:150px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan">por valor</div><div class="k-body">vai uma <b>cópia</b> · fotocópia</div>
+  <div class="bx" style="left:120px;top:170px">5</div><div class="bl" style="left:120px;top:258px">a</div>
+  <div class="ar" style="left:330px;top:184px">⟶</div>
+  <div class="bx" style="left:470px;top:170px">5</div><div class="bl" style="left:470px;top:258px">x (cópia)</div>
+</div>
+<div id="s04-mapa-r" class="k-card cd" style="left:980px;top:150px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink">por referência</div><div class="k-body">vai o <b>endereço</b> · a chave da casa</div>
+  <div class="bx" style="left:120px;top:170px;border-color:#FF6F9C">5</div><div class="bl" style="left:120px;top:258px">a</div>
+  <div class="ar" style="left:330px;top:184px">⟵</div>
+  <div class="bx" style="left:470px;top:170px;border-color:#FF6F9C;font-size:28px">&amp;a</div><div class="bl" style="left:470px;top:258px">x (endereço)</div>
+</div>
+<div id="s04-mapa-vr" class="k-card cd" style="left:120px;top:510px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel">por valor-resultado</div><div class="k-body">cópia na ida, <b>volta no fim</b> · empréstimo</div>
+  <div class="bx" style="left:120px;top:170px;border-color:#FFD24A">5</div><div class="bl" style="left:120px;top:258px">a</div>
+  <div class="ar" style="left:300px;top:160px;font-size:30px">ida ⟶<br>⟵ volta</div>
+  <div class="bx" style="left:470px;top:170px;border-color:#FFD24A">5</div><div class="bl" style="left:470px;top:258px">x (cópia)</div>
+</div>
+<div id="s04-mapa-n" class="k-card cd" style="left:980px;top:510px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet">por nome</div><div class="k-body">vai o <b>texto</b> · calculado só na hora do uso</div>
+  <div class="k-code" style="left:60px;top:180px;font-size:38px">++<s class="k-mute">x</s>  ⟶  ++<span class="k-c-violet">(a[i])</span></div>
+</div>
+      </div>
+    </div>
+    <div id="s04-mapa-chrome" class="clip k-scene" data-start="0" data-duration="19.175" data-track-index="2">
+      <div id="s04-mapa-tag" class="k-tag">COMPILADORES · <b>CONCEITOS</b></div>
+      <div id="s04-mapa-num" class="k-num">04 / 19</div>
+      <div id="s04-mapa-progbar" class="k-prog"><i id="s04-mapa-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.495, "c": 5.529, "d": 9.239, "e": 14.263}, D = 19.175;
+        var S = K.scene("04-mapa", D, 19), tl = S.tl, $ = S.$;
+        K.pop(tl, $("v"), C.b);
+        K.pop(tl, $("r"), C.c);
+        K.pop(tl, $("vr"), C.d);
+        K.pop(tl, $("n"), C.e);
+      })();
+    </script>
+  </div>
+</template>

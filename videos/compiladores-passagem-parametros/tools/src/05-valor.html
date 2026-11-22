@@ -1,0 +1,29 @@
+<!--sfx: b:pop@0.3*0.25, c:pop@0.3*0.25, d:pop@0.3*0.25, e:click-soft*0.3-->
+<style>
+  .st { position: absolute; left: 120px; width: 1080px; height: 120px; }
+  .st .nn { position: absolute; left: 28px; top: 26px; width: 64px; height: 64px; border-radius: 32px; background: #0F2A30; border: 2px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 32px; line-height: 60px; text-align: center; color: #4FD6EE; }
+  .st .k-body { left: 120px; top: 36px; width: 920px; font-size: 30px; }
+  .doc { position: absolute; width: 190px; height: 250px; border-radius: 12px; background: #EEF1F8; }
+  .doc i { position: absolute; left: 24px; height: 10px; border-radius: 5px; background: #8C97B5; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:120px;font-size:76px">Passagem por <em>valor</em></div>
+<div id="@s1" class="k-card st" style="top:260px"><div class="nn">1</div><div class="k-body">o argumento é <b>avaliado</b> e o valor é <b class="k-c-cyan">copiado</b> para o parâmetro</div></div>
+<div id="@s2" class="k-card st" style="top:400px"><div class="nn">2</div><div class="k-body">o parâmetro vira uma <b>variável local</b> com esse valor inicial</div></div>
+<div id="@s3" class="k-card st" style="top:540px"><div class="nn">3</div><div class="k-body">mudou o parâmetro? <b class="k-c-yel">só a cópia muda</b> · nada muda fora da função</div></div>
+<div id="@d1" class="doc" style="left:1350px;top:280px"><i style="top:40px;width:140px"></i><i style="top:70px;width:110px"></i><i style="top:100px;width:140px"></i><i style="top:130px;width:90px"></i></div>
+<div id="@d2" class="doc" style="left:1580px;top:310px;background:#D8F4FA"><i style="top:40px;width:140px"></i><i style="top:70px;width:110px"></i><i style="top:100px;width:140px"></i><i style="top:130px;width:90px"></i><i style="top:170px;width:120px;background:#FF6F9C;height:14px"></i></div>
+<div id="@dl" class="k-anno k-mute" style="left:1350px;top:600px">original    cópia rabiscada</div>
+<div id="@e1" class="k-chip k-c-cyan" style="left:120px;top:720px;font-size:26px">C: o único mecanismo</div>
+<div id="@e2" class="k-chip k-c-cyan" style="left:500px;top:720px;font-size:26px">Pascal e Ada: o básico</div>
+<div id="@e3" class="k-chip k-c-pink" style="left:900px;top:720px;font-size:26px;background:#2E1420">Ada: parâmetro por valor não recebe atribuição</div>
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("s1"), C.b);
+K.pop(tl, $("d1"), C.b + 1.0);
+tl.fromTo($("d2"), { x: -230, y: -30, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, C.b + 2.0);
+K.rise(tl, $("s2"), C.c);
+K.rise(tl, $("s3"), C.d);
+K.fade(tl, $("dl"), C.d + 1.0);
+K.pop(tl, [$("e1"), $("e2")], C.e, { s: 1.2 });
+K.pop(tl, $("e3"), C.e + 3.2);
+</script>

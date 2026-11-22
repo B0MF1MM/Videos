@@ -1,0 +1,133 @@
+# Roteiro — Compiladores: Passagem de parâmetros
+# "# id-da-cena | SEÇÃO" abre uma cena; "chave: legenda || fala" (|| opcional, para a pronúncia).
+
+# 01-abertura | INTRODUÇÃO
+a: Passagem de parâmetros: o que acontece quando uma função recebe um valor.
+b: Existem quatro mecanismos: por valor, por referência, por valor-resultado, e por nome.
+c: Para cada um, você vai ver a ideia, um exemplo animado na memória, e um macete para não esquecer.
+
+# 02-vocab | CONCEITOS
+a: Primeiro, dois nomes que a prova adora.
+b: Parâmetro é o nome que aparece na definição da função. Aqui, o x.
+c: Argumento é o que você passa na chamada. Aqui, a mais um.
+d: Ligar cada argumento ao seu parâmetro se chama amarração.
+e: Macete: parâmetro mora na definição. Argumento chega na chamada.
+
+# 03-caixa | CONCEITOS
+a: Onde o parâmetro fica? Numa caixa do registro de ativação da função chamada.
+b: Quem chama preenche essa caixa antes de saltar para o código da função.
+c: Dentro da função, o parâmetro é só o endereço dessa caixa: é lá que o código vai procurar o valor.
+d: A grande pergunta é: o que vai dentro da caixa? Um valor? Um endereço? Um texto?
+e: A resposta depende do mecanismo de passagem.
+
+# 04-mapa | CONCEITOS
+a: Os quatro mecanismos, numa imagem.
+b: Por valor: vai uma cópia. Como uma fotocópia.
+c: Por referência: vai o endereço. Como entregar a chave da casa.
+d: Por valor-resultado: vai uma cópia, e no final ela volta. Como emprestar e devolver.
+e: Por nome: vai o próprio texto do argumento, que só é calculado quando é usado.
+
+# 05-valor | POR VALOR
+a: Passagem por valor.
+b: O argumento é avaliado na chamada, e o valor dele é copiado para o parâmetro.
+c: Dentro da função, o parâmetro funciona como uma variável local que já começa com esse valor.
+d: Pode mudar à vontade: a mudança fica só na cópia, e não altera nada fora da função.
+e: É o único mecanismo de C, e o básico de Pascal e Ada. Em Ada, o parâmetro por valor nem pode receber atribuição.
+
+# 06-valor-ex | POR VALOR
+a: Vamos ver na memória. No main, a vale cinco.
+b: O main chama inc de a. O valor cinco é copiado para o parâmetro x, no registro de inc.
+c: Dentro de inc, x mais mais: o x vira seis. Mas só o x.
+d: A função termina, e o registro de inc é desempilhado. O x some.
+e: De volta ao main, a continua cinco.
+
+# 07-valor-mais | POR VALOR
+a: Como só vai o valor, o argumento pode ser qualquer expressão.
+b: Inc de três, inc de a mais um, inc de b vezes dois: tudo vale, porque primeiro se calcula, depois se copia.
+c: E para o compilador é o mecanismo mais fácil: basta calcular e copiar.
+d: Macete da fotocópia: você pode rabiscar a cópia à vontade. O original continua limpo.
+
+# 08-ponteiro | POR VALOR
+a: Mas e quando, em C, a função precisa alterar a variável de quem chamou?
+b: A saída é passar o endereço, com o e comercial. Troca de e comercial a, e comercial b.
+c: O endereço também é passado por valor: a função recebe uma cópia do endereço.
+d: Mas com a cópia do endereço, ela chega na variável original, usando o asterisco. || Mas com a cópia do endereço, ela chega na variável original, usando o asterisco. Asterisco pê recebe, asterisco quê.
+e: Foi isso que aconteceu na questão do hello: o parâmetro s recebeu uma cópia do endereço da string. || Foi isso que aconteceu na questão do rélou: o parâmetro ésse recebeu uma cópia do endereço da string.
+
+# 09-ref | POR REFERÊNCIA
+a: Passagem por referência.
+b: Agora, em vez do valor, vai a localização da variável: o endereço dela.
+c: O parâmetro vira um nome substituto, um apelido, para o argumento.
+d: Por isso, qualquer alteração no parâmetro acontece também no argumento.
+e: Em Pascal, se usa a palavra var. Em C mais mais, o e comercial no parâmetro. E em Fortran setenta e sete, era o único mecanismo. || Em Pascal, se usa a palavra var. Em cê mais mais, o e comercial no parâmetro. E em Fórtran setenta e sete, era o único mecanismo.
+
+# 10-ref-ex | POR REFERÊNCIA
+a: O mesmo exemplo, agora por referência. No main, a vale cinco.
+b: Na chamada, o parâmetro x não recebe cinco. Ele recebe o endereço de a.
+c: Dentro de inc, x mais mais segue a seta e soma um no próprio a. Agora a vale seis.
+d: A função termina e o x some. Mas a mudança já foi feita em a.
+e: De volta ao main, a vale seis.
+
+# 11-ref-comp | POR REFERÊNCIA
+a: O que o compilador precisa fazer para isso funcionar?
+b: Primeiro: calcular o endereço do argumento e guardar esse endereço no registro de ativação.
+c: Segundo: transformar todo uso do parâmetro num acesso indireto. O x mais mais vira: pega o valor no endereço, soma um, e guarda de volta no endereço.
+d: Por isso o argumento precisa ser uma variável, com um lugar na memória. Inc de três, ou inc de a mais um, não funciona por referência.
+e: Macete da chave: quem tem a chave entra na casa de verdade, e o que mexer lá dentro, fica mexido.
+
+# 12-vr | POR VALOR-RESULTADO
+a: Passagem por valor-resultado.
+b: Na chamada, o valor do argumento é copiado para o parâmetro, igual na passagem por valor.
+c: A função trabalha só com a cópia. Não existe apelido.
+d: E no final, quando a função termina, o valor final do parâmetro é copiado de volta para o argumento.
+e: Por isso, o registro de ativação não pode ser liberado pela função chamada antes dessa cópia de volta: quem chamou ainda precisa ler esses valores.
+
+# 13-vr-ex | POR VALOR-RESULTADO
+a: Então, valor-resultado e referência dão sempre o mesmo resultado? Quase. Veja este caso.
+b: A função p soma um em x e soma um em y. E o main chama p de a, a, com a igual a um.
+c: Por referência: x e y são dois apelidos do mesmo a. Soma um, soma um de novo: a termina com três.
+d: Por valor-resultado: x e y são cópias, os dois começam com um. Cada um vira dois.
+e: No final, os dois copiam dois de volta para a. Resultado: a termina com dois. Resultados diferentes!
+
+# 14-nome | POR NOME
+a: Passagem por nome.
+b: Aqui, o argumento não é calculado na chamada. Por isso, ela também é chamada de avaliação atrasada.
+c: O texto do argumento substitui o nome do parâmetro dentro da função, como um copiar e colar.
+d: E ele é recalculado toda vez que o parâmetro é usado.
+e: Exemplo do slide: proc faz mais mais x. Chamando proc de a de i, o efeito é mais mais a de i. || Exemplo do slide: próc faz mais mais xis. Chamando próc de a de i, o efeito é mais mais a de i.
+
+# 15-nome-ex | POR NOME
+a: Onde isso faz diferença? Quando algo muda entre um uso e outro.
+b: A função p primeiro soma um em i, e depois soma um em x. Começamos com i igual a um, a de um igual a dez e a de dois igual a vinte.
+c: Por referência: x já é o endereço de a de um, calculado na chamada. Então a de um vira onze.
+d: Por nome: x é o texto a de i. Quando chega a vez dele, i já vale dois. Então quem vira vinte e um é o a de dois!
+e: Macete: por nome é copiar e colar o texto, e calcular só na hora.
+
+# 16-ordem | CUIDADO
+a: Um cuidado extra: a ordem de avaliação dos argumentos.
+b: Na maioria das vezes ela não importa. Mas, com efeitos colaterais, importa.
+c: Em C, a chamada f de mais mais x, vírgula x, com x igual a um. || Em cê, a chamada éfe de mais mais xis, vírgula xis, com xis igual a um.
+d: Da esquerda para a direita: primeiro mais mais x dá dois, e depois x também é dois. Fica f de dois, dois. || Da esquerda para a direita: primeiro mais mais xis dá dois, e depois xis também é dois. Fica éfe de dois, dois.
+e: Da direita para a esquerda: primeiro x é um, e depois mais mais x dá dois. Fica f de dois, um. Resultados diferentes! || Da direita para a esquerda: primeiro xis é um, e depois mais mais xis dá dois. Fica éfe de dois, um. Resultados diferentes!
+
+# 17-tabela | RESUMO
+a: Comparando os quatro.
+b: Por valor: vai uma cópia. Aceita qualquer expressão, e o original não muda.
+c: Por referência: vai o endereço. Precisa ser uma variável, e o original muda na hora.
+d: Por valor-resultado: vai uma cópia, que volta no final. Precisa ser uma variável, e o original só muda no retorno.
+e: Por nome: vai o texto. Ele é recalculado a cada uso.
+
+# 18-prova | NA PROVA
+a: Como responder uma questão de passagem de parâmetros na prova.
+b: Um: escreva a definição de cada mecanismo, em uma frase.
+c: Dois: mostre um exemplo de código, com a mesma função, nos dois mecanismos.
+d: Três: diga o valor final da variável depois da chamada. Por exemplo, por valor, x continua cinco. Por referência, x vira quinze. || Três: diga o valor final da variável depois da chamada. Por exemplo, por valor, xis continua cinco. Por referência, xis vira quinze.
+e: E se pedirem o registro de ativação: o parâmetro ocupa uma caixa no início do registro da função chamada. Por valor, com o valor; por referência, com um endereço.
+
+# 19-cola | REVISÃO
+a: Para levar para a prova.
+b: Valor é fotocópia.
+c: Referência é a chave da casa.
+d: Valor-resultado é empréstimo: leva uma cópia e devolve no final.
+e: Nome é copiar e colar o texto, calculando só na hora do uso.
+f: Agora é com você. Boa prova!

@@ -1,0 +1,37 @@
+<!--sfx: c:pop@0.4*0.25, d:pop@3.0*0.25, e:pop@3.0*0.25-->
+<style>
+  .ln { position: absolute; left: 120px; width: 1680px; height: 110px; }
+  .stp { position: absolute; top: 24px; font-family: "DM Mono", monospace; font-size: 30px; padding: 12px 20px; border-radius: 12px; background: #182238; border: 2px solid #2A3656; color: #EEF1F8; }
+  .res { position: absolute; top: 18px; font-family: "DM Mono", monospace; font-size: 40px; padding: 10px 24px; border-radius: 14px; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:110px;font-size:64px">Cuidado: <em>ordem de avaliação</em></div>
+<div id="@b" class="k-body" style="left:120px;top:220px;font-size:30px">quase sempre não importa · com <b class="k-c-yel">efeito colateral</b>, importa</div>
+<div id="@code" class="k-code" style="left:120px;top:300px;font-size:52px">x = 1;   f(<span class="k-c-yel">++x</span>, <span class="k-c-cyan">x</span>);</div>
+<div id="@l1" class="ln" style="top:420px">
+  <div class="k-chip k-c-cyan" style="left:0;top:26px;font-size:26px">esquerda → direita</div>
+  <div id="@a1" class="stp" style="left:400px">1º  ++x → 2</div>
+  <div id="@a2" class="stp" style="left:700px">2º  x → 2</div>
+  <div id="@a3" class="res k-c-cyan" style="left:1060px;background:#0F2A30;border:2px solid #4FD6EE">f(2, 2)</div>
+</div>
+<div id="@l2" class="ln" style="top:560px">
+  <div class="k-chip k-c-pink" style="left:0;top:26px;font-size:26px;background:#2E1420">direita → esquerda</div>
+  <div id="@b1" class="stp" style="left:400px">1º  x → 1</div>
+  <div id="@b2" class="stp" style="left:700px">2º  ++x → 2</div>
+  <div id="@b3" class="res k-c-pink" style="left:1060px;background:#2E1420;border:2px solid #FF6F9C">f(2, 1)</div>
+</div>
+<div id="@al" class="k-macete k-alert" style="left:120px;top:720px;width:1300px;font-size:30px">Mesma chamada, <b>resultados diferentes</b>.</div>
+<script>
+K.rise(tl, $("t"), C.a);
+K.wipe(tl, $("b"), C.b + 0.4);
+K.rise(tl, $("code"), C.c + 0.2);
+K.rise(tl, $("l1"), C.d);
+tl.set([$("a1"), $("a2"), $("a3"), $("b1"), $("b2"), $("b3")], { opacity: 0 }, 0);
+K.pop(tl, $("a1"), C.d + 1.6);
+K.pop(tl, $("a2"), C.d + 3.6);
+K.pop(tl, $("a3"), C.d + 5.2);
+K.rise(tl, $("l2"), C.e);
+K.pop(tl, $("b1"), C.e + 1.6);
+K.pop(tl, $("b2"), C.e + 2.6);
+K.pop(tl, $("b3"), C.e + 4.0);
+K.macete(tl, $("al"), C.e + 5.0);
+</script>

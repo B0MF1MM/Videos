@@ -1,0 +1,42 @@
+<template id="17-tabela-template">
+  <div id="root" data-composition-id="17-tabela" data-start="0" data-duration="21.585" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .rt td { padding: 18px 22px !important; line-height: 1.35; }
+</style>
+    <div id="s17-tabela-bg" class="clip k-scene k-bg" data-start="0" data-duration="21.585" data-track-index="0"></div>
+    <div id="s17-tabela-stage" class="clip k-scene" data-start="0" data-duration="21.585" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s17-tabela-cam" class="k-cam">
+<div id="s17-tabela-k" class="k-chip k-c-violet" style="left:120px;top:120px;font-size:26px">COMPARANDO OS QUATRO</div>
+<table id="s17-tabela-tab" class="k-table rt" style="left:120px;top:200px;width:1680px;font-size:28px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">MECANISMO</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">O QUE VAI</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">ARGUMENTO PODE SER</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">O ORIGINAL MUDA?</td></tr>
+  <tr id="s17-tabela-r1"><td class="k-c-cyan">valor</td><td>cópia do valor</td><td>qualquer expressão</td><td>não</td></tr>
+  <tr id="s17-tabela-r2"><td class="k-c-pink">referência</td><td>endereço</td><td>só variável</td><td class="k-c-yel">sim, na hora</td></tr>
+  <tr id="s17-tabela-r3"><td class="k-c-yel">valor-resultado</td><td>cópia que volta no fim</td><td>só variável</td><td class="k-c-yel">sim, no retorno</td></tr>
+  <tr id="s17-tabela-r4"><td class="k-c-violet">nome</td><td>texto do argumento</td><td>expressão (vira texto)</td><td>pode mudar a cada uso</td></tr>
+</table>
+      </div>
+    </div>
+    <div id="s17-tabela-chrome" class="clip k-scene" data-start="0" data-duration="21.585" data-track-index="2">
+      <div id="s17-tabela-tag" class="k-tag">COMPILADORES · <b>RESUMO</b></div>
+      <div id="s17-tabela-num" class="k-num">17 / 19</div>
+      <div id="s17-tabela-progbar" class="k-prog"><i id="s17-tabela-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 1.622, "c": 5.885, "d": 10.946, "e": 17.565}, D = 21.585;
+        var S = K.scene("17-tabela", D, 19), tl = S.tl, $ = S.$;
+        var R = [$("r1"), $("r2"), $("r3"), $("r4")];
+        K.pop(tl, $("k"), C.a);
+        K.fade(tl, $("tab"), C.a + 0.5);
+        tl.set(R, { opacity: 0 }, 0);
+        tl.to(R[0], { opacity: 1, duration: 0.4 }, C.b);
+        tl.to(R[1], { opacity: 1, duration: 0.4 }, C.c);
+        tl.to(R[2], { opacity: 1, duration: 0.4 }, C.d);
+        tl.to(R[3], { opacity: 1, duration: 0.4 }, C.e);
+      })();
+    </script>
+  </div>
+</template>

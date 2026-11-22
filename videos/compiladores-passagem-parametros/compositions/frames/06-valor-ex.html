@@ -1,0 +1,72 @@
+<template id="06-valor-ex-template">
+  <div id="root" data-composition-id="06-valor-ex" data-start="0" data-duration="19.787" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .cc .ln { line-height: 46px; }
+  .mc { position: absolute; left: 1100px; width: 360px; height: 70px; border: 3px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 34px; line-height: 64px; text-align: center; color: #EEF1F8; }
+  .ml { position: absolute; left: 990px; width: 90px; height: 70px; font-family: "DM Mono", monospace; font-size: 32px; line-height: 70px; text-align: right; }
+  .rl { position: absolute; left: 1100px; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+  .sw { position: absolute; left: 0; top: 0; width: 100%; }
+</style>
+    <div id="s06-valor-ex-bg" class="clip k-scene k-bg" data-start="0" data-duration="19.787" data-track-index="0"></div>
+    <div id="s06-valor-ex-stage" class="clip k-scene" data-start="0" data-duration="19.787" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s06-valor-ex-cam" class="k-cam">
+<div id="s06-valor-ex-hd" class="k-chip k-c-cyan" style="left:120px;top:120px;font-size:26px">POR VALOR · na memória</div>
+<div id="s06-valor-ex-win" class="k-win" style="left:120px;top:200px;width:780px;height:450px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>valor.c</span></div>
+  <div class="k-code cc" style="left:10px;top:66px;font-size:30px"><span class="ln" id="s06-valor-ex-c0"><span class="k-c-violet">void</span> inc(<span class="k-c-violet">int</span> x) {</span><span class="ln" id="s06-valor-ex-c1">  x++;</span><span class="ln" id="s06-valor-ex-c2">}</span><span class="ln"><span class="k-c-violet">int</span> main() {</span><span class="ln" id="s06-valor-ex-c4">  <span class="k-c-violet">int</span> a = 5;</span><span class="ln" id="s06-valor-ex-c5">  inc(a);</span><span class="ln" id="s06-valor-ex-c6">  print(a);  <span class="k-c-green">// 5</span></span><span class="ln">}</span></div>
+</div>
+<div id="s06-valor-ex-g1" class="rl" style="top:214px">registro de main</div>
+<div id="s06-valor-ex-ma" class="mc" style="top:250px;border-color:#8C97B5"><span id="s06-valor-ex-av0">5</span></div><div id="s06-valor-ex-la" class="ml k-mute" style="top:250px">a</div>
+<div id="s06-valor-ex-inc">
+  <div class="rl" style="top:340px">registro de inc</div>
+  <div class="mc" style="top:370px;border-color:#4FD6EE"><span id="s06-valor-ex-xv0">5</span><span id="s06-valor-ex-xv1" class="sw k-c-yel">6</span></div><div class="ml" style="top:370px;color:#4FD6EE">x</div>
+  <div class="mc" style="top:440px;font-size:24px">vinculação de controle</div>
+  <div class="mc" style="top:510px;font-size:24px">endereço de retorno</div>
+</div>
+<div id="s06-valor-ex-sp" class="ml k-c-cyan" style="top:580px">sp</div>
+<div id="s06-valor-ex-spl" style="position:absolute;left:1100px;top:580px;width:360px;height:70px;border:3px dashed #4FD6EE"></div>
+<svg class="k-svg"><path id="s06-valor-ex-ar" class="arrow" d="M 1466 285 C 1540 285, 1540 405, 1466 405 M 1482 393 L 1466 405 L 1482 417" stroke="#4FD6EE" /></svg>
+<div id="s06-valor-ex-arl" class="k-anno" style="left:1560px;top:310px;color:#4FD6EE;font-size:24px">copia 5</div>
+<div id="s06-valor-ex-pop" class="k-anno k-mute" style="left:1100px;top:680px">registro de inc desempilhado</div>
+<div id="s06-valor-ex-fin" class="k-chip k-c-green" style="left:120px;top:700px;font-size:34px;background:#13241A">no main: a = 5</div>
+      </div>
+    </div>
+    <div id="s06-valor-ex-chrome" class="clip k-scene" data-start="0" data-duration="19.787" data-track-index="2">
+      <div id="s06-valor-ex-tag" class="k-tag">COMPILADORES · <b>POR VALOR</b></div>
+      <div id="s06-valor-ex-num" class="k-num">06 / 19</div>
+      <div id="s06-valor-ex-progbar" class="k-prog"><i id="s06-valor-ex-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.241, "c": 8.639, "d": 12.829, "e": 16.868}, D = 19.787;
+        var S = K.scene("06-valor-ex", D, 19), tl = S.tl, $ = S.$;
+        K.fade(tl, $("hd"), C.a);
+        K.rise(tl, $("win"), C.a);
+        K.hl(tl, $("c4"), C.a + 0.4, C.b);
+        K.fade(tl, [$("g1"), $("ma"), $("la")], C.a + 0.6);
+        K.hl(tl, $("c5"), C.b, C.c);
+        tl.set([$("inc"), $("arl"), $("pop")], { opacity: 0 }, 0);
+        tl.set([$("sp"), $("spl")], { y: -250 }, 0);
+        K.fade(tl, [$("sp"), $("spl")], C.a + 0.8);
+        tl.to($("inc"), { opacity: 1, duration: 0.4 }, C.b + 0.6);
+        tl.to([$("sp"), $("spl")], { y: 0, duration: 0.5, ease: "power2.inOut" }, C.b + 0.6);
+        K.draw(tl, $("ar"), C.b + 1.2, { d: 0.6 });
+        tl.to($("arl"), { opacity: 1, duration: 0.3 }, C.b + 1.6);
+        K.hl(tl, $("c1"), C.c, C.d);
+        tl.set($("xv1"), { opacity: 0 }, 0);
+        tl.to($("xv0"), { opacity: 0, duration: 0.25 }, C.c + 1.2);
+        tl.to($("xv1"), { opacity: 1, duration: 0.25 }, C.c + 1.2);
+        K.hl(tl, $("c2"), C.d, C.e);
+        tl.to([$("inc"), $("ar"), $("arl")], { opacity: 0.12, duration: 0.5 }, C.d + 0.4);
+        tl.to([$("sp"), $("spl")], { y: -250, duration: 0.5, ease: "power2.inOut" }, C.d + 0.4);
+        tl.to($("pop"), { opacity: 1, duration: 0.3 }, C.d + 0.8);
+        K.hl(tl, $("c6"), C.e, C.e + 3.0);
+        K.pulse(tl, $("ma"), C.e + 0.4, { k: 1.15 });
+        K.pop(tl, $("fin"), C.e + 0.6);
+      })();
+    </script>
+  </div>
+</template>

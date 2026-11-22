@@ -1,0 +1,55 @@
+<template id="11-ref-comp-template">
+  <div id="root" data-composition-id="11-ref-comp" data-start="0" data-duration="30.553" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .sc { position: absolute; width: 820px; height: 330px; }
+  .sc .k-h2 { left: 30px; top: 24px; font-size: 32px; }
+  .sc .k-body { left: 30px; top: 78px; width: 760px; font-size: 26px; }
+  .tc .ln { line-height: 46px; }
+</style>
+    <div id="s11-ref-comp-bg" class="clip k-scene k-bg" data-start="0" data-duration="30.553" data-track-index="0"></div>
+    <div id="s11-ref-comp-stage" class="clip k-scene" data-start="0" data-duration="30.553" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s11-ref-comp-cam" class="k-cam">
+<div id="s11-ref-comp-hd" class="k-chip k-c-pink" style="left:120px;top:120px;font-size:26px;background:#2E1420">POR REFERÊNCIA · o trabalho do compilador</div>
+<div id="s11-ref-comp-p1" class="k-card sc" style="left:120px;top:190px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink">1 · calcular o endereço</div>
+  <div class="k-body">o endereço do argumento é calculado e <b>guardado no registro de ativação</b></div>
+  <div class="k-code" style="left:60px;top:200px;font-size:40px">x  ←  <span class="k-c-pink">&amp;a</span></div>
+</div>
+<div id="s11-ref-comp-p2" class="k-card sc" style="left:980px;top:190px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel">2 · todo uso vira acesso indireto</div>
+  <div class="k-code" style="left:30px;top:96px;font-size:34px">x++;</div>
+  <div class="k-code k-mute" style="left:170px;top:96px;font-size:34px">⟶</div>
+  <div class="k-code tc" style="left:290px;top:90px;font-size:32px"><span class="ln" id="s11-ref-comp-t1">t1 = <span class="k-c-yel">*</span>x</span><span class="ln" id="s11-ref-comp-t2">t1 = t1 + 1</span><span class="ln" id="s11-ref-comp-t3"><span class="k-c-yel">*</span>x = t1</span></div>
+  <div class="k-body" style="left:30px;top:260px;font-size:22px;color:#8C97B5">lê no endereço · soma · grava no endereço</div>
+</div>
+<div id="s11-ref-comp-v1" class="k-chip k-c-pink" style="left:120px;top:560px;font-size:30px;background:#2E1420">inc(3) ✗</div>
+<div id="s11-ref-comp-v2" class="k-chip k-c-pink" style="left:360px;top:560px;font-size:30px;background:#2E1420">inc(a + 1) ✗</div>
+<div id="s11-ref-comp-v3" class="k-chip k-c-green" style="left:680px;top:560px;font-size:30px;background:#13241A">inc(a) ✓</div>
+<div id="s11-ref-comp-vw" class="k-anno k-mute" style="left:120px;top:640px">o argumento precisa ter um lugar na memória: uma variável</div>
+<div id="s11-ref-comp-mac" class="k-macete" style="left:120px;top:740px;width:1680px;font-size:32px">Chave da casa: quem tem a chave entra na casa <u>de verdade</u>, e o que mexer lá fica mexido.</div>
+      </div>
+    </div>
+    <div id="s11-ref-comp-chrome" class="clip k-scene" data-start="0" data-duration="30.553" data-track-index="2">
+      <div id="s11-ref-comp-tag" class="k-tag">COMPILADORES · <b>POR REFERÊNCIA</b></div>
+      <div id="s11-ref-comp-num" class="k-num">11 / 19</div>
+      <div id="s11-ref-comp-progbar" class="k-prog"><i id="s11-ref-comp-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.399, "c": 8.421, "d": 17.019, "e": 24.621}, D = 30.553;
+        var S = K.scene("11-ref-comp", D, 19), tl = S.tl, $ = S.$;
+        K.fade(tl, $("hd"), C.a);
+        K.rise(tl, $("p1"), C.b);
+        K.rise(tl, $("p2"), C.c);
+        K.wipe(tl, [$("t1"), $("t2"), $("t3")], C.c + 3.0, { s: 1.2 });
+        K.pop(tl, [$("v1"), $("v2")], C.d + 3.4, { s: 0.8 });
+        K.pop(tl, $("v3"), C.d + 5.0);
+        K.fade(tl, $("vw"), C.d + 1.0);
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>

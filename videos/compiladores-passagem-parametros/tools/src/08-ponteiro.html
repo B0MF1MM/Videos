@@ -1,0 +1,48 @@
+<!--sfx: b:pop@1.2*0.25, c:whoosh-short@0.8*0.2, d:pop@3.0*0.3, e:chime@0.4*0.25-->
+<style>
+  .cc .ln { line-height: 42px; }
+  .mc { position: absolute; left: 1150px; width: 300px; height: 64px; border: 3px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 32px; line-height: 58px; text-align: center; color: #EEF1F8; }
+  .ml { position: absolute; left: 1050px; width: 80px; height: 64px; font-family: "DM Mono", monospace; font-size: 30px; line-height: 64px; text-align: right; }
+  .rl { position: absolute; left: 1150px; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+  .sw { position: absolute; left: 0; top: 0; width: 100%; }
+</style>
+<div id="@hd" class="k-chip k-c-cyan" style="left:120px;top:120px;font-size:26px">EM C · só existe passagem por valor</div>
+<div id="@win" class="k-win" style="left:120px;top:190px;width:840px;height:420px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>troca.c</span></div>
+  <div class="k-code cc" style="left:10px;top:66px;font-size:28px"><span class="ln" id="@c0"><span class="k-c-violet">void</span> troca(<span class="k-c-violet">int</span> <span class="k-c-yel">*</span>p, <span class="k-c-violet">int</span> <span class="k-c-yel">*</span>q) {</span><span class="ln" id="@c1">  <span class="k-c-violet">int</span> t = <span class="k-c-yel">*</span>p;</span><span class="ln" id="@c2">  <span class="k-c-yel">*</span>p = <span class="k-c-yel">*</span>q;</span><span class="ln" id="@c3">  <span class="k-c-yel">*</span>q = t;</span><span class="ln">}</span><span class="ln"><span class="k-c-violet">int</span> main() {</span><span class="ln">  <span class="k-c-violet">int</span> a = 1, b = 2;</span><span class="ln" id="@c7">  troca(<span class="k-c-pink">&amp;a</span>, <span class="k-c-pink">&amp;b</span>);  <span class="k-mute">// a=2, b=1</span></span></div>
+</div>
+<div class="rl" id="@g1" style="top:196px">registro de main</div>
+<div id="@ma" class="mc" style="top:226px;border-color:#8C97B5"><span id="@a0">1</span><span id="@a1" class="sw k-c-yel">2</span></div><div id="@la" class="ml k-mute" style="top:226px">a</div>
+<div id="@mb" class="mc" style="top:290px;border-color:#8C97B5"><span id="@b0">2</span><span id="@b1" class="sw k-c-yel">1</span></div><div id="@lb" class="ml k-mute" style="top:290px">b</div>
+<div id="@tr">
+  <div class="rl" style="top:376px">registro de troca</div>
+  <div class="mc" style="top:406px;border-color:#FF6F9C">&amp;a</div><div class="ml k-c-pink" style="top:406px">p</div>
+  <div class="mc" style="top:470px;border-color:#FF6F9C">&amp;b</div><div class="ml k-c-pink" style="top:470px">q</div>
+</div>
+<svg class="k-svg">
+  <path id="@pa" class="arrow" d="M 1456 438 C 1530 438, 1530 258, 1456 258 M 1472 246 L 1456 258 L 1472 270" stroke="#FF6F9C" />
+  <path id="@pb" class="arrow" d="M 1456 502 C 1580 502, 1580 322, 1456 322 M 1472 310 L 1456 322 L 1472 334" stroke="#FF6F9C" />
+</svg>
+<div id="@nc" class="k-anno k-c-cyan" style="left:1100px;top:560px">p e q = cópias dos endereços</div>
+<div id="@q2" class="k-card" style="left:120px;top:660px;width:1680px;height:180px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:30px;top:24px;font-size:30px">lembra da questão do "hello"?</div>
+  <div class="k-body" style="left:30px;top:80px;width:1620px;font-size:28px;line-height:1.5">g(s) → o parâmetro <b>s</b> recebeu uma <b class="k-c-yel">cópia do endereço</b> da string · por isso a seta apontava para o 'h' na área global</div>
+</div>
+<script>
+K.fade(tl, $("hd"), C.a);
+K.rise(tl, $("win"), C.a + 0.3);
+K.fade(tl, [$("g1"), $("ma"), $("la"), $("mb"), $("lb")], C.a + 1.0);
+tl.set([$("tr"), $("nc"), $("a1"), $("b1")], { opacity: 0 }, 0);
+K.hl(tl, $("c7"), C.b, C.c);
+tl.to($("tr"), { opacity: 1, duration: 0.4 }, C.b + 1.2);
+K.draw(tl, [$("pa"), $("pb")], C.b + 2.0, { d: 0.6 });
+K.hl(tl, $("c0"), C.c, C.d);
+tl.to($("nc"), { opacity: 1, duration: 0.3 }, C.c + 0.8);
+K.hl(tl, $("c2"), C.d + 2.0, C.d + 3.6);
+tl.to($("a0"), { opacity: 0, duration: 0.25 }, C.d + 3.0);
+tl.to($("a1"), { opacity: 1, duration: 0.25 }, C.d + 3.0);
+K.hl(tl, $("c3"), C.d + 3.6, C.e);
+tl.to($("b0"), { opacity: 0, duration: 0.25 }, C.d + 4.6);
+tl.to($("b1"), { opacity: 1, duration: 0.25 }, C.d + 4.6);
+K.rise(tl, $("q2"), C.e);
+</script>

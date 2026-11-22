@@ -1,0 +1,62 @@
+<template id="12-vr-template">
+  <div id="root" data-composition-id="12-vr" data-start="0" data-duration="24.648" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .bx { position: absolute; width: 180px; height: 80px; border: 3px solid #2A3656; border-radius: 12px; background: #182238; font-family: "DM Mono", monospace; font-size: 38px; line-height: 74px; text-align: center; color: #EEF1F8; }
+  .bl { position: absolute; width: 80px; text-align: right; font-family: "DM Mono", monospace; font-size: 30px; line-height: 80px; }
+  .sw { position: absolute; left: 0; top: 0; width: 100%; }
+</style>
+    <div id="s12-vr-bg" class="clip k-scene k-bg" data-start="0" data-duration="24.648" data-track-index="0"></div>
+    <div id="s12-vr-stage" class="clip k-scene" data-start="0" data-duration="24.648" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s12-vr-cam" class="k-cam">
+<div id="s12-vr-t" class="k-title" style="left:120px;top:110px;font-size:64px">Passagem por <em>valor-resultado</em></div>
+<div id="s12-vr-p0" style="position:absolute;left:120px;top:220px;width:520px;height:440px">
+  <div class="k-chip k-c-cyan" style="left:0;top:0;font-size:28px">1 · chamada</div>
+  <div class="bl k-mute" style="left:60px;top:90px">a</div><div class="bx" style="left:170px;top:90px;border-color:#8C97B5">5</div>
+  <div class="bl" style="left:60px;top:300px;color:#4FD6EE">x</div><div class="bx" style="left:170px;top:300px;border-color:#4FD6EE">5</div>
+  <svg width="520" height="440" style="position:absolute;left:0;top:0"><path id="s12-vr-ar0" class="arrow" d="M 260 176 L 260 292 M 248 276 L 260 292 L 272 276" stroke="#4FD6EE" stroke-width="4" fill="none"/></svg>
+  <div class="k-anno" style="left:290px;top:212px;color:#4FD6EE;font-size:24px">copia a → x</div>
+</div>
+<div id="s12-vr-p1" style="position:absolute;left:720px;top:220px;width:520px;height:440px">
+  <div class="k-chip k-c-pink" style="left:0;top:0;font-size:28px">2 · execução</div>
+  <div class="bl k-mute" style="left:60px;top:90px">a</div><div class="bx" style="left:170px;top:90px;border-color:#8C97B5">5</div>
+  <div class="bl" style="left:60px;top:300px;color:#FF6F9C">x</div><div class="bx" style="left:170px;top:300px;border-color:#FF6F9C"><span id="s12-vr-px10">5</span><span id="s12-vr-px11" class="sw k-c-yel">7</span></div>
+  <div class="k-anno" style="left:290px;top:212px;color:#FF6F9C;font-size:24px">só a cópia muda</div>
+</div>
+<div id="s12-vr-p2" style="position:absolute;left:1320px;top:220px;width:520px;height:440px">
+  <div class="k-chip k-c-yel" style="left:0;top:0;font-size:28px">3 · retorno</div>
+  <div class="bl k-mute" style="left:60px;top:90px">a</div><div class="bx" style="left:170px;top:90px;border-color:#8C97B5"><span id="s12-vr-pa20">5</span><span id="s12-vr-pa21" class="sw k-c-yel">7</span></div>
+  <div class="bl" style="left:60px;top:300px;color:#FFD24A">x</div><div class="bx" style="left:170px;top:300px;border-color:#FFD24A">7</div>
+  <svg width="520" height="440" style="position:absolute;left:0;top:0"><path id="s12-vr-ar2" class="arrow" d="M 260 292 L 260 176 M 248 192 L 260 176 L 272 192" stroke="#FFD24A" stroke-width="4" fill="none"/></svg>
+  <div class="k-anno" style="left:290px;top:212px;color:#FFD24A;font-size:24px">copia x → a</div>
+</div>
+<div id="s12-vr-al" class="k-macete k-alert" style="left:120px;top:700px;width:1680px;font-size:28px">O registro não pode ser liberado pela função chamada <b>antes da cópia de volta</b>: quem chamou ainda precisa ler os valores.</div>
+      </div>
+    </div>
+    <div id="s12-vr-chrome" class="clip k-scene" data-start="0" data-duration="24.648" data-track-index="2">
+      <div id="s12-vr-tag" class="k-tag">COMPILADORES · <b>POR VALOR-RESULTADO</b></div>
+      <div id="s12-vr-num" class="k-num">12 / 19</div>
+      <div id="s12-vr-progbar" class="k-prog"><i id="s12-vr-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.229, "c": 7.12, "d": 10.653, "e": 16.196}, D = 24.648;
+        var S = K.scene("12-vr", D, 19), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.rise(tl, $("p0"), C.b);
+        K.draw(tl, $("ar0"), C.b + 1.2, { d: 0.5 });
+        K.rise(tl, $("p1"), C.c);
+        K.rise(tl, $("p2"), C.d);
+        K.draw(tl, $("ar2"), C.d + 1.2, { d: 0.5 });
+        tl.set([$("px11"), $("pa21")], { opacity: 0 }, 0);
+        tl.to($("px10"), { opacity: 0, duration: 0.25 }, C.c + 1.6);
+        tl.to($("px11"), { opacity: 1, duration: 0.25 }, C.c + 1.6);
+        tl.to($("pa20"), { opacity: 0, duration: 0.25 }, C.d + 1.9);
+        tl.to($("pa21"), { opacity: 1, duration: 0.25 }, C.d + 1.9);
+        K.pop(tl, $("al"), C.e + 0.2);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,22 @@
+<!--sfx: b:click-soft*0.3, c:click-soft*0.3, d:click-soft*0.3, e:click-soft*0.3-->
+<style>
+  .rt td { padding: 18px 22px !important; line-height: 1.35; }
+</style>
+<div id="@k" class="k-chip k-c-violet" style="left:120px;top:120px;font-size:26px">COMPARANDO OS QUATRO</div>
+<table id="@tab" class="k-table rt" style="left:120px;top:200px;width:1680px;font-size:28px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">MECANISMO</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">O QUE VAI</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">ARGUMENTO PODE SER</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">O ORIGINAL MUDA?</td></tr>
+  <tr id="@r1"><td class="k-c-cyan">valor</td><td>cópia do valor</td><td>qualquer expressão</td><td>não</td></tr>
+  <tr id="@r2"><td class="k-c-pink">referência</td><td>endereço</td><td>só variável</td><td class="k-c-yel">sim, na hora</td></tr>
+  <tr id="@r3"><td class="k-c-yel">valor-resultado</td><td>cópia que volta no fim</td><td>só variável</td><td class="k-c-yel">sim, no retorno</td></tr>
+  <tr id="@r4"><td class="k-c-violet">nome</td><td>texto do argumento</td><td>expressão (vira texto)</td><td>pode mudar a cada uso</td></tr>
+</table>
+<script>
+var R = [$("r1"), $("r2"), $("r3"), $("r4")];
+K.pop(tl, $("k"), C.a);
+K.fade(tl, $("tab"), C.a + 0.5);
+tl.set(R, { opacity: 0 }, 0);
+tl.to(R[0], { opacity: 1, duration: 0.4 }, C.b);
+tl.to(R[1], { opacity: 1, duration: 0.4 }, C.c);
+tl.to(R[2], { opacity: 1, duration: 0.4 }, C.d);
+tl.to(R[3], { opacity: 1, duration: 0.4 }, C.e);
+</script>

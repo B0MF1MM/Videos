@@ -1,0 +1,31 @@
+<!--sfx: b:pop@0.4*0.25, c:pop@0.4*0.25, d:whoosh-short@0.4*0.2, e:pop*0.3-->
+<style>
+  .big { font-size: 58px; }
+  .tk { display: inline-block; border-radius: 10px; padding: 0 6px; }
+</style>
+<div id="@k" class="k-kicker" style="left:120px;top:130px">DOIS NOMES</div>
+<div id="@l1" class="k-code big" style="left:140px;top:230px"><span class="k-mute">// definição</span></div>
+<div id="@d" class="k-code big" style="left:140px;top:300px"><span class="k-c-violet">void</span> f(<span class="k-c-violet">int</span> <span id="@px" class="tk">x</span>) { … }</div>
+<div id="@l2" class="k-code big" style="left:140px;top:480px"><span class="k-mute">// chamada</span></div>
+<div id="@c" class="k-code big" style="left:140px;top:550px">f(<span id="@ar" class="tk">a + 1</span>);</div>
+<div id="@np" class="k-anno k-c-cyan" style="left:600px;top:396px">PARÂMETRO · mora na definição</div>
+<div id="@na" class="k-anno k-c-pink" style="left:140px;top:646px">ARGUMENTO · chega na chamada</div>
+<div id="@am" class="k-card" style="left:1120px;top:300px;width:680px;height:300px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:32px;top:28px;font-size:40px">amarração</div>
+  <div class="k-body" style="left:32px;top:96px;width:620px;font-size:28px;line-height:1.5">ligar cada <b class="k-c-pink">argumento</b><br>ao seu <b class="k-c-cyan">parâmetro</b></div>
+  <div class="k-code" style="left:32px;top:210px;font-size:36px"><span class="k-c-pink">a + 1</span>  ⟶  <span class="k-c-cyan">x</span></div>
+</div>
+<div id="@mac" class="k-macete" style="left:120px;top:750px;width:1680px;font-size:34px">Parâmetro mora na <u>definição</u>. Argumento chega na <u>chamada</u>.</div>
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, [$("l1"), $("d")], C.a + 0.4, { s: 0.2 });
+K.rise(tl, [$("l2"), $("c")], C.a + 1.0, { s: 0.2 });
+tl.to($("px"), { backgroundColor: "#0F2A30", color: "#4FD6EE", duration: 0.3 }, C.b + 0.2);
+K.pulse(tl, $("px"), C.b + 0.4, { k: 1.3 });
+K.wipe(tl, $("np"), C.b + 0.4);
+tl.to($("ar"), { backgroundColor: "#2E1420", color: "#FF6F9C", duration: 0.3 }, C.c + 0.2);
+K.pulse(tl, $("ar"), C.c + 0.4, { k: 1.2 });
+K.wipe(tl, $("na"), C.c + 0.4);
+K.rise(tl, $("am"), C.d + 0.2);
+K.macete(tl, $("mac"), C.e);
+</script>

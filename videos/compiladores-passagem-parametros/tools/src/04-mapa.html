@@ -1,0 +1,37 @@
+<!--sfx: b:pop@0.2*0.25, c:pop@0.2*0.25, d:pop@0.2*0.25, e:pop@0.2*0.25-->
+<style>
+  .cd { position: absolute; width: 820px; height: 330px; }
+  .cd .k-h2 { left: 32px; top: 24px; font-size: 38px; }
+  .cd .k-body { left: 32px; top: 80px; font-size: 26px; }
+  .bx { position: absolute; width: 130px; height: 80px; border: 3px solid #4FD6EE; border-radius: 12px; background: #0D1322; font-family: "DM Mono", monospace; font-size: 34px; line-height: 74px; text-align: center; color: #EEF1F8; }
+  .bl { position: absolute; width: 130px; text-align: center; font-family: "DM Mono", monospace; font-size: 20px; color: #8C97B5; }
+  .ar { position: absolute; font-family: "DM Mono", monospace; font-size: 40px; color: #8C97B5; }
+</style>
+<div id="@v" class="k-card cd" style="left:120px;top:150px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan">por valor</div><div class="k-body">vai uma <b>cópia</b> · fotocópia</div>
+  <div class="bx" style="left:120px;top:170px">5</div><div class="bl" style="left:120px;top:258px">a</div>
+  <div class="ar" style="left:330px;top:184px">⟶</div>
+  <div class="bx" style="left:470px;top:170px">5</div><div class="bl" style="left:470px;top:258px">x (cópia)</div>
+</div>
+<div id="@r" class="k-card cd" style="left:980px;top:150px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink">por referência</div><div class="k-body">vai o <b>endereço</b> · a chave da casa</div>
+  <div class="bx" style="left:120px;top:170px;border-color:#FF6F9C">5</div><div class="bl" style="left:120px;top:258px">a</div>
+  <div class="ar" style="left:330px;top:184px">⟵</div>
+  <div class="bx" style="left:470px;top:170px;border-color:#FF6F9C;font-size:28px">&amp;a</div><div class="bl" style="left:470px;top:258px">x (endereço)</div>
+</div>
+<div id="@vr" class="k-card cd" style="left:120px;top:510px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel">por valor-resultado</div><div class="k-body">cópia na ida, <b>volta no fim</b> · empréstimo</div>
+  <div class="bx" style="left:120px;top:170px;border-color:#FFD24A">5</div><div class="bl" style="left:120px;top:258px">a</div>
+  <div class="ar" style="left:300px;top:160px;font-size:30px">ida ⟶<br>⟵ volta</div>
+  <div class="bx" style="left:470px;top:170px;border-color:#FFD24A">5</div><div class="bl" style="left:470px;top:258px">x (cópia)</div>
+</div>
+<div id="@n" class="k-card cd" style="left:980px;top:510px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet">por nome</div><div class="k-body">vai o <b>texto</b> · calculado só na hora do uso</div>
+  <div class="k-code" style="left:60px;top:180px;font-size:38px">++<s class="k-mute">x</s>  ⟶  ++<span class="k-c-violet">(a[i])</span></div>
+</div>
+<script>
+K.pop(tl, $("v"), C.b);
+K.pop(tl, $("r"), C.c);
+K.pop(tl, $("vr"), C.d);
+K.pop(tl, $("n"), C.e);
+</script>

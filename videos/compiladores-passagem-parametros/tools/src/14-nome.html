@@ -1,0 +1,30 @@
+<!--sfx: b:pop@0.3*0.25, c:pop@0.3*0.25, d:pop@0.3*0.25, e:whoosh-short@3.0*0.2-->
+<style>
+  .st { position: absolute; left: 120px; width: 1060px; height: 120px; }
+  .st .nn { position: absolute; left: 28px; top: 26px; width: 64px; height: 64px; border-radius: 32px; background: #1E1838; border: 2px solid #B49BFF; font-family: "DM Mono", monospace; font-size: 32px; line-height: 60px; text-align: center; color: #B49BFF; }
+  .st .k-body { left: 120px; top: 36px; width: 900px; font-size: 29px; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:120px;font-size:76px">Passagem por <em>nome</em></div>
+<div id="@s1" class="k-card st" style="top:260px"><div class="nn">1</div><div class="k-body">o argumento <b>não</b> é calculado na chamada · <b class="k-c-violet">avaliação atrasada</b></div></div>
+<div id="@s2" class="k-card st" style="top:400px"><div class="nn">2</div><div class="k-body">o <b>texto</b> do argumento substitui o parâmetro · copiar e colar</div></div>
+<div id="@s3" class="k-card st" style="top:540px"><div class="nn">3</div><div class="k-body">é <b class="k-c-yel">recalculado</b> toda vez que o parâmetro é usado</div></div>
+<div id="@ex" class="k-card" style="left:1240px;top:260px;width:560px;height:400px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:28px;top:22px;font-size:30px">exemplo do slide</div>
+  <div class="k-code" style="left:28px;top:90px;font-size:28px;line-height:1.5"><span class="k-c-violet">void</span> proc(<span class="k-c-violet">int</span> x) {
+  ++x;
+}</div>
+  <div class="k-code" style="left:28px;top:230px;font-size:28px">proc(<span class="k-c-violet">a[i]</span>);</div>
+  <div id="@o" class="k-code" style="left:28px;top:300px;font-size:32px">⟶ ++x;</div>
+  <div id="@n" class="k-code" style="left:28px;top:300px;font-size:32px">⟶ ++<span class="k-c-violet">(a[i])</span>;</div>
+</div>
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("s1"), C.b);
+K.rise(tl, $("s2"), C.c);
+K.rise(tl, $("s3"), C.d);
+K.rise(tl, $("ex"), C.e);
+tl.set($("n"), { opacity: 0 }, 0);
+tl.to($("o"), { opacity: 0, y: -16, duration: 0.3 }, C.e + 3.0);
+tl.fromTo($("n"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.35 }, C.e + 3.2);
+K.pulse(tl, $("n"), C.e + 3.6, { k: 1.2 });
+</script>

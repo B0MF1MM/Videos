@@ -1,0 +1,28 @@
+<!--sfx: b:pop@0.3*0.2, c:chime@0.6*0.3-->
+<style>
+  .mc { position: absolute; top: 360px; width: 380px; height: 230px; border-radius: 20px; border: 3px solid #2A3656; background: #182238; }
+  .mc .n { position: absolute; left: 28px; top: 24px; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+  .mc .h { position: absolute; left: 28px; top: 64px; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 40px; }
+  .mc .d { position: absolute; left: 28px; top: 140px; font-family: "Hanken Grotesk", sans-serif; font-size: 26px; color: #B9C2DA; }
+</style>
+<div id="@k" class="k-kicker" style="left:0;top:150px;width:1920px;text-align:center">COMPILADORES · AMBIENTES DE EXECUÇÃO</div>
+<div id="@t" class="k-title" style="left:0;top:200px;width:1920px;text-align:center;font-size:96px">Passagem de <em>parâmetros</em></div>
+<div id="@m1" class="mc" style="left:120px;border-color:#4FD6EE"><div class="n">1</div><div class="h k-c-cyan">por valor</div><div class="d">vai uma cópia</div></div>
+<div id="@m2" class="mc" style="left:540px;border-color:#FF6F9C"><div class="n">2</div><div class="h k-c-pink">por referência</div><div class="d">vai o endereço</div></div>
+<div id="@m3" class="mc" style="left:960px;border-color:#FFD24A"><div class="n">3</div><div class="h k-c-yel">valor-resultado</div><div class="d">cópia que volta</div></div>
+<div id="@m4" class="mc" style="left:1380px;border-color:#B49BFF"><div class="n">4</div><div class="h k-c-violet">por nome</div><div class="d">vai o texto</div></div>
+<div id="@p1" class="k-chip k-c-cyan" style="left:430px;top:680px;font-size:30px">ideia</div>
+<div id="@a1" class="k-code k-mute" style="left:600px;top:684px;font-size:36px">→</div>
+<div id="@p2" class="k-chip k-c-pink" style="left:680px;top:680px;font-size:30px">exemplo na memória</div>
+<div id="@a2" class="k-code k-mute" style="left:1080px;top:684px;font-size:36px">→</div>
+<div id="@p3" class="k-chip k-c-yel" style="left:1160px;top:680px;font-size:30px;background:#2A2410">macete</div>
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("t"), C.a + 0.3);
+K.pop(tl, [$("m1"), $("m2"), $("m3"), $("m4")], C.b + 1.0, { s: 0.7 });
+K.pop(tl, $("p1"), C.c + 1.2);
+K.fade(tl, $("a1"), C.c + 1.8);
+K.pop(tl, $("p2"), C.c + 2.0);
+K.fade(tl, $("a2"), C.c + 3.2);
+K.pop(tl, $("p3"), C.c + 3.4);
+</script>
