@@ -1066,5 +1066,18 @@
       ]
     },
     "unversioned": []
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "b6d47c72-01dc-4165-bcda-4fe9a34970d6",
+      "completedAt": 1795363036056,
+      "output": "/home/user/Videos/videos/compiladores-exercicios-a2/renders/video.full.mp4",
+      "status": "completed",
+      "revision": "8ceb97c3-34ce-4b5f-8ef5-f6cbc97c60c2"
+    },
+    "retainedRevisions": [
+      "8ceb97c3-34ce-4b5f-8ef5-f6cbc97c60c2"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
