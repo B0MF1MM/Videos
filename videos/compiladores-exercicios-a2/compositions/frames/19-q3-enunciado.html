@@ -1,0 +1,57 @@
+<template id="19-q3-enunciado-template">
+  <div id="root" data-composition-id="19-q3-enunciado" data-start="0" data-duration="25.728" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .qc .ln { line-height: 46px; }
+  .bx { position: absolute; width: 380px; height: 150px; border-radius: 18px; background: #182238; border: 3px solid #4FD6EE; text-align: center; }
+  .bx b { display: block; margin-top: 18px; font-family: "DM Mono", monospace; font-size: 54px; }
+  .bx span { display: block; font-size: 24px; color: #8C97B5; margin-top: 4px; }
+</style>
+    <div id="s19-q3-enunciado-bg" class="clip k-scene k-bg" data-start="0" data-duration="25.728" data-track-index="0"></div>
+    <div id="s19-q3-enunciado-stage" class="clip k-scene" data-start="0" data-duration="25.728" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s19-q3-enunciado-cam" class="k-cam">
+<div id="s19-q3-enunciado-band" class="k-chip k-c-cyan" style="left:120px;top:126px;font-size:26px;background:#0F2A30">QUESTÃO 3</div>
+<div id="s19-q3-enunciado-ask" class="k-body" style="left:360px;top:132px;font-size:26px">pilha durante <b class="k-c-yel">b = c + c</b>, com as vinculações de controle</div>
+<div id="s19-q3-enunciado-win" class="k-win" style="left:120px;top:200px;width:760px;height:640px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>programa.c</span></div>
+  <div class="k-code qc" style="left:10px;top:66px;font-size:30px"><span class="ln" id="s19-q3-enunciado-c0"><span class="k-c-violet">int</span> a;</span><span class="ln" id="s19-q3-enunciado-c1"><span class="k-c-violet">int</span> duplica(<span class="k-c-violet">int</span> c) {</span><span class="ln" id="s19-q3-enunciado-c2">  <span class="k-c-violet">int</span> b;</span><span class="ln" id="s19-q3-enunciado-c3">  b = c + c;</span><span class="ln">  <span class="k-c-pink">return</span> b;</span><span class="ln">}</span><span class="ln"><span class="k-c-violet">int</span> main(<span class="k-c-violet">void</span>) {</span><span class="ln" id="s19-q3-enunciado-c7">  <span class="k-c-violet">int</span> b = 3;</span><span class="ln" id="s19-q3-enunciado-c8">  b = duplica(b);</span><span class="ln">  <span class="k-c-pink">return</span> 0;</span><span class="ln">}</span></div>
+</div>
+<div id="s19-q3-enunciado-n1" class="k-anno k-c-green" style="left:940px;top:262px">a é global → fica na área global, fora da pilha</div>
+<div id="s19-q3-enunciado-n2" class="k-anno k-mute" style="left:940px;top:330px">main: local b = 3</div>
+<div id="s19-q3-enunciado-n3" class="k-anno k-c-cyan" style="left:940px;top:398px">duplica(b) → parâmetro c = 3</div>
+<div id="s19-q3-enunciado-n4" class="k-anno k-c-yel" style="left:940px;top:466px">b = c + c = 3 + 3 = 6</div>
+<div id="s19-q3-enunciado-al" class="k-macete k-alert" style="left:940px;top:560px;width:860px;font-size:30px">Atenção: são <b>dois b diferentes</b>!</div>
+<div id="s19-q3-enunciado-b1" class="bx" style="left:940px;top:670px;border-color:#8C97B5"><b>b = 3</b><span>b do main</span></div>
+<div id="s19-q3-enunciado-b2" class="bx" style="left:1380px;top:670px;border-color:#FFD24A"><b class="k-c-yel">b = 6</b><span>b de duplica</span></div>
+      </div>
+    </div>
+    <div id="s19-q3-enunciado-chrome" class="clip k-scene" data-start="0" data-duration="25.728" data-track-index="2">
+      <div id="s19-q3-enunciado-tag" class="k-tag">COMPILADORES · <b>QUESTÃO 3</b></div>
+      <div id="s19-q3-enunciado-num" class="k-num">19 / 26</div>
+      <div id="s19-q3-enunciado-progbar" class="k-prog"><i id="s19-q3-enunciado-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.328, "c": 10.225, "d": 14.735, "e": 19.419}, D = 25.728;
+        var S = K.scene("19-q3-enunciado", D, 26), tl = S.tl, $ = S.$;
+        K.pop(tl, $("band"), C.a);
+        K.wipe(tl, $("ask"), C.a + 0.6);
+        K.rise(tl, $("win"), C.a + 1.2);
+        K.hl(tl, $("c0"), C.b, C.b + 2.6);
+        K.wipe(tl, $("n1"), C.b + 0.4);
+        K.hl(tl, $("c7"), C.b + 2.8, C.c);
+        K.wipe(tl, $("n2"), C.b + 3.0);
+        K.hl(tl, $("c8"), C.c, C.d);
+        K.hl(tl, $("c1"), C.c + 2.0, C.d);
+        K.wipe(tl, $("n3"), C.c + 2.2);
+        K.hl(tl, $("c3"), C.d, C.e);
+        K.wipe(tl, $("n4"), C.d + 1.2);
+        K.pop(tl, $("al"), C.e);
+        K.rise(tl, $("b1"), C.e + 1.8);
+        K.rise(tl, $("b2"), C.e + 3.2);
+      })();
+    </script>
+  </div>
+</template>

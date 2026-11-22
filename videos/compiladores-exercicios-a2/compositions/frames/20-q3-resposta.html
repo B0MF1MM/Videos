@@ -1,0 +1,59 @@
+<template id="20-q3-resposta-template">
+  <div id="root" data-composition-id="20-q3-resposta" data-start="0" data-duration="19.498" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .mc { position: absolute; height: 78px; border: 3px solid #2A3656; background: #182238; font-family: "DM Mono", monospace; font-size: 32px; line-height: 72px; text-align: center; color: #EEF1F8; }
+  .ml { position: absolute; width: 100px; height: 78px; font-family: "DM Mono", monospace; font-size: 32px; line-height: 78px; text-align: right; }
+</style>
+    <div id="s20-q3-resposta-bg" class="clip k-scene k-bg" data-start="0" data-duration="19.498" data-track-index="0"></div>
+    <div id="s20-q3-resposta-stage" class="clip k-scene" data-start="0" data-duration="19.498" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s20-q3-resposta-cam" class="k-cam">
+<div id="s20-q3-resposta-band" class="k-chip k-c-cyan" style="left:120px;top:126px;font-size:26px;background:#0F2A30">QUESTÃO 3 · RESPOSTA</div>
+<div id="s20-q3-resposta-grow" class="k-anno k-mute" style="left:120px;top:240px;font-size:26px">a pilha cresce<br>para baixo ↓</div>
+<div id="s20-q3-resposta-m_b" class="mc k-mute" style="left:760px;top:230px;width:520px;border-color:#8C97B5;">3</div>
+<div id="s20-q3-resposta-l_m_b" class="ml k-mute" style="left:640px;top:230px">b</div>
+<div id="s20-q3-resposta-d_c" class="mc k-c-cyan" style="left:760px;top:322px;width:520px;border-color:#4FD6EE;">3</div>
+<div id="s20-q3-resposta-l_d_c" class="ml k-c-cyan" style="left:640px;top:322px">c</div>
+<div id="s20-q3-resposta-d_vc" class="mc " style="left:760px;top:400px;width:520px;border-color:#FF6F9C;font-size:26px;">vinculação de controle</div>
+<div id="s20-q3-resposta-d_er" class="mc " style="left:760px;top:478px;width:520px;border-color:#4FD6EE;font-size:26px;">endereço de retorno</div>
+<div id="s20-q3-resposta-d_b" class="mc k-c-yel" style="left:760px;top:556px;width:520px;border-color:#FFD24A;">6</div>
+<div id="s20-q3-resposta-l_d_b" class="ml k-c-yel" style="left:640px;top:556px">b</div>
+<div id="s20-q3-resposta-sp" class="ml k-c-cyan" style="left:640px;top:634px">sp</div>
+<div id="s20-q3-resposta-spl" style="position:absolute;left:760px;top:634px;width:520px;height:78px;border:3px dashed #4FD6EE"></div>
+<div id="s20-q3-resposta-lm" class="k-anno k-mute" style="left:1380px;top:230px">registro de ativação<br>de main()</div>
+<div id="s20-q3-resposta-ld" class="k-anno k-c-cyan" style="left:1380px;top:442px">registro de ativação<br>de duplica()</div>
+<svg class="k-svg">
+  <path id="s20-q3-resposta-pv" class="arrow" d="M 1286 439 C 1366 439, 1366 269, 1286 269 M 1304 257 L 1286 269 L 1304 281" stroke="#FF6F9C" />
+  <rect id="s20-q3-resposta-br" x="756" y="318" width="528" height="320" rx="10" fill="none" stroke="#4FD6EE" stroke-width="2" stroke-dasharray="8 8"/>
+</svg>
+<div id="s20-q3-resposta-ok" class="k-chip k-c-green" style="left:120px;top:790px;font-size:28px;background:#13241A">✓ a global a não entra na pilha · vinculação de controle → main</div>
+      </div>
+    </div>
+    <div id="s20-q3-resposta-chrome" class="clip k-scene" data-start="0" data-duration="19.498" data-track-index="2">
+      <div id="s20-q3-resposta-tag" class="k-tag">COMPILADORES · <b>QUESTÃO 3</b></div>
+      <div id="s20-q3-resposta-num" class="k-num">20 / 26</div>
+      <div id="s20-q3-resposta-progbar" class="k-prog"><i id="s20-q3-resposta-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 1.517, "c": 4.581, "d": 9.559, "e": 14.658}, D = 19.498;
+        var S = K.scene("20-q3-resposta", D, 26), tl = S.tl, $ = S.$;
+        K.pop(tl, $("band"), C.a);
+        K.fade(tl, $("grow"), C.a + 0.4);
+        var D0 = [$("m_b"), $("l_m_b"), $("lm")];
+        var D1 = [$("d_c"), $("l_d_c"), $("ld"), $("br")];
+        tl.set(D0.concat(D1, [$("d_vc"), $("d_er"), $("d_b"), $("l_d_b"), $("sp"), $("spl"), $("ok")]), { opacity: 0 }, 0);
+        tl.to(D0, { opacity: 1, duration: 0.4 }, C.b + 0.4);
+        tl.to(D1, { opacity: 1, duration: 0.4 }, C.c + 0.4);
+        tl.to($("d_vc"), { opacity: 1, duration: 0.4 }, C.d);
+        K.draw(tl, $("pv"), C.d + 0.8, { d: 0.7 });
+        tl.to($("d_er"), { opacity: 1, duration: 0.4 }, C.d + 3.4);
+        tl.to([$("d_b"), $("l_d_b")], { opacity: 1, duration: 0.4 }, C.e);
+        tl.to([$("sp"), $("spl")], { opacity: 1, duration: 0.4 }, C.e + 1.8);
+        tl.to($("ok"), { opacity: 1, duration: 0.4 }, C.e + 3.0);
+      })();
+    </script>
+  </div>
+</template>

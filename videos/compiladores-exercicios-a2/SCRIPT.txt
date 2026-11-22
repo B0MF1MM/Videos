@@ -1,0 +1,180 @@
+# Roteiro — Compiladores: Exercícios da A2 (matéria + resolução)
+# "# id-da-cena | SEÇÃO" abre uma cena; "chave: legenda || fala" (|| opcional, para a pronúncia).
+
+# 01-abertura | INTRODUÇÃO
+a: São seis questões para a A2 de Compiladores.
+b: Uma de gramática de atributos, duas de ambiente de execução, uma de passagem de parâmetros e duas de código de três endereços.
+c: Primeiro, a matéria que você precisa saber para cada uma.
+d: Depois, cada questão resolvida, passo a passo, do jeito que o gabarito espera.
+
+# 02-gram-atrib | MATÉRIA · ATRIBUTOS
+a: Questão um pede uma gramática de atributos. Então vamos relembrar o que é isso.
+b: Uma gramática de atributos é uma tabela com duas colunas: a regra gramatical, e as regras semânticas dessa regra.
+c: Cada regra semântica é uma equação: um atributo de um símbolo recebe o valor de atributos dos outros símbolos da mesma regra.
+d: A notação é símbolo, ponto, atributo. Por exemplo, tipo ponto dtipo. || A notação é símbolo, ponto, atributo. Por exemplo, tipo ponto dê tipo.
+e: E quando o mesmo símbolo aparece duas vezes na regra, a gente numera: var-lista um e var-lista dois.
+
+# 03-sint-herd | MATÉRIA · ATRIBUTOS
+a: Os atributos são de dois tipos.
+b: Sintetizado: o valor vem dos filhos e sobe para o pai. Como o valor de uma expressão.
+c: Herdado: o valor vem do pai, ou de um irmão, e desce. Como o tipo numa declaração de variáveis.
+d: Numa declaração, o tipo aparece num lugar, e precisa chegar até cada variável da lista. Por isso o dtipo é herdado. || Numa declaração, o tipo aparece num lugar, e precisa chegar até cada variável da lista. Por isso o dê tipo é herdado.
+e: Macete: sintetizado sobe como fumaça. Herdado desce como herança.
+
+# 04-receita | MATÉRIA · ATRIBUTOS
+a: Uma receita para montar a tabela na prova.
+b: Passo um: escolha o atributo. Para o tipo de uma variável, é o dtipo. || Passo um: escolha o atributo. Para o tipo de uma variável, é o dê tipo.
+c: Passo dois: nas regras que definem o tipo, o valor é uma constante. Tipo vai em integer dá dtipo igual a inteiro. || Passo dois: nas regras que definem o tipo, o valor é uma constante. Tipo vai em ínteger dá dê tipo igual a inteiro.
+d: Passo três: na regra de cima, o tipo é passado para a lista.
+e: Passo quatro: na lista, cada id recebe o tipo da lista, e a sublista também. Escreva uma linha para cada regra gramatical. || Passo quatro: na lista, cada ai dê recebe o tipo da lista, e a sublista também. Escreva uma linha para cada regra gramatical.
+
+# 05-memoria | MATÉRIA · AMBIENTE
+a: Questões dois e três são de ambiente de execução: como a memória fica organizada enquanto o programa roda.
+b: A memória tem a área de código, a área global e estática, a pilha, e o heap. || A memória tem a área de código, a área global e estática, a pilha, e o rip.
+c: Variáveis globais, e textos constantes, como uma string, ficam na área global.
+d: Cada chamada de função ganha um registro de ativação, que é empilhado na pilha.
+e: Macete: global fica fixa lá em cima. O que é de função vive na pilha.
+
+# 06-registro | MATÉRIA · AMBIENTE
+a: O registro de ativação de uma função guarda, nesta ordem típica:
+b: os parâmetros, que recebem os argumentos,
+c: a vinculação de controle, que aponta para o registro de quem chamou,
+d: o endereço de retorno, para onde voltar,
+e: e as variáveis locais e temporários.
+f: E o sp, ponteiro de pilha, marca o topo, logo depois do último registro. || E o ésse pê, ponteiro de pilha, marca o topo, logo depois do último registro.
+
+# 07-chamada | MATÉRIA · AMBIENTE
+a: Veja o que acontece numa chamada.
+b: O main começa: o registro dele é criado, com as variáveis locais do main.
+c: O main chama outra função. Um novo registro é empilhado em cima.
+d: A vinculação de controle desse novo registro aponta para o registro do main, que foi quem chamou.
+e: Quando a função retorna, o registro sai, e a pilha volta a ser só o main.
+f: Dica de prova: sempre desenhe a seta da vinculação de controle, do registro chamado para o registro de quem chamou.
+
+# 08-detalhes | MATÉRIA · AMBIENTE
+a: Três detalhes que caem nessas questões.
+b: Um: um vetor ocupa uma posição para cada elemento. Um vetor de cinco inteiros vira a de zero até a de quatro.
+c: Dois: um ponteiro guarda um endereço. Se o parâmetro é um ponteiro, ele recebe o endereço base do que foi passado.
+d: Três: uma variável declarada num bloco dentro da função fica no registro de ativação da função, depois das outras locais. E se tiver o mesmo nome de uma global, ela esconde a global ali dentro.
+
+# 09-parametros | MATÉRIA · PARÂMETROS
+a: Questão quatro: passagem por valor e por referência.
+b: Na passagem por valor, a função recebe uma cópia do valor. Mudar o parâmetro só muda a cópia. A variável original fica intacta.
+c: Na passagem por referência, a função recebe o endereço da variável original. Mudar o parâmetro muda a original.
+d: Em C mais mais, o e comercial na declaração do parâmetro indica referência.
+e: Macete: valor é uma fotocópia. Referência é a chave da casa.
+
+# 10-tres-end | MATÉRIA · CÓDIGO
+a: Questões cinco e seis pedem código de três endereços.
+b: Cada instrução tem, no máximo, um operador: resultado igual a operando, operador, operando.
+c: Contas grandes são quebradas em várias linhas, com temporários: tê um, tê dois, tê três.
+d: A ordem segue a precedência: multiplicação antes da soma. É o mesmo que percorrer a árvore da expressão de baixo para cima.
+e: Macete: cada operação da árvore vira um temporário.
+
+# 11-if | MATÉRIA · CÓDIGO
+a: Para comandos de controle, usamos rótulos e saltos.
+b: Label marca um lugar. Goto salta para ele. E if_false salta só quando a condição é falsa. || Lêibol marca um lugar. Gôu tchú salta para ele. E if fólse salta só quando a condição é falsa.
+c: O if com else vira: calcula a condição num temporário, e if_false salta para o else. || O if com else vira: calcula a condição num temporário, e if fólse salta para o else.
+d: Depois vem a parte verdadeira, e um goto que pula o else. Então o label do else, a parte do else, e o label do fim. || Depois vem a parte verdadeira, e um gôu tchú que pula o else. Então o lêibol do else, a parte do else, e o lêibol do fim.
+e: Macete: falso pula; verdadeiro segue reto.
+
+# 12-laco | MATÉRIA · CÓDIGO
+a: O laço while vira: label no início, calcula a condição, e if_false salta para a saída. || O laço while vira: lêibol no início, calcula a condição, e if fólse salta para a saída.
+b: Depois vem o corpo, e um goto de volta para o início. E por fim, o label da saída. || Depois vem o corpo, e um gôu tchú de volta para o início. E por fim, o lêibol da saída.
+c: E o for? O for é só um while disfarçado.
+d: Primeiro a inicialização, uma vez só. Depois o while com a condição, e o incremento no fim do corpo.
+e: Macete: for é igual a inicialização, mais while, mais incremento no final.
+
+# 13-q1-enunciado | QUESTÃO 1
+a: Agora, as questões. Questão um.
+b: A gramática é de declarações em Pascal: decl vai em var-lista dois pontos tipo. var-lista vai em var-lista vírgula id, ou id. E tipo vai em integer ou real. || A gramática é de declarações em Pascal: decl vai em var-lista dois pontos tipo. var-lista vai em var-lista vírgula ai dê, ou ai dê. E tipo vai em ínteger ou real.
+c: Pede a gramática de atributos para o tipo de uma variável.
+d: Repare: aqui o tipo vem no fim, como em x, y dois pontos real. Mas a ideia é a mesma: o tipo precisa chegar até cada variável. || Repare: aqui o tipo vem no fim, como em xis, ípsilon, dois pontos, real. Mas a ideia é a mesma: o tipo precisa chegar até cada variável.
+
+# 14-q1-arvore | QUESTÃO 1
+a: Veja na árvore de x, y dois pontos real. || Veja na árvore de xis, ípsilon, dois pontos, real.
+b: O tipo real define dtipo igual a real. || O tipo real define dê tipo igual a real.
+c: Esse valor vai para o irmão, a var-lista.
+d: A var-lista passa para o id da direita, que é o y, e para a sublista. || A var-lista passa para o ai dê da direita, que é o ípsilon, e para a sublista.
+e: E a sublista passa para o x. Assim, todas as variáveis recebem o tipo. || E a sublista passa para o xis. Assim, todas as variáveis recebem o tipo.
+
+# 15-q1-resposta | QUESTÃO 1
+a: Agora, a resposta em tabela.
+b: decl vai em var-lista dois pontos tipo: var-lista.dtipo igual a tipo.dtipo. || decl vai em var-lista dois pontos tipo: var-lista ponto dê tipo igual a tipo ponto dê tipo.
+c: var-lista um vai em var-lista dois vírgula id: id.dtipo igual a var-lista um.dtipo, e var-lista dois.dtipo igual a var-lista um.dtipo. || var-lista um vai em var-lista dois vírgula ai dê: ai dê ponto dê tipo igual a var-lista um ponto dê tipo. E var-lista dois ponto dê tipo igual a var-lista um ponto dê tipo.
+d: var-lista vai em id: id.dtipo igual a var-lista.dtipo. || var-lista vai em ai dê: ai dê ponto dê tipo igual a var-lista ponto dê tipo.
+e: E tipo vai em integer: dtipo igual a inteiro. Tipo vai em real: dtipo igual a real. || E tipo vai em ínteger: dê tipo igual a inteiro. Tipo vai em real: dê tipo igual a real.
+
+# 16-q2-enunciado | QUESTÃO 2
+a: Questão dois: o ambiente de execução depois de entrar no bloco A da função g.
+b: Globais: um vetor a de dez inteiros, e um ponteiro s apontando para a string hello. || Globais: um vetor a de dez inteiros, e um ponteiro ésse apontando para a string hélou.
+c: O main chama g, passando s. || O main chama g, passando ésse.
+d: Em g, o parâmetro s, a variável local c, que recebe o primeiro caractere, o h. E no bloco A, um novo vetor a, de cinco inteiros. || Em g, o parâmetro ésse, a variável local cê, que recebe o primeiro caractere, o agá. E no bloco A, um novo vetor a, de cinco inteiros.
+e: Plano: primeiro a área global, depois o registro do main, depois o registro de g.
+
+# 17-q2-global | QUESTÃO 2
+a: Na área global, primeiro o vetor a: dez posições, de a zero até a nove.
+b: Depois o s, com a string hello: h, e, l, l, o, e o caractere nulo, que marca o fim da string. || Depois o ésse, com a string hélou: agá, é, éle, éle, ó, e o caractere nulo, que marca o fim da string.
+c: Pegadinha: a string tem seis posições, não cinco, por causa do caractere nulo no final.
+
+# 18-q2-pilha | QUESTÃO 2
+a: Agora a pilha. O main não tem variáveis locais, então o registro dele aparece vazio.
+b: Em cima, o registro de g. Primeiro o parâmetro s, que contém o endereço base do s global, apontando para o h. || Em cima, o registro de g. Primeiro o parâmetro ésse, que contém o endereço base do ésse global, apontando para o agá.
+c: Depois a vinculação de controle, apontando para o registro do main, e o endereço de retorno.
+d: Depois a local c, com o valor h. || Depois a local cê, com o valor agá.
+e: E, como estamos dentro do bloco A, o vetor a local: de a zero até a quatro. Ele esconde o a global dentro do bloco.
+f: Por fim, o sp marca o topo da pilha. || Por fim, o ésse pê marca o topo da pilha.
+
+# 19-q3-enunciado | QUESTÃO 3
+a: Questão três: a pilha durante a instrução b igual a c mais c, com as vinculações de controle.
+b: Há uma global a, que não aparece na pilha. O main tem a local b, que vale três.
+c: O main chama duplica, passando b. Então o parâmetro c recebe três. || O main chama duplica, passando b. Então o parâmetro cê recebe três.
+d: Dentro de duplica, a local b recebe c mais c: três mais três, seis. || Dentro de duplica, a local b recebe cê mais cê: três mais três, seis.
+e: Atenção: existem dois b diferentes. O b do main vale três; o b de duplica vale seis.
+
+# 20-q3-resposta | QUESTÃO 3
+a: Montando a pilha.
+b: Primeiro, o registro do main, com b igual a três.
+c: Depois, empilhado sobre ele, o registro de duplica: o parâmetro c igual a três. || Depois, empilhado sobre ele, o registro de duplica: o parâmetro cê igual a três.
+d: A vinculação de controle, apontando para o registro do main. E o endereço de retorno.
+e: E a local b, com seis. Por fim, o sp marca o topo da pilha. || E a local b, com seis. Por fim, o ésse pê marca o topo da pilha.
+
+# 21-q4 | QUESTÃO 4
+a: Questão quatro: diferenciar passagem por valor e por referência, com exemplos.
+b: Por valor: a função somarDez recebe uma cópia de x. Ela soma dez na cópia. Dentro da função aparece quinze, mas no main, x continua cinco. || Por valor: a função somar dez recebe uma cópia de xis. Ela soma dez na cópia. Dentro da função aparece quinze, mas no main, xis continua cinco.
+c: Por referência: com o e comercial, a função recebe o endereço de x. Somar dez muda o próprio x, que passa a valer quinze também no main. || Por referência: com o e comercial, a função recebe o endereço de xis. Somar dez muda o próprio xis, que passa a valer quinze também no main.
+d: Na resposta, escreva as duas definições e mostre os dois exemplos com o resultado final de x. || Na resposta, escreva as duas definições e mostre os dois exemplos com o resultado final de xis.
+
+# 22-q5 | QUESTÃO 5
+a: Questão cinco: código de três endereços para x igual a dois vezes três, mais quatro vezes cinco. || Questão cinco: código de três endereços para xis igual a dois vezes três, mais quatro vezes cinco.
+b: Pela precedência, as multiplicações vêm primeiro. Na árvore, o mais fica na raiz, com as duas multiplicações embaixo.
+c: Primeira multiplicação: T1 igual a dois vezes três. || Primeira multiplicação: tê um igual a dois vezes três.
+d: Segunda: T2 igual a quatro vezes cinco. || Segunda: tê dois igual a quatro vezes cinco.
+e: E a raiz: x igual a T1 mais T2. Três instruções. || E a raiz: xis igual a tê um mais tê dois. Três instruções.
+
+# 23-q6-plano | QUESTÃO 6
+a: Questão seis: um for com um if e else dentro.
+b: Primeiro, reescreva o for como while: i igual a zero; enquanto i menor que quatro; e o i mais mais no fim do corpo.
+c: Dentro do laço, o if: se i menor que dois, a recebe a mais um. Senão, a recebe a mais dois.
+d: Vamos precisar de quatro rótulos: L1 no início do laço, L2 na saída, L3 no else, e L4 no fim do if. || Vamos precisar de quatro rótulos: éle um no início do laço, éle dois na saída, éle três no else, e éle quatro no fim do if.
+
+# 24-q6-laco | QUESTÃO 6
+a: Montando o código. Primeiro a inicialização: i igual a zero.
+b: Depois, label L1, o início do laço. || Depois, lêibol éle um, o início do laço.
+c: A condição do laço: t1 igual a i menor que quatro. E if_false t1 goto L2: se for falsa, sai do laço. || A condição do laço: tê um igual a i menor que quatro. E if fólse tê um, gôu tchú éle dois: se for falsa, sai do laço.
+d: Agora o if: t2 igual a i menor que dois. E if_false t2 goto L3: se for falso, vai para o else. || Agora o if: tê dois igual a i menor que dois. E if fólse tê dois, gôu tchú éle três: se for falso, vai para o else.
+
+# 25-q6-corpo | QUESTÃO 6
+a: A parte verdadeira: t3 igual a a mais um, e a igual a t3. Depois, goto L4, pulando o else. || A parte verdadeira: tê três igual a a mais um, e a igual a tê três. Depois, gôu tchú éle quatro, pulando o else.
+b: O else: label L3, t4 igual a a mais dois, e a igual a t4. || O else: lêibol éle três, tê quatro igual a a mais dois, e a igual a tê quatro.
+c: O fim do if: label L4. E então o incremento: t5 igual a i mais um, e i igual a t5. || O fim do if: lêibol éle quatro. E então o incremento: tê cinco igual a i mais um, e i igual a tê cinco.
+d: Goto L1, voltando para o início do laço. E por fim, label L2, a saída. || Gôu tchú éle um, voltando para o início do laço. E por fim, lêibol éle dois, a saída.
+e: Conferindo: com i igual a zero e um, soma um; com i igual a dois e três, soma dois. No total, a aumenta seis.
+
+# 26-cola | REVISÃO
+a: Revisão para a prova.
+b: Gramática de atributos: uma linha por regra, e o tipo é herdado: passa da lista para cada id.
+c: Ambiente: globais lá em cima, um registro por chamada na pilha, vinculação de controle apontando para quem chamou, e o sp no topo.
+d: Parâmetros: valor é cópia, referência é o endereço.
+e: Três endereços: um operador por linha, com temporários. E for vira inicialização, while e incremento, com if_false, goto e labels. || Três endereços: um operador por linha, com temporários. E for vira inicialização, while e incremento, com if fólse, gôu tchú e lêibols.
+f: Agora é com você. Boa prova!

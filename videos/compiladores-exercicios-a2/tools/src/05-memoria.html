@@ -1,0 +1,39 @@
+<!--sfx: c:pop@0.6*0.2, d:pop@0.6*0.2, e:pop*0.3-->
+<style>
+  .ml { position: absolute; left: 0; width: 520px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 28px; text-align: center; }
+</style>
+<div id="@k" class="k-kicker" style="left:120px;top:126px">matéria para as questões 2 e 3</div>
+<div id="@t" class="k-title" style="left:120px;top:170px;font-size:64px">Organização da <em>memória</em></div>
+<div id="@mem" style="position:absolute;left:1180px;top:150px;width:640px;height:720px">
+  <div id="@m1" class="ml k-c-violet" style="top:0;height:90px;line-height:86px;border-color:#B49BFF">área de código</div>
+  <div id="@m2" class="ml k-c-green" style="top:90px;height:150px;line-height:146px;border-color:#7FE39A">área global / estática</div>
+  <div id="@m3" class="ml k-c-cyan" style="top:240px;height:240px;border-color:#4FD6EE"></div>
+  <div id="@f1" class="ml k-c-cyan" style="top:250px;height:90px;line-height:86px;left:20px;width:480px;border-color:#4FD6EE">registro de main</div>
+  <div id="@f2" class="ml k-c-cyan" style="top:340px;height:90px;line-height:86px;left:20px;width:480px;border-color:#FFD24A;color:#FFD24A">registro de f</div>
+  <div class="k-code k-c-cyan" style="left:540px;top:250px;font-size:24px">pilha ↓</div>
+  <div id="@m4" class="ml k-mute" style="top:480px;height:120px;line-height:116px;background:#0F1628">livre</div>
+  <div id="@m5" class="ml k-c-pink" style="top:600px;height:90px;line-height:86px;border-color:#FF6F9C">heap</div>
+</div>
+<div id="@g" class="k-card" style="left:120px;top:300px;width:960px;height:200px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:34px">área global</div>
+  <div class="k-body" style="left:28px;top:84px;font-size:26px;line-height:1.45">variáveis globais e textos constantes<br>(ex.: a string "hello")</div>
+</div>
+<div id="@p" class="k-card" style="left:120px;top:530px;width:960px;height:170px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:22px;font-size:34px">pilha</div>
+  <div class="k-body" style="left:28px;top:84px;font-size:26px">cada chamada de função → um registro de ativação</div>
+</div>
+<div id="@mac" class="k-macete" style="left:120px;top:730px;width:960px;font-size:32px">Global fica <u>fixa</u> lá em cima. O que é de função vive na <u>pilha</u>.</div>
+
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("t"), C.a + 0.4);
+K.fade(tl, $("mem"), C.b);
+K.fade(tl, [$("m1"), $("m2"), $("m3"), $("m4"), $("m5")], C.b + 0.2, { s: 0.6 });
+tl.set([$("f1"), $("f2")], { opacity: 0 }, 0);
+K.rise(tl, $("g"), C.c);
+K.pulse(tl, $("m2"), C.c + 0.8, { k: 1.04 });
+K.rise(tl, $("p"), C.d);
+tl.fromTo($("f1"), { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, immediateRender: false }, C.d + 1.4);
+tl.fromTo($("f2"), { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, immediateRender: false }, C.d + 2.4);
+K.macete(tl, $("mac"), C.e);
+</script>

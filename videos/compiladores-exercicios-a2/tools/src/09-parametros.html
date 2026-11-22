@@ -1,0 +1,41 @@
+<!--sfx: b:pop@2.0*0.25, c:pop@2.0*0.25, e:pop*0.3-->
+<style>
+  .vb { position: absolute; width: 150px; height: 90px; border: 3px solid #2A3656; border-radius: 12px; background: #182238; font-family: "DM Mono", monospace; font-size: 40px; line-height: 84px; text-align: center; color: #EEF1F8; }
+  .lb { position: absolute; width: 150px; text-align: center; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+</style>
+<div id="@k" class="k-kicker" style="left:120px;top:126px">matéria para a questão 4</div>
+<div id="@t" class="k-title" style="left:120px;top:170px;font-size:60px">Passagem por <em>valor</em> × por <em>referência</em></div>
+<div id="@v" class="k-card" style="left:120px;top:290px;width:820px;height:440px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:22px;font-size:36px">por valor</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:24px;line-height:1.45">a função recebe uma <b>cópia</b><br>mudar o parâmetro não muda a original</div>
+  <div class="vb" style="left:120px;top:220px;border-color:#7FE39A">5</div><div class="lb" style="left:120px;top:316px">x (main)</div>
+  <div class="vb" style="left:480px;top:220px;border-color:#4FD6EE"><span id="@c1">5</span><span id="@c2" style="position:absolute;left:0;width:150px">15</span></div><div class="lb" style="left:480px;top:316px">cópia</div>
+  <svg width="820" height="440" style="position:absolute;left:0;top:0"><path d="M 276 265 L 470 265 M 454 253 L 470 265 L 454 277" stroke="#4FD6EE" stroke-width="4" fill="none"/></svg>
+  <div id="@vr" class="k-anno k-c-green" style="left:120px;top:370px">x continua 5</div>
+</div>
+<div id="@r" class="k-card" style="left:980px;top:290px;width:820px;height:440px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:22px;font-size:36px">por referência</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:24px;line-height:1.45">a função recebe o <b>endereço</b> da original<br>mudar o parâmetro muda a original</div>
+  <div class="vb" style="left:120px;top:220px;border-color:#7FE39A"><span id="@x1">5</span><span id="@x2" style="position:absolute;left:0;width:150px">15</span></div><div class="lb" style="left:120px;top:316px">x (main)</div>
+  <div class="vb" style="left:480px;top:220px;border-color:#FF6F9C;font-size:30px">&amp;x</div><div class="lb" style="left:480px;top:316px">parâmetro</div>
+  <svg width="820" height="440" style="position:absolute;left:0;top:0"><path d="M 470 265 L 276 265 M 292 253 L 276 265 L 292 277" stroke="#FF6F9C" stroke-width="4" fill="none"/></svg>
+  <div id="@rr" class="k-anno k-c-pink" style="left:120px;top:370px">x passa a valer 15</div>
+</div>
+<div id="@amp" class="k-chip k-c-pink" style="left:980px;top:750px;font-size:26px;background:#2A0E17">C++: o &amp; no parâmetro indica referência</div>
+<div id="@mac" class="k-macete" style="left:120px;top:750px;width:820px;font-size:30px">Valor = <u>fotocópia</u>. Referência = <u>chave da casa</u>.</div>
+
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("t"), C.a + 0.4);
+tl.set([$("c2"), $("x2"), $("vr"), $("rr")], { opacity: 0 }, 0);
+K.rise(tl, $("v"), C.b);
+tl.to($("c1"), { opacity: 0, duration: 0.2 }, C.b + 4.0);
+tl.to($("c2"), { opacity: 1, duration: 0.2 }, C.b + 4.1);
+tl.to($("vr"), { opacity: 1, duration: 0.3 }, C.b + 5.4);
+K.rise(tl, $("r"), C.c);
+tl.to($("x1"), { opacity: 0, duration: 0.2 }, C.c + 4.4);
+tl.to($("x2"), { opacity: 1, duration: 0.2 }, C.c + 4.5);
+tl.to($("rr"), { opacity: 1, duration: 0.3 }, C.c + 5.0);
+K.pop(tl, $("amp"), C.d + 0.4);
+K.macete(tl, $("mac"), C.e);
+</script>

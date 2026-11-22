@@ -1,0 +1,62 @@
+<!--sfx: b:pop@8.0*0.3, c:pop@7.6*0.3, d:chime@0.4*0.3-->
+<style>
+  .pc .ln { line-height: 36px; }
+  .bx { position: absolute; width: 170px; height: 76px; margin-left: -85px; border-radius: 14px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 40px; line-height: 70px; text-align: center; color: #EEF1F8; }
+  .bl { position: absolute; width: 260px; margin-left: -130px; text-align: center; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+  .nv { position: absolute; left: 0; top: 0; width: 100%; }
+</style>
+<div id="@band" class="k-chip k-c-pink" style="left:120px;top:126px;font-size:26px;background:#2E1420">QUESTÃO 4</div>
+<div id="@resp" class="k-chip k-c-yel" style="left:400px;top:126px;font-size:26px;background:#2A2410">na resposta: definição + exemplo + valor final de x</div>
+<div id="@h1" class="k-h2 k-c-cyan" style="left:120px;top:196px;font-size:34px">POR VALOR · cópia</div>
+<div id="@w1" class="k-win" style="left:120px;top:250px;width:800px;height:400px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>valor.cpp</span></div>
+  <div class="k-code pc" style="left:10px;top:62px;font-size:26px"><span class="ln" id="@a0"><span class="k-c-violet">void</span> somarDez(<span class="k-c-violet">int</span> num) {</span><span class="ln" id="@a1">  num += 10;</span><span class="ln">  cout &lt;&lt; num;  <span class="k-mute">// 15</span></span><span class="ln">}</span><span class="ln"><span class="k-c-violet">int</span> main() {</span><span class="ln">  <span class="k-c-violet">int</span> x = 5;</span><span class="ln" id="@a6">  somarDez(x);</span><span class="ln" id="@a7">  cout &lt;&lt; x;    <span class="k-c-green">// continua 5</span></span><span class="ln">}</span></div>
+</div>
+<div id="@h2" class="k-h2 k-c-violet" style="left:1000px;top:196px;font-size:34px">POR REFERÊNCIA · endereço</div>
+<div id="@w2" class="k-win" style="left:1000px;top:250px;width:800px;height:400px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>referencia.cpp</span></div>
+  <div class="k-code pc" style="left:10px;top:62px;font-size:26px"><span class="ln" id="@b0"><span class="k-c-violet">void</span> somarDez(<span class="k-c-violet">int</span> <span class="k-c-yel">&amp;</span>num) {</span><span class="ln" id="@b1">  num += 10;</span><span class="ln">  cout &lt;&lt; num;  <span class="k-mute">// 15</span></span><span class="ln">}</span><span class="ln"><span class="k-c-violet">int</span> main() {</span><span class="ln">  <span class="k-c-violet">int</span> x = 5;</span><span class="ln" id="@b6">  somarDez(x);</span><span class="ln" id="@b7">  cout &lt;&lt; x;    <span class="k-c-yel">// agora 15</span></span><span class="ln">}</span></div>
+</div>
+<div class="bl" id="@lx1" style="left:260px;top:668px">x (main)</div>
+<div class="bx" id="@x1" style="left:260px;top:700px;border-color:#8C97B5">5</div>
+<div class="bl" id="@ln1" style="left:700px;top:668px">num (cópia)</div>
+<div class="bx" id="@n1" style="left:700px;top:700px"><span class="nv" id="@n1a">5</span><span class="nv k-c-yel" id="@n1b">15</span></div>
+<div class="bl" id="@lx2" style="left:1140px;top:668px">x (main)</div>
+<div class="bx" id="@x2" style="left:1140px;top:700px;border-color:#B49BFF"><span class="nv" id="@x2a">5</span><span class="nv k-c-yel" id="@x2b">15</span></div>
+<div class="bl" id="@ln2" style="left:1580px;top:668px">num = &amp;x</div>
+<div class="bx" id="@n2" style="left:1580px;top:700px;border-color:#B49BFF">•</div>
+<svg class="k-svg">
+  <path id="@p1" class="arrow" d="M 352 738 L 608 738 M 590 726 L 608 738 L 590 750" stroke="#4FD6EE" />
+  <path id="@p2" class="arrow" d="M 1488 738 L 1232 738 M 1250 726 L 1232 738 L 1250 750" stroke="#B49BFF" />
+</svg>
+<div id="@r1" class="k-chip k-c-green" style="left:120px;top:812px;font-size:26px;background:#13241A">main: x = 5</div>
+<div id="@r2" class="k-chip k-c-yel" style="left:1000px;top:812px;font-size:26px;background:#2A2410">main: x = 15</div>
+
+<script>
+K.pop(tl, $("band"), C.a);
+K.rise(tl, [$("h1"), $("w1")], C.b, { s: 0.2 });
+K.hl(tl, $("a6"), C.b + 1.0, C.b + 2.6);
+K.fade(tl, [$("lx1"), $("x1")], C.b + 1.2);
+K.draw(tl, $("p1"), C.b + 1.8, { d: 0.5 });
+K.fade(tl, [$("ln1"), $("n1")], C.b + 2.2);
+tl.set($("n1b"), { opacity: 0 }, 0);
+K.hl(tl, $("a1"), C.b + 3.2, C.b + 5.6);
+tl.to($("n1a"), { opacity: 0, duration: 0.3 }, C.b + 3.8);
+tl.to($("n1b"), { opacity: 1, duration: 0.3 }, C.b + 3.8);
+K.pulse(tl, $("x1"), C.b + 7.0, { k: 1.2 });
+K.hl(tl, $("a7"), C.b + 7.0, C.c);
+K.pop(tl, $("r1"), C.b + 7.6);
+K.rise(tl, [$("h2"), $("w2")], C.c, { s: 0.2 });
+K.hl(tl, $("b0"), C.c + 0.8, C.c + 3.0);
+K.fade(tl, [$("lx2"), $("x2")], C.c + 2.6);
+K.fade(tl, [$("ln2"), $("n2")], C.c + 3.0);
+K.draw(tl, $("p2"), C.c + 3.4, { d: 0.5 });
+tl.set($("x2b"), { opacity: 0 }, 0);
+K.hl(tl, $("b1"), C.c + 4.6, C.c + 7.0);
+tl.to($("x2a"), { opacity: 0, duration: 0.3 }, C.c + 5.2);
+tl.to($("x2b"), { opacity: 1, duration: 0.3 }, C.c + 5.2);
+K.hl(tl, $("b7"), C.c + 6.6, C.d);
+K.pop(tl, $("r2"), C.c + 7.6);
+K.pop(tl, $("resp"), C.d);
+K.pulse(tl, [$("r1"), $("r2")], C.d + 3.0, { k: 1.1 });
+</script>

@@ -1,0 +1,23 @@
+<!--sfx: b:click-soft*0.3, c:click-soft*0.3, d:click-soft*0.3, e:click-soft*0.3, f:pop*0.25-->
+<style>
+  .ml { position: absolute; left: 0; width: 640px; height: 90px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px; line-height: 86px; padding-left: 30px; }
+  .ds { position: absolute; left: 700px; font-family: "Hanken Grotesk", sans-serif; font-size: 26px; color: #EEF1F8; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">O registro de <em>ativação</em></div>
+<div id="@rec" style="position:absolute;left:200px;top:240px;width:1620px;height:600px">
+  <div style="position:absolute;left:-4px;top:-4px;width:644px;height:458px;border:3px solid #FFD24A;border-radius:12px"></div>
+  <div id="@r1" class="ml k-c-cyan" style="top:0">parâmetros</div><div id="@d1" class="ds" style="top:28px">recebem os argumentos</div>
+  <div id="@r2" class="ml k-c-pink" style="top:90px">vinculação de controle</div><div id="@d2" class="ds" style="top:118px">→ registro de quem chamou</div>
+  <div id="@r3" class="ml k-c-yel" style="top:180px">endereço de retorno</div><div id="@d3" class="ds" style="top:208px">para onde voltar</div>
+  <div id="@r4" class="ml k-c-green" style="top:270px;height:180px;line-height:176px">locais e temporários</div><div id="@d4" class="ds" style="top:350px">variáveis da função (e dos blocos)</div>
+  <div id="@sp" class="k-code k-c-cyan" style="left:0;top:470px;font-size:32px">sp → topo da pilha</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.slide(tl, [$("r1"), $("d1")], C.b, { s: 0.3 });
+K.slide(tl, [$("r2"), $("d2")], C.c, { s: 0.3 });
+K.slide(tl, [$("r3"), $("d3")], C.d, { s: 0.3 });
+K.slide(tl, [$("r4"), $("d4")], C.e, { s: 0.3 });
+K.rise(tl, $("sp"), C.f);
+</script>

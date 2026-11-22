@@ -1,0 +1,47 @@
+<template id="15-q1-resposta-template">
+  <div id="root" data-composition-id="15-q1-resposta" data-start="0" data-duration="28.108" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .rt td { padding: 14px 24px !important; line-height: 1.4; }
+</style>
+    <div id="s15-q1-resposta-bg" class="clip k-scene k-bg" data-start="0" data-duration="28.108" data-track-index="0"></div>
+    <div id="s15-q1-resposta-stage" class="clip k-scene" data-start="0" data-duration="28.108" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s15-q1-resposta-cam" class="k-cam">
+<div id="s15-q1-resposta-k" class="k-chip k-c-violet" style="left:120px;top:126px;font-size:26px">QUESTÃO 1 · RESPOSTA</div>
+<table id="s15-q1-resposta-tab" class="k-table rt" style="left:120px;top:200px;width:1680px;font-size:32px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA GRAMATICAL</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA SEMÂNTICA</td></tr>
+  <tr id="s15-q1-resposta-r1"><td>decl → var-lista : tipo</td><td>var-lista.dtipo = tipo.dtipo</td></tr>
+  <tr id="s15-q1-resposta-r2"><td>var-lista₁ → var-lista₂ , id</td><td>id.dtipo = var-lista₁.dtipo
+var-lista₂.dtipo = var-lista₁.dtipo</td></tr>
+  <tr id="s15-q1-resposta-r3"><td>var-lista → id</td><td>id.dtipo = var-lista.dtipo</td></tr>
+  <tr id="s15-q1-resposta-r4"><td>tipo → integer</td><td>tipo.dtipo = <span class="k-c-yel">inteiro</span></td></tr>
+  <tr id="s15-q1-resposta-r5"><td>tipo → real</td><td>tipo.dtipo = <span class="k-c-yel">real</span></td></tr>
+</table>
+<div id="s15-q1-resposta-ok" class="k-chip k-c-green" style="left:120px;top:780px;font-size:28px;background:#13241A">✓ uma linha para cada regra gramatical</div>
+      </div>
+    </div>
+    <div id="s15-q1-resposta-chrome" class="clip k-scene" data-start="0" data-duration="28.108" data-track-index="2">
+      <div id="s15-q1-resposta-tag" class="k-tag">COMPILADORES · <b>QUESTÃO 1</b></div>
+      <div id="s15-q1-resposta-num" class="k-num">15 / 26</div>
+      <div id="s15-q1-resposta-progbar" class="k-prog"><i id="s15-q1-resposta-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.247, "c": 7.845, "d": 17.331, "e": 22.033}, D = 28.108;
+        var S = K.scene("15-q1-resposta", D, 26), tl = S.tl, $ = S.$;
+        var R = [$("r1"), $("r2"), $("r3"), $("r4"), $("r5")];
+        K.pop(tl, $("k"), C.a);
+        K.fade(tl, $("tab"), C.a + 0.6);
+        tl.set(R, { opacity: 0 }, 0);
+        tl.to(R[0], { opacity: 1, duration: 0.4 }, C.b);
+        tl.to(R[1], { opacity: 1, duration: 0.4 }, C.c);
+        tl.to(R[2], { opacity: 1, duration: 0.4 }, C.d);
+        tl.to(R[3], { opacity: 1, duration: 0.4 }, C.e);
+        tl.to(R[4], { opacity: 1, duration: 0.4 }, C.e + 2.4);
+        K.pop(tl, $("ok"), C.e + 3.4);
+      })();
+    </script>
+  </div>
+</template>

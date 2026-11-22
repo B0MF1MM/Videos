@@ -1,0 +1,72 @@
+<template id="22-q5-template">
+  <div id="root" data-composition-id="22-q5" data-start="0" data-duration="23.727" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .tn { position: absolute; width: 96px; height: 76px; margin: -38px 0 0 -48px; border-radius: 16px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 40px; line-height: 70px; text-align: center; color: #EEF1F8; }
+  .lf { border-color: #7FE39A; color: #7FE39A; }
+  .tg { position: absolute; font-family: "DM Mono", monospace; font-size: 26px; padding: 4px 12px; border-radius: 10px; background: #2A2410; border: 2px solid #FFD24A; color: #FFD24A; }
+  .tc .ln { line-height: 70px; }
+</style>
+    <div id="s22-q5-bg" class="clip k-scene k-bg" data-start="0" data-duration="23.727" data-track-index="0"></div>
+    <div id="s22-q5-stage" class="clip k-scene" data-start="0" data-duration="23.727" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s22-q5-cam" class="k-cam">
+<div id="s22-q5-band" class="k-chip k-c-green" style="left:120px;top:126px;font-size:26px;background:#13241A">QUESTÃO 5</div>
+<div id="s22-q5-ex" class="k-code" style="left:420px;top:116px;font-size:50px">x = <span id="s22-q5-m1">2 * 3</span> + <span id="s22-q5-m2">4 * 5</span></div>
+<svg class="k-svg"><g class="edge">
+  <line x1="520" y1="330" x2="360" y2="480"/><line x1="520" y1="330" x2="680" y2="480"/>
+  <line x1="360" y1="480" x2="270" y2="640"/><line x1="360" y1="480" x2="450" y2="640"/>
+  <line x1="680" y1="480" x2="590" y2="640"/><line x1="680" y1="480" x2="770" y2="640"/>
+  <line x1="520" y1="230" x2="520" y2="330"/></g></svg>
+<div class="tn" style="left:520px;top:230px;border-color:#B49BFF;width:130px;margin-left:-65px">x =</div>
+<div class="tn" id="s22-q5-np" style="left:520px;top:330px;border-color:#FFD24A">+</div>
+<div class="tn" id="s22-q5-nm1" style="left:360px;top:480px">*</div>
+<div class="tn" id="s22-q5-nm2" style="left:680px;top:480px">*</div>
+<div class="tn lf" style="left:270px;top:640px">2</div>
+<div class="tn lf" style="left:450px;top:640px">3</div>
+<div class="tn lf" style="left:590px;top:640px">4</div>
+<div class="tn lf" style="left:770px;top:640px">5</div>
+<div id="s22-q5-g1" class="tg" style="left:200px;top:462px">T1</div>
+<div id="s22-q5-g2" class="tg" style="left:750px;top:462px">T2</div>
+<div id="s22-q5-g3" class="tg" style="left:600px;top:312px">x</div>
+<div id="s22-q5-prec" class="k-anno k-c-yel" style="left:120px;top:760px">* antes de + → multiplicações embaixo</div>
+<div id="s22-q5-win" class="k-win" style="left:1000px;top:230px;width:800px;height:340px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>três endereços</span></div>
+  <div class="k-code tc" style="left:30px;top:70px;font-size:44px"><span class="ln" id="s22-q5-c0"><span class="k-c-cyan">T1</span> = 2 * 3</span><span class="ln" id="s22-q5-c1"><span class="k-c-cyan">T2</span> = 4 * 5</span><span class="ln" id="s22-q5-c2">x  = <span class="k-c-cyan">T1</span> + <span class="k-c-cyan">T2</span></span></div>
+</div>
+<div id="s22-q5-ok" class="k-chip k-c-green" style="left:1000px;top:610px;font-size:28px;background:#13241A">✓ 3 instruções · um operador por linha</div>
+<div id="s22-q5-mac" class="k-macete" style="left:1000px;top:700px;width:800px;font-size:30px">Resolva de <u>baixo para cima</u> na árvore: cada nó interno vira um temporário.</div>
+      </div>
+    </div>
+    <div id="s22-q5-chrome" class="clip k-scene" data-start="0" data-duration="23.727" data-track-index="2">
+      <div id="s22-q5-tag" class="k-tag">COMPILADORES · <b>QUESTÃO 5</b></div>
+      <div id="s22-q5-num" class="k-num">22 / 26</div>
+      <div id="s22-q5-progbar" class="k-prog"><i id="s22-q5-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 5.918, "c": 12.887, "d": 16.235, "e": 19.283}, D = 23.727;
+        var S = K.scene("22-q5", D, 26), tl = S.tl, $ = S.$;
+        K.pop(tl, $("band"), C.a);
+        K.rise(tl, $("ex"), C.a + 0.5);
+        var tn = Array.prototype.slice.call($("cam").querySelectorAll(".tn, line"));
+        K.fade(tl, tn, C.b, { s: 0.06 });
+        K.wipe(tl, $("prec"), C.b + 1.6);
+        K.rise(tl, $("win"), C.b + 3.0);
+        tl.set([$("c0"), $("c1"), $("c2")], { opacity: 0 }, 0);
+        K.pulse(tl, [$("m1"), $("nm1")], C.c, { k: 1.2 });
+        K.pop(tl, $("g1"), C.c + 0.4);
+        tl.to($("c0"), { opacity: 1, duration: 0.4 }, C.c + 0.6);
+        K.pulse(tl, [$("m2"), $("nm2")], C.d, { k: 1.2 });
+        K.pop(tl, $("g2"), C.d + 0.4);
+        tl.to($("c1"), { opacity: 1, duration: 0.4 }, C.d + 0.6);
+        K.pulse(tl, $("np"), C.e, { k: 1.2 });
+        K.pop(tl, $("g3"), C.e + 0.4);
+        tl.to($("c2"), { opacity: 1, duration: 0.4 }, C.e + 0.6);
+        K.pop(tl, $("ok"), C.e + 1.6);
+        K.macete(tl, $("mac"), C.b + 4.6);
+      })();
+    </script>
+  </div>
+</template>

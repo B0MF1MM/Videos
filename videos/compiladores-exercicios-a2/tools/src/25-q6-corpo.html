@@ -1,0 +1,50 @@
+<!--sfx: a:pop@4.0*0.25, b:pop@0.4*0.25, c:pop@0.4*0.25, d:pop@0.4*0.25, e:chime@4.6*0.3-->
+<style>
+  .q6 .ln { line-height: 38px; }
+  .nt { position: absolute; left: 960px; width: 840px; }
+</style>
+<div id="@band" class="k-chip k-c-orange" style="left:960px;top:126px;font-size:26px;background:#2E1E10">QUESTÃO 6 · RESOLUÇÃO</div>
+<div id="@win" class="k-win" style="left:120px;top:140px;width:780px;height:732px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>três endereços</span></div>
+  <div class="k-code q6" style="left:24px;top:66px;font-size:28px"><span class="ln" id="@c0">i = 0</span><span class="ln" id="@c1"><span class="k-c-yel">label L1</span></span><span class="ln" id="@c2"><span class="k-c-cyan">t1</span> = i &lt; 4</span><span class="ln" id="@c3"><span class="k-c-pink">if_false</span> <span class="k-c-cyan">t1</span> <span class="k-c-pink">goto</span> L2</span><span class="ln" id="@c4"><span class="k-c-cyan">t2</span> = i &lt; 2</span><span class="ln" id="@c5"><span class="k-c-pink">if_false</span> <span class="k-c-cyan">t2</span> <span class="k-c-pink">goto</span> L3</span><span class="ln" id="@c6"><span class="k-c-cyan">t3</span> = a + 1</span><span class="ln" id="@c7">a = <span class="k-c-cyan">t3</span></span><span class="ln" id="@c8"><span class="k-c-pink">goto</span> L4</span><span class="ln" id="@c9"><span class="k-c-yel">label L3</span></span><span class="ln" id="@c10"><span class="k-c-cyan">t4</span> = a + 2</span><span class="ln" id="@c11">a = <span class="k-c-cyan">t4</span></span><span class="ln" id="@c12"><span class="k-c-yel">label L4</span></span><span class="ln" id="@c13"><span class="k-c-cyan">t5</span> = i + 1</span><span class="ln" id="@c14">i = <span class="k-c-cyan">t5</span></span><span class="ln" id="@c15"><span class="k-c-green">goto</span> L1</span><span class="ln" id="@c16"><span class="k-c-yel">label L2</span></span></div>
+</div>
+<svg class="k-svg">
+  <path id="@j2" class="arrow" d="M 500 339 C 860 339, 860 833, 470 833 M 490 819 L 470 833 L 490 847" stroke="#FF6F9C" />
+  <path id="@j3" class="arrow" d="M 500 415 C 700 415, 700 567, 470 567 M 490 553 L 470 567 L 490 581" stroke="#FF6F9C" />
+  <path id="@j4" class="arrow" d="M 330 529 C 640 529, 640 681, 470 681 M 490 667 L 470 681 L 490 695" stroke="#FFD24A" />
+  <path id="@j1" class="arrow" d="M 116 795 C 40 795, 40 263, 116 263 M 96 249 L 116 263 L 96 277" stroke="#7FE39A" />
+</svg>
+<div id="@n0" class="k-anno k-c-green" style="left:960px;top:200px">parte verdadeira: a = a + 1
+depois goto L4 (pula o else)</div>
+<div id="@n1" class="k-anno k-c-pink" style="left:960px;top:310px">else: label L3 · a = a + 2</div>
+<div id="@n2" class="k-anno k-c-yel" style="left:960px;top:380px">fim do if: label L4 · i = i + 1</div>
+<div id="@n3" class="k-anno k-c-green" style="left:960px;top:450px">goto L1 volta · label L2 = saída</div>
+<table id="@tr" class="k-table" style="left:960px;top:540px;width:840px;font-size:28px">
+  <tr><td style="color:#8C97B5">i</td><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+  <tr><td style="color:#8C97B5">a soma</td><td class="k-c-green">+1</td><td class="k-c-green">+1</td><td class="k-c-pink">+2</td><td class="k-c-pink">+2</td></tr>
+</table>
+<div id="@tot" class="k-macete" style="left:960px;top:720px;width:840px;font-size:32px">No total: a aumenta <u>6</u>.</div>
+<script>
+var L = [];
+for (var i = 0; i < 17; i++) L.push($("c" + i));
+tl.set($("tr"), { opacity: 0 }, 0);
+K.pop(tl, $("band"), 0);
+K.wipe(tl, L[6], C.a + 0.3);
+K.wipe(tl, L[7], C.a + 2.6);
+K.wipe(tl, L[8], C.a + 4.0);
+K.wipe(tl, $("n0"), C.a + 4.2);
+K.wipe(tl, [L[9], L[10], L[11]], C.b + 0.3, { s: 1.2 });
+K.draw(tl, $("j3"), C.b + 1.2, { d: 0.6 });
+K.wipe(tl, $("n1"), C.b + 1.4);
+K.wipe(tl, L[12], C.c + 0.3);
+K.draw(tl, $("j4"), C.c + 0.9, { d: 0.6 });
+K.wipe(tl, [L[13], L[14]], C.c + 2.6, { s: 1.2 });
+K.wipe(tl, $("n2"), C.c + 2.8);
+K.wipe(tl, L[15], C.d + 0.3);
+K.draw(tl, $("j1"), C.d + 0.8, { d: 0.6 });
+K.wipe(tl, L[16], C.d + 3.0);
+K.draw(tl, $("j2"), C.d + 3.4, { d: 0.7 });
+K.wipe(tl, $("n3"), C.d + 3.6);
+tl.to($("tr"), { opacity: 1, duration: 0.4 }, C.e + 0.4);
+K.macete(tl, $("tot"), C.e + 4.6);
+</script>

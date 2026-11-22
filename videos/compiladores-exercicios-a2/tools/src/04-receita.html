@@ -1,0 +1,22 @@
+<!--sfx: b:click-soft*0.3, c:click-soft*0.3, d:click-soft*0.3, e:click-soft*0.3-->
+<style>
+  .st { position: absolute; left: 0; width: 1680px; height: 130px; border-radius: 18px; border: 2px solid #2A3656; background: #182238; }
+  .st .n { position: absolute; left: 24px; top: 30px; width: 70px; height: 70px; border-radius: 35px; background: #FFD24A; color: #1A1606; font-family: "DM Mono", monospace; font-size: 34px; line-height: 70px; text-align: center; }
+  .st .t { position: absolute; left: 120px; top: 22px; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px; color: #EEF1F8; }
+  .st .c { position: absolute; left: 120px; top: 72px; font-family: "DM Mono", monospace; font-size: 26px; color: #FFD24A; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:120px;font-size:58px">Receita para a <em>tabela</em></div>
+<div id="@steps" style="position:absolute;left:120px;top:220px;width:1680px;height:640px">
+  <div id="@s1" class="st" style="top:0"><div class="n">1</div><div class="t">escolha o atributo</div><div class="c">dtipo = o tipo da variável</div></div>
+  <div id="@s2" class="st" style="top:150px"><div class="n">2</div><div class="t">onde o tipo nasce: uma constante</div><div class="c">tipo → integer   tipo.dtipo = inteiro</div></div>
+  <div id="@s3" class="st" style="top:300px"><div class="n">3</div><div class="t">a regra de cima passa o tipo para a lista</div><div class="c">var-lista.dtipo = tipo.dtipo</div></div>
+  <div id="@s4" class="st" style="top:450px"><div class="n">4</div><div class="t">a lista passa para cada id e para a sublista · uma linha por regra</div><div class="c">id.dtipo = var-lista.dtipo</div></div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.slide(tl, $("s1"), C.b);
+K.slide(tl, $("s2"), C.c);
+K.slide(tl, $("s3"), C.d);
+K.slide(tl, $("s4"), C.e);
+</script>

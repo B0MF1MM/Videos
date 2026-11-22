@@ -1,0 +1,42 @@
+<template id="06-registro-template">
+  <div id="root" data-composition-id="06-registro" data-start="0" data-duration="20.937" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .ml { position: absolute; left: 0; width: 640px; height: 90px; border: 2px solid #2A3656; background: #182238; font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 30px; line-height: 86px; padding-left: 30px; }
+  .ds { position: absolute; left: 700px; font-family: "Hanken Grotesk", sans-serif; font-size: 26px; color: #EEF1F8; }
+</style>
+    <div id="s06-registro-bg" class="clip k-scene k-bg" data-start="0" data-duration="20.937" data-track-index="0"></div>
+    <div id="s06-registro-stage" class="clip k-scene" data-start="0" data-duration="20.937" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s06-registro-cam" class="k-cam">
+<div id="s06-registro-t" class="k-title" style="left:120px;top:124px;font-size:60px">O registro de <em>ativação</em></div>
+<div id="s06-registro-rec" style="position:absolute;left:200px;top:240px;width:1620px;height:600px">
+  <div style="position:absolute;left:-4px;top:-4px;width:644px;height:458px;border:3px solid #FFD24A;border-radius:12px"></div>
+  <div id="s06-registro-r1" class="ml k-c-cyan" style="top:0">parâmetros</div><div id="s06-registro-d1" class="ds" style="top:28px">recebem os argumentos</div>
+  <div id="s06-registro-r2" class="ml k-c-pink" style="top:90px">vinculação de controle</div><div id="s06-registro-d2" class="ds" style="top:118px">→ registro de quem chamou</div>
+  <div id="s06-registro-r3" class="ml k-c-yel" style="top:180px">endereço de retorno</div><div id="s06-registro-d3" class="ds" style="top:208px">para onde voltar</div>
+  <div id="s06-registro-r4" class="ml k-c-green" style="top:270px;height:180px;line-height:176px">locais e temporários</div><div id="s06-registro-d4" class="ds" style="top:350px">variáveis da função (e dos blocos)</div>
+  <div id="s06-registro-sp" class="k-code k-c-cyan" style="left:0;top:470px;font-size:32px">sp → topo da pilha</div>
+</div>
+      </div>
+    </div>
+    <div id="s06-registro-chrome" class="clip k-scene" data-start="0" data-duration="20.937" data-track-index="2">
+      <div id="s06-registro-tag" class="k-tag">COMPILADORES · <b>MATÉRIA · AMBIENTE</b></div>
+      <div id="s06-registro-num" class="k-num">06 / 26</div>
+      <div id="s06-registro-progbar" class="k-prog"><i id="s06-registro-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.197, "c": 6.889, "d": 10.737, "e": 13.303, "f": 15.711}, D = 20.937;
+        var S = K.scene("06-registro", D, 26), tl = S.tl, $ = S.$;
+        K.rise(tl, $("t"), C.a);
+        K.slide(tl, [$("r1"), $("d1")], C.b, { s: 0.3 });
+        K.slide(tl, [$("r2"), $("d2")], C.c, { s: 0.3 });
+        K.slide(tl, [$("r3"), $("d3")], C.d, { s: 0.3 });
+        K.slide(tl, [$("r4"), $("d4")], C.e, { s: 0.3 });
+        K.rise(tl, $("sp"), C.f);
+      })();
+    </script>
+  </div>
+</template>

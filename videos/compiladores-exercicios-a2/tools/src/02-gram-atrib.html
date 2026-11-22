@@ -1,0 +1,32 @@
+<!--sfx: b:pop@0.6*0.2, d:click-soft@0.6*0.3, e:pop@0.6*0.25-->
+<div id="@k" class="k-kicker" style="left:120px;top:126px">matéria para a questão 1</div>
+<div id="@t" class="k-title" style="left:120px;top:170px;font-size:68px">Gramática de <em>atributos</em></div>
+<div id="@tab" class="k-card" style="left:120px;top:300px;width:1680px;height:250px">
+  <div class="k-kicker" style="left:30px;top:22px;color:#8C97B5">REGRA GRAMATICAL</div>
+  <div class="k-kicker" style="left:760px;top:22px;color:#8C97B5">REGRAS SEMÂNTICAS</div>
+  <div style="position:absolute;left:30px;top:62px;width:1620px;height:2px;background:#4FD6EE"></div>
+  <div id="@rg" class="k-code" style="left:30px;top:100px;font-size:36px">decl → tipo var-lista</div>
+  <div id="@rs" class="k-code k-c-yel" style="left:760px;top:100px;font-size:36px">var-lista.dtipo = tipo.dtipo</div>
+  <div id="@eqn" class="k-body k-mute" style="left:760px;top:170px;font-size:24px">atributo de um símbolo = atributos dos outros símbolos da regra</div>
+</div>
+<div id="@not" style="position:absolute;left:120px;top:600px;width:820px;height:200px">
+  <div class="k-code" style="left:0;top:0;font-size:80px"><span class="k-c-cyan">tipo</span>.<span class="k-c-yel">dtipo</span></div>
+  <div class="k-anno k-c-cyan" style="left:0;top:110px">símbolo</div>
+  <div class="k-anno k-c-yel" style="left:240px;top:110px">atributo</div>
+</div>
+<div id="@idx" class="k-card" style="left:980px;top:600px;width:820px;height:200px;border-color:#FF6F9C">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px">mesmo símbolo duas vezes na regra? <b class="k-c-pink">numere</b></div>
+  <div class="k-code" style="left:28px;top:90px;font-size:34px">var-lista<span class="k-c-pink">₁</span> → var-lista<span class="k-c-pink">₂</span> , id</div>
+</div>
+
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("t"), C.a + 0.4);
+K.rise(tl, $("tab"), C.b);
+tl.set([$("rg"), $("rs"), $("eqn")], { opacity: 0 }, 0);
+tl.to($("rg"), { opacity: 1, duration: 0.3 }, C.b + 2.0);
+tl.to($("rs"), { opacity: 1, duration: 0.3 }, C.b + 3.4);
+tl.to($("eqn"), { opacity: 1, duration: 0.3 }, C.c + 0.4);
+K.fade(tl, $("not"), C.d + 0.4);
+K.rise(tl, $("idx"), C.e + 0.4);
+</script>

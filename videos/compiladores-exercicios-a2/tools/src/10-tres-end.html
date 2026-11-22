@@ -1,0 +1,38 @@
+<!--sfx: b:pop@0.4*0.2, c:click-soft@1.0*0.3, e:pop*0.3-->
+<div id="@k" class="k-kicker" style="left:120px;top:126px">matéria para as questões 5 e 6</div>
+<div id="@t" class="k-title" style="left:120px;top:170px;font-size:60px">Código de <em>três endereços</em></div>
+<div id="@form" class="k-code" style="left:120px;top:290px;font-size:64px"><span class="k-c-cyan">x</span> = <span class="k-c-green">y</span> <span class="k-c-yel">op</span> <span class="k-c-green">z</span></div>
+<div id="@one" class="k-anno k-c-yel" style="left:520px;top:310px">no máximo UM operador por linha</div>
+<div id="@ex" class="k-card" style="left:120px;top:430px;width:820px;height:300px">
+  <div class="k-body k-mute" style="left:28px;top:20px;font-size:24px">exemplo: a = b + c * d</div>
+  <div class="k-code" style="left:28px;top:80px;font-size:40px;line-height:1.6"><span class="ln" id="@l1"><span class="k-c-cyan">t1</span> = c * d</span><span class="ln" id="@l2">a  = b + <span class="k-c-cyan">t1</span></span></div>
+  <div class="k-body k-mute" style="left:28px;top:240px;font-size:22px">multiplicação primeiro (precedência)</div>
+</div>
+<div id="@tree" style="position:absolute;left:1100px;top:400px;width:720px;height:380px">
+  <svg width="720" height="380" style="position:absolute;left:0;top:0">
+    <g stroke="#8C97B5" stroke-width="3"><line x1="300" y1="50" x2="180" y2="170"/><line x1="300" y1="50" x2="420" y2="170"/><line x1="420" y1="170" x2="340" y2="290"/><line x1="420" y1="170" x2="500" y2="290"/></g>
+    <g font-family="DM Mono" font-size="30" text-anchor="middle">
+      <circle cx="300" cy="50" r="34" fill="#182238" stroke="#4FD6EE" stroke-width="4"/><text x="300" y="60" fill="#EEF1F8">+</text>
+      <circle cx="420" cy="170" r="34" fill="#182238" stroke="#FFD24A" stroke-width="4"/><text x="420" y="180" fill="#EEF1F8">*</text>
+      <text x="180" y="180" fill="#7FE39A">b</text><text x="340" y="300" fill="#7FE39A">c</text><text x="500" y="300" fill="#7FE39A">d</text>
+    </g>
+  </svg>
+  <div id="@tt1" class="k-chip k-c-yel" style="left:470px;top:150px;font-size:24px;background:#2A2410">t1</div>
+  <div id="@tt2" class="k-chip k-c-cyan" style="left:350px;top:30px;font-size:24px;background:#0D1322">a</div>
+</div>
+<div id="@mac" class="k-macete" style="left:1100px;top:790px;width:720px;font-size:28px">Cada operação da árvore vira um <u>temporário</u>.</div>
+
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("t"), C.a + 0.4);
+K.pop(tl, $("form"), C.b);
+K.wipe(tl, $("one"), C.b + 1.4);
+K.rise(tl, $("ex"), C.c);
+tl.set([$("l1"), $("l2"), $("tt1"), $("tt2")], { opacity: 0 }, 0);
+tl.to($("l1"), { opacity: 1, duration: 0.3 }, C.c + 1.6);
+tl.to($("l2"), { opacity: 1, duration: 0.3 }, C.c + 3.0);
+K.fade(tl, $("tree"), C.d);
+tl.to($("tt1"), { opacity: 1, duration: 0.3 }, C.d + 3.0);
+tl.to($("tt2"), { opacity: 1, duration: 0.3 }, C.d + 4.4);
+K.macete(tl, $("mac"), C.e);
+</script>

@@ -1,0 +1,40 @@
+<template id="captions-template">
+  <div id="captions-root" data-composition-id="captions" data-start="0" data-duration="__TOTAL__" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Hanken Grotesk"; src: url("assets/fonts/Hanken_Grotesk-600.woff2") format("woff2"); font-weight: 600; }
+      #captions-root { position: absolute; inset: 0; pointer-events: none; }
+      .cap-stage { position: absolute; left: 0; right: 0; top: 912px; height: 140px; }
+      .cap-group { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; }
+      .cap-pill { max-width: 76%; padding: 14px 36px 16px; border-radius: 16px; background: rgba(9,13,24,0.86); border: 1px solid #2A3656;
+        font-family: "Hanken Grotesk", sans-serif; font-weight: 600; font-size: 44px; line-height: 1.2; color: #EEF1F8; text-align: center; }
+    </style>
+    <div id="cap-stage" class="cap-stage"></div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        var GROUPS = __GROUPS__;
+        var DURATION = __TOTAL__;
+        var stage = document.getElementById("cap-stage");
+        var tl = gsap.timeline({ paused: true });
+        GROUPS.forEach(function (g, i) {
+          var el = document.createElement("div");
+          el.className = "cap-group";
+          el.id = "cap-group-" + i;
+          var pill = document.createElement("div");
+          pill.className = "cap-pill";
+          pill.textContent = g.text;
+          el.appendChild(pill);
+          stage.appendChild(el);
+          var next = GROUPS[i + 1];
+          var end = next ? Math.min(next.start, g.end + 0.6) : Math.min(DURATION, g.end + 0.6);
+          tl.set(el, { opacity: 1 }, g.start);
+          tl.fromTo(pill, { y: 8 }, { y: 0, duration: 0.18, ease: "power2.out" }, g.start);
+          tl.set(el, { opacity: 0 }, Math.max(g.start + 0.05, end));
+        });
+        tl.to({}, { duration: DURATION }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["captions"] = tl;
+      })();
+    </script>
+  </div>
+</template>

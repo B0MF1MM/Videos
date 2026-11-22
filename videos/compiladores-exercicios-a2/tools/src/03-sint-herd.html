@@ -1,0 +1,36 @@
+<!--sfx: b:pop@0.4*0.2, c:pop@0.4*0.2, e:pop*0.3-->
+<style>
+  .on { position: absolute; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 32px; background: #182238; border: 4px solid #2A3656; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Sintetizado × <em>herdado</em></div>
+<div id="@s" class="k-card" style="left:120px;top:230px;width:820px;height:440px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:28px;top:22px;font-size:36px">sintetizado ↑</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:25px">vem dos filhos e sobe para o pai · ex.: valor de uma expressão</div>
+  <svg width="820" height="440" style="position:absolute;left:0;top:0">
+    <g stroke="#8C97B5" stroke-width="3"><line x1="410" y1="200" x2="290" y2="330"/><line x1="410" y1="200" x2="530" y2="330"/></g>
+    <g stroke="#7FE39A" stroke-width="5" fill="none"><path d="M 320 300 L 370 240 M 350 244 L 370 240 L 368 260"/><path d="M 500 300 L 450 240 M 452 260 L 450 240 L 470 244"/></g>
+    <g fill="#182238" stroke="#7FE39A" stroke-width="4"><circle cx="410" cy="200" r="30"/><circle cx="290" cy="330" r="30"/><circle cx="530" cy="330" r="30"/></g>
+  </svg>
+</div>
+<div id="@h" class="k-card" style="left:980px;top:230px;width:820px;height:440px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:28px;top:22px;font-size:36px">herdado ↓</div>
+  <div class="k-body" style="left:28px;top:80px;font-size:25px">vem do pai ou de um irmão · ex.: tipo numa declaração</div>
+  <svg width="820" height="440" style="position:absolute;left:0;top:0">
+    <g stroke="#8C97B5" stroke-width="3"><line x1="410" y1="200" x2="290" y2="330"/><line x1="410" y1="200" x2="530" y2="330"/></g>
+    <g stroke="#FF6F9C" stroke-width="5" fill="none"><path d="M 370 230 L 320 290 M 322 270 L 320 290 L 340 286"/></g>
+    <path d="M 330 360 C 360 400, 460 400, 490 360 M 474 368 L 490 360 L 488 378" stroke="#FFD24A" stroke-width="5" fill="none"/>
+    <g fill="#182238" stroke="#FF6F9C" stroke-width="4"><circle cx="410" cy="200" r="30"/><circle cx="290" cy="330" r="30"/><circle cx="530" cy="330" r="30"/></g>
+  </svg>
+</div>
+<div id="@decl" class="k-card" style="left:120px;top:700px;width:1100px;height:140px;border-color:#FFD24A">
+  <div class="k-body" style="left:28px;top:22px;font-size:26px;line-height:1.45">declaração: o tipo aparece num lugar e precisa chegar a <b>cada variável</b><br>→ o <b class="k-c-yel">dtipo é herdado</b></div>
+</div>
+<div id="@mac" class="k-macete" style="left:1260px;top:700px;width:560px;font-size:30px">Sintetizado <u>sobe</u>. Herdado <u>desce</u>.</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("s"), C.b);
+K.rise(tl, $("h"), C.c);
+K.rise(tl, $("decl"), C.d);
+K.macete(tl, $("mac"), C.e);
+</script>

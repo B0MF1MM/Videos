@@ -1,0 +1,42 @@
+<!--sfx: a:chime@0.2*0.25, b:whoosh-short@0.4*0.2, d:pop@0.6*0.25-->
+<style>
+  .fc .ln { line-height: 50px; }
+  .lb { position: absolute; font-family: "DM Mono", monospace; font-size: 26px; padding: 6px 14px; border-radius: 10px; background: #2A2410; border: 2px solid #FFD24A; color: #FFD24A; white-space: nowrap; }
+</style>
+<div id="@band" class="k-chip k-c-orange" style="left:120px;top:126px;font-size:26px;background:#2E1E10">QUESTÃO 6</div>
+<div id="@ask" class="k-body" style="left:360px;top:132px;font-size:26px">código de três endereços para um <b class="k-c-yel">for</b> com <b class="k-c-yel">if / else</b></div>
+<div id="@w1" class="k-win" style="left:120px;top:210px;width:700px;height:340px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>enunciado</span></div>
+  <div class="k-code fc" style="left:10px;top:66px;font-size:30px"><span class="ln" id="@f0"><span class="k-c-pink">for</span> (<span class="k-c-cyan">i = 0</span>; <span class="k-c-pink">i &lt; 4</span>; <span class="k-c-green">i++</span>)</span><span class="ln" id="@f1">  <span class="k-c-pink">if</span> (i &lt; 2)</span><span class="ln" id="@f2">    a = a + 1;</span><span class="ln" id="@f3">  <span class="k-c-pink">else</span></span><span class="ln" id="@f4">    a = a + 2;</span></div>
+</div>
+<div id="@arr" class="k-h2 k-c-yel" style="left:860px;top:330px;font-size:60px">→</div>
+<div id="@w2" class="k-win" style="left:960px;top:210px;width:840px;height:390px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>como while</span></div>
+  <div class="k-code fc" style="left:10px;top:66px;font-size:30px"><span class="ln" id="@w0"><span class="k-c-cyan">i = 0;</span></span><span class="ln" id="@w1l"><span class="k-c-pink">while</span> (<span class="k-c-pink">i &lt; 4</span>) {</span><span class="ln" id="@w2l">  <span class="k-c-pink">if</span> (i &lt; 2) a = a + 1;</span><span class="ln" id="@w3l">  <span class="k-c-pink">else</span>       a = a + 2;</span><span class="ln" id="@w4l">  <span class="k-c-green">i++;</span></span><span class="ln" id="@w5l">}</span></div>
+</div>
+<div id="@L1" class="lb" style="left:1500px;top:330px">L1 · início do laço</div>
+<div id="@L3" class="lb" style="left:1500px;top:430px">L3 · else</div>
+<div id="@L4" class="lb" style="left:1500px;top:486px">L4 · fim do if</div>
+<div id="@L2" class="lb" style="left:1500px;top:542px">L2 · saída</div>
+<div id="@mac" class="k-macete" style="left:120px;top:660px;width:1680px;font-size:32px">Um rótulo para <u>cada lugar para onde se pula</u>: laço (início e saída) + if (else e fim).</div>
+
+<script>
+K.pop(tl, $("band"), C.a);
+K.wipe(tl, $("ask"), C.a + 0.5);
+K.rise(tl, $("w1"), C.a + 1.0);
+K.pop(tl, $("arr"), C.b);
+K.rise(tl, $("w2"), C.b + 0.3);
+var W = [$("w0"), $("w1l"), $("w2l"), $("w3l"), $("w4l"), $("w5l")];
+tl.set(W, { opacity: 0 }, 0);
+K.hl(tl, $("f0"), C.b + 0.4, C.c);
+tl.to(W[0], { opacity: 1, duration: 0.3 }, C.b + 1.6);
+tl.to(W[1], { opacity: 1, duration: 0.3 }, C.b + 2.6);
+tl.to([W[4], W[5]], { opacity: 1, duration: 0.3 }, C.b + 4.4);
+K.hl(tl, $("f1"), C.c, C.d);
+tl.to([W[2], W[3]], { opacity: 1, duration: 0.3 }, C.c + 0.6);
+K.pop(tl, $("L1"), C.d + 1.4);
+K.pop(tl, $("L2"), C.d + 2.4);
+K.pop(tl, $("L3"), C.d + 3.3);
+K.pop(tl, $("L4"), C.d + 4.2);
+K.macete(tl, $("mac"), C.d + 5.2);
+</script>

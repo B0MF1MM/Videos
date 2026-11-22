@@ -1,0 +1,36 @@
+<!--sfx: d:whoosh-short@2.0*0.2, e:pop*0.3-->
+<style>
+  .ic .ln { line-height: 58px; }
+</style>
+<div id="@ops" style="position:absolute;left:120px;top:130px;width:1680px;height:110px">
+  <div class="k-chip k-c-yel" style="left:0;top:0;font-size:28px">label L · marca um lugar</div>
+  <div class="k-chip k-c-pink" style="left:430px;top:0;font-size:28px">goto L · salta</div>
+  <div class="k-chip k-c-pink" style="left:720px;top:0;font-size:28px">if_false t goto L · salta se falso</div>
+</div>
+<div id="@src" class="k-code" style="left:120px;top:250px;font-size:38px">if (cond) A  else B</div>
+<div id="@win" class="k-win" style="left:120px;top:320px;width:880px;height:500px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>padrão if/else</span></div>
+  <div class="k-code ic" style="left:10px;top:66px;font-size:32px"><span class="ln" id="@c0">t = cond</span><span class="ln" id="@c1"><span class="k-c-pink">if_false</span> t <span class="k-c-pink">goto</span> Lelse</span><span class="ln" id="@c2"><span class="k-mute">… A …</span></span><span class="ln" id="@c3"><span class="k-c-pink">goto</span> Lfim</span><span class="ln" id="@c4"><span class="k-c-yel">label Lelse</span></span><span class="ln" id="@c5"><span class="k-mute">… B …</span></span><span class="ln" id="@c6"><span class="k-c-yel">label Lfim</span></span></div>
+</div>
+<svg class="k-svg">
+  <path id="@j1" class="arrow" d="M 640 473 C 900 473, 900 647, 560 647 M 582 631 L 560 647 L 582 663" stroke="#FF6F9C" />
+  <path id="@j2" class="arrow" d="M 420 589 C 1040 589, 1040 763, 560 763 M 582 747 L 560 763 L 582 779" stroke="#FFD24A" />
+</svg>
+<div id="@mac" class="k-macete" style="left:1100px;top:450px;width:700px;font-size:34px">Falso <u>pula</u>.<br>Verdadeiro segue <u>reto</u>.</div>
+
+<script>
+var L = [];
+for (var i = 0; i < 7; i++) L.push($("c" + i));
+var ops = Array.prototype.slice.call($("ops").children);
+tl.set(ops, { opacity: 0 }, 0);
+tl.to(ops[0], { opacity: 1, duration: 0.3 }, C.b + 0.2);
+tl.to(ops[1], { opacity: 1, duration: 0.3 }, C.b + 1.6);
+tl.to(ops[2], { opacity: 1, duration: 0.3 }, C.b + 2.8);
+K.rise(tl, $("src"), C.c);
+K.rise(tl, $("win"), C.c + 0.4);
+K.wipe(tl, [L[0], L[1]], C.c + 1.6, { s: 1.6 });
+K.wipe(tl, [L[2], L[3], L[4], L[5], L[6]], C.d, { s: 0.8 });
+K.draw(tl, $("j1"), C.d + 2.0, { d: 0.6 });
+K.draw(tl, $("j2"), C.d + 3.6, { d: 0.6 });
+K.macete(tl, $("mac"), C.e);
+</script>

@@ -1,0 +1,28 @@
+<!--sfx: b:pop@0.4*0.2, c:pop@0.4*0.2, d:pop@0.4*0.2-->
+<style>
+  .cb { position: absolute; width: 100px; height: 60px; border: 2px solid #4FD6EE; background: #182238; font-family: "DM Mono", monospace; font-size: 20px; line-height: 56px; text-align: center; color: #4FD6EE; }
+</style>
+<div id="@t" class="k-title" style="left:120px;top:124px;font-size:60px">Três <em>detalhes</em> que caem</div>
+<div id="@d1" class="k-card" style="left:120px;top:240px;width:1680px;height:170px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:28px;top:20px;font-size:30px">1 · vetor = uma posição por elemento</div>
+  <div class="k-code" style="left:28px;top:90px;font-size:28px">int a[5];</div>
+  <div class="cb" style="left:300px;top:80px">a[0]</div><div class="cb" style="left:400px;top:80px">a[1]</div><div class="cb" style="left:500px;top:80px">a[2]</div><div class="cb" style="left:600px;top:80px">a[3]</div><div class="cb" style="left:700px;top:80px">a[4]</div>
+</div>
+<div id="@d2" class="k-card" style="left:120px;top:430px;width:1680px;height:180px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:28px;top:20px;font-size:30px">2 · ponteiro guarda um endereço</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:24px">parâmetro ponteiro recebe o <b>endereço base</b> do que foi passado</div>
+  <div class="cb" style="left:1000px;top:60px;width:260px;border-color:#B49BFF;color:#B49BFF">endereço</div>
+  <svg width="1680" height="180" style="position:absolute;left:0;top:0"><path d="M 1264 90 L 1360 90 M 1344 80 L 1360 90 L 1344 100" stroke="#B49BFF" stroke-width="4" fill="none"/></svg>
+  <div class="cb" style="left:1370px;top:60px;width:70px;color:#EEF1F8;border-color:#2A3656">'h'</div><div class="cb" style="left:1440px;top:60px;width:70px;color:#EEF1F8;border-color:#2A3656">'e'</div><div class="cb" style="left:1510px;top:60px;width:70px;color:#EEF1F8;border-color:#2A3656">…</div>
+</div>
+<div id="@d3" class="k-card" style="left:120px;top:630px;width:1680px;height:220px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:20px;font-size:30px">3 · variável de bloco interno</div>
+  <div class="k-body" style="left:28px;top:76px;font-size:24px;line-height:1.5">fica no registro de ativação da função, depois das outras locais<br>mesmo nome que uma global? <b class="k-c-yel">esconde a global</b> dentro do bloco</div>
+</div>
+
+<script>
+K.rise(tl, $("t"), C.a);
+K.rise(tl, $("d1"), C.b);
+K.rise(tl, $("d2"), C.c);
+K.rise(tl, $("d3"), C.d);
+</script>

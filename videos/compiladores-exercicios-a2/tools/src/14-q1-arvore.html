@@ -1,0 +1,46 @@
+<!--sfx: c:whoosh-short@0.2*0.2, d:whoosh-short@0.4*0.2, e:pop@1.0*0.25-->
+<style>
+  .tn { position: absolute; width: 180px; height: 56px; margin: -28px 0 0 -90px; border-radius: 12px; background: #182238; border: 3px solid #4FD6EE; font-family: "DM Mono", monospace; font-size: 26px; line-height: 50px; text-align: center; color: #EEF1F8; }
+  .lf { border-color: #7FE39A; color: #7FE39A; }
+  .tv { position: absolute; font-family: "DM Mono", monospace; font-size: 24px; padding: 5px 12px; border-radius: 10px; background: #2A2410; border: 2px solid #FFD24A; color: #FFD24A; white-space: nowrap; }
+</style>
+<div id="@src" class="k-code" style="left:120px;top:126px;font-size:50px"><span class="k-c-green">x, y</span> : <span class="k-c-violet">real</span></div>
+<svg class="k-svg"><g class="edge">
+  <line x1="960" y1="200" x2="700" y2="330"/><line x1="960" y1="200" x2="960" y2="330"/><line x1="960" y1="200" x2="1240" y2="330"/>
+  <line x1="1240" y1="330" x2="1240" y2="460"/>
+  <line x1="700" y1="330" x2="540" y2="460"/><line x1="700" y1="330" x2="700" y2="460"/><line x1="700" y1="330" x2="860" y2="460"/>
+  <line x1="540" y1="460" x2="540" y2="600"/></g>
+  <path id="@a1" class="arrow" d="M 1150 312 C 1080 250, 860 250, 790 312 M 808 302 L 790 312 L 802 292" stroke="#FFD24A" />
+  <path id="@a2" class="arrow" d="M 760 360 L 830 430 M 812 428 L 830 430 L 826 412" stroke="#FFD24A" />
+  <path id="@a3" class="arrow" d="M 650 360 L 580 430 M 584 412 L 580 430 L 598 428" stroke="#FFD24A" />
+  <path id="@a4" class="arrow" d="M 580 490 L 580 572 M 568 556 L 580 572 L 592 556" stroke="#FFD24A" />
+</svg>
+<div class="tn" style="left:960px;top:200px">decl</div>
+<div class="tn" style="left:700px;top:330px">var-lista</div>
+<div class="tn lf" style="left:960px;top:330px;width:70px;margin-left:-35px">:</div>
+<div class="tn" style="left:1240px;top:330px;border-color:#B49BFF">tipo</div>
+<div class="tn lf" style="left:1240px;top:460px">real</div>
+<div class="tn" style="left:540px;top:460px">var-lista</div>
+<div class="tn lf" style="left:700px;top:460px;width:70px;margin-left:-35px">,</div>
+<div class="tn lf" style="left:860px;top:460px">id (y)</div>
+<div class="tn lf" style="left:540px;top:600px">id (x)</div>
+<div id="@v0" class="tv" style="left:1340px;top:312px">dtipo = real</div>
+<div id="@v1" class="tv" style="left:500px;top:262px">dtipo = real</div>
+<div id="@v2" class="tv" style="left:800px;top:510px">dtipo = real</div>
+<div id="@v3" class="tv" style="left:290px;top:442px">dtipo = real</div>
+<div id="@v4" class="tv" style="left:640px;top:584px">dtipo = real</div>
+
+<script>
+K.rise(tl, $("src"), C.a);
+var tn = Array.prototype.slice.call($("cam").querySelectorAll(".tn, line"));
+K.fade(tl, tn, C.a + 0.6, { s: 0.05 });
+K.pop(tl, $("v0"), C.b + 0.6);
+K.draw(tl, $("a1"), C.c + 0.2, { d: 0.6 });
+K.pop(tl, $("v1"), C.c + 0.8);
+K.draw(tl, $("a2"), C.d + 0.4, { d: 0.4 });
+K.pop(tl, $("v2"), C.d + 0.8);
+K.draw(tl, $("a3"), C.d + 2.4, { d: 0.4 });
+K.pop(tl, $("v3"), C.d + 2.8);
+K.draw(tl, $("a4"), C.e + 0.4, { d: 0.4 });
+K.pop(tl, $("v4"), C.e + 0.8);
+</script>

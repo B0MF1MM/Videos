@@ -1,0 +1,34 @@
+<!--sfx: b:pop@0.2*0.25, c:pop@0.2*0.25, d:pop@0.2*0.25, e:pop@0.2*0.25, f:chime@0.2*0.35-->
+<style>
+  .cc { position: absolute; width: 820px; height: 300px; }
+  .cc .k-h2 { left: 32px; top: 24px; font-size: 34px; }
+  .cc .k-body { left: 32px; top: 84px; width: 760px; font-size: 27px; line-height: 1.45; }
+</style>
+<div id="@k" class="k-kicker" style="left:120px;top:120px">REVISÃO PARA A PROVA</div>
+<div id="@q1" class="k-card cc" style="left:120px;top:190px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet">Gramática de atributos · Q1</div>
+  <div class="k-body">Uma linha de regra semântica <b>por regra gramatical</b>.<br>Tipo é <b class="k-c-yel">herdado</b>: tipo → var-lista → cada id.</div>
+</div>
+<div id="@q2" class="k-card cc" style="left:980px;top:190px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan">Ambiente · Q2 e Q3</div>
+  <div class="k-body">Globais na área global (fora da pilha).<br>Um <b>registro por chamada</b> · vinculação de controle → quem chamou · <b class="k-c-yel">sp</b> no topo.</div>
+</div>
+<div id="@q3" class="k-card cc" style="left:120px;top:530px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink">Parâmetros · Q4</div>
+  <div class="k-body"><b>Valor</b> = cópia (x não muda).<br><b>Referência</b> (&amp;) = endereço (x muda).</div>
+</div>
+<div id="@q4" class="k-card cc" style="left:980px;top:530px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green">Três endereços · Q5 e Q6</div>
+  <div class="k-body">Um operador por linha, com temporários.<br><b>for</b> = init + while + incremento · if_false, goto, label.</div>
+</div>
+<div id="@end" class="k-title" style="left:0;top:380px;width:1920px;text-align:center;font-size:120px">Boa <em>prova!</em></div>
+
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("q1"), C.b);
+K.rise(tl, $("q2"), C.c);
+K.rise(tl, $("q3"), C.d);
+K.rise(tl, $("q4"), C.e);
+K.dim(tl, [$("q1"), $("q2"), $("q3"), $("q4"), $("k")], C.f, 0.12);
+K.pop(tl, $("end"), C.f + 0.2);
+</script>

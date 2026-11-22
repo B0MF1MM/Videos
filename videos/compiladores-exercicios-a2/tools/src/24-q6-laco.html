@@ -1,0 +1,42 @@
+<!--sfx: b:pop@0.3*0.25, c:pop@4.0*0.25, d:pop@4.0*0.25-->
+<style>
+  .q6 .ln { line-height: 38px; }
+  .nt { position: absolute; left: 960px; width: 840px; }
+</style>
+<div id="@band" class="k-chip k-c-orange" style="left:960px;top:126px;font-size:26px;background:#2E1E10">QUESTÃO 6 · RESOLUÇÃO</div>
+<div id="@win" class="k-win" style="left:120px;top:140px;width:780px;height:732px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>três endereços</span></div>
+  <div class="k-code q6" style="left:24px;top:66px;font-size:28px"><span class="ln" id="@c0">i = 0</span><span class="ln" id="@c1"><span class="k-c-yel">label L1</span></span><span class="ln" id="@c2"><span class="k-c-cyan">t1</span> = i &lt; 4</span><span class="ln" id="@c3"><span class="k-c-pink">if_false</span> <span class="k-c-cyan">t1</span> <span class="k-c-pink">goto</span> L2</span><span class="ln" id="@c4"><span class="k-c-cyan">t2</span> = i &lt; 2</span><span class="ln" id="@c5"><span class="k-c-pink">if_false</span> <span class="k-c-cyan">t2</span> <span class="k-c-pink">goto</span> L3</span><span class="ln" id="@c6"><span class="k-c-cyan">t3</span> = a + 1</span><span class="ln" id="@c7">a = <span class="k-c-cyan">t3</span></span><span class="ln" id="@c8"><span class="k-c-pink">goto</span> L4</span><span class="ln" id="@c9"><span class="k-c-yel">label L3</span></span><span class="ln" id="@c10"><span class="k-c-cyan">t4</span> = a + 2</span><span class="ln" id="@c11">a = <span class="k-c-cyan">t4</span></span><span class="ln" id="@c12"><span class="k-c-yel">label L4</span></span><span class="ln" id="@c13"><span class="k-c-cyan">t5</span> = i + 1</span><span class="ln" id="@c14">i = <span class="k-c-cyan">t5</span></span><span class="ln" id="@c15"><span class="k-c-green">goto</span> L1</span><span class="ln" id="@c16"><span class="k-c-yel">label L2</span></span></div>
+</div>
+<svg class="k-svg">
+
+</svg>
+<div id="@src" class="k-code nt" style="top:200px;font-size:26px;line-height:1.5"><span class="k-c-pink">for</span> (i = 0; i &lt; 4; i++)
+  <span class="k-c-pink">if</span> (i &lt; 2) a = a + 1;
+  <span class="k-c-pink">else</span>       a = a + 2;</div>
+<div id="@n0" class="k-anno k-c-cyan" style="left:960px;top:360px">1. inicialização: i = 0</div>
+<div id="@n1" class="k-anno k-c-yel" style="left:960px;top:430px">2. label L1 = início do laço</div>
+<div id="@n2" class="k-anno k-c-pink" style="left:960px;top:500px">3. condição do laço
+   falsa → goto L2 (sai do laço)</div>
+<div id="@n3" class="k-anno k-c-pink" style="left:960px;top:620px">4. condição do if
+   falsa → goto L3 (vai pro else)</div>
+<div id="@mac" class="k-macete" style="left:960px;top:750px;width:840px;font-size:28px">if_false testa a condição <u>original</u>: se falhar, pula.</div>
+<script>
+var L = [];
+for (var i = 0; i < 17; i++) L.push($("c" + i));
+tl.set(L.slice(6), { opacity: 0 }, 0);
+K.pop(tl, $("band"), C.a);
+K.rise(tl, $("win"), C.a);
+K.fade(tl, $("src"), C.a + 0.4);
+K.wipe(tl, L[0], C.a + 1.4);
+K.wipe(tl, $("n0"), C.a + 1.6);
+K.wipe(tl, L[1], C.b + 0.3);
+K.wipe(tl, $("n1"), C.b + 0.5);
+K.wipe(tl, L[2], C.c + 0.4);
+K.wipe(tl, L[3], C.c + 2.6);
+K.wipe(tl, $("n2"), C.c + 3.0);
+K.wipe(tl, L[4], C.d + 0.4);
+K.wipe(tl, L[5], C.d + 2.6);
+K.wipe(tl, $("n3"), C.d + 3.0);
+K.macete(tl, $("mac"), C.d + 5.0);
+</script>

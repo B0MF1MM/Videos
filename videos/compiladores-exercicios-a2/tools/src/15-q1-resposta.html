@@ -1,0 +1,28 @@
+<!--sfx: b:click-soft*0.3, c:click-soft*0.3, d:click-soft*0.3, e:chime@3.0*0.3-->
+<style>
+  .rt td { padding: 14px 24px !important; line-height: 1.4; }
+</style>
+<div id="@k" class="k-chip k-c-violet" style="left:120px;top:126px;font-size:26px">QUESTÃO 1 · RESPOSTA</div>
+<table id="@tab" class="k-table rt" style="left:120px;top:200px;width:1680px;font-size:32px">
+  <tr><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA GRAMATICAL</td><td style="color:#8C97B5;border-bottom:2px solid #4FD6EE">REGRA SEMÂNTICA</td></tr>
+  <tr id="@r1"><td>decl → var-lista : tipo</td><td>var-lista.dtipo = tipo.dtipo</td></tr>
+  <tr id="@r2"><td>var-lista₁ → var-lista₂ , id</td><td>id.dtipo = var-lista₁.dtipo
+var-lista₂.dtipo = var-lista₁.dtipo</td></tr>
+  <tr id="@r3"><td>var-lista → id</td><td>id.dtipo = var-lista.dtipo</td></tr>
+  <tr id="@r4"><td>tipo → integer</td><td>tipo.dtipo = <span class="k-c-yel">inteiro</span></td></tr>
+  <tr id="@r5"><td>tipo → real</td><td>tipo.dtipo = <span class="k-c-yel">real</span></td></tr>
+</table>
+<div id="@ok" class="k-chip k-c-green" style="left:120px;top:780px;font-size:28px;background:#13241A">✓ uma linha para cada regra gramatical</div>
+
+<script>
+var R = [$("r1"), $("r2"), $("r3"), $("r4"), $("r5")];
+K.pop(tl, $("k"), C.a);
+K.fade(tl, $("tab"), C.a + 0.6);
+tl.set(R, { opacity: 0 }, 0);
+tl.to(R[0], { opacity: 1, duration: 0.4 }, C.b);
+tl.to(R[1], { opacity: 1, duration: 0.4 }, C.c);
+tl.to(R[2], { opacity: 1, duration: 0.4 }, C.d);
+tl.to(R[3], { opacity: 1, duration: 0.4 }, C.e);
+tl.to(R[4], { opacity: 1, duration: 0.4 }, C.e + 2.4);
+K.pop(tl, $("ok"), C.e + 3.4);
+</script>
