@@ -1,0 +1,37 @@
+<template id="29-kpi-template">
+  <div id="root" data-composition-id="29-kpi" data-start="0" data-duration="33.915" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .kc { width: 820px; height: 280px; }
+  .kc b { position: absolute; left: 30px; top: 24px; font-family: "Hanken Grotesk", sans-serif; font-size: 34px; }
+  .kc span { position: absolute; left: 30px; top: 88px; width: 760px; font-family: "Hanken Grotesk", sans-serif; font-size: 25px; line-height: 1.6; color: #D5DBEA; }
+</style>
+    <div id="s29-kpi-bg" class="clip k-scene k-bg" data-start="0" data-duration="33.915" data-track-index="0"></div>
+    <div id="s29-kpi-stage" class="clip k-scene" data-start="0" data-duration="33.915" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s29-kpi-cam" class="k-cam">
+<div id="s29-kpi-k1" class="k-card kc" style="left:120px;top:170px;border-color:#4FD6EE"><b class="k-c-cyan">latência · disponibilidade</b><span>latência = detecção + processamento + comunicação + acionamento<br>disponibilidade = tempo funcionando ÷ tempo total × 100</span></div>
+<div id="s29-kpi-k2" class="k-card kc" style="left:980px;top:170px;border-color:#FFD24A"><b class="k-c-yel">acurácia × precisão</b><span>acurácia: perto do valor real<br>precisão: repete o mesmo valor<br>real 25 °C, lê 28 / 28,1 / 27,9 → preciso, pouco acurado</span></div>
+<div id="s29-kpi-k3" class="k-card kc" style="left:120px;top:480px;border-color:#7FE39A"><b class="k-c-green">requisitos</b><span>funcional: <strong>o que</strong> faz (detectar presença)<br>não funcional: <strong>como</strong> (consumo, custo, em até 100 ms)</span></div>
+<div id="s29-kpi-k4" class="k-card kc" style="left:980px;top:480px;border-color:#FF6F9C"><b class="k-c-pink">trade-off · protótipo ≠ produto</b><span>melhorar uma coisa piora outra<br>produto: placa própria (PCB), certificação, testes</span></div>
+      </div>
+    </div>
+    <div id="s29-kpi-chrome" class="clip k-scene" data-start="0" data-duration="33.915" data-track-index="2">
+      <div id="s29-kpi-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>NEGÓCIO</b></div>
+      <div id="s29-kpi-num" class="k-num">29 / 33</div>
+      <div id="s29-kpi-progbar" class="k-prog"><i id="s29-kpi-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.947, "c": 11.51, "d": 18.84, "e": 25.387}, D = 33.915;
+        var S = K.scene("29-kpi", D, 33), tl = S.tl, $ = S.$;
+        K.rise(tl, $("k1"), C.b);
+        K.rise(tl, $("k2"), C.c);
+        K.rise(tl, $("k3"), C.d);
+        K.rise(tl, $("k4"), C.e);
+      })();
+    </script>
+  </div>
+</template>

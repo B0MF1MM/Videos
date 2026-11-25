@@ -1,0 +1,24 @@
+<!--sfx: b:click-soft*0.25, c:click-soft*0.25, d:click-soft*0.25, e:pop@3.6*0.3-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+</style>
+<div id="@q1" class="k-card" style="left:120px;top:220px;width:300px;height:180px;border-color:#4FD6EE"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 1</div><div class="k-body k-c-cyan" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">arquitetura</div></div>
+<div id="@q2" class="k-card" style="left:456px;top:220px;width:300px;height:180px;border-color:#7FE39A"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 2</div><div class="k-body k-c-green" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">analogRead · map · PWM</div></div>
+<div id="@q3" class="k-card" style="left:792px;top:220px;width:300px;height:180px;border-color:#4FD6EE"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 3</div><div class="k-body k-c-cyan" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">LDR + divisor</div></div>
+<div id="@q4" class="k-card" style="left:1128px;top:220px;width:300px;height:180px;border-color:#4FD6EE"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 4</div><div class="k-body k-c-cyan" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">ADC 10 bits</div></div>
+<div id="@q5" class="k-card" style="left:1464px;top:220px;width:300px;height:180px;border-color:#FF6F9C"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 5</div><div class="k-body k-c-pink" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">UART</div></div>
+<div id="@q6" class="k-card" style="left:120px;top:440px;width:300px;height:180px;border-color:#FF6F9C"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 6</div><div class="k-body k-c-pink" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">I2C</div></div>
+<div id="@q7" class="k-card" style="left:456px;top:440px;width:300px;height:180px;border-color:#FF6F9C"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 7</div><div class="k-body k-c-pink" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">atuador + driver</div></div>
+<div id="@q8" class="k-card" style="left:792px;top:440px;width:300px;height:180px;border-color:#FF6F9C"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 8</div><div class="k-body k-c-pink" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">dashboard · IoT</div></div>
+<div id="@q9" class="k-card" style="left:1128px;top:440px;width:300px;height:180px;border-color:#FFD24A"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 9</div><div class="k-body k-c-yel" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">ROI · Payback</div></div>
+<div id="@q10" class="k-card" style="left:1464px;top:440px;width:300px;height:180px;border-color:#B49BFF"><div class="k-body" style="left:24px;top:20px;font-size:24px;color:#8C97B5;font-family:'DM Mono',monospace">QUESTÃO 10</div><div class="k-body k-c-violet" style="left:24px;top:70px;width:260px;font-size:30px;font-weight:600;line-height:1.2">discursiva: irrigação</div></div>
+<div id="@cod" class="k-macete" style="left:120px;top:690px;width:1680px;font-size:32px">+ <u>código</u>: todos os exemplos do resumo (vai cair diferente do que caiu)</div>
+<script>
+K.fade(tl, [$("q1"), $("q2"), $("q3"), $("q4"), $("q5"), $("q6"), $("q7"), $("q8"), $("q9"), $("q10")], C.a + 0.2, { s: 0.08, d: 0.3 });
+tl.set([$("q1"), $("q2"), $("q3"), $("q4"), $("q5"), $("q6"), $("q7"), $("q8"), $("q9"), $("q10")], { opacity: 0.25 }, C.a + 1.4);
+tl.to([$("q1"), $("q4"), $("q3")], { opacity: 1, duration: 0.3, stagger: 1.2 }, C.b);
+tl.to($("q2"), { opacity: 1, duration: 0.3 }, C.c);
+tl.to([$("q5"), $("q6"), $("q7"), $("q8")], { opacity: 1, duration: 0.3, stagger: 0.9 }, C.d);
+tl.to([$("q9"), $("q10")], { opacity: 1, duration: 0.3, stagger: 1.6 }, C.e);
+K.macete(tl, $("cod"), C.e + 3.6);
+</script>

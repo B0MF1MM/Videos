@@ -1,0 +1,45 @@
+<template id="24-esp32-template">
+  <div id="root" data-composition-id="24-esp32" data-start="0" data-duration="32.253" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .pw { left: 880px; width: 920px; height: 110px; }
+  .pw b { position: absolute; left: 28px; top: 14px; font-family: "DM Mono", monospace; font-size: 32px; }
+  .pw span { position: absolute; left: 28px; top: 62px; font-family: "Hanken Grotesk", sans-serif; font-size: 25px; color: #B9C2DA; }
+</style>
+    <div id="s24-esp32-bg" class="clip k-scene k-bg" data-start="0" data-duration="32.253" data-track-index="0"></div>
+    <div id="s24-esp32-stage" class="clip k-scene" data-start="0" data-duration="32.253" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s24-esp32-cam" class="k-cam">
+<div id="s24-esp32-chip" class="k-card" style="left:120px;top:170px;width:700px;height:420px;border-color:#4FD6EE">
+  <div class="k-h2 k-c-cyan" style="left:32px;top:26px;font-size:48px">ESP32</div>
+  <div class="k-body" style="left:32px;top:110px;width:640px;font-size:30px;line-height:1.7">Wi-Fi + Bluetooth integrados<br>2 núcleos (dual core)<br>trabalha em <b class="k-c-yel">3,3 V</b><br>ADC de 12 bits (0 a 4095)</div>
+</div>
+<div id="s24-esp32-p1" class="k-card pw" style="top:170px;border-color:#FF6F9C"><b class="k-c-pink">GPIO 6 a 11</b><span>não usar · memória flash</span></div>
+<div id="s24-esp32-p2" class="k-card pw" style="top:300px;border-color:#FFD24A"><b class="k-c-yel">GPIO 34, 35, 36, 39</b><span>só entrada</span></div>
+<div id="s24-esp32-p3" class="k-card pw" style="top:430px;border-color:#7FE39A"><b class="k-c-green">Wi-Fi ligado → ADC1</b><span>GPIO 32 a 39 · o ADC2 não funciona</span></div>
+<div id="s24-esp32-dv" class="k-card" style="left:120px;top:630px;width:1680px;height:170px;border-color:#B49BFF">
+  <div class="k-body" style="left:32px;top:26px;font-size:28px">sensor de <b>5 V</b> → <b class="k-c-violet">divisor de tensão</b> (ex.: 10 kΩ + 20 kΩ) → <b class="k-c-yel">≤ 3,3 V</b> no pino</div>
+  <div class="k-code" style="left:32px;top:90px;font-size:26px">5 V × 20k / (10k + 20k) = <span class="k-c-yel">3,3 V</span></div>
+</div>
+      </div>
+    </div>
+    <div id="s24-esp32-chrome" class="clip k-scene" data-start="0" data-duration="32.253" data-track-index="2">
+      <div id="s24-esp32-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>ESP32</b></div>
+      <div id="s24-esp32-num" class="k-num">24 / 33</div>
+      <div id="s24-esp32-progbar" class="k-prog"><i id="s24-esp32-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.027, "c": 9.279, "d": 17.462, "e": 25.088}, D = 32.253;
+        var S = K.scene("24-esp32", D, 33), tl = S.tl, $ = S.$;
+        K.rise(tl, $("chip"), C.a + 0.3);
+        K.rise(tl, $("p1"), C.c);
+        K.rise(tl, $("p2"), C.c + 4.0);
+        K.rise(tl, $("p3"), C.d);
+        K.rise(tl, $("dv"), C.e);
+      })();
+    </script>
+  </div>
+</template>

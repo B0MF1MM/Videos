@@ -1,0 +1,44 @@
+<template id="09-pwm-template">
+  <div id="root" data-composition-id="09-pwm" data-start="0" data-duration="33.449" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .vl { position: absolute; left: 120px; white-space: nowrap; font-family: "DM Mono", monospace; font-size: 30px; color: #4FD6EE; }
+  .pc { position: absolute; left: 1250px; font-family: "DM Mono", monospace; font-size: 26px; color: #B9C2DA; }
+  .ld { position: absolute; left: 1430px; width: 70px; height: 70px; border-radius: 35px; background: #FF6F9C; box-shadow: 0 0 40px #FF6F9C; }
+</style>
+    <div id="s09-pwm-bg" class="clip k-scene k-bg" data-start="0" data-duration="33.449" data-track-index="0"></div>
+    <div id="s09-pwm-stage" class="clip k-scene" data-start="0" data-duration="33.449" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s09-pwm-cam" class="k-cam">
+<div id="s09-pwm-k" class="k-chip k-c-green" style="left:120px;top:120px;font-size:26px;background:#13241A">SAÍDA · analogWrite = PWM</div>
+<div id="s09-pwm-b" class="k-card" style="left:120px;top:190px;width:1680px;height:96px;border-color:#7FE39A"><div class="k-body" style="left:30px;top:26px;font-size:30px">Não é saída analógica real: o pino <b class="k-c-green">liga e desliga muito rápido</b> (sinal digital pulsado)</div></div>
+<div id="s09-pwm-w0" style="position:absolute;left:0;top:0"><div class="vl" style="top:350px">analogWrite(9, <b class="k-c-yel">64</b>)</div><svg style="position:absolute;left:560px;top:330px" width="660" height="90"><path d="M 0 408 L 0 338 L 32 338 L 32 408 L 128 408 L 128 338 L 160 338 L 160 408 L 256 408 L 256 338 L 288 338 L 288 408 L 384 408 L 384 338 L 416 338 L 416 408 L 512 408 L 512 338 L 544 338 L 544 408 L 640 408" stroke="#7FE39A" stroke-width="4" fill="none" transform="translate(0,-330)"/></svg><div class="pc" style="top:352px">25 % ligado</div><div class="ld" style="top:336px;opacity:0.3"></div></div>
+<div id="s09-pwm-w1" style="position:absolute;left:0;top:0"><div class="vl" style="top:500px">analogWrite(9, <b class="k-c-yel">127</b>)</div><svg style="position:absolute;left:560px;top:480px" width="660" height="90"><path d="M 0 558 L 0 488 L 64 488 L 64 558 L 128 558 L 128 488 L 192 488 L 192 558 L 256 558 L 256 488 L 320 488 L 320 558 L 384 558 L 384 488 L 448 488 L 448 558 L 512 558 L 512 488 L 576 488 L 576 558 L 640 558" stroke="#7FE39A" stroke-width="4" fill="none" transform="translate(0,-480)"/></svg><div class="pc" style="top:502px">50 % ligado</div><div class="ld" style="top:486px;opacity:0.55"></div></div>
+<div id="s09-pwm-w2" style="position:absolute;left:0;top:0"><div class="vl" style="top:650px">analogWrite(9, <b class="k-c-yel">255</b>)</div><svg style="position:absolute;left:560px;top:630px" width="660" height="90"><path d="M 0 708 L 0 638 L 128 638 L 128 638 L 256 638 L 256 638 L 384 638 L 384 638 L 512 638 L 512 638 L 640 638" stroke="#7FE39A" stroke-width="4" fill="none" transform="translate(0,-630)"/></svg><div class="pc" style="top:652px">100 % ligado</div><div class="ld" style="top:636px;opacity:1.0"></div></div>
+
+<div id="s09-pwm-dc" class="k-anno k-c-yel" style="left:1540px;top:330px;font-size:23px">% do tempo ligado
+= ciclo de trabalho
+(duty cycle)</div>
+<div id="s09-pwm-pins" class="k-macete" style="left:120px;top:780px;width:1680px;font-size:30px">0 a 255 (8 bits) · só nos pinos com <u>~</u> no Uno: 3, 5, 6, 9, 10, 11</div>
+      </div>
+    </div>
+    <div id="s09-pwm-chrome" class="clip k-scene" data-start="0" data-duration="33.449" data-track-index="2">
+      <div id="s09-pwm-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>ANALÓGICO · Q2</b></div>
+      <div id="s09-pwm-num" class="k-num">09 / 33</div>
+      <div id="s09-pwm-progbar" class="k-prog"><i id="s09-pwm-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.134, "c": 10.17, "d": 20.521, "e": 27.948}, D = 33.449;
+        var S = K.scene("09-pwm", D, 33), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.rise(tl, $("b"), C.b);
+        K.fade(tl, [$("w0"), $("w1"), $("w2")], C.c + 0.6, { s: 1.6 });
+        K.wipe(tl, $("dc"), C.d + 0.6);
+        K.macete(tl, $("pins"), C.e);
+      })();
+    </script>
+  </div>
+</template>

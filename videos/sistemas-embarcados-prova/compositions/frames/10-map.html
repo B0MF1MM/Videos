@@ -1,0 +1,69 @@
+<template id="10-map-template">
+  <div id="root" data-composition-id="10-map" data-start="0" data-duration="38.04" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .sl { position: absolute; left: 1120px; white-space: nowrap; font-family: "DM Mono", monospace; font-size: 24px; }
+  .bar { position: absolute; left: 1160px; width: 580px; height: 26px; border-radius: 13px; }
+  .sv { position: absolute; width: 80px; text-align: center; font-family: "DM Mono", monospace; font-size: 21px; color: #B9C2DA; }
+</style>
+    <div id="s10-map-bg" class="clip k-scene k-bg" data-start="0" data-duration="38.04" data-track-index="0"></div>
+    <div id="s10-map-stage" class="clip k-scene" data-start="0" data-duration="38.04" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s10-map-cam" class="k-cam">
+<div id="s10-map-k" class="k-chip k-c-green" style="left:120px;top:110px;font-size:24px;background:#13241A">QUESTÃO 2 · POTENCIÔMETRO → LED</div>
+<div id="s10-map-win" class="k-win" style="left:120px;top:170px;width:940px;height:688px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>potenciometro.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:23px;--lh:40px"><span class="ln" id="s10-map-c0"><span class="k-c-violet">const</span> <span class="k-c-violet">int</span> pinoPotenciometro = A0;</span><span class="ln" id="s10-map-c1"><span class="k-c-violet">const</span> <span class="k-c-violet">int</span> pinoLED = <span class="k-c-orange">9</span>;</span><span class="ln" id="s10-map-c2"><span class="k-c-violet">int</span> leitura = <span class="k-c-orange">0</span>, intensidade = <span class="k-c-orange">0</span>;</span><span class="ln" id="s10-map-c3"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="s10-map-c4">  <span class="k-c-cyan">pinMode</span>(pinoLED, <span class="k-c-yel">OUTPUT</span>);</span><span class="ln" id="s10-map-c5">  <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">begin</span>(<span class="k-c-orange">9600</span>);</span><span class="ln" id="s10-map-c6">}</span><span class="ln" id="s10-map-c7"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="s10-map-c8">  leitura = <span class="k-c-cyan">analogRead</span>(pinoPotenciometro);</span><span class="ln" id="s10-map-c9">  intensidade = <span class="k-c-cyan">map</span>(leitura, <span class="k-c-orange">0</span>, <span class="k-c-orange">1023</span>, <span class="k-c-orange">0</span>, <span class="k-c-orange">255</span>);</span><span class="ln" id="s10-map-c10">  <span class="k-c-cyan">analogWrite</span>(pinoLED, intensidade);</span><span class="ln" id="s10-map-c11">  <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Leitura: "</span>);</span><span class="ln" id="s10-map-c12">  <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">println</span>(leitura);</span><span class="ln" id="s10-map-c13">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">500</span>);</span><span class="ln" id="s10-map-c14">}</span></div>
+</div>
+<div id="s10-map-fm" class="k-code" style="left:1120px;top:180px;font-size:25px">map(valor, <span class="k-c-cyan">deMin, deMax</span>, <span class="k-c-pink">paraMin, paraMax</span>)</div>
+<div id="s10-map-sa" style="position:absolute;left:0;top:0">
+  <div class="sl k-c-cyan" style="top:260px">analogRead · 0 a 1023</div>
+  <div class="bar" style="top:300px;background:linear-gradient(90deg,#182238,#4FD6EE)"></div>
+  <div class="sv" style="left:1130px;top:340px">0</div><div class="sv" style="left:1410px;top:340px">512</div><div class="sv" style="left:1680px;top:340px">1023</div>
+</div>
+<div id="s10-map-sb" style="position:absolute;left:0;top:0">
+  <div class="sl k-c-pink" style="top:430px">analogWrite · 0 a 255</div>
+  <div class="bar" style="top:470px;background:linear-gradient(90deg,#182238,#FF6F9C)"></div>
+  <div class="sv" style="left:1130px;top:510px">0</div><div class="sv" style="left:1410px;top:510px">127</div><div class="sv" style="left:1690px;top:510px">255</div>
+</div>
+<svg class="k-svg"><path id="s10-map-ar" class="arrow" d="M 1450 330 L 1450 466 M 1438 452 L 1450 466 L 1462 452" stroke="#FFD24A"/></svg>
+<div id="s10-map-ex" class="k-anno k-c-yel" style="left:1500px;top:372px;font-size:22px">512 → 127</div>
+<div id="s10-map-inv" class="k-anno" style="left:1120px;top:580px;font-size:21px"><span class="k-c-cyan">map</span>(solo, <span class="k-c-yel">4095, 1500</span>, 0, 100)
+faixa invertida: seco (4095) → 0 %</div>
+<div id="s10-map-ans" class="k-chip k-c-green" style="left:1120px;top:700px;font-size:24px;background:#13241A">Q2 → C · map = conversão proporcional</div>
+      </div>
+    </div>
+    <div id="s10-map-chrome" class="clip k-scene" data-start="0" data-duration="38.04" data-track-index="2">
+      <div id="s10-map-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>CÓDIGO · Q2</b></div>
+      <div id="s10-map-num" class="k-num">10 / 33</div>
+      <div id="s10-map-progbar" class="k-prog"><i id="s10-map-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.298, "c": 8.883, "d": 12.898, "e": 20.837, "f": 32.057}, D = 38.04;
+        var S = K.scene("10-map", D, 33), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.rise(tl, $("win"), C.a + 0.3);
+        K.hl(tl, $("c0"), C.a + 1.2, C.b);
+        K.hl(tl, $("c1"), C.a + 1.8, C.b);
+        K.hl(tl, $("c4"), C.b, C.c);
+        K.hl(tl, $("c5"), C.b + 2.0, C.c);
+        K.hl(tl, $("c8"), C.c, C.d);
+        K.hl(tl, $("c9"), C.d, C.e + 4);
+        K.hl(tl, $("c10"), C.d + 2.0, C.e + 4);
+        K.hl(tl, $("c11"), C.f, C.f + 4.5);
+        K.hl(tl, $("c12"), C.f, C.f + 4.5);
+        K.hl(tl, $("c13"), C.f + 2.4, C.f + 4.5);
+        K.fade(tl, $("sa"), C.c + 0.4);
+        K.fade(tl, $("sb"), C.d + 0.6);
+        K.wipe(tl, $("fm"), C.d + 3.0);
+        K.draw(tl, $("ar"), C.e + 0.4, { d: 0.6 });
+        K.pop(tl, $("ex"), C.e + 1.0);
+        K.wipe(tl, $("inv"), C.e + 5.2);
+        K.pop(tl, $("ans"), C.f + 1.0);
+      })();
+    </script>
+  </div>
+</template>

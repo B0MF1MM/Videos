@@ -1,0 +1,33 @@
+<!--sfx: b:pop@0.2*0.2, c:pop@0.2*0.2, e:pop*0.25-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:160px;width:860px;height:328px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>tone.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:22px;--lh:40px"><span class="ln" id="@c0"><span class="k-c-violet">void</span> setup() { <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">begin</span>(<span class="k-c-orange">9600</span>); }</span><span class="ln" id="@c1"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="@c2">  <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">println</span>(<span class="k-c-green">"A frequencia é de: 50 Hz"</span>);</span><span class="ln" id="@c3">  <span class="k-c-cyan">tone</span>(<span class="k-c-orange">6</span>, <span class="k-c-orange">50</span>);   <span class="k-mute">// 50 Hz no pino 6</span></span><span class="ln" id="@c4">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">2000</span>);</span><span class="ln" id="@c5">}</span></div>
+</div>
+<div id="@osc" class="k-card" style="left:120px;top:520px;width:860px;height:290px;border-color:#FFD24A">
+  <div class="k-h2 k-c-yel" style="left:28px;top:18px;font-size:28px">osciloscópio</div>
+  <svg width="800" height="140" style="position:absolute;left:30px;top:90px"><path d="M 0 55 L 800 55 M 400 0 L 400 140" stroke="#2A3656" stroke-width="2"/><path id="@wv" d="M 0 90 L 0 90 L 0 20 L 40 20 L 40 90 L 80 90 L 80 20 L 120 20 L 120 90 L 160 90 L 160 20 L 200 20 L 200 90 L 240 90 L 240 20 L 280 20 L 280 90 L 320 90 L 320 20 L 360 20 L 360 90 L 400 90 L 400 20 L 440 20 L 440 90 L 480 90 L 480 20 L 520 20 L 520 90 L 560 90 L 560 20 L 600 20 L 600 90" stroke="#FFD24A" stroke-width="4" fill="none" transform="translate(80,10)"/></svg>
+</div>
+<div id="@oh" class="k-card" style="left:1040px;top:160px;width:760px;height:430px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:24px;font-size:34px">Lei de Ohm · V = R × I</div>
+  <div id="@calc" class="k-code" style="left:30px;top:100px;font-size:27px;line-height:1.65">pino: 5 V
+LED vermelho: 2 V · 20 mA
+R = (5 − 2) / 0,02
+R = <span class="k-c-yel">150 Ω</span></div>
+</div>
+<div id="@t1" class="k-chip k-c-pink" style="left:1040px;top:630px;font-size:24px;background:#2E1420">sem resistor → o LED queima</div>
+<div id="@t2" class="k-chip k-c-cyan" style="left:1040px;top:710px;font-size:24px">perna maior = anodo (+)</div>
+<script>
+K.rise(tl, $("win"), C.b);
+K.hl(tl, $("c2"), C.b + 1.0, C.c);
+K.hl(tl, $("c3"), C.b + 2.0, C.c);
+K.hl(tl, $("c4"), C.b + 4.6, C.c);
+K.rise(tl, $("osc"), C.b + 3.0);
+K.draw(tl, $("wv"), C.b + 3.6, { d: 1.4 });
+K.rise(tl, $("oh"), C.c);
+K.wipe(tl, $("calc"), C.d, { d: 1.4 });
+K.pop(tl, $("t1"), C.e);
+K.pop(tl, $("t2"), C.e + 2.2);
+</script>

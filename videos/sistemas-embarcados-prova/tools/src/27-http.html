@@ -1,0 +1,29 @@
+<!--sfx: b:pop@0.2*0.2, c:pop@0.2*0.2, d:pop@0.2*0.2-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .nt { left: 1170px; width: 630px; }
+  .nt b { position: absolute; left: 26px; top: 16px; font-family: "Hanken Grotesk", sans-serif; font-size: 30px; }
+  .nt span { position: absolute; left: 26px; top: 64px; width: 580px; font-family: "Hanken Grotesk", sans-serif; font-size: 24px; line-height: 1.4; color: #B9C2DA; }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:140px;width:1000px;height:734px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>envio_wifi.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:22px;--lh:38px"><span class="ln" id="@c0"><span class="k-c-pink">#include</span> <span class="k-c-green">&lt;WiFi.h&gt;</span></span><span class="ln" id="@c1"><span class="k-c-pink">#include</span> <span class="k-c-green">&lt;HTTPClient.h&gt;</span></span><span class="ln" id="@c2"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="@c3">  <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">begin</span>(<span class="k-c-orange">115200</span>);</span><span class="ln" id="@c4">  <span class="k-c-cyan">WiFi</span>.<span class="k-c-cyan">begin</span>(ssid, senha);</span><span class="ln" id="@c5">  <span class="k-c-violet">while</span> (<span class="k-c-cyan">WiFi</span>.<span class="k-c-cyan">status</span>() != <span class="k-c-yel">WL_CONNECTED</span>) {</span><span class="ln" id="@c6">    <span class="k-c-cyan">delay</span>(<span class="k-c-orange">500</span>); <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"."</span>);</span><span class="ln" id="@c7">  }</span><span class="ln" id="@c8">}</span><span class="ln" id="@c9"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="@c10">  <span class="k-c-cyan">HTTPClient</span> <span class="k-c-cyan">http</span>;</span><span class="ln" id="@c11">  <span class="k-c-cyan">http</span>.<span class="k-c-cyan">begin</span>(site + <span class="k-c-green">"temp="</span> + <span class="k-c-violet">String</span>(<span class="k-c-orange">25.4</span>));</span><span class="ln" id="@c12">  <span class="k-c-violet">int</span> codigo = <span class="k-c-cyan">http</span>.<span class="k-c-cyan">GET</span>();   <span class="k-mute">// 200 = OK</span></span><span class="ln" id="@c13">  <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">println</span>(codigo);</span><span class="ln" id="@c14">  <span class="k-c-cyan">http</span>.<span class="k-c-cyan">end</span>();</span><span class="ln" id="@c15">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">10000</span>);              <span class="k-mute">// a cada 10 s</span></span><span class="ln" id="@c16">}</span></div>
+</div>
+<div id="@n1" class="k-card nt" style="top:140px;height:150px;border-color:#4FD6EE"><b class="k-c-cyan">conectar</b><span>WiFi.begin(rede, senha) e o while espera WL_CONNECTED</span></div>
+<div id="@n2" class="k-card nt" style="top:320px;height:150px;border-color:#FFD24A"><b class="k-c-yel">enviar</b><span>monta a URL com os valores e faz um GET para o servidor</span></div>
+<div id="@n3" class="k-card nt" style="top:500px;height:150px;border-color:#7FE39A"><b class="k-c-green">conferir e repetir</b><span>200 = OK · http.end() fecha · espera 10 s</span></div>
+<script>
+K.rise(tl, $("win"), C.a);
+K.hl(tl, $("c0"), C.a + 1.6, C.b);
+K.hl(tl, $("c1"), C.a + 1.6, C.b);
+K.hl(tl, $("c4"), C.b + 2.4, C.c);
+K.hl(tl, $("c5"), C.b + 4.0, C.c);
+K.hl(tl, $("c11"), C.c + 0.4, C.d);
+K.hl(tl, $("c12"), C.c + 3.0, C.d);
+K.hl(tl, $("c12"), C.d, C.d + 2.0);
+K.hl(tl, $("c14"), C.d + 2.0, C.d + 6);
+K.hl(tl, $("c15"), C.d + 4.0, C.d + 7);
+K.rise(tl, $("n1"), C.b);
+K.rise(tl, $("n2"), C.c);
+K.rise(tl, $("n3"), C.d);
+</script>

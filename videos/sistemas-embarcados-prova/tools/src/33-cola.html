@@ -1,0 +1,20 @@
+<!--sfx: b:pop@0.1*0.2, c:pop@0.1*0.2, d:pop@0.1*0.2, e:pop@0.1*0.2, f:chime@0.2*0.35-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .cc { width: 820px; height: 210px; }
+  .cc b { position: absolute; left: 30px; top: 26px; font-family: "Hanken Grotesk", sans-serif; font-size: 38px; }
+  .cc span { position: absolute; left: 30px; top: 96px; width: 760px; font-family: "Hanken Grotesk", sans-serif; font-size: 27px; line-height: 1.45; color: #D5DBEA; }
+</style>
+<div id="@q1" class="k-card cc" style="left:120px;top:170px;border-color:#4FD6EE"><b class="k-c-cyan">arquitetura</b><span>sensor = entrada · MCU = processamento · atuador = saída</span></div>
+<div id="@q2" class="k-card cc" style="left:980px;top:170px;border-color:#7FE39A"><b class="k-c-green">analógico</b><span>analogRead 0–1023 · analogWrite 0–255 · map converte</span></div>
+<div id="@q3" class="k-card cc" style="left:120px;top:410px;border-color:#FF6F9C"><b class="k-c-pink">protocolos</b><span>UART: TX, RX, baud rate · I2C: SDA, SCL, endereço</span></div>
+<div id="@q4" class="k-card cc" style="left:980px;top:410px;border-color:#FFD24A"><b class="k-c-yel">atuador · negócio</b><span>carga pesada → relé/driver (liga com LOW) · ROI % · Payback tempo</span></div>
+<div id="@end" class="k-title" style="left:0;top:330px;width:1920px;text-align:center;font-size:120px">Boa <em>prova!</em></div>
+<script>
+K.pop(tl, $("q1"), C.b);
+K.pop(tl, $("q2"), C.c);
+K.pop(tl, $("q3"), C.d);
+K.pop(tl, $("q4"), C.e);
+K.dim(tl, [$("q1"), $("q2"), $("q3"), $("q4")], C.f, 0.12);
+K.pop(tl, $("end"), C.f + 0.2);
+</script>

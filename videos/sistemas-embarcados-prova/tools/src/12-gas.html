@@ -1,0 +1,44 @@
+<!--sfx: d:pop@2.2*0.3, e:pop@0.2*0.2-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .ic { position: absolute; width: 280px; height: 80px; border-radius: 16px; border: 3px solid; background: #182238; font-family: 'DM Mono', monospace; font-size: 26px; line-height: 74px; text-align: center; color: #EEF1F8; }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:150px;width:920px;height:768px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>sensor_gas.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:23px;--lh:40px"><span class="ln" id="@c0"><span class="k-c-violet">int</span> sensorValue = <span class="k-c-orange">0</span>;</span><span class="ln" id="@c1"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="@c2">  <span class="k-c-cyan">pinMode</span>(<span class="k-c-orange">8</span>, <span class="k-c-yel">OUTPUT</span>);   <span class="k-mute">// LED</span></span><span class="ln" id="@c3">  <span class="k-c-cyan">pinMode</span>(<span class="k-c-orange">9</span>, <span class="k-c-yel">OUTPUT</span>);   <span class="k-mute">// buzzer</span></span><span class="ln" id="@c4">  <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">begin</span>(<span class="k-c-orange">9600</span>);</span><span class="ln" id="@c5">}</span><span class="ln" id="@c6"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="@c7">  sensorValue = <span class="k-c-cyan">analogRead</span>(A0);</span><span class="ln" id="@c8">  <span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">println</span>(sensorValue, DEC);</span><span class="ln" id="@c9">  <span class="k-c-violet">if</span> (sensorValue &gt; <span class="k-c-orange">500</span>) {</span><span class="ln" id="@c10">    <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-orange">8</span>, <span class="k-c-yel">HIGH</span>);</span><span class="ln" id="@c11">    <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-orange">9</span>, <span class="k-c-yel">HIGH</span>);</span><span class="ln" id="@c12">  } <span class="k-c-violet">else</span> {</span><span class="ln" id="@c13">    <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-orange">8</span>, <span class="k-c-yel">LOW</span>);</span><span class="ln" id="@c14">    <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-orange">9</span>, <span class="k-c-yel">LOW</span>);</span><span class="ln" id="@c15">  }</span><span class="ln" id="@c16">}</span></div>
+</div>
+<div id="@mt" style="position:absolute;left:0;top:0">
+  <div class="k-anno k-mute" style="left:1120px;top:150px;font-size:22px">leitura do A0</div>
+  <div style="position:absolute;left:1120px;top:210px;width:680px;height:34px;border-radius:17px;background:#182238;border:2px solid #2A3656"></div>
+  <div id="@fill" style="position:absolute;left:1122px;top:212px;width:676px;height:30px;border-radius:15px;background:linear-gradient(90deg,#4FD6EE,#FF6F9C);transform-origin:0 50%"></div>
+  <div style="position:absolute;left:1452px;top:196px;width:4px;height:62px;background:#FFD24A"></div>
+  <div class="k-anno k-c-yel" style="left:1392px;top:262px;font-size:20px">limiar 500</div>
+</div>
+<div id="@led" class="ic" style="left:1150px;top:340px;border-color:#FF6F9C">LED · 8</div>
+<div id="@bz" class="ic" style="left:1480px;top:340px;border-color:#FFD24A">buzzer · 9</div>
+<div id="@pd" class="k-anno k-c-green" style="left:1120px;top:450px;font-size:23px">padrão limiar: ler → comparar → acionar</div>
+<div id="@mq" class="k-card" style="left:1120px;top:530px;width:680px;height:300px;border-color:#B49BFF">
+  <div class="k-h2 k-c-violet" style="left:26px;top:18px;font-size:28px">sensores MQ</div>
+  <div class="k-body" style="left:26px;top:66px;width:640px;font-size:23px;line-height:1.55">gás ↑ → resistência ↓ → tensão no AO ↑<br><b>MQ-135</b> qualidade do ar<br><b>MQ-4</b> metano · <b>MQ-5</b> GLP (gás de cozinha)<br><span class="k-mute">precisa pré-aquecer e calibrar</span></div>
+</div>
+<script>
+K.rise(tl, $("win"), C.a);
+K.hl(tl, $("c2"), C.b, C.c);
+K.hl(tl, $("c3"), C.b + 1.0, C.c);
+K.hl(tl, $("c7"), C.c, C.d);
+K.hl(tl, $("c8"), C.c + 2.6, C.d);
+K.hl(tl, $("c9"), C.d, C.e);
+K.hl(tl, $("c10"), C.d + 2.0, C.d + 4.2);
+K.hl(tl, $("c11"), C.d + 2.0, C.d + 4.2);
+K.hl(tl, $("c13"), C.d + 4.2, C.e);
+K.hl(tl, $("c14"), C.d + 4.2, C.e);
+K.fade(tl, [$("mt"), $("led"), $("bz")], C.b + 0.4);
+tl.set($("fill"), { scaleX: 0.3 }, 0);
+tl.to($("fill"), { scaleX: 0.42, duration: 1.5, ease: "power1.inOut" }, C.c + 0.4);
+tl.to($("fill"), { scaleX: 0.72, duration: 1.0, ease: "power2.out" }, C.d + 1.2);
+tl.to([$("led"), $("bz")], { backgroundColor: "#4A2030", boxShadow: "0 0 40px rgba(255,111,156,0.6)", duration: 0.3 }, C.d + 2.2);
+tl.to($("fill"), { scaleX: 0.35, duration: 1.0, ease: "power2.out" }, C.d + 3.4);
+tl.to([$("led"), $("bz")], { backgroundColor: "#182238", boxShadow: "0 0 0px rgba(255,111,156,0)", duration: 0.3 }, C.d + 4.4);
+K.wipe(tl, $("pd"), C.d + 5.0);
+K.rise(tl, $("mq"), C.e);
+</script>

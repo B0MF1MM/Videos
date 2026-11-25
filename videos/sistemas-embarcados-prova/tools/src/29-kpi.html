@@ -1,0 +1,17 @@
+<!--sfx: b:pop@0.2*0.2, c:pop@0.2*0.2, d:pop@0.2*0.2, e:pop@0.2*0.2-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .kc { width: 820px; height: 280px; }
+  .kc b { position: absolute; left: 30px; top: 24px; font-family: "Hanken Grotesk", sans-serif; font-size: 34px; }
+  .kc span { position: absolute; left: 30px; top: 88px; width: 760px; font-family: "Hanken Grotesk", sans-serif; font-size: 25px; line-height: 1.6; color: #D5DBEA; }
+</style>
+<div id="@k1" class="k-card kc" style="left:120px;top:170px;border-color:#4FD6EE"><b class="k-c-cyan">latência · disponibilidade</b><span>latência = detecção + processamento + comunicação + acionamento<br>disponibilidade = tempo funcionando ÷ tempo total × 100</span></div>
+<div id="@k2" class="k-card kc" style="left:980px;top:170px;border-color:#FFD24A"><b class="k-c-yel">acurácia × precisão</b><span>acurácia: perto do valor real<br>precisão: repete o mesmo valor<br>real 25 °C, lê 28 / 28,1 / 27,9 → preciso, pouco acurado</span></div>
+<div id="@k3" class="k-card kc" style="left:120px;top:480px;border-color:#7FE39A"><b class="k-c-green">requisitos</b><span>funcional: <strong>o que</strong> faz (detectar presença)<br>não funcional: <strong>como</strong> (consumo, custo, em até 100 ms)</span></div>
+<div id="@k4" class="k-card kc" style="left:980px;top:480px;border-color:#FF6F9C"><b class="k-c-pink">trade-off · protótipo ≠ produto</b><span>melhorar uma coisa piora outra<br>produto: placa própria (PCB), certificação, testes</span></div>
+<script>
+K.rise(tl, $("k1"), C.b);
+K.rise(tl, $("k2"), C.c);
+K.rise(tl, $("k3"), C.d);
+K.rise(tl, $("k4"), C.e);
+</script>

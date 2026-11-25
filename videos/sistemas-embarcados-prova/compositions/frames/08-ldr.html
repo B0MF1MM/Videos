@@ -1,0 +1,62 @@
+<template id="08-ldr-template">
+  <div id="root" data-composition-id="08-ldr" data-start="0" data-duration="32.599" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .lb { position: absolute; font-family: "DM Mono", monospace; font-size: 24px; color: #B9C2DA; }
+  .nt { left: 860px; width: 940px; height: 118px; }
+  .nt b { position: absolute; left: 28px; top: 16px; font-family: "Hanken Grotesk", sans-serif; font-size: 32px; }
+  .nt span { position: absolute; left: 28px; top: 66px; font-family: "Hanken Grotesk", sans-serif; font-size: 25px; color: #B9C2DA; }
+</style>
+    <div id="s08-ldr-bg" class="clip k-scene k-bg" data-start="0" data-duration="32.599" data-track-index="0"></div>
+    <div id="s08-ldr-stage" class="clip k-scene" data-start="0" data-duration="32.599" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s08-ldr-cam" class="k-cam">
+<div id="s08-ldr-k" class="k-chip k-c-cyan" style="left:120px;top:120px;font-size:26px">QUESTÃO 3 · LDR + DIVISOR DE TENSÃO</div>
+<svg id="s08-ldr-cir" class="k-svg"><g stroke="#8C97B5" stroke-width="4" fill="none">
+  <path d="M 400 220 L 400 260"/><path d="M 400 380 L 400 470"/><path d="M 400 590 L 400 650"/><path d="M 400 470 L 560 470"/>
+  <path d="M 360 650 L 440 650 M 375 665 L 425 665 M 390 680 L 410 680"/></g>
+  <rect x="360" y="260" width="80" height="120" rx="10" fill="#182238" stroke="#FFD24A" stroke-width="4"/>
+  <path d="M 372 300 L 428 300 M 372 340 L 428 340" stroke="#FFD24A" stroke-width="3" stroke-dasharray="8 6"/>
+  <rect x="370" y="470" width="60" height="120" rx="8" fill="#182238" stroke="#4FD6EE" stroke-width="4"/>
+  <circle cx="400" cy="470" r="8" fill="#7FE39A"/>
+</svg>
+<div class="lb" style="left:420px;top:196px">5 V</div>
+<div class="lb k-c-yel" style="left:460px;top:300px">LDR</div>
+<div class="lb k-c-cyan" style="left:450px;top:510px">R fixo 10 kΩ</div>
+<div class="lb" style="left:460px;top:640px">GND</div>
+<div id="s08-ldr-a0" class="k-chip k-c-green" style="left:570px;top:448px;font-size:26px;background:#13241A">→ A0 (ADC)</div>
+<div id="s08-ldr-sun" style="position:absolute;left:180px;top:270px;width:90px;height:90px;border-radius:45px;background:#FFD24A;box-shadow:0 0 50px #FFD24A"></div>
+<div id="s08-ldr-n1" class="k-card nt" style="top:190px;border-color:#FFD24A"><b class="k-c-yel">sensor de luz</b><span>resistência muda com a luz · <u>mais luz → menos resistência</u></span></div>
+<div id="s08-ldr-n2" class="k-card nt" style="top:330px;border-color:#4FD6EE"><b class="k-c-cyan">divisor de tensão</b><span>o Arduino só lê tensão → LDR + resistor fixo</span></div>
+<div id="s08-ldr-n3" class="k-card nt" style="top:470px;border-color:#7FE39A"><b class="k-c-green">luz muda → tensão muda</b><span>o ponto do meio vai ao A0 · o ADC converte</span></div>
+<div id="s08-ldr-cd" class="k-win" style="left:860px;top:620px;width:940px;height:200px"><div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>ldr.ino</span></div>
+<div class="k-code" style="left:10px;top:62px;font-size:24px;line-height:40px"><span class="ln"><span class="k-c-violet">int</span> luz = <span class="k-c-cyan">analogRead</span>(A0);</span><span class="ln"><span class="k-c-violet">if</span> (luz &lt; <span class="k-c-orange">300</span>) <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-orange">8</span>, <span class="k-c-yel">HIGH</span>);  <span class="k-mute">// pouca luz</span></span><span class="ln"><span class="k-c-violet">else</span>          <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-orange">8</span>, <span class="k-c-yel">LOW</span>);</span></div></div>
+<div id="s08-ldr-q" class="k-chip k-c-green" style="left:120px;top:760px;font-size:26px;background:#13241A">Q3 → B · quem decide é o microcontrolador</div>
+      </div>
+    </div>
+    <div id="s08-ldr-chrome" class="clip k-scene" data-start="0" data-duration="32.599" data-track-index="2">
+      <div id="s08-ldr-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>ANALÓGICO · Q3</b></div>
+      <div id="s08-ldr-num" class="k-num">08 / 33</div>
+      <div id="s08-ldr-progbar" class="k-prog"><i id="s08-ldr-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.256, "c": 9.15, "d": 16.907, "e": 24.745}, D = 32.599;
+        var S = K.scene("08-ldr", D, 33), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.fade(tl, $("cir"), C.a + 0.4);
+        K.rise(tl, $("n1"), C.b);
+        tl.set($("sun"), { opacity: 0.25 }, 0);
+        tl.to($("sun"), { opacity: 1, duration: 0.6 }, C.b + 2.0);
+        tl.to($("sun"), { opacity: 0.25, duration: 0.6 }, C.b + 4.0);
+        K.rise(tl, $("n2"), C.c);
+        K.rise(tl, $("n3"), C.d);
+        K.pop(tl, $("a0"), C.d + 3.0);
+        K.rise(tl, $("cd"), C.e);
+        K.pop(tl, $("q"), C.e + 4.4);
+      })();
+    </script>
+  </div>
+</template>

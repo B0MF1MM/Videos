@@ -1,0 +1,40 @@
+<template id="06-dig-anal-template">
+  <div id="root" data-composition-id="06-dig-anal" data-start="0" data-duration="32.345" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .dc { top: 180px; width: 820px; height: 540px; }
+  .dc .nm { position: absolute; left: 32px; top: 30px; font-family: "DM Mono", monospace; font-size: 40px; letter-spacing: 0.08em; }
+  .dc .ls { position: absolute; left: 32px; top: 120px; width: 760px; }
+  .dc .it { font-family: "Hanken Grotesk", sans-serif; font-size: 30px; line-height: 64px; color: #EEF1F8; border-bottom: 1px solid #2A3656; }
+  .dc .it code { font-family: "DM Mono", monospace; color: #4FD6EE; }
+  .dc .ex { position: absolute; left: 32px; top: 460px; font-family: "DM Mono", monospace; font-size: 26px; }
+</style>
+    <div id="s06-dig-anal-bg" class="clip k-scene k-bg" data-start="0" data-duration="32.345" data-track-index="0"></div>
+    <div id="s06-dig-anal-stage" class="clip k-scene" data-start="0" data-duration="32.345" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s06-dig-anal-cam" class="k-cam">
+<div id="s06-dig-anal-dg" class="k-card dc" style="left:120px;border-color:#B49BFF"><div class="nm k-c-violet">DIGITAL</div><svg width="220" height="60" style="position:absolute;left:560px;top:28px"><path d="M 0 50 L 40 50 L 40 10 L 90 10 L 90 50 L 130 50 L 130 10 L 180 10 L 180 50 L 220 50" stroke="#B49BFF" stroke-width="5" fill="none"/></svg><div class="ls"><div class="it">2 estados: <b>HIGH</b> ou <b>LOW</b></div><div class="it">0 V ou 5 V</div><div class="it">pinos D0 a D13</div><div class="it">lê: <code>digitalRead()</code></div><div class="it">escreve: <code>digitalWrite()</code></div></div><div id="s06-dig-anal-dgx" class="ex k-c-violet">LED · relé · botão · buzzer</div></div>
+<div id="s06-dig-anal-an" class="k-card dc" style="left:980px;border-color:#7FE39A"><div class="nm k-c-green">ANALÓGICO</div><svg width="220" height="60" style="position:absolute;left:560px;top:28px"><path d="M 0 30 C 25 -5, 50 -5, 75 30 S 125 65, 150 30 S 200 -5, 220 20" stroke="#7FE39A" stroke-width="5" fill="none"/></svg><div class="ls"><div class="it">valores <b>contínuos</b></div><div class="it">0 a 5 V → <b>0 a 1023</b></div><div class="it">pinos A0 a A5</div><div class="it">lê: <code>analogRead()</code></div><div class="it">escreve só via PWM</div></div><div id="s06-dig-anal-anx" class="ex k-c-green">LDR · potenciômetro · umidade do solo</div></div>
+<div id="s06-dig-anal-mac" class="k-macete" style="left:120px;top:760px;width:1680px;font-size:30px">Interruptor = <u>digital</u> (liga/desliga). Dimmer = <u>analógico</u> (todos os níveis).</div>
+      </div>
+    </div>
+    <div id="s06-dig-anal-chrome" class="clip k-scene" data-start="0" data-duration="32.345" data-track-index="2">
+      <div id="s06-dig-anal-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>CÓDIGO · BASE</b></div>
+      <div id="s06-dig-anal-num" class="k-num">06 / 33</div>
+      <div id="s06-dig-anal-progbar" class="k-prog"><i id="s06-dig-anal-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.179, "c": 11.507, "d": 18.801, "e": 26.155}, D = 32.345;
+        var S = K.scene("06-dig-anal", D, 33), tl = S.tl, $ = S.$;
+        K.rise(tl, $("dg"), C.b);
+        K.rise(tl, $("an"), C.c);
+        tl.set([$("dgx"), $("anx")], { opacity: 0 }, 0);
+        tl.to([$("dgx"), $("anx")], { opacity: 1, duration: 0.4, stagger: 2.2 }, C.d + 0.4);
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>

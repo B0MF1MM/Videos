@@ -1,0 +1,49 @@
+<template id="03-arquitetura-template">
+  <div id="root" data-composition-id="03-arquitetura" data-start="0" data-duration="27.075" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .bx { top: 300px; width: 520px; height: 260px; }
+  .bx .tg { position: absolute; left: 30px; top: 24px; font-family: "DM Mono", monospace; font-size: 24px; letter-spacing: 0.1em; }
+  .bx .nm { position: absolute; left: 30px; top: 66px; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 44px; color: #EEF1F8; }
+  .bx .ds { position: absolute; left: 30px; top: 140px; width: 470px; font-family: "Hanken Grotesk", sans-serif; font-size: 27px; line-height: 1.4; color: #B9C2DA; }
+</style>
+    <div id="s03-arquitetura-bg" class="clip k-scene k-bg" data-start="0" data-duration="27.075" data-track-index="0"></div>
+    <div id="s03-arquitetura-stage" class="clip k-scene" data-start="0" data-duration="27.075" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s03-arquitetura-cam" class="k-cam">
+<div id="s03-arquitetura-k" class="k-chip k-c-cyan" style="left:120px;top:120px;font-size:26px">QUESTÃO 1 · ARQUITETURA</div>
+<div id="s03-arquitetura-cy" class="k-h2" style="left:120px;top:190px;font-size:50px">perceber <span class="k-mute">→</span> <span class="k-c-yel">pensar</span> <span class="k-mute">→</span> <span class="k-c-pink">agir</span></div>
+<div id="s03-arquitetura-b1" class="k-card bx" style="left:120px;border-color:#4FD6EE"><div class="tg k-c-cyan">ENTRADA</div><div class="nm">sensor</div><div class="ds">percebe o mundo:<br>temperatura, luz, umidade</div></div>
+<div id="s03-arquitetura-b2" class="k-card bx" style="left:700px;border-color:#FFD24A"><div class="tg k-c-yel">PROCESSAMENTO</div><div class="nm">microcontrolador</div><div class="ds">lê o sensor e decide,<br>seguindo o <b class="k-c-yel">firmware</b></div></div>
+<div id="s03-arquitetura-b3" class="k-card bx" style="left:1280px;border-color:#FF6F9C"><div class="tg k-c-pink">SAÍDA</div><div class="nm">atuador</div><div class="ds">LED, buzzer, relé, motor,<br>sinalizador</div></div>
+<svg class="k-svg"><path id="s03-arquitetura-p1" class="arrow" d="M 646 430 L 694 430 M 680 418 L 694 430 L 680 442" stroke="#8C97B5"/><path id="s03-arquitetura-p2" class="arrow" d="M 1226 430 L 1274 430 M 1260 418 L 1274 430 L 1260 442" stroke="#8C97B5"/></svg>
+<div id="s03-arquitetura-ex" class="k-anno k-mute" style="left:120px;top:600px;font-size:24px">ex.: sensor mede 31 °C → ESP32 lê → regra "temp > 24 °C" → compressor liga</div>
+<div id="s03-arquitetura-al" class="k-macete k-alert" style="left:120px;top:690px;width:1680px;font-size:30px">Firmware é <b>software gravado no chip</b>, não é peça física. Hardware é o corpo; firmware é o cérebro.</div>
+<div id="s03-arquitetura-ans" class="k-chip k-c-green" style="left:1500px;top:120px;font-size:26px;background:#13241A">Q1 → alternativa C</div>
+      </div>
+    </div>
+    <div id="s03-arquitetura-chrome" class="clip k-scene" data-start="0" data-duration="27.075" data-track-index="2">
+      <div id="s03-arquitetura-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>ARQUITETURA · Q1</b></div>
+      <div id="s03-arquitetura-num" class="k-num">03 / 33</div>
+      <div id="s03-arquitetura-progbar" class="k-prog"><i id="s03-arquitetura-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.09, "c": 6.515, "d": 11.448, "e": 16.064, "f": 20.42}, D = 27.075;
+        var S = K.scene("03-arquitetura", D, 33), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.wipe(tl, $("cy"), C.b);
+        K.rise(tl, $("b1"), C.c);
+        K.draw(tl, $("p1"), C.d - 0.3, { d: 0.3 });
+        K.rise(tl, $("b2"), C.d);
+        K.draw(tl, $("p2"), C.e - 0.3, { d: 0.3 });
+        K.rise(tl, $("b3"), C.e);
+        K.fade(tl, $("ex"), C.e + 2.0);
+        K.pop(tl, $("al"), C.f);
+        K.pop(tl, $("ans"), C.f + 3.0);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,20 @@
+<!--sfx: b:pop@0.2*0.2, c:pop@0.2*0.2, e:pop*0.3-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .dc { top: 180px; width: 820px; height: 540px; }
+  .dc .nm { position: absolute; left: 32px; top: 30px; font-family: "DM Mono", monospace; font-size: 40px; letter-spacing: 0.08em; }
+  .dc .ls { position: absolute; left: 32px; top: 120px; width: 760px; }
+  .dc .it { font-family: "Hanken Grotesk", sans-serif; font-size: 30px; line-height: 64px; color: #EEF1F8; border-bottom: 1px solid #2A3656; }
+  .dc .it code { font-family: "DM Mono", monospace; color: #4FD6EE; }
+  .dc .ex { position: absolute; left: 32px; top: 460px; font-family: "DM Mono", monospace; font-size: 26px; }
+</style>
+<div id="@dg" class="k-card dc" style="left:120px;border-color:#B49BFF"><div class="nm k-c-violet">DIGITAL</div><svg width="220" height="60" style="position:absolute;left:560px;top:28px"><path d="M 0 50 L 40 50 L 40 10 L 90 10 L 90 50 L 130 50 L 130 10 L 180 10 L 180 50 L 220 50" stroke="#B49BFF" stroke-width="5" fill="none"/></svg><div class="ls"><div class="it">2 estados: <b>HIGH</b> ou <b>LOW</b></div><div class="it">0 V ou 5 V</div><div class="it">pinos D0 a D13</div><div class="it">lê: <code>digitalRead()</code></div><div class="it">escreve: <code>digitalWrite()</code></div></div><div id="@dgx" class="ex k-c-violet">LED · relé · botão · buzzer</div></div>
+<div id="@an" class="k-card dc" style="left:980px;border-color:#7FE39A"><div class="nm k-c-green">ANALÓGICO</div><svg width="220" height="60" style="position:absolute;left:560px;top:28px"><path d="M 0 30 C 25 -5, 50 -5, 75 30 S 125 65, 150 30 S 200 -5, 220 20" stroke="#7FE39A" stroke-width="5" fill="none"/></svg><div class="ls"><div class="it">valores <b>contínuos</b></div><div class="it">0 a 5 V → <b>0 a 1023</b></div><div class="it">pinos A0 a A5</div><div class="it">lê: <code>analogRead()</code></div><div class="it">escreve só via PWM</div></div><div id="@anx" class="ex k-c-green">LDR · potenciômetro · umidade do solo</div></div>
+<div id="@mac" class="k-macete" style="left:120px;top:760px;width:1680px;font-size:30px">Interruptor = <u>digital</u> (liga/desliga). Dimmer = <u>analógico</u> (todos os níveis).</div>
+<script>
+K.rise(tl, $("dg"), C.b);
+K.rise(tl, $("an"), C.c);
+tl.set([$("dgx"), $("anx")], { opacity: 0 }, 0);
+tl.to([$("dgx"), $("anx")], { opacity: 1, duration: 0.4, stagger: 2.2 }, C.d + 0.4);
+K.macete(tl, $("mac"), C.e);
+</script>

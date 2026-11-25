@@ -1,0 +1,53 @@
+<template id="11-serial-template">
+  <div id="root" data-composition-id="11-serial" data-start="0" data-duration="27.095" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+</style>
+    <div id="s11-serial-bg" class="clip k-scene k-bg" data-start="0" data-duration="27.095" data-track-index="0"></div>
+    <div id="s11-serial-stage" class="clip k-scene" data-start="0" data-duration="27.095" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s11-serial-cam" class="k-cam">
+<div id="s11-serial-k" class="k-chip k-c-cyan" style="left:120px;top:120px;font-size:26px">COMUNICAÇÃO SERIAL COM O PC</div>
+<div id="s11-serial-c1" class="k-card" style="left:120px;top:190px;width:820px;height:300px;border-color:#4FD6EE">
+  <div class="k-code" style="left:24px;top:24px;font-size:27px;line-height:62px"><span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">begin</span>(<span class="k-c-orange">9600</span>);
+<span class="k-mute">// 9600 bits/s · ESP32: 115200</span>
+<span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Leitura: "</span>);   <span class="k-mute">// mesma linha</span>
+<span class="k-c-cyan">Serial</span>.<span class="k-c-cyan">println</span>(leitura); <span class="k-mute">// pula linha</span></div>
+</div>
+<div id="s11-serial-mon" class="k-win" style="left:1000px;top:190px;width:800px;height:300px"><div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>Monitor Serial · 9600 baud</span></div>
+  <div id="s11-serial-out" class="k-code" style="left:24px;top:70px;font-size:28px;line-height:46px;color:#7FE39A">Leitura: 512
+Leitura: 518
+Leitura: 530</div></div>
+<div id="s11-serial-bd" class="k-card" style="left:120px;top:530px;width:820px;height:260px;border-color:#FF6F9C">
+  <div class="k-h2 k-c-pink" style="left:30px;top:24px;font-size:30px">velocidades diferentes</div>
+  <div class="k-code" style="left:30px;top:90px;font-size:28px">9600 ≠ 115200</div>
+  <div class="k-code k-mute" style="left:30px;top:150px;font-size:28px">→ ÿ�x�Ð� (lixo)</div>
+</div>
+<div id="s11-serial-pl" class="k-card" style="left:1000px;top:530px;width:800px;height:260px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:20px;font-size:30px">Serial Plotter · gráfico</div>
+  <svg width="740" height="160" style="position:absolute;left:30px;top:80px"><path id="s11-serial-pw" d="M 0 120 C 60 120, 80 40, 140 50 S 220 130, 280 110 S 360 20, 430 40 S 520 140, 600 90 S 690 30, 740 60" stroke="#7FE39A" stroke-width="4" fill="none"/><path d="M 0 70 L 740 70" stroke="#FF6F9C" stroke-width="2" stroke-dasharray="10 8"/></svg>
+</div>
+      </div>
+    </div>
+    <div id="s11-serial-chrome" class="clip k-scene" data-start="0" data-duration="27.095" data-track-index="2">
+      <div id="s11-serial-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>CÓDIGO · SERIAL</b></div>
+      <div id="s11-serial-num" class="k-num">11 / 33</div>
+      <div id="s11-serial-progbar" class="k-prog"><i id="s11-serial-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.68, "c": 11.64, "d": 16.836, "e": 21.899}, D = 27.095;
+        var S = K.scene("11-serial", D, 33), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.rise(tl, $("c1"), C.b);
+        K.rise(tl, $("mon"), C.c);
+        K.wipe(tl, $("out"), C.c + 1.2, { d: 1.6 });
+        K.rise(tl, $("bd"), C.d);
+        K.rise(tl, $("pl"), C.e);
+        K.draw(tl, $("pw"), C.e + 0.6, { d: 1.6 });
+      })();
+    </script>
+  </div>
+</template>

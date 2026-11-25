@@ -1,0 +1,29 @@
+<!--sfx: b:pop@0.2*0.2, c:pop@0.2*0.2, d:pop@0.2*0.2, e:pop@0.2*0.2-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .bk { position: absolute; border-radius: 20px; border: 3px solid; background: #182238; }
+  .bk b { position: absolute; left: 24px; top: 20px; font-family: "Hanken Grotesk", sans-serif; font-size: 30px; }
+  .bk span { position: absolute; left: 24px; top: 70px; font-family: "DM Mono", monospace; font-size: 20px; line-height: 1.45; color: #B9C2DA; white-space: pre-line; }
+</style>
+<div id="@k" class="k-chip k-c-violet" style="left:120px;top:120px;font-size:26px">QUESTÃO 10 · IRRIGAÇÃO AUTOMÁTICA</div>
+<div id="@s" class="bk" style="left:120px;top:250px;width:420px;height:200px;border-color:#4FD6EE"><b class="k-c-cyan">ENTRADA</b><span>sensor de umidade do solo
+(+ temperatura, chuva)</span></div>
+<div id="@m" class="bk" style="left:750px;top:250px;width:420px;height:200px;border-color:#FFD24A"><b class="k-c-yel">PROCESSAMENTO</b><span>ESP32
+Wi-Fi integrado</span></div>
+<div id="@o" class="bk" style="left:1380px;top:250px;width:420px;height:200px;border-color:#FF6F9C"><b class="k-c-pink">SAÍDA</b><span>relé / driver →
+bomba ou válvula solenoide
++ fonte própria</span></div>
+<div id="@c" class="bk" style="left:750px;top:560px;width:1050px;height:220px;border-color:#7FE39A"><b class="k-c-green">COMUNICAÇÃO · MONITORAMENTO REMOTO</b><span>Wi-Fi → plataforma IoT (HTTP / MQTT)
+dashboard: umidade, estado da bomba, histórico
+alertas · acionamento manual remoto</span></div>
+<svg class="k-svg"><path id="@a1" class="arrow" d="M 544 350 L 744 350 M 730 338 L 744 350 L 730 362" stroke="#8C97B5"/><path id="@a2" class="arrow" d="M 1174 350 L 1374 350 M 1360 338 L 1374 350 L 1360 362" stroke="#8C97B5"/><path id="@a3" class="arrow" d="M 960 454 L 960 554 M 948 540 L 960 554 L 972 540" stroke="#8C97B5"/></svg>
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("s"), C.b);
+K.draw(tl, $("a1"), C.c - 0.2, { d: 0.3 });
+K.rise(tl, $("m"), C.c);
+K.draw(tl, $("a2"), C.d - 0.2, { d: 0.3 });
+K.rise(tl, $("o"), C.d);
+K.draw(tl, $("a3"), C.e - 0.2, { d: 0.3 });
+K.rise(tl, $("c"), C.e);
+</script>

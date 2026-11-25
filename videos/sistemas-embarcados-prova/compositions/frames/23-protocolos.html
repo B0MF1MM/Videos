@@ -1,0 +1,38 @@
+<template id="23-protocolos-template">
+  <div id="root" data-composition-id="23-protocolos" data-start="0" data-duration="36.02" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .pr { top: 170px; width: 540px; height: 500px; }
+  .pr .nm { position: absolute; left: 30px; top: 26px; font-family: "DM Mono", monospace; font-size: 48px; }
+  .pr .li { position: absolute; left: 30px; top: 120px; width: 480px; }
+  .pr .li div { font-family: "Hanken Grotesk", sans-serif; font-size: 27px; line-height: 68px; border-bottom: 1px solid #2A3656; color: #EEF1F8; }
+</style>
+    <div id="s23-protocolos-bg" class="clip k-scene k-bg" data-start="0" data-duration="36.02" data-track-index="0"></div>
+    <div id="s23-protocolos-stage" class="clip k-scene" data-start="0" data-duration="36.02" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s23-protocolos-cam" class="k-cam">
+<div id="s23-protocolos-u" class="k-card pr" style="left:120px;border-color:#FF6F9C"><div class="nm k-c-pink">UART</div><div class="li"><div>assíncrona</div><div><b>TX</b> e <b>RX</b> (2 fios)</div><div>velocidade: baud rate</div><div>ponto a ponto</div><div>ex.: PC, GPS, Bluetooth</div></div></div>
+<div id="s23-protocolos-s" class="k-card pr" style="left:690px;border-color:#FFD24A"><div class="nm k-c-yel">SPI</div><div class="li"><div>síncrona</div><div><b>MOSI, MISO, SCK, SS</b> (4)</div><div>rápida</div><div>um SS por dispositivo · sem endereço</div><div>ex.: cartão SD, RFID</div></div></div>
+<div id="s23-protocolos-i" class="k-card pr" style="left:1260px;border-color:#7FE39A"><div class="nm k-c-green">I2C</div><div class="li"><div>síncrona</div><div><b>SDA</b> e <b>SCL</b> (2 fios)</div><div>100 / 400 kbps</div><div>vários por <b>endereço</b></div><div>ex.: LCD, BMP180, RTC</div></div></div>
+<div id="s23-protocolos-mac" class="k-macete" style="left:120px;top:720px;width:1680px;font-size:30px">SDA/SCL = <u>I2C</u> · TX/RX = <u>UART</u> · MOSI/MISO = <u>SPI</u></div>
+      </div>
+    </div>
+    <div id="s23-protocolos-chrome" class="clip k-scene" data-start="0" data-duration="36.02" data-track-index="2">
+      <div id="s23-protocolos-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>PROTOCOLOS</b></div>
+      <div id="s23-protocolos-num" class="k-num">23 / 33</div>
+      <div id="s23-protocolos-progbar" class="k-prog"><i id="s23-protocolos-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 3.796, "c": 8.982, "d": 18.523, "e": 27.988}, D = 36.02;
+        var S = K.scene("23-protocolos", D, 33), tl = S.tl, $ = S.$;
+        K.rise(tl, $("u"), C.b);
+        K.rise(tl, $("s"), C.c);
+        K.rise(tl, $("i"), C.d);
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>

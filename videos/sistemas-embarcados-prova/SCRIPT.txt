@@ -1,0 +1,238 @@
+# Roteiro — Sistemas Embarcados: o que a prova cobra (teoria + código)
+# "# id-da-cena | SEÇÃO" abre uma cena; "chave: legenda || fala" (|| opcional, para a pronúncia).
+
+# 01-abertura | INTRODUÇÃO
+a: Sistemas Embarcados: revisão focada no que a prova cobra.
+b: Analisei a prova: são dez questões, e quase todas giram em torno de um sistema que lê um sensor, decide e aciona alguma coisa.
+c: E vai cair código, provavelmente diferente do que caiu. Por isso, vamos passar por todos os códigos do resumo, linha por linha.
+d: No final, uma proposta completa para a questão discursiva.
+
+# 02-mapa | INTRODUÇÃO
+a: Estes são os temas que caíram.
+b: Arquitetura: entrada, processamento e saída. Leitura analógica, o conversor ADC, e o LDR com divisor de tensão. || Arquitetura: entrada, processamento e saída. Leitura analógica, o conversor á dê cê, e o éle dê érre com divisor de tensão.
+c: O código com analogRead, map e analogWrite. || O código com ânalog rid, mép e ânalog ráit.
+d: Os protocolos UART e I2C. Atuadores com driver. Dashboard e IoT. || Os protocolos u-árt e i quadrado cê. Atuadores com driver. Déxbord e i ó tê.
+e: ROI e Payback. E uma discursiva sobre irrigação automática. || Érre ó í e pêibéc. E uma discursiva sobre irrigação automática.
+
+# 03-arquitetura | ARQUITETURA · Q1
+a: Questão um: a arquitetura de um sistema embarcado.
+b: Todo sistema segue o ciclo perceber, pensar, agir.
+c: O sensor é a entrada: ele percebe o mundo físico, como temperatura, luz ou umidade.
+d: O microcontrolador é o processamento: lê o sensor e decide, seguindo o firmware. || O microcontrolador é o processamento: lê o sensor e decide, seguindo o fêrmuér.
+e: E o atuador, ou o sinalizador, é a saída: LED, buzzer, relé, motor. || E o atuador, ou o sinalizador, é a saída: LED, bâzer, relé, motor.
+f: Pegadinha: firmware é software gravado no chip, não é peça física. Hardware é o corpo; firmware é o cérebro. || Pegadinha: fêrmuér é software gravado no chip, não é peça física. Hardware é o corpo; fêrmuér é o cérebro.
+
+# 04-conceitos | ARQUITETURA
+a: Mais três comparações que costumam cair.
+b: Sistema embarcado faz uma função específica, com baixo consumo e tempo real. O computador comum roda vários programas.
+c: O microcontrolador junta CPU, memória e periféricos num único chip. O microprocessador precisa de memória e periféricos externos.
+d: Arduino e ESP32 são microcontroladores; o ESP32 já tem Wi-Fi e Bluetooth. O Raspberry Pi é um computador de placa única, que roda Linux. || Arduino e ésse pê trinta e dois são microcontroladores; o ésse pê trinta e dois já tem uái fái e blutúf. O Raspberry Pai é um computador de placa única, que roda Línux.
+e: A escolha depende dos requisitos: a melhor tecnologia é a que atende ao projeto.
+
+# 05-estrutura | CÓDIGO · BASE
+a: Agora o código. Todo programa de Arduino tem duas funções obrigatórias.
+b: O setup roda uma única vez, quando a placa liga. É onde se configuram os pinos e a serial. || O sétâp roda uma única vez, quando a placa liga. É onde se configuram os pinos e a serial.
+c: O loop repete para sempre. É onde fica a lógica do sistema. || O lup repete para sempre. É onde fica a lógica do sistema.
+d: pinMode define se o pino é entrada ou saída. digitalWrite coloca HIGH, cinco volts, ou LOW, zero volts. || Pin môud define se o pino é entrada ou saída. Dígital ráit coloca rái, cinco volts, ou lôu, zero volts.
+e: digitalRead lê um pino e devolve um ou zero. E delay pausa em milissegundos: mil é um segundo. || Dígital rid lê um pino e devolve um ou zero. E dilêi pausa em milissegundos: mil é um segundo.
+f: Juntando tudo, o pisca LED: acende, espera um segundo, apaga, espera um segundo, e repete.
+
+# 06-dig-anal | CÓDIGO · BASE
+a: Digital ou analógico? Essa diferença está em metade da prova.
+b: Digital tem só dois estados: HIGH ou LOW, cinco ou zero volts. Lê com digitalRead, escreve com digitalWrite. || Digital tem só dois estados: rái ou lôu, cinco ou zero volts. Lê com dígital rid, escreve com dígital ráit.
+c: Analógico tem valores contínuos, de zero a cinco volts. No Uno, entra pelos pinos A0 a A5, e se lê com analogRead. || Analógico tem valores contínuos, de zero a cinco volts. No Uno, entra pelos pinos á zero a á cinco, e se lê com ânalog rid.
+d: Exemplos digitais: LED, relé, botão, buzzer. Exemplos analógicos: LDR, potenciômetro, umidade do solo. || Exemplos digitais: LED, relé, botão, bâzer. Exemplos analógicos: éle dê érre, potenciômetro, umidade do solo.
+e: Macete: interruptor é digital, liga ou desliga. Dimmer é analógico, tem todos os níveis.
+
+# 07-adc | ANALÓGICO · Q4
+a: Questão quatro: o conversor analógico-digital, o ADC. || Questão quatro: o conversor analógico-digital, o á dê cê.
+b: O ADC do Arduino Uno tem dez bits. Dois elevado a dez dá mil e vinte e quatro níveis: de zero a mil e vinte e três. || O á dê cê do Arduino Uno tem dez bits. Dois elevado a dez dá mil e vinte e quatro níveis: de zero a mil e vinte e três.
+c: Zero volts vira zero. Cinco volts vira mil e vinte e três. Cada degrau vale cerca de quatro vírgula nove milivolts.
+d: Então, uma leitura de oitocentos e cinquenta não são oitocentos e cinquenta volts. Para voltar à tensão: oitocentos e cinquenta vezes cinco, dividido por mil e vinte e três, dá quatro vírgula um cinco volts.
+e: No ESP32 é diferente: o ADC tem doze bits, de zero a quatro mil e noventa e cinco, e a tensão máxima é três vírgula três volts. || No ésse pê trinta e dois é diferente: o á dê cê tem doze bits, de zero a quatro mil e noventa e cinco, e a tensão máxima é três vírgula três volts.
+
+# 08-ldr | ANALÓGICO · Q3
+a: Questão três: o LDR. || Questão três: o éle dê érre.
+b: O LDR é um sensor: um resistor que muda a resistência conforme a luz. Mais luz, menos resistência. || O éle dê érre é um sensor: um resistor que muda a resistência conforme a luz. Mais luz, menos resistência.
+c: Sozinho, o Arduino não lê resistência, só tensão. Por isso o LDR entra num divisor de tensão, junto com um resistor fixo. || Sozinho, o Arduino não lê resistência, só tensão. Por isso o éle dê érre entra num divisor de tensão, junto com um resistor fixo.
+d: Quando a luz muda, a resistência muda, e a tensão no meio do divisor muda. Essa tensão vai para o pino analógico, e o ADC converte. || Quando a luz muda, a resistência muda, e a tensão no meio do divisor muda. Essa tensão vai para o pino analógico, e o á dê cê converte.
+e: No código: lê o A0, e se o valor indicar pouca luz, acende a lâmpada. Quem decide é o microcontrolador, não o LDR. || No código: lê o á zero, e se o valor indicar pouca luz, acende a lâmpada. Quem decide é o microcontrolador, não o éle dê érre.
+
+# 09-pwm | ANALÓGICO · Q2
+a: Agora a saída: analogWrite e o PWM. || Agora a saída: ânalog ráit e o pê dáblio ême.
+b: O Arduino não tem saída analógica de verdade. O analogWrite liga e desliga o pino muito rápido: isso é o PWM. || O Arduino não tem saída analógica de verdade. O ânalog ráit liga e desliga o pino muito rápido: isso é o pê dáblio ême.
+c: O valor vai de zero a duzentos e cinquenta e cinco, oito bits. Zero é sempre desligado; duzentos e cinquenta e cinco, sempre ligado; cento e vinte e sete, ligado metade do tempo.
+d: Esse percentual de tempo ligado é o ciclo de trabalho. O LED parece mais forte ou mais fraco, mas o sinal continua digital.
+e: Só funciona nos pinos com til no Uno: três, cinco, seis, nove, dez e onze.
+
+# 10-map | CÓDIGO · Q2
+a: Questão dois junta tudo: potenciômetro no A0, LED no pino nove. || Questão dois junta tudo: potenciômetro no á zero, LED no pino nove.
+b: No setup: o pino do LED como saída, e a serial a nove mil e seiscentos. || No sétâp: o pino do LED como saída, e a serial a nove mil e seiscentos.
+c: No loop: analogRead lê o potenciômetro, de zero a mil e vinte e três. || No lup: ânalog rid lê o potenciômetro, de zero a mil e vinte e três.
+d: Mas o analogWrite só aceita de zero a duzentos e cinquenta e cinco. Quem faz a ponte é o map: uma regra de três que converte uma faixa na outra. || Mas o ânalog ráit só aceita de zero a duzentos e cinquenta e cinco. Quem faz a ponte é o mép: uma regra de três que converte uma faixa na outra.
+e: Leitura quinhentos e doze vira cento e vinte e sete, mais ou menos metade do brilho. O map também inverte faixas: map de solo, de quatro mil e noventa e cinco até mil e quinhentos, para zero a cem por cento. || Leitura quinhentos e doze vira cento e vinte e sete, mais ou menos metade do brilho. O mép também inverte faixas: mép de solo, de quatro mil e noventa e cinco até mil e quinhentos, para zero a cem por cento.
+f: E o Serial.print mostra os valores no Monitor Serial. A cada meio segundo, tudo se repete. || E o sírial print mostra os valores no Monitor Sírial. A cada meio segundo, tudo se repete.
+
+# 11-serial | CÓDIGO · SERIAL
+a: A comunicação serial com o computador.
+b: Serial.begin de nove mil e seiscentos abre a comunicação a nove mil e seiscentos bits por segundo. No ESP32, é comum cento e quinze mil e duzentos. || Sírial biguín de nove mil e seiscentos abre a comunicação a nove mil e seiscentos bits por segundo. No ésse pê trinta e dois, é comum cento e quinze mil e duzentos.
+c: Serial.print escreve e continua na mesma linha. Serial.println escreve e pula a linha. || Sírial print escreve e continua na mesma linha. Sírial print láin escreve e pula a linha.
+d: O Monitor Serial precisa estar na mesma velocidade, senão aparecem caracteres estranhos. || O Monitor Sírial precisa estar na mesma velocidade, senão aparecem caracteres estranhos.
+e: E o Serial Plotter desenha os valores como um gráfico, como um osciloscópio simples. || E o Sírial Plóter desenha os valores como um gráfico, como um osciloscópio simples.
+
+# 12-gas | CÓDIGO · SENSOR DE GÁS
+a: Código do sensor de gás com LED e buzzer. || Código do sensor de gás com LED e bâzer.
+b: No setup, os pinos oito e nove como saída: o LED e o buzzer. || No sétâp, os pinos oito e nove como saída: o LED e o bâzer.
+c: No loop, analogRead do A0 guarda a leitura em sensorValue, e o Serial.println mostra o valor. || No lup, ânalog rid do á zero guarda a leitura em sênsor valiú, e o sírial print láin mostra o valor.
+d: Se a leitura passar de quinhentos, liga o LED e o buzzer. Senão, desliga os dois. É o padrão limiar: ler, comparar, acionar. || Se a leitura passar de quinhentos, liga o LED e o bâzer. Senão, desliga os dois. É o padrão limiar: ler, comparar, acionar.
+e: Nos sensores MQ, a resistência cai quando há gás, e a tensão de saída sobe. MQ-135 é qualidade do ar, MQ-4 é metano, MQ-5 é gás de cozinha. || Nos sensores ême quê, a resistência cai quando há gás, e a tensão de saída sobe. Ême quê cento e trinta e cinco é qualidade do ar, ême quê quatro é metano, ême quê cinco é gás de cozinha.
+
+# 13-tmp36 | CÓDIGO · TEMPERATURA
+a: Código do sensor de temperatura com LCD.
+b: Primeiro, converte a leitura em tensão: leitura vezes cinco, dividido por mil e vinte e três.
+c: Depois, a tensão em graus: tensão menos zero vírgula cinco, vezes cem. Zero vírgula setenta e cinco volts dá vinte e cinco graus.
+d: Mostra no LCD: Temp Atual, a temperatura com uma casa decimal, e a letra C.
+e: Na segunda linha, compara com a temperatura alvo, ta. O fabs, valor absoluto, testa se estão iguais; senão, diz Acima de, ou Abaixo de. || Na segunda linha, compara com a temperatura alvo, tê á. O fábs, valor absoluto, testa se estão iguais; senão, diz Acima de, ou Abaixo de.
+
+# 14-pir | CÓDIGO · PIR
+a: Sensor de movimento PIR: ele dá um sinal digital, HIGH quando detecta movimento. || Sensor de movimento pir: ele dá um sinal digital, rái quando detecta movimento.
+b: Versão simples: digitalRead do pino dois. Se for HIGH, acende o LED da placa, o LED_BUILTIN, no pino treze. Senão, apaga. || Versão simples: dígital rid do pino dois. Se for rái, acende o LED da placa, o LED bíltin, no pino treze. Senão, apaga.
+c: Versão com for: se detectar movimento, o LED pisca três vezes. Um segundo aceso, meio segundo apagado. || Versão com for: se detectar movimento, o LED pisca três vezes. Um segundo aceso, meio segundo apagado.
+d: O for repete um número definido de vezes: i começa em zero, vai enquanto i menor que três, e soma um a cada volta.
+e: Repare na estrutura: if decide, for repete, e o loop recomeça tudo de novo.
+
+# 15-pir-lcd | CÓDIGO · PIR + LCD
+a: PIR com LCD e contador de eventos. || Pir com LCD e contador de eventos.
+b: A variável ultE guarda o estado anterior do sensor. Assim o código percebe só a mudança, e não conta o mesmo movimento várias vezes. || A variável últi ê guarda o estado anterior do sensor. Assim o código percebe só a mudança, e não conta o mesmo movimento várias vezes.
+c: Se agora é HIGH e antes era LOW, é a subida: soma um em eventos e mostra Move Detectado, total igual a n. || Se agora é rái e antes era lôu, é a subida: soma um em eventos e mostra Move Detectado, total igual a ene.
+d: Se agora é LOW e antes era HIGH, é a descida: mostra Area Livre. || Se agora é lôu e antes era rái, é a descida: mostra Área Livre.
+e: No fim, ultE recebe o estado atual. Detalhe que pode cair: o pinMode configura o pino dois, mas a leitura é no pino quatro. O correto seria pinMode de pp. || No fim, últi ê recebe o estado atual. Detalhe que pode cair: o pin môud configura o pino dois, mas a leitura é no pino quatro. O correto seria pin môud de pê pê.
+
+# 16-lcd-i2c | CÓDIGO · LCD I2C
+a: O LCD dezesseis por dois com módulo I2C. || O LCD dezesseis por dois com módulo i quadrado cê.
+b: Inclui duas bibliotecas: Wire, do I2C, e LiquidCrystal_I2C. E cria o lcd com três números: o endereço, as colunas e as linhas. || Inclui duas bibliotecas: uáier, do i quadrado cê, e Líquid Cristal i quadrado cê. E cria o LCD com três números: o endereço, as colunas e as linhas.
+c: No setup: init inicializa, backlight liga a luz de fundo. || No sétâp: init inicializa, béclaite liga a luz de fundo.
+d: setCursor recebe coluna e depois linha, começando do zero. Zero, zero é o início da primeira linha; zero, um é o início da segunda. E print escreve. || Sét cursor recebe coluna e depois linha, começando do zero. Zero, zero é o início da primeira linha; zero, um é o início da segunda. E print escreve.
+e: No loop, scrollDisplayRight desloca o texto uma coluna para a direita, e o delay controla a velocidade. || No lup, scrol displêi ráit desloca o texto uma coluna para a direita, e o dilêi controla a velocidade.
+f: Se o LCD acender sem texto, o endereço provavelmente está errado: zero x vinte, zero x vinte e sete ou zero x três F. O scanner I2C descobre o certo. || Se o LCD acender sem texto, o endereço provavelmente está errado: zero xis vinte, zero xis vinte e sete ou zero xis três éfe. O scanner i quadrado cê descobre o certo.
+
+# 17-lcd-dht | CÓDIGO · LCD + DHT11
+a: Duas variações que também estão no resumo.
+b: O LCD sem módulo usa a biblioteca LiquidCrystal e seis pinos: RS, E, e os dados D4 a D7. E começa com lcd.begin de dezesseis, dois. || O LCD sem módulo usa a biblioteca Líquid Cristal e seis pinos: érre ésse, ê, e os dados dê quatro a dê sete. E começa com LCD biguín de dezesseis, dois.
+c: O DHT11 mede temperatura e umidade, usando um único pino de dados. || O dê agá tê onze mede temperatura e umidade, usando um único pino de dados.
+d: readTemperature devolve graus Celsius, e readHumidity, a umidade em porcentagem. || Rid temperatura devolve graus Célsius, e rid ríumiditi, a umidade em porcentagem.
+e: Atenção: o DHT11 precisa de pelo menos dois segundos entre leituras, por isso o delay de dois mil. || Atenção: o dê agá tê onze precisa de pelo menos dois segundos entre leituras, por isso o dilêi de dois mil.
+
+# 18-atuador | ATUADORES · Q7
+a: Questão sete: atuadores e acionamento.
+b: Uma bomba, um motor ou uma lâmpada são atuadores. Mas um pino do microcontrolador só fornece uns vinte a quarenta miliamperes.
+c: Por isso não se liga uma carga dessas direto no pino: é preciso um circuito intermediário, como um relé, um transistor ou um driver.
+d: O pino só dá o comando, e o relé, como uma chave, liga a carga com a energia de uma fonte própria.
+e: Pegadinha do módulo relé: ele aciona com LOW. LOW liga, HIGH desliga. || Pegadinha do módulo relé: ele aciona com lôu. Lôu liga, rái desliga.
+f: E cuidado: a carga pode estar na rede elétrica, de cento e dez ou duzentos e vinte volts.
+
+# 19-rele-cod | CÓDIGO · RELÉ
+a: Os códigos do relé.
+b: Exemplo um: duas lâmpadas alternando. Relé um no pino sete, relé dois no pino oito.
+c: LOW no sete e HIGH no oito: liga a lâmpada um. Depois de dois segundos, inverte: liga a lâmpada dois. || Lôu no sete e rái no oito: liga a lâmpada um. Depois de dois segundos, inverte: liga a lâmpada dois.
+d: Exemplo dois: um botão que liga e desliga. Lê o botão, espera ele ser solto com um while, e inverte o estado com o ponto de exclamação. || Exemplo dois: um botão que liga e desliga. Lê o botão, espera ele ser solto com um uáile, e inverte o estado com o ponto de exclamação.
+e: O ponto de exclamação é o não lógico: um vira zero, zero vira um. Cada clique troca o estado do relé.
+
+# 20-tone-ohm | CÓDIGO · OUTROS
+a: Mais dois itens rápidos do resumo.
+b: tone de seis, cinquenta gera uma onda de cinquenta hertz no pino seis, para um buzzer. O osciloscópio mostra essa onda. || Tôun de seis, cinquenta gera uma onda de cinquenta hertz no pino seis, para um bâzer. O osciloscópio mostra essa onda.
+c: E o resistor do LED, pela Lei de Ohm: V igual a R vezes I.
+d: O pino dá cinco volts, o LED vermelho usa dois volts e vinte miliamperes. R igual a cinco menos dois, dividido por zero vírgula zero dois: cento e cinquenta ohms.
+e: Sem resistor, o LED queima. E o LED tem polaridade: a perna maior é o positivo, o anodo.
+
+# 21-uart | PROTOCOLOS · Q5
+a: Questão cinco: a UART. || Questão cinco: a u-árt.
+b: É uma comunicação serial assíncrona: não tem fio de clock. || É uma comunicação serial assíncrona: não tem fio de clóc.
+c: Usa dois sinais: TX, que transmite, e RX, que recebe. E eles se ligam cruzados: o TX de um no RX do outro. || Usa dois sinais: tê xis, que transmite, e érre xis, que recebe. E eles se ligam cruzados: o tê xis de um no érre xis do outro.
+d: Como não há clock, os dois lados precisam combinar a velocidade: o baud rate, como nove mil e seiscentos. || Como não há clóc, os dois lados precisam combinar a velocidade: o bód rêit, como nove mil e seiscentos.
+e: É ponto a ponto, um dispositivo de cada lado. Exemplos: o Arduino com o computador, um módulo GPS, um módulo Bluetooth. || É ponto a ponto, um dispositivo de cada lado. Exemplos: o Arduino com o computador, um módulo gê pê ésse, um módulo blutúf.
+
+# 22-i2c | PROTOCOLOS · Q6
+a: Questão seis: o I2C. || Questão seis: o i quadrado cê.
+b: São só dois fios: SDA, que leva os dados, e SCL, que leva o clock. É uma comunicação síncrona. || São só dois fios: ésse dê á, que leva os dados, e ésse cê éle, que leva o clóc. É uma comunicação síncrona.
+c: Vários dispositivos ficam pendurados no mesmo par de fios, o barramento.
+d: Cada dispositivo tem um endereço único. O mestre, o microcontrolador, chama pelo endereço, e só aquele dispositivo responde.
+e: Assim o LCD, no zero x vinte e sete, e um sensor de temperatura, em outro endereço, dividem os mesmos dois fios. No ESP32, SDA é o GPIO vinte e um e SCL o vinte e dois. || Assim o LCD, no zero xis vinte e sete, e um sensor de temperatura, em outro endereço, dividem os mesmos dois fios. No ésse pê trinta e dois, ésse dê á é o gê pê i ó vinte e um e ésse cê éle o vinte e dois.
+
+# 23-protocolos | PROTOCOLOS
+a: Comparando os três protocolos, incluindo o SPI. || Comparando os três protocolos, incluindo o ésse pê í.
+b: UART: assíncrona, TX e RX, velocidade pelo baud rate, ponto a ponto. || U-árt: assíncrona, tê xis e érre xis, velocidade pelo bód rêit, ponto a ponto.
+c: SPI: síncrona, quatro fios, MOSI, MISO, clock e chip select. É rápida, mas não usa endereço: precisa de um fio de seleção para cada dispositivo. || Ésse pê í: síncrona, quatro fios, môzi, mízo, clóc e chip select. É rápida, mas não usa endereço: precisa de um fio de seleção para cada dispositivo.
+d: I2C: síncrona, dois fios, SDA e SCL, vários dispositivos por endereço. Mais lenta: cem ou quatrocentos quilobits por segundo. || I quadrado cê: síncrona, dois fios, ésse dê á e ésse cê éle, vários dispositivos por endereço. Mais lenta: cem ou quatrocentos quilobits por segundo.
+e: Macete: SDA e SCL é I2C. TX e RX é UART. MOSI e MISO é SPI. || Macete: ésse dê á e ésse cê éle é i quadrado cê. Tê xis e érre xis é u-árt. Môzi e mízo é ésse pê í.
+
+# 24-esp32 | ESP32
+a: O ESP32, que aparece na discursiva e no IoT. || O ésse pê trinta e dois, que aparece na discursiva e no i ó tê.
+b: Ele tem Wi-Fi e Bluetooth integrados, dois núcleos, e trabalha em três vírgula três volts. || Ele tem uái fái e blutúf integrados, dois núcleos, e trabalha em três vírgula três volts.
+c: Pinos com cuidado: do seis ao onze, não use, são da memória flash. Trinta e quatro, trinta e cinco, trinta e seis e trinta e nove são só de entrada.
+d: Com o Wi-Fi ligado, o ADC2 não funciona: leia sensores analógicos nos pinos do ADC1, do trinta e dois ao trinta e nove. || Com o uái fái ligado, o á dê cê dois não funciona: leia sensores analógicos nos pinos do á dê cê um, do trinta e dois ao trinta e nove.
+e: E um sensor de cinco volts precisa de um divisor de tensão antes do pino, para não passar de três vírgula três volts.
+
+# 25-esp32-cod | ESP32 · CÓDIGO
+a: Três recursos do ESP32 que podem cair em código. || Três recursos do ésse pê trinta e dois que podem cair em código.
+b: Interrupção: attachInterrupt liga um pino a uma função curta, a ISR. Quando o botão é apertado, o programa para, executa a ISR, e volta. || Interrupção: atátch interrupt liga um pino a uma função curta, a í ésse érre. Quando o botão é apertado, o programa para, executa a í ésse érre, e volta.
+c: Timer e millis: diferente do delay, não travam o programa. Com millis, o código só age quando passou o tempo, e o loop continua rodando. || Timer e mílis: diferente do dilêi, não travam o programa. Com mílis, o código só age quando passou o tempo, e o lup continua rodando.
+d: Deep sleep: desliga quase tudo e acorda depois de um tempo. O consumo cai de cerca de cem miliamperes para microamperes. || Díp slip: desliga quase tudo e acorda depois de um tempo. O consumo cai de cerca de cem miliamperes para microamperes.
+e: Ótimo para sensores a bateria, que leem, enviam e voltam a dormir.
+
+# 26-iot | IOT · Q8
+a: Questão oito: IoT e dashboard. || Questão oito: i ó tê e déxbord.
+b: O caminho dos dados: os sensores medem, o ESP32 processa e envia pelo Wi-Fi. || O caminho dos dados: os sensores medem, o ésse pê trinta e dois processa e envia pelo uái fái.
+c: Um servidor recebe, por exemplo com HTTP ou MQTT, e guarda num banco de dados. || Um servidor recebe, por exemplo com agá tê tê pê ou ême quê tê tê, e guarda num banco de dados.
+d: O dashboard é o painel: mostra os dados em gráficos, indicadores e alertas, em tempo real. Exemplos: Blynk, ThingSpeak, Grafana. || O déxbord é o painel: mostra os dados em gráficos, indicadores e alertas, em tempo real. Exemplos: Blink, Thing Spik, Grafana.
+e: Pegadinha: o dashboard não mede nada e não substitui sensor nem firmware. Ele só mostra, alerta, e pode mandar comandos remotos. || Pegadinha: o déxbord não mede nada e não substitui sensor nem fêrmuér. Ele só mostra, alerta, e pode mandar comandos remotos.
+
+# 27-http | IOT · CÓDIGO
+a: O código de envio pelo Wi-Fi, do guia do ESP32. || O código de envio pelo uái fái, do guia do ésse pê trinta e dois.
+b: Inclui WiFi e HTTPClient. No setup, WiFi.begin conecta à rede, e o while espera até o status ser conectado. || Inclui uái fái e agá tê tê pê client. No sétâp, uái fái biguín conecta à rede, e o uáile espera até o status ser conectado.
+c: No loop, monta o endereço do servidor com os valores dos sensores, e faz um GET. || No lup, monta o endereço do servidor com os valores dos sensores, e faz um guét.
+d: O código duzentos significa que deu certo. Depois, http.end fecha a conexão, e o delay de dez segundos espera o próximo envio. || O código duzentos significa que deu certo. Depois, agá tê tê pê end fecha a conexão, e o dilêi de dez segundos espera o próximo envio.
+
+# 28-roi | NEGÓCIO · Q9
+a: Questão nove: ROI e Payback. || Questão nove: érre ó í e pêibéc.
+b: O ROI é o retorno sobre o investimento, em porcentagem: benefício menos investimento, dividido pelo investimento, vezes cem. || O érre ó í é o retorno sobre o investimento, em porcentagem: benefício menos investimento, dividido pelo investimento, vezes cem.
+c: O Payback é o tempo para recuperar o investimento: investimento dividido pelo benefício líquido mensal. || O pêibéc é o tempo para recuperar o investimento: investimento dividido pelo benefício líquido mensal.
+d: Exemplo: investimento de oito mil reais, economia de mil por mês, custo de duzentos por mês. O benefício líquido é oitocentos. Payback: oito mil dividido por oitocentos, dez meses. || Exemplo: investimento de oito mil reais, economia de mil por mês, custo de duzentos por mês. O benefício líquido é oitocentos. Pêibéc: oito mil dividido por oitocentos, dez meses.
+e: ROI em doze meses: nove mil e seiscentos menos oito mil, dividido por oito mil: vinte por cento. || Érre ó í em doze meses: nove mil e seiscentos menos oito mil, dividido por oito mil: vinte por cento.
+f: Macete: ROI é percentual, Payback é tempo. ROI positivo não garante que o sistema não falhe. || Macete: érre ó í é percentual, pêibéc é tempo. Érre ó í positivo não garante que o sistema não falhe.
+
+# 29-kpi | NEGÓCIO
+a: Outros indicadores e conceitos do resumo.
+b: Latência: soma dos tempos de detecção, processamento, comunicação e acionamento. Disponibilidade: tempo funcionando dividido pelo tempo total.
+c: Acurácia é estar perto do valor real. Precisão é repetir o mesmo valor. Um sensor pode ser preciso e pouco acurado.
+d: Requisito funcional diz o que o sistema faz. Não funcional diz como: consumo, custo, tempo de resposta.
+e: Trade-off: melhorar uma coisa piora outra. E protótipo não é produto: o produto precisa de placa própria, certificação e testes. || Treid óf: melhorar uma coisa piora outra. E protótipo não é produto: o produto precisa de placa própria, certificação e testes.
+
+# 30-q10-arq | DISCURSIVA · Q10
+a: Questão dez: a proposta de irrigação automática. Comece pela arquitetura.
+b: Entrada: um sensor de umidade do solo. Opcionalmente, temperatura e chuva.
+c: Processamento: um ESP32, porque já tem Wi-Fi para o monitoramento remoto. || Processamento: um ésse pê trinta e dois, porque já tem uái fái para o monitoramento remoto.
+d: Saída: um relé, ou driver, acionando a bomba ou uma válvula solenoide, com fonte de alimentação própria.
+e: Comunicação: o ESP32 envia os dados pelo Wi-Fi para uma plataforma IoT, com dashboard, alertas e botão de acionamento manual. || Comunicação: o ésse pê trinta e dois envia os dados pelo uái fái para uma plataforma i ó tê, com déxbord, alertas e botão de acionamento manual.
+
+# 31-q10-cod | DISCURSIVA · Q10
+a: A lógica da irrigação, em código.
+b: Lê o sensor de solo no ADC, e usa o map para transformar a leitura em porcentagem de umidade. Valor alto é solo seco, por isso a faixa é invertida. || Lê o sensor de solo no á dê cê, e usa o mép para transformar a leitura em porcentagem de umidade. Valor alto é solo seco, por isso a faixa é invertida.
+c: Se a umidade cair abaixo de trinta por cento, liga a bomba. Se passar de sessenta, desliga.
+d: Entre os dois limites, não muda nada. Isso é histerese: evita que a bomba fique ligando e desligando sem parar.
+e: Lembrando: o relé liga com LOW. E a cada leitura, o ESP32 envia a umidade e o estado da bomba para o dashboard. || Lembrando: o relé liga com lôu. E a cada leitura, o ésse pê trinta e dois envia a umidade e o estado da bomba para o déxbord.
+
+# 32-q10-resp | DISCURSIVA · Q10
+a: Como escrever a resposta da discursiva.
+b: Um: o objetivo do sistema e os requisitos, o que ele precisa fazer.
+c: Dois: a arquitetura com os componentes: sensor, microcontrolador, atuador com relé, alimentação e comunicação.
+d: Três: o funcionamento: os limites de umidade, o envio dos dados, o dashboard e o comando remoto. || Três: o funcionamento: os limites de umidade, o envio dos dados, o déxbord e o comando remoto.
+e: Quatro: testes, calibração do sensor, e a análise de custo com ROI e Payback. || Quatro: testes, calibração do sensor, e a análise de custo com érre ó í e pêibéc.
+
+# 33-cola | REVISÃO
+a: Para levar para a prova.
+b: Sensor é entrada, microcontrolador é processamento, atuador é saída.
+c: analogRead vai de zero a mil e vinte e três. analogWrite vai de zero a duzentos e cinquenta e cinco. O map converte uma faixa na outra. || Ânalog rid vai de zero a mil e vinte e três. Ânalog ráit vai de zero a duzentos e cinquenta e cinco. O mép converte uma faixa na outra.
+d: UART: TX, RX e baud rate. I2C: SDA, SCL e endereço. || U-árt: tê xis, érre xis e bód rêit. I quadrado cê: ésse dê á, ésse cê éle e endereço.
+e: Carga pesada precisa de relé ou driver, e o relé liga com LOW. ROI é percentual; Payback é tempo. || Carga pesada precisa de relé ou driver, e o relé liga com lôu. Érre ó í é percentual; pêibéc é tempo.
+f: Agora é com você. Boa prova!

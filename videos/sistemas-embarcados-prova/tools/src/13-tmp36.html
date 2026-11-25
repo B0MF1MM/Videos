@@ -1,0 +1,40 @@
+<!--sfx: b:pop@0.6*0.2, d:pop*0.2, e:pop@0.6*0.2-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .lcd { position: absolute; border-radius: 16px; background: #1B3A1F; border: 4px solid #2E5E33; box-shadow: inset 0 0 30px rgba(0,0,0,0.5); }
+  .lcdin { position: absolute; left: 30px; top: 0; height: 178px; overflow: hidden; }
+  .lr { position: absolute; left: 0; height: 56px; width: 2000px; }
+  .lr b { position: absolute; top: 0; width: 34px; height: 56px; background: #24502A; border-radius: 3px; font-family: "DM Mono", monospace; font-weight: 400; font-size: 34px; line-height: 56px; text-align: center; color: #C8F7C5; }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:160px;width:1000px;height:608px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>temperatura_lcd.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:22px;--lh:40px"><span class="ln" id="@c0"><span class="k-c-violet">int</span> leitura = <span class="k-c-cyan">analogRead</span>(ps);</span><span class="ln" id="@c1"><span class="k-c-violet">float</span> tensao = leitura * (<span class="k-c-orange">5.0</span> / <span class="k-c-orange">1023</span>);</span><span class="ln" id="@c2"><span class="k-c-violet">float</span> tempC = (tensao - <span class="k-c-orange">0.5</span>) * <span class="k-c-orange">100.0</span>;</span><span class="ln" id="@c3"><span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">clear</span>();</span><span class="ln" id="@c4"><span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">setCursor</span>(<span class="k-c-orange">0</span>, <span class="k-c-orange">0</span>);</span><span class="ln" id="@c5"><span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Temp Atual: "</span>);</span><span class="ln" id="@c6"><span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(tempC, <span class="k-c-orange">1</span>);</span><span class="ln" id="@c7"><span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">" C"</span>);</span><span class="ln" id="@c8"><span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">setCursor</span>(<span class="k-c-orange">0</span>, <span class="k-c-orange">1</span>);</span><span class="ln" id="@c9"><span class="k-c-violet">if</span> (<span class="k-c-cyan">fabs</span>(tempC - ta) &lt; <span class="k-c-orange">0.1</span>) <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Igual a: "</span>);</span><span class="ln" id="@c10"><span class="k-c-violet">else</span> <span class="k-c-violet">if</span> (tempC &gt; ta)        <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Acima de: "</span>);</span><span class="ln" id="@c11"><span class="k-c-violet">else</span>                        <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Abaixo de: "</span>);</span><span class="ln" id="@c12"><span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(ta, <span class="k-c-orange">1</span>);</span></div>
+</div>
+<div id="@ex" class="k-card" style="left:1170px;top:160px;width:630px;height:230px;border-color:#FFD24A">
+  <div class="k-code" style="left:26px;top:22px;font-size:25px;line-height:62px">leitura = 153
+tensão  = 153×5/1023 = <span class="k-c-yel">0,75 V</span>
+tempC   = (0,75−0,5)×100 = <span class="k-c-yel">25,0</span></div>
+</div>
+<div id="@lc" class="lcd" style="left:1170px;top:430px;width:636px;height:178px"><div class="lcdin" style="width:576px"><div class="lr" id="@lcr0" style="top:30px"><b style="left:0px">T</b><b style="left:36px">e</b><b style="left:72px">m</b><b style="left:108px">p</b><b style="left:144px">&nbsp;</b><b style="left:180px">A</b><b style="left:216px">t</b><b style="left:252px">u</b><b style="left:288px">a</b><b style="left:324px">l</b><b style="left:360px">:</b><b style="left:396px">&nbsp;</b><b style="left:432px">2</b><b style="left:468px">5</b><b style="left:504px">.</b><b style="left:540px">0</b></div><div class="lr" id="@lcr1" style="top:94px"><b style="left:0px">A</b><b style="left:36px">c</b><b style="left:72px">i</b><b style="left:108px">m</b><b style="left:144px">a</b><b style="left:180px">&nbsp;</b><b style="left:216px">d</b><b style="left:252px">e</b><b style="left:288px">:</b><b style="left:324px">&nbsp;</b><b style="left:360px">2</b><b style="left:396px">2</b><b style="left:432px">.</b><b style="left:468px">0</b><b style="left:504px">C</b><b style="left:540px">&nbsp;</b></div></div></div>
+<div id="@fb" class="k-anno" style="left:1170px;top:640px;font-size:22px"><span class="k-c-cyan">fabs</span> = valor absoluto (sem sinal)
+|25,0 − 22,0| = 3,0 → não é igual
+25,0 > 22,0 → <span class="k-c-yel">"Acima de: "</span></div>
+<script>
+K.rise(tl, $("win"), C.a);
+K.hl(tl, $("c0"), C.b, C.c);
+K.hl(tl, $("c1"), C.b, C.c);
+K.hl(tl, $("c2"), C.c, C.d);
+K.hl(tl, $("c4"), C.d, C.e);
+K.hl(tl, $("c5"), C.d, C.e);
+K.hl(tl, $("c6"), C.d + 1.6, C.e);
+K.hl(tl, $("c7"), C.d + 3.0, C.e);
+K.hl(tl, $("c8"), C.e, C.e + 8);
+K.hl(tl, $("c9"), C.e + 2.0, C.e + 8);
+K.hl(tl, $("c10"), C.e + 4.6, C.e + 8);
+K.hl(tl, $("c11"), C.e + 4.6, C.e + 8);
+K.rise(tl, $("ex"), C.b + 0.6);
+K.rise(tl, $("lc"), C.d);
+tl.set($("lcr1"), { opacity: 0 }, 0);
+tl.to($("lcr1"), { opacity: 1, duration: 0.3 }, C.e + 0.6);
+K.wipe(tl, $("fb"), C.e + 2.4);
+</script>

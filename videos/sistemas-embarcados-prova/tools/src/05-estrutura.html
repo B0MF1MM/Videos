@@ -1,0 +1,41 @@
+<!--sfx: b:pop@0.2*0.2, c:pop@0.2*0.2, f:click-soft@0.4*0.2-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .nt { left: 1120px; width: 680px; height: 118px; }
+  .nt b { position: absolute; left: 28px; top: 18px; font-family: 'DM Mono', monospace; font-size: 32px; }
+  .nt span { position: absolute; left: 28px; top: 66px; font-family: 'Hanken Grotesk', sans-serif; font-size: 24px; color: #B9C2DA; }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:180px;width:940px;height:502px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>pisca_led.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:28px;--lh:46px"><span class="ln" id="@c0"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="@c1">  <span class="k-c-cyan">pinMode</span>(<span class="k-c-orange">13</span>, <span class="k-c-yel">OUTPUT</span>);     <span class="k-mute">// pino 13 = saída</span></span><span class="ln" id="@c2">}</span><span class="ln" id="@c3"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="@c4">  <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-orange">13</span>, <span class="k-c-yel">HIGH</span>);  <span class="k-mute">// acende</span></span><span class="ln" id="@c5">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">1000</span>);             <span class="k-mute">// espera 1 s</span></span><span class="ln" id="@c6">  <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-orange">13</span>, <span class="k-c-yel">LOW</span>);   <span class="k-mute">// apaga</span></span><span class="ln" id="@c7">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">1000</span>);             <span class="k-mute">// espera 1 s</span></span><span class="ln" id="@c8">}</span></div>
+</div>
+<div id="@n1" class="k-card nt" style="top:180px;border-color:#4FD6EE"><b class="k-c-cyan">setup()</b><span>roda <u>uma vez</u> ao ligar · configura pinos e serial</span></div>
+<div id="@n2" class="k-card nt" style="top:320px;border-color:#7FE39A"><b class="k-c-green">loop()</b><span>repete <u>para sempre</u> · a lógica do sistema</span></div>
+<div id="@n3" class="k-anno" style="left:1120px;top:470px;font-size:23px"><span class="k-c-cyan">pinMode</span>(pino, OUTPUT/INPUT)
+<span class="k-c-cyan">digitalWrite</span>(pino, <span class="k-c-yel">HIGH</span>=5 V / <span class="k-c-yel">LOW</span>=0 V)</div>
+<div id="@n4" class="k-anno" style="left:1120px;top:580px;font-size:23px"><span class="k-c-cyan">digitalRead</span>(pino) → 1 ou 0
+<span class="k-c-cyan">delay</span>(ms) → 1000 = 1 s</div>
+<div id="@led" style="position:absolute;left:1500px;top:720px;width:90px;height:90px;border-radius:45px;background:#3A1420;border:4px solid #FF6F9C"></div>
+<div id="@glow" style="position:absolute;left:1500px;top:720px;width:90px;height:90px;border-radius:45px;background:#FF6F9C;box-shadow:0 0 60px #FF6F9C"></div>
+<div id="@ll" class="k-anno k-mute" style="left:1620px;top:742px;font-size:22px">pino 13</div>
+<script>
+K.rise(tl, $("win"), C.a);
+K.rise(tl, $("n1"), C.b);
+K.hl(tl, $("c0"), C.b, C.c);
+K.hl(tl, $("c1"), C.b + 1.6, C.c);
+K.hl(tl, $("c3"), C.c, C.d);
+K.rise(tl, $("n2"), C.c);
+K.wipe(tl, $("n3"), C.d);
+K.hl(tl, $("c1"), C.d, C.d + 2.5);
+K.hl(tl, $("c4"), C.d + 2.5, C.e);
+K.hl(tl, $("c6"), C.d + 4.5, C.e);
+K.wipe(tl, $("n4"), C.e);
+K.hl(tl, $("c5"), C.e + 3.0, C.f);
+K.hl(tl, $("c7"), C.e + 3.0, C.f);
+tl.set($("glow"), { opacity: 0 }, 0);
+K.fade(tl, [$("led"), $("ll")], C.f);
+for (var i = 0; i < 3; i++) {
+  tl.set($("glow"), { opacity: 1 }, C.f + 0.4 + i * 1.4);
+  tl.set($("glow"), { opacity: 0 }, C.f + 1.1 + i * 1.4);
+}
+</script>

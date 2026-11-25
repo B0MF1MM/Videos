@@ -1,0 +1,39 @@
+<template id="04-conceitos-template">
+  <div id="root" data-composition-id="04-conceitos" data-start="0" data-duration="32.091" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .rw { left: 120px; width: 1680px; height: 150px; }
+  .rw .ti { position: absolute; left: 30px; top: 54px; font-family: "DM Mono", monospace; font-size: 26px; color: #8C97B5; text-transform: uppercase; letter-spacing: 0.1em; }
+  .rw .cl { position: absolute; top: 26px; width: 640px; }
+  .rw .cl b { display: block; font-family: "Hanken Grotesk", sans-serif; font-size: 36px; font-weight: 700; }
+  .rw .cl span { display: block; margin-top: 8px; font-family: "Hanken Grotesk", sans-serif; font-size: 25px; color: #B9C2DA; }
+</style>
+    <div id="s04-conceitos-bg" class="clip k-scene k-bg" data-start="0" data-duration="32.091" data-track-index="0"></div>
+    <div id="s04-conceitos-stage" class="clip k-scene" data-start="0" data-duration="32.091" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s04-conceitos-cam" class="k-cam">
+<div id="s04-conceitos-r1" class="k-card rw" style="top:190px"><div class="ti">uso</div><div class="cl" style="left:330px"><b class="k-c-cyan">sistema embarcado</b><span>função específica · baixo consumo · tempo real</span></div><div class="cl" style="left:1000px"><b class="k-c-mute">computador comum</b><span>vários programas · SO completo · flexível</span></div></div>
+<div id="s04-conceitos-r2" class="k-card rw" style="top:370px"><div class="ti">chip</div><div class="cl" style="left:330px"><b class="k-c-yel">microcontrolador</b><span>CPU + memória + periféricos no mesmo chip</span></div><div class="cl" style="left:1000px"><b class="k-c-mute">microprocessador</b><span>memória e periféricos externos · roda SO</span></div></div>
+<div id="s04-conceitos-r3" class="k-card rw" style="top:550px"><div class="ti">placas</div><div class="cl" style="left:330px"><b class="k-c-green">Arduino · ESP32</b><span>microcontroladores · ESP32 tem Wi-Fi e Bluetooth</span></div><div class="cl" style="left:1000px"><b class="k-c-violet">Raspberry Pi</b><span>computador de placa única · roda Linux</span></div></div>
+<div id="s04-conceitos-mac" class="k-macete" style="left:120px;top:740px;width:1680px;font-size:30px">A melhor tecnologia é a que <u>atende aos requisitos</u> do projeto.</div>
+      </div>
+    </div>
+    <div id="s04-conceitos-chrome" class="clip k-scene" data-start="0" data-duration="32.091" data-track-index="2">
+      <div id="s04-conceitos-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>ARQUITETURA</b></div>
+      <div id="s04-conceitos-num" class="k-num">04 / 33</div>
+      <div id="s04-conceitos-progbar" class="k-prog"><i id="s04-conceitos-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.808, "c": 10.104, "d": 17.666, "e": 26.901}, D = 32.091;
+        var S = K.scene("04-conceitos", D, 33), tl = S.tl, $ = S.$;
+        K.rise(tl, $("r1"), C.b);
+        K.rise(tl, $("r2"), C.c);
+        K.rise(tl, $("r3"), C.d);
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,41 @@
+<!--sfx: b:pop@0.2*0.2, c:pop@0.2*0.2, d:pop@1.4*0.2, e:pop*0.3-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .bk { position: absolute; border-radius: 20px; border: 3px solid; background: #182238; }
+  .bk b { position: absolute; left: 24px; top: 20px; font-family: "Hanken Grotesk", sans-serif; font-size: 30px; }
+  .bk span { position: absolute; left: 24px; top: 70px; font-family: "DM Mono", monospace; font-size: 20px; line-height: 1.45; color: #B9C2DA; white-space: pre-line; }
+  .gg { position: absolute; left: 30px; top: 90px; width: 240px; height: 170px; border-radius: 16px; background: #0D1322; border: 2px solid #2A3656; }
+  .gg b { position: absolute; left: 20px; top: 30px; font-family: "DM Mono", monospace; font-size: 44px; }
+  .gg span { position: absolute; left: 20px; top: 110px; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; color: #8C97B5; }
+</style>
+<div id="@k" class="k-chip k-c-pink" style="left:120px;top:120px;font-size:26px;background:#2E1420">QUESTÃO 8 · IoT E DASHBOARD</div>
+<div id="@n1" class="bk" style="left:120px;top:200px;width:300px;height:150px;border-color:#4FD6EE"><b class="k-c-cyan">sensores</b><span>medem</span></div>
+<div id="@n2" class="bk" style="left:464px;top:200px;width:300px;height:150px;border-color:#FFD24A"><b class="k-c-yel">ESP32</b><span>processa + Wi-Fi</span></div>
+<div id="@n3" class="bk" style="left:808px;top:200px;width:300px;height:150px;border-color:#FF6F9C"><b class="k-c-pink">servidor</b><span>HTTP / MQTT</span></div>
+<div id="@n4" class="bk" style="left:1152px;top:200px;width:300px;height:150px;border-color:#B49BFF"><b class="k-c-violet">banco</b><span>guarda</span></div>
+<div id="@n5" class="bk" style="left:1496px;top:200px;width:300px;height:150px;border-color:#7FE39A"><b class="k-c-green">dashboard</b><span>mostra + alerta</span></div>
+<svg class="k-svg"><path id="@a0" class="arrow" d="M 424 275 L 460 275 M 450 265 L 460 275 L 450 285" stroke="#8C97B5"/><path id="@a1" class="arrow" d="M 768 275 L 804 275 M 794 265 L 804 275 L 794 285" stroke="#8C97B5"/><path id="@a2" class="arrow" d="M 1112 275 L 1148 275 M 1138 265 L 1148 275 L 1138 285" stroke="#8C97B5"/><path id="@a3" class="arrow" d="M 1456 275 L 1492 275 M 1482 265 L 1492 275 L 1482 285" stroke="#8C97B5"/></svg>
+
+<div id="@db" class="k-card" style="left:120px;top:400px;width:1100px;height:380px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:20px;font-size:28px">painel em tempo real</div>
+  <div class="gg"><b class="k-c-cyan">24,6 °C</b><span>temperatura</span></div>
+  <div class="gg" style="left:300px"><b class="k-c-green">41 %</b><span>umidade do solo</span></div>
+  <svg width="420" height="170" style="position:absolute;left:600px;top:90px"><path d="M 0 140 L 60 120 L 120 130 L 180 80 L 240 95 L 300 50 L 360 70 L 420 30" stroke="#4FD6EE" stroke-width="4" fill="none"/></svg>
+  <div class="k-chip k-c-pink" style="left:30px;top:290px;font-size:22px;background:#2E1420">alerta: solo seco</div>
+  <div class="k-chip k-c-yel" style="left:330px;top:290px;font-size:22px;background:#2A2410">ligar bomba (remoto)</div>
+</div>
+<div id="@al" class="k-macete k-alert" style="left:1260px;top:400px;width:540px;font-size:24px">O dashboard <b>não mede</b> e não substitui sensor nem firmware.</div>
+<div id="@ans" class="k-chip k-c-green" style="left:1260px;top:640px;font-size:26px;background:#13241A">Q8 → alternativa B</div>
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, [$("n1"), $("n2")], C.b, { s: 1.2 });
+K.fade(tl, $("a0"), C.b + 0.8);
+K.fade(tl, $("a1"), C.c);
+K.rise(tl, [$("n3"), $("n4")], C.c + 0.2, { s: 2.6 });
+K.fade(tl, $("a2"), C.c + 2.6);
+K.fade(tl, $("a3"), C.d);
+K.rise(tl, $("n5"), C.d + 0.2);
+K.rise(tl, $("db"), C.d + 1.4);
+K.pop(tl, $("al"), C.e);
+K.pop(tl, $("ans"), C.e + 4.0);
+</script>

@@ -1,0 +1,35 @@
+<!--sfx: c:pop@1.4*0.2, d:pop@0.2*0.25-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:140px;width:1060px;height:696px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>irrigacao.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:22px;--lh:38px"><span class="ln" id="@c0"><span class="k-c-violet">const</span> <span class="k-c-violet">int</span> SOLO = <span class="k-c-orange">34</span>;   <span class="k-mute">// ADC1</span></span><span class="ln" id="@c1"><span class="k-c-violet">const</span> <span class="k-c-violet">int</span> RELE = <span class="k-c-orange">26</span>;   <span class="k-mute">// relé liga com LOW</span></span><span class="ln" id="@c2"><span class="k-c-violet">bool</span> bomba = <span class="k-c-violet">false</span>;</span><span class="ln" id="@c3"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="@c4">  <span class="k-c-cyan">pinMode</span>(RELE, <span class="k-c-yel">OUTPUT</span>);</span><span class="ln" id="@c5">  <span class="k-c-cyan">digitalWrite</span>(RELE, <span class="k-c-yel">HIGH</span>);   <span class="k-mute">// começa desligada</span></span><span class="ln" id="@c6">}</span><span class="ln" id="@c7"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="@c8">  <span class="k-c-violet">int</span> leitura = <span class="k-c-cyan">analogRead</span>(SOLO);               <span class="k-mute">// 0..4095</span></span><span class="ln" id="@c9">  <span class="k-c-violet">int</span> umidade = <span class="k-c-cyan">map</span>(leitura, <span class="k-c-orange">4095</span>, <span class="k-c-orange">1500</span>, <span class="k-c-orange">0</span>, <span class="k-c-orange">100</span>);</span><span class="ln" id="@c10">  <span class="k-c-violet">if</span> (umidade &lt; <span class="k-c-orange">30</span>) bomba = <span class="k-c-violet">true</span>;     <span class="k-mute">// seco: liga</span></span><span class="ln" id="@c11">  <span class="k-c-violet">if</span> (umidade &gt; <span class="k-c-orange">60</span>) bomba = <span class="k-c-violet">false</span>;    <span class="k-mute">// úmido: desliga</span></span><span class="ln" id="@c12">  <span class="k-c-cyan">digitalWrite</span>(RELE, bomba ? <span class="k-c-yel">LOW</span> : <span class="k-c-yel">HIGH</span>);</span><span class="ln" id="@c13">  <span class="k-c-cyan">enviarDashboard</span>(umidade, bomba);    <span class="k-mute">// Wi-Fi</span></span><span class="ln" id="@c14">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">2000</span>);</span><span class="ln" id="@c15">}</span></div>
+</div>
+<svg id="@gr" class="k-svg">
+  <rect x="1230" y="200" width="570" height="300" fill="#182238" stroke="#2A3656" stroke-width="2" rx="12"/>
+  <path d="M 1230 410 L 1800 410" stroke="#FF6F9C" stroke-width="2" stroke-dasharray="10 8"/>
+  <path d="M 1230 320 L 1800 320" stroke="#7FE39A" stroke-width="2" stroke-dasharray="10 8"/>
+  <path id="@cv" d="M 1230 335 L 1290 374 L 1350 407 L 1380 413 L 1430 365 L 1480 314 L 1530 326 L 1590 368 L 1650 401 L 1680 413 L 1730 359 L 1800 317" stroke="#4FD6EE" stroke-width="4" fill="none"/>
+  <rect id="@on1" x="1380" y="514" width="100" height="22" fill="#FFD24A" rx="4"/>
+  <rect id="@on2" x="1680" y="514" width="100" height="22" fill="#FFD24A" rx="4"/>
+</svg>
+<div class="k-anno k-c-pink" style="left:1240px;top:366px;font-size:18px">30 % liga</div>
+<div class="k-anno k-c-green" style="left:1240px;top:276px;font-size:18px">60 % desliga</div>
+<div id="@bl" class="k-anno k-c-yel" style="left:1230px;top:545px;font-size:20px">bomba ligada</div>
+<div id="@hs" class="k-card" style="left:1230px;top:610px;width:570px;height:190px;border-color:#FFD24A"><div class="k-body" style="left:26px;top:20px;width:520px;font-size:25px;line-height:1.45"><b class="k-c-yel">histerese</b>: entre 30 % e 60 % nada muda · a bomba não fica ligando e desligando</div></div>
+<script>
+K.rise(tl, $("win"), C.a);
+K.hl(tl, $("c8"), C.b, C.c);
+K.hl(tl, $("c9"), C.b + 2.6, C.c);
+K.hl(tl, $("c10"), C.c, C.d);
+K.hl(tl, $("c11"), C.c + 3.0, C.d);
+K.hl(tl, $("c12"), C.e, C.e + 3.0);
+K.hl(tl, $("c13"), C.e + 3.0, C.e + 7);
+K.hl(tl, $("c1"), C.e, C.e + 3.0);
+K.fade(tl, $("gr"), C.b + 1.0);
+K.draw(tl, $("cv"), C.b + 1.4, { d: 2.4 });
+tl.set([$("on1"), $("on2"), $("bl")], { opacity: 0 }, 0);
+tl.to([$("on1"), $("on2"), $("bl")], { opacity: 1, duration: 0.3 }, C.c + 1.4);
+K.rise(tl, $("hs"), C.d);
+</script>

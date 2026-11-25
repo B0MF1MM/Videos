@@ -1,0 +1,61 @@
+<template id="26-iot-template">
+  <div id="root" data-composition-id="26-iot" data-start="0" data-duration="29.673" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .bk { position: absolute; border-radius: 20px; border: 3px solid; background: #182238; }
+  .bk b { position: absolute; left: 24px; top: 20px; font-family: "Hanken Grotesk", sans-serif; font-size: 30px; }
+  .bk span { position: absolute; left: 24px; top: 70px; font-family: "DM Mono", monospace; font-size: 20px; line-height: 1.45; color: #B9C2DA; white-space: pre-line; }
+  .gg { position: absolute; left: 30px; top: 90px; width: 240px; height: 170px; border-radius: 16px; background: #0D1322; border: 2px solid #2A3656; }
+  .gg b { position: absolute; left: 20px; top: 30px; font-family: "DM Mono", monospace; font-size: 44px; }
+  .gg span { position: absolute; left: 20px; top: 110px; font-family: "Hanken Grotesk", sans-serif; font-size: 22px; color: #8C97B5; }
+</style>
+    <div id="s26-iot-bg" class="clip k-scene k-bg" data-start="0" data-duration="29.673" data-track-index="0"></div>
+    <div id="s26-iot-stage" class="clip k-scene" data-start="0" data-duration="29.673" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s26-iot-cam" class="k-cam">
+<div id="s26-iot-k" class="k-chip k-c-pink" style="left:120px;top:120px;font-size:26px;background:#2E1420">QUESTÃO 8 · IoT E DASHBOARD</div>
+<div id="s26-iot-n1" class="bk" style="left:120px;top:200px;width:300px;height:150px;border-color:#4FD6EE"><b class="k-c-cyan">sensores</b><span>medem</span></div>
+<div id="s26-iot-n2" class="bk" style="left:464px;top:200px;width:300px;height:150px;border-color:#FFD24A"><b class="k-c-yel">ESP32</b><span>processa + Wi-Fi</span></div>
+<div id="s26-iot-n3" class="bk" style="left:808px;top:200px;width:300px;height:150px;border-color:#FF6F9C"><b class="k-c-pink">servidor</b><span>HTTP / MQTT</span></div>
+<div id="s26-iot-n4" class="bk" style="left:1152px;top:200px;width:300px;height:150px;border-color:#B49BFF"><b class="k-c-violet">banco</b><span>guarda</span></div>
+<div id="s26-iot-n5" class="bk" style="left:1496px;top:200px;width:300px;height:150px;border-color:#7FE39A"><b class="k-c-green">dashboard</b><span>mostra + alerta</span></div>
+<svg class="k-svg"><path id="s26-iot-a0" class="arrow" d="M 424 275 L 460 275 M 450 265 L 460 275 L 450 285" stroke="#8C97B5"/><path id="s26-iot-a1" class="arrow" d="M 768 275 L 804 275 M 794 265 L 804 275 L 794 285" stroke="#8C97B5"/><path id="s26-iot-a2" class="arrow" d="M 1112 275 L 1148 275 M 1138 265 L 1148 275 L 1138 285" stroke="#8C97B5"/><path id="s26-iot-a3" class="arrow" d="M 1456 275 L 1492 275 M 1482 265 L 1492 275 L 1482 285" stroke="#8C97B5"/></svg>
+
+<div id="s26-iot-db" class="k-card" style="left:120px;top:400px;width:1100px;height:380px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:20px;font-size:28px">painel em tempo real</div>
+  <div class="gg"><b class="k-c-cyan">24,6 °C</b><span>temperatura</span></div>
+  <div class="gg" style="left:300px"><b class="k-c-green">41 %</b><span>umidade do solo</span></div>
+  <svg width="420" height="170" style="position:absolute;left:600px;top:90px"><path d="M 0 140 L 60 120 L 120 130 L 180 80 L 240 95 L 300 50 L 360 70 L 420 30" stroke="#4FD6EE" stroke-width="4" fill="none"/></svg>
+  <div class="k-chip k-c-pink" style="left:30px;top:290px;font-size:22px;background:#2E1420">alerta: solo seco</div>
+  <div class="k-chip k-c-yel" style="left:330px;top:290px;font-size:22px;background:#2A2410">ligar bomba (remoto)</div>
+</div>
+<div id="s26-iot-al" class="k-macete k-alert" style="left:1260px;top:400px;width:540px;font-size:24px">O dashboard <b>não mede</b> e não substitui sensor nem firmware.</div>
+<div id="s26-iot-ans" class="k-chip k-c-green" style="left:1260px;top:640px;font-size:26px;background:#13241A">Q8 → alternativa B</div>
+      </div>
+    </div>
+    <div id="s26-iot-chrome" class="clip k-scene" data-start="0" data-duration="29.673" data-track-index="2">
+      <div id="s26-iot-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>IOT · Q8</b></div>
+      <div id="s26-iot-num" class="k-num">26 / 33</div>
+      <div id="s26-iot-progbar" class="k-prog"><i id="s26-iot-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.277, "c": 7.671, "d": 13.265, "e": 21.282}, D = 29.673;
+        var S = K.scene("26-iot", D, 33), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.rise(tl, [$("n1"), $("n2")], C.b, { s: 1.2 });
+        K.fade(tl, $("a0"), C.b + 0.8);
+        K.fade(tl, $("a1"), C.c);
+        K.rise(tl, [$("n3"), $("n4")], C.c + 0.2, { s: 2.6 });
+        K.fade(tl, $("a2"), C.c + 2.6);
+        K.fade(tl, $("a3"), C.d);
+        K.rise(tl, $("n5"), C.d + 0.2);
+        K.rise(tl, $("db"), C.d + 1.4);
+        K.pop(tl, $("al"), C.e);
+        K.pop(tl, $("ans"), C.e + 4.0);
+      })();
+    </script>
+  </div>
+</template>

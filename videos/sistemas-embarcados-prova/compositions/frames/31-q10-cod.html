@@ -1,0 +1,55 @@
+<template id="31-q10-cod-template">
+  <div id="root" data-composition-id="31-q10-cod" data-start="0" data-duration="30.835" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+</style>
+    <div id="s31-q10-cod-bg" class="clip k-scene k-bg" data-start="0" data-duration="30.835" data-track-index="0"></div>
+    <div id="s31-q10-cod-stage" class="clip k-scene" data-start="0" data-duration="30.835" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s31-q10-cod-cam" class="k-cam">
+<div id="s31-q10-cod-win" class="k-win" style="left:120px;top:140px;width:1060px;height:696px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>irrigacao.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:22px;--lh:38px"><span class="ln" id="s31-q10-cod-c0"><span class="k-c-violet">const</span> <span class="k-c-violet">int</span> SOLO = <span class="k-c-orange">34</span>;   <span class="k-mute">// ADC1</span></span><span class="ln" id="s31-q10-cod-c1"><span class="k-c-violet">const</span> <span class="k-c-violet">int</span> RELE = <span class="k-c-orange">26</span>;   <span class="k-mute">// relé liga com LOW</span></span><span class="ln" id="s31-q10-cod-c2"><span class="k-c-violet">bool</span> bomba = <span class="k-c-violet">false</span>;</span><span class="ln" id="s31-q10-cod-c3"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="s31-q10-cod-c4">  <span class="k-c-cyan">pinMode</span>(RELE, <span class="k-c-yel">OUTPUT</span>);</span><span class="ln" id="s31-q10-cod-c5">  <span class="k-c-cyan">digitalWrite</span>(RELE, <span class="k-c-yel">HIGH</span>);   <span class="k-mute">// começa desligada</span></span><span class="ln" id="s31-q10-cod-c6">}</span><span class="ln" id="s31-q10-cod-c7"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="s31-q10-cod-c8">  <span class="k-c-violet">int</span> leitura = <span class="k-c-cyan">analogRead</span>(SOLO);               <span class="k-mute">// 0..4095</span></span><span class="ln" id="s31-q10-cod-c9">  <span class="k-c-violet">int</span> umidade = <span class="k-c-cyan">map</span>(leitura, <span class="k-c-orange">4095</span>, <span class="k-c-orange">1500</span>, <span class="k-c-orange">0</span>, <span class="k-c-orange">100</span>);</span><span class="ln" id="s31-q10-cod-c10">  <span class="k-c-violet">if</span> (umidade &lt; <span class="k-c-orange">30</span>) bomba = <span class="k-c-violet">true</span>;     <span class="k-mute">// seco: liga</span></span><span class="ln" id="s31-q10-cod-c11">  <span class="k-c-violet">if</span> (umidade &gt; <span class="k-c-orange">60</span>) bomba = <span class="k-c-violet">false</span>;    <span class="k-mute">// úmido: desliga</span></span><span class="ln" id="s31-q10-cod-c12">  <span class="k-c-cyan">digitalWrite</span>(RELE, bomba ? <span class="k-c-yel">LOW</span> : <span class="k-c-yel">HIGH</span>);</span><span class="ln" id="s31-q10-cod-c13">  <span class="k-c-cyan">enviarDashboard</span>(umidade, bomba);    <span class="k-mute">// Wi-Fi</span></span><span class="ln" id="s31-q10-cod-c14">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">2000</span>);</span><span class="ln" id="s31-q10-cod-c15">}</span></div>
+</div>
+<svg id="s31-q10-cod-gr" class="k-svg">
+  <rect x="1230" y="200" width="570" height="300" fill="#182238" stroke="#2A3656" stroke-width="2" rx="12"/>
+  <path d="M 1230 410 L 1800 410" stroke="#FF6F9C" stroke-width="2" stroke-dasharray="10 8"/>
+  <path d="M 1230 320 L 1800 320" stroke="#7FE39A" stroke-width="2" stroke-dasharray="10 8"/>
+  <path id="s31-q10-cod-cv" d="M 1230 335 L 1290 374 L 1350 407 L 1380 413 L 1430 365 L 1480 314 L 1530 326 L 1590 368 L 1650 401 L 1680 413 L 1730 359 L 1800 317" stroke="#4FD6EE" stroke-width="4" fill="none"/>
+  <rect id="s31-q10-cod-on1" x="1380" y="514" width="100" height="22" fill="#FFD24A" rx="4"/>
+  <rect id="s31-q10-cod-on2" x="1680" y="514" width="100" height="22" fill="#FFD24A" rx="4"/>
+</svg>
+<div class="k-anno k-c-pink" style="left:1240px;top:366px;font-size:18px">30 % liga</div>
+<div class="k-anno k-c-green" style="left:1240px;top:276px;font-size:18px">60 % desliga</div>
+<div id="s31-q10-cod-bl" class="k-anno k-c-yel" style="left:1230px;top:545px;font-size:20px">bomba ligada</div>
+<div id="s31-q10-cod-hs" class="k-card" style="left:1230px;top:610px;width:570px;height:190px;border-color:#FFD24A"><div class="k-body" style="left:26px;top:20px;width:520px;font-size:25px;line-height:1.45"><b class="k-c-yel">histerese</b>: entre 30 % e 60 % nada muda · a bomba não fica ligando e desligando</div></div>
+      </div>
+    </div>
+    <div id="s31-q10-cod-chrome" class="clip k-scene" data-start="0" data-duration="30.835" data-track-index="2">
+      <div id="s31-q10-cod-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>DISCURSIVA · Q10</b></div>
+      <div id="s31-q10-cod-num" class="k-num">31 / 33</div>
+      <div id="s31-q10-cod-progbar" class="k-prog"><i id="s31-q10-cod-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.466, "c": 11.051, "d": 16.681, "e": 23.175}, D = 30.835;
+        var S = K.scene("31-q10-cod", D, 33), tl = S.tl, $ = S.$;
+        K.rise(tl, $("win"), C.a);
+        K.hl(tl, $("c8"), C.b, C.c);
+        K.hl(tl, $("c9"), C.b + 2.6, C.c);
+        K.hl(tl, $("c10"), C.c, C.d);
+        K.hl(tl, $("c11"), C.c + 3.0, C.d);
+        K.hl(tl, $("c12"), C.e, C.e + 3.0);
+        K.hl(tl, $("c13"), C.e + 3.0, C.e + 7);
+        K.hl(tl, $("c1"), C.e, C.e + 3.0);
+        K.fade(tl, $("gr"), C.b + 1.0);
+        K.draw(tl, $("cv"), C.b + 1.4, { d: 2.4 });
+        tl.set([$("on1"), $("on2"), $("bl")], { opacity: 0 }, 0);
+        tl.to([$("on1"), $("on2"), $("bl")], { opacity: 1, duration: 0.3 }, C.c + 1.4);
+        K.rise(tl, $("hs"), C.d);
+      })();
+    </script>
+  </div>
+</template>

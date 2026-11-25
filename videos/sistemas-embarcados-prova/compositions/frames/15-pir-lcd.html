@@ -1,0 +1,60 @@
+<template id="15-pir-lcd-template">
+  <div id="root" data-composition-id="15-pir-lcd" data-start="0" data-duration="31.834" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .lcd { position: absolute; border-radius: 16px; background: #1B3A1F; border: 4px solid #2E5E33; box-shadow: inset 0 0 30px rgba(0,0,0,0.5); }
+  .lcdin { position: absolute; left: 30px; top: 0; height: 178px; overflow: hidden; }
+  .lr { position: absolute; left: 0; height: 56px; width: 2000px; }
+  .lr b { position: absolute; top: 0; width: 34px; height: 56px; background: #24502A; border-radius: 3px; font-family: "DM Mono", monospace; font-weight: 400; font-size: 34px; line-height: 56px; text-align: center; color: #C8F7C5; }
+</style>
+    <div id="s15-pir-lcd-bg" class="clip k-scene k-bg" data-start="0" data-duration="31.834" data-track-index="0"></div>
+    <div id="s15-pir-lcd-stage" class="clip k-scene" data-start="0" data-duration="31.834" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s15-pir-lcd-cam" class="k-cam">
+<div id="s15-pir-lcd-win" class="k-win" style="left:120px;top:140px;width:960px;height:736px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>pir_lcd.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:21px;--lh:36px"><span class="ln" id="s15-pir-lcd-c0"><span class="k-c-violet">const</span> <span class="k-c-violet">int</span> pp = <span class="k-c-orange">4</span>;  <span class="k-c-violet">const</span> <span class="k-c-violet">int</span> ledA = <span class="k-c-orange">13</span>;</span><span class="ln" id="s15-pir-lcd-c1"><span class="k-c-violet">int</span> ultE = <span class="k-c-yel">LOW</span>;    <span class="k-c-violet">int</span> eventos = <span class="k-c-orange">0</span>;</span><span class="ln" id="s15-pir-lcd-c2"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="s15-pir-lcd-c3">  <span class="k-c-violet">int</span> estado = <span class="k-c-cyan">digitalRead</span>(pp);</span><span class="ln" id="s15-pir-lcd-c4">  <span class="k-c-cyan">digitalWrite</span>(ledA, estado);</span><span class="ln" id="s15-pir-lcd-c5">  <span class="k-c-violet">if</span> (estado == <span class="k-c-yel">HIGH</span> &amp;&amp; ultE == <span class="k-c-yel">LOW</span>) {</span><span class="ln" id="s15-pir-lcd-c6">    eventos++;</span><span class="ln" id="s15-pir-lcd-c7">    <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">clear</span>(); <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">setCursor</span>(<span class="k-c-orange">0</span>, <span class="k-c-orange">0</span>);</span><span class="ln" id="s15-pir-lcd-c8">    <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Move Detectado"</span>);</span><span class="ln" id="s15-pir-lcd-c9">    <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">setCursor</span>(<span class="k-c-orange">0</span>, <span class="k-c-orange">1</span>); <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"total = "</span>);</span><span class="ln" id="s15-pir-lcd-c10">    <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(eventos);</span><span class="ln" id="s15-pir-lcd-c11">  } <span class="k-c-violet">else</span> <span class="k-c-violet">if</span> (estado == <span class="k-c-yel">LOW</span> &amp;&amp; ultE == <span class="k-c-yel">HIGH</span>) {</span><span class="ln" id="s15-pir-lcd-c12">    <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">clear</span>(); <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">setCursor</span>(<span class="k-c-orange">0</span>, <span class="k-c-orange">0</span>);</span><span class="ln" id="s15-pir-lcd-c13">    <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Area Livre!"</span>);</span><span class="ln" id="s15-pir-lcd-c14">  }</span><span class="ln" id="s15-pir-lcd-c15">  ultE = estado;</span><span class="ln" id="s15-pir-lcd-c16">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">100</span>);</span><span class="ln" id="s15-pir-lcd-c17">}</span></div>
+</div>
+<svg id="s15-pir-lcd-sig" class="k-svg"><path d="M 1140 300 L 1220 300 L 1220 210 L 1380 210 L 1380 300 L 1480 300 L 1480 210 L 1640 210 L 1640 300 L 1780 300" stroke="#B49BFF" stroke-width="5" fill="none"/></svg>
+<div class="k-anno k-mute" style="left:1140px;top:150px;font-size:20px" id="s15-pir-lcd-sl">estado do PIR</div>
+<div id="s15-pir-lcd-u1" class="k-chip k-c-green" style="left:1170px;top:320px;font-size:20px;background:#13241A">↑ +1</div>
+<div id="s15-pir-lcd-u2" class="k-chip k-c-green" style="left:1430px;top:320px;font-size:20px;background:#13241A">↑ +1</div>
+<div id="s15-pir-lcd-d1" class="k-chip k-c-pink" style="left:1330px;top:380px;font-size:20px;background:#2E1420">↓ livre</div>
+<div id="s15-pir-lcd-l1" class="lcd" style="left:1120px;top:450px;width:668px;height:178px"><div class="lcdin" style="width:608px"><div class="lr" id="s15-pir-lcd-l1r0" style="top:30px"><b style="left:0px">M</b><b style="left:38px">o</b><b style="left:76px">v</b><b style="left:114px">e</b><b style="left:152px">&nbsp;</b><b style="left:190px">D</b><b style="left:228px">e</b><b style="left:266px">t</b><b style="left:304px">e</b><b style="left:342px">c</b><b style="left:380px">t</b><b style="left:418px">a</b><b style="left:456px">d</b><b style="left:494px">o</b><b style="left:532px">&nbsp;</b><b style="left:570px">&nbsp;</b></div><div class="lr" id="s15-pir-lcd-l1r1" style="top:94px"><b style="left:0px">t</b><b style="left:38px">o</b><b style="left:76px">t</b><b style="left:114px">a</b><b style="left:152px">l</b><b style="left:190px">&nbsp;</b><b style="left:228px">=</b><b style="left:266px">&nbsp;</b><b style="left:304px">2</b><b style="left:342px">&nbsp;</b><b style="left:380px">&nbsp;</b><b style="left:418px">&nbsp;</b><b style="left:456px">&nbsp;</b><b style="left:494px">&nbsp;</b><b style="left:532px">&nbsp;</b><b style="left:570px">&nbsp;</b></div></div></div>
+<div id="s15-pir-lcd-l2" class="lcd" style="left:1120px;top:450px;width:668px;height:178px"><div class="lcdin" style="width:608px"><div class="lr" id="s15-pir-lcd-l2r0" style="top:30px"><b style="left:0px">A</b><b style="left:38px">r</b><b style="left:76px">e</b><b style="left:114px">a</b><b style="left:152px">&nbsp;</b><b style="left:190px">L</b><b style="left:228px">i</b><b style="left:266px">v</b><b style="left:304px">r</b><b style="left:342px">e</b><b style="left:380px">!</b><b style="left:418px">&nbsp;</b><b style="left:456px">&nbsp;</b><b style="left:494px">&nbsp;</b><b style="left:532px">&nbsp;</b><b style="left:570px">&nbsp;</b></div><div class="lr" id="s15-pir-lcd-l2r1" style="top:94px"><b style="left:0px">&nbsp;</b><b style="left:38px">&nbsp;</b><b style="left:76px">&nbsp;</b><b style="left:114px">&nbsp;</b><b style="left:152px">&nbsp;</b><b style="left:190px">&nbsp;</b><b style="left:228px">&nbsp;</b><b style="left:266px">&nbsp;</b><b style="left:304px">&nbsp;</b><b style="left:342px">&nbsp;</b><b style="left:380px">&nbsp;</b><b style="left:418px">&nbsp;</b><b style="left:456px">&nbsp;</b><b style="left:494px">&nbsp;</b><b style="left:532px">&nbsp;</b><b style="left:570px">&nbsp;</b></div></div></div>
+<div id="s15-pir-lcd-al" class="k-macete k-alert" style="left:1120px;top:690px;width:680px;font-size:22px">pinMode(2, INPUT) configura o pino 2, mas a leitura é no <b>4</b> (pp). Correto: pinMode(pp, INPUT).</div>
+      </div>
+    </div>
+    <div id="s15-pir-lcd-chrome" class="clip k-scene" data-start="0" data-duration="31.834" data-track-index="2">
+      <div id="s15-pir-lcd-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>CÓDIGO · PIR + LCD</b></div>
+      <div id="s15-pir-lcd-num" class="k-num">15 / 33</div>
+      <div id="s15-pir-lcd-progbar" class="k-prog"><i id="s15-pir-lcd-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.652, "c": 11.114, "d": 17.323, "e": 21.017}, D = 31.834;
+        var S = K.scene("15-pir-lcd", D, 33), tl = S.tl, $ = S.$;
+        K.rise(tl, $("win"), C.a);
+        K.hl(tl, $("c1"), C.b, C.c);
+        K.hl(tl, $("c3"), C.b + 1.0, C.c);
+        K.hl(tl, $("c5"), C.c, C.d);
+        K.hl(tl, $("c6"), C.c + 2.4, C.d);
+        K.hl(tl, $("c8"), C.c + 3.4, C.d);
+        K.hl(tl, $("c11"), C.d, C.e);
+        K.hl(tl, $("c13"), C.d + 1.6, C.e);
+        K.hl(tl, $("c15"), C.e, C.e + 3.0);
+        K.hl(tl, $("c0"), C.e + 3.4, C.e + 9);
+        K.fade(tl, [$("sig"), $("sl")], C.b + 0.6);
+        tl.set([$("l2")], { opacity: 0 }, 0);
+        K.pop(tl, [$("u1"), $("u2")], C.c + 0.6, { s: 0.8 });
+        K.rise(tl, $("l1"), C.c + 3.4);
+        K.pop(tl, $("d1"), C.d + 0.6);
+        tl.to($("l1"), { opacity: 0, duration: 0.2 }, C.d + 1.8);
+        tl.to($("l2"), { opacity: 1, duration: 0.2 }, C.d + 1.8);
+        K.pop(tl, $("al"), C.e + 3.4);
+      })();
+    </script>
+  </div>
+</template>

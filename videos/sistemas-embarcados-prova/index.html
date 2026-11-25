@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0D1322; }
+      .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="1017.64" data-width="1920" data-height="1080">
+      <div id="el-01-abertura" class="scene clip" data-composition-id="01-abertura" data-composition-src="compositions/frames/01-abertura.html" data-start="0.0" data-duration="22.254" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-02-mapa" class="scene clip" data-composition-id="02-mapa" data-composition-src="compositions/frames/02-mapa.html" data-start="21.754" data-duration="23.216" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-03-arquitetura" class="scene clip" data-composition-id="03-arquitetura" data-composition-src="compositions/frames/03-arquitetura.html" data-start="44.47" data-duration="27.075" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-04-conceitos" class="scene clip" data-composition-id="04-conceitos" data-composition-src="compositions/frames/04-conceitos.html" data-start="71.045" data-duration="32.091" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-05-estrutura" class="scene clip" data-composition-id="05-estrutura" data-composition-src="compositions/frames/05-estrutura.html" data-start="102.636" data-duration="32.755" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-06-dig-anal" class="scene clip" data-composition-id="06-dig-anal" data-composition-src="compositions/frames/06-dig-anal.html" data-start="134.891" data-duration="32.345" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-07-adc" class="scene clip" data-composition-id="07-adc" data-composition-src="compositions/frames/07-adc.html" data-start="166.736" data-duration="38.262" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-08-ldr" class="scene clip" data-composition-id="08-ldr" data-composition-src="compositions/frames/08-ldr.html" data-start="204.498" data-duration="32.599" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-09-pwm" class="scene clip" data-composition-id="09-pwm" data-composition-src="compositions/frames/09-pwm.html" data-start="236.597" data-duration="33.449" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-10-map" class="scene clip" data-composition-id="10-map" data-composition-src="compositions/frames/10-map.html" data-start="269.546" data-duration="38.04" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-11-serial" class="scene clip" data-composition-id="11-serial" data-composition-src="compositions/frames/11-serial.html" data-start="307.086" data-duration="27.095" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-12-gas" class="scene clip" data-composition-id="12-gas" data-composition-src="compositions/frames/12-gas.html" data-start="333.681" data-duration="31.61" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-13-tmp36" class="scene clip" data-composition-id="13-tmp36" data-composition-src="compositions/frames/13-tmp36.html" data-start="364.791" data-duration="30.269" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-14-pir" class="scene clip" data-composition-id="14-pir" data-composition-src="compositions/frames/14-pir.html" data-start="394.56" data-duration="31.997" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-15-pir-lcd" class="scene clip" data-composition-id="15-pir-lcd" data-composition-src="compositions/frames/15-pir-lcd.html" data-start="426.057" data-duration="31.834" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-16-lcd-i2c" class="scene clip" data-composition-id="16-lcd-i2c" data-composition-src="compositions/frames/16-lcd-i2c.html" data-start="457.391" data-duration="42.199" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-17-lcd-dht" class="scene clip" data-composition-id="17-lcd-dht" data-composition-src="compositions/frames/17-lcd-dht.html" data-start="499.09" data-duration="29.507" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-18-atuador" class="scene clip" data-composition-id="18-atuador" data-composition-src="compositions/frames/18-atuador.html" data-start="528.097" data-duration="32.601" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-19-rele-cod" class="scene clip" data-composition-id="19-rele-cod" data-composition-src="compositions/frames/19-rele-cod.html" data-start="560.198" data-duration="27.504" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-20-tone-ohm" class="scene clip" data-composition-id="20-tone-ohm" data-composition-src="compositions/frames/20-tone-ohm.html" data-start="587.202" data-duration="29.708" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-21-uart" class="scene clip" data-composition-id="21-uart" data-composition-src="compositions/frames/21-uart.html" data-start="616.41" data-duration="27.254" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-22-i2c" class="scene clip" data-composition-id="22-i2c" data-composition-src="compositions/frames/22-i2c.html" data-start="643.164" data-duration="33.595" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-23-protocolos" class="scene clip" data-composition-id="23-protocolos" data-composition-src="compositions/frames/23-protocolos.html" data-start="676.259" data-duration="36.02" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-24-esp32" class="scene clip" data-composition-id="24-esp32" data-composition-src="compositions/frames/24-esp32.html" data-start="711.779" data-duration="32.253" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-25-esp32-cod" class="scene clip" data-composition-id="25-esp32-cod" data-composition-src="compositions/frames/25-esp32-cod.html" data-start="743.532" data-duration="32.453" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-26-iot" class="scene clip" data-composition-id="26-iot" data-composition-src="compositions/frames/26-iot.html" data-start="775.485" data-duration="29.673" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-27-http" class="scene clip" data-composition-id="27-http" data-composition-src="compositions/frames/27-http.html" data-start="804.658" data-duration="24.827" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-28-roi" class="scene clip" data-composition-id="28-roi" data-composition-src="compositions/frames/28-roi.html" data-start="828.985" data-duration="41.791" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-29-kpi" class="scene clip" data-composition-id="29-kpi" data-composition-src="compositions/frames/29-kpi.html" data-start="870.276" data-duration="33.915" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-30-q10-arq" class="scene clip" data-composition-id="30-q10-arq" data-composition-src="compositions/frames/30-q10-arq.html" data-start="903.691" data-duration="29.47" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-31-q10-cod" class="scene clip" data-composition-id="31-q10-cod" data-composition-src="compositions/frames/31-q10-cod.html" data-start="932.661" data-duration="30.835" data-track-index="0" data-track-kind="graphics"></div>
+      <div id="el-32-q10-resp" class="scene clip" data-composition-id="32-q10-resp" data-composition-src="compositions/frames/32-q10-resp.html" data-start="962.996" data-duration="24.935" data-track-index="1" data-track-kind="graphics"></div>
+      <div id="el-33-cola" class="scene clip" data-composition-id="33-cola" data-composition-src="compositions/frames/33-cola.html" data-start="987.431" data-duration="30.209" data-track-index="0" data-track-kind="graphics"></div>
+      <audio id="el-01-abertura-voice" src="assets/voice/01.wav" data-start="0.0" data-duration="21.404" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-01-abertura-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="6.743" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-01-abertura-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="11.874" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-01-abertura-sfx-d-chime" src="assets/sfx/chime.mp3" data-start="18.375" data-duration="2.53" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-01-abertura-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="21.654" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-02-mapa-voice" src="assets/voice/02.wav" data-start="21.754" data-duration="22.366" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-02-mapa-sfx-b-click-soft" src="assets/sfx/click-soft.mp3" data-start="23.941" data-duration="0.36" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-02-mapa-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="31.403" data-duration="0.36" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-02-mapa-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="34.293" data-duration="0.36" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-02-mapa-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="43.415" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-02-mapa-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="44.37" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-03-arquitetura-voice" src="assets/voice/03.wav" data-start="44.47" data-duration="26.225" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-03-arquitetura-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="51.185" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-03-arquitetura-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="56.118" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-03-arquitetura-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="60.734" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-03-arquitetura-sfx-f-pop" src="assets/sfx/pop.mp3" data-start="64.89" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-03-arquitetura-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="70.945" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-04-conceitos-voice" src="assets/voice/04.wav" data-start="71.045" data-duration="31.241" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-04-conceitos-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="74.053" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-04-conceitos-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="81.349" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-04-conceitos-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="88.911" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-04-conceitos-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="97.946" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-04-conceitos-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="102.536" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-05-estrutura-voice" src="assets/voice/05.wav" data-start="102.636" data-duration="31.905" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-05-estrutura-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="107.469" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-05-estrutura-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="112.932" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-05-estrutura-sfx-f-click-soft" src="assets/sfx/click-soft.mp3" data-start="129.25" data-duration="0.36" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-05-estrutura-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="134.791" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-06-dig-anal-voice" src="assets/voice/06.wav" data-start="134.891" data-duration="31.495" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-06-dig-anal-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="139.27" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-06-dig-anal-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="146.598" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-06-dig-anal-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="161.046" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-06-dig-anal-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="166.636" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-07-adc-voice" src="assets/voice/07.wav" data-start="166.736" data-duration="37.412" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-07-adc-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="170.641" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-07-adc-sfx-d-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="184.601" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-07-adc-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="196.392" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-07-adc-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="204.398" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-08-ldr-voice" src="assets/voice/08.wav" data-start="204.498" data-duration="31.749" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-08-ldr-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="206.954" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-08-ldr-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="213.848" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-08-ldr-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="224.405" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-08-ldr-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="233.643" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-08-ldr-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="236.497" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-09-pwm-voice" src="assets/voice/09.wav" data-start="236.597" data-duration="32.599" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-09-pwm-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="239.931" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-09-pwm-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="247.367" data-duration="0.36" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-09-pwm-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="264.545" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-09-pwm-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="269.446" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-10-map-voice" src="assets/voice/10.wav" data-start="269.546" data-duration="37.19" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-10-map-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="285.444" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-10-map-sfx-e-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="290.783" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-10-map-sfx-f-pop" src="assets/sfx/pop.mp3" data-start="302.603" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-10-map-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="306.986" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-11-serial-voice" src="assets/voice/11.wav" data-start="307.086" data-duration="26.245" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-11-serial-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="309.966" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-11-serial-sfx-c-typing" src="assets/sfx/typing.mp3" data-start="319.926" data-duration="1.53" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-11-serial-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="324.122" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-11-serial-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="329.185" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-11-serial-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="333.581" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-12-gas-voice" src="assets/voice/12.wav" data-start="333.681" data-duration="30.76" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-12-gas-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="348.539" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-12-gas-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="354.56" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-12-gas-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="364.691" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-13-tmp36-voice" src="assets/voice/13.wav" data-start="364.791" data-duration="29.419" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-13-tmp36-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="368.38" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-13-tmp36-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="381.242" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-13-tmp36-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="386.783" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-13-tmp36-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="394.46" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-14-pir-voice" src="assets/voice/14.wav" data-start="394.56" data-duration="31.147" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-14-pir-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="399.693" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-14-pir-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="408.079" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-14-pir-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="421.203" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-14-pir-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="425.957" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-15-pir-lcd-voice" src="assets/voice/15.wav" data-start="426.057" data-duration="30.984" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-15-pir-lcd-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="437.771" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-15-pir-lcd-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="443.98" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-15-pir-lcd-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="450.474" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-15-pir-lcd-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="457.291" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-16-lcd-i2c-voice" src="assets/voice/16.wav" data-start="457.391" data-duration="41.349" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-16-lcd-i2c-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="470.715" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-16-lcd-i2c-sfx-e-click-soft" src="assets/sfx/click-soft.mp3" data-start="484.318" data-duration="0.36" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-16-lcd-i2c-sfx-f-pop" src="assets/sfx/pop.mp3" data-start="489.39" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-16-lcd-i2c-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="498.99" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-17-lcd-dht-voice" src="assets/voice/17.wav" data-start="499.09" data-duration="28.657" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-17-lcd-dht-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="502.094" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-17-lcd-dht-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="512.819" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-17-lcd-dht-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="522.71" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-17-lcd-dht-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="527.997" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-18-atuador-voice" src="assets/voice/18.wav" data-start="528.097" data-duration="31.751" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-18-atuador-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="537.972" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-18-atuador-sfx-d-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="545.029" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-18-atuador-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="550.466" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-18-atuador-sfx-f-pop" src="assets/sfx/pop.mp3" data-start="554.707" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-18-atuador-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="560.098" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-19-rele-cod-voice" src="assets/voice/19.wav" data-start="560.198" data-duration="26.654" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-19-rele-cod-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="562.042" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-19-rele-cod-sfx-c-click-soft" src="assets/sfx/click-soft.mp3" data-start="567.702" data-duration="0.36" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-19-rele-cod-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="573.795" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-19-rele-cod-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="581.159" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-19-rele-cod-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="587.102" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-20-tone-ohm-voice" src="assets/voice/20.wav" data-start="587.202" data-duration="28.858" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-20-tone-ohm-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="590.017" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-20-tone-ohm-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="596.645" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-20-tone-ohm-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="610.19" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-20-tone-ohm-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="616.31" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-21-uart-voice" src="assets/voice/21.wav" data-start="616.41" data-duration="26.404" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-21-uart-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="622.936" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-21-uart-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="629.531" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-21-uart-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="638.55" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-21-uart-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="643.064" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-22-i2c-voice" src="assets/voice/22.wav" data-start="643.164" data-duration="32.745" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-22-i2c-sfx-b-whoosh-short" src="assets/sfx/whoosh-short.mp3" data-start="645.913" data-duration="0.56" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-22-i2c-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="652.411" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-22-i2c-sfx-d-click-soft" src="assets/sfx/click-soft.mp3" data-start="659.779" data-duration="0.36" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-22-i2c-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="670.068" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-22-i2c-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="676.159" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-23-protocolos-voice" src="assets/voice/23.wav" data-start="676.259" data-duration="35.17" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-23-protocolos-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="680.255" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-23-protocolos-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="685.441" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-23-protocolos-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="694.982" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-23-protocolos-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="704.247" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-23-protocolos-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="711.679" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-24-esp32-voice" src="assets/voice/24.wav" data-start="711.779" data-duration="31.403" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-24-esp32-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="721.258" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-24-esp32-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="729.441" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-24-esp32-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="737.067" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-24-esp32-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="743.432" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-25-esp32-cod-voice" src="assets/voice/25.wav" data-start="743.532" data-duration="31.603" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-25-esp32-cod-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="747.764" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-25-esp32-cod-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="757.059" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-25-esp32-cod-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="764.725" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-25-esp32-cod-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="771.517" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-25-esp32-cod-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="775.385" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-26-iot-voice" src="assets/voice/26.wav" data-start="775.485" data-duration="28.823" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-26-iot-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="777.962" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-26-iot-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="783.356" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-26-iot-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="790.15" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-26-iot-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="796.767" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-26-iot-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="804.558" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-27-http-voice" src="assets/voice/27.wav" data-start="804.658" data-duration="23.977" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-27-http-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="808.973" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-27-http-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="816.436" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-27-http-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="821.175" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-27-http-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="828.885" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-28-roi-voice" src="assets/voice/28.wav" data-start="828.985" data-duration="40.941" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-28-roi-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="831.797" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-28-roi-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="839.653" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-28-roi-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="845.577" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-28-roi-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="856.912" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-28-roi-sfx-f-pop" src="assets/sfx/pop.mp3" data-start="863.248" data-duration="0.71" data-track-index="12" data-volume="0.3"></audio>
+      <audio id="el-28-roi-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="870.176" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-29-kpi-voice" src="assets/voice/29.wav" data-start="870.276" data-duration="33.065" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-29-kpi-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="873.423" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-29-kpi-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="881.986" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-29-kpi-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="889.316" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-29-kpi-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="895.863" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-29-kpi-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="903.591" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-30-q10-arq-voice" src="assets/voice/30.wav" data-start="903.691" data-duration="28.62" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-30-q10-arq-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="908.969" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-30-q10-arq-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="913.721" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-30-q10-arq-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="918.886" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-30-q10-arq-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="924.754" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-30-q10-arq-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="932.561" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-31-q10-cod-voice" src="assets/voice/31.wav" data-start="932.661" data-duration="29.985" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-31-q10-cod-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="945.112" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-31-q10-cod-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="949.542" data-duration="0.71" data-track-index="12" data-volume="0.25"></audio>
+      <audio id="el-31-q10-cod-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="962.896" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-32-q10-resp-voice" src="assets/voice/32.wav" data-start="962.996" data-duration="24.085" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-32-q10-resp-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="965.905" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-32-q10-resp-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="969.934" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-32-q10-resp-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="976.574" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-32-q10-resp-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="982.164" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-32-q10-resp-whoosh" src="assets/sfx/whoosh-short.mp3" data-start="987.331" data-duration="0.56" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="el-33-cola-voice" src="assets/voice/33.wav" data-start="987.431" data-duration="28.059" data-track-index="10" data-volume="1"></audio>
+      <audio id="el-33-cola-sfx-b-pop" src="assets/sfx/pop.mp3" data-start="989.201" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-33-cola-sfx-c-pop" src="assets/sfx/pop.mp3" data-start="993.596" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-33-cola-sfx-d-pop" src="assets/sfx/pop.mp3" data-start="1000.988" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-33-cola-sfx-e-pop" src="assets/sfx/pop.mp3" data-start="1007.041" data-duration="0.71" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="el-33-cola-sfx-f-chime" src="assets/sfx/chime.mp3" data-start="1013.631" data-duration="2.53" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="el-bgm-0" src="assets/music/underscore.mp3" data-start="0.0" data-duration="235.0" data-track-index="11" data-volume="0.09"></audio>
+      <audio id="el-bgm-1" src="assets/music/underscore.mp3" data-start="234.5" data-duration="235.0" data-track-index="14" data-volume="0.09"></audio>
+      <audio id="el-bgm-2" src="assets/music/underscore.mp3" data-start="469.0" data-duration="235.0" data-track-index="11" data-volume="0.09"></audio>
+      <audio id="el-bgm-3" src="assets/music/underscore.mp3" data-start="703.5" data-duration="235.0" data-track-index="14" data-volume="0.09"></audio>
+      <audio id="el-bgm-4" src="assets/music/underscore.mp3" data-start="938.0" data-duration="79.64" data-track-index="11" data-volume="0.09"></audio>
+      <div id="el-captions" class="scene clip" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="1017.64" data-track-index="2" data-track-kind="captions"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        tl.to("#el-01-abertura", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 21.754);
+        tl.fromTo("#el-02-mapa", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 21.754);
+        tl.to("#el-02-mapa", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 44.47);
+        tl.fromTo("#el-03-arquitetura", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 44.47);
+        tl.to("#el-03-arquitetura", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 71.045);
+        tl.fromTo("#el-04-conceitos", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 71.045);
+        tl.to("#el-04-conceitos", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 102.636);
+        tl.fromTo("#el-05-estrutura", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 102.636);
+        tl.to("#el-05-estrutura", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 134.891);
+        tl.fromTo("#el-06-dig-anal", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 134.891);
+        tl.to("#el-06-dig-anal", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 166.736);
+        tl.fromTo("#el-07-adc", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 166.736);
+        tl.to("#el-07-adc", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 204.498);
+        tl.fromTo("#el-08-ldr", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 204.498);
+        tl.to("#el-08-ldr", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 236.597);
+        tl.fromTo("#el-09-pwm", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 236.597);
+        tl.to("#el-09-pwm", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 269.546);
+        tl.fromTo("#el-10-map", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 269.546);
+        tl.to("#el-10-map", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 307.086);
+        tl.fromTo("#el-11-serial", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 307.086);
+        tl.to("#el-11-serial", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 333.681);
+        tl.fromTo("#el-12-gas", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 333.681);
+        tl.to("#el-12-gas", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 364.791);
+        tl.fromTo("#el-13-tmp36", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 364.791);
+        tl.to("#el-13-tmp36", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 394.56);
+        tl.fromTo("#el-14-pir", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 394.56);
+        tl.to("#el-14-pir", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 426.057);
+        tl.fromTo("#el-15-pir-lcd", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 426.057);
+        tl.to("#el-15-pir-lcd", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 457.391);
+        tl.fromTo("#el-16-lcd-i2c", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 457.391);
+        tl.to("#el-16-lcd-i2c", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 499.09);
+        tl.fromTo("#el-17-lcd-dht", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 499.09);
+        tl.to("#el-17-lcd-dht", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 528.097);
+        tl.fromTo("#el-18-atuador", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 528.097);
+        tl.to("#el-18-atuador", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 560.198);
+        tl.fromTo("#el-19-rele-cod", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 560.198);
+        tl.to("#el-19-rele-cod", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 587.202);
+        tl.fromTo("#el-20-tone-ohm", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 587.202);
+        tl.to("#el-20-tone-ohm", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 616.41);
+        tl.fromTo("#el-21-uart", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 616.41);
+        tl.to("#el-21-uart", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 643.164);
+        tl.fromTo("#el-22-i2c", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 643.164);
+        tl.to("#el-22-i2c", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 676.259);
+        tl.fromTo("#el-23-protocolos", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 676.259);
+        tl.to("#el-23-protocolos", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 711.779);
+        tl.fromTo("#el-24-esp32", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 711.779);
+        tl.to("#el-24-esp32", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 743.532);
+        tl.fromTo("#el-25-esp32-cod", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 743.532);
+        tl.to("#el-25-esp32-cod", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 775.485);
+        tl.fromTo("#el-26-iot", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 775.485);
+        tl.to("#el-26-iot", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 804.658);
+        tl.fromTo("#el-27-http", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 804.658);
+        tl.to("#el-27-http", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 828.985);
+        tl.fromTo("#el-28-roi", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 828.985);
+        tl.to("#el-28-roi", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 870.276);
+        tl.fromTo("#el-29-kpi", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 870.276);
+        tl.to("#el-29-kpi", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 903.691);
+        tl.fromTo("#el-30-q10-arq", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 903.691);
+        tl.to("#el-30-q10-arq", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 932.661);
+        tl.fromTo("#el-31-q10-cod", { x: 1920 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 932.661);
+        tl.to("#el-31-q10-cod", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 962.996);
+        tl.fromTo("#el-32-q10-resp", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 962.996);
+        tl.to("#el-32-q10-resp", { scale: 1.6, opacity: 0, duration: 0.45, ease: "power3.in" }, 987.431);
+        tl.fromTo("#el-33-cola", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 987.431);
+        tl.to({}, { duration: 1017.64 }, 0);
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>

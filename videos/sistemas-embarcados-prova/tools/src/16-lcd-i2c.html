@@ -1,0 +1,48 @@
+<!--sfx: c:pop@0.2*0.2, e:click-soft@1.0*0.2, f:pop@0.4*0.3-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .lcd { position: absolute; border-radius: 16px; background: #1B3A1F; border: 4px solid #2E5E33; box-shadow: inset 0 0 30px rgba(0,0,0,0.5); }
+  .lcdin { position: absolute; left: 30px; top: 0; height: 178px; overflow: hidden; }
+  .lr { position: absolute; left: 0; height: 56px; width: 2000px; }
+  .lr b { position: absolute; top: 0; width: 34px; height: 56px; background: #24502A; border-radius: 3px; font-family: "DM Mono", monospace; font-weight: 400; font-size: 34px; line-height: 56px; text-align: center; color: #C8F7C5; }
+</style>
+<div id="@win" class="k-win" style="left:120px;top:150px;width:900px;height:728px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>lcd_i2c.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:23px;--lh:40px"><span class="ln" id="@c0"><span class="k-c-pink">#include</span> <span class="k-c-green">&lt;Wire.h&gt;</span></span><span class="ln" id="@c1"><span class="k-c-pink">#include</span> <span class="k-c-green">&lt;LiquidCrystal_I2C.h&gt;</span></span><span class="ln" id="@c2"><span class="k-c-cyan">LiquidCrystal_I2C</span> <span class="k-c-cyan">lcd</span>(<span class="k-c-orange">0x20</span>, <span class="k-c-orange">16</span>, <span class="k-c-orange">2</span>);</span><span class="ln" id="@c3"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="@c4">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">init</span>();</span><span class="ln" id="@c5">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">backlight</span>();</span><span class="ln" id="@c6">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">setCursor</span>(<span class="k-c-orange">0</span>, <span class="k-c-orange">0</span>);</span><span class="ln" id="@c7">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Sistemas"</span>);</span><span class="ln" id="@c8">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">setCursor</span>(<span class="k-c-orange">0</span>, <span class="k-c-orange">1</span>);</span><span class="ln" id="@c9">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(<span class="k-c-green">"Embarcados"</span>);</span><span class="ln" id="@c10">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">1000</span>);</span><span class="ln" id="@c11">}</span><span class="ln" id="@c12"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="@c13">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">scrollDisplayRight</span>();</span><span class="ln" id="@c14">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">300</span>);</span><span class="ln" id="@c15">}</span></div>
+</div>
+<div id="@args" class="k-anno" style="left:1080px;top:150px;font-size:23px">lcd(<span class="k-c-yel">0x20</span>, <span class="k-c-cyan">16</span>, <span class="k-c-green">2</span>)
+  endereço  colunas  linhas</div>
+<div id="@lc" class="lcd" style="left:1150px;top:300px;width:668px;height:178px"><div class="lcdin" style="width:608px"><div class="lr" id="@lcr0" style="top:30px"><b style="left:0px">S</b><b style="left:38px">i</b><b style="left:76px">s</b><b style="left:114px">t</b><b style="left:152px">e</b><b style="left:190px">m</b><b style="left:228px">a</b><b style="left:266px">s</b><b style="left:304px">&nbsp;</b><b style="left:342px">&nbsp;</b><b style="left:380px">&nbsp;</b><b style="left:418px">&nbsp;</b><b style="left:456px">&nbsp;</b><b style="left:494px">&nbsp;</b><b style="left:532px">&nbsp;</b><b style="left:570px">&nbsp;</b></div><div class="lr" id="@lcr1" style="top:94px"><b style="left:0px">E</b><b style="left:38px">m</b><b style="left:76px">b</b><b style="left:114px">a</b><b style="left:152px">r</b><b style="left:190px">c</b><b style="left:228px">a</b><b style="left:266px">d</b><b style="left:304px">o</b><b style="left:342px">s</b><b style="left:380px">&nbsp;</b><b style="left:418px">&nbsp;</b><b style="left:456px">&nbsp;</b><b style="left:494px">&nbsp;</b><b style="left:532px">&nbsp;</b><b style="left:570px">&nbsp;</b></div></div></div>
+<div id="@co" style="position:absolute;left:0;top:0">
+  <div class="k-chip k-c-yel" style="left:1060px;top:300px;font-size:20px;background:#2A2410">(0,0)</div>
+  <div class="k-chip k-c-yel" style="left:1060px;top:364px;font-size:20px;background:#2A2410">(0,1)</div>
+</div>
+<div id="@cl" class="k-anno k-mute" style="left:1080px;top:510px;font-size:22px">setCursor(<span class="k-c-cyan">coluna</span>, <span class="k-c-green">linha</span>) · começa do 0</div>
+<div id="@sc" class="k-anno k-c-cyan" style="left:1080px;top:580px;font-size:22px">scrollDisplayRight() → 1 coluna p/ direita
+delay(300) → velocidade</div>
+<div id="@ad" class="k-macete" style="left:1080px;top:700px;width:720px;font-size:24px">Aceso e sem texto? Endereço errado: <u>0x20 · 0x27 · 0x3F</u> → scanner I2C</div>
+<script>
+K.rise(tl, $("win"), C.a);
+K.hl(tl, $("c0"), C.b, C.c);
+K.hl(tl, $("c1"), C.b, C.c);
+K.hl(tl, $("c2"), C.b + 4.0, C.c);
+K.hl(tl, $("c4"), C.c, C.d);
+K.hl(tl, $("c5"), C.c + 1.6, C.d);
+K.hl(tl, $("c6"), C.d, C.e);
+K.hl(tl, $("c7"), C.d + 3.0, C.e);
+K.hl(tl, $("c8"), C.d + 4.6, C.e);
+K.hl(tl, $("c9"), C.d + 6.4, C.e);
+K.hl(tl, $("c13"), C.e, C.f);
+K.hl(tl, $("c14"), C.e + 2.6, C.f);
+K.wipe(tl, $("args"), C.b + 4.4);
+K.rise(tl, $("lc"), C.c);
+tl.set([$("lcr0"), $("lcr1")], { opacity: 0 }, 0);
+K.fade(tl, $("co"), C.d + 1.0);
+tl.to($("lcr0"), { opacity: 1, duration: 0.2 }, C.d + 3.0);
+tl.to($("lcr1"), { opacity: 1, duration: 0.2 }, C.d + 6.4);
+K.fade(tl, $("cl"), C.d + 1.6);
+K.wipe(tl, $("sc"), C.e + 0.4);
+for (var i = 1; i <= 8; i++) tl.set([$("lcr0"), $("lcr1")], { x: i * 38 }, C.e + 1.0 + i * 0.4);
+tl.set([$("lcr0"), $("lcr1")], { x: 0 }, C.f);
+K.macete(tl, $("ad"), C.f + 0.4);
+</script>

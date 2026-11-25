@@ -1,0 +1,55 @@
+<template id="17-lcd-dht-template">
+  <div id="root" data-composition-id="17-lcd-dht" data-start="0" data-duration="29.507" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .lcd { position: absolute; border-radius: 16px; background: #1B3A1F; border: 4px solid #2E5E33; box-shadow: inset 0 0 30px rgba(0,0,0,0.5); }
+  .lcdin { position: absolute; left: 30px; top: 0; height: 178px; overflow: hidden; }
+  .lr { position: absolute; left: 0; height: 56px; width: 2000px; }
+  .lr b { position: absolute; top: 0; width: 34px; height: 56px; background: #24502A; border-radius: 3px; font-family: "DM Mono", monospace; font-weight: 400; font-size: 34px; line-height: 56px; text-align: center; color: #C8F7C5; }
+</style>
+    <div id="s17-lcd-dht-bg" class="clip k-scene k-bg" data-start="0" data-duration="29.507" data-track-index="0"></div>
+    <div id="s17-lcd-dht-stage" class="clip k-scene" data-start="0" data-duration="29.507" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s17-lcd-dht-cam" class="k-cam">
+<div id="s17-lcd-dht-wa" class="k-win" style="left:120px;top:160px;width:840px;height:316px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>lcd_paralelo.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:22px;--lh:38px"><span class="ln" id="s17-lcd-dht-a0"><span class="k-c-pink">#include</span> <span class="k-c-green">&lt;LiquidCrystal.h&gt;</span></span><span class="ln" id="s17-lcd-dht-a1"><span class="k-c-cyan">LiquidCrystal</span> <span class="k-c-cyan">lcd</span>(<span class="k-c-orange">12</span>, <span class="k-c-orange">11</span>, <span class="k-c-orange">5</span>, <span class="k-c-orange">4</span>, <span class="k-c-orange">3</span>, <span class="k-c-orange">2</span>);</span><span class="ln" id="s17-lcd-dht-a2"><span class="k-mute">//                RS  E  D4 D5 D6 D7</span></span><span class="ln" id="s17-lcd-dht-a3"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="s17-lcd-dht-a4">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">begin</span>(<span class="k-c-orange">16</span>, <span class="k-c-orange">2</span>);</span><span class="ln" id="s17-lcd-dht-a5">}</span></div>
+</div><div id="s17-lcd-dht-wb" class="k-win" style="left:1000px;top:160px;width:800px;height:468px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>dht11.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:22px;--lh:38px"><span class="ln" id="s17-lcd-dht-b0"><span class="k-c-pink">#include</span> <span class="k-c-green">&lt;DHT.h&gt;</span></span><span class="ln" id="s17-lcd-dht-b1"><span class="k-c-pink">#define</span> DHTPIN A5</span><span class="ln" id="s17-lcd-dht-b2"><span class="k-c-pink">#define</span> DHTTYPE <span class="k-c-yel">DHT11</span></span><span class="ln" id="s17-lcd-dht-b3"><span class="k-c-cyan">DHT</span> <span class="k-c-cyan">dht</span>(DHTPIN, DHTTYPE);</span><span class="ln" id="s17-lcd-dht-b4"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="s17-lcd-dht-b5">  <span class="k-c-violet">float</span> h = <span class="k-c-cyan">dht</span>.<span class="k-c-cyan">readHumidity</span>();</span><span class="ln" id="s17-lcd-dht-b6">  <span class="k-c-violet">float</span> t = <span class="k-c-cyan">dht</span>.<span class="k-c-cyan">readTemperature</span>();</span><span class="ln" id="s17-lcd-dht-b7">  <span class="k-c-cyan">lcd</span>.<span class="k-c-cyan">print</span>(t, <span class="k-c-orange">1</span>);</span><span class="ln" id="s17-lcd-dht-b8">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">2000</span>);   <span class="k-mute">// mínimo do DHT11</span></span><span class="ln" id="s17-lcd-dht-b9">}</span></div>
+</div>
+<div id="s17-lcd-dht-n1" class="k-anno k-c-cyan" style="left:120px;top:490px;font-size:22px">sem módulo I2C: 6 pinos (RS, E, D4–D7)
+inicia com lcd.begin(16, 2)</div>
+<div id="s17-lcd-dht-lc" class="lcd" style="left:120px;top:620px;width:668px;height:178px"><div class="lcdin" style="width:608px"><div class="lr" id="s17-lcd-dht-lcr0" style="top:30px"><b style="left:0px">T</b><b style="left:38px">e</b><b style="left:76px">m</b><b style="left:114px">p</b><b style="left:152px">:</b><b style="left:190px">&nbsp;</b><b style="left:228px">2</b><b style="left:266px">8</b><b style="left:304px">.</b><b style="left:342px">0</b><b style="left:380px">&nbsp;</b><b style="left:418px">C</b><b style="left:456px">&nbsp;</b><b style="left:494px">&nbsp;</b><b style="left:532px">&nbsp;</b><b style="left:570px">&nbsp;</b></div><div class="lr" id="s17-lcd-dht-lcr1" style="top:94px"><b style="left:0px">U</b><b style="left:38px">m</b><b style="left:76px">i</b><b style="left:114px">d</b><b style="left:152px">:</b><b style="left:190px">&nbsp;</b><b style="left:228px">3</b><b style="left:266px">7</b><b style="left:304px">.</b><b style="left:342px">0</b><b style="left:380px">&nbsp;</b><b style="left:418px">%</b><b style="left:456px">&nbsp;</b><b style="left:494px">&nbsp;</b><b style="left:532px">&nbsp;</b><b style="left:570px">&nbsp;</b></div></div></div>
+<div id="s17-lcd-dht-al" class="k-macete k-alert" style="left:1000px;top:640px;width:800px;font-size:26px">DHT11: no mínimo <b>2 s</b> entre leituras · valores inteiros</div>
+      </div>
+    </div>
+    <div id="s17-lcd-dht-chrome" class="clip k-scene" data-start="0" data-duration="29.507" data-track-index="2">
+      <div id="s17-lcd-dht-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>CÓDIGO · LCD + DHT11</b></div>
+      <div id="s17-lcd-dht-num" class="k-num">17 / 33</div>
+      <div id="s17-lcd-dht-progbar" class="k-prog"><i id="s17-lcd-dht-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 2.804, "c": 13.529, "d": 18.065, "e": 23.02}, D = 29.507;
+        var S = K.scene("17-lcd-dht", D, 33), tl = S.tl, $ = S.$;
+        K.rise(tl, $("wa"), C.b);
+        K.hl(tl, $("a1"), C.b + 1.6, C.c);
+        K.hl(tl, $("a2"), C.b + 3.0, C.c);
+        K.hl(tl, $("a4"), C.b + 7.0, C.c);
+        K.wipe(tl, $("n1"), C.b + 4.0);
+        K.rise(tl, $("wb"), C.c);
+        K.hl(tl, $("b0"), C.c + 0.6, C.d);
+        K.hl(tl, $("b2"), C.c + 1.2, C.d);
+        K.hl(tl, $("b3"), C.c + 2.4, C.d);
+        K.hl(tl, $("b5"), C.d + 2.2, C.e);
+        K.hl(tl, $("b6"), C.d, C.e);
+        K.hl(tl, $("b8"), C.e, C.e + 5);
+        K.rise(tl, $("lc"), C.d + 1.0);
+        K.pop(tl, $("al"), C.e + 0.6);
+      })();
+    </script>
+  </div>
+</template>

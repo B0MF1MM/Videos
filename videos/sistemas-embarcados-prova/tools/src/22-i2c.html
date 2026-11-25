@@ -1,0 +1,36 @@
+<!--sfx: b:whoosh-short@0.4*0.2, c:pop@0.2*0.2, d:click-soft@3.0*0.3, e:pop@6.0*0.25-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .bk { position: absolute; border-radius: 20px; border: 3px solid; background: #182238; }
+  .bk b { position: absolute; left: 24px; top: 20px; font-family: "Hanken Grotesk", sans-serif; font-size: 30px; }
+  .bk span { position: absolute; left: 24px; top: 70px; font-family: "DM Mono", monospace; font-size: 20px; line-height: 1.45; color: #B9C2DA; white-space: pre-line; }
+</style>
+<div id="@k" class="k-chip k-c-pink" style="left:120px;top:120px;font-size:26px;background:#2E1420">QUESTÃO 6 · I2C</div>
+<div id="@mst" class="bk" style="left:120px;top:300px;width:400px;height:220px;border-color:#FFD24A"><b class="k-c-yel">mestre</b><span>microcontrolador
+chama pelo endereço</span></div>
+<svg class="k-svg"><path id="@sda" d="M 520 360 L 1800 360" stroke="#7FE39A" stroke-width="6"/><path id="@scl" d="M 520 450 L 1800 450" stroke="#B49BFF" stroke-width="6"/></svg>
+<div id="@ls" class="k-anno k-c-green" style="left:540px;top:300px;font-size:22px">SDA · dados</div>
+<div id="@lc" class="k-anno k-c-violet" style="left:540px;top:470px;font-size:22px">SCL · clock</div>
+<div id="@lcd" style="position:absolute;left:0;top:0"><svg class="k-svg"><path d="M 880 360 L 880 560 M 940 450 L 940 560" stroke="#8C97B5" stroke-width="3"/></svg><div id="@lcdb" class="bk" style="left:760px;top:560px;width:300px;height:140px;border-color:#4FD6EE"><b class="k-c-cyan">LCD 16×2</b><span>endereço 0x27</span></div></div>
+<div id="@tmp" style="position:absolute;left:0;top:0"><svg class="k-svg"><path d="M 1250 360 L 1250 560 M 1310 450 L 1310 560" stroke="#8C97B5" stroke-width="3"/></svg><div id="@tmpb" class="bk" style="left:1130px;top:560px;width:300px;height:140px;border-color:#4FD6EE"><b class="k-c-cyan">sensor temp.</b><span>endereço 0x48</span></div></div>
+<div id="@rtc" style="position:absolute;left:0;top:0"><svg class="k-svg"><path d="M 1620 360 L 1620 560 M 1680 450 L 1680 560" stroke="#8C97B5" stroke-width="3"/></svg><div id="@rtcb" class="bk" style="left:1500px;top:560px;width:300px;height:140px;border-color:#4FD6EE"><b class="k-c-cyan">relógio RTC</b><span>endereço 0x68</span></div></div>
+
+<div id="@pk" class="k-chip k-c-yel" style="left:560px;top:330px;font-size:22px;background:#2A2410">0x27?</div>
+<div id="@e32" class="k-chip k-c-cyan" style="left:120px;top:760px;font-size:24px">ESP32: SDA = GPIO 21 · SCL = GPIO 22</div>
+<div id="@ans" class="k-chip k-c-green" style="left:1500px;top:120px;font-size:26px;background:#13241A">Q6 → alternativa C</div>
+<script>
+K.fade(tl, $("k"), C.a);
+K.rise(tl, $("mst"), C.b);
+K.draw(tl, [$("sda"), $("scl")], C.b + 0.4, { d: 0.8 });
+K.fade(tl, [$("ls"), $("lc")], C.b + 1.2, { s: 2.0 });
+K.rise(tl, [$("lcd"), $("tmp"), $("rtc")], C.c, { s: 0.5 });
+tl.set($("pk"), { opacity: 0 }, 0);
+tl.to($("pk"), { opacity: 1, duration: 0.2 }, C.d + 1.8);
+tl.to($("pk"), { x: 300, duration: 1.0, ease: "power1.inOut" }, C.d + 2.0);
+tl.to($("pk"), { opacity: 0, duration: 0.2 }, C.d + 3.0);
+tl.to([$("tmpb"), $("rtcb")], { opacity: 0.3, duration: 0.3 }, C.d + 3.0);
+tl.to($("lcdb"), { borderColor: "#FFD24A", boxShadow: "0 0 40px rgba(255,210,74,0.5)", duration: 0.3 }, C.d + 3.0);
+tl.to([$("tmpb"), $("rtcb")], { opacity: 1, duration: 0.3 }, C.e);
+K.pop(tl, $("e32"), C.e + 6.0);
+K.pop(tl, $("ans"), C.e + 8.0);
+</script>

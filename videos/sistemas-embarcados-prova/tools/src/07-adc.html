@@ -1,0 +1,37 @@
+<!--sfx: b:pop@0.2*0.2, d:whoosh-short*0.2, e:pop@0.2*0.25-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .tk { position: absolute; top: 420px; width: 120px; text-align: center; font-family: "DM Mono", monospace; font-size: 24px; color: #4FD6EE; }
+  .tv { position: absolute; top: 330px; width: 120px; text-align: center; font-family: "DM Mono", monospace; font-size: 22px; color: #8C97B5; }
+</style>
+<div id="@k" class="k-chip k-c-cyan" style="left:120px;top:120px;font-size:26px">QUESTÃO 4 · CONVERSOR ADC</div>
+<div id="@b" class="k-h2" style="left:120px;top:190px;font-size:48px">10 bits → 2<sup>10</sup> = <span class="k-c-yel">1024 níveis</span> → <span class="k-c-cyan">0 a 1023</span></div>
+<div id="@sc" style="position:absolute;left:0;top:0">
+  <div style="position:absolute;left:200px;top:370px;width:1500px;height:36px;border-radius:18px;background:linear-gradient(90deg,#182238,#4FD6EE)"></div>
+  <div class="tk" style="left:140px">0</div><div class="tk" style="left:515px">256</div><div class="tk" style="left:890px">512</div><div class="tk" style="left:1266px">768</div><div class="tk" style="left:1640px">1023</div><div class="tv" style="left:140px">0 V</div><div class="tv" style="left:890px">2,5 V</div><div class="tv" style="left:1640px">5 V</div>
+</div>
+<div id="@mk" style="position:absolute;left:1446px;top:340px;width:6px;height:96px;margin-left:-3px;background:#FFD24A;border-radius:3px"></div>
+<div id="@mkl" class="k-chip k-c-yel" style="left:1336px;top:280px;font-size:26px;background:#2A2410">leitura = 850</div>
+<div id="@st" class="k-anno k-mute" style="left:200px;top:470px;font-size:22px">cada degrau ≈ 4,9 mV (5 V ÷ 1023)</div>
+<div id="@fm" class="k-card" style="left:120px;top:540px;width:1040px;height:230px;border-color:#FFD24A">
+  <div class="k-body" style="left:32px;top:26px;font-size:28px">850 <b>não</b> são 850 volts. Para voltar à tensão:</div>
+  <div class="k-code" style="left:32px;top:90px;font-size:36px;line-height:1.5">V = leitura × 5 / 1023
+  = 850 × 5 / 1023 = <span class="k-c-yel">4,15 V</span></div>
+</div>
+<div id="@e32" class="k-card" style="left:1200px;top:540px;width:600px;height:230px;border-color:#7FE39A">
+  <div class="k-h2 k-c-green" style="left:30px;top:24px;font-size:34px">ESP32</div>
+  <div class="k-body" style="left:30px;top:84px;width:540px;font-size:28px;line-height:1.45">ADC de <b>12 bits</b><br>0 a <b>4095</b> · máximo <b>3,3 V</b></div>
+</div>
+<div id="@ans" class="k-chip k-c-green" style="left:1500px;top:120px;font-size:26px;background:#13241A">Q4 → alternativa A</div>
+<script>
+K.fade(tl, $("k"), C.a);
+K.wipe(tl, $("b"), C.b);
+K.fade(tl, $("sc"), C.c);
+K.fade(tl, $("st"), C.c + 3.6);
+tl.set([$("mk"), $("mkl")], { opacity: 0 }, 0);
+tl.fromTo($("mk"), { x: -1250, opacity: 0 }, { x: 0, opacity: 1, duration: 1.0, ease: "power3.out" }, C.d);
+tl.to($("mkl"), { opacity: 1, duration: 0.3 }, C.d + 0.8);
+K.rise(tl, $("fm"), C.d + 2.4);
+K.rise(tl, $("e32"), C.e);
+K.pop(tl, $("ans"), C.e + 4.0);
+</script>

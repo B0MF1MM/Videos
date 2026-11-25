@@ -1,0 +1,49 @@
+<template id="21-uart-template">
+  <div id="root" data-composition-id="21-uart" data-start="0" data-duration="27.254" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .bk { position: absolute; border-radius: 20px; border: 3px solid; background: #182238; }
+  .bk b { position: absolute; left: 24px; top: 20px; font-family: "Hanken Grotesk", sans-serif; font-size: 30px; }
+  .bk span { position: absolute; left: 24px; top: 70px; font-family: "DM Mono", monospace; font-size: 20px; line-height: 1.45; color: #B9C2DA; white-space: pre-line; }
+  .pn { position: absolute; width: 80px; height: 50px; border-radius: 10px; background: #0D1322; border: 2px solid #8C97B5; font-family: 'DM Mono', monospace; font-size: 24px; line-height: 46px; text-align: center; color: #EEF1F8; }
+</style>
+    <div id="s21-uart-bg" class="clip k-scene k-bg" data-start="0" data-duration="27.254" data-track-index="0"></div>
+    <div id="s21-uart-stage" class="clip k-scene" data-start="0" data-duration="27.254" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s21-uart-cam" class="k-cam">
+<div id="s21-uart-k" class="k-chip k-c-pink" style="left:120px;top:120px;font-size:26px;background:#2E1420">QUESTÃO 5 · UART</div>
+<div id="s21-uart-as" class="k-h2" style="left:120px;top:190px;font-size:44px">serial <span class="k-c-pink">assíncrona</span> · <span class="k-mute">sem fio de clock</span></div>
+<div id="s21-uart-d1" class="bk" style="left:200px;top:320px;width:420px;height:300px;border-color:#FFD24A"><b class="k-c-yel">Arduino</b></div>
+<div id="s21-uart-d2" class="bk" style="left:1300px;top:320px;width:420px;height:300px;border-color:#4FD6EE"><b class="k-c-cyan">PC / GPS / Bluetooth</b></div>
+<div class="pn" id="s21-uart-t1" style="left:540px;top:400px">TX</div><div class="pn" id="s21-uart-r1" style="left:540px;top:520px">RX</div>
+<div class="pn" id="s21-uart-r2" style="left:1320px;top:400px">RX</div><div class="pn" id="s21-uart-t2" style="left:1320px;top:520px">TX</div>
+<svg class="k-svg"><path id="s21-uart-l1" class="arrow" d="M 620 425 C 900 425, 1020 425, 1310 425 M 1294 413 L 1310 425 L 1294 437" stroke="#FFD24A"/><path id="s21-uart-l2" class="arrow" d="M 1310 545 C 1020 545, 900 545, 620 545 M 636 533 L 620 545 L 636 557" stroke="#4FD6EE"/></svg>
+<div id="s21-uart-cz" class="k-anno k-mute" style="left:800px;top:455px;font-size:22px">TX de um → RX do outro</div>
+<div id="s21-uart-bd" class="k-macete" style="left:120px;top:680px;width:1100px;font-size:28px">Os dois lados com o <u>mesmo baud rate</u> (ex.: 9600) · ponto a ponto</div>
+<div id="s21-uart-ans" class="k-chip k-c-green" style="left:1300px;top:700px;font-size:26px;background:#13241A">Q5 → alternativa D</div>
+      </div>
+    </div>
+    <div id="s21-uart-chrome" class="clip k-scene" data-start="0" data-duration="27.254" data-track-index="2">
+      <div id="s21-uart-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>PROTOCOLOS · Q5</b></div>
+      <div id="s21-uart-num" class="k-num">21 / 33</div>
+      <div id="s21-uart-progbar" class="k-prog"><i id="s21-uart-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 1.988, "c": 5.526, "d": 13.121, "e": 19.14}, D = 27.254;
+        var S = K.scene("21-uart", D, 33), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.wipe(tl, $("as"), C.b);
+        K.rise(tl, [$("d1"), $("d2")], C.c, { s: 0.3 });
+        K.pop(tl, [$("t1"), $("r1"), $("r2"), $("t2")], C.c + 1.0, { s: 0.3 });
+        K.draw(tl, $("l1"), C.c + 4.0, { d: 0.6 });
+        K.draw(tl, $("l2"), C.c + 4.8, { d: 0.6 });
+        K.fade(tl, $("cz"), C.c + 5.4);
+        K.macete(tl, $("bd"), C.d);
+        K.pop(tl, $("ans"), C.e + 3.0);
+      })();
+    </script>
+  </div>
+</template>

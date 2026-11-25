@@ -1,0 +1,39 @@
+<!--sfx: b:pop@0.2*0.2, c:click-soft@0.4*0.25, d:pop@0.2*0.2, e:pop*0.3-->
+<style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+  .lmp { position: absolute; width: 70px; height: 70px; border-radius: 35px; background: #FFD24A; box-shadow: 0 0 40px #FFD24A; }
+</style>
+<div id="@wa" class="k-win" style="left:120px;top:150px;width:880px;height:592px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>rele_alterna.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:21px;--lh:36px"><span class="ln" id="@a0"><span class="k-c-violet">int</span> porta_rele1 = <span class="k-c-orange">7</span>;</span><span class="ln" id="@a1"><span class="k-c-violet">int</span> porta_rele2 = <span class="k-c-orange">8</span>;</span><span class="ln" id="@a2"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="@a3">  <span class="k-c-cyan">pinMode</span>(porta_rele1, <span class="k-c-yel">OUTPUT</span>);</span><span class="ln" id="@a4">  <span class="k-c-cyan">pinMode</span>(porta_rele2, <span class="k-c-yel">OUTPUT</span>);</span><span class="ln" id="@a5">}</span><span class="ln" id="@a6"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="@a7">  <span class="k-c-cyan">digitalWrite</span>(porta_rele1, <span class="k-c-yel">LOW</span>);   <span class="k-mute">// liga 1</span></span><span class="ln" id="@a8">  <span class="k-c-cyan">digitalWrite</span>(porta_rele2, <span class="k-c-yel">HIGH</span>);  <span class="k-mute">// desliga 2</span></span><span class="ln" id="@a9">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">2000</span>);</span><span class="ln" id="@a10">  <span class="k-c-cyan">digitalWrite</span>(porta_rele1, <span class="k-c-yel">HIGH</span>);  <span class="k-mute">// desliga 1</span></span><span class="ln" id="@a11">  <span class="k-c-cyan">digitalWrite</span>(porta_rele2, <span class="k-c-yel">LOW</span>);   <span class="k-mute">// liga 2</span></span><span class="ln" id="@a12">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">2000</span>);</span><span class="ln" id="@a13">}</span></div>
+</div><div id="@wb" class="k-win" style="left:1030px;top:150px;width:770px;height:392px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>rele_botao.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:20px;--lh:38px"><span class="ln" id="@b0">leitura1 = <span class="k-c-cyan">digitalRead</span>(porta_botao1);</span><span class="ln" id="@b1"><span class="k-c-violet">if</span> (leitura1 != <span class="k-c-orange">0</span>) {            <span class="k-mute">// apertou?</span></span><span class="ln" id="@b2">  <span class="k-c-violet">while</span> (<span class="k-c-cyan">digitalRead</span>(porta_botao1) != <span class="k-c-orange">0</span>) {</span><span class="ln" id="@b3">    <span class="k-c-cyan">delay</span>(<span class="k-c-orange">100</span>);                 <span class="k-mute">// espera soltar</span></span><span class="ln" id="@b4">  }</span><span class="ln" id="@b5">  estadorele1 = !estadorele1;   <span class="k-mute">// inverte</span></span><span class="ln" id="@b6">  <span class="k-c-cyan">digitalWrite</span>(porta_rele1, estadorele1);</span><span class="ln" id="@b7">}</span></div>
+</div>
+<div id="@lp" style="position:absolute;left:0;top:0">
+  <div id="@g1" class="lmp" style="left:1060px;top:560px"></div><div class="k-anno k-mute" style="left:1150px;top:572px;font-size:20px">lâmpada 1</div>
+  <div id="@g2" class="lmp" style="left:1420px;top:560px"></div><div class="k-anno k-mute" style="left:1510px;top:572px;font-size:20px">lâmpada 2</div>
+</div>
+<div id="@nt" class="k-macete" style="left:1030px;top:700px;width:770px;font-size:26px"><u>!</u> = NÃO lógico: !1 = 0 · !0 = 1 → cada clique troca</div>
+<script>
+K.rise(tl, $("wa"), C.b);
+K.hl(tl, $("a0"), C.b + 2.0, C.c);
+K.hl(tl, $("a1"), C.b + 3.4, C.c);
+K.hl(tl, $("a7"), C.c, C.c + 3.4);
+K.hl(tl, $("a8"), C.c, C.c + 3.4);
+K.hl(tl, $("a10"), C.c + 3.4, C.d);
+K.hl(tl, $("a11"), C.c + 3.4, C.d);
+K.fade(tl, $("lp"), C.c);
+tl.set([$("g1"), $("g2")], { opacity: 0.25 }, 0);
+tl.set($("g1"), { opacity: 1 }, C.c + 0.4);
+tl.set($("g1"), { opacity: 0.25 }, C.c + 3.4);
+tl.set($("g2"), { opacity: 1 }, C.c + 3.4);
+tl.to($("lp"), { opacity: 0, duration: 0.3 }, C.d - 0.2);
+K.rise(tl, $("wb"), C.d);
+K.hl(tl, $("b0"), C.d + 1.6, C.d + 3.4);
+K.hl(tl, $("b1"), C.d + 2.0, C.d + 3.4);
+K.hl(tl, $("b2"), C.d + 3.4, C.d + 5.4);
+K.hl(tl, $("b3"), C.d + 3.4, C.d + 5.4);
+K.hl(tl, $("b5"), C.d + 5.4, C.e + 4);
+K.macete(tl, $("nt"), C.e);
+</script>

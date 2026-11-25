@@ -1,0 +1,58 @@
+<template id="14-pir-template">
+  <div id="root" data-composition-id="14-pir" data-start="0" data-duration="31.997" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="assets/lib/kit.css" />
+    <style>
+  .k-code .ln { line-height: var(--lh, 36px); }
+</style>
+    <div id="s14-pir-bg" class="clip k-scene k-bg" data-start="0" data-duration="31.997" data-track-index="0"></div>
+    <div id="s14-pir-stage" class="clip k-scene" data-start="0" data-duration="31.997" data-track-index="1" data-layout-allow-overlap data-layout-allow-overflow>
+      <div id="s14-pir-cam" class="k-cam">
+<div id="s14-pir-k" class="k-chip k-c-violet" style="left:120px;top:110px;font-size:24px">SENSOR PIR · saída digital: HIGH = movimento</div>
+<div id="s14-pir-wa" class="k-win" style="left:120px;top:170px;width:860px;height:448px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>pir_simples.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:21px;--lh:36px"><span class="ln" id="s14-pir-a0"><span class="k-c-violet">void</span> setup() {</span><span class="ln" id="s14-pir-a1">  <span class="k-c-cyan">pinMode</span>(<span class="k-c-orange">2</span>, <span class="k-c-yel">INPUT</span>);</span><span class="ln" id="s14-pir-a2">  <span class="k-c-cyan">pinMode</span>(<span class="k-c-yel">LED_BUILTIN</span>, <span class="k-c-yel">OUTPUT</span>);</span><span class="ln" id="s14-pir-a3">}</span><span class="ln" id="s14-pir-a4"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="s14-pir-a5">  <span class="k-c-violet">int</span> s = <span class="k-c-cyan">digitalRead</span>(<span class="k-c-orange">2</span>);</span><span class="ln" id="s14-pir-a6">  <span class="k-c-violet">if</span> (s == <span class="k-c-yel">HIGH</span>) <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-yel">LED_BUILTIN</span>, <span class="k-c-yel">HIGH</span>);</span><span class="ln" id="s14-pir-a7">  <span class="k-c-violet">else</span>           <span class="k-c-cyan">digitalWrite</span>(<span class="k-c-yel">LED_BUILTIN</span>, <span class="k-c-yel">LOW</span>);</span><span class="ln" id="s14-pir-a8">  <span class="k-c-cyan">delay</span>(<span class="k-c-orange">10</span>);</span><span class="ln" id="s14-pir-a9">}</span></div>
+</div><div id="s14-pir-wb" class="k-win" style="left:1010px;top:170px;width:790px;height:556px">
+  <div class="k-win-bar"><i style="left:22px;background:#FF6F9C"></i><i style="left:46px;background:#FFD24A"></i><i style="left:70px;background:#7FE39A"></i><span>pir_pisca3.ino</span></div>
+  <div class="k-code" style="left:10px;top:66px;font-size:21px;--lh:36px"><span class="ln" id="s14-pir-b0"><span class="k-c-violet">void</span> loop() {</span><span class="ln" id="s14-pir-b1">  <span class="k-c-violet">int</span> movimento = <span class="k-c-cyan">digitalRead</span>(pinoPIR);</span><span class="ln" id="s14-pir-b2">  <span class="k-c-violet">if</span> (movimento == <span class="k-c-yel">HIGH</span>) {</span><span class="ln" id="s14-pir-b3">    <span class="k-c-violet">for</span> (<span class="k-c-violet">int</span> i = <span class="k-c-orange">0</span>; i &lt; <span class="k-c-orange">3</span>; i++) {</span><span class="ln" id="s14-pir-b4">      <span class="k-c-cyan">digitalWrite</span>(pinoLED, <span class="k-c-yel">HIGH</span>);</span><span class="ln" id="s14-pir-b5">      <span class="k-c-cyan">delay</span>(<span class="k-c-orange">1000</span>);</span><span class="ln" id="s14-pir-b6">      <span class="k-c-cyan">digitalWrite</span>(pinoLED, <span class="k-c-yel">LOW</span>);</span><span class="ln" id="s14-pir-b7">      <span class="k-c-cyan">delay</span>(<span class="k-c-orange">500</span>);</span><span class="ln" id="s14-pir-b8">    }</span><span class="ln" id="s14-pir-b9">  } <span class="k-c-violet">else</span> {</span><span class="ln" id="s14-pir-b10">    <span class="k-c-cyan">digitalWrite</span>(pinoLED, <span class="k-c-yel">LOW</span>);</span><span class="ln" id="s14-pir-b11">  }</span><span class="ln" id="s14-pir-b12">}</span></div>
+</div>
+<div id="s14-pir-fr" class="k-anno" style="left:120px;top:600px;font-size:24px"><span class="k-c-violet">for</span> (<span class="k-c-cyan">int i = 0</span>; <span class="k-c-yel">i &lt; 3</span>; <span class="k-c-green">i++</span>)
+ <span class="k-c-cyan">início</span>     <span class="k-c-yel">condição</span>  <span class="k-c-green">passo</span>  → 3 voltas</div>
+<div id="s14-pir-led" style="position:absolute;left:1700px;top:110px;width:46px;height:46px;border-radius:23px;background:#FF6F9C;box-shadow:0 0 30px #FF6F9C"></div>
+<div id="s14-pir-mac" class="k-macete" style="left:120px;top:740px;width:1680px;font-size:30px"><u>if</u> decide · <u>for</u> repete um nº de vezes · <u>loop</u> recomeça tudo</div>
+      </div>
+    </div>
+    <div id="s14-pir-chrome" class="clip k-scene" data-start="0" data-duration="31.997" data-track-index="2">
+      <div id="s14-pir-tag" class="k-tag">SISTEMAS EMBARCADOS · <b>CÓDIGO · PIR</b></div>
+      <div id="s14-pir-num" class="k-num">14 / 33</div>
+      <div id="s14-pir-progbar" class="k-prog"><i id="s14-pir-prog"></i></div>
+    </div>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/lib/kit.js"></script>
+    <script>
+      (function () {
+        var C = {"a": 0.15, "b": 4.933, "c": 13.319, "d": 20.16, "e": 26.643}, D = 31.997;
+        var S = K.scene("14-pir", D, 33), tl = S.tl, $ = S.$;
+        K.fade(tl, $("k"), C.a);
+        K.rise(tl, $("wa"), C.b);
+        K.hl(tl, $("a1"), C.b + 0.8, C.c);
+        K.hl(tl, $("a5"), C.b + 1.6, C.c);
+        K.hl(tl, $("a6"), C.b + 3.2, C.c);
+        K.hl(tl, $("a7"), C.b + 6.2, C.c);
+        K.rise(tl, $("wb"), C.c);
+        K.hl(tl, $("b2"), C.c + 0.6, C.d);
+        K.hl(tl, $("b3"), C.c + 1.6, C.e);
+        K.hl(tl, $("b4"), C.c + 3.0, C.c + 4.6);
+        K.hl(tl, $("b5"), C.c + 3.0, C.c + 4.6);
+        K.hl(tl, $("b6"), C.c + 4.6, C.d);
+        K.hl(tl, $("b7"), C.c + 4.6, C.d);
+        tl.set($("led"), { opacity: 0 }, 0);
+        for (var i = 0; i < 3; i++) {
+          tl.set($("led"), { opacity: 1 }, C.c + 1.0 + i * 1.5);
+          tl.set($("led"), { opacity: 0 }, C.c + 2.0 + i * 1.5);
+        }
+        K.wipe(tl, $("fr"), C.d + 0.4);
+        K.macete(tl, $("mac"), C.e);
+      })();
+    </script>
+  </div>
+</template>
